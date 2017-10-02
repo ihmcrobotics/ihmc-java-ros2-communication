@@ -7,12 +7,6 @@ import argparse
 
 
 sys.path.insert(0, "../../thirdparty/python/")
-sys.path.insert(0, "../../../thirdparty/rosidl/rosidl_parser")
-sys.path.insert(0, "../../../thirdparty/rosidl/rosidl_generator_cpp")
-sys.path.insert(0, "../../../thirdparty/rosidl_dds/rosidl_generator_dds_idl")
-
-
-
 
 from rosidl_generator_dds_idl import generate_dds_idl
 
