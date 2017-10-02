@@ -1,6 +1,0 @@
-[submodule "thirdparty/rosidl"]
-	path = thirdparty/rosidl
-	url = https://github.com/ros2/rosidl.git
-[submodule "thirdparty/rosidl_dds"]
-	path = thirdparty/rosidl_dds
-	url = https://github.com/ros2/rosidl_dds.git
