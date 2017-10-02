@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from StringIO import StringIO
+
 import json
 import os
 import re
@@ -110,7 +111,7 @@ def expand_template(template_file, data, output_file, minimum_timestamp=None):
         # create folder if necessary
         try:
             os.makedirs(os.path.dirname(output_file))
-        except FileExistsError:
+        except OSError as err:
             pass
 
     with open(output_file, 'w') as h:

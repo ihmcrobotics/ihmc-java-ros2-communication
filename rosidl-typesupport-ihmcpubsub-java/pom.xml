@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>us.ihmc.ros2</groupId>
+	<artifactId>rosidl-typesupport-ihmcpubsub-java</artifactId>
+	<version>1.0</version>
+	<name>ROSIDL Typesupport for IHMC Pub/Sub and Java</name>
+
+	<description>
+		Packages the python files to compile .msg files to .idl.
+	</description>
+	<licenses>
+		<license>
+			<name>Apache Public License</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>jsmith</id>
+			<name>Jesper Smith</name>
+			<email>jsmith@ihmc.us</email>
+		</developer>
+	</developers>
+	<url>http://github.com/ihmcrobotics/</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+		</dependency>
+                <dependency>
+                        <groupId>org.python</groupId>
+                        <artifactId>jython-standalone</artifactId>
+                        <version>2.7.1</version>
+                </dependency>
+	</dependencies>
+        <build>
+		<resources>
+                        <resource>
+				<directory>src/main/python</directory>
+			</resource>
+			<resource>
+				<directory>src/thirdparty/python</directory>
+			</resource>
+                        <resource>
+				<directory>src/thirdparty/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+                            <groupId>net.sf.mavenjython</groupId>
+                            <artifactId>jython-compile-maven-plugin</artifactId>
+                            <version>1.4</version>                                
+                            <executions>
+                                <execution>
+                                        <phase>package</phase>
+                                        <goals>
+                                                <goal>jython</goal>
+                                        </goals>
+                                </execution>
+                                </executions>
+                                <configuration>
+                                        <libraries>
+                                                <param>empy</param>
+                                        </libraries>
+
+                                </configuration>
+                        </plugin>
+                        
+                        <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>us.ihmc.rosidl.GenerateDDSIDL</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>

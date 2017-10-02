@@ -1,10 +1,10 @@
 // generated from rosidl_generator_dds_idl/resource/msg.idl.em
 
-#ifndef __wolololo__msg__Num__idl__
-#define __wolololo__msg__Num__idl__
+#ifndef __ros_msgs__msg__Num__idl__
+#define __ros_msgs__msg__Num__idl__
 
 
-module wolololo
+module ros_msgs
 {
 
 module msg
@@ -28,6 +28,6 @@ struct Num_
 
 };  // module msg
 
-};  // module wolololo
+};  // module ros_msgs
 
-#endif  // __wolololo__msg__Num__idl__
+#endif  // __ros_msgs__msg__Num__idl__

@@ -1,0 +1,35 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __ros_msgs__msg__TwoNum__idl__
+#define __ros_msgs__msg__TwoNum__idl__
+
+#include "ros_msgs/msg/ros_msgs//Num_.idl"
+
+module ros_msgs
+{
+
+module msg
+{
+
+module dds_
+{
+
+
+
+
+struct TwoNum_
+{
+
+  ros_msgs::msg::dds_::Num_ num1_;
+  ros_msgs::msg::dds_::Num_ num2_;
+
+};  // struct TwoNum_
+
+
+};  // module dds_
+
+};  // module msg
+
+};  // module ros_msgs
+
+#endif  // __ros_msgs__msg__TwoNum__idl__
