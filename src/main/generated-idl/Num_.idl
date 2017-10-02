@@ -1,0 +1,33 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __wolololo____Num__idl__
+#define __wolololo____Num__idl__
+
+
+module wolololo
+{
+
+module 
+{
+
+module dds_
+{
+
+
+
+
+struct Num_
+{
+
+  long long num_;
+
+};  // struct Num_
+
+
+};  // module dds_
+
+};  // module 
+
+};  // module wolololo
+
+#endif  // __wolololo____Num__idl__

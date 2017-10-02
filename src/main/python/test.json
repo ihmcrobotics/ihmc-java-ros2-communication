@@ -1,0 +1,10 @@
+{
+"package_name" :  "wolololo",
+"output_dir" : "../generated-idl",
+"template_dir" : "../../../thirdparty/rosidl_dds/rosidl_generator_dds_idl/resource",
+"ros_interface_files" : ["msg/Num.msg"],
+"ros_interface_dependencies" : [],
+"target_dependencies" : [],
+"additional_files" : []
+
+}
