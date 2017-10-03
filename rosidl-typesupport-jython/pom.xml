@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>us.ihmc.ros2</groupId>
-	<artifactId>rosidl-typesupport-ihmcpubsub-java</artifactId>
+	<artifactId>rosidl-typesupport-jython</artifactId>
 	<version>1.0</version>
 	<name>ROSIDL Typesupport for IHMC Pub/Sub and Java</name>
 
