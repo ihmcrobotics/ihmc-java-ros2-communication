@@ -9,7 +9,7 @@ import org.python.core.PyList;
 import org.python.util.PythonInterpreter;
 
 
-class GenerateDDSIDL
+public class GenerateDDSIDL
 {
         private final PythonInterpreter interp = new PythonInterpreter();
         

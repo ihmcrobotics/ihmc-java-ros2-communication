@@ -1,0 +1,86 @@
+plugins {
+   id 'com.gradle.plugin-publish' version '0.9.3'
+}
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+
+group = "us.ihmc.ros2"
+version = "0.1"
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+project.ext.licenseURL = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+project.ext.licenseName = "Apache License, Version 2.0"
+project.ext.bintrayLicenseName = "Apache-2.0"
+
+project.sourceSets {
+   
+}
+
+repositories {
+   jcenter()
+   maven {
+      url "https://plugins.gradle.org/m2/"
+   }
+   mavenLocal()
+}
+
+dependencies {
+   compile gradleApi()
+   compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
+   compile group: 'us.ihmc.ros2', name: 'rosidl-typesupport-jython', version: '1.0'
+}
+
+task sourceJar(type: Jar) {
+   from sourceSets.main.allJava
+}
+
+jar {
+   manifest {
+      attributes(
+            "Created-By": "IHMC Gradle Build Script",
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.version,
+            "Implementation-Vendor": "IHMC",
+
+            "Bundle-Name": project.name,
+            "Bundle-Version": project.version,
+            "Bundle-License": "${project.ext.licenseURL}",
+            "Bundle-Vendor": "IHMC")
+   }
+}
+
+publishing {
+   publications {
+      mavenJava(MavenPublication) {
+         group "${project.group}"
+         artifactId "${project.name}"
+         version "${project.version}"
+
+         from components.java
+
+         artifact sourceJar {
+            classifier "sources"
+         }
+
+      }
+   }
+}
+
+pluginBundle {
+   website = 'https://github.com/ihmcrobotics/ihmc-build'
+   vcsUrl = 'https://github.com/ihmcrobotics/ihmc-build'
+   tags = ['build', 'ihmc', 'robotics']
+   description = "IHMC Robotics's Gradle common build logic plugin"
+
+   plugins {
+      ihmcBuildPlugin {
+         id = 'us.ihmc.gradle.ihmc-build'
+         displayName = 'IHMC Build Plugin'
+         version = project.version
+      }
+   }
+}
