@@ -16,9 +16,9 @@
 package us.ihmc.ros2.rosidl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,12 +40,14 @@ import us.ihmc.rosidl.GenerateDDSIDL;
 
 public class RosInterfaceCompiler
 {
+   private static final String template_name = "msg.idl.em";
    
-   private final Path template_dir = Paths.get("../rosidl-typesupport-jython/src/thirdparty/resources");
+   
    private final Path outputDirectory = Paths.get("generated-idl");
    
    
-   private final File argumentFile;
+   private final Path template_dir;
+   private final Path argumentFile;
 
    private class PackageDescription
    {
@@ -71,9 +73,20 @@ public class RosInterfaceCompiler
    
    public RosInterfaceCompiler(Path rootPath) throws IOException
    {
-      argumentFile = File.createTempFile("arguments", ".json");
-      System.out.println("argument file " + argumentFile.getAbsolutePath());
-      argumentFile.deleteOnExit();
+      argumentFile = Files.createTempFile("RosInterfaceArguments", "arguments.json");
+      argumentFile.toFile().deleteOnExit();
+      
+      
+      template_dir = Files.createTempDirectory("RosInterfaceCompilerTemplates");
+      template_dir.toFile().deleteOnExit();
+      
+      InputStream template = getClass().getClassLoader().getResourceAsStream(template_name);
+      Path template_file = template_dir.resolve(template_name);
+      Files.copy(template, template_file);
+      
+      template_file.toFile().deleteOnExit();
+      template.close();
+      
       
       
       Files.find(rootPath, 2, (path,  attrs) -> attrs.isRegularFile() && 
@@ -84,13 +97,13 @@ public class RosInterfaceCompiler
    
    }
    
-   private void createJSON(PackageDescription desc, Path outputDirectory, Path templateDirectory, List<Path> dependencies)
+   private void createJSON(PackageDescription desc, Path outputDirectory, Path template_dir, List<Path> dependencies)
    {
       JsonObjectBuilder json = Json.createObjectBuilder();
       
       json.add("package_name", desc.packageName);
-      json.add("output_dir", outputDirectory.toString());
-      json.add("template_dir", templateDirectory.toString());
+      json.add("output_dir", outputDirectory.toAbsolutePath().toString());
+      json.add("template_dir", template_dir.toAbsolutePath().toString());
       
       JsonArrayBuilder ros_interface_files = Json.createArrayBuilder();
       for(Path msg : desc.msg)
@@ -111,12 +124,12 @@ public class RosInterfaceCompiler
       json.add("additional_files", Json.createArrayBuilder());
       
       
-      FileOutputStream os;
+      OutputStream os;
       try
       {
-         os = new FileOutputStream(argumentFile);
+         os = Files.newOutputStream(argumentFile);
       }
-      catch (FileNotFoundException e)
+      catch (IOException e)
       {
          throw new RuntimeException(e);
       }
@@ -147,7 +160,7 @@ public class RosInterfaceCompiler
 
       System.out.println("Generating .idl files for " + name + " in " + packageOutputDirectory);
       GenerateDDSIDL dds = new GenerateDDSIDL();
-      dds.generate_dds_idl(argumentFile.getAbsolutePath(), subFolders, null);
+      dds.generate_dds_idl(argumentFile.toAbsolutePath().toString(), subFolders, null);
    }
    
    private void addDependencies(PackageDescription description, HashSet<String> dependencies)
