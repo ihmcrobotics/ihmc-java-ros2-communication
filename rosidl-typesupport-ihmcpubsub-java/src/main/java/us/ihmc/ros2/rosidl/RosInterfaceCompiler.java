@@ -42,7 +42,7 @@ public class RosInterfaceCompiler
 {
    
    private final Path template_dir = Paths.get("../rosidl-typesupport-jython/src/thirdparty/resources");
-   private final Path outputDirectory = Paths.get("build-java");
+   private final Path outputDirectory = Paths.get("generated-idl");
    
    
    private final File argumentFile;
@@ -139,11 +139,13 @@ public class RosInterfaceCompiler
          dependencyFiles.addAll(desc.msg);
       }
       
-      createJSON(pkg, outputDirectory, template_dir, dependencyFiles);
+      Path packageOutputDirectory = outputDirectory.resolve(name);
+      createJSON(pkg, packageOutputDirectory, template_dir, dependencyFiles);
       
       List<String> subFolders = new ArrayList<>();
       subFolders.add(".");
 
+      System.out.println("Generating .idl files for " + name + " in " + packageOutputDirectory);
       GenerateDDSIDL dds = new GenerateDDSIDL();
       dds.generate_dds_idl(argumentFile.getAbsolutePath(), subFolders, null);
    }
@@ -196,7 +198,6 @@ public class RosInterfaceCompiler
             throw new RuntimeException("Cannot serach folder " + pkgDesc.root + " for package " + pkgDesc.packageName, e);
          };
          
-         System.out.println(pkgDesc);
          packages.put(pkgDesc.packageName, pkgDesc);
 
          
