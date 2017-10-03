@@ -16,6 +16,8 @@
 package us.ihmc.ros2.rosidl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,19 +30,22 @@ import java.util.List;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import us.ihmc.rosidl.*;
 
 import us.ihmc.ros2.rosidl.rosPackage.Package;
+import us.ihmc.rosidl.GenerateDDSIDL;
 
 public class RosInterfaceCompiler
 {
    
-   private final Path template_dir = Paths.get(".");
+   private final Path template_dir = Paths.get("../rosidl-typesupport-jython/src/thirdparty/resources");
    private final Path outputDirectory = Paths.get("build-java");
    
+   
+   private final File argumentFile;
 
    private class PackageDescription
    {
@@ -66,12 +71,16 @@ public class RosInterfaceCompiler
    
    public RosInterfaceCompiler(Path rootPath) throws IOException
    {
+      argumentFile = File.createTempFile("arguments", ".json");
+      System.out.println("argument file " + argumentFile.getAbsolutePath());
+      argumentFile.deleteOnExit();
       
       
       Files.find(rootPath, 2, (path,  attrs) -> attrs.isRegularFile() && 
                  path.getFileName().toString().equals("package.xml")).forEach(this::addPackage);
       
       packages.forEach(this::convertToIDL);
+      
    
    }
    
@@ -101,9 +110,20 @@ public class RosInterfaceCompiler
       json.add("target_dependencies", Json.createArrayBuilder());
       json.add("additional_files", Json.createArrayBuilder());
       
-      System.out.println(json.build());
       
-      GenerateDDSIDL dds = new GenerateDDSIDL();
+      FileOutputStream os;
+      try
+      {
+         os = new FileOutputStream(argumentFile);
+      }
+      catch (FileNotFoundException e)
+      {
+         throw new RuntimeException(e);
+      }
+      JsonWriter writer = Json.createWriter(os);
+      writer.writeObject(json.build());
+      writer.close();
+      
    }
    
    
@@ -120,6 +140,12 @@ public class RosInterfaceCompiler
       }
       
       createJSON(pkg, outputDirectory, template_dir, dependencyFiles);
+      
+      List<String> subFolders = new ArrayList<>();
+      subFolders.add(".");
+
+      GenerateDDSIDL dds = new GenerateDDSIDL();
+      dds.generate_dds_idl(argumentFile.getAbsolutePath(), subFolders, null);
    }
    
    private void addDependencies(PackageDescription description, HashSet<String> dependencies)

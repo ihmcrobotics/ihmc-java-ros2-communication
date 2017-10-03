@@ -5,6 +5,7 @@ import java.util.Collections;
 import org.python.core.Py;
 import org.python.core.PyObject;
 import org.python.core.PyString;
+import org.python.core.PySystemState;
 import org.python.core.PyList;
 import org.python.util.PythonInterpreter;
 
@@ -15,6 +16,10 @@ public class GenerateDDSIDL
         
         public GenerateDDSIDL()
         {
+            // Import em.py
+            PySystemState systemState = Py.getSystemState();
+            systemState.path.append(new PyString("__pyclasspath__/Lib"));
+
             interp.exec("from rosidl_generator_dds_idl import generate_dds_idl");
         }
         
