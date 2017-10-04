@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -48,7 +47,7 @@ import us.ihmc.rosidl.GenerateDDSIDL;
  * @author Jesper Smith
  *
  */
-public class RosInterfaceCompiler
+public class RosInterfaceGenerator
 {
    private static final boolean compile_srv = false;
    
@@ -94,7 +93,7 @@ public class RosInterfaceCompiler
     * 
     * @throws IOException if no temporary files and directories can be made
     */
-   public RosInterfaceCompiler(InputStream template) throws IOException
+   public RosInterfaceGenerator(InputStream template) throws IOException
    {
       
       argumentFile = Files.createTempFile("RosInterfaceArguments", "arguments.json");
@@ -153,8 +152,6 @@ public class RosInterfaceCompiler
       customIDLFiles.forEach((key, path) -> {
          try
          {
-            System.out.println(path);
-            System.out.println(idlDirectory.resolve(key));
             Files.copy(path, idlDirectory.resolve(key), StandardCopyOption.REPLACE_EXISTING);
          }
          catch (IOException e)
@@ -384,10 +381,14 @@ public class RosInterfaceCompiler
       
    }
    
+   public static InputStream getIHMCPubSubTemplate()
+   {
+      return RosInterfaceGenerator.class.getClassLoader().getResourceAsStream(template_resource);
+   }
    
    public static void main(String[] args) throws IOException
    {
-      RosInterfaceCompiler compiler = new RosInterfaceCompiler(RosInterfaceCompiler.class.getClassLoader().getResourceAsStream(template_resource));
+      RosInterfaceGenerator compiler = new RosInterfaceGenerator(RosInterfaceGenerator.class.getClassLoader().getResourceAsStream(template_resource));
       compiler.addPackageRoot(new File("../common_interfaces").toPath());
       compiler.addCustomIDLFiles(Paths.get("custom-idl"));
       compiler.generate(Paths.get("generated-idl"), Paths.get("generated-java"));
