@@ -19,7 +19,7 @@ apply plugin: 'application'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 version = '0.1'
-buildDir = 'build-java'
+buildDir = 'build'
 
 project.ext.fullVersion = version
 project.ext.vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
@@ -90,7 +90,7 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 
-			groupId 'us.ihmc'
+			groupId 'us.ihmc.ros2'
 			artifactId project.name
 			version "$version"
 			from components.java
