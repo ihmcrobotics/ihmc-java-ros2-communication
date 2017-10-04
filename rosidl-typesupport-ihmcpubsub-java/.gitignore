@@ -12,3 +12,4 @@ hs_err_*
 *.autosave
 **/generated-java
 **/generated-idl
+**/custom-idl
