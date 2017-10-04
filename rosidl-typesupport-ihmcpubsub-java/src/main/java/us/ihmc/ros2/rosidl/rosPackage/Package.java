@@ -20,11 +20,23 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Helper class to unmarshall ROS2 Package xml files.
+ * 
+ * @author Jesper Smith
+ *
+ */
 @XmlRootElement
 public class Package
 {
+   /**
+    * Name of the package
+    */
    private String name;
    
+   /**
+    * Build dependencies
+    */
    private List<String> build_depend;
 
    public String getName()

@@ -38,17 +38,27 @@ import javax.xml.bind.Unmarshaller;
 import us.ihmc.ros2.rosidl.rosPackage.Package;
 import us.ihmc.rosidl.GenerateDDSIDL;
 
+/** 
+ * Utility to convert ROS2 IDL files (.msg & .srv) to Java files compatible with IHMC Pub/Sub 
+ * 
+ * @author Jesper Smith
+ *
+ */
 public class RosInterfaceCompiler
 {
+   // Template to use
    private static final String template_name = "msg.idl.em";
-   
-   
-   private final Path outputDirectory = Paths.get("generated-idl");
-   
+
    
    private final Path template_dir;
    private final Path argumentFile;
 
+   /**
+    * Internal holder for information about the package 
+    * 
+    * @author Jesper Smith
+    *
+    */
    private class PackageDescription
    {
       private String packageName;
@@ -68,11 +78,17 @@ public class RosInterfaceCompiler
       
    }
    
-   
+   // Holder for all packages found
    private final HashMap<String, PackageDescription> packages = new HashMap<>();
    
-   public RosInterfaceCompiler(Path rootPath) throws IOException
+   /**
+    * Compile Ros interfaces to Java files for IHMC pub sub
+    * 
+    * @throws IOException if no temporary files and directories can be made
+    */
+   public RosInterfaceCompiler() throws IOException
    {
+      
       argumentFile = Files.createTempFile("RosInterfaceArguments", "arguments.json");
       argumentFile.toFile().deleteOnExit();
       
@@ -86,23 +102,60 @@ public class RosInterfaceCompiler
       
       template_file.toFile().deleteOnExit();
       template.close();
-      
-      
-      
-      Files.find(rootPath, 2, (path,  attrs) -> attrs.isRegularFile() && 
-                 path.getFileName().toString().equals("package.xml")).forEach(this::addPackage);
-      
-      packages.forEach(this::convertToIDL);
-      
    
    }
    
+   
+   /**
+    * Add a directory with ros packages to the list of interfaces to be compiled.
+    * 
+    * The expected directory structure is
+    *    - rootPath
+    *       - packageName
+    *          - package.xml
+    *  
+    *  A package xml with at least <name /> and optionally <build_depends />
+    *  
+    * 
+    * @param rootPath The root directory of packages to add
+    * @throws IOException If the rootPath cannot be read
+    */
+   public void addPackageRoot(Path rootPath) throws IOException
+   {
+      // Find all subdirectories with a package.xml in them and call this.addPackage()
+      Files.find(rootPath, 2, (path,  attrs) -> attrs.isRegularFile() && 
+                 path.getFileName().toString().equals("package.xml")).forEach(this::addPackage);
+   }
+   
+   /**
+    * Generate java files for all packages.
+    * 
+    * This function can ber called 
+    * 
+    * @param idlDirectory directory to put .idl files in
+    */
+   public void generate(Path idlDirectory)
+   {
+      packages.forEach((name, pkg) -> this.convertToIDL(name, pkg, idlDirectory));      
+   }
+   
+   /**
+    * Helper function to generate the json format the ros2 idl compiler requires
+    *
+    * @param desc packageDescription
+    * @param outputDirectory directory to put the generated idl files in
+    * @param template_dir directory where the msg.idl.em template can be found
+    * @param dependencies list of paths of .msg files that are required to generate this .msg file
+    */
    private void createJSON(PackageDescription desc, Path outputDirectory, Path template_dir, List<Path> dependencies)
    {
       JsonObjectBuilder json = Json.createObjectBuilder();
       
+      // package_name is the name of the package
       json.add("package_name", desc.packageName);
+      // output_dir is the directory to write the files in. The ros2 idl compiler does not append the package name to this directory.
       json.add("output_dir", outputDirectory.toAbsolutePath().toString());
+      // directory where msg.idl.em can be found
       json.add("template_dir", template_dir.toAbsolutePath().toString());
       
       JsonArrayBuilder ros_interface_files = Json.createArrayBuilder();
@@ -111,16 +164,19 @@ public class RosInterfaceCompiler
       for(Path srv: desc.srv)
          ros_interface_files.add(srv.toString());
       
+      // The ros interface files to compile
       json.add("ros_interface_files", ros_interface_files);
       
       JsonArrayBuilder ros_interface_dependencies = Json.createArrayBuilder();
       for(Path dep : dependencies)
          ros_interface_dependencies.add(dep.toString());
       
+      // The ros interface files necessary to compile this interface
       json.add("ros_interface_dependencies", ros_interface_dependencies);
       
-      
+      // Don't know what this flag does
       json.add("target_dependencies", Json.createArrayBuilder());
+      // Don't know what this flag does
       json.add("additional_files", Json.createArrayBuilder());
       
       
@@ -140,7 +196,14 @@ public class RosInterfaceCompiler
    }
    
    
-   private void convertToIDL(String name, PackageDescription pkg)
+   /**
+    * Helper function to convert a single package to .idl files
+    * 
+    * @param name Name of the package to compile
+    * @param pkg Description of the package to compile
+    * @param outputDirectory Directory to put the generated files in
+    */
+   private void convertToIDL(String name, PackageDescription pkg, Path outputDirectory)
    {
       HashSet<String> dependencies = new HashSet<>();
       addDependencies(pkg, dependencies);
@@ -163,6 +226,13 @@ public class RosInterfaceCompiler
       dds.generate_dds_idl(argumentFile.toAbsolutePath().toString(), subFolders, null);
    }
    
+   /**
+    * Recursive function to add all .msg files that are necessary to compile this package
+    * 
+    * 
+    * @param description package description
+    * @param dependencies Output set of dependencies
+    */
    private void addDependencies(PackageDescription description, HashSet<String> dependencies)
    {
       for(String dependency : description.dependencies)
@@ -180,16 +250,26 @@ public class RosInterfaceCompiler
    }
    
    
+   /**
+    * Add a ROS2 package to the list of packages to compile
+    * 
+    * This function reads the package.xml to get the package name and list of dependencies.
+    * 
+    * The .msg and .srv files to compile are found with a search in the directory.
+    *   
+    * @param file the package.xml description 
+    */
    private void addPackage(Path file) 
    {
-      JAXBContext jaxbContext;
       try
       {
-         jaxbContext = JAXBContext.newInstance(Package.class);
+         // Read the XML file
+         JAXBContext jaxbContext = JAXBContext.newInstance(Package.class);
          Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
          Package pkg = (Package) unmarshaller.unmarshal(file.toFile());
 
          
+         // Create a package description
          PackageDescription pkgDesc = new PackageDescription();
          pkgDesc.packageName = pkg.getName();
          pkgDesc.root = file.getParent();
@@ -199,6 +279,7 @@ public class RosInterfaceCompiler
          }
          
          
+         // Search for .msg and .srv files and add them to pkgDesc.msg and pkgDesc.srv respectivly
          try
          {
             Files.find(pkgDesc.root, 2, (path,  attrs) -> attrs.isRegularFile() && 
@@ -208,7 +289,7 @@ public class RosInterfaceCompiler
          }
          catch (IOException e)
          {
-            throw new RuntimeException("Cannot serach folder " + pkgDesc.root + " for package " + pkgDesc.packageName, e);
+            throw new RuntimeException("Cannot search folder " + pkgDesc.root + " for package " + pkgDesc.packageName, e);
          };
          
          packages.put(pkgDesc.packageName, pkgDesc);
@@ -226,6 +307,9 @@ public class RosInterfaceCompiler
    
    public static void main(String[] args) throws IOException
    {
-      new RosInterfaceCompiler(new File("../common_interfaces").toPath());
+      RosInterfaceCompiler compiler = new RosInterfaceCompiler();
+      compiler.addPackageRoot(new File("../common_interfaces").toPath());
+      compiler.generate(Paths.get("generated-idl"));
+      
    }
 }

@@ -32,6 +32,7 @@ dependencies {
    compile gradleApi()
    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
    compile group: 'us.ihmc.ros2', name: 'rosidl-typesupport-jython', version: '1.0'
+   compile group: 'us.ihmc', name: 'IHMCPubSubGenerator', version: '0.3.2'
 }
 
 task sourceJar(type: Jar) {
