@@ -74,8 +74,10 @@ public class RosInterfaceGeneratorTask extends DefaultTask
          }
       }
       
-      generator.generate(idlDirectory, outputDirectory.toPath());
       
+
+      File tempDir = new File(getTemporaryDir(), "idl");
+      generator.generate(tempDir.toPath(), outputDirectory.toPath());
    }
 
 }
