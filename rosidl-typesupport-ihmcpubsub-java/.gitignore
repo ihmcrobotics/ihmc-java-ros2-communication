@@ -10,4 +10,5 @@ CMakeLists.txt.user
 hs_err_*
 *.swp
 *.autosave
+**/generated-java
 **/generated-idl

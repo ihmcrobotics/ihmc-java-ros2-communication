@@ -32,7 +32,7 @@ dependencies {
    compile gradleApi()
    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
    compile group: 'us.ihmc.ros2', name: 'rosidl-typesupport-jython', version: '1.0'
-   compile group: 'us.ihmc', name: 'IHMCPubSubGenerator', version: '0.3.2'
+   compile group: 'us.ihmc', name: 'IHMCPubSubGenerator', version: '0.3.3'
 }
 
 task sourceJar(type: Jar) {
@@ -72,10 +72,10 @@ publishing {
 }
 
 pluginBundle {
-   website = 'https://github.com/ihmcrobotics/ihmc-build'
-   vcsUrl = 'https://github.com/ihmcrobotics/ihmc-build'
-   tags = ['build', 'ihmc', 'robotics']
-   description = "IHMC Robotics's Gradle common build logic plugin"
+   website = 'https://github.com/ihmcrobotics/ihmc-java-ros2-communication'
+   vcsUrl = 'https://github.com/ihmcrobotics/ihmc-java-ros2-communication'
+   tags = ['ros2', 'ihmc', 'robotics', 'ros', 'dds']
+   description = "IHMC Pub/Sub typesupport for Ros2 messages"
 
    plugins {
       ihmcBuildPlugin {

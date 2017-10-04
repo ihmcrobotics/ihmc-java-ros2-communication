@@ -23,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -35,6 +36,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import us.ihmc.idl.generator.IDLGenerator;
 import us.ihmc.ros2.rosidl.rosPackage.Package;
 import us.ihmc.rosidl.GenerateDDSIDL;
 
@@ -46,8 +48,11 @@ import us.ihmc.rosidl.GenerateDDSIDL;
  */
 public class RosInterfaceCompiler
 {
+   private static final boolean compile_srv = false;
+   
    // Template to use
    private static final String template_name = "msg.idl.em";
+   private static final String template_resource = "us/ihmc/ros2/rosidl/ihmcpubsub/msg.idl.em";
 
    
    private final Path template_dir;
@@ -86,7 +91,7 @@ public class RosInterfaceCompiler
     * 
     * @throws IOException if no temporary files and directories can be made
     */
-   public RosInterfaceCompiler() throws IOException
+   public RosInterfaceCompiler(InputStream template) throws IOException
    {
       
       argumentFile = Files.createTempFile("RosInterfaceArguments", "arguments.json");
@@ -96,7 +101,6 @@ public class RosInterfaceCompiler
       template_dir = Files.createTempDirectory("RosInterfaceCompilerTemplates");
       template_dir.toFile().deleteOnExit();
       
-      InputStream template = getClass().getClassLoader().getResourceAsStream(template_name);
       Path template_file = template_dir.resolve(template_name);
       Files.copy(template, template_file);
       
@@ -133,10 +137,29 @@ public class RosInterfaceCompiler
     * This function can ber called 
     * 
     * @param idlDirectory directory to put .idl files in
+    * @param javaDirectory directory to put generated .java files in
+    * @throws IOException 
     */
-   public void generate(Path idlDirectory)
+   public void generate(Path idlDirectory, Path javaDirectory) throws IOException
    {
-      packages.forEach((name, pkg) -> this.convertToIDL(name, pkg, idlDirectory));      
+      packages.forEach((name, pkg) -> this.convertToIDL(name, pkg, idlDirectory));
+      
+      //IDLGenerator.execute(idlFile, packageName, targetDirectory, includePath);
+      Files.find(idlDirectory, Integer.MAX_VALUE, (path,  attrs) -> attrs.isRegularFile() && 
+                 path.getFileName().toString().endsWith(".idl")).forEach((file) -> generateJava(file, javaDirectory, idlDirectory));
+   }
+   
+   
+   public void generateJava(Path file, Path javaDirectory, Path idlDirectory)
+   {
+      try
+      {
+         IDLGenerator.execute(file.toFile(), "", javaDirectory.toFile(), Collections.singletonList(idlDirectory.toFile()));
+      }
+      catch (IOException e)
+      {
+         throw new RuntimeException(e);
+      }
    }
    
    /**
@@ -284,8 +307,11 @@ public class RosInterfaceCompiler
          {
             Files.find(pkgDesc.root, 2, (path,  attrs) -> attrs.isRegularFile() && 
                        path.getFileName().toString().endsWith(".msg")).forEach(pkgDesc.msg::add);
-            Files.find(pkgDesc.root, 2, (path,  attrs) -> attrs.isRegularFile() && 
-                       path.getFileName().toString().endsWith(".srv")).forEach(pkgDesc.srv::add);
+            if(compile_srv)
+            {
+               Files.find(pkgDesc.root, 2, (path,  attrs) -> attrs.isRegularFile() && 
+                          path.getFileName().toString().endsWith(".srv")).forEach(pkgDesc.srv::add);
+            }
          }
          catch (IOException e)
          {
@@ -307,9 +333,9 @@ public class RosInterfaceCompiler
    
    public static void main(String[] args) throws IOException
    {
-      RosInterfaceCompiler compiler = new RosInterfaceCompiler();
+      RosInterfaceCompiler compiler = new RosInterfaceCompiler(RosInterfaceCompiler.class.getClassLoader().getResourceAsStream(template_resource));
       compiler.addPackageRoot(new File("../common_interfaces").toPath());
-      compiler.generate(Paths.get("generated-idl"));
+      compiler.generate(Paths.get("generated-idl"), Paths.get("generated-java"));
       
    }
 }
