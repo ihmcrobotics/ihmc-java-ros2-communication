@@ -27,21 +27,6 @@ project.ext.licenseURL = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 project.ext.licenseName = "Apache License, Version 2.0"
 project.ext.bintrayLicenseName = "Apache-2.0"
 
-
-sourceSets {
-	main{
-		java {
-			srcDirs = ['src/main/java']
-		}
-	}
-
-	test {
-		java {
-			srcDirs = []
-		}
-	}
-}
-
 repositories {
   jcenter()
   mavenLocal()
@@ -57,7 +42,7 @@ dependencies {
    compile gradleApi()
    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
    compile group: 'us.ihmc.ros2', name: 'rosidl-typesupport-jython', version: '1.0'
-   compile group: 'us.ihmc', name: 'IHMCPubSubGenerator', version: '0.3.3'
+   compile group: 'us.ihmc', name: 'IHMCPubSubGenerator', version: '0.3.4'
 	
 }
 
