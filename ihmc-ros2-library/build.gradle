@@ -7,13 +7,10 @@ buildscript {
    }
    dependencies {
       classpath "gradle.plugin.us.ihmc:ihmc-build:0.9.5"
-      classpath 'us.ihmc.ros2:rosidl-typesupport-ihmcpubsub-java:0.1'
 
    }
 }
 
- import us.ihmc.idl.generator.IDLGeneratorTask
- import us.ihmc.ros2.rosidl.RosInterfaceGeneratorTask
 
 apply plugin: "us.ihmc.ihmc-build"
 
@@ -36,20 +33,5 @@ mainDependencies {
       compile group: 'us.ihmc', name: 'IHMCRealtime', version: '1.1.8'
 }
 
-
-task show << {
-   buildscript.configurations.classpath.each { println it }
-}
-
-
-task generateROSTypeSupport(type: us.ihmc.ros2.rosidl.RosInterfaceGeneratorTask) {
-	
-	rosPackages = files("src/thirdparty/rosidl/common_interfaces", "src/main/rosidl/ihmc_interfaces")
-	outputDirectory = file("src/main/java-generated")
-	customIDL = files("src/main/idl")
-}
-
-
-compileJava.dependsOn generateROSTypeSupport
 
 sourceSets.main.java.srcDirs += ['src/main/java-generated']
