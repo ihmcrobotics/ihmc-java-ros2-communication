@@ -15,29 +15,22 @@
  */
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
 import us.ihmc.pubsub.Domain;
-import us.ihmc.pubsub.publisher.Publisher;
+import us.ihmc.pubsub.subscriber.Subscriber;
 
-public class RosPublisher<T>
+public class RosSubscription<T> 
 {
    private final Domain domain;
-   private final Publisher publisher;
-
-   RosPublisher(Domain domain, Publisher publisher)
+   private final Subscriber subscriber;
+   
+   RosSubscription(Domain domain, Subscriber subscriber)
    {
       this.domain = domain;
-      this.publisher = publisher;
+      this.subscriber = subscriber;
    }
-
-   public void publish(T data) throws IOException
-   {
-      publisher.write(data);
-   }
-
+   
    public void remove()
    {
-      domain.removePublisher(publisher);
+      domain.removeSubscriber(subscriber);
    }
 }

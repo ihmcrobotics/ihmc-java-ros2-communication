@@ -16,6 +16,7 @@
 package us.ihmc.ros2;
 
 import us.ihmc.pubsub.attributes.PublisherAttributes;
+import us.ihmc.pubsub.attributes.SubscriberAttributes;
 
 class RosTopicNameMangler
 {
@@ -25,23 +26,30 @@ class RosTopicNameMangler
 
    static void assignNameAndPartitionsToAttributes(PublisherAttributes attributes, String namespace, String nodeName, String topic)
    {
-      String[] fqn = getFQN(namespace, nodeName, topic); 
+      String[] fqn = getFQN(namespace, nodeName, topic);
       attributes.getTopic().setTopicName(getDDSTopicName(fqn));
       attributes.getQos().addPartition(getDDSPartition(fqn));
    }
-   
+
+   static void assignNameAndPartitionsToAttributes(SubscriberAttributes attributes, String namespace, String nodeName, String topic)
+   {
+      String[] fqn = getFQN(namespace, nodeName, topic);
+      attributes.getTopic().setTopicName(getDDSTopicName(fqn));
+      attributes.getQos().addPartition(getDDSPartition(fqn));
+   }
+
    private static String getDDSTopicName(String[] fqn)
    {
       return fqn[fqn.length - 1];
    }
-   
+
    private static String getDDSPartition(String[] fqn)
    {
       StringBuilder partition = new StringBuilder();
-      for(int i = 0; i < fqn.length - 1; i++)
+      for (int i = 0; i < fqn.length - 1; i++)
       {
          partition.append(fqn[i]);
-         if(i < fqn.length - 2)
+         if (i < fqn.length - 2)
          {
             partition.append('/');
          }
@@ -63,18 +71,17 @@ class RosTopicNameMangler
       checkTopicName(topic);
       checkNamespace(namespace);
       checkNodename(nodeName);
-      
-      
+
       String fqn;
-      if(topic.startsWith("/"))  // Absolute path
+      if (topic.startsWith("/")) // Absolute path
       {
          fqn = ros_topic_prefix + topic;
       }
-      else 
+      else
       {
          fqn = ros_topic_prefix + namespace + "/" + topic;
       }
-      
+
       String[] fqnArray = fqn.split("/");
       return fqnArray;
    }
@@ -148,8 +155,4 @@ class RosTopicNameMangler
       }
    }
 
-   public static void main(String[] args)
-   {
-      assignNameAndPartitionsToAttributes(null, "/faz/bar", "topic", "/bar");
-   }
 }
