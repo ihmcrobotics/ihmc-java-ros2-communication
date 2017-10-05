@@ -1,0 +1,54 @@
+buildscript {
+   repositories {
+      mavenCentral()
+      maven { url "http://dl.bintray.com/ihmcrobotics/maven-release" }      
+      maven { url "https://plugins.gradle.org/m2/" }
+      mavenLocal()
+   }
+   dependencies {
+      classpath "gradle.plugin.us.ihmc:ihmc-build:0.9.5"
+      classpath 'us.ihmc.ros2:rosidl-typesupport-ihmcpubsub-java:0.1'
+
+   }
+}
+
+ import us.ihmc.idl.generator.IDLGeneratorTask
+ import us.ihmc.ros2.rosidl.RosInterfaceGeneratorTask
+
+apply plugin: "us.ihmc.ihmc-build"
+
+ihmc {
+   group = "us.ihmc.ros2"
+   version = "0.1"
+   vcsUrl = "https://github.com/ihmcrobotics/ihmc-interfaces"
+   openSource = true
+    
+   configureDependencyResolution()
+   configurePublications()
+}
+
+
+
+
+
+mainDependencies {
+      compile group: 'us.ihmc', name: 'IHMCPubSub', version: '0.3.4.1'
+}
+
+
+task show << {
+   buildscript.configurations.classpath.each { println it }
+}
+
+
+task generateROSTypeSupport(type: us.ihmc.ros2.rosidl.RosInterfaceGeneratorTask) {
+	
+	rosPackages = files("src/thirdparty/rosidl/common_interfaces", "src/main/rosidl/ihmc_interfaces")
+	outputDirectory = file("src/main/java-generated")
+	customIDL = files("src/main/idl")
+}
+
+
+compileJava.dependsOn generateROSTypeSupport
+
+sourceSets.main.java.srcDirs += ['src/main/java-generated']
