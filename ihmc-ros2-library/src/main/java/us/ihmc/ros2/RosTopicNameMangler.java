@@ -18,24 +18,52 @@ package us.ihmc.ros2;
 import us.ihmc.pubsub.attributes.PublisherAttributes;
 import us.ihmc.pubsub.attributes.SubscriberAttributes;
 
+/**
+ * Helper class to convert from namespace and topic name to the correct DDS partition and topic for ROS2 interoperbility
+ * 
+ * @author Jesper Smith
+ *
+ */
 class RosTopicNameMangler
 {
    public static final String ros_topic_prefix = "rt";
    public static final String ros_service_request_prefix = "rq";
    public static final String ros_service_response_prefix = "rq";
 
-   static void assignNameAndPartitionsToAttributes(PublisherAttributes attributes, String namespace, String nodeName, String topic)
+   static void assignNameAndPartitionsToAttributes(PublisherAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
    {
-      String[] fqn = getFQN(namespace, nodeName, topic);
-      attributes.getTopic().setTopicName(getDDSTopicName(fqn));
-      attributes.getQos().addPartition(getDDSPartition(fqn));
+      if(avoidRosNamespace)
+      {
+         attributes.getTopic().setTopicName(topic);
+         if(namespace != null && !namespace.isEmpty())
+         {
+            attributes.getQos().addPartition(namespace);
+         }
+      }
+      else
+      {
+         String[] fqn = getFQN(namespace, nodeName, topic);
+         attributes.getTopic().setTopicName(getDDSTopicName(fqn));
+         attributes.getQos().addPartition(getDDSPartition(fqn));
+      }
    }
 
-   static void assignNameAndPartitionsToAttributes(SubscriberAttributes attributes, String namespace, String nodeName, String topic)
+   static void assignNameAndPartitionsToAttributes(SubscriberAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
    {
-      String[] fqn = getFQN(namespace, nodeName, topic);
-      attributes.getTopic().setTopicName(getDDSTopicName(fqn));
-      attributes.getQos().addPartition(getDDSPartition(fqn));
+      if(avoidRosNamespace)
+      {
+         attributes.getTopic().setTopicName(topic);
+         if(namespace != null && !namespace.isEmpty())
+         {
+            attributes.getQos().addPartition(namespace);
+         }
+      }
+      else
+      {
+         String[] fqn = getFQN(namespace, nodeName, topic);
+         attributes.getTopic().setTopicName(getDDSTopicName(fqn));
+         attributes.getQos().addPartition(getDDSPartition(fqn));
+      }
    }
 
    private static String getDDSTopicName(String[] fqn)
