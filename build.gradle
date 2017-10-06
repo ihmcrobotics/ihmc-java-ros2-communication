@@ -1,0 +1,11 @@
+buildscript {
+   repositories {
+      maven { url "https://plugins.gradle.org/m2/" }
+      mavenLocal()
+      jcenter()
+   }
+   dependencies {
+      classpath "gradle.plugin.us.ihmc:ihmc-build:0.9.5"
+   }
+}
+apply plugin: "us.ihmc.ihmc-build"
