@@ -46,6 +46,8 @@ public class RealtimePublisher<T>
    /**
     * Put new data in the queue to be published on the next spin
     * 
+    * This function does not block and is realtime-safe.
+    * 
     * @param data Data to publish
     * @return true if there was space in the queue, false if no space is left.
     */

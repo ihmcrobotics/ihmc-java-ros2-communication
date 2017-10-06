@@ -55,6 +55,7 @@ public class RealtimeNode
    {
       this(threadFactory, name, namespace, RosNode.ROS_DEFAULT_DOMAIN_ID);
    }
+
    /**
     * Create a new realtime node
     * 
@@ -70,10 +71,8 @@ public class RealtimeNode
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
-   
-   
    /**
-    * Create a new RealTime publisher with default qos profile and queue depth. 
+    * Create a new realtime publisher with default qos profile and queue depth. 
     * 
     * This publisher will publish data in a separate thread and will never block the calling thread. No memory will be allocated when publishing.
     * 
@@ -88,13 +87,13 @@ public class RealtimeNode
    {
       return createPublisher(topicDataType, topicName, RosQosProfile.DEFAULT(), 10);
    }
-   
+
    /**
-    * Create a new RealTime publisher. 
+    * Create a new realtime publisher. 
     * 
     * This publisher will publish data in a separate thread and will never block the calling thread. No memory will be allocated when publishing.
     * 
-    * The queueSize should weight memory requirements of the message vs the change to loose outgoing messages because the queue is full.
+    * The queueSize should weight memory requirements of the message vs the change to lose outgoing messages because the queue is full.
     * 
     * @param topicDataType Data type to publish
     * @param topicName Topic name
@@ -121,6 +120,46 @@ public class RealtimeNode
          startupLock.unlock();
       }
 
+   }
+
+   /**
+    * Create a new realtime subscription with default qos profile and queue depth.
+    * 
+    * Incoming messages are stored in a queue of depth queueSize and can be polled by the realtime therad.
+    *  
+    * This function will allocate a queue of depth 10
+    *  
+    * @param topicDataType Data type to subscribe to
+    * @param topicName Topic name
+    * @return A realtime-safe ROS2 subscriber
+    * @throws IOException
+    */
+   public <T> RealtimeSubscription<T> createSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
+   {
+      return createSubscription(topicDataType, topicName, RosQosProfile.DEFAULT(), 10);
+   }
+
+   /**
+    * Create a new realtime subscription.
+    * 
+    * Incoming messages are stored in a queue of depth queueSize and can be polled by the realtime therad.
+    * 
+    * The queueSize should weight memory requirements of the message vs the change to lose incoming messages because the queue is full.
+    * 
+    * @param topicDataType Data type to subscribe to
+    * @param topicName Topic name
+    * @param qosProfile Desired ros qos profile
+    * @param queueSize Depth of the subscribtion queue (10 would be a good size for small messages)
+    * @return A realtime-safe ROS2 subscriber
+    * @throws IOException
+    */
+   public <T> RealtimeSubscription<T> createSubscription(TopicDataType<T> topicDataType, String topicName, RosQosProfile qosProfile, int queueSize)
+         throws IOException
+   {
+      RealtimeSubscriptionListener<T> listener = new RealtimeSubscriptionListener<>(topicDataType, queueSize);
+      node.createSubscription(topicDataType, listener, topicName, qosProfile);
+      RealtimeSubscription<T> subscription = new RealtimeSubscription<>(listener);
+      return subscription;
    }
 
    /**
