@@ -25,12 +25,10 @@ import us.ihmc.pubsub.attributes.DurabilityKind;
 import us.ihmc.pubsub.attributes.ParticipantAttributes;
 import us.ihmc.pubsub.attributes.PublishModeKind;
 import us.ihmc.pubsub.attributes.PublisherAttributes;
-import us.ihmc.pubsub.attributes.ReliabilityKind;
 import us.ihmc.pubsub.attributes.SubscriberAttributes;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
 import us.ihmc.pubsub.participant.Participant;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
-import us.ihmc.ros2.RosQosProfile.RosDurability;
 
 /**
  * A minimal implementation of a ROS2 compatible node.
@@ -42,7 +40,7 @@ import us.ihmc.ros2.RosQosProfile.RosDurability;
  */
 public class RosNode
 {
-   private static final int ROS_DEFAULT_DOMAIN_ID = 0;
+   public static final int ROS_DEFAULT_DOMAIN_ID = 0;
 
    private final Domain domain = DomainFactory.getDomain(PubSubImplementation.FAST_RTPS);
    private final Participant participant;
@@ -113,8 +111,7 @@ public class RosNode
     */
    public <T> RosPublisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      RosQosProfile rosQosPolicy = new RosQosProfile();
-      return createPublisher(topicDataType, topicName, rosQosPolicy);
+      return createPublisher(topicDataType, topicName, RosQosProfile.DEFAULT());
    }
 
    /**
@@ -179,8 +176,7 @@ public class RosNode
     */
    public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName) throws IOException
    {
-      RosQosProfile rosQosPolicy = new RosQosProfile();
-      return createSubscription(topicDataType, callback, topicName, rosQosPolicy);
+      return createSubscription(topicDataType, callback, topicName, RosQosProfile.DEFAULT());
    }
 
    /**

@@ -24,6 +24,14 @@ import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.util.PeriodicThreadScheduler;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
 
+/**
+ * A Realtime-safe implementation of RosNode. 
+ * 
+ * Lock-free publishing and subscribing is provided using lock-free buffers.
+ * 
+ * @author Jesper Smith
+ *
+ */
 public class RealtimeNode
 {
    private final RosNode node;
@@ -35,12 +43,66 @@ public class RealtimeNode
    private final PeriodicThreadScheduler scheduler;
    private boolean spinning = false;
 
+   /**
+    * Create a new realtime node with the default ROS2 domain ID
+    * 
+    * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    * @param name Name of this RosNode
+    * @param namespace Namespace of this RosNode
+    * @throws IOException if the participant cannot be made
+    */
+   public RealtimeNode(PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
+   {
+      this(threadFactory, name, namespace, RosNode.ROS_DEFAULT_DOMAIN_ID);
+   }
+   /**
+    * Create a new realtime node
+    * 
+    * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    * @param name Name of this RosNode
+    * @param namespace Namespace of this RosNode
+    * @param domainId Desired ROS domain ID
+    * @throws IOException if the participant cannot be made
+    */
    public RealtimeNode(PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
    {
       this.node = new RosNode(name, namespace, domainId);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
+   
+   
+   /**
+    * Create a new RealTime publisher with default qos profile and queue depth. 
+    * 
+    * This publisher will publish data in a separate thread and will never block the calling thread. No memory will be allocated when publishing.
+    * 
+    * This function will allocate a queue of depth 10
+    * 
+    * @param topicDataType Data type to publish
+    * @param topicName Topic name
+    * @return A realtime-safe ROS2 publisher
+    * @throws IOException
+    */
+   public <T> RealtimePublisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   {
+      return createPublisher(topicDataType, topicName, RosQosProfile.DEFAULT(), 10);
+   }
+   
+   /**
+    * Create a new RealTime publisher. 
+    * 
+    * This publisher will publish data in a separate thread and will never block the calling thread. No memory will be allocated when publishing.
+    * 
+    * The queueSize should weight memory requirements of the message vs the change to loose outgoing messages because the queue is full.
+    * 
+    * @param topicDataType Data type to publish
+    * @param topicName Topic name
+    * @param qosProfile Desired ros profile
+    * @param queueSize Depth of the publish queue (10 would be a good size for small messages). 
+    * @return A realtime-safe ROS2 publisher
+    * @throws IOException
+    */
    public <T> RealtimePublisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, RosQosProfile qosProfile, int queueSize) throws IOException
    {
       startupLock.lock();

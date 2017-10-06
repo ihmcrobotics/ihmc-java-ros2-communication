@@ -20,6 +20,15 @@ import java.io.IOException;
 import us.ihmc.concurrent.ConcurrentRingBuffer;
 import us.ihmc.pubsub.TopicDataType;
 
+/**
+ * Publisher Node safe to use in a realtime thread
+ * 
+ * This publisher uses a queue to buffer messages till the next spin. Lockless synchronization is used for the queue.
+ * 
+ * @author Jesper Smith
+ *
+ * @param <T> Data type to publish
+ */
 public class RealtimePublisher<T>
 {
    private final TopicDataType<T> topicDataType;
@@ -34,6 +43,12 @@ public class RealtimePublisher<T>
       concurrentRingBuffer = new ConcurrentRingBuffer<>(() -> topicDataType.createData(), queueDepth);
    }
    
+   /**
+    * Put new data in the queue to be published on the next spin
+    * 
+    * @param data Data to publish
+    * @return true if there was space in the queue, false if no space is left.
+    */
    public boolean publish(T data)
    {
       T next = concurrentRingBuffer.next();
