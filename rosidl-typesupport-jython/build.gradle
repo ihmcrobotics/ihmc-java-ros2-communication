@@ -1,0 +1,38 @@
+buildscript {
+   repositories {
+      maven { url "https://plugins.gradle.org/m2/" }
+      mavenLocal()
+   }
+   dependencies {
+      classpath "gradle.plugin.us.ihmc:ihmc-build:0.9.5"
+      classpath "gradle.plugin.com.github.rzabini:gradle-jython:1.0.0"
+   }
+}
+apply plugin: "us.ihmc.ihmc-build"
+apply plugin: 'application'
+apply plugin: "com.github.rzabini.gradle-jython"
+
+mainClassName = "us.ihmc.rosidl.GenerateDDSIDL"
+
+ihmc {
+   group = "us.ihmc"
+   version = "0.1"
+   vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
+   openSource = true
+   maintainer = "Jesper Smith (jsmith@ihmc.us)"
+
+   configureDependencyResolution()
+   configurePublications()
+}
+
+rootProject.convention.getPlugin(JavaPluginConvention.class).sourceSets.main.java.srcDirs += ['src/main/generated-idl']
+rootProject.convention.getPlugin(JavaPluginConvention.class).sourceSets.main.java.srcDirs += ['src/main/python']
+project("rosidl-typesupport-jython-thirdparty").convention.getPlugin(JavaPluginConvention.class).sourceSets.main.java.srcDirs += ['python']
+
+dependencies {
+   compile gradleApi()
+}
+
+mainDependencies {
+   compile group: 'org.python', name: 'jython-standalone', version: '2.7.1'
+}

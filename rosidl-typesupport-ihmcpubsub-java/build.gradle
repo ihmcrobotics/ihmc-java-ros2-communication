@@ -1,115 +1,34 @@
 buildscript {
-	repositories {
-        maven {
-        	mavenLocal()
-            url  "http://dl.bintray.com/ihmcrobotics/maven-release"
-
-        }
-    }
+   repositories {
+      maven { url "https://plugins.gradle.org/m2/" }
+      mavenLocal()
+   }
+   dependencies {
+      classpath "gradle.plugin.us.ihmc:ihmc-build:0.9.5"
+   }
 }
-
-plugins {
-   id 'us.ihmc.gradle.ihmc-build' version '0.0.9'
-}
-
-apply plugin: 'java'
-apply plugin: 'maven-publish'
+apply plugin: "us.ihmc.ihmc-build"
 apply plugin: 'application'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-version = '0.1'
-buildDir = 'build'
+ihmc {
+   group = "us.ihmc"
+   version = "0.1"
+   vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
+   openSource = true
+   maintainer = "Jesper Smith (jsmith@ihmc.us)"
 
-project.ext.fullVersion = version
-project.ext.vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
-project.ext.licenseURL = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-project.ext.licenseName = "Apache License, Version 2.0"
-project.ext.bintrayLicenseName = "Apache-2.0"
-
-repositories {
-  jcenter()
-  mavenLocal()
-  mavenCentral()
-  maven {
-      url  "http://dl.bintray.com/ihmcrobotics/maven-release"
-  }
+   configureDependencyResolution()
+   configurePublications()
 }
 
-
+rootProject.convention.getPlugin(JavaPluginConvention.class).sourceSets.main.java.srcDirs += ['src/main/java-generated']
 
 dependencies {
    compile gradleApi()
+}
+
+mainDependencies {
    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
-   compile group: 'us.ihmc.ros2', name: 'rosidl-typesupport-jython', version: '1.0'
+   compile group: 'us.ihmc', name: 'rosidl-typesupport-jython', version: '0.1'
    compile group: 'us.ihmc', name: 'IHMCPubSubGenerator', version: '0.3.4'
-	
 }
-
-
-task sourceJar(type: Jar) {
-	from sourceSets.main.allJava
-}
-
-jar {
-   manifest {
-      attributes(
-      "Created-By": "IHMC Gradle Build Script",
-      "Implementation-Title": project.name,
-      "Implementation-Version": project.version,
-      "Implementation-Vendor": "IHMC",
-
-      "Bundle-Name": project.name,
-      "Bundle-Version": project.version,
-      "Bundle-License": "http://www.apache.org/licenses/LICENSE-2.0.txt",
-      "Bundle-Vendor": "IHMC")
-   }
-   
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.2'
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-
-			groupId 'us.ihmc.ros2'
-			artifactId project.name
-			version "$version"
-			from components.java
-
-			pom.withXml {
-                            asNode().children().last() + {
-                                resolveStrategy = Closure.DELEGATE_FIRST
-                                name project.name
-                                url project.ext.vcsUrl
-                                licenses {
-                                    license {
-                                        name 'The Apache Software License, Version 2.0'
-                                        url 'http://www.apache.org/license/LICENSE-2.0.txt'
-                                        distribution 'repo'
-                                    }
-                                }
-                                developers {
-                                    developer {
-                                        id 'jsmith'
-                                        name 'Jesper Smith'
-                                        email 'jsmith@ihmc.us'
-                                    }
-                                }
-                            }
-
-                            }
-
-
-			artifact sourceJar {
-				classifier "sources"
-			}
-		}
-	}
-}
-
-def labels = ['ihmc', 'java', 'rtps', 'dds', 'net', 'ros2', 'idl', 'rosidl']
-ihmc.configureForIHMCOpenSourceBintrayPublish(false, "mavenJava", "maven-release", labels)
