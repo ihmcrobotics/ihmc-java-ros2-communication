@@ -206,20 +206,59 @@ public class RosNode
 
    }
 
+   /**
+    * Create a new ROS2 compatible subscription.
+    * 
+    * This call can be used to make a ROS2 topic with the default qos profile
+    *  
+    * 
+    * @param topicDataType The topic data type of the message
+    * @param callback Callback for new messages
+    * @param topicName Name for the topic
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
    public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName) throws IOException
    {
       RosQosProfile rosQosPolicy = new RosQosProfile();
       return createSubscription(topicDataType, callback, topicName, rosQosPolicy);
    }
 
-   public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, ReliabilityKind kind)
+   
+   /**
+    * Create a new ROS2 compatible subscription.
+    * 
+    * This call can be used to make a ROS2 topic with a custom reliability setting
+    *  
+    * 
+    * @param topicDataType The topic data type of the message
+    * @param callback Callback for new messages
+    * @param topicName Name for the topic
+    * @param reliablity Desired reliability for this topic
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
+   public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, ReliabilityKind reliability)
          throws IOException
    {
       RosQosProfile rosQosPolicy = new RosQosProfile();
-      rosQosPolicy.setReliability(kind);
+      rosQosPolicy.setReliability(reliability);
       return createSubscription(topicDataType, callback, topicName, rosQosPolicy);
    }
 
+   /**
+    * Create a new ROS2 compatible subscription.
+    * 
+    * This call can be used to make a ROS2 topic with a persistent history of depth historyDepth
+    * The history will stay persistant as long as this node is active 
+    * 
+    * @param topicDataType The topic data type of the message
+    * @param callback Callback for new messages
+    * @param topicName Name for the topic
+    * @param historyDepth Number of messages to keep in the history
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
    public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, int historyDepth)
          throws IOException
    {
@@ -229,7 +268,18 @@ public class RosNode
       return createSubscription(topicDataType, callback, topicName, rosQosPolicy);
    }
 
-   public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, RosQosProfile qosPolicy)
+   
+   /**
+    * Create a new ROS2 compatible subscription.
+    * 
+    * @param topicDataType The topic data type of the message
+    * @param callback Callback for new messages
+    * @param topicName Name for the topic
+    * @param qosProfile ROS Qos Profile
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
+   public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, RosQosProfile qosProfile)
          throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
@@ -242,9 +292,9 @@ public class RosNode
       subscriberAttributes.getTopic().setTopicKind(topicDataType.isGetKeyDefined() ? TopicKind.WITH_KEY : TopicKind.NO_KEY);
       subscriberAttributes.getTopic().setTopicDataType(topicDataType.getName());
       subscriberAttributes.getTopic().setTopicName(topicName);
-      subscriberAttributes.getQos().setReliabilityKind(qosPolicy.getReliability());
+      subscriberAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
 
-      switch (qosPolicy.getDurability())
+      switch (qosProfile.getDurability())
       {
       case TRANSIENT_LOCAL:
          subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
@@ -254,10 +304,10 @@ public class RosNode
          break;
       }
 
-      subscriberAttributes.getTopic().getHistoryQos().setDepth(qosPolicy.getSize());
-      subscriberAttributes.getTopic().getHistoryQos().setKind(qosPolicy.getHistory());
+      subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
+      subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      RosTopicNameMangler.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosPolicy.isAvoidRosNamespaceConventions());
+      RosTopicNameMangler.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return new RosSubscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, callback));
 
