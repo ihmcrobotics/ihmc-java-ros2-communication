@@ -20,6 +20,14 @@ import java.io.IOException;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.publisher.Publisher;
 
+/**
+ * Simple ROS2 publisher
+ * 
+ * 
+ * @author Jesper Smith
+ *
+ * @param <T> The data type to send
+ */
 public class RosPublisher<T>
 {
    private final Domain domain;
@@ -31,11 +39,20 @@ public class RosPublisher<T>
       this.publisher = publisher;
    }
 
+   /**
+    * Publish data to the ROS2 domain
+    * 
+    * @param data Data to publisher
+    * @throws IOException If the data cannot be serialized or another error occurs
+    */
    public void publish(T data) throws IOException
    {
       publisher.write(data);
    }
 
+   /**
+    * Remove this publisher from the ROS domain
+    */
    public void remove()
    {
       domain.removePublisher(publisher);
