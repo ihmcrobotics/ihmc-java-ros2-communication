@@ -120,47 +120,6 @@ public class RosNode
    /**
     * Create a new ROS2 compatible publisher in this Node
     * 
-    * This call can be used to make a ROS2 topic with a custom reliability setting 
-    * 
-    * @param topicDataType The topic data type of the message
-    * @param topicName Name for the topic
-    * @param reliability Desired reliability for this topic
-    * @return A ROS publisher
-    * 
-    * @throws IOException if no publisher can be made
-    */
-   public <T> RosPublisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ReliabilityKind reliablity) throws IOException
-   {
-      RosQosProfile rosQosPolicy = new RosQosProfile();
-      rosQosPolicy.setReliability(reliablity);
-      return createPublisher(topicDataType, topicName, rosQosPolicy);
-   }
-
-
-   /**
-    * Create a new ROS2 compatible publisher in this Node
-    * 
-    * This call can be used to make a ROS2 topic with a persistent history of depth historyDepth
-    * The history will stay persistant as long as this node is active 
-    * 
-    * @param topicDataType The topic data type of the message
-    * @param topicName Name for the topic
-    * @param historyDepth Number of messages to keep in the history
-    * @return A ROS publisher
-    * 
-    * @throws IOException if no publisher can be made
-    */
-   public <T> RosPublisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, int historyDepth) throws IOException
-   {
-      RosQosProfile rosQosPolicy = new RosQosProfile();
-      rosQosPolicy.setDurability(RosDurability.TRANSIENT_LOCAL);
-      rosQosPolicy.setSize(historyDepth);
-      return createPublisher(topicDataType, topicName, rosQosPolicy);
-   }
-
-   /**
-    * Create a new ROS2 compatible publisher in this Node
-    * 
     * @param topicDataType The topic data type of the message
     * @param topicName Name for the topic
     * @param qosProfile ROS Qos Profile
@@ -224,51 +183,6 @@ public class RosNode
       return createSubscription(topicDataType, callback, topicName, rosQosPolicy);
    }
 
-   
-   /**
-    * Create a new ROS2 compatible subscription.
-    * 
-    * This call can be used to make a ROS2 topic with a custom reliability setting
-    *  
-    * 
-    * @param topicDataType The topic data type of the message
-    * @param callback Callback for new messages
-    * @param topicName Name for the topic
-    * @param reliablity Desired reliability for this topic
-    * @return Ros Subscription
-    * @throws IOException if no subscriber can be made
-    */
-   public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, ReliabilityKind reliability)
-         throws IOException
-   {
-      RosQosProfile rosQosPolicy = new RosQosProfile();
-      rosQosPolicy.setReliability(reliability);
-      return createSubscription(topicDataType, callback, topicName, rosQosPolicy);
-   }
-
-   /**
-    * Create a new ROS2 compatible subscription.
-    * 
-    * This call can be used to make a ROS2 topic with a persistent history of depth historyDepth
-    * The history will stay persistant as long as this node is active 
-    * 
-    * @param topicDataType The topic data type of the message
-    * @param callback Callback for new messages
-    * @param topicName Name for the topic
-    * @param historyDepth Number of messages to keep in the history
-    * @return Ros Subscription
-    * @throws IOException if no subscriber can be made
-    */
-   public <T> RosSubscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, int historyDepth)
-         throws IOException
-   {
-      RosQosProfile rosQosPolicy = new RosQosProfile();
-      rosQosPolicy.setDurability(RosDurability.TRANSIENT_LOCAL);
-      rosQosPolicy.setSize(historyDepth);
-      return createSubscription(topicDataType, callback, topicName, rosQosPolicy);
-   }
-
-   
    /**
     * Create a new ROS2 compatible subscription.
     * 

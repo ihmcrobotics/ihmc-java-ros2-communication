@@ -34,6 +34,22 @@ import us.ihmc.pubsub.attributes.ReliabilityKind;
  */
 public class RosQosProfile
 {
+   public static RosQosProfile DEFAULT() 
+   {
+      return new RosQosProfile();
+   }
+   
+   public static final RosQosProfile KEEP_HISTORY(int depth)  
+   {
+      return new RosQosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, depth, ReliabilityKind.RELIABLE, RosDurability.TRANSIENT_LOCAL, false);
+   }
+   
+   public static final RosQosProfile BEST_EFFORT()
+   {
+      return new RosQosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, 1, ReliabilityKind.BEST_EFFORT, RosDurability.VOLATILE, false);
+   }
+   
+   
    public enum RosDurability
    {
       VOLATILE, TRANSIENT_LOCAL
@@ -45,6 +61,23 @@ public class RosQosProfile
    private RosDurability durability = RosDurability.VOLATILE;
    private boolean avoidRosNamespaceConventions = false;
    
+   public RosQosProfile()
+   {
+      
+   }
+   
+   
+   public RosQosProfile(HistoryQosPolicyKind history, int depth, ReliabilityKind reliability, RosDurability durability, boolean avoidRosNamespaceConventions)
+   {
+      this();
+      this.history = history;
+      this.depth = depth;
+      this.reliability = reliability;
+      this.durability = durability;
+      this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
+   }
+
+
    /**
     * 
     * @return the History QoS Policy
