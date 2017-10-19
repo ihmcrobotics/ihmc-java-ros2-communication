@@ -2,9 +2,38 @@
 
 This package provides the ROS2 IDL typesupport, backported to Python 2.7. A jar file with included Jython runtime will be built by Java.
 
-## Usage
+This is used by the
+
+## Installation
+
+### Local installation
+```
+mvn install
+```
+
+### Bintray upload
+
+
+1) Add the bintray server to your [user.home]/.m2/settings.xml. The file should look something like this, replace YOUR_USERNAME with your bintray username and YOUR_BINTRAY_KEY with your bintray key.
 
 ```
-mvn package
-java -jar target/rosidl-typesupport-ihmcpubsub-java-1.0-jar-with-dependencies.jar arguments.json ros_msgs/
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                            https://maven.apache.org/xsd/settings-1.0.0.xsd">
+        <servers>
+            <server>
+                <id>bintray-ihmcrobotics-release</id>
+                <username>[YOUR_USERNAME]</username>
+                <password>[YOUR_BINTRAY_KEY]</password>
+            </server>
+        </servers>
+    </settings>
 ```
+
+2) Call mvn deploy in this project
+
+```
+mvn source:jar deploy
+```
+
