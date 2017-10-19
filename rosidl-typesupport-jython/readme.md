@@ -2,7 +2,9 @@
 
 This package provides the ROS2 IDL typesupport, backported to Python 2.7. A jar file with included Jython runtime will be built by Java.
 
-This is used by the
+This is used by the rosidl-typesupport-ihmc-pubsub-java library to provide a .msg to Java class compiler. 
+
+This project uses Maven instead of Gradle, because the Maven Jython plugin (http://mavenjython.sf.net/compile) is used to package the Python scripts.  
 
 ## Installation
 
