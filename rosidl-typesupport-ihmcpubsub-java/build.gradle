@@ -12,7 +12,7 @@ apply plugin: 'application'
 
 ihmc {
    group = "us.ihmc"
-   version = "0.1"
+   version = "0.2"
    vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
    openSource = true
    maintainer = "Jesper Smith (jsmith@ihmc.us)"
