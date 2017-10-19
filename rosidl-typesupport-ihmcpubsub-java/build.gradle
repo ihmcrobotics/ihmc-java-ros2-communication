@@ -30,5 +30,5 @@ dependencies {
 mainDependencies {
    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
    compile group: 'us.ihmc', name: 'rosidl-typesupport-jython', version: '0.1'
-   compile group: 'us.ihmc', name: 'IHMCPubSubGenerator', version: '0.3.4'
+   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.3.7'
 }
