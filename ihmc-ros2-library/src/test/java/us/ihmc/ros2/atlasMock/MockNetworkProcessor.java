@@ -15,8 +15,8 @@
  */
 package us.ihmc.ros2.atlasMock;
 
-import controller_msgs.msg.dds.RobotConfigurationData;
-import controller_msgs.msg.dds.RobotConfigurationDataPubSubType;
+import controller_msgs.msg.dds.AtlasRobotConfigurationData;
+import controller_msgs.msg.dds.AtlasRobotConfigurationDataPubSubType;
 import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
@@ -28,7 +28,7 @@ public class MockNetworkProcessor
 {
    private static class Callback implements SubscriberListener
    {
-      RobotConfigurationData robotConfigurationData = new RobotConfigurationData();
+      AtlasRobotConfigurationData robotConfigurationData = new AtlasRobotConfigurationData();
 
       @Override
       public void onNewDataMessage(Subscriber subscriber)
@@ -37,7 +37,7 @@ public class MockNetworkProcessor
          {
             if (subscriber.takeNextData(robotConfigurationData, null))
             {
-               System.out.println(robotConfigurationData.getTimestamp());
+               System.out.println(robotConfigurationData.getRobot_configuration_data().getTimestamp());
             }
          }
          catch (IOException e)
@@ -56,7 +56,7 @@ public class MockNetworkProcessor
    public static void main(String[] args) throws IOException, InterruptedException
    {
       RosNode node = new RosNode("MockNetworkProcessor");
-      node.createSubscription(new RobotConfigurationDataPubSubType(), new Callback(), "/robot_configuration_data");
+      node.createSubscription(new AtlasRobotConfigurationDataPubSubType(), new Callback(), "/robot_configuration_data");
       
       Thread.currentThread().join();
    }
