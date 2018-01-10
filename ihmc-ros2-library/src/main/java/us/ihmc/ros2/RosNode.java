@@ -1,40 +1,37 @@
 /*
  * Copyright 2017 Florida Institute for Human and Machine Cognition (IHMC)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *     
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License. 
+ * limitations under the License.
  */
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
+import us.ihmc.commons.exception.DefaultExceptionHandler;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.DurabilityKind;
-import us.ihmc.pubsub.attributes.ParticipantAttributes;
-import us.ihmc.pubsub.attributes.PublishModeKind;
-import us.ihmc.pubsub.attributes.PublisherAttributes;
-import us.ihmc.pubsub.attributes.SubscriberAttributes;
+import us.ihmc.pubsub.attributes.*;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
 import us.ihmc.pubsub.participant.Participant;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
 
+import java.io.IOException;
+
 /**
  * A minimal implementation of a ROS2 compatible node.
- * 
+ *
  * This node can be used to create ROS2 compatible publishers and subscribers.
- * 
+ *
  * @author Jesper Smith
  *
  */
@@ -48,13 +45,12 @@ public class RosNode
    private final String nodeName;
    private final String namespace;
 
-   
-   /** 
+   /**
     * Create a new ROS2 node.
-    * 
+    *
     * Namespace is set to empty ("")
     * Domain ID is set to the default ROS2 domain ID (0)
-    * 
+    *
     * @param name Name for the node
     * @throws IOException if no participant can be made
     */
@@ -62,12 +58,26 @@ public class RosNode
    {
       this(name, "");
    }
-   
-   /** 
+
+   /**
     * Create a new ROS2 node.
-    * 
+    *
+    * Namespace is set to empty ("")
     * Domain ID is set to the default ROS2 domain ID (0)
-    * 
+    *
+    * @param name Name for the node
+    * @param defaultExceptionHandler Default exception handler.
+    */
+   public RosNode(String name, DefaultExceptionHandler defaultExceptionHandler)
+   {
+      this(name, "", defaultExceptionHandler);
+   }
+
+   /**
+    * Create a new ROS2 node.
+    *
+    * Domain ID is set to the default ROS2 domain ID (0)
+    *
     * @param name Name for the node
     * @param namespace namespace for the ros node
     * @throws IOException if no participant can be made
@@ -77,13 +87,26 @@ public class RosNode
       this(name, namespace, ROS_DEFAULT_DOMAIN_ID);
    }
 
-   /** 
+   /**
     * Create a new ROS2 node.
-    * 
-    * 
+    *
+    * Domain ID is set to the default ROS2 domain ID (0)
+    *
     * @param name Name for the node
     * @param namespace namespace for the ros node
-    * @param domainID Domain ID for the ros node
+    * @param defaultExceptionHandler Default exception handler.
+    */
+   public RosNode(String name, String namespace, DefaultExceptionHandler defaultExceptionHandler)
+   {
+      this(name, namespace, ROS_DEFAULT_DOMAIN_ID, defaultExceptionHandler);
+   }
+
+   /**
+    * Create a new ROS2 node.
+    *
+    * @param name Name for the node
+    * @param namespace namespace for the ros node
+    * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
    public RosNode(String name, String namespace, int domainId) throws IOException
@@ -99,14 +122,45 @@ public class RosNode
    }
 
    /**
+    * Create a new ROS2 node.
+    *
+    * @param name Name for the node
+    * @param namespace namespace for the ros node
+    * @param domainId Domain ID for the ros node
+    * @param defaultExceptionHandler Default exception handler.
+    */
+   public RosNode(String name, String namespace, int domainId, DefaultExceptionHandler defaultExceptionHandler)
+   {
+      RosTopicNameMangler.checkNodename(name);
+      RosTopicNameMangler.checkNamespace(namespace);
+
+      this.nodeName = name;
+      this.namespace = namespace;
+
+      ParticipantAttributes attr = domain.createParticipantAttributes(domainId, name);
+      Participant tempParticipant;
+      try
+      {
+         tempParticipant = domain.createParticipant(attr);
+      }
+      catch (IOException ioException)
+      {
+         tempParticipant = null;
+         defaultExceptionHandler.handleException(ioException);
+      }
+
+      participant = tempParticipant;
+   }
+
+   /**
     * Create a new ROS2 compatible publisher in this Node
-    * 
+    *
     * This call makes a publisher with the default settings 
-    * 
+    *
     * @param topicDataType The topic data type of the message
     * @param topicName Name for the topic
     * @return A ROS publisher
-    * 
+    *
     * @throws IOException if no publisher can be made
     */
    public <T> RosPublisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
@@ -116,12 +170,12 @@ public class RosNode
 
    /**
     * Create a new ROS2 compatible publisher in this Node
-    * 
+    *
     * @param topicDataType The topic data type of the message
     * @param topicName Name for the topic
     * @param qosProfile ROS Qos Profile
     * @return A ROS publisher
-    * 
+    *
     * @throws IOException if no publisher can be made
     */
    public <T> RosPublisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, RosQosProfile qosProfile) throws IOException
@@ -164,10 +218,9 @@ public class RosNode
 
    /**
     * Create a new ROS2 compatible subscription.
-    * 
+    *
     * This call can be used to make a ROS2 topic with the default qos profile
-    *  
-    * 
+    *
     * @param topicDataType The topic data type of the message
     * @param callback Callback for new messages
     * @param topicName Name for the topic
@@ -181,7 +234,7 @@ public class RosNode
 
    /**
     * Create a new ROS2 compatible subscription.
-    * 
+    *
     * @param topicDataType The topic data type of the message
     * @param callback Callback for new messages
     * @param topicName Name for the topic
@@ -217,10 +270,9 @@ public class RosNode
       subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      RosTopicNameMangler.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+      RosTopicNameMangler
+            .assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return new RosSubscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, callback));
-
    }
-
 }
