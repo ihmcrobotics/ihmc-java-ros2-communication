@@ -15,7 +15,6 @@
  */
 package us.ihmc.ros2;
 
-import us.ihmc.commons.exception.DefaultExceptionHandler;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
@@ -62,20 +61,6 @@ public class RosNode
    /**
     * Create a new ROS2 node.
     *
-    * Namespace is set to empty ("")
-    * Domain ID is set to the default ROS2 domain ID (0)
-    *
-    * @param name Name for the node
-    * @param defaultExceptionHandler Default exception handler.
-    */
-   public RosNode(String name, DefaultExceptionHandler defaultExceptionHandler)
-   {
-      this(name, "", defaultExceptionHandler);
-   }
-
-   /**
-    * Create a new ROS2 node.
-    *
     * Domain ID is set to the default ROS2 domain ID (0)
     *
     * @param name Name for the node
@@ -90,19 +75,6 @@ public class RosNode
    /**
     * Create a new ROS2 node.
     *
-    * Domain ID is set to the default ROS2 domain ID (0)
-    *
-    * @param name Name for the node
-    * @param namespace namespace for the ros node
-    * @param defaultExceptionHandler Default exception handler.
-    */
-   public RosNode(String name, String namespace, DefaultExceptionHandler defaultExceptionHandler)
-   {
-      this(name, namespace, ROS_DEFAULT_DOMAIN_ID, defaultExceptionHandler);
-   }
-
-   /**
-    * Create a new ROS2 node.
     *
     * @param name Name for the node
     * @param namespace namespace for the ros node
@@ -122,40 +94,9 @@ public class RosNode
    }
 
    /**
-    * Create a new ROS2 node.
-    *
-    * @param name Name for the node
-    * @param namespace namespace for the ros node
-    * @param domainId Domain ID for the ros node
-    * @param defaultExceptionHandler Default exception handler.
-    */
-   public RosNode(String name, String namespace, int domainId, DefaultExceptionHandler defaultExceptionHandler)
-   {
-      RosTopicNameMangler.checkNodename(name);
-      RosTopicNameMangler.checkNamespace(namespace);
-
-      this.nodeName = name;
-      this.namespace = namespace;
-
-      ParticipantAttributes attr = domain.createParticipantAttributes(domainId, name);
-      Participant tempParticipant;
-      try
-      {
-         tempParticipant = domain.createParticipant(attr);
-      }
-      catch (IOException ioException)
-      {
-         tempParticipant = null;
-         defaultExceptionHandler.handleException(ioException);
-      }
-
-      participant = tempParticipant;
-   }
-
-   /**
     * Create a new ROS2 compatible publisher in this Node
     *
-    * This call makes a publisher with the default settings 
+    * This call makes a publisher with the default settings
     *
     * @param topicDataType The topic data type of the message
     * @param topicName Name for the topic
@@ -221,6 +162,7 @@ public class RosNode
     *
     * This call can be used to make a ROS2 topic with the default qos profile
     *
+    *
     * @param topicDataType The topic data type of the message
     * @param callback Callback for new messages
     * @param topicName Name for the topic
@@ -274,5 +216,7 @@ public class RosNode
             .assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return new RosSubscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, callback));
+
    }
+
 }
