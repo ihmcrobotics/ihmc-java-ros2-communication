@@ -37,7 +37,7 @@ public class MockAtlasController
          AtlasRobotConfigurationData robotConfigurationData = new AtlasRobotConfigurationData();
 //         RobotConfigurationData robotConfigurationData = new RobotConfigurationData();
 
-         robotConfigurationData.getRobot_configuration_data().setTimestamp(i);
+//         robotConfigurationData.getRobot_configuration_data().setTimestamp(i);
 //         robotConfigurationData.setTimestamp(i);
          System.out.println("Publishing: " + i);
          publisher.publish(robotConfigurationData);

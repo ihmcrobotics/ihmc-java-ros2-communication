@@ -40,7 +40,7 @@ public class MockNetworkProcessor
             if (subscriber.takeNextData(robotConfigurationData, null))
             {
 //               RobotConfigurationData data = ...
-               System.out.println(robotConfigurationData.getRobot_configuration_data().getTimestamp());
+//               System.out.println(robotConfigurationData.getRobot_configuration_data().getTimestamp());
 //               System.out.println(robotConfigurationData.getTimestamp());
             }
          }
