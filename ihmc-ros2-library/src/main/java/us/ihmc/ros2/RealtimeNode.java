@@ -34,7 +34,7 @@ import us.ihmc.util.PeriodicThreadSchedulerFactory;
  */
 public class RealtimeNode
 {
-   public static int THREAD_PERIOD_MILLISECONDS = 1;
+   public static int THREAD_PERIOD_MICROSECONDS = 1000;
 
    private final RosNode node;
 
@@ -178,7 +178,7 @@ public class RealtimeNode
          throw new RuntimeException("This RealtimeNode is already spinning");
       }
       spinning = true;
-      scheduler.schedule(realtimeNodeThread, THREAD_PERIOD_MILLISECONDS, TimeUnit.MILLISECONDS);
+      scheduler.schedule(realtimeNodeThread, THREAD_PERIOD_MICROSECONDS, TimeUnit.MICROSECONDS);
       startupLock.unlock();
    }
 
