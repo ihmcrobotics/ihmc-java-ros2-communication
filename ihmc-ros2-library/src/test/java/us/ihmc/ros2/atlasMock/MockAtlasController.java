@@ -29,15 +29,15 @@ public class MockAtlasController
    public static void main(String[] args) throws IOException, InterruptedException
    {
       RosNode node = new RosNode("MockAtlasController");
-      RosPublisher<AtlasRobotConfigurationData> publisher = node.createPublisher(new AtlasRobotConfigurationDataPubSubType(), "/robot_configuration_data");
-//      RosPublisher<RobotConfigurationData> publisher = node.createPublisher(new RobotConfigurationDataPubSubType(), "/robot_configuration_data");
+//      RosPublisher<AtlasRobotConfigurationData> publisher = node.createPublisher(new AtlasRobotConfigurationDataPubSubType(), "/robot_configuration_data");
+      RosPublisher<RobotConfigurationData> publisher = node.createPublisher(new RobotConfigurationDataPubSubType(), "/robot_configuration_data");
 
       for (int i = 0; true; i++)
       {
-         AtlasRobotConfigurationData robotConfigurationData = new AtlasRobotConfigurationData();
-//         RobotConfigurationData robotConfigurationData = new RobotConfigurationData();
+//         AtlasRobotConfigurationData robotConfigurationData = new AtlasRobotConfigurationData();
+         RobotConfigurationData robotConfigurationData = new RobotConfigurationData();
 
-//         robotConfigurationData.getRobot_configuration_data().setTimestamp(i);
+         robotConfigurationData.getHeader().getStamp().setNanosec(i);
 //         robotConfigurationData.setTimestamp(i);
          System.out.println("Publishing: " + i);
          publisher.publish(robotConfigurationData);
