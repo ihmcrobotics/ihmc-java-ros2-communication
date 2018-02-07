@@ -15,20 +15,28 @@
  */
 package us.ihmc.ros2.atlasMock;
 
-import controller_msgs.msg.dds.AtlasRobotConfigurationData;
-import controller_msgs.msg.dds.AtlasRobotConfigurationDataPubSubType;
 import controller_msgs.msg.dds.RobotConfigurationData;
 import controller_msgs.msg.dds.RobotConfigurationDataPubSubType;
 import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
+import us.ihmc.ros2.IntraProcessNode;
 import us.ihmc.ros2.RosNode;
 
 import java.io.IOException;
 
 public class MockNetworkProcessor
 {
-   private static class Callback implements SubscriberListener
+   public static void subscribeUsingRosNode() throws IOException, InterruptedException
+   {
+
+      RosNode node = new RosNode("MockNetworkProcessor");
+      //      node.createSubscription(new AtlasRobotConfigurationDataPubSubType(), new Callback(), "/robot_configuration_data");
+      node.createSubscription(new RobotConfigurationDataPubSubType(), new Callback(), "/robot_configuration_data");
+      Thread.currentThread().join();
+   }
+
+   public static class Callback implements SubscriberListener
    {
       //      AtlasRobotConfigurationData robotConfigurationData = new AtlasRobotConfigurationData();
       RobotConfigurationData robotConfigurationData = new RobotConfigurationData();
@@ -61,10 +69,6 @@ public class MockNetworkProcessor
 
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      RosNode node = new RosNode("MockNetworkProcessor");
-      //      node.createSubscription(new AtlasRobotConfigurationDataPubSubType(), new Callback(), "/robot_configuration_data");
-      node.createSubscription(new RobotConfigurationDataPubSubType(), new Callback(), "/robot_configuration_data");
-
-      Thread.currentThread().join();
+      subscribeUsingRosNode();
    }
 }
