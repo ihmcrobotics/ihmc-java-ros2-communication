@@ -52,9 +52,9 @@ class RosNodeBasics
     * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
-   public RosNodeBasics(Domain domain, String name, String namespace, int domainId) throws IOException
+   public RosNodeBasics(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
    {
-      this.domain = domain;
+      this.domain = DomainFactory.getDomain(pubSubImplementation);
 
       RosTopicNameMangler.checkNodename(name);
       RosTopicNameMangler.checkNamespace(namespace);

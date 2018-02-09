@@ -1,5 +1,6 @@
 package us.ihmc.ros2;
 
+import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.impl.intraprocess.IntraProcessDomain;
 
 import java.io.IOException;
@@ -53,6 +54,6 @@ public class IntraProcessNode extends RosNodeBasics
     */
    public IntraProcessNode(String name, String namespace, int domainId) throws IOException
    {
-      super(IntraProcessDomain.getInstance(), name, namespace, domainId);
+      super(DomainFactory.PubSubImplementation.INTRAPROCESS, name, namespace, domainId);
    }
 }

@@ -75,6 +75,6 @@ public class RosNode extends RosNodeBasics
     */
    public RosNode(String name, String namespace, int domainId) throws IOException
    {
-      super(DomainFactory.getDomain(PubSubImplementation.FAST_RTPS), name, namespace, domainId);
+      super(PubSubImplementation.FAST_RTPS, name, namespace, domainId);
    }
 }
