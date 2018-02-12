@@ -24,27 +24,23 @@ import java.io.IOException;
 
 public class MockAtlasController
 {
-   public static void publishUsingRosNode() throws IOException, InterruptedException
+   public static void main(String[] args) throws IOException, InterruptedException
    {
       RosNode node = new RosNode("MockAtlasController");
-      //      RosPublisher<AtlasRobotConfigurationData> publisher = node.createPublisher(new AtlasRobotConfigurationDataPubSubType(), "/robot_configuration_data");
       RosPublisher<RobotConfigurationData> publisher = node.createPublisher(new RobotConfigurationDataPubSubType(), "/robot_configuration_data");
 
       for (int i = 0; true; i++)
       {
-         //         AtlasRobotConfigurationData robotConfigurationData = new AtlasRobotConfigurationData();
+         // Preallocate message data structure for packing
          RobotConfigurationData robotConfigurationData = new RobotConfigurationData();
 
+         // Pack message with data
          robotConfigurationData.getHeader().getStamp().setNanosec(i);
-         //         robotConfigurationData.setTimestamp(i);
-         System.out.println("Publishing: " + i);
+
+         // Publish message, thread safe, copies data into another preallocated holder for sending
          publisher.publish(robotConfigurationData);
+
          Thread.sleep(1000);
       }
-   }
-
-   public static void main(String[] args) throws IOException, InterruptedException
-   {
-      publishUsingRosNode();
    }
 }

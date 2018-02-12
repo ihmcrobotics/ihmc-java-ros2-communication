@@ -3,6 +3,9 @@ package us.ihmc.ros2.atlasMock;
 import controller_msgs.msg.dds.RobotConfigurationData;
 import controller_msgs.msg.dds.RobotConfigurationDataPubSubType;
 import us.ihmc.commons.thread.ThreadTools;
+import us.ihmc.pubsub.common.MatchingInfo;
+import us.ihmc.pubsub.subscriber.Subscriber;
+import us.ihmc.pubsub.subscriber.SubscriberListener;
 import us.ihmc.ros2.IntraProcessNode;
 import us.ihmc.ros2.RosPublisher;
 
@@ -41,7 +44,32 @@ public class ROS2IntraProcessDemo
 
       IntraProcessNode node = new IntraProcessNode("MockNetworkProcessor");
       //      node.createSubscription(new AtlasRobotConfigurationDataPubSubType(), new Callback(), "/robot_configuration_data");
-      node.createSubscription(new RobotConfigurationDataPubSubType(), new MockNetworkProcessor.Callback(), "/robot_configuration_data");
+      node.createSubscription(new RobotConfigurationDataPubSubType(), new SubscriberListener()
+      {
+         RobotConfigurationData robotConfigurationData = new RobotConfigurationData();
+
+         @Override
+         public void onNewDataMessage(Subscriber subscriber)
+         {
+            try
+            {
+               if (subscriber.takeNextData(robotConfigurationData, null))
+               {
+                  System.out.println(robotConfigurationData.getHeader().getStamp().getNanosec());
+               }
+            }
+            catch (IOException e)
+            {
+               e.printStackTrace();
+            }
+         }
+
+         @Override
+         public void onSubscriptionMatched(Subscriber subscriber, MatchingInfo info)
+         {
+            System.out.println("Subscription matched!: " + subscriber.getAttributes().getTopic().getTopicName() + " " + info.getStatus().name());
+         }
+      }, "/robot_configuration_data");
       Thread.currentThread().join();
    }
 
