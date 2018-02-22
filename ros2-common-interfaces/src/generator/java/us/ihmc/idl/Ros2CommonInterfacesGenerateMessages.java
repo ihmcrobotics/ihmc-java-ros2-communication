@@ -6,10 +6,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 
-public class ROS2MSGToIDLToPubSubGeneratorTest
+public class Ros2CommonInterfacesGenerateMessages
 {
    /**
     * Must be run from ros2-common-interfaces dir!!!
+    *
+    * This is actually a replacement for the generateMessages Gradle task for now.
     */
    public static void main(String[] args) throws IOException
    {
