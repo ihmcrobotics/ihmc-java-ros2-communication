@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  */
-package us.ihmc.ros2.rosidl.rosPackage;
-
-import java.util.List;
+package us.ihmc.rosidl;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 /**
  * Helper class to unmarshall ROS2 Package xml files.
@@ -26,8 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Jesper Smith
  *
  */
-@XmlRootElement
-public class Package
+@XmlRootElement(name = "package")
+public class RosPackage
 {
    /**
     * Name of the package

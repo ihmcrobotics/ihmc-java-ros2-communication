@@ -5,13 +5,7 @@ __metaclass__ = type
 import sys
 import argparse
 
-
-sys.path.insert(0, "../../thirdparty/python/")
-
 from rosidl_generator_dds_idl import generate_dds_idl
-
-
-
 
 def main(argv=sys.argv[1:]):
     parser = argparse.ArgumentParser(
@@ -41,5 +35,3 @@ def main(argv=sys.argv[1:]):
 
 if __name__ == '__main__':
     sys.exit(main())
-
-

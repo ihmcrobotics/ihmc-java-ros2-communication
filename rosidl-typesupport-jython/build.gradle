@@ -1,0 +1,30 @@
+buildscript {
+   repositories {
+      maven { url "https://plugins.gradle.org/m2/" }
+      mavenLocal()
+   }
+   dependencies {
+      classpath "us.ihmc:ihmc-build:0.12.8"
+   }
+}
+apply plugin: "us.ihmc.ihmc-build"
+apply plugin: 'application'
+
+ihmc {
+   group = "us.ihmc"
+   version = "0.2"
+   vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
+   openSource = true
+   maintainer = "Duncan Calvert (dcalvert@ihmc.us)"
+
+   configureDependencyResolution()
+   resourceDirectory("main", "python")
+   resourceDirectory("test", "generated-idl")
+   resourceDirectory("test", "ros_msgs")
+   configurePublications()
+}
+
+mainDependencies {
+   compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
+   compile group: 'org.python', name: 'jython-standalone', version: '2.7.1'
+}

@@ -1,10 +1,12 @@
 {
-"package_name" :  "ros_msgs",
-"output_dir" : "src/main/generated-idl",
-"template_dir" : "src/thirdparty/resources",
-"ros_interface_files" : ["ros_msgs/msg/Num.msg", "ros_msgs/msg/TwoNum.msg"],
-"ros_interface_dependencies" : [],
-"target_dependencies" : [],
-"additional_files" : []
-
+  "package_name": "ros_msgs",
+  "output_dir": "src/main/generated-idl",
+  "template_dir": "src/thirdparty/resources",
+  "ros_interface_files": [
+    "ros_msgs/msg/Num.msg",
+    "ros_msgs/msg/TwoNum.msg"
+  ],
+  "ros_interface_dependencies": [],
+  "target_dependencies": [],
+  "additional_files": []
 }
