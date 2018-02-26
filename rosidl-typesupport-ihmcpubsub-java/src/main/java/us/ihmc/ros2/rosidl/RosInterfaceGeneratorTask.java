@@ -59,8 +59,8 @@ public class RosInterfaceGeneratorTask extends DefaultTask
       }
       
       
-      RosInterfaceGenerator generator = new RosInterfaceGenerator(RosInterfaceGenerator.getIHMCPubSubTemplate());
-      
+      RosInterfaceGenerator generator = new RosInterfaceGenerator();
+
       for(File packages : rosPackages)
       {
          generator.addPackageRoot(packages.toPath());
