@@ -81,7 +81,7 @@ class InvalidValue(Exception):
 
     def __init__(self, type_, value_string, message_suffix=None):
         message = "value '%s' can not be converted to type '%s'" % \
-            (value_string, type_)
+                  (value_string, type_)
         if message_suffix is not None:
             message += ': %s' % message_suffix
         super(InvalidValue, self).__init__(message)
@@ -127,7 +127,6 @@ def is_valid_constant_name(name):
 
 
 class BaseType(object):
-
     __slots__ = ['pkg_name', 'type', 'string_upper_bound']
 
     def __init__(self, type_string, context_package_name=None):
@@ -180,8 +179,8 @@ class BaseType(object):
         if other is None or not isinstance(other, BaseType):
             return False
         return self.pkg_name == other.pkg_name and \
-            self.type == other.type and \
-            self.string_upper_bound == other.string_upper_bound
+               self.type == other.type and \
+               self.string_upper_bound == other.string_upper_bound
 
     def __hash__(self):
         return hash(str(self))
@@ -193,12 +192,11 @@ class BaseType(object):
         s = self.type
         if self.string_upper_bound:
             s += '%s%u' % \
-                (STRING_UPPER_BOUND_TOKEN, self.string_upper_bound)
+                 (STRING_UPPER_BOUND_TOKEN, self.string_upper_bound)
         return s
 
 
 class Type(BaseType):
-
     __slots__ = ['is_array', 'array_size', 'is_upper_bound']
 
     def __init__(self, type_string, context_package_name=None):
@@ -222,13 +220,13 @@ class Type(BaseType):
                     ARRAY_UPPER_BOUND_TOKEN)
                 if self.is_upper_bound:
                     array_size_string = array_size_string[
-                        len(ARRAY_UPPER_BOUND_TOKEN):]
+                                        len(ARRAY_UPPER_BOUND_TOKEN):]
 
                 ex = TypeError((
-                    "the size of array type '%s' must be a valid integer " +
-                    "value > 0 optionally prefixed with '%s' if it is only " +
-                    'an upper bound') %
-                    (ARRAY_UPPER_BOUND_TOKEN, type_string))
+                                       "the size of array type '%s' must be a valid integer " +
+                                       "value > 0 optionally prefixed with '%s' if it is only " +
+                                       'an upper bound') %
+                               (ARRAY_UPPER_BOUND_TOKEN, type_string))
                 try:
                     self.array_size = int(array_size_string)
                 except ValueError:
@@ -253,9 +251,9 @@ class Type(BaseType):
         if other is None or not isinstance(other, Type):
             return False
         return super(Type, self).__eq__(other) and \
-            self.is_array == other.is_array and \
-            self.array_size == other.array_size and \
-            self.is_upper_bound == other.is_upper_bound
+               self.is_array == other.is_array and \
+               self.array_size == other.array_size and \
+               self.is_upper_bound == other.is_upper_bound
 
     def __hash__(self):
         return hash(str(self))
@@ -273,10 +271,9 @@ class Type(BaseType):
 
 
 class Constant:
-
     __slots__ = ['type', 'name', 'value']
 
-    def __init__(self, primitive_type, name, value_string):
+    def __init__(self, primitive_type, name, value_string, comments=[]):
         if primitive_type not in PRIMITIVE_TYPES:
             raise TypeError("the constant type '%s' must be a primitive type" %
                             primitive_type)
@@ -289,13 +286,14 @@ class Constant:
 
         self.value = parse_primitive_value_string(
             Type(primitive_type), value_string)
+        self.comments = comments
 
     def __eq__(self, other):
         if other is None or not isinstance(other, Constant):
             return False
         return self.type == other.type and \
-            self.name == other.name and \
-            self.value == other.value
+               self.name == other.name and \
+               self.value == other.value
 
     def __str__(self):
         value = self.value
@@ -306,7 +304,7 @@ class Constant:
 
 class Field:
 
-    def __init__(self, type_, name, default_value_string=None):
+    def __init__(self, type_, name, default_value_string=None, comments=[]):
         if not isinstance(type_, Type):
             raise TypeError(
                 "the field type '%s' must be a 'Type' instance" % type_)
@@ -319,14 +317,15 @@ class Field:
         else:
             self.default_value = parse_value_string(
                 type_, default_value_string)
+        self.comments = comments
 
     def __eq__(self, other):
         if other is None or not isinstance(other, Field):
             return False
         else:
             return self.type == other.type and \
-                self.name == other.name and \
-                self.default_value == other.default_value
+                   self.name == other.name and \
+                   self.default_value == other.default_value
 
     def __str__(self):
         s = '%s %s' % (str(self.type), self.name)
@@ -341,7 +340,7 @@ class Field:
 
 class MessageSpecification:
 
-    def __init__(self, pkg_name, msg_name, fields, constants):
+    def __init__(self, pkg_name, msg_name, fields, constants, header_comments=[]):
         self.base_type = BaseType(
             pkg_name + PACKAGE_NAME_MESSAGE_TYPE_SEPARATOR + msg_name)
         self.msg_name = msg_name
@@ -375,14 +374,16 @@ class MessageSpecification:
                 'the constants iterable contains duplicate names: %s' %
                 ', '.join(sorted(duplicate_constant_names)))
 
+        self.header_comments = header_comments
+
     def __eq__(self, other):
         if not other or not isinstance(other, MessageSpecification):
             return False
         return self.base_type == other.base_type and \
-            len(self.fields) == len(other.fields) and \
-            self.fields == other.fields and \
-            len(self.constants) == len(other.constants) and \
-            self.constants == other.constants
+               len(self.fields) == len(other.fields) and \
+               self.fields == other.fields and \
+               len(self.constants) == len(other.constants) and \
+               self.constants == other.constants
 
 
 def parse_message_file(pkg_name, interface_filename):
@@ -396,17 +397,25 @@ def parse_message_file(pkg_name, interface_filename):
 def parse_message_string(pkg_name, msg_name, message_string):
     fields = []
     constants = []
+    current_comments = []
+    header_comments = []
 
     lines = message_string.splitlines()
     for line in lines:
         # ignore whitespaces and comments
         line = line.strip()
         if not line:
+            if current_comments:
+                for comment in current_comments:
+                    header_comments.append(comment)
+                current_comments = []
             continue
         index = line.find(COMMENT_DELIMITER)
         if index == 0:
+            current_comments.append(line[1:].strip())
             continue
         if index != -1:
+            current_comments.append(line[index + 1:].strip())
             line = line[:index]
             line = line.rstrip()
 
@@ -425,7 +434,7 @@ def parse_message_string(pkg_name, msg_name, message_string):
             try:
                 fields.append(Field(
                     Type(type_string, context_package_name=pkg_name),
-                    field_name, default_value_string))
+                    field_name, default_value_string, current_comments))
             except Exception as err:
                 print("Error processing '{line}' of '{pkg}/{msg}': '{err}'".format(
                     line=line, pkg=pkg_name, msg=msg_name, err=err,
@@ -436,9 +445,10 @@ def parse_message_string(pkg_name, msg_name, message_string):
             name, _, value = rest.partition(CONSTANT_SEPARATOR)
             name = name.rstrip()
             value = value.lstrip()
-            constants.append(Constant(type_string, name, value))
+            constants.append(Constant(type_string, name, value, current_comments))
+        current_comments = []
 
-    return MessageSpecification(pkg_name, msg_name, fields, constants)
+    return MessageSpecification(pkg_name, msg_name, fields, constants, header_comments)
 
 
 def parse_value_string(type_, value_string):

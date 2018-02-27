@@ -66,35 +66,38 @@ def msg_type_to_idl_2(type_):
 @(line)
 @[  end for]@
 @[end if]@
-
 module @(spec.base_type.pkg_name)
 {
-
-module @(subfolder)
-{
-
-module dds
-{
-
+  module @(subfolder)
+  {
+    module dds
+    {
 @##################
 @# Define constants
 @##################
 @# Constants
 @[for constant in spec.constants]@
-  const @(MSG_TYPE_TO_IDL[constant.type]) @(spec.base_type.type)__@(constant.name) =
+   @[if constant.comments]@
+   /**
+   @[for comment in constant.comments]@
+    * @(comment)
+   @[end for]@
+    */
+   @[end if]@
+   const @(MSG_TYPE_TO_IDL[constant.type]) @(spec.base_type.type)__@(constant.name) =
 @[  if constant.type == 'bool']@
-    @('TRUE' if constant.value else 'FALSE');
+      @('TRUE' if constant.value else 'FALSE');
 @[  elif constant.type == 'char']@
-    '\@(constant.value)';
+      '\@(constant.value)';
 @[  elif constant.type == 'int8']@
-    @(constant.value if constant.value >= 0 else (constant.value + 256));
+      @(constant.value if constant.value >= 0 else (constant.value + 256));
 @[  elif constant.type == 'string']@
-    "@(escape_string(constant.value))";
+      "@(escape_string(constant.value))";
 @[  else]@
-    @(constant.value);
+      @(constant.value);
 @[  end if]@
-@[end for]
 
+@[end for]
 @{
 typedefs = set([])
 for field in spec.fields:
@@ -103,37 +106,45 @@ for field in spec.fields:
     print('%s %s__%s__%s' % (idl_typedef, spec.base_type.pkg_name, spec.base_type.type, idl_typedef_var))
     typedefs.add((idl_typedef, idl_typedef_var))
 }@
-
 @################################
 @# Message struct with all fields
 @################################
-@@TypeCode(type="@(spec.base_type.pkg_name)::@(subfolder)::dds_::@(spec.base_type.type)_")
-struct @(spec.base_type.type)
-{
-
+   @[if spec.header_comments]@
+   /**
+   @[for comment in spec.header_comments]@
+    * @(comment)
+   @[end for]@
+    */
+   @[end if]@
+   @@TypeCode(type="@(spec.base_type.pkg_name)::@(subfolder)::dds_::@(spec.base_type.type)_")
+      struct @(spec.base_type.type)
+      {
 @[if spec.fields]@
 @[  for field in spec.fields]@
+    @[if field.comments]@
+    /**
+    @[for comment in field.comments]@
+     * @(comment)
+    @[end for]@
+     */
+    @[end if]@
 @{    idl_typedef, idl_typedef_var, idl_type = msg_type_to_idl_2(field.type)}@
 @[    if idl_typedef and idl_typedef_var]@
 @(      spec.base_type.pkg_name)__@(spec.base_type.type)__@(idl_type) @(field.name);
 @[    else]@
-  @(idl_type) @(field.name);
+    @(idl_type) @(field.name);
 @[    end if]@
 @[  end for]@
 @[else]@
   boolean _dummy;
 @[end if]@
-
-};  // struct @(spec.base_type.type)
-
+      };  // struct @(spec.base_type.type)
 @[for line in get_post_struct_lines(spec)]@
 @(line)
+
 @[end for]@
-
-};  // module dds_
-
-};  // module @(subfolder)
-
+    };  // module dds_
+  };  // module @(subfolder)
 };  // module @(spec.base_type.pkg_name)
 
 #endif  // __@(spec.base_type.pkg_name)__@(subfolder)__@(spec.base_type.type)__idl__

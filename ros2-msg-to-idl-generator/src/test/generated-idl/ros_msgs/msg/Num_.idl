@@ -3,32 +3,45 @@
 #ifndef __ros_msgs__msg__Num__idl__
 #define __ros_msgs__msg__Num__idl__
 
-
 module ros_msgs
 {
+  module msg
+  {
+    module dds
+    {
+      /**
+       * a, b, c
+       * 1, 2, 3
+       * baby
+       * sneaky boi
+       */
+      const long Num__X =
+      123;
 
-module msg
-{
-
-module dds
-{
-
-
-
-
-@TypeCode(type="ros_msgs::msg::dds_::Num_")
-struct Num
-{
-
-  long long num;
-
-};  // struct Num
+      const string Num__CATCH_22 =
+      "No doc, watch out!";
 
 
-};  // module dds_
-
-};  // module msg
-
+      /**
+       * This is the header
+       * Header line 2
+       * This is some dangling comment that will be included in header
+       */
+      @TypeCode(type="ros_msgs::msg::dds_::Num_")
+      struct Num
+      {
+        /**
+         * some doc
+         */
+        long long num;
+        /**
+         * @javadoc I guess javadoc will work okay.
+         * hello
+         */
+        long hello;
+      };  // struct Num
+    };  // module dds_
+  };  // module msg
 };  // module ros_msgs
 
 #endif  // __ros_msgs__msg__Num__idl__
