@@ -8,14 +8,14 @@ buildscript {
    }
 }
 apply plugin: "us.ihmc.ihmc-build"
-apply plugin: 'application'
+//apply plugin: 'application'
 
 ihmc {
    group = "us.ihmc"
    version = "0.2"
    vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
    openSource = true
-   maintainer = "Jesper Smith (jsmith@ihmc.us)"
+   maintainer = "Duncan Calvert (dcalvert@ihmc.us)"
 
    configureDependencyResolution()
    javaDirectory("main", "java-generated")
@@ -28,8 +28,7 @@ dependencies {
 }
 
 mainDependencies {
-   compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
-   compile group: 'us.ihmc', name: 'rosidl-typesupport-jython', version: '1.0'
+   compile group: 'us.ihmc', name: 'ros2-msg-to-idl-generator', version: '1.0'
 }
 
 task show() {
