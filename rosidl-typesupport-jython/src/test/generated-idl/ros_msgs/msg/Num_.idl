@@ -10,18 +10,19 @@ module ros_msgs
 module msg
 {
 
-module dds_
+module dds
 {
 
 
 
 
-struct Num_
+@TypeCode(type="ros_msgs::msg::dds_::Num_")
+struct Num
 {
 
-  long long num_;
+  long long num;
 
-};  // struct Num_
+};  // struct Num
 
 
 };  // module dds_

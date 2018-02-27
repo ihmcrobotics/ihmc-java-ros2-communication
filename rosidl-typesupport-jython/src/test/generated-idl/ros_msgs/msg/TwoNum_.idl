@@ -11,19 +11,20 @@ module ros_msgs
 module msg
 {
 
-module dds_
+module dds
 {
 
 
 
 
-struct TwoNum_
+@TypeCode(type="ros_msgs::msg::dds_::TwoNum_")
+struct TwoNum
 {
 
-  ros_msgs::msg::dds_::Num_ num1_;
-  ros_msgs::msg::dds_::Num_ num2_;
+  ros_msgs::msg::dds::Num num1;
+  ros_msgs::msg::dds::Num num2;
 
-};  // struct TwoNum_
+};  // struct TwoNum
 
 
 };  // module dds_
