@@ -126,17 +126,17 @@ public class RosInterfaceGenerator
     *
     * This function will check if there is a custom verison of the .idl file registered.
     *
-    * @param file
+    * @param idlFile
     * @param javaDirectory
-    * @param idlDirectory
+    * @param idlIncludeDirectory
     */
-   private void generateJava(Path file, Path javaDirectory, Path idlDirectory)
+   private void generateJava(Path idlFile, Path javaDirectory, Path idlIncludeDirectory)
    {
-      PrintTools.info(this, idlDirectory.relativize(file).toString());
+//      System.out.println("[IDL -> PubSub] Parsing " + idlFile);
 
       try
       {
-         IDLGenerator.execute(file.toFile(), "", javaDirectory.toFile(), Collections.singletonList(idlDirectory.toFile()));
+         IDLGenerator.execute(idlFile.toFile(), "", javaDirectory.toFile(), Collections.singletonList(idlIncludeDirectory.toFile()));
       }
       catch (IOException e)
       {
