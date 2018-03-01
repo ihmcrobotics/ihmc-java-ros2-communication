@@ -1,0 +1,32 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __trajectory_msgs__msg__JointTrajectoryPoint__idl__
+#define __trajectory_msgs__msg__JointTrajectoryPoint__idl__
+
+#include "builtin_interfaces/msg/./Duration_.idl"
+module trajectory_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Each trajectory point specifies either positions[, velocities[, accelerations]]
+       * or positions[, effort] for the trajectory to be executed.
+       * All specified values are in the same order as the joint names in JointTrajectory.msg.
+       */
+      @TypeCode(type="trajectory_msgs::msg::dds_::JointTrajectoryPoint_")
+      struct JointTrajectoryPoint
+      {
+        sequence<double> positions;
+        sequence<double> velocities;
+        sequence<double> accelerations;
+        sequence<double> effort;
+        builtin_interfaces::msg::dds::Duration time_from_start;
+      };  // struct JointTrajectoryPoint
+    };  // module dds_
+  };  // module msg
+};  // module trajectory_msgs
+
+#endif  // __trajectory_msgs__msg__JointTrajectoryPoint__idl__

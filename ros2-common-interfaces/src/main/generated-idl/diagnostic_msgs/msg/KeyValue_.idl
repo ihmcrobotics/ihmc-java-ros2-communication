@@ -1,0 +1,29 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __diagnostic_msgs__msg__KeyValue__idl__
+#define __diagnostic_msgs__msg__KeyValue__idl__
+
+module diagnostic_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="diagnostic_msgs::msg::dds_::KeyValue_")
+      struct KeyValue
+      {
+        /**
+         * What to label this value when viewing.
+         */
+        string key;
+        /**
+         * A value to track over time.
+         */
+        string value;
+      };  // struct KeyValue
+    };  // module dds_
+  };  // module msg
+};  // module diagnostic_msgs
+
+#endif  // __diagnostic_msgs__msg__KeyValue__idl__

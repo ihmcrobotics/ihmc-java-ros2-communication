@@ -1,0 +1,37 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __trajectory_msgs__msg__MultiDOFJointTrajectoryPoint__idl__
+#define __trajectory_msgs__msg__MultiDOFJointTrajectoryPoint__idl__
+
+#include "builtin_interfaces/msg/./Duration_.idl"
+#include "geometry_msgs/msg/./Transform_.idl"
+#include "geometry_msgs/msg/./Twist_.idl"
+module trajectory_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="trajectory_msgs::msg::dds_::MultiDOFJointTrajectoryPoint_")
+      struct MultiDOFJointTrajectoryPoint
+      {
+        /**
+         * Each multi-dof joint can specify a transform (up to 6 DOF).
+         */
+        sequence<geometry_msgs::msg::dds::Transform> transforms;
+        /**
+         * There can be a velocity specified for the origin of the joint.
+         */
+        sequence<geometry_msgs::msg::dds::Twist> velocities;
+        /**
+         * There can be an acceleration specified for the origin of the joint.
+         */
+        sequence<geometry_msgs::msg::dds::Twist> accelerations;
+        builtin_interfaces::msg::dds::Duration time_from_start;
+      };  // struct MultiDOFJointTrajectoryPoint
+    };  // module dds_
+  };  // module msg
+};  // module trajectory_msgs
+
+#endif  // __trajectory_msgs__msg__MultiDOFJointTrajectoryPoint__idl__

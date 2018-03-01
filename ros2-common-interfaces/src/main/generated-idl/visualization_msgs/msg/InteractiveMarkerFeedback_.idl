@@ -1,0 +1,85 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __visualization_msgs__msg__InteractiveMarkerFeedback__idl__
+#define __visualization_msgs__msg__InteractiveMarkerFeedback__idl__
+
+#include "geometry_msgs/msg/./Point_.idl"
+#include "geometry_msgs/msg/./Pose_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module visualization_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * Type of the event
+       * KEEP_ALIVE: sent while dragging to keep up control of the marker
+       * MENU_SELECT: a menu entry has been selected
+       * BUTTON_CLICK: a button control has been clicked
+       * POSE_UPDATE: the pose has been changed using one of the controls
+       */
+      const octet InteractiveMarkerFeedback__KEEP_ALIVE =
+      0;
+
+      const octet InteractiveMarkerFeedback__POSE_UPDATE =
+      1;
+
+      const octet InteractiveMarkerFeedback__MENU_SELECT =
+      2;
+
+      const octet InteractiveMarkerFeedback__BUTTON_CLICK =
+      3;
+
+      const octet InteractiveMarkerFeedback__MOUSE_DOWN =
+      4;
+
+      const octet InteractiveMarkerFeedback__MOUSE_UP =
+      5;
+
+
+      /**
+       * Feedback message sent back from the GUI, e.g.
+       * when the status of an interactive marker was modified by the user.
+       */
+      @TypeCode(type="visualization_msgs::msg::dds_::InteractiveMarkerFeedback_")
+      struct InteractiveMarkerFeedback
+      {
+        /**
+         * Time/frame info.
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * Identifying string. Must be unique in the topic namespace.
+         */
+        string client_id;
+        /**
+         * Specifies which interactive marker and control this message refers to
+         */
+        string marker_name;
+        string control_name;
+        octet event_type;
+        /**
+         * Current pose of the marker
+         * Note: Has to be valid for all feedback types.
+         */
+        geometry_msgs::msg::dds::Pose pose;
+        /**
+         * Contains the ID of the selected menu entry
+         * Only valid for MENU_SELECT events.
+         */
+        unsigned long menu_entry_id;
+        /**
+         * If event_type is BUTTON_CLICK, MOUSE_DOWN, or MOUSE_UP, mouse_point
+         * may contain the 3 dimensional position of the event on the
+         * control.  If it does, mouse_point_valid will be true.  mouse_point
+         * will be relative to the frame listed in the header.
+         */
+        geometry_msgs::msg::dds::Point mouse_point;
+        boolean mouse_point_valid;
+      };  // struct InteractiveMarkerFeedback
+    };  // module dds_
+  };  // module msg
+};  // module visualization_msgs
+
+#endif  // __visualization_msgs__msg__InteractiveMarkerFeedback__idl__

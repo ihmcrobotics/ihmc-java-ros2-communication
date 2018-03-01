@@ -1,0 +1,28 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __geometry_msgs__msg__QuaternionStamped__idl__
+#define __geometry_msgs__msg__QuaternionStamped__idl__
+
+#include "geometry_msgs/msg/./Quaternion_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This represents an orientation with reference coordinate frame and timestamp.
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::QuaternionStamped_")
+      struct QuaternionStamped
+      {
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::Quaternion quaternion;
+      };  // struct QuaternionStamped
+    };  // module dds_
+  };  // module msg
+};  // module geometry_msgs
+
+#endif  // __geometry_msgs__msg__QuaternionStamped__idl__

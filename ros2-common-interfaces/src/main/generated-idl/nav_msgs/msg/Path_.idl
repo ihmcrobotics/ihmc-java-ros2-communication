@@ -1,0 +1,28 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __nav_msgs__msg__Path__idl__
+#define __nav_msgs__msg__Path__idl__
+
+#include "geometry_msgs/msg/./PoseStamped_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module nav_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * An array of poses that represents a Path for a robot to follow.
+       */
+      @TypeCode(type="nav_msgs::msg::dds_::Path_")
+      struct Path
+      {
+        std_msgs::msg::dds::Header header;
+        sequence<geometry_msgs::msg::dds::PoseStamped> poses;
+      };  // struct Path
+    };  // module dds_
+  };  // module msg
+};  // module nav_msgs
+
+#endif  // __nav_msgs__msg__Path__idl__

@@ -1,0 +1,84 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __shape_msgs__msg__SolidPrimitive__idl__
+#define __shape_msgs__msg__SolidPrimitive__idl__
+
+module shape_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      const octet SolidPrimitive__BOX =
+      1;
+
+      const octet SolidPrimitive__SPHERE =
+      2;
+
+      const octet SolidPrimitive__CYLINDER =
+      3;
+
+      const octet SolidPrimitive__CONE =
+      4;
+
+      /**
+       * For type BOX, the X, Y, and Z dimensions are the length of the corresponding sides of the box.
+       */
+      const octet SolidPrimitive__BOX_X =
+      0;
+
+      const octet SolidPrimitive__BOX_Y =
+      1;
+
+      const octet SolidPrimitive__BOX_Z =
+      2;
+
+      /**
+       * For the SPHERE type, only one component is used, and it gives the radius of the sphere.
+       */
+      const octet SolidPrimitive__SPHERE_RADIUS =
+      0;
+
+      const octet SolidPrimitive__CYLINDER_HEIGHT =
+      0;
+
+      const octet SolidPrimitive__CYLINDER_RADIUS =
+      1;
+
+      const octet SolidPrimitive__CONE_HEIGHT =
+      0;
+
+      const octet SolidPrimitive__CONE_RADIUS =
+      1;
+
+
+      /**
+       * Defines box, sphere, cylinder, and cone.
+       * All shapes are defined to have their bounding boxes centered around 0,0,0.
+       * The meaning of the shape dimensions: each constant defines the index in the 'dimensions' array.
+       * For the CYLINDER and CONE types, the center line is oriented along the Z axis.
+       * Therefore the CYLINDER_HEIGHT (CONE_HEIGHT) component of dimensions gives the
+       * height of the cylinder (cone).
+       * The CYLINDER_RADIUS (CONE_RADIUS) component of dimensions gives the radius of
+       * the base of the cylinder (cone).
+       * Cone and cylinder primitives are defined to be circular. The tip of the cone
+       * is pointing up, along +Z axis.
+       */
+      @TypeCode(type="shape_msgs::msg::dds_::SolidPrimitive_")
+      struct SolidPrimitive
+      {
+        /**
+         * The type of the shape
+         */
+        octet type;
+        /**
+         * The dimensions of the shape
+         * At no point will dimensions have a length > 3.
+         */
+        sequence<double, 3> dimensions;
+      };  // struct SolidPrimitive
+    };  // module dds_
+  };  // module msg
+};  // module shape_msgs
+
+#endif  // __shape_msgs__msg__SolidPrimitive__idl__

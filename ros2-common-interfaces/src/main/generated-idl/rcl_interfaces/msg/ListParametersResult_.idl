@@ -1,0 +1,30 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __rcl_interfaces__msg__ListParametersResult__idl__
+#define __rcl_interfaces__msg__ListParametersResult__idl__
+
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="rcl_interfaces::msg::dds_::ListParametersResult_")
+      struct ListParametersResult
+      {
+        /**
+         * All parameters under the given prefixes.
+         */
+        sequence<string> names;
+        /**
+         * All prefixes under the given prefixes.
+         * TODO(wjwwood): link to prefix definition and rules.
+         */
+        sequence<string> prefixes;
+      };  // struct ListParametersResult
+    };  // module dds_
+  };  // module msg
+};  // module rcl_interfaces
+
+#endif  // __rcl_interfaces__msg__ListParametersResult__idl__

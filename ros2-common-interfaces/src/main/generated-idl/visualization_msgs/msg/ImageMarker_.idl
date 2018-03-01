@@ -1,0 +1,96 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __visualization_msgs__msg__ImageMarker__idl__
+#define __visualization_msgs__msg__ImageMarker__idl__
+
+#include "builtin_interfaces/msg/./Duration_.idl"
+#include "geometry_msgs/msg/./Point_.idl"
+#include "std_msgs/msg/./ColorRGBA_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module visualization_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      const octet ImageMarker__CIRCLE =
+      0;
+
+      const octet ImageMarker__LINE_STRIP =
+      1;
+
+      const octet ImageMarker__LINE_LIST =
+      2;
+
+      const octet ImageMarker__POLYGON =
+      3;
+
+      const octet ImageMarker__POINTS =
+      4;
+
+      const octet ImageMarker__ADD =
+      0;
+
+      const octet ImageMarker__REMOVE =
+      1;
+
+
+      @TypeCode(type="visualization_msgs::msg::dds_::ImageMarker_")
+      struct ImageMarker
+      {
+        std_msgs::msg::dds::Header header;
+        /**
+         * Namespace which is used with the id to form a unique id.
+         */
+        string ns;
+        /**
+         * Unique id within the namespace.
+         */
+        long id;
+        /**
+         * One of the above types, e.g. CIRCLE, LINE_STRIP, etc.
+         */
+        long type;
+        /**
+         * Either ADD or REMOVE.
+         */
+        long action;
+        /**
+         * Two-dimensional coordinate position, in pixel-coordinates.
+         */
+        geometry_msgs::msg::dds::Point position;
+        /**
+         * The scale of the object, e.g. the diameter for a CIRCLE.
+         */
+        float scale;
+        /**
+         * The outline color of the marker.
+         */
+        std_msgs::msg::dds::ColorRGBA outline_color;
+        /**
+         * Whether or not to fill in the shape with color.
+         */
+        octet filled;
+        /**
+         * Fill color; in the range: [0.0-1.0]
+         */
+        std_msgs::msg::dds::ColorRGBA fill_color;
+        /**
+         * How long the object should last before being automatically deleted.
+         * 0 indicates forever.
+         */
+        builtin_interfaces::msg::dds::Duration lifetime;
+        /**
+         * Coordinates in 2D in pixel coords. Used for LINE_STRIP, LINE_LIST, POINTS, etc.
+         */
+        sequence<geometry_msgs::msg::dds::Point> points;
+        /**
+         * The color for each line, point, etc. in the points field.
+         */
+        sequence<std_msgs::msg::dds::ColorRGBA> outline_colors;
+      };  // struct ImageMarker
+    };  // module dds_
+  };  // module msg
+};  // module visualization_msgs
+
+#endif  // __visualization_msgs__msg__ImageMarker__idl__

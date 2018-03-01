@@ -1,0 +1,65 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __sensor_msgs__msg__PointField__idl__
+#define __sensor_msgs__msg__PointField__idl__
+
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * This message holds the description of one point entry in the
+       * PointCloud2 message format.
+       */
+      const octet PointField__INT8 =
+      1;
+
+      const octet PointField__UINT8 =
+      2;
+
+      const octet PointField__INT16 =
+      3;
+
+      const octet PointField__UINT16 =
+      4;
+
+      const octet PointField__INT32 =
+      5;
+
+      const octet PointField__UINT32 =
+      6;
+
+      const octet PointField__FLOAT32 =
+      7;
+
+      const octet PointField__FLOAT64 =
+      8;
+
+
+      @TypeCode(type="sensor_msgs::msg::dds_::PointField_")
+      struct PointField
+      {
+        /**
+         * Name of field
+         */
+        string name;
+        /**
+         * Offset from start of point struct
+         */
+        unsigned long offset;
+        /**
+         * Datatype enumeration, see above
+         */
+        octet datatype;
+        /**
+         * How many elements in the field
+         */
+        unsigned long count;
+      };  // struct PointField
+    };  // module dds_
+  };  // module msg
+};  // module sensor_msgs
+
+#endif  // __sensor_msgs__msg__PointField__idl__

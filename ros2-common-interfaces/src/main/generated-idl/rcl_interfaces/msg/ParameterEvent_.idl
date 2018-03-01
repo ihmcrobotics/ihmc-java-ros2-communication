@@ -1,0 +1,30 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __rcl_interfaces__msg__ParameterEvent__idl__
+#define __rcl_interfaces__msg__ParameterEvent__idl__
+
+#include "rcl_interfaces/msg/./Parameter_.idl"
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This message contains a parameter event.
+       * It was an atomic update.
+       * A specific parameter name can only be in one of the three sets.
+       */
+      @TypeCode(type="rcl_interfaces::msg::dds_::ParameterEvent_")
+      struct ParameterEvent
+      {
+        sequence<rcl_interfaces::msg::dds::Parameter> new_parameters;
+        sequence<rcl_interfaces::msg::dds::Parameter> changed_parameters;
+        sequence<rcl_interfaces::msg::dds::Parameter> deleted_parameters;
+      };  // struct ParameterEvent
+    };  // module dds_
+  };  // module msg
+};  // module rcl_interfaces
+
+#endif  // __rcl_interfaces__msg__ParameterEvent__idl__

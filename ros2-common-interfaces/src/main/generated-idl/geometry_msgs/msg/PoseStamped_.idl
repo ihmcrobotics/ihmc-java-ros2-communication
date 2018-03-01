@@ -1,0 +1,28 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __geometry_msgs__msg__PoseStamped__idl__
+#define __geometry_msgs__msg__PoseStamped__idl__
+
+#include "geometry_msgs/msg/./Pose_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * A Pose with reference coordinate frame and timestamp
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::PoseStamped_")
+      struct PoseStamped
+      {
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::Pose pose;
+      };  // struct PoseStamped
+    };  // module dds_
+  };  // module msg
+};  // module geometry_msgs
+
+#endif  // __geometry_msgs__msg__PoseStamped__idl__

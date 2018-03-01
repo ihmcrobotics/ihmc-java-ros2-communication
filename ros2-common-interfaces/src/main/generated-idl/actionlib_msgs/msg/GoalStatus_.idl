@@ -1,0 +1,98 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __actionlib_msgs__msg__GoalStatus__idl__
+#define __actionlib_msgs__msg__GoalStatus__idl__
+
+#include "actionlib_msgs/msg/./GoalID_.idl"
+module actionlib_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * The goal has yet to be processed by the action server.
+       */
+      const octet GoalStatus__PENDING =
+      0;
+
+      /**
+       * The goal is currently being processed by the action server.
+       */
+      const octet GoalStatus__ACTIVE =
+      1;
+
+      /**
+       * The goal received a cancel request after it started executing
+       */
+      const octet GoalStatus__PREEMPTED =
+      2;
+
+      /**
+       * and has since completed its execution (Terminal State).
+       * The goal was achieved successfully by the action server
+       */
+      const octet GoalStatus__SUCCEEDED =
+      3;
+
+      /**
+       * (Terminal State).
+       * The goal was aborted during execution by the action server due
+       */
+      const octet GoalStatus__ABORTED =
+      4;
+
+      /**
+       * to some failure (Terminal State).
+       * The goal was rejected by the action server without being processed,
+       */
+      const octet GoalStatus__REJECTED =
+      5;
+
+      /**
+       * because the goal was unattainable or invalid (Terminal State).
+       * The goal received a cancel request after it started executing
+       */
+      const octet GoalStatus__PREEMPTING =
+      6;
+
+      /**
+       * and has not yet completed execution.
+       * The goal received a cancel request before it started executing, but
+       */
+      const octet GoalStatus__RECALLING =
+      7;
+
+      /**
+       * the action server has not yet confirmed that the goal is canceled.
+       * The goal received a cancel request before it started executing
+       */
+      const octet GoalStatus__RECALLED =
+      8;
+
+      /**
+       * and was successfully cancelled (Terminal State).
+       * An action client can determine that a goal is LOST. This should not
+       */
+      const octet GoalStatus__LOST =
+      9;
+
+
+      /**
+       * be sent over the wire by an action server.
+       */
+      @TypeCode(type="actionlib_msgs::msg::dds_::GoalStatus_")
+      struct GoalStatus
+      {
+        actionlib_msgs::msg::dds::GoalID goal_id;
+        octet status;
+        /**
+         * Allow for the user to associate a string with GoalStatus for debugging.
+         */
+        string text;
+      };  // struct GoalStatus
+    };  // module dds_
+  };  // module msg
+};  // module actionlib_msgs
+
+#endif  // __actionlib_msgs__msg__GoalStatus__idl__

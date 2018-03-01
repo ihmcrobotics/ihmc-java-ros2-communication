@@ -1,0 +1,43 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __sensor_msgs__msg__PointCloud__idl__
+#define __sensor_msgs__msg__PointCloud__idl__
+
+#include "geometry_msgs/msg/./Point32_.idl"
+#include "sensor_msgs/msg/./ChannelFloat32_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This message holds a collection of 3d points, plus optional additional
+       * information about each point.
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::PointCloud_")
+      struct PointCloud
+      {
+        /**
+         * Time of sensor data acquisition, coordinate frame ID.
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * Array of 3d points. Each Point32 should be interpreted as a 3d point
+         * in the frame given in the header.
+         */
+        sequence<geometry_msgs::msg::dds::Point32> points;
+        /**
+         * Each channel should have the same number of elements as points array,
+         * and the data in each channel should correspond 1:1 with each point.
+         * Channel names in common practice are listed in ChannelFloat32.msg.
+         */
+        sequence<sensor_msgs::msg::dds::ChannelFloat32> channels;
+      };  // struct PointCloud
+    };  // module dds_
+  };  // module msg
+};  // module sensor_msgs
+
+#endif  // __sensor_msgs__msg__PointCloud__idl__

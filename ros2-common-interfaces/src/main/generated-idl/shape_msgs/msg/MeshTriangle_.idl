@@ -1,0 +1,26 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __shape_msgs__msg__MeshTriangle__idl__
+#define __shape_msgs__msg__MeshTriangle__idl__
+
+module shape_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+typedef unsigned long shape_msgs__MeshTriangle__unsigned_long_array_3[3];
+      /**
+       * Definition of a triangle's vertices.
+       */
+      @TypeCode(type="shape_msgs::msg::dds_::MeshTriangle_")
+      struct MeshTriangle
+      {
+    shape_msgs__MeshTriangle__unsigned_long_array_3 vertex_indices;
+      };  // struct MeshTriangle
+    };  // module dds_
+  };  // module msg
+};  // module shape_msgs
+
+#endif  // __shape_msgs__msg__MeshTriangle__idl__

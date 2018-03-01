@@ -1,0 +1,47 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __nav_msgs__msg__MapMetaData__idl__
+#define __nav_msgs__msg__MapMetaData__idl__
+
+#include "builtin_interfaces/msg/./Time_.idl"
+#include "geometry_msgs/msg/./Pose_.idl"
+module nav_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This hold basic information about the characterists of the OccupancyGrid
+       */
+      @TypeCode(type="nav_msgs::msg::dds_::MapMetaData_")
+      struct MapMetaData
+      {
+        /**
+         * The time at which the map was loaded
+         */
+        builtin_interfaces::msg::dds::Time map_load_time;
+        /**
+         * The map resolution [m/cell]
+         */
+        float resolution;
+        /**
+         * Map width [cells]
+         */
+        unsigned long width;
+        /**
+         * Map height [cells]
+         */
+        unsigned long height;
+        /**
+         * The origin of the map [m, m, rad].  This is the real-world pose of the
+         * cell (0,0) in the map.
+         */
+        geometry_msgs::msg::dds::Pose origin;
+      };  // struct MapMetaData
+    };  // module dds_
+  };  // module msg
+};  // module nav_msgs
+
+#endif  // __nav_msgs__msg__MapMetaData__idl__

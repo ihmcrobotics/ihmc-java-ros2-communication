@@ -1,0 +1,35 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __std_msgs__msg__MultiArrayLayout__idl__
+#define __std_msgs__msg__MultiArrayLayout__idl__
+
+#include "std_msgs/msg/./MultiArrayDimension_.idl"
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * The multiarray declares a generic multi-dimensional array of a
+       * particular data type.  Dimensions are ordered from outer most
+       * to inner most.
+       */
+      @TypeCode(type="std_msgs::msg::dds_::MultiArrayLayout_")
+      struct MultiArrayLayout
+      {
+        /**
+         * Array of dimension properties
+         */
+        sequence<std_msgs::msg::dds::MultiArrayDimension> dim;
+        /**
+         * padding bytes at front of data
+         */
+        unsigned long data_offset;
+      };  // struct MultiArrayLayout
+    };  // module dds_
+  };  // module msg
+};  // module std_msgs
+
+#endif  // __std_msgs__msg__MultiArrayLayout__idl__

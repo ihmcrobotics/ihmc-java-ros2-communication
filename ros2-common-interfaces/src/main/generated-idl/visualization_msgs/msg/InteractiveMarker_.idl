@@ -1,0 +1,59 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __visualization_msgs__msg__InteractiveMarker__idl__
+#define __visualization_msgs__msg__InteractiveMarker__idl__
+
+#include "geometry_msgs/msg/./Pose_.idl"
+#include "std_msgs/msg/./Header_.idl"
+#include "visualization_msgs/msg/./InteractiveMarkerControl_.idl"
+#include "visualization_msgs/msg/./MenuEntry_.idl"
+module visualization_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="visualization_msgs::msg::dds_::InteractiveMarker_")
+      struct InteractiveMarker
+      {
+        /**
+         * Time/frame info.
+         * If header.time is set to 0, the marker will be retransformed into
+         * its frame on each timestep. You will receive the pose feedback
+         * in the same frame.
+         * Otherwise, you might receive feedback in a different frame.
+         * For rviz, this will be the current 'fixed frame' set by the user.
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * Initial pose. Also, defines the pivot point for rotations.
+         */
+        geometry_msgs::msg::dds::Pose pose;
+        /**
+         * Identifying string. Must be globally unique in
+         * the topic that this message is sent through.
+         */
+        string name;
+        /**
+         * Short description (< 40 characters).
+         */
+        string description;
+        /**
+         * Scale to be used for default controls (default=1).
+         */
+        float scale;
+        /**
+         * All menu and submenu entries associated with this marker.
+         */
+        sequence<visualization_msgs::msg::dds::MenuEntry> menu_entries;
+        /**
+         * List of controls displayed for this marker.
+         */
+        sequence<visualization_msgs::msg::dds::InteractiveMarkerControl> controls;
+      };  // struct InteractiveMarker
+    };  // module dds_
+  };  // module msg
+};  // module visualization_msgs
+
+#endif  // __visualization_msgs__msg__InteractiveMarker__idl__

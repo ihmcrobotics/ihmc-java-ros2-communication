@@ -1,0 +1,26 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __trajectory_msgs__msg__JointTrajectory__idl__
+#define __trajectory_msgs__msg__JointTrajectory__idl__
+
+#include "std_msgs/msg/./Header_.idl"
+#include "trajectory_msgs/msg/./JointTrajectoryPoint_.idl"
+module trajectory_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="trajectory_msgs::msg::dds_::JointTrajectory_")
+      struct JointTrajectory
+      {
+        std_msgs::msg::dds::Header header;
+        sequence<string> joint_names;
+        sequence<trajectory_msgs::msg::dds::JointTrajectoryPoint> points;
+      };  // struct JointTrajectory
+    };  // module dds_
+  };  // module msg
+};  // module trajectory_msgs
+
+#endif  // __trajectory_msgs__msg__JointTrajectory__idl__

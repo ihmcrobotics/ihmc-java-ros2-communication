@@ -1,0 +1,51 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __sensor_msgs__msg__MagneticField__idl__
+#define __sensor_msgs__msg__MagneticField__idl__
+
+#include "geometry_msgs/msg/./Vector3_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+typedef double sensor_msgs__MagneticField__double_array_9[9];
+      /**
+       * Measurement of the Magnetic Field vector at a specific location.
+       * If the covariance of the measurement is known, it should be filled in.
+       * If all you know is the variance of each measurement, e.g. from the datasheet,
+       * just put those along the diagonal.
+       * A covariance matrix of all zeros will be interpreted as "covariance unknown",
+       * and to use the data a covariance will have to be assumed or gotten from some
+       * other source.
+       * field was measured
+       * frame_id is the location and orientation
+       * of the field measurement
+       * field vector in Tesla
+       * If your sensor does not output 3 axes,
+       * put NaNs in the components not reported.
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::MagneticField_")
+      struct MagneticField
+      {
+        /**
+         * timestamp is the time the
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * x, y, and z components of the
+         */
+        geometry_msgs::msg::dds::Vector3 magnetic_field;
+        /**
+         * Row major about x, y, z axes
+         */
+    sensor_msgs__MagneticField__double_array_9 magnetic_field_covariance;
+      };  // struct MagneticField
+    };  // module dds_
+  };  // module msg
+};  // module sensor_msgs
+
+#endif  // __sensor_msgs__msg__MagneticField__idl__

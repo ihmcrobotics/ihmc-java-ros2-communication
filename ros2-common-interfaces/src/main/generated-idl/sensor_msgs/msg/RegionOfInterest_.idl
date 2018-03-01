@@ -1,0 +1,54 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __sensor_msgs__msg__RegionOfInterest__idl__
+#define __sensor_msgs__msg__RegionOfInterest__idl__
+
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This message is used to specify a region of interest within an image.
+       * 
+       * When used to specify the ROI setting of the camera when the image was
+       * taken, the height and width fields should either match the height and
+       * width fields for the associated image; or height = width = 0
+       * indicates that the full resolution image was captured.
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::RegionOfInterest_")
+      struct RegionOfInterest
+      {
+        /**
+         * Leftmost pixel of the ROI
+         */
+        unsigned long x_offset;
+        /**
+         * (0 if the ROI includes the left edge of the image)
+         * Topmost pixel of the ROI
+         */
+        unsigned long y_offset;
+        /**
+         * (0 if the ROI includes the top edge of the image)
+         * Height of ROI
+         */
+        unsigned long height;
+        /**
+         * Width of ROI
+         */
+        unsigned long width;
+        /**
+         * True if a distinct rectified ROI should be calculated from the "raw"
+         * ROI in this message. Typically this should be False if the full image
+         * is captured (ROI not used), and True if a subwindow is captured (ROI
+         * used).
+         */
+        boolean do_rectify;
+      };  // struct RegionOfInterest
+    };  // module dds_
+  };  // module msg
+};  // module sensor_msgs
+
+#endif  // __sensor_msgs__msg__RegionOfInterest__idl__

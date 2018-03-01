@@ -1,0 +1,70 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __sensor_msgs__msg__NavSatStatus__idl__
+#define __sensor_msgs__msg__NavSatStatus__idl__
+
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * unable to fix position
+       */
+      const octet NavSatStatus__STATUS_NO_FIX =
+      255;
+
+      /**
+       * unaugmented fix
+       */
+      const octet NavSatStatus__STATUS_FIX =
+      0;
+
+      /**
+       * with satellite-based augmentation
+       */
+      const octet NavSatStatus__STATUS_SBAS_FIX =
+      1;
+
+      /**
+       * with ground-based augmentation
+       */
+      const octet NavSatStatus__STATUS_GBAS_FIX =
+      2;
+
+      const unsigned short NavSatStatus__SERVICE_GPS =
+      1;
+
+      const unsigned short NavSatStatus__SERVICE_GLONASS =
+      2;
+
+      /**
+       * includes BeiDou.
+       */
+      const unsigned short NavSatStatus__SERVICE_COMPASS =
+      4;
+
+      const unsigned short NavSatStatus__SERVICE_GALILEO =
+      8;
+
+
+      /**
+       * Navigation Satellite fix status for any Global Navigation Satellite System.
+       * Whether to output an augmented fix is determined by both the fix
+       * type and the last time differential corrections were received.  A
+       * fix is valid when status >= STATUS_FIX.
+       * Bits defining which Global Navigation Satellite System signals were
+       * used by the receiver.
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::NavSatStatus_")
+      struct NavSatStatus
+      {
+        octet status;
+        unsigned short service;
+      };  // struct NavSatStatus
+    };  // module dds_
+  };  // module msg
+};  // module sensor_msgs
+
+#endif  // __sensor_msgs__msg__NavSatStatus__idl__

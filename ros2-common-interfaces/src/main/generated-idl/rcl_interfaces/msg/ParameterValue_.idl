@@ -1,0 +1,36 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __rcl_interfaces__msg__ParameterValue__idl__
+#define __rcl_interfaces__msg__ParameterValue__idl__
+
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Used to determine which of the next *_value fields are set.
+       * ParameterType.PARAMETER_NOT_SET indicates that the parameter was not set
+       * (if gotten) or is uninitialized.
+       * Values are enumerated in ParameterType.msg
+       */
+      @TypeCode(type="rcl_interfaces::msg::dds_::ParameterValue_")
+      struct ParameterValue
+      {
+        octet type;
+        /**
+         * "Variant" style storage of the parameter value.
+         */
+        boolean bool_value;
+        long long integer_value;
+        double double_value;
+        string string_value;
+        sequence<octet> bytes_value;
+      };  // struct ParameterValue
+    };  // module dds_
+  };  // module msg
+};  // module rcl_interfaces
+
+#endif  // __rcl_interfaces__msg__ParameterValue__idl__

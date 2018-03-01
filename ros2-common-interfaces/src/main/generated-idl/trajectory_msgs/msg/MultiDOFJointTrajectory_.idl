@@ -1,0 +1,35 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __trajectory_msgs__msg__MultiDOFJointTrajectory__idl__
+#define __trajectory_msgs__msg__MultiDOFJointTrajectory__idl__
+
+#include "std_msgs/msg/./Header_.idl"
+#include "trajectory_msgs/msg/./MultiDOFJointTrajectoryPoint_.idl"
+module trajectory_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * A representation of a multi-dof joint trajectory (each point is a transformation)
+       * Each point along the trajectory will include an array of positions/velocities/accelerations
+       * that has the same length as the array of joint names, and has the same order of joints as
+       * the joint names array.
+       */
+      @TypeCode(type="trajectory_msgs::msg::dds_::MultiDOFJointTrajectory_")
+      struct MultiDOFJointTrajectory
+      {
+        /**
+         * The header is used to specify the coordinate frame and the reference time for the trajectory durations
+         */
+        std_msgs::msg::dds::Header header;
+        sequence<string> joint_names;
+        sequence<trajectory_msgs::msg::dds::MultiDOFJointTrajectoryPoint> points;
+      };  // struct MultiDOFJointTrajectory
+    };  // module dds_
+  };  // module msg
+};  // module trajectory_msgs
+
+#endif  // __trajectory_msgs__msg__MultiDOFJointTrajectory__idl__

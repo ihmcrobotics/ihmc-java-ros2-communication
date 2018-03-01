@@ -1,0 +1,80 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __sensor_msgs__msg__MultiEchoLaserScan__idl__
+#define __sensor_msgs__msg__MultiEchoLaserScan__idl__
+
+#include "sensor_msgs/msg/./LaserEcho_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Single scan from a multi-echo planar laser range-finder
+       * 
+       * If you have another ranging device with different behavior (e.g. a sonar
+       * array), please find or create a different message, since applications
+       * will make fairly laser-specific assumptions about this data
+       * the first ray in the scan.
+       * 
+       * in frame frame_id, angles are measured around
+       * the positive Z axis (counterclockwise, if Z is up)
+       * with zero angle being forward along the x axis
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::MultiEchoLaserScan_")
+      struct MultiEchoLaserScan
+      {
+        /**
+         * timestamp in the header is the acquisition time of
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * start angle of the scan [rad]
+         */
+        float angle_min;
+        /**
+         * end angle of the scan [rad]
+         */
+        float angle_max;
+        /**
+         * angular distance between measurements [rad]
+         */
+        float angle_increment;
+        /**
+         * time between measurements [seconds] - if your scanner
+         */
+        float time_increment;
+        /**
+         * is moving, this will be used in interpolating position
+         * of 3d points
+         * time between scans [seconds]
+         */
+        float scan_time;
+        /**
+         * minimum range value [m]
+         */
+        float range_min;
+        /**
+         * maximum range value [m]
+         */
+        float range_max;
+        /**
+         * range data [m]
+         */
+        sequence<sensor_msgs::msg::dds::LaserEcho> ranges;
+        /**
+         * (Note: NaNs, values < range_min or > range_max should be discarded)
+         * +Inf measurements are out of range
+         * -Inf measurements are too close to determine exact distance.
+         * intensity data [device-specific units].  If your
+         */
+        sequence<sensor_msgs::msg::dds::LaserEcho> intensities;
+      };  // struct MultiEchoLaserScan
+    };  // module dds_
+  };  // module msg
+};  // module sensor_msgs
+
+#endif  // __sensor_msgs__msg__MultiEchoLaserScan__idl__

@@ -1,0 +1,34 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __std_msgs__msg__UInt64MultiArray__idl__
+#define __std_msgs__msg__UInt64MultiArray__idl__
+
+#include "std_msgs/msg/./MultiArrayLayout_.idl"
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Please look at the MultiArrayLayout message definition for
+       * documentation on all multiarrays.
+       */
+      @TypeCode(type="std_msgs::msg::dds_::UInt64MultiArray_")
+      struct UInt64MultiArray
+      {
+        /**
+         * specification of data layout
+         */
+        std_msgs::msg::dds::MultiArrayLayout layout;
+        /**
+         * array of data
+         */
+        sequence<unsigned long long> data;
+      };  // struct UInt64MultiArray
+    };  // module dds_
+  };  // module msg
+};  // module std_msgs
+
+#endif  // __std_msgs__msg__UInt64MultiArray__idl__

@@ -1,0 +1,22 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __std_msgs__msg__Float64__idl__
+#define __std_msgs__msg__Float64__idl__
+
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="std_msgs::msg::dds_::Float64_")
+      struct Float64
+      {
+        double data;
+      };  // struct Float64
+    };  // module dds_
+  };  // module msg
+};  // module std_msgs
+
+#endif  // __std_msgs__msg__Float64__idl__

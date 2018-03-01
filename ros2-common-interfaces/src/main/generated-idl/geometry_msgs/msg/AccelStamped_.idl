@@ -1,0 +1,28 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __geometry_msgs__msg__AccelStamped__idl__
+#define __geometry_msgs__msg__AccelStamped__idl__
+
+#include "geometry_msgs/msg/./Accel_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="geometry_msgs::msg::dds_::AccelStamped_")
+      struct AccelStamped
+      {
+        /**
+         * An accel with reference coordinate frame and timestamp
+         */
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::Accel accel;
+      };  // struct AccelStamped
+    };  // module dds_
+  };  // module msg
+};  // module geometry_msgs
+
+#endif  // __geometry_msgs__msg__AccelStamped__idl__

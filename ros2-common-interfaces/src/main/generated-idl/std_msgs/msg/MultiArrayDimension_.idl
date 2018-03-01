@@ -1,0 +1,33 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __std_msgs__msg__MultiArrayDimension__idl__
+#define __std_msgs__msg__MultiArrayDimension__idl__
+
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="std_msgs::msg::dds_::MultiArrayDimension_")
+      struct MultiArrayDimension
+      {
+        /**
+         * label of given dimension
+         */
+        string label;
+        /**
+         * size of given dimension (in type units)
+         */
+        unsigned long size;
+        /**
+         * stride of given dimension
+         */
+        unsigned long stride;
+      };  // struct MultiArrayDimension
+    };  // module dds_
+  };  // module msg
+};  // module std_msgs
+
+#endif  // __std_msgs__msg__MultiArrayDimension__idl__

@@ -1,0 +1,32 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __shape_msgs__msg__Plane__idl__
+#define __shape_msgs__msg__Plane__idl__
+
+module shape_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+typedef double shape_msgs__Plane__double_array_4[4];
+      /**
+       * Representation of a plane, using the plane equation ax + by + cz + d = 0.
+       */
+      @TypeCode(type="shape_msgs::msg::dds_::Plane_")
+      struct Plane
+      {
+        /**
+         * a := coef[0]
+         * b := coef[1]
+         * c := coef[2]
+         * d := coef[3]
+         */
+    shape_msgs__Plane__double_array_4 coef;
+      };  // struct Plane
+    };  // module dds_
+  };  // module msg
+};  // module shape_msgs
+
+#endif  // __shape_msgs__msg__Plane__idl__

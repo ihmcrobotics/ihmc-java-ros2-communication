@@ -1,0 +1,32 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __diagnostic_msgs__msg__DiagnosticArray__idl__
+#define __diagnostic_msgs__msg__DiagnosticArray__idl__
+
+#include "diagnostic_msgs/msg/./DiagnosticStatus_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module diagnostic_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="diagnostic_msgs::msg::dds_::DiagnosticArray_")
+      struct DiagnosticArray
+      {
+        /**
+         * This message is used to send diagnostic information about the state of the robot.
+         * for timestamp
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * an array of components being reported on
+         */
+        sequence<diagnostic_msgs::msg::dds::DiagnosticStatus> status;
+      };  // struct DiagnosticArray
+    };  // module dds_
+  };  // module msg
+};  // module diagnostic_msgs
+
+#endif  // __diagnostic_msgs__msg__DiagnosticArray__idl__

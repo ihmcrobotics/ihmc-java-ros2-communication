@@ -1,0 +1,65 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __visualization_msgs__msg__InteractiveMarkerUpdate__idl__
+#define __visualization_msgs__msg__InteractiveMarkerUpdate__idl__
+
+#include "visualization_msgs/msg/./InteractiveMarkerPose_.idl"
+#include "visualization_msgs/msg/./InteractiveMarker_.idl"
+module visualization_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * Type holds the purpose of this message.  It must be one of UPDATE or KEEP_ALIVE.
+       * UPDATE: Incremental update to previous state.
+       * The sequence number must be 1 higher than for
+       * the previous update.
+       * KEEP_ALIVE: Indicates the that the server is still living.
+       * The sequence number does not increase.
+       * No payload data should be filled out (markers, poses, or erases).
+       */
+      const octet InteractiveMarkerUpdate__KEEP_ALIVE =
+      0;
+
+      const octet InteractiveMarkerUpdate__UPDATE =
+      1;
+
+
+      /**
+       * Note: No guarantees on the order of processing.
+       * Contents must be kept consistent by sender.
+       */
+      @TypeCode(type="visualization_msgs::msg::dds_::InteractiveMarkerUpdate_")
+      struct InteractiveMarkerUpdate
+      {
+        /**
+         * Identifying string. Must be unique in the topic namespace
+         * that this server works on.
+         */
+        string server_id;
+        /**
+         * Sequence number.
+         * The client will use this to detect if it has missed an update.
+         */
+        unsigned long long seq_num;
+        octet type;
+        /**
+         * Markers to be added or updated
+         */
+        sequence<visualization_msgs::msg::dds::InteractiveMarker> markers;
+        /**
+         * Poses of markers that should be moved
+         */
+        sequence<visualization_msgs::msg::dds::InteractiveMarkerPose> poses;
+        /**
+         * Names of markers to be erased
+         */
+        sequence<string> erases;
+      };  // struct InteractiveMarkerUpdate
+    };  // module dds_
+  };  // module msg
+};  // module visualization_msgs
+
+#endif  // __visualization_msgs__msg__InteractiveMarkerUpdate__idl__

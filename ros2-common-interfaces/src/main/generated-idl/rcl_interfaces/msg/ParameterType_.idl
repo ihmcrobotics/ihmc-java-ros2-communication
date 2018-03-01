@@ -1,0 +1,40 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __rcl_interfaces__msg__ParameterType__idl__
+#define __rcl_interfaces__msg__ParameterType__idl__
+
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+      const octet ParameterType__PARAMETER_NOT_SET =
+      0;
+
+      const octet ParameterType__PARAMETER_BOOL =
+      1;
+
+      const octet ParameterType__PARAMETER_INTEGER =
+      2;
+
+      const octet ParameterType__PARAMETER_DOUBLE =
+      3;
+
+      const octet ParameterType__PARAMETER_STRING =
+      4;
+
+      const octet ParameterType__PARAMETER_BYTES =
+      5;
+
+
+      @TypeCode(type="rcl_interfaces::msg::dds_::ParameterType_")
+      struct ParameterType
+      {
+  boolean _dummy;
+      };  // struct ParameterType
+    };  // module dds_
+  };  // module msg
+};  // module rcl_interfaces
+
+#endif  // __rcl_interfaces__msg__ParameterType__idl__

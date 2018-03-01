@@ -1,0 +1,37 @@
+// generated from rosidl_generator_dds_idl/resource/msg.idl.em
+
+#ifndef __geometry_msgs__msg__TransformStamped__idl__
+#define __geometry_msgs__msg__TransformStamped__idl__
+
+#include "geometry_msgs/msg/./Transform_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This expresses a transform from coordinate frame header.frame_id
+       * to the coordinate frame child_frame_id
+       * 
+       * This message is mostly used by the
+       * <a href="http://www.ros.org/wiki/tf">tf</a> package.
+       * See its documentation for more information.
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::TransformStamped_")
+      struct TransformStamped
+      {
+        std_msgs::msg::dds::Header header;
+        /**
+         * the frame id of the child frame
+         */
+        string child_frame_id;
+        geometry_msgs::msg::dds::Transform transform;
+      };  // struct TransformStamped
+    };  // module dds_
+  };  // module msg
+};  // module geometry_msgs
+
+#endif  // __geometry_msgs__msg__TransformStamped__idl__
