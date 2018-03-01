@@ -6,7 +6,7 @@ import us.ihmc.rosidl.Ros2MsgToIdlGenerator;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-public class TestGenerateIDL
+public class TestGenerateMSGToIDL
 {
    public static void main(String[] args) throws IOException
    {
