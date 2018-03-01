@@ -3,10 +3,10 @@ import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 /**
 * 
-* Definition of the class "Num" defined in Num_.idl. 
+* Definition of the class "Num" defined in TwoNum_.idl. 
 *
-* This file was automatically generated from Num_.idl by us.ihmc.idl.generator.IDLGenerator. 
-* Do not update this file directly, edit Num_.idl instead.
+* This file was automatically generated from TwoNum_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit TwoNum_.idl instead.
 *
 */
 public class Num implements Settable<Num>, EpsilonComparable<Num>

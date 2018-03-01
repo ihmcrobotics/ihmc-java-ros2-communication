@@ -1,5 +1,3 @@
-// generated from rosidl_generator_dds_idl/resource/msg.idl.em
-
 @###############################################
 @#
 @# ROS interface to DDS interface converter
