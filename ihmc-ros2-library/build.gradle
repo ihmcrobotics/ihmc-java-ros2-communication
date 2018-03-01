@@ -13,19 +13,15 @@ buildscript {
 apply plugin: "us.ihmc.ihmc-build"
 
 ihmc {
-   group = "us.ihmc"
-   version = "0.2.0"
-   vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
-   openSource = true
-   maintainer = "Jesper Smith (jsmith@ihmc.us)"
+   loadProductProperties("../product.properties")
 
    configureDependencyResolution()
    configurePublications()
 }
 
 mainDependencies {
-   compile group: 'us.ihmc', name: 'ros2-common-interfaces', version: '0.4.0'
-   compile group: 'us.ihmc', name: 'ihmc-pub-sub', version: '0.4.0'
+   compile group: 'us.ihmc', name: 'ros2-common-interfaces', version: '0.3.0'
+   compile group: 'us.ihmc', name: 'ihmc-pub-sub', version: '0.5.1'
    compile group: 'us.ihmc', name: 'IHMCRealtime', version: '1.1.8'
    compile group: 'us.ihmc', name: 'ihmc-commons', version: '0.18.0'
 }

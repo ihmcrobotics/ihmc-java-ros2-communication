@@ -24,10 +24,8 @@ def commonInterfacesUrl = "https://github.com/ros2/common_interfaces.git"
 def ros2Release = "0.4.0"
 
 ihmc {
-   group = "us.ihmc"
-   version = ros2Release
-   vcsUrl = "https://github.com/ihmcrobotics/ros2-common-interfaces"
-   openSource = true
+   loadProductProperties("../product.properties")
+   version = "0.4.0.1"
 
    configureDependencyResolution()
    resourceDirectory("main", "custom-idl")
@@ -40,11 +38,11 @@ ihmc {
 mainDependencies {
    compile group: "us.ihmc", name: "euclid-core", version: "0.4.13"
    compile group: "us.ihmc", name: "euclid", version: "0.7.5"
-   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.4.0"
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.5.1"
 }
 
 generatorDependencies {
-   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: "0.3"
+   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: "0.3.0"
 }
 
 task show() {

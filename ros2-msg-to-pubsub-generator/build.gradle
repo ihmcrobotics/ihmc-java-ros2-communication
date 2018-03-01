@@ -11,11 +11,7 @@ apply plugin: "us.ihmc.ihmc-build"
 //apply plugin: 'application'
 
 ihmc {
-   group = "us.ihmc"
-   version = "0.2"
-   vcsUrl = "https://stash.ihmc.us/projects/LIBS/repos/ihmc-java-ros2-communication"
-   openSource = true
-   maintainer = "Duncan Calvert (dcalvert@ihmc.us)"
+   loadProductProperties("../product.properties")
 
    configureDependencyResolution()
    javaDirectory("main", "java-generated")
@@ -31,12 +27,12 @@ dependencies {
 }
 
 mainDependencies {
-   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.3.7'
-   compile group: 'us.ihmc', name: 'ros2-msg-to-idl-generator', version: '1.0'
+   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.5.1'
+   compile group: 'us.ihmc', name: 'ros2-msg-to-idl-generator', version: '0.3.0'
 }
 
 testDependencies {
-   compile group: 'us.ihmc', name: 'ihmc-pub-sub', version: '0.3.7'
+   compile group: 'us.ihmc', name: 'ihmc-pub-sub', version: '0.5.1'
 }
 
 task show() {
