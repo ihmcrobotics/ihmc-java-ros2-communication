@@ -19,16 +19,24 @@ ihmc {
 
    configureDependencyResolution()
    javaDirectory("main", "java-generated")
+   resourceDirectory("test", "generated-idl")
+   resourceDirectory("test", "custom-idl")
+   javaDirectory("test", "generated-java")
+   resourceDirectory("test", "ros_msgs")
    configurePublications()
 }
 
 dependencies {
    compile gradleApi()
-   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.3.7'
 }
 
 mainDependencies {
+   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.3.7'
    compile group: 'us.ihmc', name: 'ros2-msg-to-idl-generator', version: '1.0'
+}
+
+testDependencies {
+   compile group: 'us.ihmc', name: 'ihmc-pub-sub', version: '0.3.7'
 }
 
 task show() {
