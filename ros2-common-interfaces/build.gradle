@@ -30,7 +30,8 @@ ihmc {
    openSource = true
 
    configureDependencyResolution()
-   resourceDirectory("main", "idl")
+   resourceDirectory("main", "custom-idl")
+   resourceDirectory("main", "generated-idl")
    javaDirectory("main", "generated-java")
    resourceDirectory("main", "vendor")
    configurePublications()

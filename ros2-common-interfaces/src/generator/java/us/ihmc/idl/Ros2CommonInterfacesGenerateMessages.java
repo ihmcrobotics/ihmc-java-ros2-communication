@@ -21,8 +21,8 @@ public class Ros2CommonInterfacesGenerateMessages
       generator.addPackageRoot(Paths.get("src/main/vendor/rcl_interfaces"));
       generator.addPackageRoot(Paths.get("src/main/vendor/common_interfaces"));
 
-      generator.addCustomIDLFiles(Paths.get("src/main/idl"));
+      generator.addCustomIDLFiles(Paths.get("src/main/custom-idl"));
 
-      generator.generate(Paths.get("build/tmp/idl"), Paths.get("src/main/generated-java"));
+      generator.generate(Paths.get("src/main/generated-idl"), Paths.get("src/main/generated-java"));
    }
 }
