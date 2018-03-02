@@ -29,7 +29,7 @@ module ros_msgs
       struct Num
       {
         /**
-         * some doc
+         * this num should have default value 5
          */
         long long num;
         /**

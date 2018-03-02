@@ -10,8 +10,8 @@ string CATCH_22="No doc, watch out!"
 
 # This is some dangling comment that will be included in header
 
-# some doc
-int64 num
+# this num should have default value 5
+int64 num 5
 
 # @javadoc I guess javadoc will work okay.
 int32 hello # hello
