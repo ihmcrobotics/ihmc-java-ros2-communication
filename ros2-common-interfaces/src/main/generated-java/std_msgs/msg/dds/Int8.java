@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Int8" defined in Int8_.idl.
- *
- * This file was automatically generated from Int8_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Int8_.idl instead.
- */
 public class Int8 implements Settable<Int8>, EpsilonComparable<Int8>
 {
    private byte data_;

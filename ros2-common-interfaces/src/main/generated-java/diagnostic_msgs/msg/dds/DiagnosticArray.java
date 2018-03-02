@@ -3,12 +3,6 @@ package diagnostic_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "DiagnosticArray" defined in DiagnosticArray_.idl.
- *
- * This file was automatically generated from DiagnosticArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit DiagnosticArray_.idl instead.
- */
 public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonComparable<DiagnosticArray>
 {
    /**
@@ -24,11 +18,6 @@ public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonCompar
       status_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus>(100, diagnostic_msgs.msg.dds.DiagnosticStatus.class,
                                                                                              new diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType());
    }
-
-   /**
-    * This message is used to send diagnostic information about the state of the robot.
-    * for timestamp
-    */
 
    public DiagnosticArray(DiagnosticArray other)
    {

@@ -3,12 +3,6 @@ package actionlib_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "GoalStatusArray" defined in GoalStatusArray_.idl.
- *
- * This file was automatically generated from GoalStatusArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit GoalStatusArray_.idl instead.
- */
 public class GoalStatusArray implements Settable<GoalStatusArray>, EpsilonComparable<GoalStatusArray>
 {
    /**
@@ -24,11 +18,6 @@ public class GoalStatusArray implements Settable<GoalStatusArray>, EpsilonCompar
       status_list_ = new us.ihmc.idl.IDLSequence.Object<actionlib_msgs.msg.dds.GoalStatus>(100, actionlib_msgs.msg.dds.GoalStatus.class,
                                                                                            new actionlib_msgs.msg.dds.GoalStatusPubSubType());
    }
-
-   /**
-    * Stores the statuses for goals that are currently being tracked
-    * by an action server
-    */
 
    public GoalStatusArray(GoalStatusArray other)
    {

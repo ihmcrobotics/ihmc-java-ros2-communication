@@ -4,10 +4,9 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "MultiArrayLayout" defined in MultiArrayLayout_.idl.
- *
- * This file was automatically generated from MultiArrayLayout_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MultiArrayLayout_.idl instead.
+ * The multiarray declares a generic multi-dimensional array of a
+ * particular data type.  Dimensions are ordered from outer most
+ * to inner most.
  */
 public class MultiArrayLayout implements Settable<MultiArrayLayout>, EpsilonComparable<MultiArrayLayout>
 {

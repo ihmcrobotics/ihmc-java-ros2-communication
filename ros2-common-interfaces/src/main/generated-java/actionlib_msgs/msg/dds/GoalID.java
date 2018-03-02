@@ -3,12 +3,6 @@ package actionlib_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "GoalID" defined in GoalID_.idl.
- *
- * This file was automatically generated from GoalID_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit GoalID_.idl instead.
- */
 public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
 {
    /**
@@ -29,12 +23,6 @@ public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
       stamp_ = new builtin_interfaces.msg.dds.Time();
       id_ = new java.lang.StringBuilder(255);
    }
-
-   /**
-    * The stamp should store the time at which this goal was requested.
-    * It is used by an action server when it tries to preempt all
-    * goals that were requested before a certain time
-    */
 
    public GoalID(GoalID other)
    {
@@ -58,6 +46,11 @@ public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
       return stamp_;
    }
 
+   /**
+    * The id provides a way to associate feedback and
+    * result message with specific goal requests. The id
+    * specified must be unique.
+    */
    public java.lang.String getIdAsString()
    {
       return getId().toString();

@@ -3,12 +3,6 @@ package visualization_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "MarkerArray" defined in MarkerArray_.idl.
- *
- * This file was automatically generated from MarkerArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MarkerArray_.idl instead.
- */
 public class MarkerArray implements Settable<MarkerArray>, EpsilonComparable<MarkerArray>
 {
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;

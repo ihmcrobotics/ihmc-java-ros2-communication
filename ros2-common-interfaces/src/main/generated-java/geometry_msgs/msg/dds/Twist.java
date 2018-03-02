@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Twist" defined in Twist_.idl.
- *
- * This file was automatically generated from Twist_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Twist_.idl instead.
+ * This expresses velocity in free space broken into its linear and angular parts.
  */
 public class Twist implements Settable<Twist>, EpsilonComparable<Twist>
 {

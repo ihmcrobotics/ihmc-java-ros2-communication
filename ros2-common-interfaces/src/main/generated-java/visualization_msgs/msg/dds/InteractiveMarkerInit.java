@@ -3,12 +3,6 @@ package visualization_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "InteractiveMarkerInit" defined in InteractiveMarkerInit_.idl.
- *
- * This file was automatically generated from InteractiveMarkerInit_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerInit_.idl instead.
- */
 public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, EpsilonComparable<InteractiveMarkerInit>
 {
    /**
@@ -50,6 +44,10 @@ public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, E
       markers_.set(other.markers_);
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    public java.lang.String getServerIdAsString()
    {
       return getServerId().toString();

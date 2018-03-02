@@ -4,10 +4,20 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Image" defined in Image_.idl.
- *
- * This file was automatically generated from Image_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Image_.idl instead.
+ * This message contains an uncompressed image
+ * (0, 0) is at top-left corner of image
+ * Header frame_id should be optical frame of camera
+ * origin of frame should be optical center of cameara
+ * +x should point to the right in the image
+ * +y should point down in the image
+ * +z should point into to plane of the image
+ * If the frame_id here and the frame_id of the CameraInfo
+ * message associated with the image conflict
+ * the behavior is undefined
+ * The legal values for encoding are in file src/image_encodings.cpp
+ * If you want to standardize a new string format, join
+ * ros-users@lists.ros.org and send an email proposing a new encoding.
+ * taken from the list of strings in include/sensor_msgs/image_encodings.h
  */
 public class Image implements Settable<Image>, EpsilonComparable<Image>
 {
@@ -23,10 +33,6 @@ public class Image implements Settable<Image>, EpsilonComparable<Image>
     * image width, that is, number of columns
     */
    private long width_;
-
-   /**
-    * Header timestamp should be acquisition time of image
-    */
    /**
     * Encoding of pixels -- channel meaning, ordering, size
     */
@@ -116,9 +122,8 @@ public class Image implements Settable<Image>, EpsilonComparable<Image>
    }
 
    /**
-    * actual matrix data, size is (step * rows)
+    * Encoding of pixels -- channel meaning, ordering, size
     */
-
    public java.lang.String getEncodingAsString()
    {
       return getEncoding().toString();

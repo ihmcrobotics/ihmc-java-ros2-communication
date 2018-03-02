@@ -4,10 +4,19 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Imu" defined in Imu_.idl.
+ * This is a message to hold data from an IMU (Inertial Measurement Unit)
  *
- * This file was automatically generated from Imu_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Imu_.idl instead.
+ * Accelerations should be in m/s^2 (not in g's), and rotational velocity should be in rad/sec
+ *
+ * If the covariance of the measurement is known, it should be filled in (if all you know is the
+ * variance of each measurement, e.g. from the datasheet, just put those along the diagonal)
+ * A covariance matrix of all zeros will be interpreted as "covariance unknown", and to use the
+ * data a covariance will have to be assumed or gotten from some other source
+ *
+ * If you have no estimate for one of the data elements (e.g. your IMU doesn't produce an
+ * orientation estimate), please set element 0 of the associated covariance matrix to -1
+ * If you are interpreting this message, please check for a value of -1 in the first element of each
+ * covariance matrix, and disregard the associated estimate.
  */
 public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
 {
@@ -22,19 +31,11 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
     * Row major about x, y, z axes
     */
    private double[] angular_velocity_covariance_;
-
-   /**
-    * Row major about x, y, z axes
-    */
    private us.ihmc.euclid.tuple3D.Vector3D linear_acceleration_;
    /**
     * Row major x, y z
     */
    private double[] linear_acceleration_covariance_;
-
-   /**
-    * Row major about x, y, z axes
-    */
 
    public Imu()
    {
@@ -53,10 +54,6 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
    {
       set(other);
    }
-
-   /**
-    * Row major x, y z
-    */
 
    public void set(Imu other)
    {

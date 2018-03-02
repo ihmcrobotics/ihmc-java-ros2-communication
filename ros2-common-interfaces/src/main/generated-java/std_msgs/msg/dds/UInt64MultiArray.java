@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "UInt64MultiArray" defined in UInt64MultiArray_.idl.
- *
- * This file was automatically generated from UInt64MultiArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit UInt64MultiArray_.idl instead.
+ * Please look at the MultiArrayLayout message definition for
+ * documentation on all multiarrays.
  */
 public class UInt64MultiArray implements Settable<UInt64MultiArray>, EpsilonComparable<UInt64MultiArray>
 {
@@ -22,10 +20,6 @@ public class UInt64MultiArray implements Settable<UInt64MultiArray>, EpsilonComp
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
       data_ = new us.ihmc.idl.IDLSequence.Long(100, "type_12");
    }
-
-   /**
-    * specification of data layout
-    */
 
    public UInt64MultiArray(UInt64MultiArray other)
    {

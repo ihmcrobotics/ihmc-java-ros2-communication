@@ -3,12 +3,6 @@ package sensor_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "JoyFeedback" defined in JoyFeedback_.idl.
- *
- * This file was automatically generated from JoyFeedback_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit JoyFeedback_.idl instead.
- */
 public class JoyFeedback implements Settable<JoyFeedback>, EpsilonComparable<JoyFeedback>
 {
    private byte type_;

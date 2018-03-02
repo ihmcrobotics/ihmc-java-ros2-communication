@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PoseWithCovarianceStamped" defined in PoseWithCovarianceStamped_.idl.
- *
- * This file was automatically generated from PoseWithCovarianceStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PoseWithCovarianceStamped_.idl instead.
+ * This expresses an estimated pose with a reference coordinate frame and timestamp
  */
 public class PoseWithCovarianceStamped implements Settable<PoseWithCovarianceStamped>, EpsilonComparable<PoseWithCovarianceStamped>
 {

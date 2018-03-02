@@ -4,10 +4,9 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Transition" defined in Transition_.idl.
- *
- * This file was automatically generated from Transition_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Transition_.idl instead.
+ * Default values for transitions
+ * as described on
+ * http://design.ros2.org/articles/node_lifecycle.html
  */
 public class Transition implements Settable<Transition>, EpsilonComparable<Transition>
 {

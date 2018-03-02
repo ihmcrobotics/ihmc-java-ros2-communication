@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "UInt8MultiArray" defined in UInt8MultiArray_.idl.
- *
- * This file was automatically generated from UInt8MultiArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit UInt8MultiArray_.idl instead.
+ * Please look at the MultiArrayLayout message definition for
+ * documentation on all multiarrays.
  */
 public class UInt8MultiArray implements Settable<UInt8MultiArray>, EpsilonComparable<UInt8MultiArray>
 {
@@ -26,18 +24,10 @@ public class UInt8MultiArray implements Settable<UInt8MultiArray>, EpsilonCompar
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
-   /**
-    * specification of data layout
-    */
-
    public UInt8MultiArray(UInt8MultiArray other)
    {
       set(other);
    }
-
-   /**
-    * array of data
-    */
 
    public void set(UInt8MultiArray other)
    {

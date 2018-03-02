@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "InteractiveMarkerUpdate" defined in InteractiveMarkerUpdate_.idl.
- *
- * This file was automatically generated from InteractiveMarkerUpdate_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerUpdate_.idl instead.
+ * Note: No guarantees on the order of processing.
+ * Contents must be kept consistent by sender.
  */
 public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate>, EpsilonComparable<InteractiveMarkerUpdate>
 {
@@ -61,6 +59,10 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
       erases_.set(other.erases_);
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    public java.lang.String getServerIdAsString()
    {
       return getServerId().toString();
@@ -84,10 +86,6 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
       server_id_.setLength(0);
       server_id_.append(server_id);
    }
-
-   /**
-    * Names of markers to be erased
-    */
 
    /**
     * Sequence number.

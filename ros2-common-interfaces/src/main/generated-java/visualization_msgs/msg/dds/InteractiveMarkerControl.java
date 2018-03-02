@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "InteractiveMarkerControl" defined in InteractiveMarkerControl_.idl.
- *
- * This file was automatically generated from InteractiveMarkerControl_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerControl_.idl instead.
+ * Represents a control that is to be displayed together with an interactive marker
  */
 public class InteractiveMarkerControl implements Settable<InteractiveMarkerControl>, EpsilonComparable<InteractiveMarkerControl>
 {
@@ -31,12 +28,6 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
     */
    private boolean always_visible_;
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;
-
-   /**
-    * Defines the local coordinate frame (relative to the pose of the parent
-    * interactive marker) in which is being rotated and translated.
-    * Default: Identity
-    */
    /**
     * In VIEW_FACING mode, set this to true if you don't want the markers
     * to be aligned with the camera view point. The markers will show up
@@ -86,6 +77,11 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       description_.append(other.description_);
    }
 
+   /**
+    * Identifying string for this control.
+    * You need to assign a unique value to this to receive feedback from the GUI
+    * on what actions the user performs on this control (e.g. a button click).
+    */
    public java.lang.String getNameAsString()
    {
       return getName().toString();
@@ -185,6 +181,11 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       independent_marker_orientation_ = independent_marker_orientation;
    }
 
+   /**
+    * Short description (< 40 characters) of what this control does,
+    * e.g. "Move the robot".
+    * Default: A generic description based on the interaction mode
+    */
    public java.lang.String getDescriptionAsString()
    {
       return getDescription().toString();

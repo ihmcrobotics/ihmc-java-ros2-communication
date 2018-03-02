@@ -4,10 +4,16 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "LaserScan" defined in LaserScan_.idl.
+ * Single scan from a planar laser range-finder
  *
- * This file was automatically generated from LaserScan_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit LaserScan_.idl instead.
+ * If you have another ranging device with different behavior (e.g. a sonar
+ * array), please find or create a different message, since applications
+ * will make fairly laser-specific assumptions about this data
+ * the first ray in the scan.
+ *
+ * in frame frame_id, angles are measured around
+ * the positive Z axis (counterclockwise, if Z is up)
+ * with zero angle being forward along the x axis
  */
 public class LaserScan implements Settable<LaserScan>, EpsilonComparable<LaserScan>
 {
@@ -23,10 +29,6 @@ public class LaserScan implements Settable<LaserScan>, EpsilonComparable<LaserSc
     * end angle of the scan [rad]
     */
    private float angle_max_;
-
-   /**
-    * timestamp in the header is the acquisition time of
-    */
    /**
     * angular distance between measurements [rad]
     */
@@ -135,21 +137,12 @@ public class LaserScan implements Settable<LaserScan>, EpsilonComparable<LaserSc
    }
 
    /**
-    * range data [m]
-    */
-
-   /**
     * angular distance between measurements [rad]
     */
    public float getAngleIncrement()
    {
       return angle_increment_;
    }
-
-   /**
-    * (Note: values < range_min or > range_max should be discarded)
-    * intensity data [device-specific units].  If your
-    */
 
    /**
     * angular distance between measurements [rad]

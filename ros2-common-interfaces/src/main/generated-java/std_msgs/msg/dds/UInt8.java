@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "UInt8" defined in UInt8_.idl.
- *
- * This file was automatically generated from UInt8_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit UInt8_.idl instead.
- */
 public class UInt8 implements Settable<UInt8>, EpsilonComparable<UInt8>
 {
    private byte data_;

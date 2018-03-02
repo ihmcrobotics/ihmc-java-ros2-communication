@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "UInt16" defined in UInt16_.idl.
- *
- * This file was automatically generated from UInt16_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit UInt16_.idl instead.
- */
 public class UInt16 implements Settable<UInt16>, EpsilonComparable<UInt16>
 {
    private int data_;

@@ -3,12 +3,6 @@ package geometry_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "AccelStamped" defined in AccelStamped_.idl.
- *
- * This file was automatically generated from AccelStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit AccelStamped_.idl instead.
- */
 public class AccelStamped implements Settable<AccelStamped>, EpsilonComparable<AccelStamped>
 {
    /**
@@ -22,10 +16,6 @@ public class AccelStamped implements Settable<AccelStamped>, EpsilonComparable<A
       header_ = new std_msgs.msg.dds.Header();
       accel_ = new geometry_msgs.msg.dds.Accel();
    }
-
-   /**
-    * An accel with reference coordinate frame and timestamp
-    */
 
    public AccelStamped(AccelStamped other)
    {

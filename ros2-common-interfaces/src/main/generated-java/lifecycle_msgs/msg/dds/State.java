@@ -4,10 +4,9 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "State" defined in State_.idl.
- *
- * This file was automatically generated from State_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit State_.idl instead.
+ * Primary state definitions
+ * as depicted in
+ * http://design.ros2.org/articles/node_lifecycle.html
  */
 public class State implements Settable<State>, EpsilonComparable<State>
 {

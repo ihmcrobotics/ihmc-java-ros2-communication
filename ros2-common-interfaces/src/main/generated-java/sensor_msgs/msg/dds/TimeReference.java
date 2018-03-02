@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "TimeReference" defined in TimeReference_.idl.
- *
- * This file was automatically generated from TimeReference_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TimeReference_.idl instead.
+ * Measurement from an external time source not actively synchronized with the system clock.
+ * frame_id is not used
  */
 public class TimeReference implements Settable<TimeReference>, EpsilonComparable<TimeReference>
 {
@@ -24,20 +22,12 @@ public class TimeReference implements Settable<TimeReference>, EpsilonComparable
     */
    private java.lang.StringBuilder source_;
 
-   /**
-    * stamp is system time for which measurement was valid
-    */
-
    public TimeReference()
    {
       header_ = new std_msgs.msg.dds.Header();
       time_ref_ = new builtin_interfaces.msg.dds.Time();
       source_ = new java.lang.StringBuilder(255);
    }
-
-   /**
-    * corresponding time from this external source
-    */
 
    public TimeReference(TimeReference other)
    {
@@ -68,6 +58,9 @@ public class TimeReference implements Settable<TimeReference>, EpsilonComparable
       return time_ref_;
    }
 
+   /**
+    * (optional) name of time source
+    */
    public java.lang.String getSourceAsString()
    {
       return getSource().toString();

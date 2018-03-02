@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PoseWithCovariance" defined in PoseWithCovariance_.idl.
- *
- * This file was automatically generated from PoseWithCovariance_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PoseWithCovariance_.idl instead.
+ * This represents a pose in free space with uncertainty.
  */
 public class PoseWithCovariance implements Settable<PoseWithCovariance>, EpsilonComparable<PoseWithCovariance>
 {
@@ -30,13 +27,6 @@ public class PoseWithCovariance implements Settable<PoseWithCovariance>, Epsilon
    {
       set(other);
    }
-
-   /**
-    * Row-major representation of the 6x6 covariance matrix
-    * The orientation parameters use a fixed-axis representation.
-    * In order, the parameters are:
-    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
-    */
 
    public void set(PoseWithCovariance other)
    {

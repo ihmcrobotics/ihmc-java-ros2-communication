@@ -4,10 +4,11 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Marker" defined in Marker_.idl.
+ * See:
+ * - http://www.ros.org/wiki/rviz/DisplayTypes/Marker
+ * - http://www.ros.org/wiki/rviz/Tutorials/Markers%3A%20Basic%20Shapes
  *
- * This file was automatically generated from Marker_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Marker_.idl instead.
+ * for more information on using this message with rviz.
  */
 public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
 {
@@ -24,10 +25,6 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
     * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
     */
    private int id_;
-
-   /**
-    * Header for timestamp and frame id.
-    */
    /**
     * Type of object.
     */
@@ -67,23 +64,11 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
     * Only used for text markers
     */
    private java.lang.StringBuilder text_;
-
-   /**
-    * Pose of the object with respect the frame_id specified in the header.
-    */
    /**
     * Only used for MESH_RESOURCE markers.
     */
    private java.lang.StringBuilder mesh_resource_;
-
-   /**
-    * Scale of the object; 1,1,1 means default (usually 1 meter square).
-    */
    private boolean mesh_use_embedded_materials_;
-
-   /**
-    * Color of the object; in the range: [0.0-1.0]
-    */
 
    public Marker()
    {
@@ -105,11 +90,6 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
 
       mesh_resource_ = new java.lang.StringBuilder(255);
    }
-
-   /**
-    * How long the object should last before being automatically deleted.
-    * 0 indicates forever.
-    */
 
    public Marker(Marker other)
    {
@@ -153,6 +133,10 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       return header_;
    }
 
+   /**
+    * Namespace in which to place the object.
+    * Used in conjunction with id to create a unique name for the object.
+    */
    public java.lang.String getNsAsString()
    {
       return getNs().toString();
@@ -292,6 +276,9 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       return colors_;
    }
 
+   /**
+    * Only used for text markers
+    */
    public java.lang.String getTextAsString()
    {
       return getText().toString();
@@ -314,6 +301,9 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       text_.append(text);
    }
 
+   /**
+    * Only used for MESH_RESOURCE markers.
+    */
    public java.lang.String getMeshResourceAsString()
    {
       return getMeshResource().toString();

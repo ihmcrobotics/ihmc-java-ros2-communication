@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "InteractiveMarkerFeedback" defined in InteractiveMarkerFeedback_.idl.
- *
- * This file was automatically generated from InteractiveMarkerFeedback_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerFeedback_.idl instead.
+ * Feedback message sent back from the GUI, e.g.
+ * when the status of an interactive marker was modified by the user.
  */
 public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeedback>, EpsilonComparable<InteractiveMarkerFeedback>
 {
@@ -23,10 +21,6 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
     * Specifies which interactive marker and control this message refers to
     */
    private java.lang.StringBuilder marker_name_;
-
-   /**
-    * Time/frame info.
-    */
    private java.lang.StringBuilder control_name_;
    private byte event_type_;
    /**
@@ -96,6 +90,9 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
       return header_;
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace.
+    */
    public java.lang.String getClientIdAsString()
    {
       return getClientId().toString();
@@ -110,11 +107,6 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
    }
 
    /**
-    * Current pose of the marker
-    * Note: Has to be valid for all feedback types.
-    */
-
-   /**
     * Identifying string. Must be unique in the topic namespace.
     */
    public void setClientId(String client_id)
@@ -123,6 +115,9 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
       client_id_.append(client_id);
    }
 
+   /**
+    * Specifies which interactive marker and control this message refers to
+    */
    public java.lang.String getMarkerNameAsString()
    {
       return getMarkerName().toString();
@@ -135,13 +130,6 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
    {
       return marker_name_;
    }
-
-   /**
-    * If event_type is BUTTON_CLICK, MOUSE_DOWN, or MOUSE_UP, mouse_point
-    * may contain the 3 dimensional position of the event on the
-    * control.  If it does, mouse_point_valid will be true.  mouse_point
-    * will be relative to the frame listed in the header.
-    */
 
    /**
     * Specifies which interactive marker and control this message refers to

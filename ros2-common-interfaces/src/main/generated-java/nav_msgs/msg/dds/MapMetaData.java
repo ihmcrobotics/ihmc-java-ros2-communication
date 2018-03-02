@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "MapMetaData" defined in MapMetaData_.idl.
- *
- * This file was automatically generated from MapMetaData_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MapMetaData_.idl instead.
+ * This hold basic information about the characterists of the OccupancyGrid
  */
 public class MapMetaData implements Settable<MapMetaData>, EpsilonComparable<MapMetaData>
 {
@@ -23,10 +20,6 @@ public class MapMetaData implements Settable<MapMetaData>, EpsilonComparable<Map
     * Map width [cells]
     */
    private long width_;
-
-   /**
-    * The time at which the map was loaded
-    */
    /**
     * Map height [cells]
     */
@@ -76,11 +69,6 @@ public class MapMetaData implements Settable<MapMetaData>, EpsilonComparable<Map
    {
       return resolution_;
    }
-
-   /**
-    * The origin of the map [m, m, rad].  This is the real-world pose of the
-    * cell (0,0) in the map.
-    */
 
    /**
     * The map resolution [m/cell]

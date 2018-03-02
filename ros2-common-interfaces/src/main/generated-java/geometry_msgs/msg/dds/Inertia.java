@@ -3,12 +3,6 @@ package geometry_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Inertia" defined in Inertia_.idl.
- *
- * This file was automatically generated from Inertia_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Inertia_.idl instead.
- */
 public class Inertia implements Settable<Inertia>, EpsilonComparable<Inertia>
 {
    /**
@@ -28,10 +22,6 @@ public class Inertia implements Settable<Inertia>, EpsilonComparable<Inertia>
    private double ixx_;
    private double ixy_;
    private double ixz_;
-
-   /**
-    * Center of mass [m]
-    */
    private double iyy_;
    private double iyz_;
    private double izz_;

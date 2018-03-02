@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "ParameterDescriptor" defined in ParameterDescriptor_.idl.
- *
- * This file was automatically generated from ParameterDescriptor_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ParameterDescriptor_.idl instead.
+ * This is the message to communicate a parameter's descriptor.
  */
 public class ParameterDescriptor implements Settable<ParameterDescriptor>, EpsilonComparable<ParameterDescriptor>
 {

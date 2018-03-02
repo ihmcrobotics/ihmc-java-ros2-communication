@@ -4,10 +4,10 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "BatteryState" defined in BatteryState_.idl.
- *
- * This file was automatically generated from BatteryState_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit BatteryState_.idl instead.
+ * Constants are chosen to match the enums in the linux kernel
+ * defined in include/linux/power_supply.h as of version 3.7
+ * The one difference is for style reasons the constants are
+ * all uppercase not mixed case.
  */
 public class BatteryState implements Settable<BatteryState>, EpsilonComparable<BatteryState>
 {
@@ -167,10 +167,6 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
    }
 
    /**
-    * An array of individual cell voltages for each cell in the pack
-    */
-
-   /**
     * Capacity in Ah (last full capacity)  (If unmeasured NaN)
     */
    public float getCapacity()
@@ -290,6 +286,10 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
       return cell_voltage_;
    }
 
+   /**
+    * If individual voltages unknown but number of cells known set each to NaN
+    * The location into which the battery is inserted. (slot number or plug)
+    */
    public java.lang.String getLocationAsString()
    {
       return getLocation().toString();
@@ -314,6 +314,9 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
       location_.append(location);
    }
 
+   /**
+    * The best approximation of the battery serial number
+    */
    public java.lang.String getSerialNumberAsString()
    {
       return getSerialNumber().toString();

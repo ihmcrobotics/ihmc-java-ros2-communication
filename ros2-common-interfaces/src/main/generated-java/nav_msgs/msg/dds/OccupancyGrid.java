@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "OccupancyGrid" defined in OccupancyGrid_.idl.
- *
- * This file was automatically generated from OccupancyGrid_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit OccupancyGrid_.idl instead.
+ * This represents a 2-D grid map, in which each cell represents the probability of occupancy.
  */
 public class OccupancyGrid implements Settable<OccupancyGrid>, EpsilonComparable<OccupancyGrid>
 {
@@ -29,19 +26,10 @@ public class OccupancyGrid implements Settable<OccupancyGrid>, EpsilonComparable
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
-   /**
-    * MetaData for the map
-    */
-
    public OccupancyGrid(OccupancyGrid other)
    {
       set(other);
    }
-
-   /**
-    * The map data, in row-major order, starting with (0,0).  Occupancy
-    * probabilities are in the range [0,100].  Unknown is -1.
-    */
 
    public void set(OccupancyGrid other)
    {

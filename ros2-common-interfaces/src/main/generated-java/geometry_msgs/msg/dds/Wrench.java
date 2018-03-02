@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Wrench" defined in Wrench_.idl.
- *
- * This file was automatically generated from Wrench_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Wrench_.idl instead.
+ * This represents force in free space, separated into its linear and angular parts.
  */
 public class Wrench implements Settable<Wrench>, EpsilonComparable<Wrench>
 {

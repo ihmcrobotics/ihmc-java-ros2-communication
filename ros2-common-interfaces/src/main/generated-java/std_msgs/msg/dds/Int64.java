@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Int64" defined in Int64_.idl.
- *
- * This file was automatically generated from Int64_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Int64_.idl instead.
- */
 public class Int64 implements Settable<Int64>, EpsilonComparable<Int64>
 {
    private long data_;

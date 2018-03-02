@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "TwistStamped" defined in TwistStamped_.idl.
- *
- * This file was automatically generated from TwistStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TwistStamped_.idl instead.
+ * A twist with reference coordinate frame and timestamp
  */
 public class TwistStamped implements Settable<TwistStamped>, EpsilonComparable<TwistStamped>
 {

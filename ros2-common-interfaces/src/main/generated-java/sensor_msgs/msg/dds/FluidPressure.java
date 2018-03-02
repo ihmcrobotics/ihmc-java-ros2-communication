@@ -4,10 +4,11 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "FluidPressure" defined in FluidPressure_.idl.
- *
- * This file was automatically generated from FluidPressure_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit FluidPressure_.idl instead.
+ * Single pressure reading.  This message is appropriate for measuring the
+ * pressure inside of a fluid (air, water, etc).  This also includes
+ * atmospheric or barometric pressure.
+ * This message is not appropriate for force/pressure contact sensors.
+ * frame_id is the location of the pressure sensor
  */
 public class FluidPressure implements Settable<FluidPressure>, EpsilonComparable<FluidPressure>
 {
@@ -23,10 +24,6 @@ public class FluidPressure implements Settable<FluidPressure>, EpsilonComparable
     * 0 is interpreted as variance unknown
     */
    private double variance_;
-
-   /**
-    * timestamp of the measurement
-    */
 
    public FluidPressure()
    {

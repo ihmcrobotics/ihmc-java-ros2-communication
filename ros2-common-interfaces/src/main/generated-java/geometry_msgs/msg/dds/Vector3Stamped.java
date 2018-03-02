@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Vector3Stamped" defined in Vector3Stamped_.idl.
- *
- * This file was automatically generated from Vector3Stamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Vector3Stamped_.idl instead.
+ * This represents a Vector3 with reference coordinate frame and timestamp
  */
 public class Vector3Stamped implements Settable<Vector3Stamped>, EpsilonComparable<Vector3Stamped>
 {

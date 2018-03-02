@@ -3,12 +3,6 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "IntraProcessMessage" defined in IntraProcessMessage_.idl.
- *
- * This file was automatically generated from IntraProcessMessage_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit IntraProcessMessage_.idl instead.
- */
 public class IntraProcessMessage implements Settable<IntraProcessMessage>, EpsilonComparable<IntraProcessMessage>
 {
    private long publisher_id_;

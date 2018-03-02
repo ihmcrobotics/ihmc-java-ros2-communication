@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "GridCells" defined in GridCells_.idl.
- *
- * This file was automatically generated from GridCells_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit GridCells_.idl instead.
+ * An array of cells in a 2D grid
  */
 public class GridCells implements Settable<GridCells>, EpsilonComparable<GridCells>
 {

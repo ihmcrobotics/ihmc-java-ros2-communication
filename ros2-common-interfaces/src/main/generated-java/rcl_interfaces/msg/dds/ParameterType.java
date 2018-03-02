@@ -3,12 +3,6 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "ParameterType" defined in ParameterType_.idl.
- *
- * This file was automatically generated from ParameterType_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ParameterType_.idl instead.
- */
 public class ParameterType implements Settable<ParameterType>, EpsilonComparable<ParameterType>
 {
    private boolean _dummy_;

@@ -4,10 +4,9 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "JointTrajectoryPoint" defined in JointTrajectoryPoint_.idl.
- *
- * This file was automatically generated from JointTrajectoryPoint_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit JointTrajectoryPoint_.idl instead.
+ * Each trajectory point specifies either positions[, velocities[, accelerations]]
+ * or positions[, effort] for the trajectory to be executed.
+ * All specified values are in the same order as the joint names in JointTrajectory.msg.
  */
 public class JointTrajectoryPoint implements Settable<JointTrajectoryPoint>, EpsilonComparable<JointTrajectoryPoint>
 {

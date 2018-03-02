@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "TwistWithCovarianceStamped" defined in TwistWithCovarianceStamped_.idl.
- *
- * This file was automatically generated from TwistWithCovarianceStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TwistWithCovarianceStamped_.idl instead.
+ * This represents an estimated twist with reference coordinate frame and timestamp.
  */
 public class TwistWithCovarianceStamped implements Settable<TwistWithCovarianceStamped>, EpsilonComparable<TwistWithCovarianceStamped>
 {

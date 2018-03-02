@@ -4,10 +4,10 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "ParameterValue" defined in ParameterValue_.idl.
- *
- * This file was automatically generated from ParameterValue_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ParameterValue_.idl instead.
+ * Used to determine which of the next *_value fields are set.
+ * ParameterType.PARAMETER_NOT_SET indicates that the parameter was not set
+ * (if gotten) or is uninitialized.
+ * Values are enumerated in ParameterType.msg
  */
 public class ParameterValue implements Settable<ParameterValue>, EpsilonComparable<ParameterValue>
 {

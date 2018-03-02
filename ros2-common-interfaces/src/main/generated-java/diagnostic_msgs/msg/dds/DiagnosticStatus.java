@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "DiagnosticStatus" defined in DiagnosticStatus_.idl.
- *
- * This file was automatically generated from DiagnosticStatus_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit DiagnosticStatus_.idl instead.
+ * This message holds the status of an individual component of the robot.
  */
 public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComparable<DiagnosticStatus>
 {
@@ -79,6 +76,9 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       level_ = level;
    }
 
+   /**
+    * A description of the test/component reporting.
+    */
    public java.lang.String getNameAsString()
    {
       return getName().toString();
@@ -101,6 +101,9 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       name_.append(name);
    }
 
+   /**
+    * A description of the status.
+    */
    public java.lang.String getMessageAsString()
    {
       return getMessage().toString();
@@ -123,6 +126,9 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       message_.append(message);
    }
 
+   /**
+    * A hardware unique string.
+    */
    public java.lang.String getHardwareIdAsString()
    {
       return getHardwareId().toString();

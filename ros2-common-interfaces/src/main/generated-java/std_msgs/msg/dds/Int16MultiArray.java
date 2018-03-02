@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Int16MultiArray" defined in Int16MultiArray_.idl.
- *
- * This file was automatically generated from Int16MultiArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Int16MultiArray_.idl instead.
+ * Please look at the MultiArrayLayout message definition for
+ * documentation on all multiarrays.
  */
 public class Int16MultiArray implements Settable<Int16MultiArray>, EpsilonComparable<Int16MultiArray>
 {
@@ -26,18 +24,10 @@ public class Int16MultiArray implements Settable<Int16MultiArray>, EpsilonCompar
       data_ = new us.ihmc.idl.IDLSequence.Short(100, "type_1");
    }
 
-   /**
-    * specification of data layout
-    */
-
    public Int16MultiArray(Int16MultiArray other)
    {
       set(other);
    }
-
-   /**
-    * array of data
-    */
 
    public void set(Int16MultiArray other)
    {

@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "String" defined in String_.idl.
- *
- * This file was automatically generated from String_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit String_.idl instead.
- */
 public class String implements Settable<String>, EpsilonComparable<String>
 {
    private java.lang.StringBuilder data_;

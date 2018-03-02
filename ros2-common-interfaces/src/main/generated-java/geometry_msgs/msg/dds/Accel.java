@@ -3,12 +3,6 @@ package geometry_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Accel" defined in Accel_.idl.
- *
- * This file was automatically generated from Accel_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Accel_.idl instead.
- */
 public class Accel implements Settable<Accel>, EpsilonComparable<Accel>
 {
    /**
@@ -22,10 +16,6 @@ public class Accel implements Settable<Accel>, EpsilonComparable<Accel>
       linear_ = new us.ihmc.euclid.tuple3D.Vector3D();
       angular_ = new us.ihmc.euclid.tuple3D.Vector3D();
    }
-
-   /**
-    * This expresses acceleration in free space broken into its linear and angular parts.
-    */
 
    public Accel(Accel other)
    {

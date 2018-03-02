@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "UInt32MultiArray" defined in UInt32MultiArray_.idl.
- *
- * This file was automatically generated from UInt32MultiArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit UInt32MultiArray_.idl instead.
+ * Please look at the MultiArrayLayout message definition for
+ * documentation on all multiarrays.
  */
 public class UInt32MultiArray implements Settable<UInt32MultiArray>, EpsilonComparable<UInt32MultiArray>
 {
@@ -26,18 +24,10 @@ public class UInt32MultiArray implements Settable<UInt32MultiArray>, EpsilonComp
       data_ = new us.ihmc.idl.IDLSequence.Long(100, "type_4");
    }
 
-   /**
-    * specification of data layout
-    */
-
    public UInt32MultiArray(UInt32MultiArray other)
    {
       set(other);
    }
-
-   /**
-    * array of data
-    */
 
    public void set(UInt32MultiArray other)
    {

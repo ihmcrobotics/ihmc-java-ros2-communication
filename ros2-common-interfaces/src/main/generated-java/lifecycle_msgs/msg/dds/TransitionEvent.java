@@ -3,12 +3,6 @@ package lifecycle_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "TransitionEvent" defined in TransitionEvent_.idl.
- *
- * This file was automatically generated from TransitionEvent_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TransitionEvent_.idl instead.
- */
 public class TransitionEvent implements Settable<TransitionEvent>, EpsilonComparable<TransitionEvent>
 {
    private long timestamp_;

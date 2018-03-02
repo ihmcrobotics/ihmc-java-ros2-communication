@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "TwistWithCovariance" defined in TwistWithCovariance_.idl.
- *
- * This file was automatically generated from TwistWithCovariance_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TwistWithCovariance_.idl instead.
+ * This expresses velocity in free space with uncertainty.
  */
 public class TwistWithCovariance implements Settable<TwistWithCovariance>, EpsilonComparable<TwistWithCovariance>
 {
@@ -30,13 +27,6 @@ public class TwistWithCovariance implements Settable<TwistWithCovariance>, Epsil
    {
       set(other);
    }
-
-   /**
-    * Row-major representation of the 6x6 covariance matrix
-    * The orientation parameters use a fixed-axis representation.
-    * In order, the parameters are:
-    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
-    */
 
    public void set(TwistWithCovariance other)
    {

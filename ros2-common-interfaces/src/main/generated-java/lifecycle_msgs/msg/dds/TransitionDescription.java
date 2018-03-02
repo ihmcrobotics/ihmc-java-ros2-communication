@@ -3,12 +3,6 @@ package lifecycle_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "TransitionDescription" defined in TransitionDescription_.idl.
- *
- * This file was automatically generated from TransitionDescription_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TransitionDescription_.idl instead.
- */
 public class TransitionDescription implements Settable<TransitionDescription>, EpsilonComparable<TransitionDescription>
 {
    private lifecycle_msgs.msg.dds.Transition transition_;

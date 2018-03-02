@@ -3,12 +3,6 @@ package geometry_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "AccelWithCovarianceStamped" defined in AccelWithCovarianceStamped_.idl.
- *
- * This file was automatically generated from AccelWithCovarianceStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit AccelWithCovarianceStamped_.idl instead.
- */
 public class AccelWithCovarianceStamped implements Settable<AccelWithCovarianceStamped>, EpsilonComparable<AccelWithCovarianceStamped>
 {
    /**
@@ -22,10 +16,6 @@ public class AccelWithCovarianceStamped implements Settable<AccelWithCovarianceS
       header_ = new std_msgs.msg.dds.Header();
       accel_ = new geometry_msgs.msg.dds.AccelWithCovariance();
    }
-
-   /**
-    * This represents an estimated accel with reference coordinate frame and timestamp.
-    */
 
    public AccelWithCovarianceStamped(AccelWithCovarianceStamped other)
    {

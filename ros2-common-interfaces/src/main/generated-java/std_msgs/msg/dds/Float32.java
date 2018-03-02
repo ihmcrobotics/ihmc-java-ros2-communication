@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Float32" defined in Float32_.idl.
- *
- * This file was automatically generated from Float32_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Float32_.idl instead.
- */
 public class Float32 implements Settable<Float32>, EpsilonComparable<Float32>
 {
    private float data_;

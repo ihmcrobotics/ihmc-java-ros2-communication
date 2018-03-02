@@ -4,10 +4,16 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "MultiEchoLaserScan" defined in MultiEchoLaserScan_.idl.
+ * Single scan from a multi-echo planar laser range-finder
  *
- * This file was automatically generated from MultiEchoLaserScan_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MultiEchoLaserScan_.idl instead.
+ * If you have another ranging device with different behavior (e.g. a sonar
+ * array), please find or create a different message, since applications
+ * will make fairly laser-specific assumptions about this data
+ * the first ray in the scan.
+ *
+ * in frame frame_id, angles are measured around
+ * the positive Z axis (counterclockwise, if Z is up)
+ * with zero angle being forward along the x axis
  */
 public class MultiEchoLaserScan implements Settable<MultiEchoLaserScan>, EpsilonComparable<MultiEchoLaserScan>
 {
@@ -23,10 +29,6 @@ public class MultiEchoLaserScan implements Settable<MultiEchoLaserScan>, Epsilon
     * end angle of the scan [rad]
     */
    private float angle_max_;
-
-   /**
-    * timestamp in the header is the acquisition time of
-    */
    /**
     * angular distance between measurements [rad]
     */

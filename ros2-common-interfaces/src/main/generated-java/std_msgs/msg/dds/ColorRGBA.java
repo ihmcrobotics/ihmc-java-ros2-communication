@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "ColorRGBA" defined in ColorRGBA_.idl.
- *
- * This file was automatically generated from ColorRGBA_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ColorRGBA_.idl instead.
- */
 public class ColorRGBA implements Settable<ColorRGBA>, EpsilonComparable<ColorRGBA>
 {
    private float r_;

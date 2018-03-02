@@ -4,10 +4,13 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PointCloud2" defined in PointCloud2_.idl.
- *
- * This file was automatically generated from PointCloud2_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PointCloud2_.idl instead.
+ * This message holds a collection of N-dimensional points, which may
+ * contain additional information such as normals, intensity, etc. The
+ * point data is stored as a binary blob, its layout described by the
+ * contents of the "fields" array.
+ * The point cloud data may be organized 2d (image-like) or 1d (unordered).
+ * Point clouds organized as 2d images may be produced by camera depth sensors
+ * such as stereo or time-of-flight.
  */
 public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<PointCloud2>
 {
@@ -21,10 +24,6 @@ public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<Poi
     */
    private long height_;
    private long width_;
-
-   /**
-    * Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
-    */
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> fields_;
    /**
     * Is this data bigendian?
@@ -105,10 +104,6 @@ public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<Poi
    {
       height_ = height;
    }
-
-   /**
-    * Actual point data, size is (row_step*height)
-    */
 
    public long getWidth()
    {

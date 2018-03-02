@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PoseArray" defined in PoseArray_.idl.
- *
- * This file was automatically generated from PoseArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PoseArray_.idl instead.
+ * An array of poses with a header for global reference.
  */
 public class PoseArray implements Settable<PoseArray>, EpsilonComparable<PoseArray>
 {

@@ -3,12 +3,6 @@ package trajectory_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "JointTrajectory" defined in JointTrajectory_.idl.
- *
- * This file was automatically generated from JointTrajectory_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit JointTrajectory_.idl instead.
- */
 public class JointTrajectory implements Settable<JointTrajectory>, EpsilonComparable<JointTrajectory>
 {
    private std_msgs.msg.dds.Header header_;

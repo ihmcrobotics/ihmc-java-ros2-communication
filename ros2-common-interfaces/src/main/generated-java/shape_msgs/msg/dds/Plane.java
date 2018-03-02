@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Plane" defined in Plane_.idl.
- *
- * This file was automatically generated from Plane_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Plane_.idl instead.
+ * Representation of a plane, using the plane equation ax + by + cz + d = 0.
  */
 public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
 {
@@ -28,13 +25,6 @@ public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
    {
       set(other);
    }
-
-   /**
-    * a := coef[0]
-    * b := coef[1]
-    * c := coef[2]
-    * d := coef[3]
-    */
 
    public void set(Plane other)
    {

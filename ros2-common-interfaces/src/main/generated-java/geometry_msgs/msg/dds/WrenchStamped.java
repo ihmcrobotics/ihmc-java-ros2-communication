@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "WrenchStamped" defined in WrenchStamped_.idl.
- *
- * This file was automatically generated from WrenchStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit WrenchStamped_.idl instead.
+ * A wrench with reference coordinate frame and timestamp
  */
 public class WrenchStamped implements Settable<WrenchStamped>, EpsilonComparable<WrenchStamped>
 {

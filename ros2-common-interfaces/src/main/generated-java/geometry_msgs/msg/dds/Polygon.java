@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Polygon" defined in Polygon_.idl.
- *
- * This file was automatically generated from Polygon_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Polygon_.idl instead.
+ * A specification of a polygon where the first and last points are assumed to be connected
  */
 public class Polygon implements Settable<Polygon>, EpsilonComparable<Polygon>
 {

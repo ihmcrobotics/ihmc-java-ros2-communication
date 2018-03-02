@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Joy" defined in Joy_.idl.
- *
- * This file was automatically generated from Joy_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Joy_.idl instead.
+ * Reports the state of a joystick's axes and buttons.
  */
 public class Joy implements Settable<Joy>, EpsilonComparable<Joy>
 {
@@ -24,10 +21,6 @@ public class Joy implements Settable<Joy>, EpsilonComparable<Joy>
     */
    private us.ihmc.idl.IDLSequence.Integer buttons_;
 
-   /**
-    * The timestamp is the time at which data is received from the joystick.
-    */
-
    public Joy()
    {
       header_ = new std_msgs.msg.dds.Header();
@@ -36,18 +29,10 @@ public class Joy implements Settable<Joy>, EpsilonComparable<Joy>
       buttons_ = new us.ihmc.idl.IDLSequence.Integer(100, "type_2");
    }
 
-   /**
-    * The axes measurements from a joystick.
-    */
-
    public Joy(Joy other)
    {
       set(other);
    }
-
-   /**
-    * The buttons measurements from a joystick.
-    */
 
    public void set(Joy other)
    {

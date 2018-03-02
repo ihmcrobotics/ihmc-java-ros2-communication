@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "MultiArrayDimension" defined in MultiArrayDimension_.idl.
- *
- * This file was automatically generated from MultiArrayDimension_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MultiArrayDimension_.idl instead.
- */
 public class MultiArrayDimension implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
 {
    /**
@@ -44,6 +38,9 @@ public class MultiArrayDimension implements Settable<MultiArrayDimension>, Epsil
       stride_ = other.stride_;
    }
 
+   /**
+    * label of given dimension
+    */
    public java.lang.String getLabelAsString()
    {
       return getLabel().toString();

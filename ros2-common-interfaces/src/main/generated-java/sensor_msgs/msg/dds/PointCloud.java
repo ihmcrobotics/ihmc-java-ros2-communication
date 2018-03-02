@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PointCloud" defined in PointCloud_.idl.
- *
- * This file was automatically generated from PointCloud_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PointCloud_.idl instead.
+ * This message holds a collection of 3d points, plus optional additional
+ * information about each point.
  */
 public class PointCloud implements Settable<PointCloud>, EpsilonComparable<PointCloud>
 {
@@ -17,10 +15,6 @@ public class PointCloud implements Settable<PointCloud>, EpsilonComparable<Point
    private std_msgs.msg.dds.Header header_;
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> points_;
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> channels_;
-
-   /**
-    * Time of sensor data acquisition, coordinate frame ID.
-    */
 
    public PointCloud()
    {

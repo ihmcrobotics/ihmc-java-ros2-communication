@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "UInt64" defined in UInt64_.idl.
- *
- * This file was automatically generated from UInt64_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit UInt64_.idl instead.
- */
 public class UInt64 implements Settable<UInt64>, EpsilonComparable<UInt64>
 {
    private long data_;

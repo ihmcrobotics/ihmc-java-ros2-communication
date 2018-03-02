@@ -3,12 +3,6 @@ package visualization_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "InteractiveMarkerPose" defined in InteractiveMarkerPose_.idl.
- *
- * This file was automatically generated from InteractiveMarkerPose_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerPose_.idl instead.
- */
 public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, EpsilonComparable<InteractiveMarkerPose>
 {
    /**
@@ -25,20 +19,12 @@ public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, E
     */
    private java.lang.StringBuilder name_;
 
-   /**
-    * Time/frame info.
-    */
-
    public InteractiveMarkerPose()
    {
       header_ = new std_msgs.msg.dds.Header();
       pose_ = new us.ihmc.euclid.geometry.Pose3D();
       name_ = new java.lang.StringBuilder(255);
    }
-
-   /**
-    * Initial pose. Also, defines the pivot point for rotations.
-    */
 
    public InteractiveMarkerPose(InteractiveMarkerPose other)
    {
@@ -69,6 +55,10 @@ public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, E
       return pose_;
    }
 
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    public java.lang.String getNameAsString()
    {
       return getName().toString();

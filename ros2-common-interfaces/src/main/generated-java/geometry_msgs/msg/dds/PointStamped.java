@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PointStamped" defined in PointStamped_.idl.
- *
- * This file was automatically generated from PointStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PointStamped_.idl instead.
+ * This represents a Point with reference coordinate frame and timestamp
  */
 public class PointStamped implements Settable<PointStamped>, EpsilonComparable<PointStamped>
 {

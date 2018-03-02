@@ -4,10 +4,19 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "MagneticField" defined in MagneticField_.idl.
- *
- * This file was automatically generated from MagneticField_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MagneticField_.idl instead.
+ * Measurement of the Magnetic Field vector at a specific location.
+ * If the covariance of the measurement is known, it should be filled in.
+ * If all you know is the variance of each measurement, e.g. from the datasheet,
+ * just put those along the diagonal.
+ * A covariance matrix of all zeros will be interpreted as "covariance unknown",
+ * and to use the data a covariance will have to be assumed or gotten from some
+ * other source.
+ * field was measured
+ * frame_id is the location and orientation
+ * of the field measurement
+ * field vector in Tesla
+ * If your sensor does not output 3 axes,
+ * put NaNs in the components not reported.
  */
 public class MagneticField implements Settable<MagneticField>, EpsilonComparable<MagneticField>
 {
@@ -24,10 +33,6 @@ public class MagneticField implements Settable<MagneticField>, EpsilonComparable
     */
    private double[] magnetic_field_covariance_;
 
-   /**
-    * timestamp is the time the
-    */
-
    public MagneticField()
    {
       header_ = new std_msgs.msg.dds.Header();
@@ -35,18 +40,10 @@ public class MagneticField implements Settable<MagneticField>, EpsilonComparable
       magnetic_field_covariance_ = new double[9];
    }
 
-   /**
-    * x, y, and z components of the
-    */
-
    public MagneticField(MagneticField other)
    {
       set(other);
    }
-
-   /**
-    * Row major about x, y, z axes
-    */
 
    public void set(MagneticField other)
    {

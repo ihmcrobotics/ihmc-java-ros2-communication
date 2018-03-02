@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Char" defined in Char_.idl.
- *
- * This file was automatically generated from Char_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Char_.idl instead.
- */
 public class Char implements Settable<Char>, EpsilonComparable<Char>
 {
    private char data_;

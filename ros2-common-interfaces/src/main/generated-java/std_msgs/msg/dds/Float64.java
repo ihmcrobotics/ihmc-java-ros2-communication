@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Float64" defined in Float64_.idl.
- *
- * This file was automatically generated from Float64_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Float64_.idl instead.
- */
 public class Float64 implements Settable<Float64>, EpsilonComparable<Float64>
 {
    private double data_;

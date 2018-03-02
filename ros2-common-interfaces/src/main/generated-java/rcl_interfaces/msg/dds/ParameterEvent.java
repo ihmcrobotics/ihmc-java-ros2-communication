@@ -4,10 +4,9 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "ParameterEvent" defined in ParameterEvent_.idl.
- *
- * This file was automatically generated from ParameterEvent_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ParameterEvent_.idl instead.
+ * This message contains a parameter event.
+ * It was an atomic update.
+ * A specific parameter name can only be in one of the three sets.
  */
 public class ParameterEvent implements Settable<ParameterEvent>, EpsilonComparable<ParameterEvent>
 {

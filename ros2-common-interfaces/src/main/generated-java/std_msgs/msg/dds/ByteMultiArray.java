@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "ByteMultiArray" defined in ByteMultiArray_.idl.
- *
- * This file was automatically generated from ByteMultiArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ByteMultiArray_.idl instead.
+ * Please look at the MultiArrayLayout message definition for
+ * documentation on all multiarrays.
  */
 public class ByteMultiArray implements Settable<ByteMultiArray>, EpsilonComparable<ByteMultiArray>
 {
@@ -26,18 +24,10 @@ public class ByteMultiArray implements Settable<ByteMultiArray>, EpsilonComparab
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
-   /**
-    * specification of data layout
-    */
-
    public ByteMultiArray(ByteMultiArray other)
    {
       set(other);
    }
-
-   /**
-    * array of data
-    */
 
    public void set(ByteMultiArray other)
    {

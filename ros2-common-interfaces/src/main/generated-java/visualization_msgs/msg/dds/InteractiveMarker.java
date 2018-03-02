@@ -3,12 +3,6 @@ package visualization_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "InteractiveMarker" defined in InteractiveMarker_.idl.
- *
- * This file was automatically generated from InteractiveMarker_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarker_.idl instead.
- */
 public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonComparable<InteractiveMarker>
 {
    /**
@@ -29,23 +23,10 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
     * the topic that this message is sent through.
     */
    private java.lang.StringBuilder name_;
-
-   /**
-    * Time/frame info.
-    * If header.time is set to 0, the marker will be retransformed into
-    * its frame on each timestep. You will receive the pose feedback
-    * in the same frame.
-    * Otherwise, you might receive feedback in a different frame.
-    * For rviz, this will be the current 'fixed frame' set by the user.
-    */
    /**
     * Short description (< 40 characters).
     */
    private java.lang.StringBuilder description_;
-
-   /**
-    * Initial pose. Also, defines the pivot point for rotations.
-    */
    /**
     * Scale to be used for default controls (default=1).
     */
@@ -111,6 +92,10 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
       return pose_;
    }
 
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    public java.lang.String getNameAsString()
    {
       return getName().toString();
@@ -135,6 +120,9 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
       name_.append(name);
    }
 
+   /**
+    * Short description (< 40 characters).
+    */
    public java.lang.String getDescriptionAsString()
    {
       return getDescription().toString();

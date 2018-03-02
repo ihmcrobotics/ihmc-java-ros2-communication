@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "UInt32" defined in UInt32_.idl.
- *
- * This file was automatically generated from UInt32_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit UInt32_.idl instead.
- */
 public class UInt32 implements Settable<UInt32>, EpsilonComparable<UInt32>
 {
    private long data_;

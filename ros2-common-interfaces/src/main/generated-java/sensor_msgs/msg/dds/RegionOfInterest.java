@@ -4,10 +4,12 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "RegionOfInterest" defined in RegionOfInterest_.idl.
+ * This message is used to specify a region of interest within an image.
  *
- * This file was automatically generated from RegionOfInterest_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit RegionOfInterest_.idl instead.
+ * When used to specify the ROI setting of the camera when the image was
+ * taken, the height and width fields should either match the height and
+ * width fields for the associated image; or height = width = 0
+ * indicates that the full resolution image was captured.
  */
 public class RegionOfInterest implements Settable<RegionOfInterest>, EpsilonComparable<RegionOfInterest>
 {

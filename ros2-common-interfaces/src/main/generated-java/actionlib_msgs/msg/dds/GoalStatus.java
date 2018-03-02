@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "GoalStatus" defined in GoalStatus_.idl.
- *
- * This file was automatically generated from GoalStatus_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit GoalStatus_.idl instead.
+ * be sent over the wire by an action server.
  */
 public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalStatus>
 {
@@ -54,6 +51,9 @@ public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalS
       status_ = status;
    }
 
+   /**
+    * Allow for the user to associate a string with GoalStatus for debugging.
+    */
    public java.lang.String getTextAsString()
    {
       return getText().toString();

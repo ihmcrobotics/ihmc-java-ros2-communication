@@ -3,12 +3,6 @@ package trajectory_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "MultiDOFJointTrajectoryPoint" defined in MultiDOFJointTrajectoryPoint_.idl.
- *
- * This file was automatically generated from MultiDOFJointTrajectoryPoint_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MultiDOFJointTrajectoryPoint_.idl instead.
- */
 public class MultiDOFJointTrajectoryPoint implements Settable<MultiDOFJointTrajectoryPoint>, EpsilonComparable<MultiDOFJointTrajectoryPoint>
 {
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> transforms_;

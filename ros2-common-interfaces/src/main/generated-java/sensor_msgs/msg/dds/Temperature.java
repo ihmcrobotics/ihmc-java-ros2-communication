@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Temperature" defined in Temperature_.idl.
- *
- * This file was automatically generated from Temperature_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Temperature_.idl instead.
+ * Single temperature reading.
+ * frame_id is the location of the temperature reading
  */
 public class Temperature implements Settable<Temperature>, EpsilonComparable<Temperature>
 {
@@ -23,10 +21,6 @@ public class Temperature implements Settable<Temperature>, EpsilonComparable<Tem
     * 0 is interpreted as variance unknown.
     */
    private double variance_;
-
-   /**
-    * timestamp is the time the temperature was measured
-    */
 
    public Temperature()
    {

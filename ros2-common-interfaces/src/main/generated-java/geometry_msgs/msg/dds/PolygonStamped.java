@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PolygonStamped" defined in PolygonStamped_.idl.
- *
- * This file was automatically generated from PolygonStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PolygonStamped_.idl instead.
+ * This represents a Polygon with reference coordinate frame and timestamp
  */
 public class PolygonStamped implements Settable<PolygonStamped>, EpsilonComparable<PolygonStamped>
 {

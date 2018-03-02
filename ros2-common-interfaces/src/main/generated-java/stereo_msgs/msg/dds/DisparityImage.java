@@ -3,12 +3,6 @@ package stereo_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "DisparityImage" defined in DisparityImage_.idl.
- *
- * This file was automatically generated from DisparityImage_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit DisparityImage_.idl instead.
- */
 public class DisparityImage implements Settable<DisparityImage>, EpsilonComparable<DisparityImage>
 {
    /**
@@ -27,21 +21,10 @@ public class DisparityImage implements Settable<DisparityImage>, EpsilonComparab
     * Focal length, pixels
     */
    private float f_;
-
-   /**
-    * Separate header for compatibility with current TimeSynchronizer.
-    * Likely to be removed in a later release, use image.header instead.
-    */
    /**
     * Baseline, world units
     */
    private float t_;
-
-   /**
-    * Floating point disparity image. The disparities are pre-adjusted for any
-    * x-offset between the principal points of the two cameras (in the case
-    * that they are verged). That is: d = x_l - x_r - (cx_l - cx_r)
-    */
    /**
     * Subwindow of (potentially) valid disparity values.
     */
@@ -70,10 +53,6 @@ public class DisparityImage implements Settable<DisparityImage>, EpsilonComparab
 
       valid_window_ = new sensor_msgs.msg.dds.RegionOfInterest();
    }
-
-   /**
-    * Subwindow of (potentially) valid disparity values.
-    */
 
    public DisparityImage(DisparityImage other)
    {

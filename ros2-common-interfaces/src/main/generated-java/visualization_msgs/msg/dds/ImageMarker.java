@@ -3,12 +3,6 @@ package visualization_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "ImageMarker" defined in ImageMarker_.idl.
- *
- * This file was automatically generated from ImageMarker_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ImageMarker_.idl instead.
- */
 public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<ImageMarker>
 {
    private std_msgs.msg.dds.Header header_;
@@ -55,10 +49,6 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
    private builtin_interfaces.msg.dds.Duration lifetime_;
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
    private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> outline_colors_;
-
-   /**
-    * Two-dimensional coordinate position, in pixel-coordinates.
-    */
 
    public ImageMarker()
    {
@@ -107,15 +97,14 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
       outline_colors_.set(other.outline_colors_);
    }
 
-   /**
-    * The outline color of the marker.
-    */
-
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Namespace which is used with the id to form a unique id.
+    */
    public java.lang.String getNsAsString()
    {
       return getNs().toString();
@@ -130,10 +119,6 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
    }
 
    /**
-    * Fill color; in the range: [0.0-1.0]
-    */
-
-   /**
     * Namespace which is used with the id to form a unique id.
     */
    public void setNs(String ns)
@@ -141,11 +126,6 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
       ns_.setLength(0);
       ns_.append(ns);
    }
-
-   /**
-    * How long the object should last before being automatically deleted.
-    * 0 indicates forever.
-    */
 
    /**
     * Unique id within the namespace.

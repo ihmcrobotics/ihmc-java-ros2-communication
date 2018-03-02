@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "PoseStamped" defined in PoseStamped_.idl.
- *
- * This file was automatically generated from PoseStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PoseStamped_.idl instead.
+ * A Pose with reference coordinate frame and timestamp
  */
 public class PoseStamped implements Settable<PoseStamped>, EpsilonComparable<PoseStamped>
 {

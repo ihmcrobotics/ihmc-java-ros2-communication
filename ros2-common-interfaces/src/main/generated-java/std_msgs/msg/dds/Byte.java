@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Byte" defined in Byte_.idl.
- *
- * This file was automatically generated from Byte_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Byte_.idl instead.
- */
 public class Byte implements Settable<Byte>, EpsilonComparable<Byte>
 {
    private byte data_;

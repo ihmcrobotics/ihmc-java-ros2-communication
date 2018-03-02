@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Bool" defined in Bool_.idl.
- *
- * This file was automatically generated from Bool_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Bool_.idl instead.
- */
 public class Bool implements Settable<Bool>, EpsilonComparable<Bool>
 {
    private boolean data_;

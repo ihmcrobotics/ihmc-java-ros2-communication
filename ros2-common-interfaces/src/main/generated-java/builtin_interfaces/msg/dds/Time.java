@@ -3,12 +3,6 @@ package builtin_interfaces.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Time" defined in Time_.idl.
- *
- * This file was automatically generated from Time_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Time_.idl instead.
- */
 public class Time implements Settable<Time>, EpsilonComparable<Time>
 {
    private int sec_;

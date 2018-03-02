@@ -3,12 +3,6 @@ package geometry_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "InertiaStamped" defined in InertiaStamped_.idl.
- *
- * This file was automatically generated from InertiaStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InertiaStamped_.idl instead.
- */
 public class InertiaStamped implements Settable<InertiaStamped>, EpsilonComparable<InertiaStamped>
 {
    private std_msgs.msg.dds.Header header_;

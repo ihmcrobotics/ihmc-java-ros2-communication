@@ -3,12 +3,6 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "SetParametersResult" defined in SetParametersResult_.idl.
- *
- * This file was automatically generated from SetParametersResult_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit SetParametersResult_.idl instead.
- */
 public class SetParametersResult implements Settable<SetParametersResult>, EpsilonComparable<SetParametersResult>
 {
    /**
@@ -59,6 +53,10 @@ public class SetParametersResult implements Settable<SetParametersResult>, Epsil
       successful_ = successful;
    }
 
+   /**
+    * Reason why the setting was either successful or a failure.
+    * Should only be used for logging and user interfaces.
+    */
    public java.lang.String getReasonAsString()
    {
       return getReason().toString();

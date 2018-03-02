@@ -3,12 +3,6 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "ListParametersResult" defined in ListParametersResult_.idl.
- *
- * This file was automatically generated from ListParametersResult_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ListParametersResult_.idl instead.
- */
 public class ListParametersResult implements Settable<ListParametersResult>, EpsilonComparable<ListParametersResult>
 {
    /**
@@ -27,19 +21,10 @@ public class ListParametersResult implements Settable<ListParametersResult>, Eps
       prefixes_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder(100, "type_d");
    }
 
-   /**
-    * All parameters under the given prefixes.
-    */
-
    public ListParametersResult(ListParametersResult other)
    {
       set(other);
    }
-
-   /**
-    * All prefixes under the given prefixes.
-    * TODO(wjwwood): link to prefix definition and rules.
-    */
 
    public void set(ListParametersResult other)
    {

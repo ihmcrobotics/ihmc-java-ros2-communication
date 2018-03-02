@@ -3,12 +3,6 @@ package sensor_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "PointField" defined in PointField_.idl.
- *
- * This file was automatically generated from PointField_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PointField_.idl instead.
- */
 public class PointField implements Settable<PointField>, EpsilonComparable<PointField>
 {
    /**
@@ -50,6 +44,9 @@ public class PointField implements Settable<PointField>, EpsilonComparable<Point
       count_ = other.count_;
    }
 
+   /**
+    * Name of field
+    */
    public java.lang.String getNameAsString()
    {
       return getName().toString();

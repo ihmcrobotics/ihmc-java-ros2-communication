@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Float32MultiArray" defined in Float32MultiArray_.idl.
- *
- * This file was automatically generated from Float32MultiArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Float32MultiArray_.idl instead.
+ * Please look at the MultiArrayLayout message definition for
+ * documentation on all multiarrays.
  */
 public class Float32MultiArray implements Settable<Float32MultiArray>, EpsilonComparable<Float32MultiArray>
 {
@@ -26,18 +24,10 @@ public class Float32MultiArray implements Settable<Float32MultiArray>, EpsilonCo
       data_ = new us.ihmc.idl.IDLSequence.Float(100, "type_5");
    }
 
-   /**
-    * specification of data layout
-    */
-
    public Float32MultiArray(Float32MultiArray other)
    {
       set(other);
    }
-
-   /**
-    * array of data
-    */
 
    public void set(Float32MultiArray other)
    {

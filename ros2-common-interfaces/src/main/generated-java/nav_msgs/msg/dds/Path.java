@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Path" defined in Path_.idl.
- *
- * This file was automatically generated from Path_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Path_.idl instead.
+ * An array of poses that represents a Path for a robot to follow.
  */
 public class Path implements Settable<Path>, EpsilonComparable<Path>
 {

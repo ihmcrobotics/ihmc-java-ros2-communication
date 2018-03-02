@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Parameter" defined in Parameter_.idl.
- *
- * This file was automatically generated from Parameter_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Parameter_.idl instead.
+ * This is the message to communicate a parameter.
+ * It is an open struct with an enum in the descriptor to select which value is active.
  */
 public class Parameter implements Settable<Parameter>, EpsilonComparable<Parameter>
 {

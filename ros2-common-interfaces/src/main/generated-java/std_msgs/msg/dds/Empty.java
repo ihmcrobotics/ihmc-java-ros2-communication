@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Empty" defined in Empty_.idl.
- *
- * This file was automatically generated from Empty_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Empty_.idl instead.
- */
 public class Empty implements Settable<Empty>, EpsilonComparable<Empty>
 {
    private boolean _dummy_;

@@ -4,10 +4,16 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "SolidPrimitive" defined in SolidPrimitive_.idl.
- *
- * This file was automatically generated from SolidPrimitive_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit SolidPrimitive_.idl instead.
+ * Defines box, sphere, cylinder, and cone.
+ * All shapes are defined to have their bounding boxes centered around 0,0,0.
+ * The meaning of the shape dimensions: each constant defines the index in the 'dimensions' array.
+ * For the CYLINDER and CONE types, the center line is oriented along the Z axis.
+ * Therefore the CYLINDER_HEIGHT (CONE_HEIGHT) component of dimensions gives the
+ * height of the cylinder (cone).
+ * The CYLINDER_RADIUS (CONE_RADIUS) component of dimensions gives the radius of
+ * the base of the cylinder (cone).
+ * Cone and cylinder primitives are defined to be circular. The tip of the cone
+ * is pointing up, along +Z axis.
  */
 public class SolidPrimitive implements Settable<SolidPrimitive>, EpsilonComparable<SolidPrimitive>
 {
@@ -38,11 +44,6 @@ public class SolidPrimitive implements Settable<SolidPrimitive>, EpsilonComparab
 
       dimensions_.set(other.dimensions_);
    }
-
-   /**
-    * The dimensions of the shape
-    * At no point will dimensions have a length > 3.
-    */
 
    /**
     * The type of the shape

@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Int16" defined in Int16_.idl.
- *
- * This file was automatically generated from Int16_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Int16_.idl instead.
- */
 public class Int16 implements Settable<Int16>, EpsilonComparable<Int16>
 {
    private short data_;

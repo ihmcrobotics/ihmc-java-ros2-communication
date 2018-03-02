@@ -4,10 +4,9 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Header" defined in Header_.idl.
- *
- * This file was automatically generated from Header_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Header_.idl instead.
+ * Standard metadata for higher-level stamped data types.
+ * This is generally used to communicate timestamped data
+ * in a particular coordinate frame.
  */
 public class Header implements Settable<Header>, EpsilonComparable<Header>
 {
@@ -25,10 +24,6 @@ public class Header implements Settable<Header>, EpsilonComparable<Header>
       stamp_ = new builtin_interfaces.msg.dds.Time();
       frame_id_ = new java.lang.StringBuilder(255);
    }
-
-   /**
-    * Two-integer timestamp that is expressed as seconds and nanoseconds.
-    */
 
    public Header(Header other)
    {
@@ -50,6 +45,9 @@ public class Header implements Settable<Header>, EpsilonComparable<Header>
       return stamp_;
    }
 
+   /**
+    * Transform frame with which this data is associated.
+    */
    public java.lang.String getFrameIdAsString()
    {
       return getFrameId().toString();

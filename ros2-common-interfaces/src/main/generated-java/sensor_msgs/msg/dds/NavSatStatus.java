@@ -4,10 +4,12 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "NavSatStatus" defined in NavSatStatus_.idl.
- *
- * This file was automatically generated from NavSatStatus_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit NavSatStatus_.idl instead.
+ * Navigation Satellite fix status for any Global Navigation Satellite System.
+ * Whether to output an augmented fix is determined by both the fix
+ * type and the last time differential corrections were received.  A
+ * fix is valid when status >= STATUS_FIX.
+ * Bits defining which Global Navigation Satellite System signals were
+ * used by the receiver.
  */
 public class NavSatStatus implements Settable<NavSatStatus>, EpsilonComparable<NavSatStatus>
 {

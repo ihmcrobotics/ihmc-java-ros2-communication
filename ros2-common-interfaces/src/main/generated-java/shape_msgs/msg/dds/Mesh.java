@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Mesh" defined in Mesh_.idl.
- *
- * This file was automatically generated from Mesh_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Mesh_.idl instead.
+ * Definition of a mesh.
  */
 public class Mesh implements Settable<Mesh>, EpsilonComparable<Mesh>
 {

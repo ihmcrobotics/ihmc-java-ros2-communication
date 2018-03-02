@@ -3,12 +3,6 @@ package std_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Int32" defined in Int32_.idl.
- *
- * This file was automatically generated from Int32_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Int32_.idl instead.
- */
 public class Int32 implements Settable<Int32>, EpsilonComparable<Int32>
 {
    private int data_;

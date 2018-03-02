@@ -4,10 +4,13 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "RelativeHumidity" defined in RelativeHumidity_.idl.
- *
- * This file was automatically generated from RelativeHumidity_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit RelativeHumidity_.idl instead.
+ * Single reading from a relative humidity sensor.
+ * Defines the ratio of partial pressure of water vapor to the saturated vapor
+ * pressure at a temperature.
+ * frame_id is the location of the humidity sensor
+ * from 0.0 to 1.0.
+ * 0.0 is no partial pressure of water vapor
+ * 1.0 represents partial pressure of saturation
  */
 public class RelativeHumidity implements Settable<RelativeHumidity>, EpsilonComparable<RelativeHumidity>
 {
@@ -23,10 +26,6 @@ public class RelativeHumidity implements Settable<RelativeHumidity>, EpsilonComp
     * 0 is interpreted as variance unknown
     */
    private double variance_;
-
-   /**
-    * timestamp of the measurement
-    */
 
    public RelativeHumidity()
    {

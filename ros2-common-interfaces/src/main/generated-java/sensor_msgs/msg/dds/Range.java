@@ -4,10 +4,22 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "Range" defined in Range_.idl.
- *
- * This file was automatically generated from Range_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Range_.idl instead.
+ * Single range reading from an active ranger that emits energy and reports
+ * one range reading that is valid along an arc at the distance measured.
+ * This message is  not appropriate for laser scanners. See the LaserScan
+ * message if you are working with a laser scanner.
+ * This message also can represent a fixed-distance (binary) ranger.  This
+ * sensor will have min_range===max_range===distance of detection.
+ * These sensors follow REP 117 and will output -Inf if the object is detected
+ * and +Inf if the object is outside of the detection range.
+ * returned the distance reading
+ * (sound, IR, etc) [enum]
+ * valid for [rad]
+ * the object causing the range reading may have
+ * been anywhere within -field_of_view/2 and
+ * field_of_view/2 at the measured range.
+ * 0 angle corresponds to the x-axis of the sensor.
+ * Fixed distance rangers require min_range==max_range
  */
 public class Range implements Settable<Range>, EpsilonComparable<Range>
 {
@@ -23,10 +35,6 @@ public class Range implements Settable<Range>, EpsilonComparable<Range>
     * the size of the arc that the distance reading is
     */
    private float field_of_view_;
-
-   /**
-    * timestamp in the header is the time the ranger
-    */
    /**
     * minimum range value [m]
     */

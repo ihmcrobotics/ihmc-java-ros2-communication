@@ -4,10 +4,7 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "QuaternionStamped" defined in QuaternionStamped_.idl.
- *
- * This file was automatically generated from QuaternionStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit QuaternionStamped_.idl instead.
+ * This represents an orientation with reference coordinate frame and timestamp.
  */
 public class QuaternionStamped implements Settable<QuaternionStamped>, EpsilonComparable<QuaternionStamped>
 {

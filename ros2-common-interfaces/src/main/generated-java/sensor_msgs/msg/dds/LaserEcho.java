@@ -4,10 +4,8 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "LaserEcho" defined in LaserEcho_.idl.
- *
- * This file was automatically generated from LaserEcho_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit LaserEcho_.idl instead.
+ * This message is a submessage of MultiEchoLaserScan and is not intended
+ * to be used separately.
  */
 public class LaserEcho implements Settable<LaserEcho>, EpsilonComparable<LaserEcho>
 {
@@ -25,10 +23,6 @@ public class LaserEcho implements Settable<LaserEcho>, EpsilonComparable<LaserEc
    {
       set(other);
    }
-
-   /**
-    * Multiple values of ranges or intensities.
-    */
 
    public void set(LaserEcho other)
    {

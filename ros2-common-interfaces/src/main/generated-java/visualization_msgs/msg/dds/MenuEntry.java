@@ -4,10 +4,34 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "MenuEntry" defined in MenuEntry_.idl.
+ * MenuEntry message.
+ * Each InteractiveMarker message has an array of MenuEntry messages.
+ * A collection of MenuEntries together describe a
+ * menu/submenu/subsubmenu/etc tree, though they are stored in a flat
+ * array.  The tree structure is represented by giving each menu entry
+ * an ID number and a "parent_id" field.  Top-level entries are the
+ * ones with parent_id = 0.  Menu entries are ordered within their
+ * level the same way they are ordered in the containing array.  Parent
+ * entries must appear before their children.
+ * Example:
+ * - id = 3
+ * parent_id = 0
+ * title = "fun"
+ * - id = 2
+ * parent_id = 0
+ * title = "robot"
+ * - id = 4
+ * parent_id = 2
+ * title = "pr2"
+ * - id = 5
+ * parent_id = 2
+ * title = "turtle"
  *
- * This file was automatically generated from MenuEntry_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MenuEntry_.idl instead.
+ * Gives a menu tree like this:
+ * - fun
+ * - robot
+ * - pr2
+ * - turtle
  */
 public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEntry>
 {
@@ -95,6 +119,9 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
       parent_id_ = parent_id;
    }
 
+   /**
+    * menu / entry title
+    */
    public java.lang.String getTitleAsString()
    {
       return getTitle().toString();
@@ -117,6 +144,9 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
       title_.append(title);
    }
 
+   /**
+    * Arguments to command indicated by command_type (below)
+    */
    public java.lang.String getCommandAsString()
    {
       return getCommand().toString();

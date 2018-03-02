@@ -3,12 +3,6 @@ package diagnostic_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "KeyValue" defined in KeyValue_.idl.
- *
- * This file was automatically generated from KeyValue_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit KeyValue_.idl instead.
- */
 public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
 {
    /**
@@ -41,6 +35,9 @@ public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
       value_.append(other.value_);
    }
 
+   /**
+    * What to label this value when viewing.
+    */
    public java.lang.String getKeyAsString()
    {
       return getKey().toString();
@@ -63,6 +60,9 @@ public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
       key_.append(key);
    }
 
+   /**
+    * A value to track over time.
+    */
    public java.lang.String getValueAsString()
    {
       return getValue().toString();

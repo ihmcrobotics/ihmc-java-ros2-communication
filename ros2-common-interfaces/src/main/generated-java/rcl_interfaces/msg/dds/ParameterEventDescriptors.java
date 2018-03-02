@@ -4,10 +4,9 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "ParameterEventDescriptors" defined in ParameterEventDescriptors_.idl.
- *
- * This file was automatically generated from ParameterEventDescriptors_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ParameterEventDescriptors_.idl instead.
+ * This message contains descriptors of a parameter event.
+ * It was an atomic update.
+ * A specific parameter name can only be in one of the three sets.
  */
 public class ParameterEventDescriptors implements Settable<ParameterEventDescriptors>, EpsilonComparable<ParameterEventDescriptors>
 {

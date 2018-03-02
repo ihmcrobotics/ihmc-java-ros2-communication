@@ -3,12 +3,6 @@ package builtin_interfaces.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "Duration" defined in Duration_.idl.
- *
- * This file was automatically generated from Duration_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Duration_.idl instead.
- */
 public class Duration implements Settable<Duration>, EpsilonComparable<Duration>
 {
    private int sec_;

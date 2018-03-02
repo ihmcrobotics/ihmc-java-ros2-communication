@@ -4,10 +4,12 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
- * Definition of the class "TransformStamped" defined in TransformStamped_.idl.
+ * This expresses a transform from coordinate frame header.frame_id
+ * to the coordinate frame child_frame_id
  *
- * This file was automatically generated from TransformStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TransformStamped_.idl instead.
+ * This message is mostly used by the
+ * <a href="http://www.ros.org/wiki/tf">tf</a> package.
+ * See its documentation for more information.
  */
 public class TransformStamped implements Settable<TransformStamped>, EpsilonComparable<TransformStamped>
 {
@@ -45,6 +47,9 @@ public class TransformStamped implements Settable<TransformStamped>, EpsilonComp
       return header_;
    }
 
+   /**
+    * the frame id of the child frame
+    */
    public java.lang.String getChildFrameIdAsString()
    {
       return getChildFrameId().toString();
