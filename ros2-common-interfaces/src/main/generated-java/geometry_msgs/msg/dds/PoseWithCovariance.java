@@ -12,6 +12,12 @@ import us.ihmc.euclid.interfaces.Settable;
 public class PoseWithCovariance implements Settable<PoseWithCovariance>, EpsilonComparable<PoseWithCovariance>
 {
    private us.ihmc.euclid.geometry.Pose3D pose_;
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
    private double[] covariance_;
 
    public PoseWithCovariance()
@@ -24,6 +30,13 @@ public class PoseWithCovariance implements Settable<PoseWithCovariance>, Epsilon
    {
       set(other);
    }
+
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
 
    public void set(PoseWithCovariance other)
    {
@@ -39,6 +52,12 @@ public class PoseWithCovariance implements Settable<PoseWithCovariance>, Epsilon
       return pose_;
    }
 
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
    public double[] getCovariance()
    {
       return covariance_;

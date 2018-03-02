@@ -11,7 +11,13 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Float64MultiArray implements Settable<Float64MultiArray>, EpsilonComparable<Float64MultiArray>
 {
+   /**
+    * specification of data layout
+    */
    private std_msgs.msg.dds.MultiArrayLayout layout_;
+   /**
+    * array of data
+    */
    private us.ihmc.idl.IDLSequence.Double data_;
 
    public Float64MultiArray()
@@ -20,10 +26,18 @@ public class Float64MultiArray implements Settable<Float64MultiArray>, EpsilonCo
       data_ = new us.ihmc.idl.IDLSequence.Double(100, "type_6");
    }
 
+   /**
+    * specification of data layout
+    */
+
    public Float64MultiArray(Float64MultiArray other)
    {
       set(other);
    }
+
+   /**
+    * array of data
+    */
 
    public void set(Float64MultiArray other)
    {
@@ -31,11 +45,17 @@ public class Float64MultiArray implements Settable<Float64MultiArray>, EpsilonCo
       data_.set(other.data_);
    }
 
+   /**
+    * specification of data layout
+    */
    public std_msgs.msg.dds.MultiArrayLayout getLayout()
    {
       return layout_;
    }
 
+   /**
+    * array of data
+    */
    public us.ihmc.idl.IDLSequence.Double getData()
    {
       return data_;

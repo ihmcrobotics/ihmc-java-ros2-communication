@@ -11,7 +11,19 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, EpsilonComparable<InteractiveMarkerInit>
 {
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    private java.lang.StringBuilder server_id_;
+   /**
+    * Sequence number.
+    * The client will use this to detect if it has missed a subsequent
+    * update.  Every update message will have the same sequence number as
+    * an init message.  Clients will likely want to unsubscribe from the
+    * init topic after a successful initialization to avoid receiving
+    * duplicate data.
+    */
    private long seq_num_;
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
 
@@ -43,22 +55,46 @@ public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, E
       return getServerId().toString();
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    public java.lang.StringBuilder getServerId()
    {
       return server_id_;
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    public void setServerId(String server_id)
    {
       server_id_.setLength(0);
       server_id_.append(server_id);
    }
 
+   /**
+    * Sequence number.
+    * The client will use this to detect if it has missed a subsequent
+    * update.  Every update message will have the same sequence number as
+    * an init message.  Clients will likely want to unsubscribe from the
+    * init topic after a successful initialization to avoid receiving
+    * duplicate data.
+    */
    public long getSeqNum()
    {
       return seq_num_;
    }
 
+   /**
+    * Sequence number.
+    * The client will use this to detect if it has missed a subsequent
+    * update.  Every update message will have the same sequence number as
+    * an init message.  Clients will likely want to unsubscribe from the
+    * init topic after a successful initialization to avoid receiving
+    * duplicate data.
+    */
    public void setSeqNum(long seq_num)
    {
       seq_num_ = seq_num;

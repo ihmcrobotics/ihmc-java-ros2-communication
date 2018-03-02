@@ -12,7 +12,14 @@ import us.ihmc.euclid.interfaces.Settable;
 public class OccupancyGrid implements Settable<OccupancyGrid>, EpsilonComparable<OccupancyGrid>
 {
    private std_msgs.msg.dds.Header header_;
+   /**
+    * MetaData for the map
+    */
    private nav_msgs.msg.dds.MapMetaData info_;
+   /**
+    * The map data, in row-major order, starting with (0,0).  Occupancy
+    * probabilities are in the range [0,100].  Unknown is -1.
+    */
    private us.ihmc.idl.IDLSequence.Byte data_;
 
    public OccupancyGrid()
@@ -22,10 +29,19 @@ public class OccupancyGrid implements Settable<OccupancyGrid>, EpsilonComparable
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
+   /**
+    * MetaData for the map
+    */
+
    public OccupancyGrid(OccupancyGrid other)
    {
       set(other);
    }
+
+   /**
+    * The map data, in row-major order, starting with (0,0).  Occupancy
+    * probabilities are in the range [0,100].  Unknown is -1.
+    */
 
    public void set(OccupancyGrid other)
    {
@@ -39,11 +55,18 @@ public class OccupancyGrid implements Settable<OccupancyGrid>, EpsilonComparable
       return header_;
    }
 
+   /**
+    * MetaData for the map
+    */
    public nav_msgs.msg.dds.MapMetaData getInfo()
    {
       return info_;
    }
 
+   /**
+    * The map data, in row-major order, starting with (0,0).  Occupancy
+    * probabilities are in the range [0,100].  Unknown is -1.
+    */
    public us.ihmc.idl.IDLSequence.Byte getData()
    {
       return data_;

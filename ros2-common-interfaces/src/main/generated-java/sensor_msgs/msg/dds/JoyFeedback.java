@@ -12,7 +12,15 @@ import us.ihmc.euclid.interfaces.Settable;
 public class JoyFeedback implements Settable<JoyFeedback>, EpsilonComparable<JoyFeedback>
 {
    private byte type_;
+   /**
+    * This will hold an id number for each type of each feedback.
+    * Example, the first led would be id=0, the second would be id=1
+    */
    private byte id_;
+   /**
+    * Intensity of the feedback, from 0.0 to 1.0, inclusive.  If device is
+    * actually binary, driver should treat 0<=x<0.5 as off, 0.5<=x<=1 as on.
+    */
    private float intensity_;
 
    public JoyFeedback()
@@ -44,21 +52,37 @@ public class JoyFeedback implements Settable<JoyFeedback>, EpsilonComparable<Joy
       type_ = type;
    }
 
+   /**
+    * This will hold an id number for each type of each feedback.
+    * Example, the first led would be id=0, the second would be id=1
+    */
    public byte getId()
    {
       return id_;
    }
 
+   /**
+    * This will hold an id number for each type of each feedback.
+    * Example, the first led would be id=0, the second would be id=1
+    */
    public void setId(byte id)
    {
       id_ = id;
    }
 
+   /**
+    * Intensity of the feedback, from 0.0 to 1.0, inclusive.  If device is
+    * actually binary, driver should treat 0<=x<0.5 as off, 0.5<=x<=1 as on.
+    */
    public float getIntensity()
    {
       return intensity_;
    }
 
+   /**
+    * Intensity of the feedback, from 0.0 to 1.0, inclusive.  If device is
+    * actually binary, driver should treat 0<=x<0.5 as off, 0.5<=x<=1 as on.
+    */
    public void setIntensity(float intensity)
    {
       intensity_ = intensity;

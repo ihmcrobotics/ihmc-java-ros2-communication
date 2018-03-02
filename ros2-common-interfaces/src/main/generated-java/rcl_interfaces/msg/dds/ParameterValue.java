@@ -12,6 +12,9 @@ import us.ihmc.euclid.interfaces.Settable;
 public class ParameterValue implements Settable<ParameterValue>, EpsilonComparable<ParameterValue>
 {
    private byte type_;
+   /**
+    * "Variant" style storage of the parameter value.
+    */
    private boolean bool_value_;
    private long integer_value_;
    private double double_value_;
@@ -57,11 +60,17 @@ public class ParameterValue implements Settable<ParameterValue>, EpsilonComparab
       type_ = type;
    }
 
+   /**
+    * "Variant" style storage of the parameter value.
+    */
    public boolean getBoolValue()
    {
       return bool_value_;
    }
 
+   /**
+    * "Variant" style storage of the parameter value.
+    */
    public void setBoolValue(boolean bool_value)
    {
       bool_value_ = bool_value;

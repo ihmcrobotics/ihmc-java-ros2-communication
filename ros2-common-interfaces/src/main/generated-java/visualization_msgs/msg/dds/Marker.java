@@ -11,21 +11,79 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
 {
+   /**
+    * Header for timestamp and frame id.
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Namespace in which to place the object.
+    * Used in conjunction with id to create a unique name for the object.
+    */
    private java.lang.StringBuilder ns_;
+   /**
+    * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
+    */
    private int id_;
+
+   /**
+    * Header for timestamp and frame id.
+    */
+   /**
+    * Type of object.
+    */
    private int type_;
+   /**
+    * Action to take; one of:
+    * - 0 add/modify an object
+    * - 1 (deprecated)
+    * - 2 deletes an object
+    * - 3 deletes all objects
+    */
    private int action_;
+   /**
+    * Pose of the object with respect the frame_id specified in the header.
+    */
    private us.ihmc.euclid.geometry.Pose3D pose_;
+   /**
+    * Scale of the object; 1,1,1 means default (usually 1 meter square).
+    */
    private us.ihmc.euclid.tuple3D.Vector3D scale_;
+   /**
+    * Color of the object; in the range: [0.0-1.0]
+    */
    private std_msgs.msg.dds.ColorRGBA color_;
+   /**
+    * How long the object should last before being automatically deleted.
+    * 0 indicates forever.
+    */
    private builtin_interfaces.msg.dds.Duration lifetime_;
+   /**
+    * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
+    */
    private boolean frame_locked_;
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
    private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> colors_;
+   /**
+    * Only used for text markers
+    */
    private java.lang.StringBuilder text_;
+
+   /**
+    * Pose of the object with respect the frame_id specified in the header.
+    */
+   /**
+    * Only used for MESH_RESOURCE markers.
+    */
    private java.lang.StringBuilder mesh_resource_;
+
+   /**
+    * Scale of the object; 1,1,1 means default (usually 1 meter square).
+    */
    private boolean mesh_use_embedded_materials_;
+
+   /**
+    * Color of the object; in the range: [0.0-1.0]
+    */
 
    public Marker()
    {
@@ -47,6 +105,11 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
 
       mesh_resource_ = new java.lang.StringBuilder(255);
    }
+
+   /**
+    * How long the object should last before being automatically deleted.
+    * 0 indicates forever.
+    */
 
    public Marker(Marker other)
    {
@@ -82,6 +145,9 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       mesh_use_embedded_materials_ = other.mesh_use_embedded_materials_;
    }
 
+   /**
+    * Header for timestamp and frame id.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
@@ -92,72 +158,125 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       return getNs().toString();
    }
 
+   /**
+    * Namespace in which to place the object.
+    * Used in conjunction with id to create a unique name for the object.
+    */
    public java.lang.StringBuilder getNs()
    {
       return ns_;
    }
 
+   /**
+    * Namespace in which to place the object.
+    * Used in conjunction with id to create a unique name for the object.
+    */
    public void setNs(String ns)
    {
       ns_.setLength(0);
       ns_.append(ns);
    }
 
+   /**
+    * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
+    */
    public int getId()
    {
       return id_;
    }
 
+   /**
+    * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
+    */
    public void setId(int id)
    {
       id_ = id;
    }
 
+   /**
+    * Type of object.
+    */
    public int getType()
    {
       return type_;
    }
 
+   /**
+    * Type of object.
+    */
    public void setType(int type)
    {
       type_ = type;
    }
 
+   /**
+    * Action to take; one of:
+    * - 0 add/modify an object
+    * - 1 (deprecated)
+    * - 2 deletes an object
+    * - 3 deletes all objects
+    */
    public int getAction()
    {
       return action_;
    }
 
+   /**
+    * Action to take; one of:
+    * - 0 add/modify an object
+    * - 1 (deprecated)
+    * - 2 deletes an object
+    * - 3 deletes all objects
+    */
    public void setAction(int action)
    {
       action_ = action;
    }
 
+   /**
+    * Pose of the object with respect the frame_id specified in the header.
+    */
    public us.ihmc.euclid.geometry.Pose3D getPose()
    {
       return pose_;
    }
 
+   /**
+    * Scale of the object; 1,1,1 means default (usually 1 meter square).
+    */
    public us.ihmc.euclid.tuple3D.Vector3D getScale()
    {
       return scale_;
    }
 
+   /**
+    * Color of the object; in the range: [0.0-1.0]
+    */
    public std_msgs.msg.dds.ColorRGBA getColor()
    {
       return color_;
    }
 
+   /**
+    * How long the object should last before being automatically deleted.
+    * 0 indicates forever.
+    */
    public builtin_interfaces.msg.dds.Duration getLifetime()
    {
       return lifetime_;
    }
 
+   /**
+    * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
+    */
    public boolean getFrameLocked()
    {
       return frame_locked_;
    }
 
+   /**
+    * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
+    */
    public void setFrameLocked(boolean frame_locked)
    {
       frame_locked_ = frame_locked;
@@ -178,11 +297,17 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       return getText().toString();
    }
 
+   /**
+    * Only used for text markers
+    */
    public java.lang.StringBuilder getText()
    {
       return text_;
    }
 
+   /**
+    * Only used for text markers
+    */
    public void setText(String text)
    {
       text_.setLength(0);
@@ -194,11 +319,17 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       return getMeshResource().toString();
    }
 
+   /**
+    * Only used for MESH_RESOURCE markers.
+    */
    public java.lang.StringBuilder getMeshResource()
    {
       return mesh_resource_;
    }
 
+   /**
+    * Only used for MESH_RESOURCE markers.
+    */
    public void setMeshResource(String mesh_resource)
    {
       mesh_resource_.setLength(0);

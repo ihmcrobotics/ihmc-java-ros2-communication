@@ -11,6 +11,9 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class AccelWithCovarianceStamped implements Settable<AccelWithCovarianceStamped>, EpsilonComparable<AccelWithCovarianceStamped>
 {
+   /**
+    * This represents an estimated accel with reference coordinate frame and timestamp.
+    */
    private std_msgs.msg.dds.Header header_;
    private geometry_msgs.msg.dds.AccelWithCovariance accel_;
 
@@ -19,6 +22,10 @@ public class AccelWithCovarianceStamped implements Settable<AccelWithCovarianceS
       header_ = new std_msgs.msg.dds.Header();
       accel_ = new geometry_msgs.msg.dds.AccelWithCovariance();
    }
+
+   /**
+    * This represents an estimated accel with reference coordinate frame and timestamp.
+    */
 
    public AccelWithCovarianceStamped(AccelWithCovarianceStamped other)
    {
@@ -31,6 +38,9 @@ public class AccelWithCovarianceStamped implements Settable<AccelWithCovarianceS
       geometry_msgs.msg.dds.AccelWithCovariancePubSubType.staticCopy(other.accel_, accel_);
    }
 
+   /**
+    * This represents an estimated accel with reference coordinate frame and timestamp.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;

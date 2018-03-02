@@ -11,13 +11,40 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeedback>, EpsilonComparable<InteractiveMarkerFeedback>
 {
+   /**
+    * Time/frame info.
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Identifying string. Must be unique in the topic namespace.
+    */
    private java.lang.StringBuilder client_id_;
+   /**
+    * Specifies which interactive marker and control this message refers to
+    */
    private java.lang.StringBuilder marker_name_;
+
+   /**
+    * Time/frame info.
+    */
    private java.lang.StringBuilder control_name_;
    private byte event_type_;
+   /**
+    * Current pose of the marker
+    * Note: Has to be valid for all feedback types.
+    */
    private us.ihmc.euclid.geometry.Pose3D pose_;
+   /**
+    * Contains the ID of the selected menu entry
+    * Only valid for MENU_SELECT events.
+    */
    private long menu_entry_id_;
+   /**
+    * If event_type is BUTTON_CLICK, MOUSE_DOWN, or MOUSE_UP, mouse_point
+    * may contain the 3 dimensional position of the event on the
+    * control.  If it does, mouse_point_valid will be true.  mouse_point
+    * will be relative to the frame listed in the header.
+    */
    private us.ihmc.euclid.tuple3D.Point3D mouse_point_;
    private boolean mouse_point_valid_;
 
@@ -61,6 +88,9 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
       mouse_point_valid_ = other.mouse_point_valid_;
    }
 
+   /**
+    * Time/frame info.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
@@ -71,11 +101,22 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
       return getClientId().toString();
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace.
+    */
    public java.lang.StringBuilder getClientId()
    {
       return client_id_;
    }
 
+   /**
+    * Current pose of the marker
+    * Note: Has to be valid for all feedback types.
+    */
+
+   /**
+    * Identifying string. Must be unique in the topic namespace.
+    */
    public void setClientId(String client_id)
    {
       client_id_.setLength(0);
@@ -87,11 +128,24 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
       return getMarkerName().toString();
    }
 
+   /**
+    * Specifies which interactive marker and control this message refers to
+    */
    public java.lang.StringBuilder getMarkerName()
    {
       return marker_name_;
    }
 
+   /**
+    * If event_type is BUTTON_CLICK, MOUSE_DOWN, or MOUSE_UP, mouse_point
+    * may contain the 3 dimensional position of the event on the
+    * control.  If it does, mouse_point_valid will be true.  mouse_point
+    * will be relative to the frame listed in the header.
+    */
+
+   /**
+    * Specifies which interactive marker and control this message refers to
+    */
    public void setMarkerName(String marker_name)
    {
       marker_name_.setLength(0);
@@ -124,21 +178,39 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
       event_type_ = event_type;
    }
 
+   /**
+    * Current pose of the marker
+    * Note: Has to be valid for all feedback types.
+    */
    public us.ihmc.euclid.geometry.Pose3D getPose()
    {
       return pose_;
    }
 
+   /**
+    * Contains the ID of the selected menu entry
+    * Only valid for MENU_SELECT events.
+    */
    public long getMenuEntryId()
    {
       return menu_entry_id_;
    }
 
+   /**
+    * Contains the ID of the selected menu entry
+    * Only valid for MENU_SELECT events.
+    */
    public void setMenuEntryId(long menu_entry_id)
    {
       menu_entry_id_ = menu_entry_id;
    }
 
+   /**
+    * If event_type is BUTTON_CLICK, MOUSE_DOWN, or MOUSE_UP, mouse_point
+    * may contain the 3 dimensional position of the event on the
+    * control.  If it does, mouse_point_valid will be true.  mouse_point
+    * will be relative to the frame listed in the header.
+    */
    public us.ihmc.euclid.tuple3D.Point3D getMousePoint()
    {
       return mouse_point_;

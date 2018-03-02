@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class FluidPressure implements Settable<FluidPressure>, EpsilonComparable<FluidPressure>
 {
+   /**
+    * timestamp of the measurement
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Absolute pressure reading in Pascals.
+    */
    private double fluid_pressure_;
+   /**
+    * 0 is interpreted as variance unknown
+    */
    private double variance_;
+
+   /**
+    * timestamp of the measurement
+    */
 
    public FluidPressure()
    {
@@ -33,26 +46,41 @@ public class FluidPressure implements Settable<FluidPressure>, EpsilonComparable
       variance_ = other.variance_;
    }
 
+   /**
+    * timestamp of the measurement
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Absolute pressure reading in Pascals.
+    */
    public double getFluidPressure()
    {
       return fluid_pressure_;
    }
 
+   /**
+    * Absolute pressure reading in Pascals.
+    */
    public void setFluidPressure(double fluid_pressure)
    {
       fluid_pressure_ = fluid_pressure;
    }
 
+   /**
+    * 0 is interpreted as variance unknown
+    */
    public double getVariance()
    {
       return variance_;
    }
 
+   /**
+    * 0 is interpreted as variance unknown
+    */
    public void setVariance(double variance)
    {
       variance_ = variance;

@@ -11,6 +11,12 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
 {
+   /**
+    * a := coef[0]
+    * b := coef[1]
+    * c := coef[2]
+    * d := coef[3]
+    */
    private double[] coef_;
 
    public Plane()
@@ -23,6 +29,13 @@ public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
       set(other);
    }
 
+   /**
+    * a := coef[0]
+    * b := coef[1]
+    * c := coef[2]
+    * d := coef[3]
+    */
+
    public void set(Plane other)
    {
       for (int b = 0; b < coef_.length; ++b)
@@ -31,6 +44,12 @@ public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
       }
    }
 
+   /**
+    * a := coef[0]
+    * b := coef[1]
+    * c := coef[2]
+    * d := coef[3]
+    */
    public double[] getCoef()
    {
       return coef_;

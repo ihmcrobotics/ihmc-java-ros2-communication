@@ -12,6 +12,9 @@ import us.ihmc.euclid.interfaces.Settable;
 public class MultiArrayLayout implements Settable<MultiArrayLayout>, EpsilonComparable<MultiArrayLayout>
 {
    private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.MultiArrayDimension> dim_;
+   /**
+    * padding bytes at front of data
+    */
    private long data_offset_;
 
    public MultiArrayLayout()
@@ -36,11 +39,17 @@ public class MultiArrayLayout implements Settable<MultiArrayLayout>, EpsilonComp
       return dim_;
    }
 
+   /**
+    * padding bytes at front of data
+    */
    public long getDataOffset()
    {
       return data_offset_;
    }
 
+   /**
+    * padding bytes at front of data
+    */
    public void setDataOffset(long data_offset)
    {
       data_offset_ = data_offset;

@@ -12,18 +12,58 @@ import us.ihmc.euclid.interfaces.Settable;
 public class BatteryState implements Settable<BatteryState>, EpsilonComparable<BatteryState>
 {
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Voltage in Volts (Mandatory)
+    */
    private float voltage_;
+   /**
+    * Negative when discharging (A)  (If unmeasured NaN)
+    */
    private float current_;
+   /**
+    * Current charge in Ah  (If unmeasured NaN)
+    */
    private float charge_;
+   /**
+    * Capacity in Ah (last full capacity)  (If unmeasured NaN)
+    */
    private float capacity_;
+   /**
+    * Capacity in Ah (design capacity)  (If unmeasured NaN)
+    */
    private float design_capacity_;
+   /**
+    * Charge percentage on 0 to 1 range  (If unmeasured NaN)
+    */
    private float percentage_;
+   /**
+    * The charging status as reported. Values defined above
+    */
    private byte power_supply_status_;
+   /**
+    * The battery health metric. Values defined above
+    */
    private byte power_supply_health_;
+   /**
+    * The battery chemistry. Values defined above
+    */
    private byte power_supply_technology_;
+   /**
+    * True if the battery is present
+    */
    private boolean present_;
+   /**
+    * An array of individual cell voltages for each cell in the pack
+    */
    private us.ihmc.idl.IDLSequence.Float cell_voltage_;
+   /**
+    * If individual voltages unknown but number of cells known set each to NaN
+    * The location into which the battery is inserted. (slot number or plug)
+    */
    private java.lang.StringBuilder location_;
+   /**
+    * The best approximation of the battery serial number
+    */
    private java.lang.StringBuilder serial_number_;
 
    public BatteryState()
@@ -78,106 +118,173 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
       return header_;
    }
 
+   /**
+    * Voltage in Volts (Mandatory)
+    */
    public float getVoltage()
    {
       return voltage_;
    }
 
+   /**
+    * Voltage in Volts (Mandatory)
+    */
    public void setVoltage(float voltage)
    {
       voltage_ = voltage;
    }
 
+   /**
+    * Negative when discharging (A)  (If unmeasured NaN)
+    */
    public float getCurrent()
    {
       return current_;
    }
 
+   /**
+    * Negative when discharging (A)  (If unmeasured NaN)
+    */
    public void setCurrent(float current)
    {
       current_ = current;
    }
 
+   /**
+    * Current charge in Ah  (If unmeasured NaN)
+    */
    public float getCharge()
    {
       return charge_;
    }
 
+   /**
+    * Current charge in Ah  (If unmeasured NaN)
+    */
    public void setCharge(float charge)
    {
       charge_ = charge;
    }
 
+   /**
+    * An array of individual cell voltages for each cell in the pack
+    */
+
+   /**
+    * Capacity in Ah (last full capacity)  (If unmeasured NaN)
+    */
    public float getCapacity()
    {
       return capacity_;
    }
 
+   /**
+    * Capacity in Ah (last full capacity)  (If unmeasured NaN)
+    */
    public void setCapacity(float capacity)
    {
       capacity_ = capacity;
    }
 
+   /**
+    * Capacity in Ah (design capacity)  (If unmeasured NaN)
+    */
    public float getDesignCapacity()
    {
       return design_capacity_;
    }
 
+   /**
+    * Capacity in Ah (design capacity)  (If unmeasured NaN)
+    */
    public void setDesignCapacity(float design_capacity)
    {
       design_capacity_ = design_capacity;
    }
 
+   /**
+    * Charge percentage on 0 to 1 range  (If unmeasured NaN)
+    */
    public float getPercentage()
    {
       return percentage_;
    }
 
+   /**
+    * Charge percentage on 0 to 1 range  (If unmeasured NaN)
+    */
    public void setPercentage(float percentage)
    {
       percentage_ = percentage;
    }
 
+   /**
+    * The charging status as reported. Values defined above
+    */
    public byte getPowerSupplyStatus()
    {
       return power_supply_status_;
    }
 
+   /**
+    * The charging status as reported. Values defined above
+    */
    public void setPowerSupplyStatus(byte power_supply_status)
    {
       power_supply_status_ = power_supply_status;
    }
 
+   /**
+    * The battery health metric. Values defined above
+    */
    public byte getPowerSupplyHealth()
    {
       return power_supply_health_;
    }
 
+   /**
+    * The battery health metric. Values defined above
+    */
    public void setPowerSupplyHealth(byte power_supply_health)
    {
       power_supply_health_ = power_supply_health;
    }
 
+   /**
+    * The battery chemistry. Values defined above
+    */
    public byte getPowerSupplyTechnology()
    {
       return power_supply_technology_;
    }
 
+   /**
+    * The battery chemistry. Values defined above
+    */
    public void setPowerSupplyTechnology(byte power_supply_technology)
    {
       power_supply_technology_ = power_supply_technology;
    }
 
+   /**
+    * True if the battery is present
+    */
    public boolean getPresent()
    {
       return present_;
    }
 
+   /**
+    * True if the battery is present
+    */
    public void setPresent(boolean present)
    {
       present_ = present;
    }
 
+   /**
+    * An array of individual cell voltages for each cell in the pack
+    */
    public us.ihmc.idl.IDLSequence.Float getCellVoltage()
    {
       return cell_voltage_;
@@ -188,11 +295,19 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
       return getLocation().toString();
    }
 
+   /**
+    * If individual voltages unknown but number of cells known set each to NaN
+    * The location into which the battery is inserted. (slot number or plug)
+    */
    public java.lang.StringBuilder getLocation()
    {
       return location_;
    }
 
+   /**
+    * If individual voltages unknown but number of cells known set each to NaN
+    * The location into which the battery is inserted. (slot number or plug)
+    */
    public void setLocation(String location)
    {
       location_.setLength(0);
@@ -204,11 +319,17 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
       return getSerialNumber().toString();
    }
 
+   /**
+    * The best approximation of the battery serial number
+    */
    public java.lang.StringBuilder getSerialNumber()
    {
       return serial_number_;
    }
 
+   /**
+    * The best approximation of the battery serial number
+    */
    public void setSerialNumber(String serial_number)
    {
       serial_number_.setLength(0);

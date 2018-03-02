@@ -11,6 +11,9 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class LaserEcho implements Settable<LaserEcho>, EpsilonComparable<LaserEcho>
 {
+   /**
+    * Multiple values of ranges or intensities.
+    */
    private us.ihmc.idl.IDLSequence.Float echoes_;
 
    public LaserEcho()
@@ -23,11 +26,18 @@ public class LaserEcho implements Settable<LaserEcho>, EpsilonComparable<LaserEc
       set(other);
    }
 
+   /**
+    * Multiple values of ranges or intensities.
+    */
+
    public void set(LaserEcho other)
    {
       echoes_.set(other.echoes_);
    }
 
+   /**
+    * Multiple values of ranges or intensities.
+    */
    public us.ihmc.idl.IDLSequence.Float getEchoes()
    {
       return echoes_;

@@ -11,6 +11,10 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class GoalStatusArray implements Settable<GoalStatusArray>, EpsilonComparable<GoalStatusArray>
 {
+   /**
+    * Stores the statuses for goals that are currently being tracked
+    * by an action server
+    */
    private std_msgs.msg.dds.Header header_;
    private us.ihmc.idl.IDLSequence.Object<actionlib_msgs.msg.dds.GoalStatus> status_list_;
 
@@ -20,6 +24,11 @@ public class GoalStatusArray implements Settable<GoalStatusArray>, EpsilonCompar
       status_list_ = new us.ihmc.idl.IDLSequence.Object<actionlib_msgs.msg.dds.GoalStatus>(100, actionlib_msgs.msg.dds.GoalStatus.class,
                                                                                            new actionlib_msgs.msg.dds.GoalStatusPubSubType());
    }
+
+   /**
+    * Stores the statuses for goals that are currently being tracked
+    * by an action server
+    */
 
    public GoalStatusArray(GoalStatusArray other)
    {
@@ -32,6 +41,10 @@ public class GoalStatusArray implements Settable<GoalStatusArray>, EpsilonCompar
       status_list_.set(other.status_list_);
    }
 
+   /**
+    * Stores the statuses for goals that are currently being tracked
+    * by an action server
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;

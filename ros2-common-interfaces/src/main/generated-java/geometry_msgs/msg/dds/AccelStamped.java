@@ -11,6 +11,9 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class AccelStamped implements Settable<AccelStamped>, EpsilonComparable<AccelStamped>
 {
+   /**
+    * An accel with reference coordinate frame and timestamp
+    */
    private std_msgs.msg.dds.Header header_;
    private geometry_msgs.msg.dds.Accel accel_;
 
@@ -19,6 +22,10 @@ public class AccelStamped implements Settable<AccelStamped>, EpsilonComparable<A
       header_ = new std_msgs.msg.dds.Header();
       accel_ = new geometry_msgs.msg.dds.Accel();
    }
+
+   /**
+    * An accel with reference coordinate frame and timestamp
+    */
 
    public AccelStamped(AccelStamped other)
    {
@@ -31,6 +38,9 @@ public class AccelStamped implements Settable<AccelStamped>, EpsilonComparable<A
       geometry_msgs.msg.dds.AccelPubSubType.staticCopy(other.accel_, accel_);
    }
 
+   /**
+    * An accel with reference coordinate frame and timestamp
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;

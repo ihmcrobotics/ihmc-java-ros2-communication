@@ -11,11 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate>, EpsilonComparable<InteractiveMarkerUpdate>
 {
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    private java.lang.StringBuilder server_id_;
+   /**
+    * Sequence number.
+    * The client will use this to detect if it has missed an update.
+    */
    private long seq_num_;
    private byte type_;
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose> poses_;
+   /**
+    * Names of markers to be erased
+    */
    private us.ihmc.idl.IDLSequence.StringBuilderHolder erases_;
 
    public InteractiveMarkerUpdate()
@@ -55,22 +66,42 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
       return getServerId().toString();
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    public java.lang.StringBuilder getServerId()
    {
       return server_id_;
    }
 
+   /**
+    * Identifying string. Must be unique in the topic namespace
+    * that this server works on.
+    */
    public void setServerId(String server_id)
    {
       server_id_.setLength(0);
       server_id_.append(server_id);
    }
 
+   /**
+    * Names of markers to be erased
+    */
+
+   /**
+    * Sequence number.
+    * The client will use this to detect if it has missed an update.
+    */
    public long getSeqNum()
    {
       return seq_num_;
    }
 
+   /**
+    * Sequence number.
+    * The client will use this to detect if it has missed an update.
+    */
    public void setSeqNum(long seq_num)
    {
       seq_num_ = seq_num;
@@ -96,6 +127,9 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
       return poses_;
    }
 
+   /**
+    * Names of markers to be erased
+    */
    public us.ihmc.idl.IDLSequence.StringBuilderHolder getErases()
    {
       return erases_;

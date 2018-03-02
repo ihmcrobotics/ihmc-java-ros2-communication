@@ -11,13 +11,43 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class InteractiveMarkerControl implements Settable<InteractiveMarkerControl>, EpsilonComparable<InteractiveMarkerControl>
 {
+   /**
+    * Identifying string for this control.
+    * You need to assign a unique value to this to receive feedback from the GUI
+    * on what actions the user performs on this control (e.g. a button click).
+    */
    private java.lang.StringBuilder name_;
+   /**
+    * Defines the local coordinate frame (relative to the pose of the parent
+    * interactive marker) in which is being rotated and translated.
+    * Default: Identity
+    */
    private us.ihmc.euclid.tuple4D.Quaternion orientation_;
    private byte orientation_mode_;
    private byte interaction_mode_;
+   /**
+    * If true, the contained markers will also be visible
+    * when the gui is not in interactive mode.
+    */
    private boolean always_visible_;
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;
+
+   /**
+    * Defines the local coordinate frame (relative to the pose of the parent
+    * interactive marker) in which is being rotated and translated.
+    * Default: Identity
+    */
+   /**
+    * In VIEW_FACING mode, set this to true if you don't want the markers
+    * to be aligned with the camera view point. The markers will show up
+    * as in INHERIT mode.
+    */
    private boolean independent_marker_orientation_;
+   /**
+    * Short description (< 40 characters) of what this control does,
+    * e.g. "Move the robot".
+    * Default: A generic description based on the interaction mode
+    */
    private java.lang.StringBuilder description_;
 
    public InteractiveMarkerControl()
@@ -61,17 +91,32 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       return getName().toString();
    }
 
+   /**
+    * Identifying string for this control.
+    * You need to assign a unique value to this to receive feedback from the GUI
+    * on what actions the user performs on this control (e.g. a button click).
+    */
    public java.lang.StringBuilder getName()
    {
       return name_;
    }
 
+   /**
+    * Identifying string for this control.
+    * You need to assign a unique value to this to receive feedback from the GUI
+    * on what actions the user performs on this control (e.g. a button click).
+    */
    public void setName(String name)
    {
       name_.setLength(0);
       name_.append(name);
    }
 
+   /**
+    * Defines the local coordinate frame (relative to the pose of the parent
+    * interactive marker) in which is being rotated and translated.
+    * Default: Identity
+    */
    public us.ihmc.euclid.tuple4D.Quaternion getOrientation()
    {
       return orientation_;
@@ -97,11 +142,19 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       interaction_mode_ = interaction_mode;
    }
 
+   /**
+    * If true, the contained markers will also be visible
+    * when the gui is not in interactive mode.
+    */
    public boolean getAlwaysVisible()
    {
       return always_visible_;
    }
 
+   /**
+    * If true, the contained markers will also be visible
+    * when the gui is not in interactive mode.
+    */
    public void setAlwaysVisible(boolean always_visible)
    {
       always_visible_ = always_visible;
@@ -112,11 +165,21 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       return markers_;
    }
 
+   /**
+    * In VIEW_FACING mode, set this to true if you don't want the markers
+    * to be aligned with the camera view point. The markers will show up
+    * as in INHERIT mode.
+    */
    public boolean getIndependentMarkerOrientation()
    {
       return independent_marker_orientation_;
    }
 
+   /**
+    * In VIEW_FACING mode, set this to true if you don't want the markers
+    * to be aligned with the camera view point. The markers will show up
+    * as in INHERIT mode.
+    */
    public void setIndependentMarkerOrientation(boolean independent_marker_orientation)
    {
       independent_marker_orientation_ = independent_marker_orientation;
@@ -127,11 +190,21 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       return getDescription().toString();
    }
 
+   /**
+    * Short description (< 40 characters) of what this control does,
+    * e.g. "Move the robot".
+    * Default: A generic description based on the interaction mode
+    */
    public java.lang.StringBuilder getDescription()
    {
       return description_;
    }
 
+   /**
+    * Short description (< 40 characters) of what this control does,
+    * e.g. "Move the robot".
+    * Default: A generic description based on the interaction mode
+    */
    public void setDescription(String description)
    {
       description_.setLength(0);

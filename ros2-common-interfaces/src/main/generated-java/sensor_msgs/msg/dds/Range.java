@@ -11,11 +11,33 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Range implements Settable<Range>, EpsilonComparable<Range>
 {
+   /**
+    * timestamp in the header is the time the ranger
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * the type of radiation used by the sensor
+    */
    private byte radiation_type_;
+   /**
+    * the size of the arc that the distance reading is
+    */
    private float field_of_view_;
+
+   /**
+    * timestamp in the header is the time the ranger
+    */
+   /**
+    * minimum range value [m]
+    */
    private float min_range_;
+   /**
+    * maximum range value [m]
+    */
    private float max_range_;
+   /**
+    * range data [m]
+    */
    private float range_;
 
    public Range()
@@ -42,56 +64,89 @@ public class Range implements Settable<Range>, EpsilonComparable<Range>
       range_ = other.range_;
    }
 
+   /**
+    * timestamp in the header is the time the ranger
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * the type of radiation used by the sensor
+    */
    public byte getRadiationType()
    {
       return radiation_type_;
    }
 
+   /**
+    * the type of radiation used by the sensor
+    */
    public void setRadiationType(byte radiation_type)
    {
       radiation_type_ = radiation_type;
    }
 
+   /**
+    * the size of the arc that the distance reading is
+    */
    public float getFieldOfView()
    {
       return field_of_view_;
    }
 
+   /**
+    * the size of the arc that the distance reading is
+    */
    public void setFieldOfView(float field_of_view)
    {
       field_of_view_ = field_of_view;
    }
 
+   /**
+    * minimum range value [m]
+    */
    public float getMinRange()
    {
       return min_range_;
    }
 
+   /**
+    * minimum range value [m]
+    */
    public void setMinRange(float min_range)
    {
       min_range_ = min_range;
    }
 
+   /**
+    * maximum range value [m]
+    */
    public float getMaxRange()
    {
       return max_range_;
    }
 
+   /**
+    * maximum range value [m]
+    */
    public void setMaxRange(float max_range)
    {
       max_range_ = max_range;
    }
 
+   /**
+    * range data [m]
+    */
    public float getRange()
    {
       return range_;
    }
 
+   /**
+    * range data [m]
+    */
    public void setRange(float range)
    {
       range_ = range;

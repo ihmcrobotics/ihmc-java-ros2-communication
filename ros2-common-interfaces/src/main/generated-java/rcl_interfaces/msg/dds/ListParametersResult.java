@@ -11,7 +11,14 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class ListParametersResult implements Settable<ListParametersResult>, EpsilonComparable<ListParametersResult>
 {
+   /**
+    * All parameters under the given prefixes.
+    */
    private us.ihmc.idl.IDLSequence.StringBuilderHolder names_;
+   /**
+    * All prefixes under the given prefixes.
+    * TODO(wjwwood): link to prefix definition and rules.
+    */
    private us.ihmc.idl.IDLSequence.StringBuilderHolder prefixes_;
 
    public ListParametersResult()
@@ -20,10 +27,19 @@ public class ListParametersResult implements Settable<ListParametersResult>, Eps
       prefixes_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder(100, "type_d");
    }
 
+   /**
+    * All parameters under the given prefixes.
+    */
+
    public ListParametersResult(ListParametersResult other)
    {
       set(other);
    }
+
+   /**
+    * All prefixes under the given prefixes.
+    * TODO(wjwwood): link to prefix definition and rules.
+    */
 
    public void set(ListParametersResult other)
    {
@@ -31,11 +47,18 @@ public class ListParametersResult implements Settable<ListParametersResult>, Eps
       prefixes_.set(other.prefixes_);
    }
 
+   /**
+    * All parameters under the given prefixes.
+    */
    public us.ihmc.idl.IDLSequence.StringBuilderHolder getNames()
    {
       return names_;
    }
 
+   /**
+    * All prefixes under the given prefixes.
+    * TODO(wjwwood): link to prefix definition and rules.
+    */
    public us.ihmc.idl.IDLSequence.StringBuilderHolder getPrefixes()
    {
       return prefixes_;

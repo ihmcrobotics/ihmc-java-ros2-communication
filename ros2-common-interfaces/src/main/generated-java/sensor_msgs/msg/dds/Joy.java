@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Joy implements Settable<Joy>, EpsilonComparable<Joy>
 {
+   /**
+    * The timestamp is the time at which data is received from the joystick.
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * The axes measurements from a joystick.
+    */
    private us.ihmc.idl.IDLSequence.Float axes_;
+   /**
+    * The buttons measurements from a joystick.
+    */
    private us.ihmc.idl.IDLSequence.Integer buttons_;
+
+   /**
+    * The timestamp is the time at which data is received from the joystick.
+    */
 
    public Joy()
    {
@@ -23,10 +36,18 @@ public class Joy implements Settable<Joy>, EpsilonComparable<Joy>
       buttons_ = new us.ihmc.idl.IDLSequence.Integer(100, "type_2");
    }
 
+   /**
+    * The axes measurements from a joystick.
+    */
+
    public Joy(Joy other)
    {
       set(other);
    }
+
+   /**
+    * The buttons measurements from a joystick.
+    */
 
    public void set(Joy other)
    {
@@ -35,16 +56,25 @@ public class Joy implements Settable<Joy>, EpsilonComparable<Joy>
       buttons_.set(other.buttons_);
    }
 
+   /**
+    * The timestamp is the time at which data is received from the joystick.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * The axes measurements from a joystick.
+    */
    public us.ihmc.idl.IDLSequence.Float getAxes()
    {
       return axes_;
    }
 
+   /**
+    * The buttons measurements from a joystick.
+    */
    public us.ihmc.idl.IDLSequence.Integer getButtons()
    {
       return buttons_;

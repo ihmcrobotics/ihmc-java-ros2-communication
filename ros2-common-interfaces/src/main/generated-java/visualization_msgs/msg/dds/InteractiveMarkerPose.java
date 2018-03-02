@@ -11,9 +11,23 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, EpsilonComparable<InteractiveMarkerPose>
 {
+   /**
+    * Time/frame info.
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Initial pose. Also, defines the pivot point for rotations.
+    */
    private us.ihmc.euclid.geometry.Pose3D pose_;
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    private java.lang.StringBuilder name_;
+
+   /**
+    * Time/frame info.
+    */
 
    public InteractiveMarkerPose()
    {
@@ -21,6 +35,10 @@ public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, E
       pose_ = new us.ihmc.euclid.geometry.Pose3D();
       name_ = new java.lang.StringBuilder(255);
    }
+
+   /**
+    * Initial pose. Also, defines the pivot point for rotations.
+    */
 
    public InteractiveMarkerPose(InteractiveMarkerPose other)
    {
@@ -35,11 +53,17 @@ public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, E
       name_.append(other.name_);
    }
 
+   /**
+    * Time/frame info.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Initial pose. Also, defines the pivot point for rotations.
+    */
    public us.ihmc.euclid.geometry.Pose3D getPose()
    {
       return pose_;
@@ -50,11 +74,19 @@ public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, E
       return getName().toString();
    }
 
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    public java.lang.StringBuilder getName()
    {
       return name_;
    }
 
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    public void setName(String name)
    {
       name_.setLength(0);

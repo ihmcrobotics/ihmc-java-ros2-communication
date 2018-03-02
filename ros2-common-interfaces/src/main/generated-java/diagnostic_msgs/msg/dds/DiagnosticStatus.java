@@ -11,9 +11,21 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComparable<DiagnosticStatus>
 {
+   /**
+    * Level of operation enumerated above.
+    */
    private byte level_;
+   /**
+    * A description of the test/component reporting.
+    */
    private java.lang.StringBuilder name_;
+   /**
+    * A description of the status.
+    */
    private java.lang.StringBuilder message_;
+   /**
+    * A hardware unique string.
+    */
    private java.lang.StringBuilder hardware_id_;
    private us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue> values_;
 
@@ -51,11 +63,17 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       values_.set(other.values_);
    }
 
+   /**
+    * Level of operation enumerated above.
+    */
    public byte getLevel()
    {
       return level_;
    }
 
+   /**
+    * Level of operation enumerated above.
+    */
    public void setLevel(byte level)
    {
       level_ = level;
@@ -66,11 +84,17 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       return getName().toString();
    }
 
+   /**
+    * A description of the test/component reporting.
+    */
    public java.lang.StringBuilder getName()
    {
       return name_;
    }
 
+   /**
+    * A description of the test/component reporting.
+    */
    public void setName(String name)
    {
       name_.setLength(0);
@@ -82,11 +106,17 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       return getMessage().toString();
    }
 
+   /**
+    * A description of the status.
+    */
    public java.lang.StringBuilder getMessage()
    {
       return message_;
    }
 
+   /**
+    * A description of the status.
+    */
    public void setMessage(String message)
    {
       message_.setLength(0);
@@ -98,11 +128,17 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       return getHardwareId().toString();
    }
 
+   /**
+    * A hardware unique string.
+    */
    public java.lang.StringBuilder getHardwareId()
    {
       return hardware_id_;
    }
 
+   /**
+    * A hardware unique string.
+    */
    public void setHardwareId(String hardware_id)
    {
       hardware_id_.setLength(0);

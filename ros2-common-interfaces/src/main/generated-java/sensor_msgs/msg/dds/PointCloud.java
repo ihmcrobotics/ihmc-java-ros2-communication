@@ -11,9 +11,16 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class PointCloud implements Settable<PointCloud>, EpsilonComparable<PointCloud>
 {
+   /**
+    * Time of sensor data acquisition, coordinate frame ID.
+    */
    private std_msgs.msg.dds.Header header_;
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> points_;
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> channels_;
+
+   /**
+    * Time of sensor data acquisition, coordinate frame ID.
+    */
 
    public PointCloud()
    {
@@ -37,6 +44,9 @@ public class PointCloud implements Settable<PointCloud>, EpsilonComparable<Point
       channels_.set(other.channels_);
    }
 
+   /**
+    * Time of sensor data acquisition, coordinate frame ID.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;

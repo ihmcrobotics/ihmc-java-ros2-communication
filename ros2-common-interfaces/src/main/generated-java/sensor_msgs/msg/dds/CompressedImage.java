@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class CompressedImage implements Settable<CompressedImage>, EpsilonComparable<CompressedImage>
 {
+   /**
+    * Header timestamp should be acquisition time of image
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Specifies the format of the data
+    */
    private java.lang.StringBuilder format_;
+   /**
+    * Compressed image buffer
+    */
    private us.ihmc.idl.IDLSequence.Byte data_;
+
+   /**
+    * Header timestamp should be acquisition time of image
+    */
 
    public CompressedImage()
    {
@@ -37,27 +50,43 @@ public class CompressedImage implements Settable<CompressedImage>, EpsilonCompar
       data_.set(other.data_);
    }
 
+   /**
+    * Header timestamp should be acquisition time of image
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
+
+   /**
+    * Compressed image buffer
+    */
 
    public java.lang.String getFormatAsString()
    {
       return getFormat().toString();
    }
 
+   /**
+    * Specifies the format of the data
+    */
    public java.lang.StringBuilder getFormat()
    {
       return format_;
    }
 
+   /**
+    * Specifies the format of the data
+    */
    public void setFormat(String format)
    {
       format_.setLength(0);
       format_.append(format);
    }
 
+   /**
+    * Compressed image buffer
+    */
    public us.ihmc.idl.IDLSequence.Byte getData()
    {
       return data_;

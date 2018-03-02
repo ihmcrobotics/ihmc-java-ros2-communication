@@ -12,18 +12,53 @@ import us.ihmc.euclid.interfaces.Settable;
 public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<ImageMarker>
 {
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Namespace which is used with the id to form a unique id.
+    */
    private java.lang.StringBuilder ns_;
+   /**
+    * Unique id within the namespace.
+    */
    private int id_;
+   /**
+    * One of the above types, e.g. CIRCLE, LINE_STRIP, etc.
+    */
    private int type_;
+   /**
+    * Either ADD or REMOVE.
+    */
    private int action_;
+   /**
+    * Two-dimensional coordinate position, in pixel-coordinates.
+    */
    private us.ihmc.euclid.tuple3D.Point3D position_;
+   /**
+    * The scale of the object, e.g. the diameter for a CIRCLE.
+    */
    private float scale_;
+   /**
+    * The outline color of the marker.
+    */
    private std_msgs.msg.dds.ColorRGBA outline_color_;
+   /**
+    * Whether or not to fill in the shape with color.
+    */
    private byte filled_;
+   /**
+    * Fill color; in the range: [0.0-1.0]
+    */
    private std_msgs.msg.dds.ColorRGBA fill_color_;
+   /**
+    * How long the object should last before being automatically deleted.
+    * 0 indicates forever.
+    */
    private builtin_interfaces.msg.dds.Duration lifetime_;
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
    private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> outline_colors_;
+
+   /**
+    * Two-dimensional coordinate position, in pixel-coordinates.
+    */
 
    public ImageMarker()
    {
@@ -72,6 +107,10 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
       outline_colors_.set(other.outline_colors_);
    }
 
+   /**
+    * The outline color of the marker.
+    */
+
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
@@ -82,82 +121,140 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
       return getNs().toString();
    }
 
+   /**
+    * Namespace which is used with the id to form a unique id.
+    */
    public java.lang.StringBuilder getNs()
    {
       return ns_;
    }
 
+   /**
+    * Fill color; in the range: [0.0-1.0]
+    */
+
+   /**
+    * Namespace which is used with the id to form a unique id.
+    */
    public void setNs(String ns)
    {
       ns_.setLength(0);
       ns_.append(ns);
    }
 
+   /**
+    * How long the object should last before being automatically deleted.
+    * 0 indicates forever.
+    */
+
+   /**
+    * Unique id within the namespace.
+    */
    public int getId()
    {
       return id_;
    }
 
+   /**
+    * Unique id within the namespace.
+    */
    public void setId(int id)
    {
       id_ = id;
    }
 
+   /**
+    * One of the above types, e.g. CIRCLE, LINE_STRIP, etc.
+    */
    public int getType()
    {
       return type_;
    }
 
+   /**
+    * One of the above types, e.g. CIRCLE, LINE_STRIP, etc.
+    */
    public void setType(int type)
    {
       type_ = type;
    }
 
+   /**
+    * Either ADD or REMOVE.
+    */
    public int getAction()
    {
       return action_;
    }
 
+   /**
+    * Either ADD or REMOVE.
+    */
    public void setAction(int action)
    {
       action_ = action;
    }
 
+   /**
+    * Two-dimensional coordinate position, in pixel-coordinates.
+    */
    public us.ihmc.euclid.tuple3D.Point3D getPosition()
    {
       return position_;
    }
 
+   /**
+    * The scale of the object, e.g. the diameter for a CIRCLE.
+    */
    public float getScale()
    {
       return scale_;
    }
 
+   /**
+    * The scale of the object, e.g. the diameter for a CIRCLE.
+    */
    public void setScale(float scale)
    {
       scale_ = scale;
    }
 
+   /**
+    * The outline color of the marker.
+    */
    public std_msgs.msg.dds.ColorRGBA getOutlineColor()
    {
       return outline_color_;
    }
 
+   /**
+    * Whether or not to fill in the shape with color.
+    */
    public byte getFilled()
    {
       return filled_;
    }
 
+   /**
+    * Whether or not to fill in the shape with color.
+    */
    public void setFilled(byte filled)
    {
       filled_ = filled;
    }
 
+   /**
+    * Fill color; in the range: [0.0-1.0]
+    */
    public std_msgs.msg.dds.ColorRGBA getFillColor()
    {
       return fill_color_;
    }
 
+   /**
+    * How long the object should last before being automatically deleted.
+    * 0 indicates forever.
+    */
    public builtin_interfaces.msg.dds.Duration getLifetime()
    {
       return lifetime_;

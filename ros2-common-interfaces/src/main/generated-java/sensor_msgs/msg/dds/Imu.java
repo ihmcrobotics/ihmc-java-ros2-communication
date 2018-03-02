@@ -13,11 +13,28 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
 {
    private std_msgs.msg.dds.Header header_;
    private us.ihmc.euclid.tuple4D.Quaternion orientation_;
+   /**
+    * Row major about x, y, z axes
+    */
    private double[] orientation_covariance_;
    private us.ihmc.euclid.tuple3D.Vector3D angular_velocity_;
+   /**
+    * Row major about x, y, z axes
+    */
    private double[] angular_velocity_covariance_;
+
+   /**
+    * Row major about x, y, z axes
+    */
    private us.ihmc.euclid.tuple3D.Vector3D linear_acceleration_;
+   /**
+    * Row major x, y z
+    */
    private double[] linear_acceleration_covariance_;
+
+   /**
+    * Row major about x, y, z axes
+    */
 
    public Imu()
    {
@@ -36,6 +53,10 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
    {
       set(other);
    }
+
+   /**
+    * Row major x, y z
+    */
 
    public void set(Imu other)
    {
@@ -69,6 +90,9 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
       return orientation_;
    }
 
+   /**
+    * Row major about x, y, z axes
+    */
    public double[] getOrientationCovariance()
    {
       return orientation_covariance_;
@@ -79,6 +103,9 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
       return angular_velocity_;
    }
 
+   /**
+    * Row major about x, y, z axes
+    */
    public double[] getAngularVelocityCovariance()
    {
       return angular_velocity_covariance_;
@@ -89,6 +116,9 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
       return linear_acceleration_;
    }
 
+   /**
+    * Row major x, y z
+    */
    public double[] getLinearAccelerationCovariance()
    {
       return linear_acceleration_covariance_;

@@ -11,7 +11,17 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
 {
+   /**
+    * The stamp should store the time at which this goal was requested.
+    * It is used by an action server when it tries to preempt all
+    * goals that were requested before a certain time
+    */
    private builtin_interfaces.msg.dds.Time stamp_;
+   /**
+    * The id provides a way to associate feedback and
+    * result message with specific goal requests. The id
+    * specified must be unique.
+    */
    private java.lang.StringBuilder id_;
 
    public GoalID()
@@ -19,6 +29,12 @@ public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
       stamp_ = new builtin_interfaces.msg.dds.Time();
       id_ = new java.lang.StringBuilder(255);
    }
+
+   /**
+    * The stamp should store the time at which this goal was requested.
+    * It is used by an action server when it tries to preempt all
+    * goals that were requested before a certain time
+    */
 
    public GoalID(GoalID other)
    {
@@ -32,6 +48,11 @@ public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
       id_.append(other.id_);
    }
 
+   /**
+    * The stamp should store the time at which this goal was requested.
+    * It is used by an action server when it tries to preempt all
+    * goals that were requested before a certain time
+    */
    public builtin_interfaces.msg.dds.Time getStamp()
    {
       return stamp_;
@@ -42,11 +63,21 @@ public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
       return getId().toString();
    }
 
+   /**
+    * The id provides a way to associate feedback and
+    * result message with specific goal requests. The id
+    * specified must be unique.
+    */
    public java.lang.StringBuilder getId()
    {
       return id_;
    }
 
+   /**
+    * The id provides a way to associate feedback and
+    * result message with specific goal requests. The id
+    * specified must be unique.
+    */
    public void setId(String id)
    {
       id_.setLength(0);

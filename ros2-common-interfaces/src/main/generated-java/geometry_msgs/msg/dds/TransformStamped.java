@@ -12,6 +12,9 @@ import us.ihmc.euclid.interfaces.Settable;
 public class TransformStamped implements Settable<TransformStamped>, EpsilonComparable<TransformStamped>
 {
    private std_msgs.msg.dds.Header header_;
+   /**
+    * the frame id of the child frame
+    */
    private java.lang.StringBuilder child_frame_id_;
    private us.ihmc.euclid.transform.QuaternionBasedTransform transform_;
 
@@ -47,11 +50,17 @@ public class TransformStamped implements Settable<TransformStamped>, EpsilonComp
       return getChildFrameId().toString();
    }
 
+   /**
+    * the frame id of the child frame
+    */
    public java.lang.StringBuilder getChildFrameId()
    {
       return child_frame_id_;
    }
 
+   /**
+    * the frame id of the child frame
+    */
    public void setChildFrameId(String child_frame_id)
    {
       child_frame_id_.setLength(0);

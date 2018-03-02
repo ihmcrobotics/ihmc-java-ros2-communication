@@ -11,7 +11,15 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class ChannelFloat32 implements Settable<ChannelFloat32>, EpsilonComparable<ChannelFloat32>
 {
+   /**
+    * The channel name should give semantics of the channel (e.g.
+    * "intensity" instead of "value").
+    */
    private java.lang.StringBuilder name_;
+   /**
+    * The values array should be 1-1 with the elements of the associated
+    * PointCloud.
+    */
    private us.ihmc.idl.IDLSequence.Float values_;
 
    public ChannelFloat32()
@@ -39,17 +47,34 @@ public class ChannelFloat32 implements Settable<ChannelFloat32>, EpsilonComparab
       return getName().toString();
    }
 
+   /**
+    * The values array should be 1-1 with the elements of the associated
+    * PointCloud.
+    */
+
+   /**
+    * The channel name should give semantics of the channel (e.g.
+    * "intensity" instead of "value").
+    */
    public java.lang.StringBuilder getName()
    {
       return name_;
    }
 
+   /**
+    * The channel name should give semantics of the channel (e.g.
+    * "intensity" instead of "value").
+    */
    public void setName(String name)
    {
       name_.setLength(0);
       name_.append(name);
    }
 
+   /**
+    * The values array should be 1-1 with the elements of the associated
+    * PointCloud.
+    */
    public us.ihmc.idl.IDLSequence.Float getValues()
    {
       return values_;

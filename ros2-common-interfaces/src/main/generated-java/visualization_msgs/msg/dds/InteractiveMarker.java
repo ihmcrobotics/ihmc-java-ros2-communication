@@ -11,10 +11,44 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonComparable<InteractiveMarker>
 {
+   /**
+    * Time/frame info.
+    * If header.time is set to 0, the marker will be retransformed into
+    * its frame on each timestep. You will receive the pose feedback
+    * in the same frame.
+    * Otherwise, you might receive feedback in a different frame.
+    * For rviz, this will be the current 'fixed frame' set by the user.
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Initial pose. Also, defines the pivot point for rotations.
+    */
    private us.ihmc.euclid.geometry.Pose3D pose_;
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    private java.lang.StringBuilder name_;
+
+   /**
+    * Time/frame info.
+    * If header.time is set to 0, the marker will be retransformed into
+    * its frame on each timestep. You will receive the pose feedback
+    * in the same frame.
+    * Otherwise, you might receive feedback in a different frame.
+    * For rviz, this will be the current 'fixed frame' set by the user.
+    */
+   /**
+    * Short description (< 40 characters).
+    */
    private java.lang.StringBuilder description_;
+
+   /**
+    * Initial pose. Also, defines the pivot point for rotations.
+    */
+   /**
+    * Scale to be used for default controls (default=1).
+    */
    private float scale_;
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry> menu_entries_;
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl> controls_;
@@ -56,11 +90,22 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
       controls_.set(other.controls_);
    }
 
+   /**
+    * Time/frame info.
+    * If header.time is set to 0, the marker will be retransformed into
+    * its frame on each timestep. You will receive the pose feedback
+    * in the same frame.
+    * Otherwise, you might receive feedback in a different frame.
+    * For rviz, this will be the current 'fixed frame' set by the user.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Initial pose. Also, defines the pivot point for rotations.
+    */
    public us.ihmc.euclid.geometry.Pose3D getPose()
    {
       return pose_;
@@ -71,11 +116,19 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
       return getName().toString();
    }
 
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    public java.lang.StringBuilder getName()
    {
       return name_;
    }
 
+   /**
+    * Identifying string. Must be globally unique in
+    * the topic that this message is sent through.
+    */
    public void setName(String name)
    {
       name_.setLength(0);
@@ -87,22 +140,34 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
       return getDescription().toString();
    }
 
+   /**
+    * Short description (< 40 characters).
+    */
    public java.lang.StringBuilder getDescription()
    {
       return description_;
    }
 
+   /**
+    * Short description (< 40 characters).
+    */
    public void setDescription(String description)
    {
       description_.setLength(0);
       description_.append(description);
    }
 
+   /**
+    * Scale to be used for default controls (default=1).
+    */
    public float getScale()
    {
       return scale_;
    }
 
+   /**
+    * Scale to be used for default controls (default=1).
+    */
    public void setScale(float scale)
    {
       scale_ = scale;

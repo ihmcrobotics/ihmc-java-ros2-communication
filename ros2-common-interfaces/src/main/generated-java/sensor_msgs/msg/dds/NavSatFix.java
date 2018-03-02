@@ -11,11 +11,56 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatFix>
 {
+   /**
+    * header.stamp specifies the ROS time for this measurement (the
+    * corresponding satellite time may be reported using the
+    * sensor_msgs/TimeReference message).
+    *
+    * header.frame_id is the frame of reference reported by the satellite
+    * receiver, usually the location of the antenna.  This is a
+    * Euclidean frame relative to the vehicle, not a reference
+    * ellipsoid.
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Satellite fix status information.
+    */
    private sensor_msgs.msg.dds.NavSatStatus status_;
+   /**
+    * Latitude [degrees]. Positive is north of equator; negative is south.
+    */
    private double latitude_;
+
+   /**
+    * header.stamp specifies the ROS time for this measurement (the
+    * corresponding satellite time may be reported using the
+    * sensor_msgs/TimeReference message).
+    *
+    * header.frame_id is the frame of reference reported by the satellite
+    * receiver, usually the location of the antenna.  This is a
+    * Euclidean frame relative to the vehicle, not a reference
+    * ellipsoid.
+    */
+   /**
+    * Longitude [degrees]. Positive is east of prime meridian; negative is west.
+    */
    private double longitude_;
+
+   /**
+    * Satellite fix status information.
+    */
+   /**
+    * Altitude [m]. Positive is above the WGS 84 ellipsoid
+    * (quiet NaN if no altitude is available).
+    */
    private double altitude_;
+   /**
+    * Position covariance [m^2] defined relative to a tangential plane
+    * through the reported position. The components are East, North, and
+    * Up (ENU), in row-major order.
+    *
+    * Beware: this coordinate system exhibits singularities at the poles.
+    */
    private double[] position_covariance_;
    private byte position_covariance_type_;
 
@@ -50,46 +95,94 @@ public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatF
       position_covariance_type_ = other.position_covariance_type_;
    }
 
+   /**
+    * header.stamp specifies the ROS time for this measurement (the
+    * corresponding satellite time may be reported using the
+    * sensor_msgs/TimeReference message).
+    *
+    * header.frame_id is the frame of reference reported by the satellite
+    * receiver, usually the location of the antenna.  This is a
+    * Euclidean frame relative to the vehicle, not a reference
+    * ellipsoid.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Position covariance [m^2] defined relative to a tangential plane
+    * through the reported position. The components are East, North, and
+    * Up (ENU), in row-major order.
+    *
+    * Beware: this coordinate system exhibits singularities at the poles.
+    */
+
+   /**
+    * Satellite fix status information.
+    */
    public sensor_msgs.msg.dds.NavSatStatus getStatus()
    {
       return status_;
    }
 
+   /**
+    * Latitude [degrees]. Positive is north of equator; negative is south.
+    */
    public double getLatitude()
    {
       return latitude_;
    }
 
+   /**
+    * Latitude [degrees]. Positive is north of equator; negative is south.
+    */
    public void setLatitude(double latitude)
    {
       latitude_ = latitude;
    }
 
+   /**
+    * Longitude [degrees]. Positive is east of prime meridian; negative is west.
+    */
    public double getLongitude()
    {
       return longitude_;
    }
 
+   /**
+    * Longitude [degrees]. Positive is east of prime meridian; negative is west.
+    */
    public void setLongitude(double longitude)
    {
       longitude_ = longitude;
    }
 
+   /**
+    * Altitude [m]. Positive is above the WGS 84 ellipsoid
+    * (quiet NaN if no altitude is available).
+    */
    public double getAltitude()
    {
       return altitude_;
    }
 
+   /**
+    * Altitude [m]. Positive is above the WGS 84 ellipsoid
+    * (quiet NaN if no altitude is available).
+    */
    public void setAltitude(double altitude)
    {
       altitude_ = altitude;
    }
 
+   /**
+    * Position covariance [m^2] defined relative to a tangential plane
+    * through the reported position. The components are East, North, and
+    * Up (ENU), in row-major order.
+    *
+    * Beware: this coordinate system exhibits singularities at the poles.
+    */
    public double[] getPositionCovariance()
    {
       return position_covariance_;

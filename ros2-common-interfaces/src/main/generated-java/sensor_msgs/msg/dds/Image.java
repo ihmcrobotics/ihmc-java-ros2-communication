@@ -11,12 +11,37 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Image implements Settable<Image>, EpsilonComparable<Image>
 {
+   /**
+    * Header timestamp should be acquisition time of image
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * image height, that is, number of rows
+    */
    private long height_;
+   /**
+    * image width, that is, number of columns
+    */
    private long width_;
+
+   /**
+    * Header timestamp should be acquisition time of image
+    */
+   /**
+    * Encoding of pixels -- channel meaning, ordering, size
+    */
    private java.lang.StringBuilder encoding_;
+   /**
+    * is this data bigendian?
+    */
    private byte is_bigendian_;
+   /**
+    * Full row length in bytes
+    */
    private long step_;
+   /**
+    * actual matrix data, size is (step * rows)
+    */
    private us.ihmc.idl.IDLSequence.Byte data_;
 
    public Image()
@@ -50,67 +75,107 @@ public class Image implements Settable<Image>, EpsilonComparable<Image>
       data_.set(other.data_);
    }
 
+   /**
+    * Header timestamp should be acquisition time of image
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * image height, that is, number of rows
+    */
    public long getHeight()
    {
       return height_;
    }
 
+   /**
+    * image height, that is, number of rows
+    */
    public void setHeight(long height)
    {
       height_ = height;
    }
 
+   /**
+    * image width, that is, number of columns
+    */
    public long getWidth()
    {
       return width_;
    }
 
+   /**
+    * image width, that is, number of columns
+    */
    public void setWidth(long width)
    {
       width_ = width;
    }
+
+   /**
+    * actual matrix data, size is (step * rows)
+    */
 
    public java.lang.String getEncodingAsString()
    {
       return getEncoding().toString();
    }
 
+   /**
+    * Encoding of pixels -- channel meaning, ordering, size
+    */
    public java.lang.StringBuilder getEncoding()
    {
       return encoding_;
    }
 
+   /**
+    * Encoding of pixels -- channel meaning, ordering, size
+    */
    public void setEncoding(String encoding)
    {
       encoding_.setLength(0);
       encoding_.append(encoding);
    }
 
+   /**
+    * is this data bigendian?
+    */
    public byte getIsBigendian()
    {
       return is_bigendian_;
    }
 
+   /**
+    * is this data bigendian?
+    */
    public void setIsBigendian(byte is_bigendian)
    {
       is_bigendian_ = is_bigendian;
    }
 
+   /**
+    * Full row length in bytes
+    */
    public long getStep()
    {
       return step_;
    }
 
+   /**
+    * Full row length in bytes
+    */
    public void setStep(long step)
    {
       step_ = step;
    }
 
+   /**
+    * actual matrix data, size is (step * rows)
+    */
    public us.ihmc.idl.IDLSequence.Byte getData()
    {
       return data_;

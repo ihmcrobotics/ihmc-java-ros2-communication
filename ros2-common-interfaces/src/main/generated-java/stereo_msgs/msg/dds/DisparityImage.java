@@ -11,13 +11,56 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class DisparityImage implements Settable<DisparityImage>, EpsilonComparable<DisparityImage>
 {
+   /**
+    * Separate header for compatibility with current TimeSynchronizer.
+    * Likely to be removed in a later release, use image.header instead.
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Floating point disparity image. The disparities are pre-adjusted for any
+    * x-offset between the principal points of the two cameras (in the case
+    * that they are verged). That is: d = x_l - x_r - (cx_l - cx_r)
+    */
    private sensor_msgs.msg.dds.Image image_;
+   /**
+    * Stereo geometry. For disparity d, the depth from the camera is Z = fT/d.
+    * Focal length, pixels
+    */
    private float f_;
+
+   /**
+    * Separate header for compatibility with current TimeSynchronizer.
+    * Likely to be removed in a later release, use image.header instead.
+    */
+   /**
+    * Baseline, world units
+    */
    private float t_;
+
+   /**
+    * Floating point disparity image. The disparities are pre-adjusted for any
+    * x-offset between the principal points of the two cameras (in the case
+    * that they are verged). That is: d = x_l - x_r - (cx_l - cx_r)
+    */
+   /**
+    * Subwindow of (potentially) valid disparity values.
+    */
    private sensor_msgs.msg.dds.RegionOfInterest valid_window_;
+   /**
+    * The range of disparities searched.
+    * In the disparity image, any disparity less than min_disparity is invalid.
+    * The disparity search range defines the horopter, or 3D volume that the
+    * stereo algorithm can "see". Points with Z outside of:
+    * Z_min = fT / max_disparity
+    * Z_max = fT / min_disparity
+    * could not be found.
+    */
    private float min_disparity_;
    private float max_disparity_;
+   /**
+    * Smallest allowed disparity increment. The smallest achievable depth range
+    * resolution is delta_Z = (Z^2/fT)*delta_d.
+    */
    private float delta_d_;
 
    public DisparityImage()
@@ -27,6 +70,10 @@ public class DisparityImage implements Settable<DisparityImage>, EpsilonComparab
 
       valid_window_ = new sensor_msgs.msg.dds.RegionOfInterest();
    }
+
+   /**
+    * Subwindow of (potentially) valid disparity values.
+    */
 
    public DisparityImage(DisparityImage other)
    {
@@ -49,46 +96,90 @@ public class DisparityImage implements Settable<DisparityImage>, EpsilonComparab
       delta_d_ = other.delta_d_;
    }
 
+   /**
+    * Separate header for compatibility with current TimeSynchronizer.
+    * Likely to be removed in a later release, use image.header instead.
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Floating point disparity image. The disparities are pre-adjusted for any
+    * x-offset between the principal points of the two cameras (in the case
+    * that they are verged). That is: d = x_l - x_r - (cx_l - cx_r)
+    */
    public sensor_msgs.msg.dds.Image getImage()
    {
       return image_;
    }
 
+   /**
+    * Stereo geometry. For disparity d, the depth from the camera is Z = fT/d.
+    * Focal length, pixels
+    */
    public float getF()
    {
       return f_;
    }
 
+   /**
+    * Stereo geometry. For disparity d, the depth from the camera is Z = fT/d.
+    * Focal length, pixels
+    */
    public void setF(float f)
    {
       f_ = f;
    }
 
+   /**
+    * Baseline, world units
+    */
    public float getT()
    {
       return t_;
    }
 
+   /**
+    * Baseline, world units
+    */
    public void setT(float t)
    {
       t_ = t;
    }
 
+   /**
+    * Subwindow of (potentially) valid disparity values.
+    */
    public sensor_msgs.msg.dds.RegionOfInterest getValidWindow()
    {
       return valid_window_;
    }
 
+   /**
+    * The range of disparities searched.
+    * In the disparity image, any disparity less than min_disparity is invalid.
+    * The disparity search range defines the horopter, or 3D volume that the
+    * stereo algorithm can "see". Points with Z outside of:
+    * Z_min = fT / max_disparity
+    * Z_max = fT / min_disparity
+    * could not be found.
+    */
    public float getMinDisparity()
    {
       return min_disparity_;
    }
 
+   /**
+    * The range of disparities searched.
+    * In the disparity image, any disparity less than min_disparity is invalid.
+    * The disparity search range defines the horopter, or 3D volume that the
+    * stereo algorithm can "see". Points with Z outside of:
+    * Z_min = fT / max_disparity
+    * Z_max = fT / min_disparity
+    * could not be found.
+    */
    public void setMinDisparity(float min_disparity)
    {
       min_disparity_ = min_disparity;
@@ -104,11 +195,19 @@ public class DisparityImage implements Settable<DisparityImage>, EpsilonComparab
       max_disparity_ = max_disparity;
    }
 
+   /**
+    * Smallest allowed disparity increment. The smallest achievable depth range
+    * resolution is delta_Z = (Z^2/fT)*delta_d.
+    */
    public float getDeltaD()
    {
       return delta_d_;
    }
 
+   /**
+    * Smallest allowed disparity increment. The smallest achievable depth range
+    * resolution is delta_Z = (Z^2/fT)*delta_d.
+    */
    public void setDeltaD(float delta_d)
    {
       delta_d_ = delta_d;

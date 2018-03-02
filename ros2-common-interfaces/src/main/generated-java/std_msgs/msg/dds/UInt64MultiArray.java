@@ -11,6 +11,9 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class UInt64MultiArray implements Settable<UInt64MultiArray>, EpsilonComparable<UInt64MultiArray>
 {
+   /**
+    * specification of data layout
+    */
    private std_msgs.msg.dds.MultiArrayLayout layout_;
    private us.ihmc.idl.IDLSequence.Long data_;
 
@@ -19,6 +22,10 @@ public class UInt64MultiArray implements Settable<UInt64MultiArray>, EpsilonComp
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
       data_ = new us.ihmc.idl.IDLSequence.Long(100, "type_12");
    }
+
+   /**
+    * specification of data layout
+    */
 
    public UInt64MultiArray(UInt64MultiArray other)
    {
@@ -31,6 +38,9 @@ public class UInt64MultiArray implements Settable<UInt64MultiArray>, EpsilonComp
       data_.set(other.data_);
    }
 
+   /**
+    * specification of data layout
+    */
    public std_msgs.msg.dds.MultiArrayLayout getLayout()
    {
       return layout_;

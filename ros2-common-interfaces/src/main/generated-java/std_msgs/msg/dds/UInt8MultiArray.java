@@ -11,7 +11,13 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class UInt8MultiArray implements Settable<UInt8MultiArray>, EpsilonComparable<UInt8MultiArray>
 {
+   /**
+    * specification of data layout
+    */
    private std_msgs.msg.dds.MultiArrayLayout layout_;
+   /**
+    * array of data
+    */
    private us.ihmc.idl.IDLSequence.Byte data_;
 
    public UInt8MultiArray()
@@ -20,10 +26,18 @@ public class UInt8MultiArray implements Settable<UInt8MultiArray>, EpsilonCompar
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
+   /**
+    * specification of data layout
+    */
+
    public UInt8MultiArray(UInt8MultiArray other)
    {
       set(other);
    }
+
+   /**
+    * array of data
+    */
 
    public void set(UInt8MultiArray other)
    {
@@ -31,11 +45,17 @@ public class UInt8MultiArray implements Settable<UInt8MultiArray>, EpsilonCompar
       data_.set(other.data_);
    }
 
+   /**
+    * specification of data layout
+    */
    public std_msgs.msg.dds.MultiArrayLayout getLayout()
    {
       return layout_;
    }
 
+   /**
+    * array of data
+    */
    public us.ihmc.idl.IDLSequence.Byte getData()
    {
       return data_;

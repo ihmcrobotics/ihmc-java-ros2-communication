@@ -11,11 +11,27 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Inertia implements Settable<Inertia>, EpsilonComparable<Inertia>
 {
+   /**
+    * Mass [kg]
+    */
    private double m_;
+   /**
+    * Center of mass [m]
+    */
    private us.ihmc.euclid.tuple3D.Vector3D com_;
+   /**
+    * Inertia Tensor [kg-m^2]
+    * | ixx ixy ixz |
+    * I = | ixy iyy iyz |
+    * | ixz iyz izz |
+    */
    private double ixx_;
    private double ixy_;
    private double ixz_;
+
+   /**
+    * Center of mass [m]
+    */
    private double iyy_;
    private double iyz_;
    private double izz_;
@@ -49,26 +65,47 @@ public class Inertia implements Settable<Inertia>, EpsilonComparable<Inertia>
       izz_ = other.izz_;
    }
 
+   /**
+    * Mass [kg]
+    */
    public double getM()
    {
       return m_;
    }
 
+   /**
+    * Mass [kg]
+    */
    public void setM(double m)
    {
       m_ = m;
    }
 
+   /**
+    * Center of mass [m]
+    */
    public us.ihmc.euclid.tuple3D.Vector3D getCom()
    {
       return com_;
    }
 
+   /**
+    * Inertia Tensor [kg-m^2]
+    * | ixx ixy ixz |
+    * I = | ixy iyy iyz |
+    * | ixz iyz izz |
+    */
    public double getIxx()
    {
       return ixx_;
    }
 
+   /**
+    * Inertia Tensor [kg-m^2]
+    * | ixx ixy ixz |
+    * I = | ixy iyy iyz |
+    * | ixz iyz izz |
+    */
    public void setIxx(double ixx)
    {
       ixx_ = ixx;

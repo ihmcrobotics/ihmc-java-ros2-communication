@@ -11,7 +11,15 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class SetParametersResult implements Settable<SetParametersResult>, EpsilonComparable<SetParametersResult>
 {
+   /**
+    * A true value of the same index indicates that the parameter was set successfully.
+    * A false value indicates the change was rejected.
+    */
    private boolean successful_;
+   /**
+    * Reason why the setting was either successful or a failure.
+    * Should only be used for logging and user interfaces.
+    */
    private java.lang.StringBuilder reason_;
 
    public SetParametersResult()
@@ -33,11 +41,19 @@ public class SetParametersResult implements Settable<SetParametersResult>, Epsil
       reason_.append(other.reason_);
    }
 
+   /**
+    * A true value of the same index indicates that the parameter was set successfully.
+    * A false value indicates the change was rejected.
+    */
    public boolean getSuccessful()
    {
       return successful_;
    }
 
+   /**
+    * A true value of the same index indicates that the parameter was set successfully.
+    * A false value indicates the change was rejected.
+    */
    public void setSuccessful(boolean successful)
    {
       successful_ = successful;
@@ -48,11 +64,19 @@ public class SetParametersResult implements Settable<SetParametersResult>, Epsil
       return getReason().toString();
    }
 
+   /**
+    * Reason why the setting was either successful or a failure.
+    * Should only be used for logging and user interfaces.
+    */
    public java.lang.StringBuilder getReason()
    {
       return reason_;
    }
 
+   /**
+    * Reason why the setting was either successful or a failure.
+    * Should only be used for logging and user interfaces.
+    */
    public void setReason(String reason)
    {
       reason_.setLength(0);

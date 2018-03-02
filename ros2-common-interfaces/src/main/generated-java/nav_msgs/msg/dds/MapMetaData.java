@@ -11,10 +11,30 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class MapMetaData implements Settable<MapMetaData>, EpsilonComparable<MapMetaData>
 {
+   /**
+    * The time at which the map was loaded
+    */
    private builtin_interfaces.msg.dds.Time map_load_time_;
+   /**
+    * The map resolution [m/cell]
+    */
    private float resolution_;
+   /**
+    * Map width [cells]
+    */
    private long width_;
+
+   /**
+    * The time at which the map was loaded
+    */
+   /**
+    * Map height [cells]
+    */
    private long height_;
+   /**
+    * The origin of the map [m, m, rad].  This is the real-world pose of the
+    * cell (0,0) in the map.
+    */
    private us.ihmc.euclid.geometry.Pose3D origin_;
 
    public MapMetaData()
@@ -41,41 +61,71 @@ public class MapMetaData implements Settable<MapMetaData>, EpsilonComparable<Map
       geometry_msgs.msg.dds.PosePubSubType.staticCopy(other.origin_, origin_);
    }
 
+   /**
+    * The time at which the map was loaded
+    */
    public builtin_interfaces.msg.dds.Time getMapLoadTime()
    {
       return map_load_time_;
    }
 
+   /**
+    * The map resolution [m/cell]
+    */
    public float getResolution()
    {
       return resolution_;
    }
 
+   /**
+    * The origin of the map [m, m, rad].  This is the real-world pose of the
+    * cell (0,0) in the map.
+    */
+
+   /**
+    * The map resolution [m/cell]
+    */
    public void setResolution(float resolution)
    {
       resolution_ = resolution;
    }
 
+   /**
+    * Map width [cells]
+    */
    public long getWidth()
    {
       return width_;
    }
 
+   /**
+    * Map width [cells]
+    */
    public void setWidth(long width)
    {
       width_ = width;
    }
 
+   /**
+    * Map height [cells]
+    */
    public long getHeight()
    {
       return height_;
    }
 
+   /**
+    * Map height [cells]
+    */
    public void setHeight(long height)
    {
       height_ = height;
    }
 
+   /**
+    * The origin of the map [m, m, rad].  This is the real-world pose of the
+    * cell (0,0) in the map.
+    */
    public us.ihmc.euclid.geometry.Pose3D getOrigin()
    {
       return origin_;

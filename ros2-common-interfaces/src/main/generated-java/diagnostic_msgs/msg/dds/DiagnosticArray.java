@@ -11,6 +11,10 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonComparable<DiagnosticArray>
 {
+   /**
+    * This message is used to send diagnostic information about the state of the robot.
+    * for timestamp
+    */
    private std_msgs.msg.dds.Header header_;
    private us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> status_;
 
@@ -20,6 +24,11 @@ public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonCompar
       status_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus>(100, diagnostic_msgs.msg.dds.DiagnosticStatus.class,
                                                                                              new diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType());
    }
+
+   /**
+    * This message is used to send diagnostic information about the state of the robot.
+    * for timestamp
+    */
 
    public DiagnosticArray(DiagnosticArray other)
    {
@@ -32,6 +41,10 @@ public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonCompar
       status_.set(other.status_);
    }
 
+   /**
+    * This message is used to send diagnostic information about the state of the robot.
+    * for timestamp
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;

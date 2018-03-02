@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class MagneticField implements Settable<MagneticField>, EpsilonComparable<MagneticField>
 {
+   /**
+    * timestamp is the time the
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * x, y, and z components of the
+    */
    private us.ihmc.euclid.tuple3D.Vector3D magnetic_field_;
+   /**
+    * Row major about x, y, z axes
+    */
    private double[] magnetic_field_covariance_;
+
+   /**
+    * timestamp is the time the
+    */
 
    public MagneticField()
    {
@@ -22,10 +35,18 @@ public class MagneticField implements Settable<MagneticField>, EpsilonComparable
       magnetic_field_covariance_ = new double[9];
    }
 
+   /**
+    * x, y, and z components of the
+    */
+
    public MagneticField(MagneticField other)
    {
       set(other);
    }
+
+   /**
+    * Row major about x, y, z axes
+    */
 
    public void set(MagneticField other)
    {
@@ -37,16 +58,25 @@ public class MagneticField implements Settable<MagneticField>, EpsilonComparable
       }
    }
 
+   /**
+    * timestamp is the time the
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * x, y, and z components of the
+    */
    public us.ihmc.euclid.tuple3D.Vector3D getMagneticField()
    {
       return magnetic_field_;
    }
 
+   /**
+    * Row major about x, y, z axes
+    */
    public double[] getMagneticFieldCovariance()
    {
       return magnetic_field_covariance_;

@@ -11,14 +11,40 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<PointCloud2>
 {
+   /**
+    * Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * 2D structure of the point cloud. If the cloud is unordered, height is
+    * 1 and width is the length of the point cloud.
+    */
    private long height_;
    private long width_;
+
+   /**
+    * Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
+    */
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> fields_;
+   /**
+    * Is this data bigendian?
+    */
    private boolean is_bigendian_;
+   /**
+    * Length of a point in bytes
+    */
    private long point_step_;
+   /**
+    * Length of a row in bytes
+    */
    private long row_step_;
+   /**
+    * Actual point data, size is (row_step*height)
+    */
    private us.ihmc.idl.IDLSequence.Byte data_;
+   /**
+    * True if there are no invalid points
+    */
    private boolean is_dense_;
 
    public PointCloud2()
@@ -54,20 +80,35 @@ public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<Poi
       is_dense_ = other.is_dense_;
    }
 
+   /**
+    * Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * 2D structure of the point cloud. If the cloud is unordered, height is
+    * 1 and width is the length of the point cloud.
+    */
    public long getHeight()
    {
       return height_;
    }
 
+   /**
+    * 2D structure of the point cloud. If the cloud is unordered, height is
+    * 1 and width is the length of the point cloud.
+    */
    public void setHeight(long height)
    {
       height_ = height;
    }
+
+   /**
+    * Actual point data, size is (row_step*height)
+    */
 
    public long getWidth()
    {
@@ -84,46 +125,73 @@ public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<Poi
       return fields_;
    }
 
+   /**
+    * Is this data bigendian?
+    */
    public boolean getIsBigendian()
    {
       return is_bigendian_;
    }
 
+   /**
+    * Is this data bigendian?
+    */
    public void setIsBigendian(boolean is_bigendian)
    {
       is_bigendian_ = is_bigendian;
    }
 
+   /**
+    * Length of a point in bytes
+    */
    public long getPointStep()
    {
       return point_step_;
    }
 
+   /**
+    * Length of a point in bytes
+    */
    public void setPointStep(long point_step)
    {
       point_step_ = point_step;
    }
 
+   /**
+    * Length of a row in bytes
+    */
    public long getRowStep()
    {
       return row_step_;
    }
 
+   /**
+    * Length of a row in bytes
+    */
    public void setRowStep(long row_step)
    {
       row_step_ = row_step;
    }
 
+   /**
+    * Actual point data, size is (row_step*height)
+    */
    public us.ihmc.idl.IDLSequence.Byte getData()
    {
       return data_;
    }
 
+   /**
+    * True if there are no invalid points
+    */
    public boolean getIsDense()
    {
       return is_dense_;
    }
 
+   /**
+    * True if there are no invalid points
+    */
    public void setIsDense(boolean is_dense)
    {
       is_dense_ = is_dense;

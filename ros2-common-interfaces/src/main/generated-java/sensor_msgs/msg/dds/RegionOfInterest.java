@@ -11,10 +11,30 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class RegionOfInterest implements Settable<RegionOfInterest>, EpsilonComparable<RegionOfInterest>
 {
+   /**
+    * Leftmost pixel of the ROI
+    */
    private long x_offset_;
+   /**
+    * (0 if the ROI includes the left edge of the image)
+    * Topmost pixel of the ROI
+    */
    private long y_offset_;
+   /**
+    * (0 if the ROI includes the top edge of the image)
+    * Height of ROI
+    */
    private long height_;
+   /**
+    * Width of ROI
+    */
    private long width_;
+   /**
+    * True if a distinct rectified ROI should be calculated from the "raw"
+    * ROI in this message. Typically this should be False if the full image
+    * is captured (ROI not used), and True if a subwindow is captured (ROI
+    * used).
+    */
    private boolean do_rectify_;
 
    public RegionOfInterest()
@@ -40,51 +60,91 @@ public class RegionOfInterest implements Settable<RegionOfInterest>, EpsilonComp
       do_rectify_ = other.do_rectify_;
    }
 
+   /**
+    * Leftmost pixel of the ROI
+    */
    public long getXOffset()
    {
       return x_offset_;
    }
 
+   /**
+    * Leftmost pixel of the ROI
+    */
    public void setXOffset(long x_offset)
    {
       x_offset_ = x_offset;
    }
 
+   /**
+    * (0 if the ROI includes the left edge of the image)
+    * Topmost pixel of the ROI
+    */
    public long getYOffset()
    {
       return y_offset_;
    }
 
+   /**
+    * (0 if the ROI includes the left edge of the image)
+    * Topmost pixel of the ROI
+    */
    public void setYOffset(long y_offset)
    {
       y_offset_ = y_offset;
    }
 
+   /**
+    * (0 if the ROI includes the top edge of the image)
+    * Height of ROI
+    */
    public long getHeight()
    {
       return height_;
    }
 
+   /**
+    * (0 if the ROI includes the top edge of the image)
+    * Height of ROI
+    */
    public void setHeight(long height)
    {
       height_ = height;
    }
 
+   /**
+    * Width of ROI
+    */
    public long getWidth()
    {
       return width_;
    }
 
+   /**
+    * Width of ROI
+    */
    public void setWidth(long width)
    {
       width_ = width;
    }
 
+   /**
+    * True if a distinct rectified ROI should be calculated from the "raw"
+    * ROI in this message. Typically this should be False if the full image
+    * is captured (ROI not used), and True if a subwindow is captured (ROI
+    * used).
+    */
    public boolean getDoRectify()
    {
       return do_rectify_;
    }
 
+   /**
+    * True if a distinct rectified ROI should be calculated from the "raw"
+    * ROI in this message. Typically this should be False if the full image
+    * is captured (ROI not used), and True if a subwindow is captured (ROI
+    * used).
+    */
    public void setDoRectify(boolean do_rectify)
    {
       do_rectify_ = do_rectify;

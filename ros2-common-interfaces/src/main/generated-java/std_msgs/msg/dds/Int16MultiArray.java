@@ -11,7 +11,13 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Int16MultiArray implements Settable<Int16MultiArray>, EpsilonComparable<Int16MultiArray>
 {
+   /**
+    * specification of data layout
+    */
    private std_msgs.msg.dds.MultiArrayLayout layout_;
+   /**
+    * array of data
+    */
    private us.ihmc.idl.IDLSequence.Short data_;
 
    public Int16MultiArray()
@@ -20,10 +26,18 @@ public class Int16MultiArray implements Settable<Int16MultiArray>, EpsilonCompar
       data_ = new us.ihmc.idl.IDLSequence.Short(100, "type_1");
    }
 
+   /**
+    * specification of data layout
+    */
+
    public Int16MultiArray(Int16MultiArray other)
    {
       set(other);
    }
+
+   /**
+    * array of data
+    */
 
    public void set(Int16MultiArray other)
    {
@@ -31,11 +45,17 @@ public class Int16MultiArray implements Settable<Int16MultiArray>, EpsilonCompar
       data_.set(other.data_);
    }
 
+   /**
+    * specification of data layout
+    */
    public std_msgs.msg.dds.MultiArrayLayout getLayout()
    {
       return layout_;
    }
 
+   /**
+    * array of data
+    */
    public us.ihmc.idl.IDLSequence.Short getData()
    {
       return data_;

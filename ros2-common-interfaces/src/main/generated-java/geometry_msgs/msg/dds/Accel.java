@@ -11,6 +11,9 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Accel implements Settable<Accel>, EpsilonComparable<Accel>
 {
+   /**
+    * This expresses acceleration in free space broken into its linear and angular parts.
+    */
    private us.ihmc.euclid.tuple3D.Vector3D linear_;
    private us.ihmc.euclid.tuple3D.Vector3D angular_;
 
@@ -19,6 +22,10 @@ public class Accel implements Settable<Accel>, EpsilonComparable<Accel>
       linear_ = new us.ihmc.euclid.tuple3D.Vector3D();
       angular_ = new us.ihmc.euclid.tuple3D.Vector3D();
    }
+
+   /**
+    * This expresses acceleration in free space broken into its linear and angular parts.
+    */
 
    public Accel(Accel other)
    {
@@ -31,6 +38,9 @@ public class Accel implements Settable<Accel>, EpsilonComparable<Accel>
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.angular_, angular_);
    }
 
+   /**
+    * This expresses acceleration in free space broken into its linear and angular parts.
+    */
    public us.ihmc.euclid.tuple3D.Vector3D getLinear()
    {
       return linear_;

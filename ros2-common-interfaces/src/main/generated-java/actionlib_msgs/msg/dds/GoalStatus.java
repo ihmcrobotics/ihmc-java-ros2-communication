@@ -13,6 +13,9 @@ public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalS
 {
    private actionlib_msgs.msg.dds.GoalID goal_id_;
    private byte status_;
+   /**
+    * Allow for the user to associate a string with GoalStatus for debugging.
+    */
    private java.lang.StringBuilder text_;
 
    public GoalStatus()
@@ -56,11 +59,17 @@ public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalS
       return getText().toString();
    }
 
+   /**
+    * Allow for the user to associate a string with GoalStatus for debugging.
+    */
    public java.lang.StringBuilder getText()
    {
       return text_;
    }
 
+   /**
+    * Allow for the user to associate a string with GoalStatus for debugging.
+    */
    public void setText(String text)
    {
       text_.setLength(0);

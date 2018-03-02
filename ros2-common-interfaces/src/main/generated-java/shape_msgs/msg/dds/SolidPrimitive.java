@@ -11,7 +11,14 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class SolidPrimitive implements Settable<SolidPrimitive>, EpsilonComparable<SolidPrimitive>
 {
+   /**
+    * The type of the shape
+    */
    private byte type_;
+   /**
+    * The dimensions of the shape
+    * At no point will dimensions have a length > 3.
+    */
    private us.ihmc.idl.IDLSequence.Double dimensions_;
 
    public SolidPrimitive()
@@ -32,16 +39,31 @@ public class SolidPrimitive implements Settable<SolidPrimitive>, EpsilonComparab
       dimensions_.set(other.dimensions_);
    }
 
+   /**
+    * The dimensions of the shape
+    * At no point will dimensions have a length > 3.
+    */
+
+   /**
+    * The type of the shape
+    */
    public byte getType()
    {
       return type_;
    }
 
+   /**
+    * The type of the shape
+    */
    public void setType(byte type)
    {
       type_ = type;
    }
 
+   /**
+    * The dimensions of the shape
+    * At no point will dimensions have a length > 3.
+    */
    public us.ihmc.idl.IDLSequence.Double getDimensions()
    {
       return dimensions_;

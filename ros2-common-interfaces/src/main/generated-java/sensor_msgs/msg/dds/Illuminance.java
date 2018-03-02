@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Illuminance implements Settable<Illuminance>, EpsilonComparable<Illuminance>
 {
+   /**
+    * timestamp is the time the illuminance was measured
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Measurement of the Photometric Illuminance in Lux.
+    */
    private double illuminance_;
+   /**
+    * 0 is interpreted as variance unknown
+    */
    private double variance_;
+
+   /**
+    * timestamp is the time the illuminance was measured
+    */
 
    public Illuminance()
    {
@@ -33,26 +46,41 @@ public class Illuminance implements Settable<Illuminance>, EpsilonComparable<Ill
       variance_ = other.variance_;
    }
 
+   /**
+    * timestamp is the time the illuminance was measured
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Measurement of the Photometric Illuminance in Lux.
+    */
    public double getIlluminance()
    {
       return illuminance_;
    }
 
+   /**
+    * Measurement of the Photometric Illuminance in Lux.
+    */
    public void setIlluminance(double illuminance)
    {
       illuminance_ = illuminance;
    }
 
+   /**
+    * 0 is interpreted as variance unknown
+    */
    public double getVariance()
    {
       return variance_;
    }
 
+   /**
+    * 0 is interpreted as variance unknown
+    */
    public void setVariance(double variance)
    {
       variance_ = variance;

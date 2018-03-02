@@ -11,9 +11,21 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class PointField implements Settable<PointField>, EpsilonComparable<PointField>
 {
+   /**
+    * Name of field
+    */
    private java.lang.StringBuilder name_;
+   /**
+    * Offset from start of point struct
+    */
    private long offset_;
+   /**
+    * Datatype enumeration, see above
+    */
    private byte datatype_;
+   /**
+    * How many elements in the field
+    */
    private long count_;
 
    public PointField()
@@ -43,42 +55,66 @@ public class PointField implements Settable<PointField>, EpsilonComparable<Point
       return getName().toString();
    }
 
+   /**
+    * Name of field
+    */
    public java.lang.StringBuilder getName()
    {
       return name_;
    }
 
+   /**
+    * Name of field
+    */
    public void setName(String name)
    {
       name_.setLength(0);
       name_.append(name);
    }
 
+   /**
+    * Offset from start of point struct
+    */
    public long getOffset()
    {
       return offset_;
    }
 
+   /**
+    * Offset from start of point struct
+    */
    public void setOffset(long offset)
    {
       offset_ = offset;
    }
 
+   /**
+    * Datatype enumeration, see above
+    */
    public byte getDatatype()
    {
       return datatype_;
    }
 
+   /**
+    * Datatype enumeration, see above
+    */
    public void setDatatype(byte datatype)
    {
       datatype_ = datatype;
    }
 
+   /**
+    * How many elements in the field
+    */
    public long getCount()
    {
       return count_;
    }
 
+   /**
+    * How many elements in the field
+    */
    public void setCount(long count)
    {
       count_ = count;

@@ -11,15 +11,52 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class LaserScan implements Settable<LaserScan>, EpsilonComparable<LaserScan>
 {
+   /**
+    * timestamp in the header is the acquisition time of
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * start angle of the scan [rad]
+    */
    private float angle_min_;
+   /**
+    * end angle of the scan [rad]
+    */
    private float angle_max_;
+
+   /**
+    * timestamp in the header is the acquisition time of
+    */
+   /**
+    * angular distance between measurements [rad]
+    */
    private float angle_increment_;
+   /**
+    * time between measurements [seconds] - if your scanner
+    */
    private float time_increment_;
+   /**
+    * is moving, this will be used in interpolating position
+    * of 3d points
+    * time between scans [seconds]
+    */
    private float scan_time_;
+   /**
+    * minimum range value [m]
+    */
    private float range_min_;
+   /**
+    * maximum range value [m]
+    */
    private float range_max_;
+   /**
+    * range data [m]
+    */
    private us.ihmc.idl.IDLSequence.Float ranges_;
+   /**
+    * (Note: values < range_min or > range_max should be discarded)
+    * intensity data [device-specific units].  If your
+    */
    private us.ihmc.idl.IDLSequence.Float intensities_;
 
    public LaserScan()
@@ -57,86 +94,151 @@ public class LaserScan implements Settable<LaserScan>, EpsilonComparable<LaserSc
       intensities_.set(other.intensities_);
    }
 
+   /**
+    * timestamp in the header is the acquisition time of
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * start angle of the scan [rad]
+    */
    public float getAngleMin()
    {
       return angle_min_;
    }
 
+   /**
+    * start angle of the scan [rad]
+    */
    public void setAngleMin(float angle_min)
    {
       angle_min_ = angle_min;
    }
 
+   /**
+    * end angle of the scan [rad]
+    */
    public float getAngleMax()
    {
       return angle_max_;
    }
 
+   /**
+    * end angle of the scan [rad]
+    */
    public void setAngleMax(float angle_max)
    {
       angle_max_ = angle_max;
    }
 
+   /**
+    * range data [m]
+    */
+
+   /**
+    * angular distance between measurements [rad]
+    */
    public float getAngleIncrement()
    {
       return angle_increment_;
    }
 
+   /**
+    * (Note: values < range_min or > range_max should be discarded)
+    * intensity data [device-specific units].  If your
+    */
+
+   /**
+    * angular distance between measurements [rad]
+    */
    public void setAngleIncrement(float angle_increment)
    {
       angle_increment_ = angle_increment;
    }
 
+   /**
+    * time between measurements [seconds] - if your scanner
+    */
    public float getTimeIncrement()
    {
       return time_increment_;
    }
 
+   /**
+    * time between measurements [seconds] - if your scanner
+    */
    public void setTimeIncrement(float time_increment)
    {
       time_increment_ = time_increment;
    }
 
+   /**
+    * is moving, this will be used in interpolating position
+    * of 3d points
+    * time between scans [seconds]
+    */
    public float getScanTime()
    {
       return scan_time_;
    }
 
+   /**
+    * is moving, this will be used in interpolating position
+    * of 3d points
+    * time between scans [seconds]
+    */
    public void setScanTime(float scan_time)
    {
       scan_time_ = scan_time;
    }
 
+   /**
+    * minimum range value [m]
+    */
    public float getRangeMin()
    {
       return range_min_;
    }
 
+   /**
+    * minimum range value [m]
+    */
    public void setRangeMin(float range_min)
    {
       range_min_ = range_min;
    }
 
+   /**
+    * maximum range value [m]
+    */
    public float getRangeMax()
    {
       return range_max_;
    }
 
+   /**
+    * maximum range value [m]
+    */
    public void setRangeMax(float range_max)
    {
       range_max_ = range_max;
    }
 
+   /**
+    * range data [m]
+    */
    public us.ihmc.idl.IDLSequence.Float getRanges()
    {
       return ranges_;
    }
 
+   /**
+    * (Note: values < range_min or > range_max should be discarded)
+    * intensity data [device-specific units].  If your
+    */
    public us.ihmc.idl.IDLSequence.Float getIntensities()
    {
       return intensities_;

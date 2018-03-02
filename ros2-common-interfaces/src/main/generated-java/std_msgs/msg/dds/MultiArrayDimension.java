@@ -11,8 +11,17 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class MultiArrayDimension implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
 {
+   /**
+    * label of given dimension
+    */
    private java.lang.StringBuilder label_;
+   /**
+    * size of given dimension (in type units)
+    */
    private long size_;
+   /**
+    * stride of given dimension
+    */
    private long stride_;
 
    public MultiArrayDimension()
@@ -40,32 +49,50 @@ public class MultiArrayDimension implements Settable<MultiArrayDimension>, Epsil
       return getLabel().toString();
    }
 
+   /**
+    * label of given dimension
+    */
    public java.lang.StringBuilder getLabel()
    {
       return label_;
    }
 
+   /**
+    * label of given dimension
+    */
    public void setLabel(String label)
    {
       label_.setLength(0);
       label_.append(label);
    }
 
+   /**
+    * size of given dimension (in type units)
+    */
    public long getSize()
    {
       return size_;
    }
 
+   /**
+    * size of given dimension (in type units)
+    */
    public void setSize(long size)
    {
       size_ = size;
    }
 
+   /**
+    * stride of given dimension
+    */
    public long getStride()
    {
       return stride_;
    }
 
+   /**
+    * stride of given dimension
+    */
    public void setStride(long stride)
    {
       stride_ = stride;

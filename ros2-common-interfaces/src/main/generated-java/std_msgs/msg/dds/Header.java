@@ -11,7 +11,13 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Header implements Settable<Header>, EpsilonComparable<Header>
 {
+   /**
+    * Two-integer timestamp that is expressed as seconds and nanoseconds.
+    */
    private builtin_interfaces.msg.dds.Time stamp_;
+   /**
+    * Transform frame with which this data is associated.
+    */
    private java.lang.StringBuilder frame_id_;
 
    public Header()
@@ -19,6 +25,10 @@ public class Header implements Settable<Header>, EpsilonComparable<Header>
       stamp_ = new builtin_interfaces.msg.dds.Time();
       frame_id_ = new java.lang.StringBuilder(255);
    }
+
+   /**
+    * Two-integer timestamp that is expressed as seconds and nanoseconds.
+    */
 
    public Header(Header other)
    {
@@ -32,6 +42,9 @@ public class Header implements Settable<Header>, EpsilonComparable<Header>
       frame_id_.append(other.frame_id_);
    }
 
+   /**
+    * Two-integer timestamp that is expressed as seconds and nanoseconds.
+    */
    public builtin_interfaces.msg.dds.Time getStamp()
    {
       return stamp_;
@@ -42,11 +55,17 @@ public class Header implements Settable<Header>, EpsilonComparable<Header>
       return getFrameId().toString();
    }
 
+   /**
+    * Transform frame with which this data is associated.
+    */
    public java.lang.StringBuilder getFrameId()
    {
       return frame_id_;
    }
 
+   /**
+    * Transform frame with which this data is associated.
+    */
    public void setFrameId(String frame_id)
    {
       frame_id_.setLength(0);

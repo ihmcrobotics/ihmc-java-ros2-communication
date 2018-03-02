@@ -11,7 +11,13 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
 {
+   /**
+    * What to label this value when viewing.
+    */
    private java.lang.StringBuilder key_;
+   /**
+    * A value to track over time.
+    */
    private java.lang.StringBuilder value_;
 
    public KeyValue()
@@ -40,11 +46,17 @@ public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
       return getKey().toString();
    }
 
+   /**
+    * What to label this value when viewing.
+    */
    public java.lang.StringBuilder getKey()
    {
       return key_;
    }
 
+   /**
+    * What to label this value when viewing.
+    */
    public void setKey(String key)
    {
       key_.setLength(0);
@@ -56,11 +68,17 @@ public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
       return getValue().toString();
    }
 
+   /**
+    * A value to track over time.
+    */
    public java.lang.StringBuilder getValue()
    {
       return value_;
    }
 
+   /**
+    * A value to track over time.
+    */
    public void setValue(String value)
    {
       value_.setLength(0);

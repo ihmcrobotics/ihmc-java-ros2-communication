@@ -11,9 +11,23 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEntry>
 {
+   /**
+    * ID is a number for each menu entry.  Must be unique within the
+    * control, and should never be 0.
+    */
    private long id_;
+   /**
+    * ID of the parent of this menu entry, if it is a submenu.  If this
+    * menu entry is a top-level entry, set parent_id to 0.
+    */
    private long parent_id_;
+   /**
+    * menu / entry title
+    */
    private java.lang.StringBuilder title_;
+   /**
+    * Arguments to command indicated by command_type (below)
+    */
    private java.lang.StringBuilder command_;
    private byte command_type_;
 
@@ -45,21 +59,37 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
       command_type_ = other.command_type_;
    }
 
+   /**
+    * ID is a number for each menu entry.  Must be unique within the
+    * control, and should never be 0.
+    */
    public long getId()
    {
       return id_;
    }
 
+   /**
+    * ID is a number for each menu entry.  Must be unique within the
+    * control, and should never be 0.
+    */
    public void setId(long id)
    {
       id_ = id;
    }
 
+   /**
+    * ID of the parent of this menu entry, if it is a submenu.  If this
+    * menu entry is a top-level entry, set parent_id to 0.
+    */
    public long getParentId()
    {
       return parent_id_;
    }
 
+   /**
+    * ID of the parent of this menu entry, if it is a submenu.  If this
+    * menu entry is a top-level entry, set parent_id to 0.
+    */
    public void setParentId(long parent_id)
    {
       parent_id_ = parent_id;
@@ -70,11 +100,17 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
       return getTitle().toString();
    }
 
+   /**
+    * menu / entry title
+    */
    public java.lang.StringBuilder getTitle()
    {
       return title_;
    }
 
+   /**
+    * menu / entry title
+    */
    public void setTitle(String title)
    {
       title_.setLength(0);
@@ -86,11 +122,17 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
       return getCommand().toString();
    }
 
+   /**
+    * Arguments to command indicated by command_type (below)
+    */
    public java.lang.StringBuilder getCommand()
    {
       return command_;
    }
 
+   /**
+    * Arguments to command indicated by command_type (below)
+    */
    public void setCommand(String command)
    {
       command_.setLength(0);

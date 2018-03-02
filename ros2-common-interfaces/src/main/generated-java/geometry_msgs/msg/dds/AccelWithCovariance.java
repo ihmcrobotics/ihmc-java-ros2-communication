@@ -12,6 +12,12 @@ import us.ihmc.euclid.interfaces.Settable;
 public class AccelWithCovariance implements Settable<AccelWithCovariance>, EpsilonComparable<AccelWithCovariance>
 {
    private geometry_msgs.msg.dds.Accel accel_;
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
    private double[] covariance_;
 
    public AccelWithCovariance()
@@ -24,6 +30,13 @@ public class AccelWithCovariance implements Settable<AccelWithCovariance>, Epsil
    {
       set(other);
    }
+
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
 
    public void set(AccelWithCovariance other)
    {
@@ -39,6 +52,12 @@ public class AccelWithCovariance implements Settable<AccelWithCovariance>, Epsil
       return accel_;
    }
 
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
    public double[] getCovariance()
    {
       return covariance_;

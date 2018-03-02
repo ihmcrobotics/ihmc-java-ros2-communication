@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class TimeReference implements Settable<TimeReference>, EpsilonComparable<TimeReference>
 {
+   /**
+    * stamp is system time for which measurement was valid
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * corresponding time from this external source
+    */
    private builtin_interfaces.msg.dds.Time time_ref_;
+   /**
+    * (optional) name of time source
+    */
    private java.lang.StringBuilder source_;
+
+   /**
+    * stamp is system time for which measurement was valid
+    */
 
    public TimeReference()
    {
@@ -21,6 +34,10 @@ public class TimeReference implements Settable<TimeReference>, EpsilonComparable
       time_ref_ = new builtin_interfaces.msg.dds.Time();
       source_ = new java.lang.StringBuilder(255);
    }
+
+   /**
+    * corresponding time from this external source
+    */
 
    public TimeReference(TimeReference other)
    {
@@ -35,11 +52,17 @@ public class TimeReference implements Settable<TimeReference>, EpsilonComparable
       source_.append(other.source_);
    }
 
+   /**
+    * stamp is system time for which measurement was valid
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * corresponding time from this external source
+    */
    public builtin_interfaces.msg.dds.Time getTimeRef()
    {
       return time_ref_;
@@ -50,11 +73,17 @@ public class TimeReference implements Settable<TimeReference>, EpsilonComparable
       return getSource().toString();
    }
 
+   /**
+    * (optional) name of time source
+    */
    public java.lang.StringBuilder getSource()
    {
       return source_;
    }
 
+   /**
+    * (optional) name of time source
+    */
    public void setSource(String source)
    {
       source_.setLength(0);

@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class Temperature implements Settable<Temperature>, EpsilonComparable<Temperature>
 {
+   /**
+    * timestamp is the time the temperature was measured
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Measurement of the Temperature in Degrees Celsius.
+    */
    private double temperature_;
+   /**
+    * 0 is interpreted as variance unknown.
+    */
    private double variance_;
+
+   /**
+    * timestamp is the time the temperature was measured
+    */
 
    public Temperature()
    {
@@ -33,26 +46,41 @@ public class Temperature implements Settable<Temperature>, EpsilonComparable<Tem
       variance_ = other.variance_;
    }
 
+   /**
+    * timestamp is the time the temperature was measured
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Measurement of the Temperature in Degrees Celsius.
+    */
    public double getTemperature()
    {
       return temperature_;
    }
 
+   /**
+    * Measurement of the Temperature in Degrees Celsius.
+    */
    public void setTemperature(double temperature)
    {
       temperature_ = temperature;
    }
 
+   /**
+    * 0 is interpreted as variance unknown.
+    */
    public double getVariance()
    {
       return variance_;
    }
 
+   /**
+    * 0 is interpreted as variance unknown.
+    */
    public void setVariance(double variance)
    {
       variance_ = variance;

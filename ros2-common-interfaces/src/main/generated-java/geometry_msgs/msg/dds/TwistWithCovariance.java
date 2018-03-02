@@ -12,6 +12,12 @@ import us.ihmc.euclid.interfaces.Settable;
 public class TwistWithCovariance implements Settable<TwistWithCovariance>, EpsilonComparable<TwistWithCovariance>
 {
    private geometry_msgs.msg.dds.Twist twist_;
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
    private double[] covariance_;
 
    public TwistWithCovariance()
@@ -24,6 +30,13 @@ public class TwistWithCovariance implements Settable<TwistWithCovariance>, Epsil
    {
       set(other);
    }
+
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
 
    public void set(TwistWithCovariance other)
    {
@@ -39,6 +52,12 @@ public class TwistWithCovariance implements Settable<TwistWithCovariance>, Epsil
       return twist_;
    }
 
+   /**
+    * Row-major representation of the 6x6 covariance matrix
+    * The orientation parameters use a fixed-axis representation.
+    * In order, the parameters are:
+    * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    */
    public double[] getCovariance()
    {
       return covariance_;

@@ -12,6 +12,9 @@ import us.ihmc.euclid.interfaces.Settable;
 public class ParameterDescriptor implements Settable<ParameterDescriptor>, EpsilonComparable<ParameterDescriptor>
 {
    private java.lang.StringBuilder name_;
+   /**
+    * Enum defined in ParameterType.msg
+    */
    private byte type_;
 
    public ParameterDescriptor()
@@ -48,11 +51,17 @@ public class ParameterDescriptor implements Settable<ParameterDescriptor>, Epsil
       name_.append(name);
    }
 
+   /**
+    * Enum defined in ParameterType.msg
+    */
    public byte getType()
    {
       return type_;
    }
 
+   /**
+    * Enum defined in ParameterType.msg
+    */
    public void setType(byte type)
    {
       type_ = type;

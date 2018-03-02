@@ -11,9 +11,16 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class MultiDOFJointTrajectory implements Settable<MultiDOFJointTrajectory>, EpsilonComparable<MultiDOFJointTrajectory>
 {
+   /**
+    * The header is used to specify the coordinate frame and the reference time for the trajectory durations
+    */
    private std_msgs.msg.dds.Header header_;
    private us.ihmc.idl.IDLSequence.StringBuilderHolder joint_names_;
    private us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint> points_;
+
+   /**
+    * The header is used to specify the coordinate frame and the reference time for the trajectory durations
+    */
 
    public MultiDOFJointTrajectory()
    {
@@ -36,6 +43,9 @@ public class MultiDOFJointTrajectory implements Settable<MultiDOFJointTrajectory
       points_.set(other.points_);
    }
 
+   /**
+    * The header is used to specify the coordinate frame and the reference time for the trajectory durations
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;

@@ -11,9 +11,22 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class RelativeHumidity implements Settable<RelativeHumidity>, EpsilonComparable<RelativeHumidity>
 {
+   /**
+    * timestamp of the measurement
+    */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Expression of the relative humidity
+    */
    private double relative_humidity_;
+   /**
+    * 0 is interpreted as variance unknown
+    */
    private double variance_;
+
+   /**
+    * timestamp of the measurement
+    */
 
    public RelativeHumidity()
    {
@@ -33,26 +46,41 @@ public class RelativeHumidity implements Settable<RelativeHumidity>, EpsilonComp
       variance_ = other.variance_;
    }
 
+   /**
+    * timestamp of the measurement
+    */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+   /**
+    * Expression of the relative humidity
+    */
    public double getRelativeHumidity()
    {
       return relative_humidity_;
    }
 
+   /**
+    * Expression of the relative humidity
+    */
    public void setRelativeHumidity(double relative_humidity)
    {
       relative_humidity_ = relative_humidity;
    }
 
+   /**
+    * 0 is interpreted as variance unknown
+    */
    public double getVariance()
    {
       return variance_;
    }
 
+   /**
+    * 0 is interpreted as variance unknown
+    */
    public void setVariance(double variance)
    {
       variance_ = variance;
