@@ -27,7 +27,7 @@ dependencies {
 }
 
 mainDependencies {
-   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.5.1'
+   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.5.2'
    compile group: 'us.ihmc', name: 'ros2-msg-to-idl-generator', version: '0.3.0'
 }
 
