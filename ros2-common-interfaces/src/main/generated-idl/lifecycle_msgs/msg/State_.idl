@@ -62,9 +62,9 @@ module lifecycle_msgs
       {
         octet id;
         string label;
-      };  // struct State
-    };  // module dds_
-  };  // module msg
-};  // module lifecycle_msgs
+      };
+    };
+  };
+};
 
-#endif  // __lifecycle_msgs__msg__State__idl__
+#endif

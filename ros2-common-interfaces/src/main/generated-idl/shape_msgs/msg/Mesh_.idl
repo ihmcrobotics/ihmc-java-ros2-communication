@@ -24,9 +24,9 @@ module shape_msgs
          * The actual vertices that make up the mesh.
          */
         sequence<geometry_msgs::msg::dds::Point> vertices;
-      };  // struct Mesh
-    };  // module dds_
-  };  // module msg
-};  // module shape_msgs
+      };
+    };
+  };
+};
 
-#endif  // __shape_msgs__msg__Mesh__idl__
+#endif

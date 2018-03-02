@@ -120,9 +120,9 @@ module visualization_msgs
          * Default: A generic description based on the interaction mode
          */
         string description;
-      };  // struct InteractiveMarkerControl
-    };  // module dds_
-  };  // module msg
-};  // module visualization_msgs
+      };
+    };
+  };
+};
 
-#endif  // __visualization_msgs__msg__InteractiveMarkerControl__idl__
+#endif

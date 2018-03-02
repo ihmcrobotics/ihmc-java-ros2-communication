@@ -67,9 +67,9 @@ module sensor_msgs
          * intensity data [device-specific units].  If your
          */
         sequence<float> intensities;
-      };  // struct LaserScan
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__LaserScan__idl__
+#endif

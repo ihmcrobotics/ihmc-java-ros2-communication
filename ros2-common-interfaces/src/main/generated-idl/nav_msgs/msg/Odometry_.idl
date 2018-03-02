@@ -23,9 +23,9 @@ module nav_msgs
         string child_frame_id;
         geometry_msgs::msg::dds::PoseWithCovariance pose;
         geometry_msgs::msg::dds::TwistWithCovariance twist;
-      };  // struct Odometry
-    };  // module dds_
-  };  // module msg
-};  // module nav_msgs
+      };
+    };
+  };
+};
 
-#endif  // __nav_msgs__msg__Odometry__idl__
+#endif

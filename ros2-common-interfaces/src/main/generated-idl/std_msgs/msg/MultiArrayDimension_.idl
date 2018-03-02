@@ -23,9 +23,9 @@ module std_msgs
          * stride of given dimension
          */
         unsigned long stride;
-      };  // struct MultiArrayDimension
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__MultiArrayDimension__idl__
+#endif

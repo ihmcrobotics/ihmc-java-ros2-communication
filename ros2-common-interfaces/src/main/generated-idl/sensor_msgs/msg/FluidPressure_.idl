@@ -31,9 +31,9 @@ module sensor_msgs
          * 0 is interpreted as variance unknown
          */
         double variance;
-      };  // struct FluidPressure
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__FluidPressure__idl__
+#endif

@@ -41,9 +41,9 @@ module sensor_msgs
         sequence<geometry_msgs::msg::dds::Transform> transforms;
         sequence<geometry_msgs::msg::dds::Twist> twist;
         sequence<geometry_msgs::msg::dds::Wrench> wrench;
-      };  // struct MultiDOFJointState
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__MultiDOFJointState__idl__
+#endif

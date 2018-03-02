@@ -144,9 +144,9 @@ module sensor_msgs
          * The best approximation of the battery serial number
          */
         string serial_number;
-      };  // struct BatteryState
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__BatteryState__idl__
+#endif

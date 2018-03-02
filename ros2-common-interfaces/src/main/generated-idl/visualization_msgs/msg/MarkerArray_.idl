@@ -13,9 +13,9 @@ module visualization_msgs
       struct MarkerArray
       {
         sequence<visualization_msgs::msg::dds::Marker> markers;
-      };  // struct MarkerArray
-    };  // module dds_
-  };  // module msg
-};  // module visualization_msgs
+      };
+    };
+  };
+};
 
-#endif  // __visualization_msgs__msg__MarkerArray__idl__
+#endif

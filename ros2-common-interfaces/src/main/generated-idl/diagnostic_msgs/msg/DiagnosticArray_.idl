@@ -22,9 +22,9 @@ module diagnostic_msgs
          * an array of components being reported on
          */
         sequence<diagnostic_msgs::msg::dds::DiagnosticStatus> status;
-      };  // struct DiagnosticArray
-    };  // module dds_
-  };  // module msg
-};  // module diagnostic_msgs
+      };
+    };
+  };
+};
 
-#endif  // __diagnostic_msgs__msg__DiagnosticArray__idl__
+#endif

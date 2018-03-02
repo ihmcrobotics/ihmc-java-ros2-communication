@@ -19,9 +19,9 @@ module sensor_msgs
          * Multiple values of ranges or intensities.
          */
         sequence<float> echoes;
-      };  // struct LaserEcho
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__LaserEcho__idl__
+#endif

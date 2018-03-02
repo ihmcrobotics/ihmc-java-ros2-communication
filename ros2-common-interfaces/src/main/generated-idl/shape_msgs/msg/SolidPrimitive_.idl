@@ -74,9 +74,9 @@ module shape_msgs
          * At no point will dimensions have a length > 3.
          */
         sequence<double, 3> dimensions;
-      };  // struct SolidPrimitive
-    };  // module dds_
-  };  // module msg
-};  // module shape_msgs
+      };
+    };
+  };
+};
 
-#endif  // __shape_msgs__msg__SolidPrimitive__idl__
+#endif

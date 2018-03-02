@@ -34,9 +34,9 @@ module sensor_msgs
          * Compressed image buffer
          */
         sequence<octet> data;
-      };  // struct CompressedImage
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__CompressedImage__idl__
+#endif

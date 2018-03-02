@@ -60,9 +60,9 @@ module sensor_msgs
       {
         octet status;
         unsigned short service;
-      };  // struct NavSatStatus
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__NavSatStatus__idl__
+#endif

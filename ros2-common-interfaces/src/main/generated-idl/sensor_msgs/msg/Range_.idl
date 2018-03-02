@@ -64,9 +64,9 @@ module sensor_msgs
          * range data [m]
          */
         float range;
-      };  // struct Range
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__Range__idl__
+#endif

@@ -38,9 +38,9 @@ module sensor_msgs
          * PointCloud.
          */
         sequence<float> values;
-      };  // struct ChannelFloat32
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__ChannelFloat32__idl__
+#endif

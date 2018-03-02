@@ -18,9 +18,9 @@ module geometry_msgs
       {
         std_msgs::msg::dds::Header header;
         geometry_msgs::msg::dds::Polygon polygon;
-      };  // struct PolygonStamped
-    };  // module dds_
-  };  // module msg
-};  // module geometry_msgs
+      };
+    };
+  };
+};
 
-#endif  // __geometry_msgs__msg__PolygonStamped__idl__
+#endif

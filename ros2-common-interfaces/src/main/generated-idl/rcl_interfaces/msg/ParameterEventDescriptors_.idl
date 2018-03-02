@@ -20,9 +20,9 @@ module rcl_interfaces
         sequence<rcl_interfaces::msg::dds::ParameterDescriptor> new_parameters;
         sequence<rcl_interfaces::msg::dds::ParameterDescriptor> changed_parameters;
         sequence<rcl_interfaces::msg::dds::ParameterDescriptor> deleted_parameters;
-      };  // struct ParameterEventDescriptors
-    };  // module dds_
-  };  // module msg
-};  // module rcl_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __rcl_interfaces__msg__ParameterEventDescriptors__idl__
+#endif

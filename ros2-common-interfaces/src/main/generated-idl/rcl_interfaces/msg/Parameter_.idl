@@ -18,9 +18,9 @@ module rcl_interfaces
       {
         string name;
         rcl_interfaces::msg::dds::ParameterValue value;
-      };  // struct Parameter
-    };  // module dds_
-  };  // module msg
-};  // module rcl_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __rcl_interfaces__msg__Parameter__idl__
+#endif

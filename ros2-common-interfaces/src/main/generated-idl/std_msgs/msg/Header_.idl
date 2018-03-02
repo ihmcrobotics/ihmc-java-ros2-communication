@@ -25,9 +25,9 @@ module std_msgs
          * Transform frame with which this data is associated.
          */
         string frame_id;
-      };  // struct Header
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Header__idl__
+#endif

@@ -17,9 +17,9 @@ module lifecycle_msgs
         lifecycle_msgs::msg::dds::Transition transition;
         lifecycle_msgs::msg::dds::State start_state;
         lifecycle_msgs::msg::dds::State goal_state;
-      };  // struct TransitionEvent
-    };  // module dds_
-  };  // module msg
-};  // module lifecycle_msgs
+      };
+    };
+  };
+};
 
-#endif  // __lifecycle_msgs__msg__TransitionEvent__idl__
+#endif

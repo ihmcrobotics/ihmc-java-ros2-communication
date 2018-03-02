@@ -12,9 +12,9 @@ module std_msgs
       struct Float32
       {
         float data;
-      };  // struct Float32
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Float32__idl__
+#endif

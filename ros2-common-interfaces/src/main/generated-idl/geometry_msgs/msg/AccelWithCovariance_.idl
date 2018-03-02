@@ -24,9 +24,9 @@ typedef double geometry_msgs__AccelWithCovariance__double_array_36[36];
          * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
          */
     geometry_msgs__AccelWithCovariance__double_array_36 covariance;
-      };  // struct AccelWithCovariance
-    };  // module dds_
-  };  // module msg
-};  // module geometry_msgs
+      };
+    };
+  };
+};
 
-#endif  // __geometry_msgs__msg__AccelWithCovariance__idl__
+#endif

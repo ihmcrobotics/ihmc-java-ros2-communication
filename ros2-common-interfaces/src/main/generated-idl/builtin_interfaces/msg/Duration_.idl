@@ -13,9 +13,9 @@ module builtin_interfaces
       {
         long sec;
         unsigned long nanosec;
-      };  // struct Duration
-    };  // module dds_
-  };  // module msg
-};  // module builtin_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __builtin_interfaces__msg__Duration__idl__
+#endif

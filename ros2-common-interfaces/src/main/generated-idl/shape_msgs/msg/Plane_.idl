@@ -22,9 +22,9 @@ typedef double shape_msgs__Plane__double_array_4[4];
          * d := coef[3]
          */
     shape_msgs__Plane__double_array_4 coef;
-      };  // struct Plane
-    };  // module dds_
-  };  // module msg
-};  // module shape_msgs
+      };
+    };
+  };
+};
 
-#endif  // __shape_msgs__msg__Plane__idl__
+#endif

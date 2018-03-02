@@ -12,9 +12,9 @@ module std_msgs
       struct Bool
       {
         boolean data;
-      };  // struct Bool
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Bool__idl__
+#endif

@@ -156,9 +156,9 @@ typedef double sensor_msgs__CameraInfo__double_array_12[12];
          * full resolution (roi.width = width, roi.height = height).
          */
         sensor_msgs::msg::dds::RegionOfInterest roi;
-      };  // struct CameraInfo
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__CameraInfo__idl__
+#endif

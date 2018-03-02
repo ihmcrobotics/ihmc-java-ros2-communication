@@ -137,9 +137,9 @@ module visualization_msgs
          */
         string mesh_resource;
         boolean mesh_use_embedded_materials;
-      };  // struct Marker
-    };  // module dds_
-  };  // module msg
-};  // module visualization_msgs
+      };
+    };
+  };
+};
 
-#endif  // __visualization_msgs__msg__Marker__idl__
+#endif

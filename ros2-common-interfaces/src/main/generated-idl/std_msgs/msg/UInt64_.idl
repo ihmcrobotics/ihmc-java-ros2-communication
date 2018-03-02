@@ -12,9 +12,9 @@ module std_msgs
       struct UInt64
       {
         unsigned long long data;
-      };  // struct UInt64
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__UInt64__idl__
+#endif

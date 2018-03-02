@@ -20,9 +20,9 @@ module rcl_interfaces
          * TODO(wjwwood): link to prefix definition and rules.
          */
         sequence<string> prefixes;
-      };  // struct ListParametersResult
-    };  // module dds_
-  };  // module msg
-};  // module rcl_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __rcl_interfaces__msg__ListParametersResult__idl__
+#endif

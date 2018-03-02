@@ -75,9 +75,9 @@ module visualization_msgs
          */
         geometry_msgs::msg::dds::Point mouse_point;
         boolean mouse_point_valid;
-      };  // struct InteractiveMarkerFeedback
-    };  // module dds_
-  };  // module msg
-};  // module visualization_msgs
+      };
+    };
+  };
+};
 
-#endif  // __visualization_msgs__msg__InteractiveMarkerFeedback__idl__
+#endif

@@ -56,9 +56,9 @@ module sensor_msgs
          * True if there are no invalid points
          */
         boolean is_dense;
-      };  // struct PointCloud2
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__PointCloud2__idl__
+#endif

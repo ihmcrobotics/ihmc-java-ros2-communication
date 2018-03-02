@@ -46,9 +46,9 @@ typedef double sensor_msgs__Imu__double_array_9[9];
          * Row major x, y z
          */
     sensor_msgs__Imu__double_array_9 linear_acceleration_covariance;
-      };  // struct Imu
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__Imu__idl__
+#endif

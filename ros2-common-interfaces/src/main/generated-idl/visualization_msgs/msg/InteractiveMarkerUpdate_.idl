@@ -55,9 +55,9 @@ module visualization_msgs
          * Names of markers to be erased
          */
         sequence<string> erases;
-      };  // struct InteractiveMarkerUpdate
-    };  // module dds_
-  };  // module msg
-};  // module visualization_msgs
+      };
+    };
+  };
+};
 
-#endif  // __visualization_msgs__msg__InteractiveMarkerUpdate__idl__
+#endif

@@ -24,9 +24,9 @@ module actionlib_msgs
          * specified must be unique.
          */
         string id;
-      };  // struct GoalID
-    };  // module dds_
-  };  // module msg
-};  // module actionlib_msgs
+      };
+    };
+  };
+};
 
-#endif  // __actionlib_msgs__msg__GoalID__idl__
+#endif

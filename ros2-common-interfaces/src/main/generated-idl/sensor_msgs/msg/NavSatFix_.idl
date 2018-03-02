@@ -72,9 +72,9 @@ typedef double sensor_msgs__NavSatFix__double_array_9[9];
          */
     sensor_msgs__NavSatFix__double_array_9 position_covariance;
         octet position_covariance_type;
-      };  // struct NavSatFix
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__NavSatFix__idl__
+#endif

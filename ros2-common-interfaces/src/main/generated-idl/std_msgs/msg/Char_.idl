@@ -12,9 +12,9 @@ module std_msgs
       struct Char
       {
         char data;
-      };  // struct Char
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Char__idl__
+#endif

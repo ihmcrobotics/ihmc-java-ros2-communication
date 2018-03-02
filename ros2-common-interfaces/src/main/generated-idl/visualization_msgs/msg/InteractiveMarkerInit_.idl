@@ -30,9 +30,9 @@ module visualization_msgs
          * All markers.
          */
         sequence<visualization_msgs::msg::dds::InteractiveMarker> markers;
-      };  // struct InteractiveMarkerInit
-    };  // module dds_
-  };  // module msg
-};  // module visualization_msgs
+      };
+    };
+  };
+};
 
-#endif  // __visualization_msgs__msg__InteractiveMarkerInit__idl__
+#endif

@@ -25,9 +25,9 @@ module std_msgs
          * padding bytes at front of data
          */
         unsigned long data_offset;
-      };  // struct MultiArrayLayout
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__MultiArrayLayout__idl__
+#endif

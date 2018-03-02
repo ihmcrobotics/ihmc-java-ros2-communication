@@ -12,9 +12,9 @@ module std_msgs
       struct Int8
       {
         octet data;
-      };  // struct Int8
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Int8__idl__
+#endif

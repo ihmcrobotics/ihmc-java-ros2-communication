@@ -17,9 +17,9 @@ module geometry_msgs
       {
         geometry_msgs::msg::dds::Vector3 force;
         geometry_msgs::msg::dds::Vector3 torque;
-      };  // struct Wrench
-    };  // module dds_
-  };  // module msg
-};  // module geometry_msgs
+      };
+    };
+  };
+};
 
-#endif  // __geometry_msgs__msg__Wrench__idl__
+#endif

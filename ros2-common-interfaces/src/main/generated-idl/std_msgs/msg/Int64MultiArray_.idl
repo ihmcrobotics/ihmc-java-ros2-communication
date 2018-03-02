@@ -24,9 +24,9 @@ module std_msgs
          * array of data
          */
         sequence<long long> data;
-      };  // struct Int64MultiArray
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Int64MultiArray__idl__
+#endif

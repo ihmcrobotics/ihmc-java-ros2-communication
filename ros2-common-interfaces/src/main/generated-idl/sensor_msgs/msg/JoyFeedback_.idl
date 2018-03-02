@@ -34,9 +34,9 @@ module sensor_msgs
          * actually binary, driver should treat 0<=x<0.5 as off, 0.5<=x<=1 as on.
          */
         float intensity;
-      };  // struct JoyFeedback
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__JoyFeedback__idl__
+#endif

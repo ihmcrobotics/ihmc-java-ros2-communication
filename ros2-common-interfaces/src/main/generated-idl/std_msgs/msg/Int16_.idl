@@ -12,9 +12,9 @@ module std_msgs
       struct Int16
       {
         short data;
-      };  // struct Int16
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Int16__idl__
+#endif

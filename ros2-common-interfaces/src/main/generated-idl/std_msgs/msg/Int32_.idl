@@ -12,9 +12,9 @@ module std_msgs
       struct Int32
       {
         long data;
-      };  // struct Int32
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Int32__idl__
+#endif

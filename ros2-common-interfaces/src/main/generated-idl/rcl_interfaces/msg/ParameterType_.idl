@@ -30,9 +30,9 @@ module rcl_interfaces
       struct ParameterType
       {
   boolean _dummy;
-      };  // struct ParameterType
-    };  // module dds_
-  };  // module msg
-};  // module rcl_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __rcl_interfaces__msg__ParameterType__idl__
+#endif

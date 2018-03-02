@@ -76,9 +76,9 @@ module visualization_msgs
          */
         string command;
         octet command_type;
-      };  // struct MenuEntry
-    };  // module dds_
-  };  // module msg
-};  // module visualization_msgs
+      };
+    };
+  };
+};
 
-#endif  // __visualization_msgs__msg__MenuEntry__idl__
+#endif

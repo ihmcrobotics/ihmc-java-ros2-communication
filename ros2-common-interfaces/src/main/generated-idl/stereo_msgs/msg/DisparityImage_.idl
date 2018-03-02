@@ -54,9 +54,9 @@ module stereo_msgs
          * resolution is delta_Z = (Z^2/fT)*delta_d.
          */
         float delta_d;
-      };  // struct DisparityImage
-    };  // module dds_
-  };  // module msg
-};  // module stereo_msgs
+      };
+    };
+  };
+};
 
-#endif  // __stereo_msgs__msg__DisparityImage__idl__
+#endif

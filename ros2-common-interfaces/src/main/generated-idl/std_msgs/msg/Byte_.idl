@@ -12,9 +12,9 @@ module std_msgs
       struct Byte
       {
         octet data;
-      };  // struct Byte
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Byte__idl__
+#endif

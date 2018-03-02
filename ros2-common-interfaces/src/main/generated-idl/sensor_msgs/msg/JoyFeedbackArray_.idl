@@ -16,9 +16,9 @@ module sensor_msgs
          * This message publishes values for multiple feedback at once.
          */
         sequence<sensor_msgs::msg::dds::JoyFeedback> array;
-      };  // struct JoyFeedbackArray
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__JoyFeedbackArray__idl__
+#endif

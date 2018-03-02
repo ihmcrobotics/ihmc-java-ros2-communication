@@ -24,9 +24,9 @@ module std_msgs
          * array of data
          */
         sequence<octet> data;
-      };  // struct UInt8MultiArray
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__UInt8MultiArray__idl__
+#endif

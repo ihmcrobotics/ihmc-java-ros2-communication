@@ -25,9 +25,9 @@ module trajectory_msgs
         std_msgs::msg::dds::Header header;
         sequence<string> joint_names;
         sequence<trajectory_msgs::msg::dds::MultiDOFJointTrajectoryPoint> points;
-      };  // struct MultiDOFJointTrajectory
-    };  // module dds_
-  };  // module msg
-};  // module trajectory_msgs
+      };
+    };
+  };
+};
 
-#endif  // __trajectory_msgs__msg__MultiDOFJointTrajectory__idl__
+#endif

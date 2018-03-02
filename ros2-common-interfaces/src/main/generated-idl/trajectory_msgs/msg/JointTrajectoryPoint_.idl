@@ -22,9 +22,9 @@ module trajectory_msgs
         sequence<double> accelerations;
         sequence<double> effort;
         builtin_interfaces::msg::dds::Duration time_from_start;
-      };  // struct JointTrajectoryPoint
-    };  // module dds_
-  };  // module msg
-};  // module trajectory_msgs
+      };
+    };
+  };
+};
 
-#endif  // __trajectory_msgs__msg__JointTrajectoryPoint__idl__
+#endif

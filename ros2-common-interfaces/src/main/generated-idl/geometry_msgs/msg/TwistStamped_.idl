@@ -18,9 +18,9 @@ module geometry_msgs
       {
         std_msgs::msg::dds::Header header;
         geometry_msgs::msg::dds::Twist twist;
-      };  // struct TwistStamped
-    };  // module dds_
-  };  // module msg
-};  // module geometry_msgs
+      };
+    };
+  };
+};
 
-#endif  // __geometry_msgs__msg__TwistStamped__idl__
+#endif

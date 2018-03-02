@@ -44,9 +44,9 @@ module sensor_msgs
          * used).
          */
         boolean do_rectify;
-      };  // struct RegionOfInterest
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__RegionOfInterest__idl__
+#endif

@@ -55,9 +55,9 @@ module sensor_msgs
          * How many elements in the field
          */
         unsigned long count;
-      };  // struct PointField
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__PointField__idl__
+#endif

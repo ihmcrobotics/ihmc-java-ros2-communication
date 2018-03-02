@@ -20,9 +20,9 @@ module nav_msgs
         float cell_width;
         float cell_height;
         sequence<geometry_msgs::msg::dds::Point> cells;
-      };  // struct GridCells
-    };  // module dds_
-  };  // module msg
-};  // module nav_msgs
+      };
+    };
+  };
+};
 
-#endif  // __nav_msgs__msg__GridCells__idl__
+#endif

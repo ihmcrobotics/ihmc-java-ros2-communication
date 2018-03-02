@@ -26,9 +26,9 @@ module rcl_interfaces
         double double_value;
         string string_value;
         sequence<octet> bytes_value;
-      };  // struct ParameterValue
-    };  // module dds_
-  };  // module msg
-};  // module rcl_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __rcl_interfaces__msg__ParameterValue__idl__
+#endif

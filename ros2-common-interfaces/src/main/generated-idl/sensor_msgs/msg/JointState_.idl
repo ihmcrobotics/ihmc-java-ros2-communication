@@ -37,9 +37,9 @@ module sensor_msgs
         sequence<double> position;
         sequence<double> velocity;
         sequence<double> effort;
-      };  // struct JointState
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__JointState__idl__
+#endif

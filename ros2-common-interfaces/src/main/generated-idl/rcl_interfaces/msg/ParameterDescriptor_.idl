@@ -19,9 +19,9 @@ module rcl_interfaces
          * Enum defined in ParameterType.msg
          */
         octet type;
-      };  // struct ParameterDescriptor
-    };  // module dds_
-  };  // module msg
-};  // module rcl_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __rcl_interfaces__msg__ParameterDescriptor__idl__
+#endif

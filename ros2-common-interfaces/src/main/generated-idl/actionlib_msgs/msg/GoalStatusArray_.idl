@@ -19,9 +19,9 @@ module actionlib_msgs
          */
         std_msgs::msg::dds::Header header;
         sequence<actionlib_msgs::msg::dds::GoalStatus> status_list;
-      };  // struct GoalStatusArray
-    };  // module dds_
-  };  // module msg
-};  // module actionlib_msgs
+      };
+    };
+  };
+};
 
-#endif  // __actionlib_msgs__msg__GoalStatusArray__idl__
+#endif

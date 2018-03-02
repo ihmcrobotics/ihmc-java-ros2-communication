@@ -15,9 +15,9 @@ module std_msgs
         float g;
         float b;
         float a;
-      };  // struct ColorRGBA
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__ColorRGBA__idl__
+#endif

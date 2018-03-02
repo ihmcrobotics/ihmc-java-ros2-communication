@@ -88,9 +88,9 @@ module actionlib_msgs
          * Allow for the user to associate a string with GoalStatus for debugging.
          */
         string text;
-      };  // struct GoalStatus
-    };  // module dds_
-  };  // module msg
-};  // module actionlib_msgs
+      };
+    };
+  };
+};
 
-#endif  // __actionlib_msgs__msg__GoalStatus__idl__
+#endif

@@ -130,9 +130,9 @@ module lifecycle_msgs
       {
         octet id;
         string label;
-      };  // struct Transition
-    };  // module dds_
-  };  // module msg
-};  // module lifecycle_msgs
+      };
+    };
+  };
+};
 
-#endif  // __lifecycle_msgs__msg__Transition__idl__
+#endif

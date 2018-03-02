@@ -27,9 +27,9 @@ module trajectory_msgs
          */
         sequence<geometry_msgs::msg::dds::Twist> accelerations;
         builtin_interfaces::msg::dds::Duration time_from_start;
-      };  // struct MultiDOFJointTrajectoryPoint
-    };  // module dds_
-  };  // module msg
-};  // module trajectory_msgs
+      };
+    };
+  };
+};
 
-#endif  // __trajectory_msgs__msg__MultiDOFJointTrajectoryPoint__idl__
+#endif

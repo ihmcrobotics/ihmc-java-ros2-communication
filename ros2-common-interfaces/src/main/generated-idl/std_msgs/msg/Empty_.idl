@@ -12,9 +12,9 @@ module std_msgs
       struct Empty
       {
   boolean _dummy;
-      };  // struct Empty
-    };  // module dds_
-  };  // module msg
-};  // module std_msgs
+      };
+    };
+  };
+};
 
-#endif  // __std_msgs__msg__Empty__idl__
+#endif

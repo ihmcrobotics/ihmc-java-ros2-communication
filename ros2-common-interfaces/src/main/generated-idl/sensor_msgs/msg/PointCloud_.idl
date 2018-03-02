@@ -33,9 +33,9 @@ module sensor_msgs
          * Channel names in common practice are listed in ChannelFloat32.msg.
          */
         sequence<sensor_msgs::msg::dds::ChannelFloat32> channels;
-      };  // struct PointCloud
-    };  // module dds_
-  };  // module msg
-};  // module sensor_msgs
+      };
+    };
+  };
+};
 
-#endif  // __sensor_msgs__msg__PointCloud__idl__
+#endif

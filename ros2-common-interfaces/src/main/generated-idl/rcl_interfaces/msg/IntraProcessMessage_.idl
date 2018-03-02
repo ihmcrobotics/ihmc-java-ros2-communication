@@ -13,9 +13,9 @@ module rcl_interfaces
       {
         unsigned long long publisher_id;
         unsigned long long message_sequence;
-      };  // struct IntraProcessMessage
-    };  // module dds_
-  };  // module msg
-};  // module rcl_interfaces
+      };
+    };
+  };
+};
 
-#endif  // __rcl_interfaces__msg__IntraProcessMessage__idl__
+#endif
