@@ -1,5 +1,3 @@
-// generated from rosidl_generator_dds_idl/resource/msg.idl.em
-
 #ifndef __trajectory_msgs__msg__MultiDOFJointTrajectoryPoint__idl__
 #define __trajectory_msgs__msg__MultiDOFJointTrajectoryPoint__idl__
 

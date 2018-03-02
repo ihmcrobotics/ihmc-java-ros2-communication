@@ -1,5 +1,3 @@
-// generated from rosidl_generator_dds_idl/resource/msg.idl.em
-
 #ifndef __diagnostic_msgs__msg__DiagnosticStatus__idl__
 #define __diagnostic_msgs__msg__DiagnosticStatus__idl__
 

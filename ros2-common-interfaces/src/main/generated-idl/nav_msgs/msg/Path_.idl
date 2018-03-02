@@ -1,5 +1,3 @@
-// generated from rosidl_generator_dds_idl/resource/msg.idl.em
-
 #ifndef __nav_msgs__msg__Path__idl__
 #define __nav_msgs__msg__Path__idl__
 

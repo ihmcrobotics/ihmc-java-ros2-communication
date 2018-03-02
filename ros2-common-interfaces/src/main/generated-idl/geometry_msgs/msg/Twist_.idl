@@ -1,5 +1,3 @@
-// generated from rosidl_generator_dds_idl/resource/msg.idl.em
-
 #ifndef __geometry_msgs__msg__Twist__idl__
 #define __geometry_msgs__msg__Twist__idl__
 
