@@ -3,12 +3,6 @@ package ros_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * Definition of the class "TwoNum" defined in TwoNum_.idl.
- *
- * This file was automatically generated from TwoNum_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TwoNum_.idl instead.
- */
 public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
 {
    private ros_msgs.msg.dds.Num num1_;

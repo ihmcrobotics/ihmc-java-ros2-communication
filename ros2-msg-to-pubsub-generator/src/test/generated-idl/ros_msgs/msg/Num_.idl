@@ -37,9 +37,9 @@ module ros_msgs
          * hello
          */
         long hello;
-      };  // struct Num
-    };  // module dds_
-  };  // module msg
-};  // module ros_msgs
+      };
+    };
+  };
+};
 
-#endif  // __ros_msgs__msg__Num__idl__
+#endif

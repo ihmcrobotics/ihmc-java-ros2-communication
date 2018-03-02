@@ -136,13 +136,13 @@ for field in spec.fields:
 @[else]@
   boolean _dummy;
 @[end if]@
-      };  // struct @(spec.base_type.type)
+      };
 @[for line in get_post_struct_lines(spec)]@
 @(line)
 
 @[end for]@
-    };  // module dds_
-  };  // module @(subfolder)
-};  // module @(spec.base_type.pkg_name)
+    };
+  };
+};
 
-#endif  // __@(spec.base_type.pkg_name)__@(subfolder)__@(spec.base_type.type)__idl__
+#endif
