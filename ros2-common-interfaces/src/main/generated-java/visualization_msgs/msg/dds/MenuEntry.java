@@ -36,6 +36,16 @@ import us.ihmc.euclid.interfaces.Settable;
 public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEntry>
 {
    /**
+    * Command_type stores the type of response desired when this menu
+    * entry is clicked.
+    * FEEDBACK: send an InteractiveMarkerFeedback message with menu_entry_id set to this entry's id.
+    * ROSRUN: execute "rosrun" with arguments given in the command field (above).
+    * ROSLAUNCH: execute "roslaunch" with arguments given in the command field (above).
+    */
+   public static final byte FEEDBACK = (byte) 0;
+   public static final byte ROSRUN = (byte) 1;
+   public static final byte ROSLAUNCH = (byte) 2;
+   /**
     * ID is a number for each menu entry.  Must be unique within the
     * control, and should never be 0.
     */

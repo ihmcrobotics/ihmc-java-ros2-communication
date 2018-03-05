@@ -24,6 +24,12 @@ import us.ihmc.euclid.interfaces.Settable;
 public class Range implements Settable<Range>, EpsilonComparable<Range>
 {
    /**
+    * Radiation type enums
+    * If you want a value added to this list, send an email to the ros-users list
+    */
+   public static final byte ULTRASOUND = (byte) 0;
+   public static final byte INFRARED = (byte) 1;
+   /**
     * timestamp in the header is the time the ranger
     */
    private std_msgs.msg.dds.Header header_;

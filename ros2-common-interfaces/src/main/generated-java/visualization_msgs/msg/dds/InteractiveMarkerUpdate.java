@@ -10,6 +10,17 @@ import us.ihmc.euclid.interfaces.Settable;
 public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate>, EpsilonComparable<InteractiveMarkerUpdate>
 {
    /**
+    * Type holds the purpose of this message.  It must be one of UPDATE or KEEP_ALIVE.
+    * UPDATE: Incremental update to previous state.
+    * The sequence number must be 1 higher than for
+    * the previous update.
+    * KEEP_ALIVE: Indicates the that the server is still living.
+    * The sequence number does not increase.
+    * No payload data should be filled out (markers, poses, or erases).
+    */
+   public static final byte KEEP_ALIVE = (byte) 0;
+   public static final byte UPDATE = (byte) 1;
+   /**
     * Identifying string. Must be unique in the topic namespace
     * that this server works on.
     */

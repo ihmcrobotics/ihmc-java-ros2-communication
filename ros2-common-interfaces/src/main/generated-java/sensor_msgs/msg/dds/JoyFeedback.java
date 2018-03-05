@@ -5,6 +5,12 @@ import us.ihmc.euclid.interfaces.Settable;
 
 public class JoyFeedback implements Settable<JoyFeedback>, EpsilonComparable<JoyFeedback>
 {
+   /**
+    * Declare of the type of feedback
+    */
+   public static final byte TYPE_LED = (byte) 0;
+   public static final byte TYPE_RUMBLE = (byte) 1;
+   public static final byte TYPE_BUZZER = (byte) 2;
    private byte type_;
    /**
     * This will hold an id number for each type of each feedback.

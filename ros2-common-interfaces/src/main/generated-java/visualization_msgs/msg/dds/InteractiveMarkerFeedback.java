@@ -10,6 +10,19 @@ import us.ihmc.euclid.interfaces.Settable;
 public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeedback>, EpsilonComparable<InteractiveMarkerFeedback>
 {
    /**
+    * Type of the event
+    * KEEP_ALIVE: sent while dragging to keep up control of the marker
+    * MENU_SELECT: a menu entry has been selected
+    * BUTTON_CLICK: a button control has been clicked
+    * POSE_UPDATE: the pose has been changed using one of the controls
+    */
+   public static final byte KEEP_ALIVE = (byte) 0;
+   public static final byte POSE_UPDATE = (byte) 1;
+   public static final byte MENU_SELECT = (byte) 2;
+   public static final byte BUTTON_CLICK = (byte) 3;
+   public static final byte MOUSE_DOWN = (byte) 4;
+   public static final byte MOUSE_UP = (byte) 5;
+   /**
     * Time/frame info.
     */
    private std_msgs.msg.dds.Header header_;

@@ -10,6 +10,28 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class State implements Settable<State>, EpsilonComparable<State>
 {
+   /**
+    * These are the primary states
+    * State changes can only be requested
+    * when the node is in one of these states.
+    */
+   public static final byte PRIMARY_STATE_UNKNOWN = (byte) 0;
+   public static final byte PRIMARY_STATE_UNCONFIGURED = (byte) 1;
+   public static final byte PRIMARY_STATE_INACTIVE = (byte) 2;
+   public static final byte PRIMARY_STATE_ACTIVE = (byte) 3;
+   public static final byte PRIMARY_STATE_FINALIZED = (byte) 4;
+   /**
+    * Temporary intermediate states
+    * When a transition is requested, the
+    * node changes its state into one
+    * of these states.
+    */
+   public static final byte TRANSITION_STATE_CONFIGURING = (byte) 10;
+   public static final byte TRANSITION_STATE_CLEANINGUP = (byte) 11;
+   public static final byte TRANSITION_STATE_SHUTTINGDOWN = (byte) 12;
+   public static final byte TRANSITION_STATE_ACTIVATING = (byte) 13;
+   public static final byte TRANSITION_STATE_DEACTIVATING = (byte) 14;
+   public static final byte TRANSITION_STATE_ERRORPROCESSING = (byte) 15;
    private byte id_;
    private java.lang.StringBuilder label_;
 

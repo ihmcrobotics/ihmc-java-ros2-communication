@@ -8,6 +8,53 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalStatus>
 {
+   /**
+    * The goal has yet to be processed by the action server.
+    */
+   public static final byte PENDING = (byte) 0;
+   /**
+    * The goal is currently being processed by the action server.
+    */
+   public static final byte ACTIVE = (byte) 1;
+   /**
+    * The goal received a cancel request after it started executing
+    */
+   public static final byte PREEMPTED = (byte) 2;
+   /**
+    * and has since completed its execution (Terminal State).
+    * The goal was achieved successfully by the action server
+    */
+   public static final byte SUCCEEDED = (byte) 3;
+   /**
+    * (Terminal State).
+    * The goal was aborted during execution by the action server due
+    */
+   public static final byte ABORTED = (byte) 4;
+   /**
+    * to some failure (Terminal State).
+    * The goal was rejected by the action server without being processed,
+    */
+   public static final byte REJECTED = (byte) 5;
+   /**
+    * because the goal was unattainable or invalid (Terminal State).
+    * The goal received a cancel request after it started executing
+    */
+   public static final byte PREEMPTING = (byte) 6;
+   /**
+    * and has not yet completed execution.
+    * The goal received a cancel request before it started executing, but
+    */
+   public static final byte RECALLING = (byte) 7;
+   /**
+    * the action server has not yet confirmed that the goal is canceled.
+    * The goal received a cancel request before it started executing
+    */
+   public static final byte RECALLED = (byte) 8;
+   /**
+    * and was successfully cancelled (Terminal State).
+    * An action client can determine that a goal is LOST. This should not
+    */
+   public static final byte LOST = (byte) 9;
    private actionlib_msgs.msg.dds.GoalID goal_id_;
    private byte status_;
    /**

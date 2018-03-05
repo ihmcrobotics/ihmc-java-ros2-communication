@@ -5,6 +5,12 @@ import us.ihmc.euclid.interfaces.Settable;
 
 public class ParameterType implements Settable<ParameterType>, EpsilonComparable<ParameterType>
 {
+   public static final byte PARAMETER_NOT_SET = (byte) 0;
+   public static final byte PARAMETER_BOOL = (byte) 1;
+   public static final byte PARAMETER_INTEGER = (byte) 2;
+   public static final byte PARAMETER_DOUBLE = (byte) 3;
+   public static final byte PARAMETER_STRING = (byte) 4;
+   public static final byte PARAMETER_BYTES = (byte) 5;
    private boolean _dummy_;
 
    public ParameterType()

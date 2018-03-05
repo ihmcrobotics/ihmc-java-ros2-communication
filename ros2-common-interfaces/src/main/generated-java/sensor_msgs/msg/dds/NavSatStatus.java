@@ -13,6 +13,29 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class NavSatStatus implements Settable<NavSatStatus>, EpsilonComparable<NavSatStatus>
 {
+   /**
+    * unable to fix position
+    */
+   public static final byte STATUS_NO_FIX = (byte) 255;
+   /**
+    * unaugmented fix
+    */
+   public static final byte STATUS_FIX = (byte) 0;
+   /**
+    * with satellite-based augmentation
+    */
+   public static final byte STATUS_SBAS_FIX = (byte) 1;
+   /**
+    * with ground-based augmentation
+    */
+   public static final byte STATUS_GBAS_FIX = (byte) 2;
+   public static final int SERVICE_GPS = 1;
+   public static final int SERVICE_GLONASS = 2;
+   /**
+    * includes BeiDou.
+    */
+   public static final int SERVICE_COMPASS = 4;
+   public static final int SERVICE_GALILEO = 8;
    private byte status_;
    private int service_;
 

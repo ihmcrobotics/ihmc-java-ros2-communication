@@ -9,6 +9,42 @@ import us.ihmc.euclid.interfaces.Settable;
 public class InteractiveMarkerControl implements Settable<InteractiveMarkerControl>, EpsilonComparable<InteractiveMarkerControl>
 {
    /**
+    * Orientation mode: controls how orientation changes.
+    * INHERIT: Follow orientation of interactive marker
+    * FIXED: Keep orientation fixed at initial state
+    * VIEW_FACING: Align y-z plane with screen (x: forward, y:left, z:up).
+    */
+   public static final byte INHERIT = (byte) 0;
+   public static final byte FIXED = (byte) 1;
+   public static final byte VIEW_FACING = (byte) 2;
+   /**
+    * Interaction mode for this control
+    *
+    * NONE: This control is only meant for visualization; no context menu.
+    * MENU: Like NONE, but right-click menu is active.
+    * BUTTON: Element can be left-clicked.
+    * MOVE_AXIS: Translate along local x-axis.
+    * MOVE_PLANE: Translate in local y-z plane.
+    * ROTATE_AXIS: Rotate around local x-axis.
+    * MOVE_ROTATE: Combines MOVE_PLANE and ROTATE_AXIS.
+    */
+   public static final byte NONE = (byte) 0;
+   public static final byte MENU = (byte) 1;
+   public static final byte BUTTON = (byte) 2;
+   public static final byte MOVE_AXIS = (byte) 3;
+   public static final byte MOVE_PLANE = (byte) 4;
+   public static final byte ROTATE_AXIS = (byte) 5;
+   public static final byte MOVE_ROTATE = (byte) 6;
+   /**
+    * "3D" interaction modes work with the mouse+SHIFT+CTRL or with 3D cursors.
+    * MOVE_3D: Translate freely in 3D space.
+    * ROTATE_3D: Rotate freely in 3D space about the origin of parent frame.
+    * MOVE_ROTATE_3D: Full 6-DOF freedom of translation and rotation about the cursor origin.
+    */
+   public static final byte MOVE_3D = (byte) 7;
+   public static final byte ROTATE_3D = (byte) 8;
+   public static final byte MOVE_ROTATE_3D = (byte) 9;
+   /**
     * Identifying string for this control.
     * You need to assign a unique value to this to receive feedback from the GUI
     * on what actions the user performs on this control (e.g. a button click).

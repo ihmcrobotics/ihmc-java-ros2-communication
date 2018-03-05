@@ -11,6 +11,36 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class BatteryState implements Settable<BatteryState>, EpsilonComparable<BatteryState>
 {
+   /**
+    * Power supply status constants
+    */
+   public static final byte POWER_SUPPLY_STATUS_UNKNOWN = (byte) 0;
+   public static final byte POWER_SUPPLY_STATUS_CHARGING = (byte) 1;
+   public static final byte POWER_SUPPLY_STATUS_DISCHARGING = (byte) 2;
+   public static final byte POWER_SUPPLY_STATUS_NOT_CHARGING = (byte) 3;
+   public static final byte POWER_SUPPLY_STATUS_FULL = (byte) 4;
+   /**
+    * Power supply health constants
+    */
+   public static final byte POWER_SUPPLY_HEALTH_UNKNOWN = (byte) 0;
+   public static final byte POWER_SUPPLY_HEALTH_GOOD = (byte) 1;
+   public static final byte POWER_SUPPLY_HEALTH_OVERHEAT = (byte) 2;
+   public static final byte POWER_SUPPLY_HEALTH_DEAD = (byte) 3;
+   public static final byte POWER_SUPPLY_HEALTH_OVERVOLTAGE = (byte) 4;
+   public static final byte POWER_SUPPLY_HEALTH_UNSPEC_FAILURE = (byte) 5;
+   public static final byte POWER_SUPPLY_HEALTH_COLD = (byte) 6;
+   public static final byte POWER_SUPPLY_HEALTH_WATCHDOG_TIMER_EXPIRE = (byte) 7;
+   public static final byte POWER_SUPPLY_HEALTH_SAFETY_TIMER_EXPIRE = (byte) 8;
+   /**
+    * Power supply technology (chemistry) constants
+    */
+   public static final byte POWER_SUPPLY_TECHNOLOGY_UNKNOWN = (byte) 0;
+   public static final byte POWER_SUPPLY_TECHNOLOGY_NIMH = (byte) 1;
+   public static final byte POWER_SUPPLY_TECHNOLOGY_LION = (byte) 2;
+   public static final byte POWER_SUPPLY_TECHNOLOGY_LIPO = (byte) 3;
+   public static final byte POWER_SUPPLY_TECHNOLOGY_LIFE = (byte) 4;
+   public static final byte POWER_SUPPLY_TECHNOLOGY_NICD = (byte) 5;
+   public static final byte POWER_SUPPLY_TECHNOLOGY_LIMN = (byte) 6;
    private std_msgs.msg.dds.Header header_;
    /**
     * Voltage in Volts (Mandatory)

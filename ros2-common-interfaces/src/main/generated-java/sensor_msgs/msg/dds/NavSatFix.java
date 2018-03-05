@@ -14,6 +14,10 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatFix>
 {
+   public static final byte COVARIANCE_TYPE_UNKNOWN = (byte) 0;
+   public static final byte COVARIANCE_TYPE_APPROXIMATED = (byte) 1;
+   public static final byte COVARIANCE_TYPE_DIAGONAL_KNOWN = (byte) 2;
+   public static final byte COVARIANCE_TYPE_KNOWN = (byte) 3;
    /**
     * header.stamp specifies the ROS time for this measurement (the
     * corresponding satellite time may be reported using the

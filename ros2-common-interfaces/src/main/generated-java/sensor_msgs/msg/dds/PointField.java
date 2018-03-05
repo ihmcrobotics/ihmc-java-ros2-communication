@@ -6,6 +6,18 @@ import us.ihmc.euclid.interfaces.Settable;
 public class PointField implements Settable<PointField>, EpsilonComparable<PointField>
 {
    /**
+    * This message holds the description of one point entry in the
+    * PointCloud2 message format.
+    */
+   public static final byte INT8 = (byte) 1;
+   public static final byte UINT8 = (byte) 2;
+   public static final byte INT16 = (byte) 3;
+   public static final byte UINT16 = (byte) 4;
+   public static final byte INT32 = (byte) 5;
+   public static final byte UINT32 = (byte) 6;
+   public static final byte FLOAT32 = (byte) 7;
+   public static final byte FLOAT64 = (byte) 8;
+   /**
     * Name of field
     */
    private java.lang.StringBuilder name_;

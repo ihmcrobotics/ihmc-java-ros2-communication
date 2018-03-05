@@ -5,6 +5,13 @@ import us.ihmc.euclid.interfaces.Settable;
 
 public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<ImageMarker>
 {
+   public static final byte CIRCLE = (byte) 0;
+   public static final byte LINE_STRIP = (byte) 1;
+   public static final byte LINE_LIST = (byte) 2;
+   public static final byte POLYGON = (byte) 3;
+   public static final byte POINTS = (byte) 4;
+   public static final byte ADD = (byte) 0;
+   public static final byte REMOVE = (byte) 1;
    private std_msgs.msg.dds.Header header_;
    /**
     * Namespace which is used with the id to form a unique id.

@@ -17,6 +17,24 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class SolidPrimitive implements Settable<SolidPrimitive>, EpsilonComparable<SolidPrimitive>
 {
+   public static final byte BOX = (byte) 1;
+   public static final byte SPHERE = (byte) 2;
+   public static final byte CYLINDER = (byte) 3;
+   public static final byte CONE = (byte) 4;
+   /**
+    * For type BOX, the X, Y, and Z dimensions are the length of the corresponding sides of the box.
+    */
+   public static final byte BOX_X = (byte) 0;
+   public static final byte BOX_Y = (byte) 1;
+   public static final byte BOX_Z = (byte) 2;
+   /**
+    * For the SPHERE type, only one component is used, and it gives the radius of the sphere.
+    */
+   public static final byte SPHERE_RADIUS = (byte) 0;
+   public static final byte CYLINDER_HEIGHT = (byte) 0;
+   public static final byte CYLINDER_RADIUS = (byte) 1;
+   public static final byte CONE_HEIGHT = (byte) 0;
+   public static final byte CONE_RADIUS = (byte) 1;
    /**
     * The type of the shape
     */

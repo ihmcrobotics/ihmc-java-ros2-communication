@@ -9,6 +9,13 @@ import us.ihmc.euclid.interfaces.Settable;
 public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComparable<DiagnosticStatus>
 {
    /**
+    * Possible levels of operations.
+    */
+   public static final byte OK = (byte) 0;
+   public static final byte WARN = (byte) 1;
+   public static final byte ERROR = (byte) 2;
+   public static final byte STALE = (byte) 3;
+   /**
     * Level of operation enumerated above.
     */
    private byte level_;
