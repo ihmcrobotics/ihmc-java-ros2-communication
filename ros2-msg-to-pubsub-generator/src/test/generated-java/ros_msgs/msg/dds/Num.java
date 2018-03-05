@@ -11,6 +11,14 @@ import us.ihmc.euclid.interfaces.Settable;
 public class Num implements Settable<Num>, EpsilonComparable<Num>
 {
    /**
+    * a, b, c
+    * 1, 2, 3
+    * baby
+    * sneaky boi
+    */
+   public static final int X = 123;
+   public static final String CATCH_22 = "No doc, watch out!";
+   /**
     * this num should have default value 5
     */
    private long num_;
