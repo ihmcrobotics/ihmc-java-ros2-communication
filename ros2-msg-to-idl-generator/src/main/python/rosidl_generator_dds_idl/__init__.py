@@ -193,13 +193,19 @@ def _msg_type_to_idl(type_, idl_type, string_upper_bound=None):
                 '', '',
                 'sequence<%s%s>' % (sequence_type, ' ' if sequence_type.endswith('>') else '')]
         else:
-            typename = '%s_array_%s' % \
-                (idl_type.replace(' ', '_').replace('::', '__'), type_.array_size)
+            typename = idl_type.replace(' ', '_')
             return [
-                'typedef %s' % idl_type,
-                '%s[%s];' % (typename, type_.array_size),
+                '',
+                '[%s]' % type_.array_size,
                 '%s' % typename
             ]
+            # typename = '%s_array_%s' % \
+            #     (idl_type.replace(' ', '_').replace('::', '__'), type_.array_size)
+            # return [
+            #     'typedef %s' % idl_type,
+            #     '%s[%s];' % (typename, type_.array_size),
+            #     '%s' % typename
+            # ]
     elif type_.string_upper_bound is not None and \
             type_.is_primitive_type() and type_.type == 'string':
         return ['', '', '%s<%u>' % (idl_type, type_.string_upper_bound)]

@@ -82,7 +82,7 @@ module @(spec.base_type.pkg_name)
    @[end for]@
     */
    @[end if]@
-   const @(MSG_TYPE_TO_IDL[constant.type]) @(spec.base_type.type)__@(constant.name) =
+   const @(MSG_TYPE_TO_IDL[constant.type]) @(constant.name) =
 @[  if constant.type == 'bool']@
       @('TRUE' if constant.value else 'FALSE');
 @[  elif constant.type == 'char']@
@@ -96,14 +96,14 @@ module @(spec.base_type.pkg_name)
 @[  end if]@
 
 @[end for]
-@{
-typedefs = set([])
-for field in spec.fields:
-  idl_typedef, idl_typedef_var, _ = msg_type_to_idl_2(field.type)
-  if idl_typedef and idl_typedef_var and (idl_typedef, idl_typedef_var) not in typedefs:
-    print('%s %s__%s__%s' % (idl_typedef, spec.base_type.pkg_name, spec.base_type.type, idl_typedef_var))
-    typedefs.add((idl_typedef, idl_typedef_var))
-}@
+@#@{
+@#typedefs = set([])
+@#for field in spec.fields:
+@#  idl_typedef, idl_typedef_var, _ = msg_type_to_idl_2(field.type)
+@#  if idl_typedef and idl_typedef_var and (idl_typedef, idl_typedef_var) not in typedefs:
+@#    print('%s %s__%s__%s' % (idl_typedef, spec.base_type.pkg_name, spec.base_type.type, idl_typedef_var))
+@#    typedefs.add((idl_typedef, idl_typedef_var))
+@#}@
 @################################
 @# Message struct with all fields
 @################################
@@ -129,18 +129,18 @@ for field in spec.fields:
 @[ if field.default_value ]@
     @("@defaultValue(value=" + str(field.default_value) + ")")
 @{    idl_typedef, idl_typedef_var, idl_type = msg_type_to_idl_2(field.type)}@
-@[    if idl_typedef and idl_typedef_var]@
-@(      spec.base_type.pkg_name)__@(spec.base_type.type)__@(idl_type) @(field.name);
-@[    else]@
-        @(idl_type) @(field.name);
-@[    end if]@
+@#@[    if idl_typedef and idl_typedef_var]@
+@#@(      spec.base_type.pkg_name)__@(spec.base_type.type)__@(idl_type) @(field.name);
+@#@[    else]@
+        @(idl_type) @(field.name)@(idl_typedef_var);
+@#@[    end if]@
 @[else]@
 @{    idl_typedef, idl_typedef_var, idl_type = msg_type_to_idl_2(field.type)}@
-@[    if idl_typedef and idl_typedef_var]@
-@(      spec.base_type.pkg_name)__@(spec.base_type.type)__@(idl_type) @(field.name);
-@[    else]@
-    @(idl_type) @(field.name);
-@[    end if]@
+@#@[    if idl_typedef and idl_typedef_var]@
+@#@(      spec.base_type.pkg_name)__@(spec.base_type.type)__@(idl_type) @(field.name);
+@#@[    else]@
+    @(idl_type) @(field.name)@(idl_typedef_var);
+@#@[    end if]@
 @[end if]@
 @[  end for]@
 @[else]@
