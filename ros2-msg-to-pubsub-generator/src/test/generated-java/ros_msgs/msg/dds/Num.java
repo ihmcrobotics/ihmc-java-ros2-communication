@@ -3,6 +3,11 @@ package ros_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
+/**
+ * This is the header
+ * Header line 2
+ * This is some dangling comment that will be included in header
+ */
 public class Num implements Settable<Num>, EpsilonComparable<Num>
 {
    /**

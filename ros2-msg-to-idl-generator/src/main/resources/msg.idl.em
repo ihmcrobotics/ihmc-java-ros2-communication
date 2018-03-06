@@ -144,7 +144,7 @@ for field in spec.fields:
 @[end if]@
 @[  end for]@
 @[else]@
-  boolean _dummy;
+        boolean unused_placeholder_field;
 @[end if]@
       };
 @[for line in get_post_struct_lines(spec)]@
