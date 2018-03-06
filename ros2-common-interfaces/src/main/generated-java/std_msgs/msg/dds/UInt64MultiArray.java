@@ -13,6 +13,9 @@ public class UInt64MultiArray implements Settable<UInt64MultiArray>, EpsilonComp
     * specification of data layout
     */
    private std_msgs.msg.dds.MultiArrayLayout layout_;
+   /**
+    * array of data
+    */
    private us.ihmc.idl.IDLSequence.Long data_;
 
    public UInt64MultiArray()
@@ -40,6 +43,9 @@ public class UInt64MultiArray implements Settable<UInt64MultiArray>, EpsilonComp
       return layout_;
    }
 
+   /**
+    * array of data
+    */
    public us.ihmc.idl.IDLSequence.Long getData()
    {
       return data_;

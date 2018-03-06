@@ -5,6 +5,9 @@ import us.ihmc.euclid.interfaces.Settable;
 
 public class JoyFeedbackArray implements Settable<JoyFeedbackArray>, EpsilonComparable<JoyFeedbackArray>
 {
+   /**
+    * This message publishes values for multiple feedback at once.
+    */
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.JoyFeedback> array_;
 
    public JoyFeedbackArray()
@@ -23,6 +26,9 @@ public class JoyFeedbackArray implements Settable<JoyFeedbackArray>, EpsilonComp
       array_.set(other.array_);
    }
 
+   /**
+    * This message publishes values for multiple feedback at once.
+    */
    public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.JoyFeedback> getArray()
    {
       return array_;

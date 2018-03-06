@@ -31,6 +31,9 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
     * A hardware unique string.
     */
    private java.lang.StringBuilder hardware_id_;
+   /**
+    * An array of values associated with the status.
+    */
    private us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue> values_;
 
    public DiagnosticStatus()
@@ -158,6 +161,9 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       hardware_id_.append(hardware_id);
    }
 
+   /**
+    * An array of values associated with the status.
+    */
    public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue> getValues()
    {
       return values_;

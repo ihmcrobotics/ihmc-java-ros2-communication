@@ -31,7 +31,13 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
     * Scale to be used for default controls (default=1).
     */
    private float scale_;
+   /**
+    * All menu and submenu entries associated with this marker.
+    */
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry> menu_entries_;
+   /**
+    * List of controls displayed for this marker.
+    */
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl> controls_;
 
    public InteractiveMarker()
@@ -161,11 +167,17 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
       scale_ = scale;
    }
 
+   /**
+    * All menu and submenu entries associated with this marker.
+    */
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry> getMenuEntries()
    {
       return menu_entries_;
    }
 
+   /**
+    * List of controls displayed for this marker.
+    */
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl> getControls()
    {
       return controls_;

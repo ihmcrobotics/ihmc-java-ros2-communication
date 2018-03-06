@@ -10,6 +10,9 @@ public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonCompar
     * for timestamp
     */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * an array of components being reported on
+    */
    private us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> status_;
 
    public DiagnosticArray()
@@ -39,6 +42,9 @@ public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonCompar
       return header_;
    }
 
+   /**
+    * an array of components being reported on
+    */
    public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> getStatus()
    {
       return status_;

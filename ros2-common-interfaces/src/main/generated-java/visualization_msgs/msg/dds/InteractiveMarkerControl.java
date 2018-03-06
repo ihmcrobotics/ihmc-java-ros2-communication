@@ -63,6 +63,16 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
     * when the gui is not in interactive mode.
     */
    private boolean always_visible_;
+   /**
+    * Markers to be displayed as custom visual representation.
+    * Leave this empty to use the default control handles.
+    *
+    * Note:
+    * - The markers can be defined in an arbitrary coordinate frame,
+    * but will be transformed into the local frame of the interactive marker.
+    * - If the header of a marker is empty, its pose will be interpreted as
+    * relative to the pose of the parent interactive marker.
+    */
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;
    /**
     * In VIEW_FACING mode, set this to true if you don't want the markers
@@ -192,6 +202,16 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       always_visible_ = always_visible;
    }
 
+   /**
+    * Markers to be displayed as custom visual representation.
+    * Leave this empty to use the default control handles.
+    *
+    * Note:
+    * - The markers can be defined in an arbitrary coordinate frame,
+    * but will be transformed into the local frame of the interactive marker.
+    * - If the header of a marker is empty, its pose will be interpreted as
+    * relative to the pose of the parent interactive marker.
+    */
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> getMarkers()
    {
       return markers_;

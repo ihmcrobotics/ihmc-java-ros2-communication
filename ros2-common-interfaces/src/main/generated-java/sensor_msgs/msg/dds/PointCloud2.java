@@ -24,6 +24,9 @@ public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<Poi
     */
    private long height_;
    private long width_;
+   /**
+    * Describes the channels and their layout in the binary data blob.
+    */
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> fields_;
    /**
     * Is this data bigendian?
@@ -115,6 +118,9 @@ public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<Poi
       width_ = width;
    }
 
+   /**
+    * Describes the channels and their layout in the binary data blob.
+    */
    public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> getFields()
    {
       return fields_;

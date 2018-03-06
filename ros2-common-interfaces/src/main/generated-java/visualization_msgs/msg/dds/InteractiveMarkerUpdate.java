@@ -31,7 +31,13 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
     */
    private long seq_num_;
    private byte type_;
+   /**
+    * Markers to be added or updated
+    */
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
+   /**
+    * Poses of markers that should be moved
+    */
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose> poses_;
    /**
     * Names of markers to be erased
@@ -126,11 +132,17 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
       type_ = type;
    }
 
+   /**
+    * Markers to be added or updated
+    */
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> getMarkers()
    {
       return markers_;
    }
 
+   /**
+    * Poses of markers that should be moved
+    */
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose> getPoses()
    {
       return poses_;

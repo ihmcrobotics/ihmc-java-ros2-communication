@@ -19,6 +19,9 @@ public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, E
     * duplicate data.
     */
    private long seq_num_;
+   /**
+    * All markers.
+    */
    private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
 
    public InteractiveMarkerInit()
@@ -98,6 +101,9 @@ public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, E
       seq_num_ = seq_num;
    }
 
+   /**
+    * All markers.
+    */
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> getMarkers()
    {
       return markers_;

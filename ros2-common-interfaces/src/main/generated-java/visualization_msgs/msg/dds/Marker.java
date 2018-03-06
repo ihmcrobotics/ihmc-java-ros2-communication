@@ -74,7 +74,15 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
     * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
     */
    private boolean frame_locked_;
+   /**
+    * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
+    */
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
+   /**
+    * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
+    * The number of colors provided must either be 0 or equal to the number of points provided.
+    * NOTE: alpha is not yet used
+    */
    private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> colors_;
    /**
     * Only used for text markers
@@ -282,11 +290,19 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       frame_locked_ = frame_locked;
    }
 
+   /**
+    * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
+    */
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> getPoints()
    {
       return points_;
    }
 
+   /**
+    * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
+    * The number of colors provided must either be 0 or equal to the number of points provided.
+    * NOTE: alpha is not yet used
+    */
    public us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> getColors()
    {
       return colors_;

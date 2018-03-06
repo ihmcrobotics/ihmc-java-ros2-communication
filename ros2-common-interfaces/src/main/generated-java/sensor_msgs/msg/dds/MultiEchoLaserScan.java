@@ -51,7 +51,16 @@ public class MultiEchoLaserScan implements Settable<MultiEchoLaserScan>, Epsilon
     * maximum range value [m]
     */
    private float range_max_;
+   /**
+    * range data [m]
+    */
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> ranges_;
+   /**
+    * (Note: NaNs, values < range_min or > range_max should be discarded)
+    * +Inf measurements are out of range
+    * -Inf measurements are too close to determine exact distance.
+    * intensity data [device-specific units].  If your
+    */
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> intensities_;
 
    public MultiEchoLaserScan()
@@ -215,11 +224,20 @@ public class MultiEchoLaserScan implements Settable<MultiEchoLaserScan>, Epsilon
       range_max_ = range_max;
    }
 
+   /**
+    * range data [m]
+    */
    public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> getRanges()
    {
       return ranges_;
    }
 
+   /**
+    * (Note: NaNs, values < range_min or > range_max should be discarded)
+    * +Inf measurements are out of range
+    * -Inf measurements are too close to determine exact distance.
+    * intensity data [device-specific units].  If your
+    */
    public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> getIntensities()
    {
       return intensities_;

@@ -54,7 +54,13 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
     * 0 indicates forever.
     */
    private builtin_interfaces.msg.dds.Duration lifetime_;
+   /**
+    * Coordinates in 2D in pixel coords. Used for LINE_STRIP, LINE_LIST, POINTS, etc.
+    */
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
+   /**
+    * The color for each line, point, etc. in the points field.
+    */
    private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> outline_colors_;
 
    public ImageMarker()
@@ -247,11 +253,17 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
       return lifetime_;
    }
 
+   /**
+    * Coordinates in 2D in pixel coords. Used for LINE_STRIP, LINE_LIST, POINTS, etc.
+    */
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> getPoints()
    {
       return points_;
    }
 
+   /**
+    * The color for each line, point, etc. in the points field.
+    */
    public us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> getOutlineColors()
    {
       return outline_colors_;

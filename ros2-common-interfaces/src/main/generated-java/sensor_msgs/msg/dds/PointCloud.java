@@ -13,7 +13,16 @@ public class PointCloud implements Settable<PointCloud>, EpsilonComparable<Point
     * Time of sensor data acquisition, coordinate frame ID.
     */
    private std_msgs.msg.dds.Header header_;
+   /**
+    * Array of 3d points. Each Point32 should be interpreted as a 3d point
+    * in the frame given in the header.
+    */
    private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> points_;
+   /**
+    * Each channel should have the same number of elements as points array,
+    * and the data in each channel should correspond 1:1 with each point.
+    * Channel names in common practice are listed in ChannelFloat32.msg.
+    */
    private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> channels_;
 
    public PointCloud()
@@ -46,11 +55,20 @@ public class PointCloud implements Settable<PointCloud>, EpsilonComparable<Point
       return header_;
    }
 
+   /**
+    * Array of 3d points. Each Point32 should be interpreted as a 3d point
+    * in the frame given in the header.
+    */
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> getPoints()
    {
       return points_;
    }
 
+   /**
+    * Each channel should have the same number of elements as points array,
+    * and the data in each channel should correspond 1:1 with each point.
+    * Channel names in common practice are listed in ChannelFloat32.msg.
+    */
    public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> getChannels()
    {
       return channels_;
