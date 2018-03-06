@@ -13,10 +13,10 @@ module ros_msgs
        * baby
        * sneaky boi
        */
-      const long Num__X =
+      const long X =
       123;
 
-      const string Num__CATCH_22 =
+      const string CATCH_22 =
       "No doc, watch out!";
 
 
