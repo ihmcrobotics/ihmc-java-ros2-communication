@@ -31,7 +31,13 @@ module ros_msgs
         /**
          * this num should have default value 5
          */
+        @defaultValue(value=5)
         long long num;
+        /**
+         * I have some doc not relevant to the next
+         */
+        long long no_default_with_doc;
+        long long no_doc_num;
         /**
          * @javadoc I guess javadoc will work okay.
          * hello

@@ -126,12 +126,22 @@ for field in spec.fields:
     @[end for]@
      */
     @[end if]@
+@[ if field.default_value ]@
+    @("@defaultValue(value=" + str(field.default_value) + ")")
+@{    idl_typedef, idl_typedef_var, idl_type = msg_type_to_idl_2(field.type)}@
+@[    if idl_typedef and idl_typedef_var]@
+@(      spec.base_type.pkg_name)__@(spec.base_type.type)__@(idl_type) @(field.name);
+@[    else]@
+        @(idl_type) @(field.name);
+@[    end if]@
+@[else]@
 @{    idl_typedef, idl_typedef_var, idl_type = msg_type_to_idl_2(field.type)}@
 @[    if idl_typedef and idl_typedef_var]@
 @(      spec.base_type.pkg_name)__@(spec.base_type.type)__@(idl_type) @(field.name);
 @[    else]@
     @(idl_type) @(field.name);
 @[    end if]@
+@[end if]@
 @[  end for]@
 @[else]@
   boolean _dummy;

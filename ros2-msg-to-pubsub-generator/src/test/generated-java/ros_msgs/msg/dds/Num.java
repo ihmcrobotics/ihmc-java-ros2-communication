@@ -3,11 +3,6 @@ package ros_msgs.msg.dds;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-/**
- * This is the header
- * Header line 2
- * This is some dangling comment that will be included in header
- */
 public class Num implements Settable<Num>, EpsilonComparable<Num>
 {
    /**
@@ -21,7 +16,12 @@ public class Num implements Settable<Num>, EpsilonComparable<Num>
    /**
     * this num should have default value 5
     */
-   private long num_;
+   private long num_ = 5;
+   /**
+    * I have some doc not relevant to the next
+    */
+   private long no_default_with_doc_;
+   private long no_doc_num_;
    /**
     * @javadoc I guess javadoc will work okay.
     * hello
@@ -42,6 +42,10 @@ public class Num implements Settable<Num>, EpsilonComparable<Num>
    {
       num_ = other.num_;
 
+      no_default_with_doc_ = other.no_default_with_doc_;
+
+      no_doc_num_ = other.no_doc_num_;
+
       hello_ = other.hello_;
    }
 
@@ -59,6 +63,32 @@ public class Num implements Settable<Num>, EpsilonComparable<Num>
    public void setNum(long num)
    {
       num_ = num;
+   }
+
+   /**
+    * I have some doc not relevant to the next
+    */
+   public long getNoDefaultWithDoc()
+   {
+      return no_default_with_doc_;
+   }
+
+   /**
+    * I have some doc not relevant to the next
+    */
+   public void setNoDefaultWithDoc(long no_default_with_doc)
+   {
+      no_default_with_doc_ = no_default_with_doc;
+   }
+
+   public long getNoDocNum()
+   {
+      return no_doc_num_;
+   }
+
+   public void setNoDocNum(long no_doc_num)
+   {
+      no_doc_num_ = no_doc_num;
    }
 
    /**
@@ -90,6 +120,12 @@ public class Num implements Settable<Num>, EpsilonComparable<Num>
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.num_, other.num_, epsilon))
          return false;
 
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.no_default_with_doc_, other.no_default_with_doc_, epsilon))
+         return false;
+
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.no_doc_num_, other.no_doc_num_, epsilon))
+         return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.hello_, other.hello_, epsilon))
          return false;
 
@@ -111,6 +147,12 @@ public class Num implements Settable<Num>, EpsilonComparable<Num>
       if (this.num_ != otherMyClass.num_)
          return false;
 
+      if (this.no_default_with_doc_ != otherMyClass.no_default_with_doc_)
+         return false;
+
+      if (this.no_doc_num_ != otherMyClass.no_doc_num_)
+         return false;
+
       if (this.hello_ != otherMyClass.hello_)
          return false;
 
@@ -125,6 +167,14 @@ public class Num implements Settable<Num>, EpsilonComparable<Num>
       builder.append("Num {");
       builder.append("num=");
       builder.append(this.num_);
+
+      builder.append(", ");
+      builder.append("no_default_with_doc=");
+      builder.append(this.no_default_with_doc_);
+
+      builder.append(", ");
+      builder.append("no_doc_num=");
+      builder.append(this.no_doc_num_);
 
       builder.append(", ");
       builder.append("hello=");

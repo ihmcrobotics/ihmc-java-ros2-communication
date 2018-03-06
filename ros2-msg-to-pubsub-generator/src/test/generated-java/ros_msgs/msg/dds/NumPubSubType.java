@@ -28,6 +28,10 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       return current_alignment - initial_alignment;
@@ -44,6 +48,10 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       return current_alignment - initial_alignment;
@@ -54,6 +62,10 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
 
       cdr.write_type_11(data.getNum());
 
+      cdr.write_type_11(data.getNoDefaultWithDoc());
+
+      cdr.write_type_11(data.getNoDocNum());
+
       cdr.write_type_2(data.getHello());
    }
 
@@ -61,6 +73,10 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
    {
 
       data.setNum(cdr.read_type_11());
+
+      data.setNoDefaultWithDoc(cdr.read_type_11());
+
+      data.setNoDocNum(cdr.read_type_11());
 
       data.setHello(cdr.read_type_2());
    }
@@ -91,6 +107,10 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
    {
       ser.write_type_11("num", data.getNum());
 
+      ser.write_type_11("no_default_with_doc", data.getNoDefaultWithDoc());
+
+      ser.write_type_11("no_doc_num", data.getNoDocNum());
+
       ser.write_type_2("hello", data.getHello());
    }
 
@@ -98,6 +118,10 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, ros_msgs.msg.dds.Num data)
    {
       data.setNum(ser.read_type_11("num"));
+
+      data.setNoDefaultWithDoc(ser.read_type_11("no_default_with_doc"));
+
+      data.setNoDocNum(ser.read_type_11("no_doc_num"));
 
       data.setHello(ser.read_type_2("hello"));
    }
