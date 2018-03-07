@@ -310,12 +310,7 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
       if (!this.lifetime_.epsilonEquals(other.lifetime_, epsilon))
          return false;
 
-      if (this.points_.isEnum())
-      {
-         if (!this.points_.equals(other.points_))
-            return false;
-      }
-      else if (this.points_.size() == other.points_.size())
+      if (this.points_.size() == other.points_.size())
       {
          return false;
       }
@@ -328,12 +323,7 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
          }
       }
 
-      if (this.outline_colors_.isEnum())
-      {
-         if (!this.outline_colors_.equals(other.outline_colors_))
-            return false;
-      }
-      else if (this.outline_colors_.size() == other.outline_colors_.size())
+      if (this.outline_colors_.size() == other.outline_colors_.size())
       {
          return false;
       }

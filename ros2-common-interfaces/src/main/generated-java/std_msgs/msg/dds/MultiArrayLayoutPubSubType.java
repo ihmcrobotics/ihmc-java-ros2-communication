@@ -27,7 +27,7 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += std_msgs.msg.dds.MultiArrayDimensionPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -47,9 +47,9 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getDim().size(); ++a)
+      for (int i0 = 0; i0 < data.getDim().size(); ++i0)
       {
-         current_alignment += std_msgs.msg.dds.MultiArrayDimensionPubSubType.getCdrSerializedSize(data.getDim().get(a), current_alignment);
+         current_alignment += std_msgs.msg.dds.MultiArrayDimensionPubSubType.getCdrSerializedSize(data.getDim().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);

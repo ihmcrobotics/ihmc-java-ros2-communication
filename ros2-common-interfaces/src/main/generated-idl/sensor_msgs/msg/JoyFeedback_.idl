@@ -10,13 +10,13 @@ module sensor_msgs
       /**
        * Declare of the type of feedback
        */
-      const octet JoyFeedback__TYPE_LED =
+      const octet TYPE_LED =
       0;
 
-      const octet JoyFeedback__TYPE_RUMBLE =
+      const octet TYPE_RUMBLE =
       1;
 
-      const octet JoyFeedback__TYPE_BUZZER =
+      const octet TYPE_BUZZER =
       2;
 
 

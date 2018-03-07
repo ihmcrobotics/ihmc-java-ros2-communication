@@ -48,13 +48,13 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    public static void write(std_msgs.msg.dds.Empty data, us.ihmc.idl.CDR cdr)
    {
 
-      cdr.write_type_7(data.getDummy());
+      cdr.write_type_7(data.getUnusedPlaceholderField());
    }
 
    public static void read(std_msgs.msg.dds.Empty data, us.ihmc.idl.CDR cdr)
    {
 
-      data.setDummy(cdr.read_type_7());
+      data.setUnusedPlaceholderField(cdr.read_type_7());
    }
 
    public static void staticCopy(std_msgs.msg.dds.Empty src, std_msgs.msg.dds.Empty dest)
@@ -81,13 +81,13 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    @Override
    public final void serialize(std_msgs.msg.dds.Empty data, us.ihmc.idl.InterchangeSerializer ser)
    {
-      ser.write_type_7("_dummy", data.getDummy());
+      ser.write_type_7("unused_placeholder_field", data.getUnusedPlaceholderField());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.Empty data)
    {
-      data.setDummy(ser.read_type_7("_dummy"));
+      data.setUnusedPlaceholderField(ser.read_type_7("unused_placeholder_field"));
    }
 
    @Override

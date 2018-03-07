@@ -18,10 +18,10 @@ module visualization_msgs
        * The sequence number does not increase.
        * No payload data should be filled out (markers, poses, or erases).
        */
-      const octet InteractiveMarkerUpdate__KEEP_ALIVE =
+      const octet KEEP_ALIVE =
       0;
 
-      const octet InteractiveMarkerUpdate__UPDATE =
+      const octet UPDATE =
       1;
 
 

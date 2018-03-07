@@ -84,12 +84,7 @@ public class MultiDOFJointTrajectoryPoint implements Settable<MultiDOFJointTraje
       if (other == this)
          return true;
 
-      if (this.transforms_.isEnum())
-      {
-         if (!this.transforms_.equals(other.transforms_))
-            return false;
-      }
-      else if (this.transforms_.size() == other.transforms_.size())
+      if (this.transforms_.size() == other.transforms_.size())
       {
          return false;
       }
@@ -102,12 +97,7 @@ public class MultiDOFJointTrajectoryPoint implements Settable<MultiDOFJointTraje
          }
       }
 
-      if (this.velocities_.isEnum())
-      {
-         if (!this.velocities_.equals(other.velocities_))
-            return false;
-      }
-      else if (this.velocities_.size() == other.velocities_.size())
+      if (this.velocities_.size() == other.velocities_.size())
       {
          return false;
       }
@@ -120,12 +110,7 @@ public class MultiDOFJointTrajectoryPoint implements Settable<MultiDOFJointTraje
          }
       }
 
-      if (this.accelerations_.isEnum())
-      {
-         if (!this.accelerations_.equals(other.accelerations_))
-            return false;
-      }
-      else if (this.accelerations_.size() == other.accelerations_.size())
+      if (this.accelerations_.size() == other.accelerations_.size())
       {
          return false;
       }

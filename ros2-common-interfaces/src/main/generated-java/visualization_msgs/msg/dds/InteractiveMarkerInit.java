@@ -123,12 +123,7 @@ public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, E
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.seq_num_, other.seq_num_, epsilon))
          return false;
 
-      if (this.markers_.isEnum())
-      {
-         if (!this.markers_.equals(other.markers_))
-            return false;
-      }
-      else if (this.markers_.size() == other.markers_.size())
+      if (this.markers_.size() == other.markers_.size())
       {
          return false;
       }

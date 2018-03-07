@@ -180,19 +180,19 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
       distortion_model_.append(other.distortion_model_);
 
       d_.set(other.d_);
-      for (int b = 0; b < k_.length; ++b)
+      for (int i1 = 0; i1 < k_.length; ++i1)
       {
-         k_[b] = other.k_[b];
+         k_[i1] = other.k_[i1];
       }
 
-      for (int d = 0; d < r_.length; ++d)
+      for (int i3 = 0; i3 < r_.length; ++i3)
       {
-         r_[d] = other.r_[d];
+         r_[i3] = other.r_[i3];
       }
 
-      for (int f = 0; f < p_.length; ++f)
+      for (int i5 = 0; i5 < p_.length; ++i5)
       {
-         p_[f] = other.p_[f];
+         p_[i5] = other.p_[i5];
       }
 
       binning_x_ = other.binning_x_;
@@ -410,21 +410,21 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
       if (!us.ihmc.idl.IDLTools.epsilonEqualsDoubleSequence(this.d_, other.d_, epsilon))
          return false;
 
-      for (int h = 0; h < k_.length; ++h)
+      for (int i7 = 0; i7 < k_.length; ++i7)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.k_[h], other.k_[h], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.k_[i7], other.k_[i7], epsilon))
             return false;
       }
 
-      for (int j = 0; j < r_.length; ++j)
+      for (int i9 = 0; i9 < r_.length; ++i9)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.r_[j], other.r_[j], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.r_[i9], other.r_[i9], epsilon))
             return false;
       }
 
-      for (int l = 0; l < p_.length; ++l)
+      for (int i11 = 0; i11 < p_.length; ++i11)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.p_[l], other.p_[l], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.p_[i11], other.p_[i11], epsilon))
             return false;
       }
 
@@ -467,19 +467,19 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
       if (!this.d_.equals(otherMyClass.d_))
          return false;
 
-      for (int n = 0; n < k_.length; ++n)
+      for (int i13 = 0; i13 < k_.length; ++i13)
       {
-         if (this.k_[n] != otherMyClass.k_[n])
+         if (this.k_[i13] != otherMyClass.k_[i13])
             return false;
       }
-      for (int p = 0; p < r_.length; ++p)
+      for (int i15 = 0; i15 < r_.length; ++i15)
       {
-         if (this.r_[p] != otherMyClass.r_[p])
+         if (this.r_[i15] != otherMyClass.r_[i15])
             return false;
       }
-      for (int r = 0; r < p_.length; ++r)
+      for (int i17 = 0; i17 < p_.length; ++i17)
       {
-         if (this.p_[r] != otherMyClass.p_[r])
+         if (this.p_[i17] != otherMyClass.p_[i17])
             return false;
       }
       if (this.binning_x_ != otherMyClass.binning_x_)

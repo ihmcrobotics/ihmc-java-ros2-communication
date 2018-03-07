@@ -59,21 +59,21 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
    {
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
       geometry_msgs.msg.dds.QuaternionPubSubType.staticCopy(other.orientation_, orientation_);
-      for (int b = 0; b < orientation_covariance_.length; ++b)
+      for (int i1 = 0; i1 < orientation_covariance_.length; ++i1)
       {
-         orientation_covariance_[b] = other.orientation_covariance_[b];
+         orientation_covariance_[i1] = other.orientation_covariance_[i1];
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.angular_velocity_, angular_velocity_);
-      for (int d = 0; d < angular_velocity_covariance_.length; ++d)
+      for (int i3 = 0; i3 < angular_velocity_covariance_.length; ++i3)
       {
-         angular_velocity_covariance_[d] = other.angular_velocity_covariance_[d];
+         angular_velocity_covariance_[i3] = other.angular_velocity_covariance_[i3];
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.linear_acceleration_, linear_acceleration_);
-      for (int f = 0; f < linear_acceleration_covariance_.length; ++f)
+      for (int i5 = 0; i5 < linear_acceleration_covariance_.length; ++i5)
       {
-         linear_acceleration_covariance_[f] = other.linear_acceleration_covariance_[f];
+         linear_acceleration_covariance_[i5] = other.linear_acceleration_covariance_[i5];
       }
    }
 
@@ -135,27 +135,27 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
       if (!this.orientation_.epsilonEquals(other.orientation_, epsilon))
          return false;
 
-      for (int h = 0; h < orientation_covariance_.length; ++h)
+      for (int i7 = 0; i7 < orientation_covariance_.length; ++i7)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.orientation_covariance_[h], other.orientation_covariance_[h], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.orientation_covariance_[i7], other.orientation_covariance_[i7], epsilon))
             return false;
       }
 
       if (!this.angular_velocity_.epsilonEquals(other.angular_velocity_, epsilon))
          return false;
 
-      for (int j = 0; j < angular_velocity_covariance_.length; ++j)
+      for (int i9 = 0; i9 < angular_velocity_covariance_.length; ++i9)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.angular_velocity_covariance_[j], other.angular_velocity_covariance_[j], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.angular_velocity_covariance_[i9], other.angular_velocity_covariance_[i9], epsilon))
             return false;
       }
 
       if (!this.linear_acceleration_.epsilonEquals(other.linear_acceleration_, epsilon))
          return false;
 
-      for (int l = 0; l < linear_acceleration_covariance_.length; ++l)
+      for (int i11 = 0; i11 < linear_acceleration_covariance_.length; ++i11)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.linear_acceleration_covariance_[l], other.linear_acceleration_covariance_[l], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.linear_acceleration_covariance_[i11], other.linear_acceleration_covariance_[i11], epsilon))
             return false;
       }
 
@@ -180,25 +180,25 @@ public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
       if (!this.orientation_.equals(otherMyClass.orientation_))
          return false;
 
-      for (int n = 0; n < orientation_covariance_.length; ++n)
+      for (int i13 = 0; i13 < orientation_covariance_.length; ++i13)
       {
-         if (this.orientation_covariance_[n] != otherMyClass.orientation_covariance_[n])
+         if (this.orientation_covariance_[i13] != otherMyClass.orientation_covariance_[i13])
             return false;
       }
       if (!this.angular_velocity_.equals(otherMyClass.angular_velocity_))
          return false;
 
-      for (int p = 0; p < angular_velocity_covariance_.length; ++p)
+      for (int i15 = 0; i15 < angular_velocity_covariance_.length; ++i15)
       {
-         if (this.angular_velocity_covariance_[p] != otherMyClass.angular_velocity_covariance_[p])
+         if (this.angular_velocity_covariance_[i15] != otherMyClass.angular_velocity_covariance_[i15])
             return false;
       }
       if (!this.linear_acceleration_.equals(otherMyClass.linear_acceleration_))
          return false;
 
-      for (int r = 0; r < linear_acceleration_covariance_.length; ++r)
+      for (int i17 = 0; i17 < linear_acceleration_covariance_.length; ++i17)
       {
-         if (this.linear_acceleration_covariance_[r] != otherMyClass.linear_acceleration_covariance_[r])
+         if (this.linear_acceleration_covariance_[i17] != otherMyClass.linear_acceleration_covariance_[i17])
             return false;
       }
 

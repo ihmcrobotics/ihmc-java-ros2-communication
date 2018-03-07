@@ -291,12 +291,7 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.always_visible_, other.always_visible_, epsilon))
          return false;
 
-      if (this.markers_.isEnum())
-      {
-         if (!this.markers_.equals(other.markers_))
-            return false;
-      }
-      else if (this.markers_.size() == other.markers_.size())
+      if (this.markers_.size() == other.markers_.size())
       {
          return false;
       }

@@ -85,12 +85,7 @@ public class PointCloud implements Settable<PointCloud>, EpsilonComparable<Point
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
 
-      if (this.points_.isEnum())
-      {
-         if (!this.points_.equals(other.points_))
-            return false;
-      }
-      else if (this.points_.size() == other.points_.size())
+      if (this.points_.size() == other.points_.size())
       {
          return false;
       }
@@ -103,12 +98,7 @@ public class PointCloud implements Settable<PointCloud>, EpsilonComparable<Point
          }
       }
 
-      if (this.channels_.isEnum())
-      {
-         if (!this.channels_.equals(other.channels_))
-            return false;
-      }
-      else if (this.channels_.size() == other.channels_.size())
+      if (this.channels_.size() == other.channels_.size())
       {
          return false;
       }

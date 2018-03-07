@@ -9,7 +9,6 @@ module geometry_msgs
     module dds
     {
 
-typedef double geometry_msgs__AccelWithCovariance__double_array_36[36];
       /**
        * This expresses acceleration in free space with uncertainty.
        */
@@ -23,7 +22,7 @@ typedef double geometry_msgs__AccelWithCovariance__double_array_36[36];
          * In order, the parameters are:
          * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
          */
-    geometry_msgs__AccelWithCovariance__double_array_36 covariance;
+        double covariance[36];
       };
     };
   };

@@ -52,9 +52,9 @@ public class TwistWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
 
       geometry_msgs.msg.dds.TwistPubSubType.write(data.getTwist(), cdr);
 
-      for (int a = 0; a < data.getCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getCovariance()[a]);
+         cdr.write_type_6(data.getCovariance()[i0]);
       }
    }
 
@@ -63,9 +63,9 @@ public class TwistWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
 
       geometry_msgs.msg.dds.TwistPubSubType.read(data.getTwist(), cdr);
 
-      for (int a = 0; a < data.getCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
-         data.getCovariance()[a] = cdr.read_type_6();
+         data.getCovariance()[i0] = cdr.read_type_6();
       }
    }
 

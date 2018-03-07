@@ -28,7 +28,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -47,9 +47,9 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getStatus().size(); ++a)
+      for (int i0 = 0; i0 < data.getStatus().size(); ++i0)
       {
-         current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getCdrSerializedSize(data.getStatus().get(a), current_alignment);
+         current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getCdrSerializedSize(data.getStatus().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

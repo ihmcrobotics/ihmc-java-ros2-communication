@@ -10,7 +10,6 @@ module sensor_msgs
     module dds
     {
 
-typedef double sensor_msgs__MagneticField__double_array_9[9];
       /**
        * Measurement of the Magnetic Field vector at a specific location.
        * If the covariance of the measurement is known, it should be filled in.
@@ -40,7 +39,7 @@ typedef double sensor_msgs__MagneticField__double_array_9[9];
         /**
          * Row major about x, y, z axes
          */
-    sensor_msgs__MagneticField__double_array_9 magnetic_field_covariance;
+        double magnetic_field_covariance[9];
       };
     };
   };

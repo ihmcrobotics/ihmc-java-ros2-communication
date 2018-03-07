@@ -39,12 +39,7 @@ public class Polygon implements Settable<Polygon>, EpsilonComparable<Polygon>
       if (other == this)
          return true;
 
-      if (this.points_.isEnum())
-      {
-         if (!this.points_.equals(other.points_))
-            return false;
-      }
-      else if (this.points_.size() == other.points_.size())
+      if (this.points_.size() == other.points_.size())
       {
          return false;
       }

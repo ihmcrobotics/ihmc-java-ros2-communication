@@ -27,7 +27,7 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -45,9 +45,9 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getPoints().size(); ++a)
+      for (int i0 = 0; i0 < data.getPoints().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getCdrSerializedSize(data.getPoints().get(a), current_alignment);
+         current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

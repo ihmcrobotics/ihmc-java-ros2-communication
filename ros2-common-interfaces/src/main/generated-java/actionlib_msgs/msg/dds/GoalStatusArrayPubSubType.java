@@ -28,7 +28,7 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += actionlib_msgs.msg.dds.GoalStatusPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -47,9 +47,9 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getStatusList().size(); ++a)
+      for (int i0 = 0; i0 < data.getStatusList().size(); ++i0)
       {
-         current_alignment += actionlib_msgs.msg.dds.GoalStatusPubSubType.getCdrSerializedSize(data.getStatusList().get(a), current_alignment);
+         current_alignment += actionlib_msgs.msg.dds.GoalStatusPubSubType.getCdrSerializedSize(data.getStatusList().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

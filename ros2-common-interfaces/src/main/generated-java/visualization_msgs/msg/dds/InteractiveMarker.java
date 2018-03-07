@@ -206,12 +206,7 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.scale_, other.scale_, epsilon))
          return false;
 
-      if (this.menu_entries_.isEnum())
-      {
-         if (!this.menu_entries_.equals(other.menu_entries_))
-            return false;
-      }
-      else if (this.menu_entries_.size() == other.menu_entries_.size())
+      if (this.menu_entries_.size() == other.menu_entries_.size())
       {
          return false;
       }
@@ -224,12 +219,7 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
          }
       }
 
-      if (this.controls_.isEnum())
-      {
-         if (!this.controls_.equals(other.controls_))
-            return false;
-      }
-      else if (this.controls_.size() == other.controls_.size())
+      if (this.controls_.size() == other.controls_.size())
       {
          return false;
       }

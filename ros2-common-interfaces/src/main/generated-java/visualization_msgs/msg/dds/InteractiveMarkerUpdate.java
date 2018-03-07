@@ -173,12 +173,7 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.type_, other.type_, epsilon))
          return false;
 
-      if (this.markers_.isEnum())
-      {
-         if (!this.markers_.equals(other.markers_))
-            return false;
-      }
-      else if (this.markers_.size() == other.markers_.size())
+      if (this.markers_.size() == other.markers_.size())
       {
          return false;
       }
@@ -191,12 +186,7 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
          }
       }
 
-      if (this.poses_.isEnum())
-      {
-         if (!this.poses_.equals(other.poses_))
-            return false;
-      }
-      else if (this.poses_.size() == other.poses_.size())
+      if (this.poses_.size() == other.poses_.size())
       {
          return false;
       }

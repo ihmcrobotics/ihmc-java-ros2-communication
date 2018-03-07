@@ -55,12 +55,7 @@ public class GoalStatusArray implements Settable<GoalStatusArray>, EpsilonCompar
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
 
-      if (this.status_list_.isEnum())
-      {
-         if (!this.status_list_.equals(other.status_list_))
-            return false;
-      }
-      else if (this.status_list_.size() == other.status_list_.size())
+      if (this.status_list_.size() == other.status_list_.size())
       {
          return false;
       }

@@ -66,23 +66,23 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
       geometry_msgs.msg.dds.QuaternionPubSubType.write(data.getOrientation(), cdr);
 
-      for (int a = 0; a < data.getOrientationCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getOrientationCovariance()[a]);
+         cdr.write_type_6(data.getOrientationCovariance()[i0]);
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getAngularVelocity(), cdr);
 
-      for (int a = 0; a < data.getAngularVelocityCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getAngularVelocityCovariance()[a]);
+         cdr.write_type_6(data.getAngularVelocityCovariance()[i0]);
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getLinearAcceleration(), cdr);
 
-      for (int a = 0; a < data.getLinearAccelerationCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getLinearAccelerationCovariance()[a]);
+         cdr.write_type_6(data.getLinearAccelerationCovariance()[i0]);
       }
    }
 
@@ -93,23 +93,23 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
       geometry_msgs.msg.dds.QuaternionPubSubType.read(data.getOrientation(), cdr);
 
-      for (int a = 0; a < data.getOrientationCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
       {
-         data.getOrientationCovariance()[a] = cdr.read_type_6();
+         data.getOrientationCovariance()[i0] = cdr.read_type_6();
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngularVelocity(), cdr);
 
-      for (int a = 0; a < data.getAngularVelocityCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
       {
-         data.getAngularVelocityCovariance()[a] = cdr.read_type_6();
+         data.getAngularVelocityCovariance()[i0] = cdr.read_type_6();
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinearAcceleration(), cdr);
 
-      for (int a = 0; a < data.getLinearAccelerationCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
       {
-         data.getLinearAccelerationCovariance()[a] = cdr.read_type_6();
+         data.getLinearAccelerationCovariance()[i0] = cdr.read_type_6();
       }
    }
 

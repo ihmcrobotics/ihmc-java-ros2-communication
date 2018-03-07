@@ -189,12 +189,7 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.hardware_id_, other.hardware_id_, epsilon))
          return false;
 
-      if (this.values_.isEnum())
-      {
-         if (!this.values_.equals(other.values_))
-            return false;
-      }
-      else if (this.values_.size() == other.values_.size())
+      if (this.values_.size() == other.values_.size())
       {
          return false;
       }

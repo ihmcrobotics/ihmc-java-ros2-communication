@@ -61,12 +61,7 @@ public class Mesh implements Settable<Mesh>, EpsilonComparable<Mesh>
       if (other == this)
          return true;
 
-      if (this.triangles_.isEnum())
-      {
-         if (!this.triangles_.equals(other.triangles_))
-            return false;
-      }
-      else if (this.triangles_.size() == other.triangles_.size())
+      if (this.triangles_.size() == other.triangles_.size())
       {
          return false;
       }
@@ -79,12 +74,7 @@ public class Mesh implements Settable<Mesh>, EpsilonComparable<Mesh>
          }
       }
 
-      if (this.vertices_.isEnum())
-      {
-         if (!this.vertices_.equals(other.vertices_))
-            return false;
-      }
-      else if (this.vertices_.size() == other.vertices_.size())
+      if (this.vertices_.size() == other.vertices_.size())
       {
          return false;
       }

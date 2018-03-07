@@ -406,12 +406,7 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.frame_locked_, other.frame_locked_, epsilon))
          return false;
 
-      if (this.points_.isEnum())
-      {
-         if (!this.points_.equals(other.points_))
-            return false;
-      }
-      else if (this.points_.size() == other.points_.size())
+      if (this.points_.size() == other.points_.size())
       {
          return false;
       }
@@ -424,12 +419,7 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
          }
       }
 
-      if (this.colors_.isEnum())
-      {
-         if (!this.colors_.equals(other.colors_))
-            return false;
-      }
-      else if (this.colors_.size() == other.colors_.size())
+      if (this.colors_.size() == other.colors_.size())
       {
          return false;
       }

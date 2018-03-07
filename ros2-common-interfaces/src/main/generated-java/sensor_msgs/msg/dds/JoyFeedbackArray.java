@@ -42,12 +42,7 @@ public class JoyFeedbackArray implements Settable<JoyFeedbackArray>, EpsilonComp
       if (other == this)
          return true;
 
-      if (this.array_.isEnum())
-      {
-         if (!this.array_.equals(other.array_))
-            return false;
-      }
-      else if (this.array_.size() == other.array_.size())
+      if (this.array_.size() == other.array_.size())
       {
          return false;
       }

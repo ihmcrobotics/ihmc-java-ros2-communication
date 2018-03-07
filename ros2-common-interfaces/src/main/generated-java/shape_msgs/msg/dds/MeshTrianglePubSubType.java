@@ -26,8 +26,6 @@ public class MeshTrianglePubSubType implements us.ihmc.pubsub.TopicDataType<shap
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += ((3) * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
       return current_alignment - initial_alignment;
    }
 
@@ -40,26 +38,15 @@ public class MeshTrianglePubSubType implements us.ihmc.pubsub.TopicDataType<shap
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += ((3) * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       return current_alignment - initial_alignment;
    }
 
    public static void write(shape_msgs.msg.dds.MeshTriangle data, us.ihmc.idl.CDR cdr)
    {
-
-      for (int a = 0; a < data.getVertexIndices().length; ++a)
-      {
-         cdr.write_type_4(data.getVertexIndices()[a]);
-      }
    }
 
    public static void read(shape_msgs.msg.dds.MeshTriangle data, us.ihmc.idl.CDR cdr)
    {
-
-      for (int a = 0; a < data.getVertexIndices().length; ++a)
-      {
-         data.getVertexIndices()[a] = cdr.read_type_4();
-      }
    }
 
    public static void staticCopy(shape_msgs.msg.dds.MeshTriangle src, shape_msgs.msg.dds.MeshTriangle dest)
@@ -86,13 +73,11 @@ public class MeshTrianglePubSubType implements us.ihmc.pubsub.TopicDataType<shap
    @Override
    public final void serialize(shape_msgs.msg.dds.MeshTriangle data, us.ihmc.idl.InterchangeSerializer ser)
    {
-      ser.write_type_f("vertex_indices", data.getVertexIndices());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, shape_msgs.msg.dds.MeshTriangle data)
    {
-      ser.read_type_f("vertex_indices", data.getVertexIndices());
    }
 
    @Override

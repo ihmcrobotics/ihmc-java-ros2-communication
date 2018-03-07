@@ -8,14 +8,13 @@ module shape_msgs
     module dds
     {
 
-typedef unsigned long shape_msgs__MeshTriangle__unsigned_long_array_3[3];
       /**
        * Definition of a triangle's vertices.
        */
       @TypeCode(type="shape_msgs::msg::dds_::MeshTriangle_")
       struct MeshTriangle
       {
-    shape_msgs__MeshTriangle__unsigned_long_array_3 vertex_indices;
+        unsigned_long vertex_indices[3];
       };
     };
   };

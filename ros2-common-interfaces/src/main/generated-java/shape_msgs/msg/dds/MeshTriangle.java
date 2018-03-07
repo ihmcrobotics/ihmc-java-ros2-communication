@@ -8,11 +8,8 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class MeshTriangle implements Settable<MeshTriangle>, EpsilonComparable<MeshTriangle>
 {
-   private long[] vertex_indices_;
-
    public MeshTriangle()
    {
-      vertex_indices_ = new long[3];
    }
 
    public MeshTriangle(MeshTriangle other)
@@ -22,15 +19,6 @@ public class MeshTriangle implements Settable<MeshTriangle>, EpsilonComparable<M
 
    public void set(MeshTriangle other)
    {
-      for (int b = 0; b < vertex_indices_.length; ++b)
-      {
-         vertex_indices_[b] = other.vertex_indices_[b];
-      }
-   }
-
-   public long[] getVertexIndices()
-   {
-      return vertex_indices_;
    }
 
    @Override
@@ -40,12 +28,6 @@ public class MeshTriangle implements Settable<MeshTriangle>, EpsilonComparable<M
          return false;
       if (other == this)
          return true;
-
-      for (int d = 0; d < vertex_indices_.length; ++d)
-      {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.vertex_indices_[d], other.vertex_indices_[d], epsilon))
-            return false;
-      }
 
       return true;
    }
@@ -62,12 +44,6 @@ public class MeshTriangle implements Settable<MeshTriangle>, EpsilonComparable<M
 
       MeshTriangle otherMyClass = (MeshTriangle) other;
 
-      for (int f = 0; f < vertex_indices_.length; ++f)
-      {
-         if (this.vertex_indices_[f] != otherMyClass.vertex_indices_[f])
-            return false;
-      }
-
       return true;
    }
 
@@ -77,9 +53,6 @@ public class MeshTriangle implements Settable<MeshTriangle>, EpsilonComparable<M
       StringBuilder builder = new StringBuilder();
 
       builder.append("MeshTriangle {");
-      builder.append("vertex_indices=");
-      builder.append(java.util.Arrays.toString(this.vertex_indices_));
-
       builder.append("}");
       return builder.toString();
    }

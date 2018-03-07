@@ -68,12 +68,7 @@ public class MultiArrayLayout implements Settable<MultiArrayLayout>, EpsilonComp
       if (other == this)
          return true;
 
-      if (this.dim_.isEnum())
-      {
-         if (!this.dim_.equals(other.dim_))
-            return false;
-      }
-      else if (this.dim_.size() == other.dim_.size())
+      if (this.dim_.size() == other.dim_.size())
       {
          return false;
       }

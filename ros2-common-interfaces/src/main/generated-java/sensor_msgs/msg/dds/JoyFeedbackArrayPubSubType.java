@@ -27,7 +27,7 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += sensor_msgs.msg.dds.JoyFeedbackPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -45,9 +45,9 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getArray().size(); ++a)
+      for (int i0 = 0; i0 < data.getArray().size(); ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.JoyFeedbackPubSubType.getCdrSerializedSize(data.getArray().get(a), current_alignment);
+         current_alignment += sensor_msgs.msg.dds.JoyFeedbackPubSubType.getCdrSerializedSize(data.getArray().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

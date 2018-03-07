@@ -11,7 +11,6 @@ module sensor_msgs
     module dds
     {
 
-typedef double sensor_msgs__Imu__double_array_9[9];
       /**
        * This is a message to hold data from an IMU (Inertial Measurement Unit)
        * 
@@ -35,17 +34,17 @@ typedef double sensor_msgs__Imu__double_array_9[9];
         /**
          * Row major about x, y, z axes
          */
-    sensor_msgs__Imu__double_array_9 orientation_covariance;
+        double orientation_covariance[9];
         geometry_msgs::msg::dds::Vector3 angular_velocity;
         /**
          * Row major about x, y, z axes
          */
-    sensor_msgs__Imu__double_array_9 angular_velocity_covariance;
+        double angular_velocity_covariance[9];
         geometry_msgs::msg::dds::Vector3 linear_acceleration;
         /**
          * Row major x, y z
          */
-    sensor_msgs__Imu__double_array_9 linear_acceleration_covariance;
+        double linear_acceleration_covariance[9];
       };
     };
   };

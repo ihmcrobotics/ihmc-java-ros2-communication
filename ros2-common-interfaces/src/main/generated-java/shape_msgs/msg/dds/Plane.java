@@ -28,9 +28,9 @@ public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
 
    public void set(Plane other)
    {
-      for (int b = 0; b < coef_.length; ++b)
+      for (int i1 = 0; i1 < coef_.length; ++i1)
       {
-         coef_[b] = other.coef_[b];
+         coef_[i1] = other.coef_[i1];
       }
    }
 
@@ -53,9 +53,9 @@ public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
       if (other == this)
          return true;
 
-      for (int d = 0; d < coef_.length; ++d)
+      for (int i3 = 0; i3 < coef_.length; ++i3)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.coef_[d], other.coef_[d], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.coef_[i3], other.coef_[i3], epsilon))
             return false;
       }
 
@@ -74,9 +74,9 @@ public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
 
       Plane otherMyClass = (Plane) other;
 
-      for (int f = 0; f < coef_.length; ++f)
+      for (int i5 = 0; i5 < coef_.length; ++i5)
       {
-         if (this.coef_[f] != otherMyClass.coef_[f])
+         if (this.coef_[i5] != otherMyClass.coef_[i5])
             return false;
       }
 

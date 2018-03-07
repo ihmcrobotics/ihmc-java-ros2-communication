@@ -28,13 +28,13 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += sensor_msgs.msg.dds.ChannelFloat32PubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -53,15 +53,15 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getPoints().size(); ++a)
+      for (int i0 = 0; i0 < data.getPoints().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getCdrSerializedSize(data.getPoints().get(a), current_alignment);
+         current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getChannels().size(); ++a)
+      for (int i0 = 0; i0 < data.getChannels().size(); ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.ChannelFloat32PubSubType.getCdrSerializedSize(data.getChannels().get(a), current_alignment);
+         current_alignment += sensor_msgs.msg.dds.ChannelFloat32PubSubType.getCdrSerializedSize(data.getChannels().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

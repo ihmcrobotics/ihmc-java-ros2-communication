@@ -12,10 +12,10 @@ module sensor_msgs
        * Radiation type enums
        * If you want a value added to this list, send an email to the ros-users list
        */
-      const octet Range__ULTRASOUND =
+      const octet ULTRASOUND =
       0;
 
-      const octet Range__INFRARED =
+      const octet INFRARED =
       1;
 
 

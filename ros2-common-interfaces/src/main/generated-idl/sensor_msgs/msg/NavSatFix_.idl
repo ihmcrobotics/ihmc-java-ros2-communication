@@ -9,20 +9,19 @@ module sensor_msgs
   {
     module dds
     {
-      const octet NavSatFix__COVARIANCE_TYPE_UNKNOWN =
+      const octet COVARIANCE_TYPE_UNKNOWN =
       0;
 
-      const octet NavSatFix__COVARIANCE_TYPE_APPROXIMATED =
+      const octet COVARIANCE_TYPE_APPROXIMATED =
       1;
 
-      const octet NavSatFix__COVARIANCE_TYPE_DIAGONAL_KNOWN =
+      const octet COVARIANCE_TYPE_DIAGONAL_KNOWN =
       2;
 
-      const octet NavSatFix__COVARIANCE_TYPE_KNOWN =
+      const octet COVARIANCE_TYPE_KNOWN =
       3;
 
 
-typedef double sensor_msgs__NavSatFix__double_array_9[9];
       /**
        * Navigation Satellite fix for any Global Navigation Satellite System
        * 
@@ -70,7 +69,7 @@ typedef double sensor_msgs__NavSatFix__double_array_9[9];
          * 
          * Beware: this coordinate system exhibits singularities at the poles.
          */
-    sensor_msgs__NavSatFix__double_array_9 position_covariance;
+        double position_covariance[9];
         octet position_covariance_type;
       };
     };

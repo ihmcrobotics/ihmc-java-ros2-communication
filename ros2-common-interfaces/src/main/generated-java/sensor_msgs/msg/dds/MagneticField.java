@@ -49,9 +49,9 @@ public class MagneticField implements Settable<MagneticField>, EpsilonComparable
    {
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.magnetic_field_, magnetic_field_);
-      for (int b = 0; b < magnetic_field_covariance_.length; ++b)
+      for (int i1 = 0; i1 < magnetic_field_covariance_.length; ++i1)
       {
-         magnetic_field_covariance_[b] = other.magnetic_field_covariance_[b];
+         magnetic_field_covariance_[i1] = other.magnetic_field_covariance_[i1];
       }
    }
 
@@ -93,9 +93,9 @@ public class MagneticField implements Settable<MagneticField>, EpsilonComparable
       if (!this.magnetic_field_.epsilonEquals(other.magnetic_field_, epsilon))
          return false;
 
-      for (int d = 0; d < magnetic_field_covariance_.length; ++d)
+      for (int i3 = 0; i3 < magnetic_field_covariance_.length; ++i3)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.magnetic_field_covariance_[d], other.magnetic_field_covariance_[d], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.magnetic_field_covariance_[i3], other.magnetic_field_covariance_[i3], epsilon))
             return false;
       }
 
@@ -120,9 +120,9 @@ public class MagneticField implements Settable<MagneticField>, EpsilonComparable
       if (!this.magnetic_field_.equals(otherMyClass.magnetic_field_))
          return false;
 
-      for (int f = 0; f < magnetic_field_covariance_.length; ++f)
+      for (int i5 = 0; i5 < magnetic_field_covariance_.length; ++i5)
       {
-         if (this.magnetic_field_covariance_[f] != otherMyClass.magnetic_field_covariance_[f])
+         if (this.magnetic_field_covariance_[i5] != otherMyClass.magnetic_field_covariance_[i5])
             return false;
       }
 

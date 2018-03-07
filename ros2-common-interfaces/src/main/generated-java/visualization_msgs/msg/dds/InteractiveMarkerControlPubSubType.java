@@ -36,7 +36,7 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -67,9 +67,9 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getMarkers().size(); ++a)
+      for (int i0 = 0; i0 < data.getMarkers().size(); ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getCdrSerializedSize(data.getMarkers().get(a), current_alignment);
+         current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getCdrSerializedSize(data.getMarkers().get(i0), current_alignment);
       }
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);

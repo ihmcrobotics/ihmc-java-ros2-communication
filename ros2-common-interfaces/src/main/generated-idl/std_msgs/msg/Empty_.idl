@@ -11,7 +11,7 @@ module std_msgs
       @TypeCode(type="std_msgs::msg::dds_::Empty_")
       struct Empty
       {
-  boolean _dummy;
+        boolean unused_placeholder_field;
       };
     };
   };

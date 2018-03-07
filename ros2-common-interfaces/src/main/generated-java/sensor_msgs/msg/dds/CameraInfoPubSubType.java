@@ -101,19 +101,19 @@ public class CameraInfoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       else
          throw new RuntimeException("d field exceeds the maximum length");
 
-      for (int a = 0; a < data.getK().length; ++a)
+      for (int i0 = 0; i0 < data.getK().length; ++i0)
       {
-         cdr.write_type_6(data.getK()[a]);
+         cdr.write_type_6(data.getK()[i0]);
       }
 
-      for (int a = 0; a < data.getR().length; ++a)
+      for (int i0 = 0; i0 < data.getR().length; ++i0)
       {
-         cdr.write_type_6(data.getR()[a]);
+         cdr.write_type_6(data.getR()[i0]);
       }
 
-      for (int a = 0; a < data.getP().length; ++a)
+      for (int i0 = 0; i0 < data.getP().length; ++i0)
       {
-         cdr.write_type_6(data.getP()[a]);
+         cdr.write_type_6(data.getP()[i0]);
       }
 
       cdr.write_type_4(data.getBinningX());
@@ -136,19 +136,19 @@ public class CameraInfoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
       cdr.read_type_e(data.getD());
 
-      for (int a = 0; a < data.getK().length; ++a)
+      for (int i0 = 0; i0 < data.getK().length; ++i0)
       {
-         data.getK()[a] = cdr.read_type_6();
+         data.getK()[i0] = cdr.read_type_6();
       }
 
-      for (int a = 0; a < data.getR().length; ++a)
+      for (int i0 = 0; i0 < data.getR().length; ++i0)
       {
-         data.getR()[a] = cdr.read_type_6();
+         data.getR()[i0] = cdr.read_type_6();
       }
 
-      for (int a = 0; a < data.getP().length; ++a)
+      for (int i0 = 0; i0 < data.getP().length; ++i0)
       {
-         data.getP()[a] = cdr.read_type_6();
+         data.getP()[i0] = cdr.read_type_6();
       }
 
       data.setBinningX(cdr.read_type_4());

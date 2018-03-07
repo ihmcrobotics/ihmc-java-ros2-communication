@@ -83,12 +83,7 @@ public class GridCells implements Settable<GridCells>, EpsilonComparable<GridCel
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.cell_height_, other.cell_height_, epsilon))
          return false;
 
-      if (this.cells_.isEnum())
-      {
-         if (!this.cells_.equals(other.cells_))
-            return false;
-      }
-      else if (this.cells_.size() == other.cells_.size())
+      if (this.cells_.size() == other.cells_.size())
       {
          return false;
       }

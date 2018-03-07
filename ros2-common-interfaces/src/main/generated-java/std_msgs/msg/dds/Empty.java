@@ -5,7 +5,7 @@ import us.ihmc.euclid.interfaces.Settable;
 
 public class Empty implements Settable<Empty>, EpsilonComparable<Empty>
 {
-   private boolean _dummy_;
+   private boolean unused_placeholder_field_;
 
    public Empty()
    {
@@ -18,17 +18,17 @@ public class Empty implements Settable<Empty>, EpsilonComparable<Empty>
 
    public void set(Empty other)
    {
-      _dummy_ = other._dummy_;
+      unused_placeholder_field_ = other.unused_placeholder_field_;
    }
 
-   public boolean getDummy()
+   public boolean getUnusedPlaceholderField()
    {
-      return _dummy_;
+      return unused_placeholder_field_;
    }
 
-   public void setDummy(boolean _dummy)
+   public void setUnusedPlaceholderField(boolean unused_placeholder_field)
    {
-      _dummy_ = _dummy;
+      unused_placeholder_field_ = unused_placeholder_field;
    }
 
    @Override
@@ -39,7 +39,7 @@ public class Empty implements Settable<Empty>, EpsilonComparable<Empty>
       if (other == this)
          return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this._dummy_, other._dummy_, epsilon))
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.unused_placeholder_field_, other.unused_placeholder_field_, epsilon))
          return false;
 
       return true;
@@ -57,7 +57,7 @@ public class Empty implements Settable<Empty>, EpsilonComparable<Empty>
 
       Empty otherMyClass = (Empty) other;
 
-      if (this._dummy_ != otherMyClass._dummy_)
+      if (this.unused_placeholder_field_ != otherMyClass.unused_placeholder_field_)
          return false;
 
       return true;
@@ -69,8 +69,8 @@ public class Empty implements Settable<Empty>, EpsilonComparable<Empty>
       StringBuilder builder = new StringBuilder();
 
       builder.append("Empty {");
-      builder.append("_dummy=");
-      builder.append(this._dummy_);
+      builder.append("unused_placeholder_field=");
+      builder.append(this.unused_placeholder_field_);
 
       builder.append("}");
       return builder.toString();

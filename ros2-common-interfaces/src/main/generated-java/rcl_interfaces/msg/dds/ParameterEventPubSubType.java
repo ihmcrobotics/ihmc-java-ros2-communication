@@ -27,19 +27,19 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -57,21 +57,21 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getNewParameters().size(); ++a)
+      for (int i0 = 0; i0 < data.getNewParameters().size(); ++i0)
       {
-         current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getCdrSerializedSize(data.getNewParameters().get(a), current_alignment);
+         current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getCdrSerializedSize(data.getNewParameters().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getChangedParameters().size(); ++a)
+      for (int i0 = 0; i0 < data.getChangedParameters().size(); ++i0)
       {
-         current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getCdrSerializedSize(data.getChangedParameters().get(a), current_alignment);
+         current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getCdrSerializedSize(data.getChangedParameters().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getDeletedParameters().size(); ++a)
+      for (int i0 = 0; i0 < data.getDeletedParameters().size(); ++i0)
       {
-         current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getCdrSerializedSize(data.getDeletedParameters().get(a), current_alignment);
+         current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getCdrSerializedSize(data.getDeletedParameters().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

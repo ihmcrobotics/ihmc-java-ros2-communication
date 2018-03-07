@@ -35,13 +35,13 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += visualization_msgs.msg.dds.MenuEntryPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -67,15 +67,15 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getMenuEntries().size(); ++a)
+      for (int i0 = 0; i0 < data.getMenuEntries().size(); ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.MenuEntryPubSubType.getCdrSerializedSize(data.getMenuEntries().get(a), current_alignment);
+         current_alignment += visualization_msgs.msg.dds.MenuEntryPubSubType.getCdrSerializedSize(data.getMenuEntries().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getControls().size(); ++a)
+      for (int i0 = 0; i0 < data.getControls().size(); ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType.getCdrSerializedSize(data.getControls().get(a), current_alignment);
+         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType.getCdrSerializedSize(data.getControls().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

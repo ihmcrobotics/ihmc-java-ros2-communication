@@ -61,12 +61,7 @@ public class ParameterEvent implements Settable<ParameterEvent>, EpsilonComparab
       if (other == this)
          return true;
 
-      if (this.new_parameters_.isEnum())
-      {
-         if (!this.new_parameters_.equals(other.new_parameters_))
-            return false;
-      }
-      else if (this.new_parameters_.size() == other.new_parameters_.size())
+      if (this.new_parameters_.size() == other.new_parameters_.size())
       {
          return false;
       }
@@ -79,12 +74,7 @@ public class ParameterEvent implements Settable<ParameterEvent>, EpsilonComparab
          }
       }
 
-      if (this.changed_parameters_.isEnum())
-      {
-         if (!this.changed_parameters_.equals(other.changed_parameters_))
-            return false;
-      }
-      else if (this.changed_parameters_.size() == other.changed_parameters_.size())
+      if (this.changed_parameters_.size() == other.changed_parameters_.size())
       {
          return false;
       }
@@ -97,12 +87,7 @@ public class ParameterEvent implements Settable<ParameterEvent>, EpsilonComparab
          }
       }
 
-      if (this.deleted_parameters_.isEnum())
-      {
-         if (!this.deleted_parameters_.equals(other.deleted_parameters_))
-            return false;
-      }
-      else if (this.deleted_parameters_.size() == other.deleted_parameters_.size())
+      if (this.deleted_parameters_.size() == other.deleted_parameters_.size())
       {
          return false;
       }

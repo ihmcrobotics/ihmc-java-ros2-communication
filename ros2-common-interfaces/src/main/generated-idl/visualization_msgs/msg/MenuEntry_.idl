@@ -14,13 +14,13 @@ module visualization_msgs
        * ROSRUN: execute "rosrun" with arguments given in the command field (above).
        * ROSLAUNCH: execute "roslaunch" with arguments given in the command field (above).
        */
-      const octet MenuEntry__FEEDBACK =
+      const octet FEEDBACK =
       0;
 
-      const octet MenuEntry__ROSRUN =
+      const octet ROSRUN =
       1;
 
-      const octet MenuEntry__ROSLAUNCH =
+      const octet ROSLAUNCH =
       2;
 
 

@@ -50,12 +50,7 @@ public class PoseArray implements Settable<PoseArray>, EpsilonComparable<PoseArr
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
 
-      if (this.poses_.isEnum())
-      {
-         if (!this.poses_.equals(other.poses_))
-            return false;
-      }
-      else if (this.poses_.size() == other.poses_.size())
+      if (this.poses_.size() == other.poses_.size())
       {
          return false;
       }

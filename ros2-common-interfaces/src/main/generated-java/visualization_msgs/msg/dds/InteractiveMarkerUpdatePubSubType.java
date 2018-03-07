@@ -33,19 +33,19 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
@@ -69,21 +69,21 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getMarkers().size(); ++a)
+      for (int i0 = 0; i0 < data.getMarkers().size(); ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getCdrSerializedSize(data.getMarkers().get(a), current_alignment);
+         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getCdrSerializedSize(data.getMarkers().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getPoses().size(); ++a)
+      for (int i0 = 0; i0 < data.getPoses().size(); ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getCdrSerializedSize(data.getPoses().get(a), current_alignment);
+         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getCdrSerializedSize(data.getPoses().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getErases().size(); ++a)
+      for (int i0 = 0; i0 < data.getErases().size(); ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getErases().get(a).length() + 1;
+         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getErases().get(i0).length() + 1;
       }
 
       return current_alignment - initial_alignment;

@@ -36,12 +36,7 @@ public class MarkerArray implements Settable<MarkerArray>, EpsilonComparable<Mar
       if (other == this)
          return true;
 
-      if (this.markers_.isEnum())
-      {
-         if (!this.markers_.equals(other.markers_))
-            return false;
-      }
-      else if (this.markers_.size() == other.markers_.size())
+      if (this.markers_.size() == other.markers_.size())
       {
          return false;
       }

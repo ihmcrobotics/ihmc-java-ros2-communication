@@ -31,9 +31,9 @@ public class PoseWithCovariance implements Settable<PoseWithCovariance>, Epsilon
    public void set(PoseWithCovariance other)
    {
       geometry_msgs.msg.dds.PosePubSubType.staticCopy(other.pose_, pose_);
-      for (int b = 0; b < covariance_.length; ++b)
+      for (int i1 = 0; i1 < covariance_.length; ++i1)
       {
-         covariance_[b] = other.covariance_[b];
+         covariance_[i1] = other.covariance_[i1];
       }
    }
 
@@ -64,9 +64,9 @@ public class PoseWithCovariance implements Settable<PoseWithCovariance>, Epsilon
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
 
-      for (int d = 0; d < covariance_.length; ++d)
+      for (int i3 = 0; i3 < covariance_.length; ++i3)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.covariance_[d], other.covariance_[d], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.covariance_[i3], other.covariance_[i3], epsilon))
             return false;
       }
 
@@ -88,9 +88,9 @@ public class PoseWithCovariance implements Settable<PoseWithCovariance>, Epsilon
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
 
-      for (int f = 0; f < covariance_.length; ++f)
+      for (int i5 = 0; i5 < covariance_.length; ++i5)
       {
-         if (this.covariance_[f] != otherMyClass.covariance_[f])
+         if (this.covariance_[i5] != otherMyClass.covariance_[i5])
             return false;
       }
 

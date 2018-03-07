@@ -8,7 +8,6 @@ module shape_msgs
     module dds
     {
 
-typedef double shape_msgs__Plane__double_array_4[4];
       /**
        * Representation of a plane, using the plane equation ax + by + cz + d = 0.
        */
@@ -21,7 +20,7 @@ typedef double shape_msgs__Plane__double_array_4[4];
          * c := coef[2]
          * d := coef[3]
          */
-    shape_msgs__Plane__double_array_4 coef;
+        double coef[4];
       };
     };
   };

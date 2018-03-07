@@ -275,12 +275,7 @@ public class MultiEchoLaserScan implements Settable<MultiEchoLaserScan>, Epsilon
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.range_max_, other.range_max_, epsilon))
          return false;
 
-      if (this.ranges_.isEnum())
-      {
-         if (!this.ranges_.equals(other.ranges_))
-            return false;
-      }
-      else if (this.ranges_.size() == other.ranges_.size())
+      if (this.ranges_.size() == other.ranges_.size())
       {
          return false;
       }
@@ -293,12 +288,7 @@ public class MultiEchoLaserScan implements Settable<MultiEchoLaserScan>, Epsilon
          }
       }
 
-      if (this.intensities_.isEnum())
-      {
-         if (!this.intensities_.equals(other.intensities_))
-            return false;
-      }
-      else if (this.intensities_.size() == other.intensities_.size())
+      if (this.intensities_.size() == other.intensities_.size())
       {
          return false;
       }

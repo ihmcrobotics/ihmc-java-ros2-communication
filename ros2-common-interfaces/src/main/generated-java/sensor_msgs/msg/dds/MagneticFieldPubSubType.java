@@ -56,9 +56,9 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getMagneticField(), cdr);
 
-      for (int a = 0; a < data.getMagneticFieldCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getMagneticFieldCovariance()[a]);
+         cdr.write_type_6(data.getMagneticFieldCovariance()[i0]);
       }
    }
 
@@ -69,9 +69,9 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getMagneticField(), cdr);
 
-      for (int a = 0; a < data.getMagneticFieldCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
       {
-         data.getMagneticFieldCovariance()[a] = cdr.read_type_6();
+         data.getMagneticFieldCovariance()[i0] = cdr.read_type_6();
       }
    }
 

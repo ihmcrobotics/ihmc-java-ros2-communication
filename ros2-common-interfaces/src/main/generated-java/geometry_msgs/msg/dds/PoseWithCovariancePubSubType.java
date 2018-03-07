@@ -52,9 +52,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
 
-      for (int a = 0; a < data.getCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getCovariance()[a]);
+         cdr.write_type_6(data.getCovariance()[i0]);
       }
    }
 
@@ -63,9 +63,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
 
-      for (int a = 0; a < data.getCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
-         data.getCovariance()[a] = cdr.read_type_6();
+         data.getCovariance()[i0] = cdr.read_type_6();
       }
    }
 

@@ -11,16 +11,16 @@ module diagnostic_msgs
       /**
        * Possible levels of operations.
        */
-      const octet DiagnosticStatus__OK =
+      const octet OK =
       0;
 
-      const octet DiagnosticStatus__WARN =
+      const octet WARN =
       1;
 
-      const octet DiagnosticStatus__ERROR =
+      const octet ERROR =
       2;
 
-      const octet DiagnosticStatus__STALE =
+      const octet STALE =
       3;
 
 

@@ -11,28 +11,28 @@ module sensor_msgs
        * This message holds the description of one point entry in the
        * PointCloud2 message format.
        */
-      const octet PointField__INT8 =
+      const octet INT8 =
       1;
 
-      const octet PointField__UINT8 =
+      const octet UINT8 =
       2;
 
-      const octet PointField__INT16 =
+      const octet INT16 =
       3;
 
-      const octet PointField__UINT16 =
+      const octet UINT16 =
       4;
 
-      const octet PointField__INT32 =
+      const octet INT32 =
       5;
 
-      const octet PointField__UINT32 =
+      const octet UINT32 =
       6;
 
-      const octet PointField__FLOAT32 =
+      const octet FLOAT32 =
       7;
 
-      const octet PointField__FLOAT64 =
+      const octet FLOAT64 =
       8;
 
 

@@ -17,22 +17,22 @@ module visualization_msgs
        * BUTTON_CLICK: a button control has been clicked
        * POSE_UPDATE: the pose has been changed using one of the controls
        */
-      const octet InteractiveMarkerFeedback__KEEP_ALIVE =
+      const octet KEEP_ALIVE =
       0;
 
-      const octet InteractiveMarkerFeedback__POSE_UPDATE =
+      const octet POSE_UPDATE =
       1;
 
-      const octet InteractiveMarkerFeedback__MENU_SELECT =
+      const octet MENU_SELECT =
       2;
 
-      const octet InteractiveMarkerFeedback__BUTTON_CLICK =
+      const octet BUTTON_CLICK =
       3;
 
-      const octet InteractiveMarkerFeedback__MOUSE_DOWN =
+      const octet MOUSE_DOWN =
       4;
 
-      const octet InteractiveMarkerFeedback__MOUSE_UP =
+      const octet MOUSE_UP =
       5;
 
 

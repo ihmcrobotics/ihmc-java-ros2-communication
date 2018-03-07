@@ -61,12 +61,7 @@ public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonCompar
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
 
-      if (this.status_.isEnum())
-      {
-         if (!this.status_.equals(other.status_))
-            return false;
-      }
-      else if (this.status_.size() == other.status_.size())
+      if (this.status_.size() == other.status_.size())
       {
          return false;
       }

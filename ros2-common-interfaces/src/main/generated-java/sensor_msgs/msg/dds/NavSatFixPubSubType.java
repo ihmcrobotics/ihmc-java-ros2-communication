@@ -77,9 +77,9 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
       cdr.write_type_6(data.getAltitude());
 
-      for (int a = 0; a < data.getPositionCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getPositionCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getPositionCovariance()[a]);
+         cdr.write_type_6(data.getPositionCovariance()[i0]);
       }
 
       cdr.write_type_9(data.getPositionCovarianceType());
@@ -98,9 +98,9 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
       data.setAltitude(cdr.read_type_6());
 
-      for (int a = 0; a < data.getPositionCovariance().length; ++a)
+      for (int i0 = 0; i0 < data.getPositionCovariance().length; ++i0)
       {
-         data.getPositionCovariance()[a] = cdr.read_type_6();
+         data.getPositionCovariance()[i0] = cdr.read_type_6();
       }
 
       data.setPositionCovarianceType(cdr.read_type_9());

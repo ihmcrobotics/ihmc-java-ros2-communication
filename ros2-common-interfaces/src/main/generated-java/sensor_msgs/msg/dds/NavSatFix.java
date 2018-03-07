@@ -79,9 +79,9 @@ public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatF
 
       altitude_ = other.altitude_;
 
-      for (int b = 0; b < position_covariance_.length; ++b)
+      for (int i1 = 0; i1 < position_covariance_.length; ++i1)
       {
-         position_covariance_[b] = other.position_covariance_[b];
+         position_covariance_[i1] = other.position_covariance_[i1];
       }
 
       position_covariance_type_ = other.position_covariance_type_;
@@ -205,9 +205,9 @@ public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatF
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.altitude_, other.altitude_, epsilon))
          return false;
 
-      for (int d = 0; d < position_covariance_.length; ++d)
+      for (int i3 = 0; i3 < position_covariance_.length; ++i3)
       {
-         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.position_covariance_[d], other.position_covariance_[d], epsilon))
+         if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.position_covariance_[i3], other.position_covariance_[i3], epsilon))
             return false;
       }
 
@@ -244,9 +244,9 @@ public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatF
       if (this.altitude_ != otherMyClass.altitude_)
          return false;
 
-      for (int f = 0; f < position_covariance_.length; ++f)
+      for (int i5 = 0; i5 < position_covariance_.length; ++i5)
       {
-         if (this.position_covariance_[f] != otherMyClass.position_covariance_[f])
+         if (this.position_covariance_[i5] != otherMyClass.position_covariance_[i5])
             return false;
       }
       if (this.position_covariance_type_ != otherMyClass.position_covariance_type_)

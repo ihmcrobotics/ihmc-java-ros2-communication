@@ -11,73 +11,73 @@ module sensor_msgs
       /**
        * Power supply status constants
        */
-      const octet BatteryState__POWER_SUPPLY_STATUS_UNKNOWN =
+      const octet POWER_SUPPLY_STATUS_UNKNOWN =
       0;
 
-      const octet BatteryState__POWER_SUPPLY_STATUS_CHARGING =
+      const octet POWER_SUPPLY_STATUS_CHARGING =
       1;
 
-      const octet BatteryState__POWER_SUPPLY_STATUS_DISCHARGING =
+      const octet POWER_SUPPLY_STATUS_DISCHARGING =
       2;
 
-      const octet BatteryState__POWER_SUPPLY_STATUS_NOT_CHARGING =
+      const octet POWER_SUPPLY_STATUS_NOT_CHARGING =
       3;
 
-      const octet BatteryState__POWER_SUPPLY_STATUS_FULL =
+      const octet POWER_SUPPLY_STATUS_FULL =
       4;
 
       /**
        * Power supply health constants
        */
-      const octet BatteryState__POWER_SUPPLY_HEALTH_UNKNOWN =
+      const octet POWER_SUPPLY_HEALTH_UNKNOWN =
       0;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_GOOD =
+      const octet POWER_SUPPLY_HEALTH_GOOD =
       1;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_OVERHEAT =
+      const octet POWER_SUPPLY_HEALTH_OVERHEAT =
       2;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_DEAD =
+      const octet POWER_SUPPLY_HEALTH_DEAD =
       3;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_OVERVOLTAGE =
+      const octet POWER_SUPPLY_HEALTH_OVERVOLTAGE =
       4;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_UNSPEC_FAILURE =
+      const octet POWER_SUPPLY_HEALTH_UNSPEC_FAILURE =
       5;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_COLD =
+      const octet POWER_SUPPLY_HEALTH_COLD =
       6;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_WATCHDOG_TIMER_EXPIRE =
+      const octet POWER_SUPPLY_HEALTH_WATCHDOG_TIMER_EXPIRE =
       7;
 
-      const octet BatteryState__POWER_SUPPLY_HEALTH_SAFETY_TIMER_EXPIRE =
+      const octet POWER_SUPPLY_HEALTH_SAFETY_TIMER_EXPIRE =
       8;
 
       /**
        * Power supply technology (chemistry) constants
        */
-      const octet BatteryState__POWER_SUPPLY_TECHNOLOGY_UNKNOWN =
+      const octet POWER_SUPPLY_TECHNOLOGY_UNKNOWN =
       0;
 
-      const octet BatteryState__POWER_SUPPLY_TECHNOLOGY_NIMH =
+      const octet POWER_SUPPLY_TECHNOLOGY_NIMH =
       1;
 
-      const octet BatteryState__POWER_SUPPLY_TECHNOLOGY_LION =
+      const octet POWER_SUPPLY_TECHNOLOGY_LION =
       2;
 
-      const octet BatteryState__POWER_SUPPLY_TECHNOLOGY_LIPO =
+      const octet POWER_SUPPLY_TECHNOLOGY_LIPO =
       3;
 
-      const octet BatteryState__POWER_SUPPLY_TECHNOLOGY_LIFE =
+      const octet POWER_SUPPLY_TECHNOLOGY_LIFE =
       4;
 
-      const octet BatteryState__POWER_SUPPLY_TECHNOLOGY_NICD =
+      const octet POWER_SUPPLY_TECHNOLOGY_NICD =
       5;
 
-      const octet BatteryState__POWER_SUPPLY_TECHNOLOGY_LIMN =
+      const octet POWER_SUPPLY_TECHNOLOGY_LIMN =
       6;
 
 

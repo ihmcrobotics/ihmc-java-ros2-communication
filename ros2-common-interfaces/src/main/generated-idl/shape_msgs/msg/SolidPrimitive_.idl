@@ -7,46 +7,46 @@ module shape_msgs
   {
     module dds
     {
-      const octet SolidPrimitive__BOX =
+      const octet BOX =
       1;
 
-      const octet SolidPrimitive__SPHERE =
+      const octet SPHERE =
       2;
 
-      const octet SolidPrimitive__CYLINDER =
+      const octet CYLINDER =
       3;
 
-      const octet SolidPrimitive__CONE =
+      const octet CONE =
       4;
 
       /**
        * For type BOX, the X, Y, and Z dimensions are the length of the corresponding sides of the box.
        */
-      const octet SolidPrimitive__BOX_X =
+      const octet BOX_X =
       0;
 
-      const octet SolidPrimitive__BOX_Y =
+      const octet BOX_Y =
       1;
 
-      const octet SolidPrimitive__BOX_Z =
+      const octet BOX_Z =
       2;
 
       /**
        * For the SPHERE type, only one component is used, and it gives the radius of the sphere.
        */
-      const octet SolidPrimitive__SPHERE_RADIUS =
+      const octet SPHERE_RADIUS =
       0;
 
-      const octet SolidPrimitive__CYLINDER_HEIGHT =
+      const octet CYLINDER_HEIGHT =
       0;
 
-      const octet SolidPrimitive__CYLINDER_RADIUS =
+      const octet CYLINDER_RADIUS =
       1;
 
-      const octet SolidPrimitive__CONE_HEIGHT =
+      const octet CONE_HEIGHT =
       0;
 
-      const octet SolidPrimitive__CONE_RADIUS =
+      const octet CONE_RADIUS =
       1;
 
 

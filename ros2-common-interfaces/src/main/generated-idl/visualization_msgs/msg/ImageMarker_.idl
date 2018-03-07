@@ -11,25 +11,25 @@ module visualization_msgs
   {
     module dds
     {
-      const octet ImageMarker__CIRCLE =
+      const octet CIRCLE =
       0;
 
-      const octet ImageMarker__LINE_STRIP =
+      const octet LINE_STRIP =
       1;
 
-      const octet ImageMarker__LINE_LIST =
+      const octet LINE_LIST =
       2;
 
-      const octet ImageMarker__POLYGON =
+      const octet POLYGON =
       3;
 
-      const octet ImageMarker__POINTS =
+      const octet POINTS =
       4;
 
-      const octet ImageMarker__ADD =
+      const octet ADD =
       0;
 
-      const octet ImageMarker__REMOVE =
+      const octet REMOVE =
       1;
 
 

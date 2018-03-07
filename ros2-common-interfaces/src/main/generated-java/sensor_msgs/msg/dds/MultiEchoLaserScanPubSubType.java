@@ -42,13 +42,13 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -81,15 +81,15 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getRanges().size(); ++a)
+      for (int i0 = 0; i0 < data.getRanges().size(); ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getRanges().get(a), current_alignment);
+         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getRanges().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getIntensities().size(); ++a)
+      for (int i0 = 0; i0 < data.getIntensities().size(); ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getIntensities().get(a), current_alignment);
+         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getIntensities().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

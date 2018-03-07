@@ -215,12 +215,7 @@ public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<Poi
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.width_, other.width_, epsilon))
          return false;
 
-      if (this.fields_.isEnum())
-      {
-         if (!this.fields_.equals(other.fields_))
-            return false;
-      }
-      else if (this.fields_.size() == other.fields_.size())
+      if (this.fields_.size() == other.fields_.size())
       {
          return false;
       }

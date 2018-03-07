@@ -28,7 +28,7 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -47,9 +47,9 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getPoses().size(); ++a)
+      for (int i0 = 0; i0 < data.getPoses().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPoses().get(a), current_alignment);
+         current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPoses().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

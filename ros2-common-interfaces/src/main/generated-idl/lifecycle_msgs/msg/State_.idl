@@ -12,19 +12,19 @@ module lifecycle_msgs
        * State changes can only be requested
        * when the node is in one of these states.
        */
-      const octet State__PRIMARY_STATE_UNKNOWN =
+      const octet PRIMARY_STATE_UNKNOWN =
       0;
 
-      const octet State__PRIMARY_STATE_UNCONFIGURED =
+      const octet PRIMARY_STATE_UNCONFIGURED =
       1;
 
-      const octet State__PRIMARY_STATE_INACTIVE =
+      const octet PRIMARY_STATE_INACTIVE =
       2;
 
-      const octet State__PRIMARY_STATE_ACTIVE =
+      const octet PRIMARY_STATE_ACTIVE =
       3;
 
-      const octet State__PRIMARY_STATE_FINALIZED =
+      const octet PRIMARY_STATE_FINALIZED =
       4;
 
       /**
@@ -33,22 +33,22 @@ module lifecycle_msgs
        * node changes its state into one
        * of these states.
        */
-      const octet State__TRANSITION_STATE_CONFIGURING =
+      const octet TRANSITION_STATE_CONFIGURING =
       10;
 
-      const octet State__TRANSITION_STATE_CLEANINGUP =
+      const octet TRANSITION_STATE_CLEANINGUP =
       11;
 
-      const octet State__TRANSITION_STATE_SHUTTINGDOWN =
+      const octet TRANSITION_STATE_SHUTTINGDOWN =
       12;
 
-      const octet State__TRANSITION_STATE_ACTIVATING =
+      const octet TRANSITION_STATE_ACTIVATING =
       13;
 
-      const octet State__TRANSITION_STATE_DEACTIVATING =
+      const octet TRANSITION_STATE_DEACTIVATING =
       14;
 
-      const octet State__TRANSITION_STATE_ERRORPROCESSING =
+      const octet TRANSITION_STATE_ERRORPROCESSING =
       15;
 
 

@@ -47,18 +47,18 @@ public class PlanePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.
    public static void write(shape_msgs.msg.dds.Plane data, us.ihmc.idl.CDR cdr)
    {
 
-      for (int a = 0; a < data.getCoef().length; ++a)
+      for (int i0 = 0; i0 < data.getCoef().length; ++i0)
       {
-         cdr.write_type_6(data.getCoef()[a]);
+         cdr.write_type_6(data.getCoef()[i0]);
       }
    }
 
    public static void read(shape_msgs.msg.dds.Plane data, us.ihmc.idl.CDR cdr)
    {
 
-      for (int a = 0; a < data.getCoef().length; ++a)
+      for (int i0 = 0; i0 < data.getCoef().length; ++i0)
       {
-         data.getCoef()[a] = cdr.read_type_6();
+         data.getCoef()[i0] = cdr.read_type_6();
       }
    }
 

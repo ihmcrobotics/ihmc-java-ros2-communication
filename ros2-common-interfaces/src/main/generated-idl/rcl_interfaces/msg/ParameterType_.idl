@@ -7,29 +7,29 @@ module rcl_interfaces
   {
     module dds
     {
-      const octet ParameterType__PARAMETER_NOT_SET =
+      const octet PARAMETER_NOT_SET =
       0;
 
-      const octet ParameterType__PARAMETER_BOOL =
+      const octet PARAMETER_BOOL =
       1;
 
-      const octet ParameterType__PARAMETER_INTEGER =
+      const octet PARAMETER_INTEGER =
       2;
 
-      const octet ParameterType__PARAMETER_DOUBLE =
+      const octet PARAMETER_DOUBLE =
       3;
 
-      const octet ParameterType__PARAMETER_STRING =
+      const octet PARAMETER_STRING =
       4;
 
-      const octet ParameterType__PARAMETER_BYTES =
+      const octet PARAMETER_BYTES =
       5;
 
 
       @TypeCode(type="rcl_interfaces::msg::dds_::ParameterType_")
       struct ParameterType
       {
-  boolean _dummy;
+        boolean unused_placeholder_field;
       };
     };
   };

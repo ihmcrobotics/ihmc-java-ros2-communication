@@ -27,19 +27,19 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -59,21 +59,21 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getTransforms().size(); ++a)
+      for (int i0 = 0; i0 < data.getTransforms().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getCdrSerializedSize(data.getTransforms().get(a), current_alignment);
+         current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getCdrSerializedSize(data.getTransforms().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getVelocities().size(); ++a)
+      for (int i0 = 0; i0 < data.getVelocities().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getCdrSerializedSize(data.getVelocities().get(a), current_alignment);
+         current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getCdrSerializedSize(data.getVelocities().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getAccelerations().size(); ++a)
+      for (int i0 = 0; i0 < data.getAccelerations().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getCdrSerializedSize(data.getAccelerations().get(a), current_alignment);
+         current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getCdrSerializedSize(data.getAccelerations().get(i0), current_alignment);
       }
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getCdrSerializedSize(data.getTimeFromStart(), current_alignment);

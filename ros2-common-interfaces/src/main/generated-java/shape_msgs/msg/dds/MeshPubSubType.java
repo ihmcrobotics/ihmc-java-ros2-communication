@@ -27,13 +27,13 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -51,15 +51,15 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getTriangles().size(); ++a)
+      for (int i0 = 0; i0 < data.getTriangles().size(); ++i0)
       {
-         current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getCdrSerializedSize(data.getTriangles().get(a), current_alignment);
+         current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getCdrSerializedSize(data.getTriangles().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getVertices().size(); ++a)
+      for (int i0 = 0; i0 < data.getVertices().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getVertices().get(a), current_alignment);
+         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getVertices().get(i0), current_alignment);
       }
 
       return current_alignment - initial_alignment;

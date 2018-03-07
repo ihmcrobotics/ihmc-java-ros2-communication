@@ -10,8 +10,6 @@ module sensor_msgs
     module dds
     {
 
-typedef double sensor_msgs__CameraInfo__double_array_9[9];
-typedef double sensor_msgs__CameraInfo__double_array_12[12];
       /**
        * This message defines meta information for a camera. It should be in a
        * camera namespace on topic "camera_info" and accompanied by up to five
@@ -100,7 +98,7 @@ typedef double sensor_msgs__CameraInfo__double_array_12[12];
          * (cx, cy).
          * 3x3 row-major matrix
          */
-    sensor_msgs__CameraInfo__double_array_9 k;
+        double k[9];
         /**
          * Rectification matrix (stereo cameras only)
          * A rotation matrix aligning the camera coordinate system to the ideal
@@ -108,7 +106,7 @@ typedef double sensor_msgs__CameraInfo__double_array_12[12];
          * parallel.
          * 3x3 row-major matrix
          */
-    sensor_msgs__CameraInfo__double_array_9 r;
+        double r[9];
         /**
          * Projection/camera matrix
          * [fx'  0  cx' Tx]
@@ -136,7 +134,7 @@ typedef double sensor_msgs__CameraInfo__double_array_12[12];
          * This holds for both images of a stereo pair.
          * 3x4 row-major matrix
          */
-    sensor_msgs__CameraInfo__double_array_12 p;
+        double p[12];
         /**
          * Binning refers here to any camera setting which combines rectangular
          * neighborhoods of pixels into larger "super-pixels." It reduces the

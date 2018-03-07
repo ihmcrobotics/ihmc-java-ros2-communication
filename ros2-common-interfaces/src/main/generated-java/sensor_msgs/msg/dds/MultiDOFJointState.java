@@ -100,12 +100,7 @@ public class MultiDOFJointState implements Settable<MultiDOFJointState>, Epsilon
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.joint_names_, other.joint_names_, epsilon))
          return false;
 
-      if (this.transforms_.isEnum())
-      {
-         if (!this.transforms_.equals(other.transforms_))
-            return false;
-      }
-      else if (this.transforms_.size() == other.transforms_.size())
+      if (this.transforms_.size() == other.transforms_.size())
       {
          return false;
       }
@@ -118,12 +113,7 @@ public class MultiDOFJointState implements Settable<MultiDOFJointState>, Epsilon
          }
       }
 
-      if (this.twist_.isEnum())
-      {
-         if (!this.twist_.equals(other.twist_))
-            return false;
-      }
-      else if (this.twist_.size() == other.twist_.size())
+      if (this.twist_.size() == other.twist_.size())
       {
          return false;
       }
@@ -136,12 +126,7 @@ public class MultiDOFJointState implements Settable<MultiDOFJointState>, Epsilon
          }
       }
 
-      if (this.wrench_.isEnum())
-      {
-         if (!this.wrench_.equals(other.wrench_))
-            return false;
-      }
-      else if (this.wrench_.size() == other.wrench_.size())
+      if (this.wrench_.size() == other.wrench_.size())
       {
          return false;
       }

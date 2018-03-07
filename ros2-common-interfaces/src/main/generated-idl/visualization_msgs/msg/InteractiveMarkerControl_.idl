@@ -15,13 +15,13 @@ module visualization_msgs
        * FIXED: Keep orientation fixed at initial state
        * VIEW_FACING: Align y-z plane with screen (x: forward, y:left, z:up).
        */
-      const octet InteractiveMarkerControl__INHERIT =
+      const octet INHERIT =
       0;
 
-      const octet InteractiveMarkerControl__FIXED =
+      const octet FIXED =
       1;
 
-      const octet InteractiveMarkerControl__VIEW_FACING =
+      const octet VIEW_FACING =
       2;
 
       /**
@@ -35,25 +35,25 @@ module visualization_msgs
        * ROTATE_AXIS: Rotate around local x-axis.
        * MOVE_ROTATE: Combines MOVE_PLANE and ROTATE_AXIS.
        */
-      const octet InteractiveMarkerControl__NONE =
+      const octet NONE =
       0;
 
-      const octet InteractiveMarkerControl__MENU =
+      const octet MENU =
       1;
 
-      const octet InteractiveMarkerControl__BUTTON =
+      const octet BUTTON =
       2;
 
-      const octet InteractiveMarkerControl__MOVE_AXIS =
+      const octet MOVE_AXIS =
       3;
 
-      const octet InteractiveMarkerControl__MOVE_PLANE =
+      const octet MOVE_PLANE =
       4;
 
-      const octet InteractiveMarkerControl__ROTATE_AXIS =
+      const octet ROTATE_AXIS =
       5;
 
-      const octet InteractiveMarkerControl__MOVE_ROTATE =
+      const octet MOVE_ROTATE =
       6;
 
       /**
@@ -62,13 +62,13 @@ module visualization_msgs
        * ROTATE_3D: Rotate freely in 3D space about the origin of parent frame.
        * MOVE_ROTATE_3D: Full 6-DOF freedom of translation and rotation about the cursor origin.
        */
-      const octet InteractiveMarkerControl__MOVE_3D =
+      const octet MOVE_3D =
       7;
 
-      const octet InteractiveMarkerControl__ROTATE_3D =
+      const octet ROTATE_3D =
       8;
 
-      const octet InteractiveMarkerControl__MOVE_ROTATE_3D =
+      const octet MOVE_ROTATE_3D =
       9;
 
 
