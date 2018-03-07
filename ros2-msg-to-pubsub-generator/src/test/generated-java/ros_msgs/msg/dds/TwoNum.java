@@ -151,12 +151,7 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
       if (!this.num1_.epsilonEquals(other.num1_, epsilon))
          return false;
 
-      if (this.num2_.isEnum())
-      {
-         if (!this.num2_.equals(other.num2_))
-            return false;
-      }
-      else if (this.num2_.size() == other.num2_.size())
+      if (this.num2_.size() == other.num2_.size())
       {
          return false;
       }
@@ -175,12 +170,7 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
             return false;
       }
 
-      if (this.num4_.isEnum())
-      {
-         if (!this.num4_.equals(other.num4_))
-            return false;
-      }
-      else if (this.num4_.size() == other.num4_.size())
+      if (this.num4_.size() == other.num4_.size())
       {
          return false;
       }
