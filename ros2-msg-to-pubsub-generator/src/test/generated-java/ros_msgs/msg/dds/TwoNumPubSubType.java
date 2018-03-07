@@ -28,17 +28,17 @@ public class TwoNumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.m
 
       current_alignment += ros_msgs.msg.dds.NumPubSubType.getMaxCdrSerializedSize(current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += ros_msgs.msg.dds.NumPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
 
-      for (int a = 0; a < (3); ++a)
+      for (int i0 = 0; i0 < (3); ++i0)
       {
          current_alignment += ros_msgs.msg.dds.NumPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 3; ++a)
+      for (int i0 = 0; i0 < 3; ++i0)
       {
          current_alignment += ros_msgs.msg.dds.NumPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
@@ -48,17 +48,17 @@ public class TwoNumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.m
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 10 + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 5; ++a)
+      for (int i0 = 0; i0 < 5; ++i0)
       {
          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 100; ++a)
+      for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 10 + 1;
       }
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < 5; ++a)
+      for (int i0 = 0; i0 < 5; ++i0)
       {
          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 10 + 1;
       }
@@ -77,19 +77,19 @@ public class TwoNumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.m
 
       current_alignment += ros_msgs.msg.dds.NumPubSubType.getCdrSerializedSize(data.getNum1(), current_alignment);
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getNum2().size(); ++a)
+      for (int i0 = 0; i0 < data.getNum2().size(); ++i0)
       {
-         current_alignment += ros_msgs.msg.dds.NumPubSubType.getCdrSerializedSize(data.getNum2().get(a), current_alignment);
+         current_alignment += ros_msgs.msg.dds.NumPubSubType.getCdrSerializedSize(data.getNum2().get(i0), current_alignment);
       }
 
-      for (int a = 0; a < data.getNum3().length; ++a)
+      for (int i0 = 0; i0 < data.getNum3().length; ++i0)
       {
-         current_alignment += ros_msgs.msg.dds.NumPubSubType.getCdrSerializedSize(data.getNum3()[a], current_alignment);
+         current_alignment += ros_msgs.msg.dds.NumPubSubType.getCdrSerializedSize(data.getNum3()[i0], current_alignment);
       }
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getNum4().size(); ++a)
+      for (int i0 = 0; i0 < data.getNum4().size(); ++i0)
       {
-         current_alignment += ros_msgs.msg.dds.NumPubSubType.getCdrSerializedSize(data.getNum4().get(a), current_alignment);
+         current_alignment += ros_msgs.msg.dds.NumPubSubType.getCdrSerializedSize(data.getNum4().get(i0), current_alignment);
       }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr1().length() + 1;
@@ -97,19 +97,19 @@ public class TwoNumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.m
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr2().length() + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getStr3().size(); ++a)
+      for (int i0 = 0; i0 < data.getStr3().size(); ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr3().get(a).length() + 1;
+         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr3().get(i0).length() + 1;
       }
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getStr4().size(); ++a)
+      for (int i0 = 0; i0 < data.getStr4().size(); ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr4().get(a).length() + 1;
+         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr4().get(i0).length() + 1;
       }
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int a = 0; a < data.getStr5().size(); ++a)
+      for (int i0 = 0; i0 < data.getStr5().size(); ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr5().get(a).length() + 1;
+         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStr5().get(i0).length() + 1;
       }
 
       return current_alignment - initial_alignment;
@@ -125,9 +125,9 @@ public class TwoNumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.m
       else
          throw new RuntimeException("num2 field exceeds the maximum length");
 
-      for (int a = 0; a < data.getNum3().length; ++a)
+      for (int i0 = 0; i0 < data.getNum3().length; ++i0)
       {
-         ros_msgs.msg.dds.NumPubSubType.write(data.getNum3()[a], cdr);
+         ros_msgs.msg.dds.NumPubSubType.write(data.getNum3()[i0], cdr);
       }
 
       if (data.getNum4().size() <= 3)
@@ -168,9 +168,9 @@ public class TwoNumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.m
 
       cdr.read_type_e(data.getNum2());
 
-      for (int a = 0; a < data.getNum3().length; ++a)
+      for (int i0 = 0; i0 < data.getNum3().length; ++i0)
       {
-         ros_msgs.msg.dds.NumPubSubType.read(data.getNum3()[a], cdr);
+         ros_msgs.msg.dds.NumPubSubType.read(data.getNum3()[i0], cdr);
       }
 
       cdr.read_type_e(data.getNum4());

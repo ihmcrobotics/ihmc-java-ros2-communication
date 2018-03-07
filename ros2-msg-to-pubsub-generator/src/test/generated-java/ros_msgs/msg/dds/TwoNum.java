@@ -28,9 +28,9 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
       num2_ = new us.ihmc.idl.IDLSequence.Object<ros_msgs.msg.dds.Num>(100, ros_msgs.msg.dds.Num.class, new ros_msgs.msg.dds.NumPubSubType());
 
       num3_ = new ros_msgs.msg.dds.Num[3];
-      for (int b = 0; b < num3_.length; ++b)
+      for (int i1 = 0; i1 < num3_.length; ++i1)
       {
-         num3_[b] = new ros_msgs.msg.dds.Num();
+         num3_[i1] = new ros_msgs.msg.dds.Num();
       }
 
       num4_ = new us.ihmc.idl.IDLSequence.Object<ros_msgs.msg.dds.Num>(3, ros_msgs.msg.dds.Num.class, new ros_msgs.msg.dds.NumPubSubType());
@@ -53,9 +53,9 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
    {
       ros_msgs.msg.dds.NumPubSubType.staticCopy(other.num1_, num1_);
       num2_.set(other.num2_);
-      for (int d = 0; d < num3_.length; ++d)
+      for (int i3 = 0; i3 < num3_.length; ++i3)
       {
-         ros_msgs.msg.dds.NumPubSubType.staticCopy(other.num3_[d], num3_[d]);
+         ros_msgs.msg.dds.NumPubSubType.staticCopy(other.num3_[i3], num3_[i3]);
       }
 
       num4_.set(other.num4_);
@@ -169,9 +169,9 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
          }
       }
 
-      for (int f = 0; f < num3_.length; ++f)
+      for (int i5 = 0; i5 < num3_.length; ++i5)
       {
-         if (!this.num3_[f].epsilonEquals(other.num3_[f], epsilon))
+         if (!this.num3_[i5].epsilonEquals(other.num3_[i5], epsilon))
             return false;
       }
 
@@ -229,9 +229,9 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
       if (!this.num2_.equals(otherMyClass.num2_))
          return false;
 
-      for (int h = 0; h < num3_.length; ++h)
+      for (int i7 = 0; i7 < num3_.length; ++i7)
       {
-         if (!this.num3_[h].equals(otherMyClass.num3_[h]))
+         if (!this.num3_[i7].equals(otherMyClass.num3_[i7]))
             return false;
       }
       if (!this.num4_.equals(otherMyClass.num4_))
