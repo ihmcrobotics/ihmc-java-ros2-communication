@@ -103,7 +103,7 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
       return str1_;
    }
 
-   public void setStr1(String str1)
+   public void setStr1(java.lang.String str1)
    {
       str1_.setLength(0);
       str1_.append(str1);
@@ -119,7 +119,7 @@ public class TwoNum implements Settable<TwoNum>, EpsilonComparable<TwoNum>
       return str2_;
    }
 
-   public void setStr2(String str2)
+   public void setStr2(java.lang.String str2)
    {
       str2_.setLength(0);
       str2_.append(str2);
