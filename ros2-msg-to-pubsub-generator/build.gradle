@@ -8,7 +8,7 @@ buildscript {
    }
 }
 apply plugin: "us.ihmc.ihmc-build"
-//apply plugin: 'application'
+//apply plugin: "application"
 
 ihmc {
    loadProductProperties("../product.properties")
@@ -27,12 +27,12 @@ dependencies {
 }
 
 mainDependencies {
-   compile group: 'us.ihmc', name: 'ihmc-pub-sub-generator', version: '0.5.2'
-   compile group: 'us.ihmc', name: 'ros2-msg-to-idl-generator', version: '0.3.0'
+   compile group: "us.ihmc", name: "ihmc-pub-sub-generator", version: "0.6.0-alpha"
+   compile group: "us.ihmc", name: "ros2-msg-to-idl-generator", version: version
 }
 
 testDependencies {
-   compile group: 'us.ihmc', name: 'ihmc-pub-sub', version: '0.5.1'
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.6.0-alpha"
 }
 
 task show() {
