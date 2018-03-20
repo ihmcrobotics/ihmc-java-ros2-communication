@@ -122,7 +122,7 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
    /**
     * Identifying string. Must be unique in the topic namespace.
     */
-   public void setClientId(String client_id)
+   public void setClientId(java.lang.String client_id)
    {
       client_id_.setLength(0);
       client_id_.append(client_id);
@@ -147,7 +147,7 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
    /**
     * Specifies which interactive marker and control this message refers to
     */
-   public void setMarkerName(String marker_name)
+   public void setMarkerName(java.lang.String marker_name)
    {
       marker_name_.setLength(0);
       marker_name_.append(marker_name);
@@ -163,7 +163,7 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
       return control_name_;
    }
 
-   public void setControlName(String control_name)
+   public void setControlName(java.lang.String control_name)
    {
       control_name_.setLength(0);
       control_name_.append(control_name);

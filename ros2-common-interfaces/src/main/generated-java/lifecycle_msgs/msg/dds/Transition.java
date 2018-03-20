@@ -102,7 +102,7 @@ public class Transition implements Settable<Transition>, EpsilonComparable<Trans
       return label_;
    }
 
-   public void setLabel(String label)
+   public void setLabel(java.lang.String label)
    {
       label_.setLength(0);
       label_.append(label);

@@ -54,7 +54,7 @@ public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
    /**
     * What to label this value when viewing.
     */
-   public void setKey(String key)
+   public void setKey(java.lang.String key)
    {
       key_.setLength(0);
       key_.append(key);
@@ -79,7 +79,7 @@ public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
    /**
     * A value to track over time.
     */
-   public void setValue(String value)
+   public void setValue(java.lang.String value)
    {
       value_.setLength(0);
       value_.append(value);

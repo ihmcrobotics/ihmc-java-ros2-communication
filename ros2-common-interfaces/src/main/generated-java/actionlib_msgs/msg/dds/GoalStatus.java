@@ -117,7 +117,7 @@ public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalS
    /**
     * Allow for the user to associate a string with GoalStatus for debugging.
     */
-   public void setText(String text)
+   public void setText(java.lang.String text)
    {
       text_.setLength(0);
       text_.append(text);

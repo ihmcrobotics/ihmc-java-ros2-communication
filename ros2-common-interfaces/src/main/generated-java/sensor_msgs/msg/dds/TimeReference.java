@@ -77,7 +77,7 @@ public class TimeReference implements Settable<TimeReference>, EpsilonComparable
    /**
     * (optional) name of time source
     */
-   public void setSource(String source)
+   public void setSource(java.lang.String source)
    {
       source_.setLength(0);
       source_.append(source);

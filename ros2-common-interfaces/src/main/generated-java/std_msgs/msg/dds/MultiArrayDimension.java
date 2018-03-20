@@ -57,7 +57,7 @@ public class MultiArrayDimension implements Settable<MultiArrayDimension>, Epsil
    /**
     * label of given dimension
     */
-   public void setLabel(String label)
+   public void setLabel(java.lang.String label)
    {
       label_.setLength(0);
       label_.append(label);

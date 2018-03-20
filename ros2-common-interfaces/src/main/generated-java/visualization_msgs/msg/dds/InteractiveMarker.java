@@ -120,7 +120,7 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
     * Identifying string. Must be globally unique in
     * the topic that this message is sent through.
     */
-   public void setName(String name)
+   public void setName(java.lang.String name)
    {
       name_.setLength(0);
       name_.append(name);
@@ -145,7 +145,7 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
    /**
     * Short description (< 40 characters).
     */
-   public void setDescription(String description)
+   public void setDescription(java.lang.String description)
    {
       description_.setLength(0);
       description_.append(description);

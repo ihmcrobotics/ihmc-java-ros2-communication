@@ -77,7 +77,7 @@ public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, E
     * Identifying string. Must be globally unique in
     * the topic that this message is sent through.
     */
-   public void setName(String name)
+   public void setName(java.lang.String name)
    {
       name_.setLength(0);
       name_.append(name);

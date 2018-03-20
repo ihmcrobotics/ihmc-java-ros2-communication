@@ -134,7 +134,7 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
    /**
     * Namespace which is used with the id to form a unique id.
     */
-   public void setNs(String ns)
+   public void setNs(java.lang.String ns)
    {
       ns_.setLength(0);
       ns_.append(ns);

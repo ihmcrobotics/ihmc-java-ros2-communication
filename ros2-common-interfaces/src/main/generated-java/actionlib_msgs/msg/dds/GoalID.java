@@ -71,7 +71,7 @@ public class GoalID implements Settable<GoalID>, EpsilonComparable<GoalID>
     * result message with specific goal requests. The id
     * specified must be unique.
     */
-   public void setId(String id)
+   public void setId(java.lang.String id)
    {
       id_.setLength(0);
       id_.append(id);

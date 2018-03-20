@@ -105,7 +105,7 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
    /**
     * A description of the test/component reporting.
     */
-   public void setName(String name)
+   public void setName(java.lang.String name)
    {
       name_.setLength(0);
       name_.append(name);
@@ -130,7 +130,7 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
    /**
     * A description of the status.
     */
-   public void setMessage(String message)
+   public void setMessage(java.lang.String message)
    {
       message_.setLength(0);
       message_.append(message);
@@ -155,7 +155,7 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
    /**
     * A hardware unique string.
     */
-   public void setHardwareId(String hardware_id)
+   public void setHardwareId(java.lang.String hardware_id)
    {
       hardware_id_.setLength(0);
       hardware_id_.append(hardware_id);

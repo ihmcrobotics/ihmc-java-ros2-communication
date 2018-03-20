@@ -338,7 +338,7 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
     * If individual voltages unknown but number of cells known set each to NaN
     * The location into which the battery is inserted. (slot number or plug)
     */
-   public void setLocation(String location)
+   public void setLocation(java.lang.String location)
    {
       location_.setLength(0);
       location_.append(location);
@@ -363,7 +363,7 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
    /**
     * The best approximation of the battery serial number
     */
-   public void setSerialNumber(String serial_number)
+   public void setSerialNumber(java.lang.String serial_number)
    {
       serial_number_.setLength(0);
       serial_number_.append(serial_number);

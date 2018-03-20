@@ -140,7 +140,7 @@ public class Image implements Settable<Image>, EpsilonComparable<Image>
    /**
     * Encoding of pixels -- channel meaning, ordering, size
     */
-   public void setEncoding(String encoding)
+   public void setEncoding(java.lang.String encoding)
    {
       encoding_.setLength(0);
       encoding_.append(encoding);

@@ -148,7 +148,7 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
    /**
     * menu / entry title
     */
-   public void setTitle(String title)
+   public void setTitle(java.lang.String title)
    {
       title_.setLength(0);
       title_.append(title);
@@ -173,7 +173,7 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
    /**
     * Arguments to command indicated by command_type (below)
     */
-   public void setCommand(String command)
+   public void setCommand(java.lang.String command)
    {
       command_.setLength(0);
       command_.append(command);

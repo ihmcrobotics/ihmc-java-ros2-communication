@@ -64,7 +64,7 @@ public class Header implements Settable<Header>, EpsilonComparable<Header>
    /**
     * Transform frame with which this data is associated.
     */
-   public void setFrameId(String frame_id)
+   public void setFrameId(java.lang.String frame_id)
    {
       frame_id_.setLength(0);
       frame_id_.append(frame_id);

@@ -148,7 +148,7 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
     * You need to assign a unique value to this to receive feedback from the GUI
     * on what actions the user performs on this control (e.g. a button click).
     */
-   public void setName(String name)
+   public void setName(java.lang.String name)
    {
       name_.setLength(0);
       name_.append(name);
@@ -262,7 +262,7 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
     * e.g. "Move the robot".
     * Default: A generic description based on the interaction mode
     */
-   public void setDescription(String description)
+   public void setDescription(java.lang.String description)
    {
       description_.setLength(0);
       description_.append(description);

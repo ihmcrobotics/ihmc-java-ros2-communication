@@ -77,7 +77,7 @@ public class CompressedImage implements Settable<CompressedImage>, EpsilonCompar
    /**
     * Specifies the format of the data
     */
-   public void setFormat(String format)
+   public void setFormat(java.lang.String format)
    {
       format_.setLength(0);
       format_.append(format);

@@ -179,7 +179,7 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
     * Namespace in which to place the object.
     * Used in conjunction with id to create a unique name for the object.
     */
-   public void setNs(String ns)
+   public void setNs(java.lang.String ns)
    {
       ns_.setLength(0);
       ns_.append(ns);
@@ -327,7 +327,7 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
    /**
     * Only used for text markers
     */
-   public void setText(String text)
+   public void setText(java.lang.String text)
    {
       text_.setLength(0);
       text_.append(text);
@@ -352,7 +352,7 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
    /**
     * Only used for MESH_RESOURCE markers.
     */
-   public void setMeshResource(String mesh_resource)
+   public void setMeshResource(java.lang.String mesh_resource)
    {
       mesh_resource_.setLength(0);
       mesh_resource_.append(mesh_resource);

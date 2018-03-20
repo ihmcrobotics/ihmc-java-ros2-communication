@@ -264,7 +264,7 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
     * sensor_msgs/distortion_models.h. For most cameras, "plumb_bob" - a
     * simple model of radial and tangential distortion - is sufficent.
     */
-   public void setDistortionModel(String distortion_model)
+   public void setDistortionModel(java.lang.String distortion_model)
    {
       distortion_model_.setLength(0);
       distortion_model_.append(distortion_model);

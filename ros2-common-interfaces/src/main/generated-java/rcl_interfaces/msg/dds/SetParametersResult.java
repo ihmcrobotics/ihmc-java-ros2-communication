@@ -75,7 +75,7 @@ public class SetParametersResult implements Settable<SetParametersResult>, Epsil
     * Reason why the setting was either successful or a failure.
     * Should only be used for logging and user interfaces.
     */
-   public void setReason(String reason)
+   public void setReason(java.lang.String reason)
    {
       reason_.setLength(0);
       reason_.append(reason);

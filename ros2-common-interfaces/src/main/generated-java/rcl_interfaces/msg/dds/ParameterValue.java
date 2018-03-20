@@ -106,7 +106,7 @@ public class ParameterValue implements Settable<ParameterValue>, EpsilonComparab
       return string_value_;
    }
 
-   public void setStringValue(String string_value)
+   public void setStringValue(java.lang.String string_value)
    {
       string_value_.setLength(0);
       string_value_.append(string_value);

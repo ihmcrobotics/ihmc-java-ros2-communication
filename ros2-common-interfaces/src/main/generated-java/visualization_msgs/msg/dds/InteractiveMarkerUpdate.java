@@ -98,7 +98,7 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
     * Identifying string. Must be unique in the topic namespace
     * that this server works on.
     */
-   public void setServerId(String server_id)
+   public void setServerId(java.lang.String server_id)
    {
       server_id_.setLength(0);
       server_id_.append(server_id);

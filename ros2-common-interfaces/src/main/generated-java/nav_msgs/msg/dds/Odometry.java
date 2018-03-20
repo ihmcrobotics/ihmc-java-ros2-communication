@@ -54,7 +54,7 @@ public class Odometry implements Settable<Odometry>, EpsilonComparable<Odometry>
       return child_frame_id_;
    }
 
-   public void setChildFrameId(String child_frame_id)
+   public void setChildFrameId(java.lang.String child_frame_id)
    {
       child_frame_id_.setLength(0);
       child_frame_id_.append(child_frame_id);

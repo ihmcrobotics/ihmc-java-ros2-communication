@@ -74,7 +74,7 @@ public class State implements Settable<State>, EpsilonComparable<State>
       return label_;
    }
 
-   public void setLabel(String label)
+   public void setLabel(java.lang.String label)
    {
       label_.setLength(0);
       label_.append(label);

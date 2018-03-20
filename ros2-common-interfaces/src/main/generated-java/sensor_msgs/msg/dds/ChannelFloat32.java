@@ -75,7 +75,7 @@ public class ChannelFloat32 implements Settable<ChannelFloat32>, EpsilonComparab
     * The channel name should give semantics of the channel (e.g.
     * "intensity" instead of "value").
     */
-   public void setName(String name)
+   public void setName(java.lang.String name)
    {
       name_.setLength(0);
       name_.append(name);

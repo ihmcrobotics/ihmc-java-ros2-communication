@@ -33,7 +33,7 @@ public class String implements Settable<String>, EpsilonComparable<String>
       return data_;
    }
 
-   public void setData(String data)
+   public void setData(java.lang.String data)
    {
       data_.setLength(0);
       data_.append(data);
