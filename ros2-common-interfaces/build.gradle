@@ -9,8 +9,8 @@ buildscript {
    }
    dependencies {
       classpath "us.ihmc:ihmc-build:0.12.10"
-      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.2"
-      classpath "us.ihmc:ihmc-pub-sub-generator:0.3.7"
+      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.5.0-alpha"
+      classpath "us.ihmc:ihmc-pub-sub-generator:0.6.0-alpha"
       classpath "org.ajoberstar:grgit:2.1.0"
    }
 }
@@ -22,6 +22,12 @@ def rclInterfacesUrl = "https://github.com/ros2/rcl_interfaces.git"
 def commonInterfacesPath = "src/main/vendor/common_interfaces"
 def commonInterfacesUrl = "https://github.com/ros2/common_interfaces.git"
 def ros2Release = "0.4.0"
+def geometry2Path = "src/main/vendor/geometry2"
+def tf2Path = "src/main/vendor/geometry2/tf2_msgs"
+def geometry2Url = "https://github.com/ros/geometry2.git"
+def geomtry2Release = "0.5.17"
+
+def messageGenerationPath = "src/main/mock/message_generation"
 
 ihmc {
    loadProductProperties("../product.properties")
@@ -56,11 +62,12 @@ task generateMessages(type: us.ihmc.ros2.rosidl.RosInterfaceGeneratorTask) {
    doFirst {
       setupVendoredRepo(commonInterfacesPath, commonInterfacesUrl, ros2Release)
       setupVendoredRepo(rclInterfacesPath, rclInterfacesUrl, ros2Release)
+      setupVendoredRepo(geometry2Path, geometry2Url, geomtry2Release)
    }
 
-   rosPackages = files(rclInterfacesPath, commonInterfacesPath)
+   rosPackages = files(rclInterfacesPath, commonInterfacesPath, messageGenerationPath, tf2Path)
    outputDirectory = file("src/main/generated-java")
-   customIDL = files("src/main/idl")
+   customIDL = files("src/main/custom-idl")
 }
 
 private void setupVendoredRepo(String clonePath, String vcsUrl, String tagName)

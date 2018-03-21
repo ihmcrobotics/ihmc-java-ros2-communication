@@ -1,95 +1,96 @@
 package geometry_msgs.msg.dds;
-
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
-
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 /**
- * This represents a Polygon with reference coordinate frame and timestamp
- */
+       * This represents a Polygon with reference coordinate frame and timestamp
+       */
 public class PolygonStamped implements Settable<PolygonStamped>, EpsilonComparable<PolygonStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.Polygon polygon_;
+    public PolygonStamped()
+    {
+        	header_ = new std_msgs.msg.dds.Header();
+        	polygon_ = new geometry_msgs.msg.dds.Polygon();
+    }
 
-   public PolygonStamped()
-   {
-      header_ = new std_msgs.msg.dds.Header();
-      polygon_ = new geometry_msgs.msg.dds.Polygon();
-   }
+    public PolygonStamped(PolygonStamped other)
+    {
+        set(other);
+    }
 
-   public PolygonStamped(PolygonStamped other)
-   {
-      set(other);
-   }
+    public void set(PolygonStamped other)
+    {
+           	std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+           	geometry_msgs.msg.dds.PolygonPubSubType.staticCopy(other.polygon_, polygon_);
+    }
 
-   public void set(PolygonStamped other)
-   {
-      std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-      geometry_msgs.msg.dds.PolygonPubSubType.staticCopy(other.polygon_, polygon_);
-   }
 
-   public std_msgs.msg.dds.Header getHeader()
-   {
-      return header_;
-   }
+    public std_msgs.msg.dds.Header getHeader()
+    {
+        return header_;
+    }
 
-   public geometry_msgs.msg.dds.Polygon getPolygon()
-   {
-      return polygon_;
-   }
+        
 
-   @Override
-   public boolean epsilonEquals(PolygonStamped other, double epsilon)
-   {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+    public geometry_msgs.msg.dds.Polygon getPolygon()
+    {
+        return polygon_;
+    }
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
+        
 
-      if (!this.polygon_.epsilonEquals(other.polygon_, epsilon))
-         return false;
 
-      return true;
-   }
+    @Override
+    public boolean epsilonEquals(PolygonStamped other, double epsilon)
+    {
+        if(other == null) return false;
+        if(other == this) return true;
 
-   @Override
-   public boolean equals(Object other)
-   {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof PolygonStamped))
-         return false;
+                        if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+                
+                        if (!this.polygon_.epsilonEquals(other.polygon_, epsilon)) return false;
+                
 
-      PolygonStamped otherMyClass = (PolygonStamped) other;
+        return true;
+    }
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
+    @Override
+    public boolean equals(Object other)
+    {
+        if(other == null) return false;
+        if(other == this) return true;
+        if(!(other instanceof PolygonStamped)) return false;
 
-      if (!this.polygon_.equals(otherMyClass.polygon_))
-         return false;
+        PolygonStamped otherMyClass = (PolygonStamped) other;
 
-      return true;
-   }
+                        if (!this.header_.equals(otherMyClass.header_)) return false;
+                
+                        if (!this.polygon_.equals(otherMyClass.polygon_)) return false;
+                
 
-   @Override
-   public java.lang.String toString()
-   {
-      StringBuilder builder = new StringBuilder();
+        return true;
+    }
 
-      builder.append("PolygonStamped {");
-      builder.append("header=");
-      builder.append(this.header_);
+     @Override
+    public java.lang.String toString()
+    {
+		StringBuilder builder = new StringBuilder();
 
-      builder.append(", ");
-      builder.append("polygon=");
-      builder.append(this.polygon_);
+      	builder.append("PolygonStamped {");
+        builder.append("header=");
+        builder.append(this.header_);
 
-      builder.append("}");
-      return builder.toString();
-   }
+                builder.append(", ");
+        builder.append("polygon=");
+        builder.append(this.polygon_);
+
+                
+        builder.append("}");
+		return builder.toString();
+    }
+
+        private std_msgs.msg.dds.Header header_;
+        
+        private geometry_msgs.msg.dds.Polygon polygon_;
+        
+
 }
