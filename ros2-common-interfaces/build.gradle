@@ -47,7 +47,7 @@ mainDependencies {
 }
 
 generatorDependencies {
-   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: version
+   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: "0.5.0-alpha"
 }
 
 task show() {
