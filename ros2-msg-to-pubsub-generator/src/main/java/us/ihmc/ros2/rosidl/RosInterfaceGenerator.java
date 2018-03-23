@@ -153,9 +153,9 @@ public class RosInterfaceGenerator
     *
     * @param directory
     */
-   public static void convertDirectoryToUnixEOL(String directory)
+   public static void convertDirectoryToUnixEOL(Path directory)
    {
-      PathTools.walkRecursively(Paths.get(directory), new BasicPathVisitor()
+      PathTools.walkRecursively(directory, new BasicPathVisitor()
       {
          @Override
          public FileVisitResult visitPath(Path path, PathType pathType)
@@ -182,9 +182,9 @@ public class RosInterfaceGenerator
     * @param outputDirectory
     * @param packagesToKeep
     */
-   public static void deleteAllExcept(String outputDirectory, String... packagesToKeep)
+   public static void deleteAllExcept(Path outputDirectory, String... packagesToKeep)
    {
-      PathTools.walkFlat(Paths.get(outputDirectory), new BasicPathVisitor()
+      PathTools.walkFlat(outputDirectory, new BasicPathVisitor()
       {
          @Override
          public FileVisitResult visitPath(Path path, PathType pathType)
