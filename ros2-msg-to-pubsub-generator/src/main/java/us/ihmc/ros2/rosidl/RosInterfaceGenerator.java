@@ -15,16 +15,20 @@
  */
 package us.ihmc.ros2.rosidl;
 
-import us.ihmc.commons.PrintTools;
+import us.ihmc.commons.exception.DefaultExceptionHandler;
+import us.ihmc.commons.nio.BasicPathVisitor;
+import us.ihmc.commons.nio.FileTools;
+import us.ihmc.commons.nio.PathTools;
+import us.ihmc.commons.nio.WriteOption;
 import us.ihmc.idl.generator.IDLGenerator;
 import us.ihmc.rosidl.Ros2MsgToIdlGenerator;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.io.PrintWriter;
+import java.nio.file.*;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Utility to convert ROS2 IDL files (.msg & .srv) to Java files compatible with IHMC Pub/Sub
@@ -132,7 +136,7 @@ public class RosInterfaceGenerator
     */
    private void generateJava(Path idlFile, Path javaDirectory, Path idlIncludeDirectory)
    {
-//      System.out.println("[IDL -> PubSub] Parsing " + idlFile);
+      //      System.out.println("[IDL -> PubSub] Parsing " + idlFile);
 
       try
       {
@@ -142,5 +146,65 @@ public class RosInterfaceGenerator
       {
          throw new RuntimeException(e);
       }
+   }
+
+   /**
+    * Convert a directory to Unix EOL.
+    *
+    * @param directory
+    */
+   public static void convertDirectoryToUnixEOL(Path directory)
+   {
+      PathTools.walkRecursively(directory, new BasicPathVisitor()
+      {
+         @Override
+         public FileVisitResult visitPath(Path path, PathType pathType)
+         {
+            if (pathType == PathType.FILE)
+            {
+               List<String> lines = FileTools.readAllLines(path, DefaultExceptionHandler.PRINT_STACKTRACE);
+
+               PrintWriter printer = FileTools.newPrintWriter(path, WriteOption.TRUNCATE, DefaultExceptionHandler.PRINT_STACKTRACE);
+               lines.forEach(line -> printer.print(line + "\n"));
+               printer.close();
+            }
+
+            return FileVisitResult.CONTINUE;
+         }
+      });
+   }
+
+   /**
+    * Basically, in order to generate messages based on other packages, you must regenerate them as well.
+    *
+    * This will probably be fixed in a future version.
+    *
+    * @param outputDirectory
+    * @param packagesToKeep
+    */
+   public static void deleteAllExcept(Path outputDirectory, String... packagesToKeep)
+   {
+      PathTools.walkFlat(outputDirectory, new BasicPathVisitor()
+      {
+         @Override
+         public FileVisitResult visitPath(Path path, PathType pathType)
+         {
+            if (!keep(path.getFileName().toString(), packagesToKeep))
+            {
+               FileTools.deleteQuietly(path);
+            }
+
+            return FileVisitResult.CONTINUE;
+         }
+      });
+   }
+
+   private static boolean keep(String candidate, String... packagesToKeep)
+   {
+      for (String str : packagesToKeep)
+         if (candidate.equals(str))
+            return true;
+
+      return false;
    }
 }
