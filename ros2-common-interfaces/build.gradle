@@ -24,8 +24,8 @@ def commonInterfacesUrl = "https://github.com/ros2/common_interfaces.git"
 def ros2Release = "0.4.0"
 def geometry2Path = "src/main/vendor/geometry2"
 def tf2Path = "src/main/vendor/geometry2/tf2_msgs"
-def geometry2Url = "https://github.com/ros/geometry2.git"
-def geomtry2Release = "0.5.17"
+def geometry2Url = "https://github.com/ros2/geometry2.git"
+def geomtry2Release = "ros2"
 
 def messageGenerationPath = "src/main/mock/message_generation"
 
