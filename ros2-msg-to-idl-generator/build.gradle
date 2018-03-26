@@ -11,7 +11,7 @@ apply plugin: "us.ihmc.ihmc-build"
 apply plugin: "application"
 
 ihmc {
-   loadProductProperties("../product.properties")
+   loadProductProperties("../group.gradle.properties")
 
    configureDependencyResolution()
    resourceDirectory("main", "python")

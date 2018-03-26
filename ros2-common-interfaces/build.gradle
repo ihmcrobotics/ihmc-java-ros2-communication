@@ -9,7 +9,7 @@ buildscript {
    }
    dependencies {
       classpath "us.ihmc:ihmc-build:0.12.10"
-      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.5.6-alpha"
+      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.5.7-alpha"
       classpath "org.ajoberstar:grgit:2.1.0"
    }
 }
@@ -27,7 +27,7 @@ def geometry2Url = "https://github.com/ros2/geometry2.git"
 def geomtry2Release = "ros2"
 
 ihmc {
-   loadProductProperties("../product.properties")
+   loadProductProperties("../group.gradle.properties")
 
    configureDependencyResolution()
    resourceDirectory("main", "custom-idl")
@@ -40,11 +40,11 @@ ihmc {
 mainDependencies {
    compile group: "us.ihmc", name: "euclid-core", version: "0.4.13"
    compile group: "us.ihmc", name: "euclid", version: "0.7.5"
-   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.6.4-alpha"
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.6.5-alpha"
 }
 
 generatorDependencies {
-   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: "0.5.6-alpha"
+   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: "0.5.7-alpha"
 }
 
 task show() {
