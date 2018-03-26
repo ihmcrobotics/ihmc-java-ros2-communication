@@ -6,5 +6,12 @@ Generated Java files for interacting with and using [ROS2 common interfaces](htt
 
 ## Publish
 
-gradle generateMessages -PcompositeSearchHeight=0 -PpublishMode=STABLE
-gradle compositeTask -PtaskName=publishToMavenLocal  -PcompositeSearchHeight=0 -PpublishMode=STABLE
+`gradle generateMessages -PcompositeSearchHeight=0`
+
+##### To maven local:
+
+`gradle compositeTask -PtaskName=publishToMavenLocal  -PcompositeSearchHeight=0 -PpublishMode=STABLE`
+
+##### To Bintray:
+
+`gradle publishAll -PcompositeSearchHeight=0 -PpublishMode=STABLE`
