@@ -1,5 +1,6 @@
 package rcl_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -8,11 +9,11 @@ import us.ihmc.euclid.interfaces.Settable;
  * It was an atomic update.
  * A specific parameter name can only be in one of the three sets.
  */
-public class ParameterEvent implements Settable<ParameterEvent>, EpsilonComparable<ParameterEvent>
+public class ParameterEvent extends Packet<ParameterEvent> implements Settable<ParameterEvent>, EpsilonComparable<ParameterEvent>
 {
-   private us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> new_parameters_;
-   private us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> changed_parameters_;
-   private us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> deleted_parameters_;
+   public us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> new_parameters_;
+   public us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> changed_parameters_;
+   public us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> deleted_parameters_;
 
    public ParameterEvent()
    {

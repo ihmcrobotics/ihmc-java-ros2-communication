@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -23,13 +24,13 @@ import us.ihmc.euclid.interfaces.Settable;
  * This is the only way to uniquely associate the joint name with the correct
  * states.
  */
-public class JointState implements Settable<JointState>, EpsilonComparable<JointState>
+public class JointState extends Packet<JointState> implements Settable<JointState>, EpsilonComparable<JointState>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.idl.IDLSequence.StringBuilderHolder name_;
-   private us.ihmc.idl.IDLSequence.Double position_;
-   private us.ihmc.idl.IDLSequence.Double velocity_;
-   private us.ihmc.idl.IDLSequence.Double effort_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder name_;
+   public us.ihmc.idl.IDLSequence.Double position_;
+   public us.ihmc.idl.IDLSequence.Double velocity_;
+   public us.ihmc.idl.IDLSequence.Double effort_;
 
    public JointState()
    {

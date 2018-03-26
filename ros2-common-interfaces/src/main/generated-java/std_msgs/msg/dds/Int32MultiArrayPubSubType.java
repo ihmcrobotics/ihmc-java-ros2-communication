@@ -11,6 +11,7 @@ public class Int32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<s
    public static final java.lang.String name = "std_msgs::msg::dds_::Int32MultiArray_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public Int32MultiArrayPubSubType()
    {
 

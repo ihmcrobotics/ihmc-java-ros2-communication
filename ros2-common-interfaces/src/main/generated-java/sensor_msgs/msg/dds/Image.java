@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -19,36 +20,36 @@ import us.ihmc.euclid.interfaces.Settable;
  * ros-users@lists.ros.org and send an email proposing a new encoding.
  * taken from the list of strings in include/sensor_msgs/image_encodings.h
  */
-public class Image implements Settable<Image>, EpsilonComparable<Image>
+public class Image extends Packet<Image> implements Settable<Image>, EpsilonComparable<Image>
 {
    /**
     * Header timestamp should be acquisition time of image
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * image height, that is, number of rows
     */
-   private long height_;
+   public long height_;
    /**
     * image width, that is, number of columns
     */
-   private long width_;
+   public long width_;
    /**
     * Encoding of pixels -- channel meaning, ordering, size
     */
-   private java.lang.StringBuilder encoding_;
+   public java.lang.StringBuilder encoding_;
    /**
     * is this data bigendian?
     */
-   private byte is_bigendian_;
+   public byte is_bigendian_;
    /**
     * Full row length in bytes
     */
-   private long step_;
+   public long step_;
    /**
     * actual matrix data, size is (step * rows)
     */
-   private us.ihmc.idl.IDLSequence.Byte data_;
+   public us.ihmc.idl.IDLSequence.Byte data_;
 
    public Image()
    {

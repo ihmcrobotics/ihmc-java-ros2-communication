@@ -1,34 +1,35 @@
 package nav_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This hold basic information about the characterists of the OccupancyGrid
  */
-public class MapMetaData implements Settable<MapMetaData>, EpsilonComparable<MapMetaData>
+public class MapMetaData extends Packet<MapMetaData> implements Settable<MapMetaData>, EpsilonComparable<MapMetaData>
 {
    /**
     * The time at which the map was loaded
     */
-   private builtin_interfaces.msg.dds.Time map_load_time_;
+   public builtin_interfaces.msg.dds.Time map_load_time_;
    /**
     * The map resolution [m/cell]
     */
-   private float resolution_;
+   public float resolution_;
    /**
     * Map width [cells]
     */
-   private long width_;
+   public long width_;
    /**
     * Map height [cells]
     */
-   private long height_;
+   public long height_;
    /**
     * The origin of the map [m, m, rad].  This is the real-world pose of the
     * cell (0,0) in the map.
     */
-   private us.ihmc.euclid.geometry.Pose3D origin_;
+   public us.ihmc.euclid.geometry.Pose3D origin_;
 
    public MapMetaData()
    {

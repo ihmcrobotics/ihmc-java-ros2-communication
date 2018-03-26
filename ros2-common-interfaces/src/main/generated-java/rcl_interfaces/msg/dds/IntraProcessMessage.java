@@ -1,12 +1,13 @@
 package rcl_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class IntraProcessMessage implements Settable<IntraProcessMessage>, EpsilonComparable<IntraProcessMessage>
+public class IntraProcessMessage extends Packet<IntraProcessMessage> implements Settable<IntraProcessMessage>, EpsilonComparable<IntraProcessMessage>
 {
-   private long publisher_id_;
-   private long message_sequence_;
+   public long publisher_id_;
+   public long message_sequence_;
 
    public IntraProcessMessage()
    {

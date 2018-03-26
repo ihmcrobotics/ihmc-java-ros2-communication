@@ -1,5 +1,6 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -33,7 +34,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * - pr2
  * - turtle
  */
-public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEntry>
+public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>, EpsilonComparable<MenuEntry>
 {
    /**
     * Command_type stores the type of response desired when this menu
@@ -49,21 +50,21 @@ public class MenuEntry implements Settable<MenuEntry>, EpsilonComparable<MenuEnt
     * ID is a number for each menu entry.  Must be unique within the
     * control, and should never be 0.
     */
-   private long id_;
+   public long id_;
    /**
     * ID of the parent of this menu entry, if it is a submenu.  If this
     * menu entry is a top-level entry, set parent_id to 0.
     */
-   private long parent_id_;
+   public long parent_id_;
    /**
     * menu / entry title
     */
-   private java.lang.StringBuilder title_;
+   public java.lang.StringBuilder title_;
    /**
     * Arguments to command indicated by command_type (below)
     */
-   private java.lang.StringBuilder command_;
-   private byte command_type_;
+   public java.lang.StringBuilder command_;
+   public byte command_type_;
 
    public MenuEntry()
    {

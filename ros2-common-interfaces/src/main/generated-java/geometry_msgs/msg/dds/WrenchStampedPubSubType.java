@@ -11,6 +11,7 @@ public class WrenchStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geo
    public static final java.lang.String name = "geometry_msgs::msg::dds_::WrenchStamped_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public WrenchStampedPubSubType()
    {
 

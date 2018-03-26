@@ -1,5 +1,6 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -11,14 +12,14 @@ import us.ihmc.euclid.interfaces.Settable;
  * <a href="http://www.ros.org/wiki/tf">tf</a> package.
  * See its documentation for more information.
  */
-public class TransformStamped implements Settable<TransformStamped>, EpsilonComparable<TransformStamped>
+public class TransformStamped extends Packet<TransformStamped> implements Settable<TransformStamped>, EpsilonComparable<TransformStamped>
 {
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * the frame id of the child frame
     */
-   private java.lang.StringBuilder child_frame_id_;
-   private us.ihmc.euclid.transform.QuaternionBasedTransform transform_;
+   public java.lang.StringBuilder child_frame_id_;
+   public us.ihmc.euclid.transform.QuaternionBasedTransform transform_;
 
    public TransformStamped()
    {

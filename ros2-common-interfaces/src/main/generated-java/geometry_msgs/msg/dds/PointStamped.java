@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents a Point with reference coordinate frame and timestamp
  */
-public class PointStamped implements Settable<PointStamped>, EpsilonComparable<PointStamped>
+public class PointStamped extends Packet<PointStamped> implements Settable<PointStamped>, EpsilonComparable<PointStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.euclid.tuple3D.Point3D point_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.euclid.tuple3D.Point3D point_;
 
    public PointStamped()
    {

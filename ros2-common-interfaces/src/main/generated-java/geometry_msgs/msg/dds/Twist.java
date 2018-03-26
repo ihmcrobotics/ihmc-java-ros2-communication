@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This expresses velocity in free space broken into its linear and angular parts.
  */
-public class Twist implements Settable<Twist>, EpsilonComparable<Twist>
+public class Twist extends Packet<Twist> implements Settable<Twist>, EpsilonComparable<Twist>
 {
-   private us.ihmc.euclid.tuple3D.Vector3D linear_;
-   private us.ihmc.euclid.tuple3D.Vector3D angular_;
+   public us.ihmc.euclid.tuple3D.Vector3D linear_;
+   public us.ihmc.euclid.tuple3D.Vector3D angular_;
 
    public Twist()
    {

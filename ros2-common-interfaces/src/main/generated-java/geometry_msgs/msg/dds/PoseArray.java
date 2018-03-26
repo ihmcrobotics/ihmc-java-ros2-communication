@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * An array of poses with a header for global reference.
  */
-public class PoseArray implements Settable<PoseArray>, EpsilonComparable<PoseArray>
+public class PoseArray extends Packet<PoseArray> implements Settable<PoseArray>, EpsilonComparable<PoseArray>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.geometry.Pose3D> poses_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.geometry.Pose3D> poses_;
 
    public PoseArray()
    {

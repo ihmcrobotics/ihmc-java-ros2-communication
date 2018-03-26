@@ -11,6 +11,7 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerControl_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public InteractiveMarkerControlPubSubType()
    {
 

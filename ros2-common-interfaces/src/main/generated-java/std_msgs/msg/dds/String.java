@@ -1,11 +1,12 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class String implements Settable<String>, EpsilonComparable<String>
+public class String extends Packet<String> implements Settable<String>, EpsilonComparable<String>
 {
-   private java.lang.StringBuilder data_;
+   public java.lang.StringBuilder data_;
 
    public String()
    {

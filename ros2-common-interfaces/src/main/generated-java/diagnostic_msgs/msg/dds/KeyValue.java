@@ -1,18 +1,19 @@
 package diagnostic_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class KeyValue implements Settable<KeyValue>, EpsilonComparable<KeyValue>
+public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, EpsilonComparable<KeyValue>
 {
    /**
     * What to label this value when viewing.
     */
-   private java.lang.StringBuilder key_;
+   public java.lang.StringBuilder key_;
    /**
     * A value to track over time.
     */
-   private java.lang.StringBuilder value_;
+   public java.lang.StringBuilder value_;
 
    public KeyValue()
    {

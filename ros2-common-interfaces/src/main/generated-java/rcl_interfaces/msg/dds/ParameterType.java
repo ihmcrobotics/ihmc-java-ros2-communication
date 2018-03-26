@@ -1,9 +1,10 @@
 package rcl_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class ParameterType implements Settable<ParameterType>, EpsilonComparable<ParameterType>
+public class ParameterType extends Packet<ParameterType> implements Settable<ParameterType>, EpsilonComparable<ParameterType>
 {
    public static final byte PARAMETER_NOT_SET = (byte) 0;
    public static final byte PARAMETER_BOOL = (byte) 1;
@@ -11,7 +12,7 @@ public class ParameterType implements Settable<ParameterType>, EpsilonComparable
    public static final byte PARAMETER_DOUBLE = (byte) 3;
    public static final byte PARAMETER_STRING = (byte) 4;
    public static final byte PARAMETER_BYTES = (byte) 5;
-   private boolean unused_placeholder_field_;
+   public boolean unused_placeholder_field_;
 
    public ParameterType()
    {

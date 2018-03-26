@@ -11,6 +11,7 @@ public class TimePubSubType implements us.ihmc.pubsub.TopicDataType<builtin_inte
    public static final java.lang.String name = "builtin_interfaces::msg::dds_::Time_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public TimePubSubType()
    {
 

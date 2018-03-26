@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents a Polygon with reference coordinate frame and timestamp
  */
-public class PolygonStamped implements Settable<PolygonStamped>, EpsilonComparable<PolygonStamped>
+public class PolygonStamped extends Packet<PolygonStamped> implements Settable<PolygonStamped>, EpsilonComparable<PolygonStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.Polygon polygon_;
+   public std_msgs.msg.dds.Header header_;
+   public geometry_msgs.msg.dds.Polygon polygon_;
 
    public PolygonStamped()
    {

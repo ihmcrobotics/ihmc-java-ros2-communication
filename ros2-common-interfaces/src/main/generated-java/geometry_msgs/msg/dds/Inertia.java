@@ -1,30 +1,31 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class Inertia implements Settable<Inertia>, EpsilonComparable<Inertia>
+public class Inertia extends Packet<Inertia> implements Settable<Inertia>, EpsilonComparable<Inertia>
 {
    /**
     * Mass [kg]
     */
-   private double m_;
+   public double m_;
    /**
     * Center of mass [m]
     */
-   private us.ihmc.euclid.tuple3D.Vector3D com_;
+   public us.ihmc.euclid.tuple3D.Vector3D com_;
    /**
     * Inertia Tensor [kg-m^2]
     * | ixx ixy ixz |
     * I = | ixy iyy iyz |
     * | ixz iyz izz |
     */
-   private double ixx_;
-   private double ixy_;
-   private double ixz_;
-   private double iyy_;
-   private double iyz_;
-   private double izz_;
+   public double ixx_;
+   public double ixy_;
+   public double ixz_;
+   public double iyy_;
+   public double iyz_;
+   public double izz_;
 
    public Inertia()
    {

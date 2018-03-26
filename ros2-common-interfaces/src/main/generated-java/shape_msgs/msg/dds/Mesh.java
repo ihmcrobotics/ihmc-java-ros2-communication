@@ -1,21 +1,22 @@
 package shape_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * Definition of a mesh.
  */
-public class Mesh implements Settable<Mesh>, EpsilonComparable<Mesh>
+public class Mesh extends Packet<Mesh> implements Settable<Mesh>, EpsilonComparable<Mesh>
 {
    /**
     * List of triangles; the index values refer to positions in vertices[].
     */
-   private us.ihmc.idl.IDLSequence.Object<shape_msgs.msg.dds.MeshTriangle> triangles_;
+   public us.ihmc.idl.IDLSequence.Object<shape_msgs.msg.dds.MeshTriangle> triangles_;
    /**
     * The actual vertices that make up the mesh.
     */
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> vertices_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> vertices_;
 
    public Mesh()
    {

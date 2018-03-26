@@ -1,12 +1,13 @@
 package builtin_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class Time implements Settable<Time>, EpsilonComparable<Time>
+public class Time extends Packet<Time> implements Settable<Time>, EpsilonComparable<Time>
 {
-   private int sec_;
-   private long nanosec_;
+   public int sec_;
+   public long nanosec_;
 
    public Time()
    {

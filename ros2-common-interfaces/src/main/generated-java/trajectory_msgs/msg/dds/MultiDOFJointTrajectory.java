@@ -1,5 +1,6 @@
 package trajectory_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -9,14 +10,15 @@ import us.ihmc.euclid.interfaces.Settable;
  * that has the same length as the array of joint names, and has the same order of joints as
  * the joint names array.
  */
-public class MultiDOFJointTrajectory implements Settable<MultiDOFJointTrajectory>, EpsilonComparable<MultiDOFJointTrajectory>
+public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory>
+      implements Settable<MultiDOFJointTrajectory>, EpsilonComparable<MultiDOFJointTrajectory>
 {
    /**
     * The header is used to specify the coordinate frame and the reference time for the trajectory durations
     */
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.idl.IDLSequence.StringBuilderHolder joint_names_;
-   private us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint> points_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder joint_names_;
+   public us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint> points_;
 
    public MultiDOFJointTrajectory()
    {

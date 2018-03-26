@@ -1,16 +1,17 @@
 package actionlib_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class GoalStatusArray implements Settable<GoalStatusArray>, EpsilonComparable<GoalStatusArray>
+public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable<GoalStatusArray>, EpsilonComparable<GoalStatusArray>
 {
    /**
     * Stores the statuses for goals that are currently being tracked
     * by an action server
     */
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.idl.IDLSequence.Object<actionlib_msgs.msg.dds.GoalStatus> status_list_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.idl.IDLSequence.Object<actionlib_msgs.msg.dds.GoalStatus> status_list_;
 
    public GoalStatusArray()
    {

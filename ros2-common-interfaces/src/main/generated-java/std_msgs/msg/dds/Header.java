@@ -1,5 +1,6 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -8,16 +9,16 @@ import us.ihmc.euclid.interfaces.Settable;
  * This is generally used to communicate timestamped data
  * in a particular coordinate frame.
  */
-public class Header implements Settable<Header>, EpsilonComparable<Header>
+public class Header extends Packet<Header> implements Settable<Header>, EpsilonComparable<Header>
 {
    /**
     * Two-integer timestamp that is expressed as seconds and nanoseconds.
     */
-   private builtin_interfaces.msg.dds.Time stamp_;
+   public builtin_interfaces.msg.dds.Time stamp_;
    /**
     * Transform frame with which this data is associated.
     */
-   private java.lang.StringBuilder frame_id_;
+   public java.lang.StringBuilder frame_id_;
 
    public Header()
    {

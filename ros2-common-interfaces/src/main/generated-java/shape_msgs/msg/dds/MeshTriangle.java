@@ -1,12 +1,13 @@
 package shape_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * Definition of a triangle's vertices.
  */
-public class MeshTriangle implements Settable<MeshTriangle>, EpsilonComparable<MeshTriangle>
+public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshTriangle>, EpsilonComparable<MeshTriangle>
 {
    public MeshTriangle()
    {

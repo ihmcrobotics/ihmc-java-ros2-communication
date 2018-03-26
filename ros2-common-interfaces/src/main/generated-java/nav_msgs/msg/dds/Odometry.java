@@ -1,5 +1,6 @@
 package nav_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -8,12 +9,12 @@ import us.ihmc.euclid.interfaces.Settable;
  * The pose in this message should be specified in the coordinate frame given by header.frame_id
  * The twist in this message should be specified in the coordinate frame given by the child_frame_id
  */
-public class Odometry implements Settable<Odometry>, EpsilonComparable<Odometry>
+public class Odometry extends Packet<Odometry> implements Settable<Odometry>, EpsilonComparable<Odometry>
 {
-   private std_msgs.msg.dds.Header header_;
-   private java.lang.StringBuilder child_frame_id_;
-   private geometry_msgs.msg.dds.PoseWithCovariance pose_;
-   private geometry_msgs.msg.dds.TwistWithCovariance twist_;
+   public std_msgs.msg.dds.Header header_;
+   public java.lang.StringBuilder child_frame_id_;
+   public geometry_msgs.msg.dds.PoseWithCovariance pose_;
+   public geometry_msgs.msg.dds.TwistWithCovariance twist_;
 
    public Odometry()
    {

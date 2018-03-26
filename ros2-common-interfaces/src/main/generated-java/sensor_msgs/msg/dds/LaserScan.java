@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -15,51 +16,51 @@ import us.ihmc.euclid.interfaces.Settable;
  * the positive Z axis (counterclockwise, if Z is up)
  * with zero angle being forward along the x axis
  */
-public class LaserScan implements Settable<LaserScan>, EpsilonComparable<LaserScan>
+public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>, EpsilonComparable<LaserScan>
 {
    /**
     * timestamp in the header is the acquisition time of
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * start angle of the scan [rad]
     */
-   private float angle_min_;
+   public float angle_min_;
    /**
     * end angle of the scan [rad]
     */
-   private float angle_max_;
+   public float angle_max_;
    /**
     * angular distance between measurements [rad]
     */
-   private float angle_increment_;
+   public float angle_increment_;
    /**
     * time between measurements [seconds] - if your scanner
     */
-   private float time_increment_;
+   public float time_increment_;
    /**
     * is moving, this will be used in interpolating position
     * of 3d points
     * time between scans [seconds]
     */
-   private float scan_time_;
+   public float scan_time_;
    /**
     * minimum range value [m]
     */
-   private float range_min_;
+   public float range_min_;
    /**
     * maximum range value [m]
     */
-   private float range_max_;
+   public float range_max_;
    /**
     * range data [m]
     */
-   private us.ihmc.idl.IDLSequence.Float ranges_;
+   public us.ihmc.idl.IDLSequence.Float ranges_;
    /**
     * (Note: values < range_min or > range_max should be discarded)
     * intensity data [device-specific units].  If your
     */
-   private us.ihmc.idl.IDLSequence.Float intensities_;
+   public us.ihmc.idl.IDLSequence.Float intensities_;
 
    public LaserScan()
    {

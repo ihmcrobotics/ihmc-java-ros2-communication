@@ -11,6 +11,7 @@ public class PointStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PointStamped_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public PointStampedPubSubType()
    {
 

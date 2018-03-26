@@ -1,21 +1,22 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This expresses acceleration in free space with uncertainty.
  */
-public class AccelWithCovariance implements Settable<AccelWithCovariance>, EpsilonComparable<AccelWithCovariance>
+public class AccelWithCovariance extends Packet<AccelWithCovariance> implements Settable<AccelWithCovariance>, EpsilonComparable<AccelWithCovariance>
 {
-   private geometry_msgs.msg.dds.Accel accel_;
+   public geometry_msgs.msg.dds.Accel accel_;
    /**
     * Row-major representation of the 6x6 covariance matrix
     * The orientation parameters use a fixed-axis representation.
     * In order, the parameters are:
     * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
     */
-   private double[] covariance_;
+   public double[] covariance_;
 
    public AccelWithCovariance()
    {

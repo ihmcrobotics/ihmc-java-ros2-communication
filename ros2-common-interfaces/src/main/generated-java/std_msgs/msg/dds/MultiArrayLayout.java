@@ -1,5 +1,6 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -8,16 +9,16 @@ import us.ihmc.euclid.interfaces.Settable;
  * particular data type.  Dimensions are ordered from outer most
  * to inner most.
  */
-public class MultiArrayLayout implements Settable<MultiArrayLayout>, EpsilonComparable<MultiArrayLayout>
+public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settable<MultiArrayLayout>, EpsilonComparable<MultiArrayLayout>
 {
    /**
     * Array of dimension properties
     */
-   private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.MultiArrayDimension> dim_;
+   public us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.MultiArrayDimension> dim_;
    /**
     * padding bytes at front of data
     */
-   private long data_offset_;
+   public long data_offset_;
 
    public MultiArrayLayout()
    {

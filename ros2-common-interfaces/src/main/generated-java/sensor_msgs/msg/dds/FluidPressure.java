@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -10,20 +11,20 @@ import us.ihmc.euclid.interfaces.Settable;
  * This message is not appropriate for force/pressure contact sensors.
  * frame_id is the location of the pressure sensor
  */
-public class FluidPressure implements Settable<FluidPressure>, EpsilonComparable<FluidPressure>
+public class FluidPressure extends Packet<FluidPressure> implements Settable<FluidPressure>, EpsilonComparable<FluidPressure>
 {
    /**
     * timestamp of the measurement
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Absolute pressure reading in Pascals.
     */
-   private double fluid_pressure_;
+   public double fluid_pressure_;
    /**
     * 0 is interpreted as variance unknown
     */
-   private double variance_;
+   public double variance_;
 
    public FluidPressure()
    {

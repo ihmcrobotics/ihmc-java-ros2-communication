@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -11,7 +12,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * Bits defining which Global Navigation Satellite System signals were
  * used by the receiver.
  */
-public class NavSatStatus implements Settable<NavSatStatus>, EpsilonComparable<NavSatStatus>
+public class NavSatStatus extends Packet<NavSatStatus> implements Settable<NavSatStatus>, EpsilonComparable<NavSatStatus>
 {
    /**
     * unable to fix position
@@ -36,8 +37,8 @@ public class NavSatStatus implements Settable<NavSatStatus>, EpsilonComparable<N
     */
    public static final int SERVICE_COMPASS = 4;
    public static final int SERVICE_GALILEO = 8;
-   private byte status_;
-   private int service_;
+   public byte status_;
+   public int service_;
 
    public NavSatStatus()
    {

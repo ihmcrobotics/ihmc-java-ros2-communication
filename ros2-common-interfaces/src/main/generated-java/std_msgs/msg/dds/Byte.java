@@ -1,11 +1,12 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class Byte implements Settable<Byte>, EpsilonComparable<Byte>
+public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonComparable<Byte>
 {
-   private byte data_;
+   public byte data_;
 
    public Byte()
    {

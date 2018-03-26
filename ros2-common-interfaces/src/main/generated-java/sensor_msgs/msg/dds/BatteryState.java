@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -9,7 +10,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * The one difference is for style reasons the constants are
  * all uppercase not mixed case.
  */
-public class BatteryState implements Settable<BatteryState>, EpsilonComparable<BatteryState>
+public class BatteryState extends Packet<BatteryState> implements Settable<BatteryState>, EpsilonComparable<BatteryState>
 {
    /**
     * Power supply status constants
@@ -41,60 +42,60 @@ public class BatteryState implements Settable<BatteryState>, EpsilonComparable<B
    public static final byte POWER_SUPPLY_TECHNOLOGY_LIFE = (byte) 4;
    public static final byte POWER_SUPPLY_TECHNOLOGY_NICD = (byte) 5;
    public static final byte POWER_SUPPLY_TECHNOLOGY_LIMN = (byte) 6;
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Voltage in Volts (Mandatory)
     */
-   private float voltage_;
+   public float voltage_;
    /**
     * Negative when discharging (A)  (If unmeasured NaN)
     */
-   private float current_;
+   public float current_;
    /**
     * Current charge in Ah  (If unmeasured NaN)
     */
-   private float charge_;
+   public float charge_;
    /**
     * Capacity in Ah (last full capacity)  (If unmeasured NaN)
     */
-   private float capacity_;
+   public float capacity_;
    /**
     * Capacity in Ah (design capacity)  (If unmeasured NaN)
     */
-   private float design_capacity_;
+   public float design_capacity_;
    /**
     * Charge percentage on 0 to 1 range  (If unmeasured NaN)
     */
-   private float percentage_;
+   public float percentage_;
    /**
     * The charging status as reported. Values defined above
     */
-   private byte power_supply_status_;
+   public byte power_supply_status_;
    /**
     * The battery health metric. Values defined above
     */
-   private byte power_supply_health_;
+   public byte power_supply_health_;
    /**
     * The battery chemistry. Values defined above
     */
-   private byte power_supply_technology_;
+   public byte power_supply_technology_;
    /**
     * True if the battery is present
     */
-   private boolean present_;
+   public boolean present_;
    /**
     * An array of individual cell voltages for each cell in the pack
     */
-   private us.ihmc.idl.IDLSequence.Float cell_voltage_;
+   public us.ihmc.idl.IDLSequence.Float cell_voltage_;
    /**
     * If individual voltages unknown but number of cells known set each to NaN
     * The location into which the battery is inserted. (slot number or plug)
     */
-   private java.lang.StringBuilder location_;
+   public java.lang.StringBuilder location_;
    /**
     * The best approximation of the battery serial number
     */
-   private java.lang.StringBuilder serial_number_;
+   public java.lang.StringBuilder serial_number_;
 
    public BatteryState()
    {

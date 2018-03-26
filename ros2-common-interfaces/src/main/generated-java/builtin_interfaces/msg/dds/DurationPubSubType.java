@@ -11,6 +11,7 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
    public static final java.lang.String name = "builtin_interfaces::msg::dds_::Duration_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public DurationPubSubType()
    {
 

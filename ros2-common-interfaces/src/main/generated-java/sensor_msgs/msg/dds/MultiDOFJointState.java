@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -24,13 +25,13 @@ import us.ihmc.euclid.interfaces.Settable;
  * This is the only way to uniquely associate the joint name with the correct
  * states.
  */
-public class MultiDOFJointState implements Settable<MultiDOFJointState>, EpsilonComparable<MultiDOFJointState>
+public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Settable<MultiDOFJointState>, EpsilonComparable<MultiDOFJointState>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.idl.IDLSequence.StringBuilderHolder joint_names_;
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> transforms_;
-   private us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> twist_;
-   private us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench> wrench_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder joint_names_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> transforms_;
+   public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> twist_;
+   public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench> wrench_;
 
    public MultiDOFJointState()
    {

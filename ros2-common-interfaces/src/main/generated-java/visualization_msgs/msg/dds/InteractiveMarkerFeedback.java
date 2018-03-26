@@ -1,5 +1,6 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -7,7 +8,8 @@ import us.ihmc.euclid.interfaces.Settable;
  * Feedback message sent back from the GUI, e.g.
  * when the status of an interactive marker was modified by the user.
  */
-public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeedback>, EpsilonComparable<InteractiveMarkerFeedback>
+public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
+      implements Settable<InteractiveMarkerFeedback>, EpsilonComparable<InteractiveMarkerFeedback>
 {
    /**
     * Type of the event
@@ -25,35 +27,35 @@ public class InteractiveMarkerFeedback implements Settable<InteractiveMarkerFeed
    /**
     * Time/frame info.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Identifying string. Must be unique in the topic namespace.
     */
-   private java.lang.StringBuilder client_id_;
+   public java.lang.StringBuilder client_id_;
    /**
     * Specifies which interactive marker and control this message refers to
     */
-   private java.lang.StringBuilder marker_name_;
-   private java.lang.StringBuilder control_name_;
-   private byte event_type_;
+   public java.lang.StringBuilder marker_name_;
+   public java.lang.StringBuilder control_name_;
+   public byte event_type_;
    /**
     * Current pose of the marker
     * Note: Has to be valid for all feedback types.
     */
-   private us.ihmc.euclid.geometry.Pose3D pose_;
+   public us.ihmc.euclid.geometry.Pose3D pose_;
    /**
     * Contains the ID of the selected menu entry
     * Only valid for MENU_SELECT events.
     */
-   private long menu_entry_id_;
+   public long menu_entry_id_;
    /**
     * If event_type is BUTTON_CLICK, MOUSE_DOWN, or MOUSE_UP, mouse_point
     * may contain the 3 dimensional position of the event on the
     * control.  If it does, mouse_point_valid will be true.  mouse_point
     * will be relative to the frame listed in the header.
     */
-   private us.ihmc.euclid.tuple3D.Point3D mouse_point_;
-   private boolean mouse_point_valid_;
+   public us.ihmc.euclid.tuple3D.Point3D mouse_point_;
+   public boolean mouse_point_valid_;
 
    public InteractiveMarkerFeedback()
    {

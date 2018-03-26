@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class AccelStamped implements Settable<AccelStamped>, EpsilonComparable<AccelStamped>
+public class AccelStamped extends Packet<AccelStamped> implements Settable<AccelStamped>, EpsilonComparable<AccelStamped>
 {
    /**
     * An accel with reference coordinate frame and timestamp
     */
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.Accel accel_;
+   public std_msgs.msg.dds.Header header_;
+   public geometry_msgs.msg.dds.Accel accel_;
 
    public AccelStamped()
    {

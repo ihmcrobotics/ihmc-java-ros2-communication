@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -7,20 +8,20 @@ import us.ihmc.euclid.interfaces.Settable;
  * Single temperature reading.
  * frame_id is the location of the temperature reading
  */
-public class Temperature implements Settable<Temperature>, EpsilonComparable<Temperature>
+public class Temperature extends Packet<Temperature> implements Settable<Temperature>, EpsilonComparable<Temperature>
 {
    /**
     * timestamp is the time the temperature was measured
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Measurement of the Temperature in Degrees Celsius.
     */
-   private double temperature_;
+   public double temperature_;
    /**
     * 0 is interpreted as variance unknown.
     */
-   private double variance_;
+   public double variance_;
 
    public Temperature()
    {

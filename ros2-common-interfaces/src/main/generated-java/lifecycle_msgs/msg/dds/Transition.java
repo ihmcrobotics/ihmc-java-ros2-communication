@@ -1,5 +1,6 @@
 package lifecycle_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -8,7 +9,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * as described on
  * http://design.ros2.org/articles/node_lifecycle.html
  */
-public class Transition implements Settable<Transition>, EpsilonComparable<Transition>
+public class Transition extends Packet<Transition> implements Settable<Transition>, EpsilonComparable<Transition>
 {
    /**
     * Externally available transitions.
@@ -60,8 +61,8 @@ public class Transition implements Settable<Transition>, EpsilonComparable<Trans
    public static final byte TRANSITION_CALLBACK_SUCCESS = (byte) 97;
    public static final byte TRANSITION_CALLBACK_FAILURE = (byte) 98;
    public static final byte TRANSITION_CALLBACK_ERROR = (byte) 99;
-   private byte id_;
-   private java.lang.StringBuilder label_;
+   public byte id_;
+   public java.lang.StringBuilder label_;
 
    public Transition()
    {

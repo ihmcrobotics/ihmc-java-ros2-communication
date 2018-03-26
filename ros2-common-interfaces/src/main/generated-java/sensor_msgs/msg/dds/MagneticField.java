@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -18,20 +19,20 @@ import us.ihmc.euclid.interfaces.Settable;
  * If your sensor does not output 3 axes,
  * put NaNs in the components not reported.
  */
-public class MagneticField implements Settable<MagneticField>, EpsilonComparable<MagneticField>
+public class MagneticField extends Packet<MagneticField> implements Settable<MagneticField>, EpsilonComparable<MagneticField>
 {
    /**
     * timestamp is the time the
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * x, y, and z components of the
     */
-   private us.ihmc.euclid.tuple3D.Vector3D magnetic_field_;
+   public us.ihmc.euclid.tuple3D.Vector3D magnetic_field_;
    /**
     * Row major about x, y, z axes
     */
-   private double[] magnetic_field_covariance_;
+   public double[] magnetic_field_covariance_;
 
    public MagneticField()
    {

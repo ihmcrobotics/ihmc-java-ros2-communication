@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -56,30 +57,30 @@ import us.ihmc.euclid.interfaces.Settable;
  * may be changed freely without recalibrating the camera.             #
  * ######################################################################
  */
-public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<CameraInfo>
+public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInfo>, EpsilonComparable<CameraInfo>
 {
    /**
     * Time of image acquisition, camera coordinate frame ID
     * Header timestamp should be acquisition time of image
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * The image dimensions with which the camera was calibrated.
     * Normally this will be the full camera resolution in pixels.
     */
-   private long height_;
-   private long width_;
+   public long height_;
+   public long width_;
    /**
     * The distortion model used. Supported models are listed in
     * sensor_msgs/distortion_models.h. For most cameras, "plumb_bob" - a
     * simple model of radial and tangential distortion - is sufficent.
     */
-   private java.lang.StringBuilder distortion_model_;
+   public java.lang.StringBuilder distortion_model_;
    /**
     * The distortion parameters, size depending on the distortion model.
     * For "plumb_bob", the 5 parameters are: (k1, k2, t1, t2, k3).
     */
-   private us.ihmc.idl.IDLSequence.Double d_;
+   public us.ihmc.idl.IDLSequence.Double d_;
    /**
     * Intrinsic camera matrix for the raw (distorted) images.
     * [fx  0 cx]
@@ -90,7 +91,7 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
     * (cx, cy).
     * 3x3 row-major matrix
     */
-   private double[] k_;
+   public double[] k_;
    /**
     * Rectification matrix (stereo cameras only)
     * A rotation matrix aligning the camera coordinate system to the ideal
@@ -98,7 +99,7 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
     * parallel.
     * 3x3 row-major matrix
     */
-   private double[] r_;
+   public double[] r_;
    /**
     * Projection/camera matrix
     * [fx'  0  cx' Tx]
@@ -126,7 +127,7 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
     * This holds for both images of a stereo pair.
     * 3x4 row-major matrix
     */
-   private double[] p_;
+   public double[] p_;
    /**
     * Binning refers here to any camera setting which combines rectangular
     * neighborhoods of pixels into larger "super-pixels." It reduces the
@@ -135,8 +136,8 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
     * The default values binning_x = binning_y = 0 is considered the same
     * as binning_x = binning_y = 1 (no subsampling).
     */
-   private long binning_x_;
-   private long binning_y_;
+   public long binning_x_;
+   public long binning_y_;
    /**
     * Region of interest (subwindow of full camera resolution), given in
     * full resolution (unbinned) image coordinates. A particular ROI
@@ -145,7 +146,7 @@ public class CameraInfo implements Settable<CameraInfo>, EpsilonComparable<Camer
     * The default setting of roi (all values 0) is considered the same as
     * full resolution (roi.width = width, roi.height = height).
     */
-   private sensor_msgs.msg.dds.RegionOfInterest roi_;
+   public sensor_msgs.msg.dds.RegionOfInterest roi_;
 
    public CameraInfo()
    {

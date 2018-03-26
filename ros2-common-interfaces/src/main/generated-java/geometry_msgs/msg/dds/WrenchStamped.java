@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * A wrench with reference coordinate frame and timestamp
  */
-public class WrenchStamped implements Settable<WrenchStamped>, EpsilonComparable<WrenchStamped>
+public class WrenchStamped extends Packet<WrenchStamped> implements Settable<WrenchStamped>, EpsilonComparable<WrenchStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.Wrench wrench_;
+   public std_msgs.msg.dds.Header header_;
+   public geometry_msgs.msg.dds.Wrench wrench_;
 
    public WrenchStamped()
    {

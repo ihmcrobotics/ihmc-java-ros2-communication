@@ -11,6 +11,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    public static final java.lang.String name = "sensor_msgs::msg::dds_::TimeReference_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public TimeReferencePubSubType()
    {
 
@@ -43,7 +44,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getTimeRef(), current_alignment);
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getSource().length() + 1;
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getSourceAsStringBuilder().length() + 1;
 
       return current_alignment - initial_alignment;
    }
@@ -55,8 +56,8 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getTimeRef(), cdr);
 
-      if (data.getSource().length() <= 255)
-         cdr.write_type_d(data.getSource());
+      if (data.getSourceAsStringBuilder().length() <= 255)
+         cdr.write_type_d(data.getSourceAsStringBuilder());
       else
          throw new RuntimeException("source field exceeds the maximum length");
    }
@@ -68,7 +69,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getTimeRef(), cdr);
 
-      cdr.read_type_d(data.getSource());
+      cdr.read_type_d(data.getSourceAsStringBuilder());
    }
 
    public static void staticCopy(sensor_msgs.msg.dds.TimeReference src, sensor_msgs.msg.dds.TimeReference dest)
@@ -99,7 +100,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       ser.write_type_a("time_ref", new builtin_interfaces.msg.dds.TimePubSubType(), data.getTimeRef());
 
-      ser.write_type_d("source", data.getSource());
+      ser.write_type_d("source", data.getSourceAsStringBuilder());
    }
 
    @Override
@@ -109,7 +110,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       ser.read_type_a("time_ref", new builtin_interfaces.msg.dds.TimePubSubType(), data.getTimeRef());
 
-      ser.read_type_d("source", data.getSource());
+      ser.read_type_d("source", data.getSourceAsStringBuilder());
    }
 
    @Override

@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents force in free space, separated into its linear and angular parts.
  */
-public class Wrench implements Settable<Wrench>, EpsilonComparable<Wrench>
+public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonComparable<Wrench>
 {
-   private us.ihmc.euclid.tuple3D.Vector3D force_;
-   private us.ihmc.euclid.tuple3D.Vector3D torque_;
+   public us.ihmc.euclid.tuple3D.Vector3D force_;
+   public us.ihmc.euclid.tuple3D.Vector3D torque_;
 
    public Wrench()
    {

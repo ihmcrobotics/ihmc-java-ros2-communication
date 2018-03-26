@@ -1,23 +1,25 @@
 package trajectory_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class MultiDOFJointTrajectoryPoint implements Settable<MultiDOFJointTrajectoryPoint>, EpsilonComparable<MultiDOFJointTrajectoryPoint>
+public class MultiDOFJointTrajectoryPoint extends Packet<MultiDOFJointTrajectoryPoint>
+      implements Settable<MultiDOFJointTrajectoryPoint>, EpsilonComparable<MultiDOFJointTrajectoryPoint>
 {
    /**
     * Each multi-dof joint can specify a transform (up to 6 DOF).
     */
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> transforms_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> transforms_;
    /**
     * There can be a velocity specified for the origin of the joint.
     */
-   private us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> velocities_;
+   public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> velocities_;
    /**
     * There can be an acceleration specified for the origin of the joint.
     */
-   private us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> accelerations_;
-   private builtin_interfaces.msg.dds.Duration time_from_start_;
+   public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> accelerations_;
+   public builtin_interfaces.msg.dds.Duration time_from_start_;
 
    public MultiDOFJointTrajectoryPoint()
    {

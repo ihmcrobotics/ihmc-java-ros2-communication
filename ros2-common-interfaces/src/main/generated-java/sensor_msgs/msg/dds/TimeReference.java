@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -7,20 +8,20 @@ import us.ihmc.euclid.interfaces.Settable;
  * Measurement from an external time source not actively synchronized with the system clock.
  * frame_id is not used
  */
-public class TimeReference implements Settable<TimeReference>, EpsilonComparable<TimeReference>
+public class TimeReference extends Packet<TimeReference> implements Settable<TimeReference>, EpsilonComparable<TimeReference>
 {
    /**
     * stamp is system time for which measurement was valid
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * corresponding time from this external source
     */
-   private builtin_interfaces.msg.dds.Time time_ref_;
+   public builtin_interfaces.msg.dds.Time time_ref_;
    /**
     * (optional) name of time source
     */
-   private java.lang.StringBuilder source_;
+   public java.lang.StringBuilder source_;
 
    public TimeReference()
    {
@@ -63,13 +64,13 @@ public class TimeReference implements Settable<TimeReference>, EpsilonComparable
     */
    public java.lang.String getSourceAsString()
    {
-      return getSource().toString();
+      return getSourceAsStringBuilder().toString();
    }
 
    /**
     * (optional) name of time source
     */
-   public java.lang.StringBuilder getSource()
+   public java.lang.StringBuilder getSourceAsStringBuilder()
    {
       return source_;
    }

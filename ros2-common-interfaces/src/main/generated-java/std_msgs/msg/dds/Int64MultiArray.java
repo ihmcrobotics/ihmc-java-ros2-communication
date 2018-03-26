@@ -1,5 +1,6 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -7,16 +8,16 @@ import us.ihmc.euclid.interfaces.Settable;
  * Please look at the MultiArrayLayout message definition for
  * documentation on all multiarrays.
  */
-public class Int64MultiArray implements Settable<Int64MultiArray>, EpsilonComparable<Int64MultiArray>
+public class Int64MultiArray extends Packet<Int64MultiArray> implements Settable<Int64MultiArray>, EpsilonComparable<Int64MultiArray>
 {
    /**
     * specification of data layout
     */
-   private std_msgs.msg.dds.MultiArrayLayout layout_;
+   public std_msgs.msg.dds.MultiArrayLayout layout_;
    /**
     * array of data
     */
-   private us.ihmc.idl.IDLSequence.Long data_;
+   public us.ihmc.idl.IDLSequence.Long data_;
 
    public Int64MultiArray()
    {

@@ -1,13 +1,14 @@
 package trajectory_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class JointTrajectory implements Settable<JointTrajectory>, EpsilonComparable<JointTrajectory>
+public class JointTrajectory extends Packet<JointTrajectory> implements Settable<JointTrajectory>, EpsilonComparable<JointTrajectory>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.idl.IDLSequence.StringBuilderHolder joint_names_;
-   private us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.JointTrajectoryPoint> points_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder joint_names_;
+   public us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.JointTrajectoryPoint> points_;
 
    public JointTrajectory()
    {

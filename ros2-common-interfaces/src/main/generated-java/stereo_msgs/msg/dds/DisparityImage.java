@@ -1,34 +1,35 @@
 package stereo_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class DisparityImage implements Settable<DisparityImage>, EpsilonComparable<DisparityImage>
+public class DisparityImage extends Packet<DisparityImage> implements Settable<DisparityImage>, EpsilonComparable<DisparityImage>
 {
    /**
     * Separate header for compatibility with current TimeSynchronizer.
     * Likely to be removed in a later release, use image.header instead.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Floating point disparity image. The disparities are pre-adjusted for any
     * x-offset between the principal points of the two cameras (in the case
     * that they are verged). That is: d = x_l - x_r - (cx_l - cx_r)
     */
-   private sensor_msgs.msg.dds.Image image_;
+   public sensor_msgs.msg.dds.Image image_;
    /**
     * Stereo geometry. For disparity d, the depth from the camera is Z = fT/d.
     * Focal length, pixels
     */
-   private float f_;
+   public float f_;
    /**
     * Baseline, world units
     */
-   private float t_;
+   public float t_;
    /**
     * Subwindow of (potentially) valid disparity values.
     */
-   private sensor_msgs.msg.dds.RegionOfInterest valid_window_;
+   public sensor_msgs.msg.dds.RegionOfInterest valid_window_;
    /**
     * The range of disparities searched.
     * In the disparity image, any disparity less than min_disparity is invalid.
@@ -38,13 +39,13 @@ public class DisparityImage implements Settable<DisparityImage>, EpsilonComparab
     * Z_max = fT / min_disparity
     * could not be found.
     */
-   private float min_disparity_;
-   private float max_disparity_;
+   public float min_disparity_;
+   public float max_disparity_;
    /**
     * Smallest allowed disparity increment. The smallest achievable depth range
     * resolution is delta_Z = (Z^2/fT)*delta_d.
     */
-   private float delta_d_;
+   public float delta_d_;
 
    public DisparityImage()
    {

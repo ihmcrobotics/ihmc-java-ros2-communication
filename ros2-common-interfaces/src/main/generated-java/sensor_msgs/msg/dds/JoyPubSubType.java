@@ -11,6 +11,7 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Joy_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public JoyPubSubType()
    {
 

@@ -1,13 +1,14 @@
 package lifecycle_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class TransitionDescription implements Settable<TransitionDescription>, EpsilonComparable<TransitionDescription>
+public class TransitionDescription extends Packet<TransitionDescription> implements Settable<TransitionDescription>, EpsilonComparable<TransitionDescription>
 {
-   private lifecycle_msgs.msg.dds.Transition transition_;
-   private lifecycle_msgs.msg.dds.State start_state_;
-   private lifecycle_msgs.msg.dds.State goal_state_;
+   public lifecycle_msgs.msg.dds.Transition transition_;
+   public lifecycle_msgs.msg.dds.State start_state_;
+   public lifecycle_msgs.msg.dds.State goal_state_;
 
    public TransitionDescription()
    {

@@ -1,15 +1,16 @@
 package nav_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * An array of poses that represents a Path for a robot to follow.
  */
-public class Path implements Settable<Path>, EpsilonComparable<Path>
+public class Path extends Packet<Path> implements Settable<Path>, EpsilonComparable<Path>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.PoseStamped> poses_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.PoseStamped> poses_;
 
    public Path()
    {

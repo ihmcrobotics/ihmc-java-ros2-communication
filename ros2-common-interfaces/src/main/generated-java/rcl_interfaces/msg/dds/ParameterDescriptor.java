@@ -1,18 +1,19 @@
 package rcl_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This is the message to communicate a parameter's descriptor.
  */
-public class ParameterDescriptor implements Settable<ParameterDescriptor>, EpsilonComparable<ParameterDescriptor>
+public class ParameterDescriptor extends Packet<ParameterDescriptor> implements Settable<ParameterDescriptor>, EpsilonComparable<ParameterDescriptor>
 {
-   private java.lang.StringBuilder name_;
+   public java.lang.StringBuilder name_;
    /**
     * Enum defined in ParameterType.msg
     */
-   private byte type_;
+   public byte type_;
 
    public ParameterDescriptor()
    {

@@ -11,6 +11,7 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::MultiDOFJointTrajectoryPoint_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public MultiDOFJointTrajectoryPointPubSubType()
    {
 

@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -12,42 +13,42 @@ import us.ihmc.euclid.interfaces.Settable;
  * Point clouds organized as 2d images may be produced by camera depth sensors
  * such as stereo or time-of-flight.
  */
-public class PointCloud2 implements Settable<PointCloud2>, EpsilonComparable<PointCloud2>
+public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCloud2>, EpsilonComparable<PointCloud2>
 {
    /**
     * Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * 2D structure of the point cloud. If the cloud is unordered, height is
     * 1 and width is the length of the point cloud.
     */
-   private long height_;
-   private long width_;
+   public long height_;
+   public long width_;
    /**
     * Describes the channels and their layout in the binary data blob.
     */
-   private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> fields_;
+   public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> fields_;
    /**
     * Is this data bigendian?
     */
-   private boolean is_bigendian_;
+   public boolean is_bigendian_;
    /**
     * Length of a point in bytes
     */
-   private long point_step_;
+   public long point_step_;
    /**
     * Length of a row in bytes
     */
-   private long row_step_;
+   public long row_step_;
    /**
     * Actual point data, size is (row_step*height)
     */
-   private us.ihmc.idl.IDLSequence.Byte data_;
+   public us.ihmc.idl.IDLSequence.Byte data_;
    /**
     * True if there are no invalid points
     */
-   private boolean is_dense_;
+   public boolean is_dense_;
 
    public PointCloud2()
    {

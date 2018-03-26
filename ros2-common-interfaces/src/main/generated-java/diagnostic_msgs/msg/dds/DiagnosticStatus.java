@@ -1,12 +1,13 @@
 package diagnostic_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This message holds the status of an individual component of the robot.
  */
-public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComparable<DiagnosticStatus>
+public class DiagnosticStatus extends Packet<DiagnosticStatus> implements Settable<DiagnosticStatus>, EpsilonComparable<DiagnosticStatus>
 {
    /**
     * Possible levels of operations.
@@ -18,23 +19,23 @@ public class DiagnosticStatus implements Settable<DiagnosticStatus>, EpsilonComp
    /**
     * Level of operation enumerated above.
     */
-   private byte level_;
+   public byte level_;
    /**
     * A description of the test/component reporting.
     */
-   private java.lang.StringBuilder name_;
+   public java.lang.StringBuilder name_;
    /**
     * A description of the status.
     */
-   private java.lang.StringBuilder message_;
+   public java.lang.StringBuilder message_;
    /**
     * A hardware unique string.
     */
-   private java.lang.StringBuilder hardware_id_;
+   public java.lang.StringBuilder hardware_id_;
    /**
     * An array of values associated with the status.
     */
-   private us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue> values_;
+   public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue> values_;
 
    public DiagnosticStatus()
    {

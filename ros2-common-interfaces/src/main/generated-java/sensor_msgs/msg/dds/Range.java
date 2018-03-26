@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -21,7 +22,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * 0 angle corresponds to the x-axis of the sensor.
  * Fixed distance rangers require min_range==max_range
  */
-public class Range implements Settable<Range>, EpsilonComparable<Range>
+public class Range extends Packet<Range> implements Settable<Range>, EpsilonComparable<Range>
 {
    /**
     * Radiation type enums
@@ -32,27 +33,27 @@ public class Range implements Settable<Range>, EpsilonComparable<Range>
    /**
     * timestamp in the header is the time the ranger
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * the type of radiation used by the sensor
     */
-   private byte radiation_type_;
+   public byte radiation_type_;
    /**
     * the size of the arc that the distance reading is
     */
-   private float field_of_view_;
+   public float field_of_view_;
    /**
     * minimum range value [m]
     */
-   private float min_range_;
+   public float min_range_;
    /**
     * maximum range value [m]
     */
-   private float max_range_;
+   public float max_range_;
    /**
     * range data [m]
     */
-   private float range_;
+   public float range_;
 
    public Range()
    {

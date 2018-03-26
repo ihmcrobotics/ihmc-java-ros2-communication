@@ -1,5 +1,6 @@
 package rcl_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -9,17 +10,17 @@ import us.ihmc.euclid.interfaces.Settable;
  * (if gotten) or is uninitialized.
  * Values are enumerated in ParameterType.msg
  */
-public class ParameterValue implements Settable<ParameterValue>, EpsilonComparable<ParameterValue>
+public class ParameterValue extends Packet<ParameterValue> implements Settable<ParameterValue>, EpsilonComparable<ParameterValue>
 {
-   private byte type_;
+   public byte type_;
    /**
     * "Variant" style storage of the parameter value.
     */
-   private boolean bool_value_;
-   private long integer_value_;
-   private double double_value_;
-   private java.lang.StringBuilder string_value_;
-   private us.ihmc.idl.IDLSequence.Byte bytes_value_;
+   public boolean bool_value_;
+   public long integer_value_;
+   public double double_value_;
+   public java.lang.StringBuilder string_value_;
+   public us.ihmc.idl.IDLSequence.Byte bytes_value_;
 
    public ParameterValue()
    {

@@ -1,11 +1,12 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class Empty implements Settable<Empty>, EpsilonComparable<Empty>
+public class Empty extends Packet<Empty> implements Settable<Empty>, EpsilonComparable<Empty>
 {
-   private boolean unused_placeholder_field_;
+   public boolean unused_placeholder_field_;
 
    public Empty()
    {

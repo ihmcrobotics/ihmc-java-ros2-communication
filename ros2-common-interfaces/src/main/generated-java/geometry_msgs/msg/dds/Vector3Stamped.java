@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents a Vector3 with reference coordinate frame and timestamp
  */
-public class Vector3Stamped implements Settable<Vector3Stamped>, EpsilonComparable<Vector3Stamped>
+public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<Vector3Stamped>, EpsilonComparable<Vector3Stamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.euclid.tuple3D.Vector3D vector_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.euclid.tuple3D.Vector3D vector_;
 
    public Vector3Stamped()
    {

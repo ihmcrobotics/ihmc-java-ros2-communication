@@ -11,6 +11,7 @@ public class Vector3StampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Vector3Stamped_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public Vector3StampedPubSubType()
    {
 

@@ -1,14 +1,15 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class ColorRGBA implements Settable<ColorRGBA>, EpsilonComparable<ColorRGBA>
+public class ColorRGBA extends Packet<ColorRGBA> implements Settable<ColorRGBA>, EpsilonComparable<ColorRGBA>
 {
-   private float r_;
-   private float g_;
-   private float b_;
-   private float a_;
+   public float r_;
+   public float g_;
+   public float b_;
+   public float a_;
 
    public ColorRGBA()
    {

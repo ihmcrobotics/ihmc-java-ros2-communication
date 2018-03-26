@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -7,12 +8,12 @@ import us.ihmc.euclid.interfaces.Settable;
  * This message is a submessage of MultiEchoLaserScan and is not intended
  * to be used separately.
  */
-public class LaserEcho implements Settable<LaserEcho>, EpsilonComparable<LaserEcho>
+public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>, EpsilonComparable<LaserEcho>
 {
    /**
     * Multiple values of ranges or intensities.
     */
-   private us.ihmc.idl.IDLSequence.Float echoes_;
+   public us.ihmc.idl.IDLSequence.Float echoes_;
 
    public LaserEcho()
    {

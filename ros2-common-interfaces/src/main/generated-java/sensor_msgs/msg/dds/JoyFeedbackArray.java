@@ -1,14 +1,15 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class JoyFeedbackArray implements Settable<JoyFeedbackArray>, EpsilonComparable<JoyFeedbackArray>
+public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settable<JoyFeedbackArray>, EpsilonComparable<JoyFeedbackArray>
 {
    /**
     * This message publishes values for multiple feedback at once.
     */
-   private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.JoyFeedback> array_;
+   public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.JoyFeedback> array_;
 
    public JoyFeedbackArray()
    {

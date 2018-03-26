@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -17,20 +18,20 @@ import us.ihmc.euclid.interfaces.Settable;
  * - Irradiance (watt/area), etc.
  * frame_id is the location and direction of the reading
  */
-public class Illuminance implements Settable<Illuminance>, EpsilonComparable<Illuminance>
+public class Illuminance extends Packet<Illuminance> implements Settable<Illuminance>, EpsilonComparable<Illuminance>
 {
    /**
     * timestamp is the time the illuminance was measured
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Measurement of the Photometric Illuminance in Lux.
     */
-   private double illuminance_;
+   public double illuminance_;
    /**
     * 0 is interpreted as variance unknown
     */
-   private double variance_;
+   public double variance_;
 
    public Illuminance()
    {

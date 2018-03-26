@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class Accel implements Settable<Accel>, EpsilonComparable<Accel>
+public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComparable<Accel>
 {
    /**
     * This expresses acceleration in free space broken into its linear and angular parts.
     */
-   private us.ihmc.euclid.tuple3D.Vector3D linear_;
-   private us.ihmc.euclid.tuple3D.Vector3D angular_;
+   public us.ihmc.euclid.tuple3D.Vector3D linear_;
+   public us.ihmc.euclid.tuple3D.Vector3D angular_;
 
    public Accel()
    {

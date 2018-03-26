@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -18,24 +19,24 @@ import us.ihmc.euclid.interfaces.Settable;
  * If you are interpreting this message, please check for a value of -1 in the first element of each
  * covariance matrix, and disregard the associated estimate.
  */
-public class Imu implements Settable<Imu>, EpsilonComparable<Imu>
+public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable<Imu>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.euclid.tuple4D.Quaternion orientation_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.euclid.tuple4D.Quaternion orientation_;
    /**
     * Row major about x, y, z axes
     */
-   private double[] orientation_covariance_;
-   private us.ihmc.euclid.tuple3D.Vector3D angular_velocity_;
+   public double[] orientation_covariance_;
+   public us.ihmc.euclid.tuple3D.Vector3D angular_velocity_;
    /**
     * Row major about x, y, z axes
     */
-   private double[] angular_velocity_covariance_;
-   private us.ihmc.euclid.tuple3D.Vector3D linear_acceleration_;
+   public double[] angular_velocity_covariance_;
+   public us.ihmc.euclid.tuple3D.Vector3D linear_acceleration_;
    /**
     * Row major x, y z
     */
-   private double[] linear_acceleration_covariance_;
+   public double[] linear_acceleration_covariance_;
 
    public Imu()
    {

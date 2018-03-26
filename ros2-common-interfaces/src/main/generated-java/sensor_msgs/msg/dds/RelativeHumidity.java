@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -12,20 +13,20 @@ import us.ihmc.euclid.interfaces.Settable;
  * 0.0 is no partial pressure of water vapor
  * 1.0 represents partial pressure of saturation
  */
-public class RelativeHumidity implements Settable<RelativeHumidity>, EpsilonComparable<RelativeHumidity>
+public class RelativeHumidity extends Packet<RelativeHumidity> implements Settable<RelativeHumidity>, EpsilonComparable<RelativeHumidity>
 {
    /**
     * timestamp of the measurement
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Expression of the relative humidity
     */
-   private double relative_humidity_;
+   public double relative_humidity_;
    /**
     * 0 is interpreted as variance unknown
     */
-   private double variance_;
+   public double variance_;
 
    public RelativeHumidity()
    {

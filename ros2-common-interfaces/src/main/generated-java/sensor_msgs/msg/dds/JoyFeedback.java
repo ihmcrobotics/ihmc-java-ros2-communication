@@ -1,9 +1,10 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class JoyFeedback implements Settable<JoyFeedback>, EpsilonComparable<JoyFeedback>
+public class JoyFeedback extends Packet<JoyFeedback> implements Settable<JoyFeedback>, EpsilonComparable<JoyFeedback>
 {
    /**
     * Declare of the type of feedback
@@ -11,17 +12,17 @@ public class JoyFeedback implements Settable<JoyFeedback>, EpsilonComparable<Joy
    public static final byte TYPE_LED = (byte) 0;
    public static final byte TYPE_RUMBLE = (byte) 1;
    public static final byte TYPE_BUZZER = (byte) 2;
-   private byte type_;
+   public byte type_;
    /**
     * This will hold an id number for each type of each feedback.
     * Example, the first led would be id=0, the second would be id=1
     */
-   private byte id_;
+   public byte id_;
    /**
     * Intensity of the feedback, from 0.0 to 1.0, inclusive.  If device is
     * actually binary, driver should treat 0<=x<0.5 as off, 0.5<=x<=1 as on.
     */
-   private float intensity_;
+   public float intensity_;
 
    public JoyFeedback()
    {

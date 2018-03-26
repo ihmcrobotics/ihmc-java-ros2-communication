@@ -1,23 +1,24 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class InteractiveMarkerPose implements Settable<InteractiveMarkerPose>, EpsilonComparable<InteractiveMarkerPose>
+public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> implements Settable<InteractiveMarkerPose>, EpsilonComparable<InteractiveMarkerPose>
 {
    /**
     * Time/frame info.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Initial pose. Also, defines the pivot point for rotations.
     */
-   private us.ihmc.euclid.geometry.Pose3D pose_;
+   public us.ihmc.euclid.geometry.Pose3D pose_;
    /**
     * Identifying string. Must be globally unique in
     * the topic that this message is sent through.
     */
-   private java.lang.StringBuilder name_;
+   public java.lang.StringBuilder name_;
 
    public InteractiveMarkerPose()
    {

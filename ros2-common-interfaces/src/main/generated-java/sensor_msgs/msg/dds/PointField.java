@@ -1,9 +1,10 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class PointField implements Settable<PointField>, EpsilonComparable<PointField>
+public class PointField extends Packet<PointField> implements Settable<PointField>, EpsilonComparable<PointField>
 {
    /**
     * This message holds the description of one point entry in the
@@ -20,19 +21,19 @@ public class PointField implements Settable<PointField>, EpsilonComparable<Point
    /**
     * Name of field
     */
-   private java.lang.StringBuilder name_;
+   public java.lang.StringBuilder name_;
    /**
     * Offset from start of point struct
     */
-   private long offset_;
+   public long offset_;
    /**
     * Datatype enumeration, see above
     */
-   private byte datatype_;
+   public byte datatype_;
    /**
     * How many elements in the field
     */
-   private long count_;
+   public long count_;
 
    public PointField()
    {

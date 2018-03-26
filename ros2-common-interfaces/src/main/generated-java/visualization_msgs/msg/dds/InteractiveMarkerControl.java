@@ -1,12 +1,14 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * Represents a control that is to be displayed together with an interactive marker
  */
-public class InteractiveMarkerControl implements Settable<InteractiveMarkerControl>, EpsilonComparable<InteractiveMarkerControl>
+public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl>
+      implements Settable<InteractiveMarkerControl>, EpsilonComparable<InteractiveMarkerControl>
 {
    /**
     * Orientation mode: controls how orientation changes.
@@ -49,20 +51,20 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
     * You need to assign a unique value to this to receive feedback from the GUI
     * on what actions the user performs on this control (e.g. a button click).
     */
-   private java.lang.StringBuilder name_;
+   public java.lang.StringBuilder name_;
    /**
     * Defines the local coordinate frame (relative to the pose of the parent
     * interactive marker) in which is being rotated and translated.
     * Default: Identity
     */
-   private us.ihmc.euclid.tuple4D.Quaternion orientation_;
-   private byte orientation_mode_;
-   private byte interaction_mode_;
+   public us.ihmc.euclid.tuple4D.Quaternion orientation_;
+   public byte orientation_mode_;
+   public byte interaction_mode_;
    /**
     * If true, the contained markers will also be visible
     * when the gui is not in interactive mode.
     */
-   private boolean always_visible_;
+   public boolean always_visible_;
    /**
     * Markers to be displayed as custom visual representation.
     * Leave this empty to use the default control handles.
@@ -73,19 +75,19 @@ public class InteractiveMarkerControl implements Settable<InteractiveMarkerContr
     * - If the header of a marker is empty, its pose will be interpreted as
     * relative to the pose of the parent interactive marker.
     */
-   private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;
    /**
     * In VIEW_FACING mode, set this to true if you don't want the markers
     * to be aligned with the camera view point. The markers will show up
     * as in INHERIT mode.
     */
-   private boolean independent_marker_orientation_;
+   public boolean independent_marker_orientation_;
    /**
     * Short description (< 40 characters) of what this control does,
     * e.g. "Move the robot".
     * Default: A generic description based on the interaction mode
     */
-   private java.lang.StringBuilder description_;
+   public java.lang.StringBuilder description_;
 
    public InteractiveMarkerControl()
    {

@@ -1,12 +1,13 @@
 package actionlib_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * be sent over the wire by an action server.
  */
-public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalStatus>
+public class GoalStatus extends Packet<GoalStatus> implements Settable<GoalStatus>, EpsilonComparable<GoalStatus>
 {
    /**
     * The goal has yet to be processed by the action server.
@@ -55,12 +56,12 @@ public class GoalStatus implements Settable<GoalStatus>, EpsilonComparable<GoalS
     * An action client can determine that a goal is LOST. This should not
     */
    public static final byte LOST = (byte) 9;
-   private actionlib_msgs.msg.dds.GoalID goal_id_;
-   private byte status_;
+   public actionlib_msgs.msg.dds.GoalID goal_id_;
+   public byte status_;
    /**
     * Allow for the user to associate a string with GoalStatus for debugging.
     */
-   private java.lang.StringBuilder text_;
+   public java.lang.StringBuilder text_;
 
    public GoalStatus()
    {

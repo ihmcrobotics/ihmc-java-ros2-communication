@@ -1,19 +1,20 @@
 package rcl_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class ListParametersResult implements Settable<ListParametersResult>, EpsilonComparable<ListParametersResult>
+public class ListParametersResult extends Packet<ListParametersResult> implements Settable<ListParametersResult>, EpsilonComparable<ListParametersResult>
 {
    /**
     * All parameters under the given prefixes.
     */
-   private us.ihmc.idl.IDLSequence.StringBuilderHolder names_;
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder names_;
    /**
     * All prefixes under the given prefixes.
     * TODO(wjwwood): link to prefix definition and rules.
     */
-   private us.ihmc.idl.IDLSequence.StringBuilderHolder prefixes_;
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder prefixes_;
 
    public ListParametersResult()
    {

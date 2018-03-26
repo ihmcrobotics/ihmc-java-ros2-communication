@@ -11,6 +11,7 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::Parameter_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public ParameterPubSubType()
    {
 

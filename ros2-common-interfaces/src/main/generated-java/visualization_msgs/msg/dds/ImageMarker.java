@@ -1,9 +1,10 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<ImageMarker>
+public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMarker>, EpsilonComparable<ImageMarker>
 {
    public static final byte CIRCLE = (byte) 0;
    public static final byte LINE_STRIP = (byte) 1;
@@ -12,56 +13,56 @@ public class ImageMarker implements Settable<ImageMarker>, EpsilonComparable<Ima
    public static final byte POINTS = (byte) 4;
    public static final byte ADD = (byte) 0;
    public static final byte REMOVE = (byte) 1;
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Namespace which is used with the id to form a unique id.
     */
-   private java.lang.StringBuilder ns_;
+   public java.lang.StringBuilder ns_;
    /**
     * Unique id within the namespace.
     */
-   private int id_;
+   public int id_;
    /**
     * One of the above types, e.g. CIRCLE, LINE_STRIP, etc.
     */
-   private int type_;
+   public int type_;
    /**
     * Either ADD or REMOVE.
     */
-   private int action_;
+   public int action_;
    /**
     * Two-dimensional coordinate position, in pixel-coordinates.
     */
-   private us.ihmc.euclid.tuple3D.Point3D position_;
+   public us.ihmc.euclid.tuple3D.Point3D position_;
    /**
     * The scale of the object, e.g. the diameter for a CIRCLE.
     */
-   private float scale_;
+   public float scale_;
    /**
     * The outline color of the marker.
     */
-   private std_msgs.msg.dds.ColorRGBA outline_color_;
+   public std_msgs.msg.dds.ColorRGBA outline_color_;
    /**
     * Whether or not to fill in the shape with color.
     */
-   private byte filled_;
+   public byte filled_;
    /**
     * Fill color; in the range: [0.0-1.0]
     */
-   private std_msgs.msg.dds.ColorRGBA fill_color_;
+   public std_msgs.msg.dds.ColorRGBA fill_color_;
    /**
     * How long the object should last before being automatically deleted.
     * 0 indicates forever.
     */
-   private builtin_interfaces.msg.dds.Duration lifetime_;
+   public builtin_interfaces.msg.dds.Duration lifetime_;
    /**
     * Coordinates in 2D in pixel coords. Used for LINE_STRIP, LINE_LIST, POINTS, etc.
     */
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
    /**
     * The color for each line, point, etc. in the points field.
     */
-   private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> outline_colors_;
+   public us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> outline_colors_;
 
    public ImageMarker()
    {

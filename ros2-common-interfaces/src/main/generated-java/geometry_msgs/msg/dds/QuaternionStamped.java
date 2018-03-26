@@ -1,15 +1,16 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents an orientation with reference coordinate frame and timestamp.
  */
-public class QuaternionStamped implements Settable<QuaternionStamped>, EpsilonComparable<QuaternionStamped>
+public class QuaternionStamped extends Packet<QuaternionStamped> implements Settable<QuaternionStamped>, EpsilonComparable<QuaternionStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private us.ihmc.euclid.tuple4D.Quaternion quaternion_;
+   public std_msgs.msg.dds.Header header_;
+   public us.ihmc.euclid.tuple4D.Quaternion quaternion_;
 
    public QuaternionStamped()
    {

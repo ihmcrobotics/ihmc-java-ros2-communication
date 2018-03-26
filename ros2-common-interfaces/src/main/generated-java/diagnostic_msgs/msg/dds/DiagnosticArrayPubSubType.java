@@ -11,6 +11,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public DiagnosticArrayPubSubType()
    {
 

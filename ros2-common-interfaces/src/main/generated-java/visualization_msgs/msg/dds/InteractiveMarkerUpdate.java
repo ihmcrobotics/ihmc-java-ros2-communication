@@ -1,5 +1,6 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -7,7 +8,8 @@ import us.ihmc.euclid.interfaces.Settable;
  * Note: No guarantees on the order of processing.
  * Contents must be kept consistent by sender.
  */
-public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate>, EpsilonComparable<InteractiveMarkerUpdate>
+public class InteractiveMarkerUpdate extends Packet<InteractiveMarkerUpdate>
+      implements Settable<InteractiveMarkerUpdate>, EpsilonComparable<InteractiveMarkerUpdate>
 {
    /**
     * Type holds the purpose of this message.  It must be one of UPDATE or KEEP_ALIVE.
@@ -24,25 +26,25 @@ public class InteractiveMarkerUpdate implements Settable<InteractiveMarkerUpdate
     * Identifying string. Must be unique in the topic namespace
     * that this server works on.
     */
-   private java.lang.StringBuilder server_id_;
+   public java.lang.StringBuilder server_id_;
    /**
     * Sequence number.
     * The client will use this to detect if it has missed an update.
     */
-   private long seq_num_;
-   private byte type_;
+   public long seq_num_;
+   public byte type_;
    /**
     * Markers to be added or updated
     */
-   private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
    /**
     * Poses of markers that should be moved
     */
-   private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose> poses_;
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose> poses_;
    /**
     * Names of markers to be erased
     */
-   private us.ihmc.idl.IDLSequence.StringBuilderHolder erases_;
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder erases_;
 
    public InteractiveMarkerUpdate()
    {

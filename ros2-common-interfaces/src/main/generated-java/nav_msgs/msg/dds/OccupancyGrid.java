@@ -1,23 +1,24 @@
 package nav_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents a 2-D grid map, in which each cell represents the probability of occupancy.
  */
-public class OccupancyGrid implements Settable<OccupancyGrid>, EpsilonComparable<OccupancyGrid>
+public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<OccupancyGrid>, EpsilonComparable<OccupancyGrid>
 {
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * MetaData for the map
     */
-   private nav_msgs.msg.dds.MapMetaData info_;
+   public nav_msgs.msg.dds.MapMetaData info_;
    /**
     * The map data, in row-major order, starting with (0,0).  Occupancy
     * probabilities are in the range [0,100].  Unknown is -1.
     */
-   private us.ihmc.idl.IDLSequence.Byte data_;
+   public us.ihmc.idl.IDLSequence.Byte data_;
 
    public OccupancyGrid()
    {

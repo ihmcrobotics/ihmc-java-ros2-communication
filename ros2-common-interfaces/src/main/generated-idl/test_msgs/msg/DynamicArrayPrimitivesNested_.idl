@@ -1,0 +1,21 @@
+#ifndef __test_msgs__msg__DynamicArrayPrimitivesNested__idl__
+#define __test_msgs__msg__DynamicArrayPrimitivesNested__idl__
+
+#include "test_msgs/msg/./DynamicArrayPrimitives_.idl"
+module test_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="test_msgs::msg::dds_::DynamicArrayPrimitivesNested_")
+      struct DynamicArrayPrimitivesNested
+      {
+        sequence<test_msgs::msg::dds::DynamicArrayPrimitives> dynamic_array_primitive_values;
+      };
+    };
+  };
+};
+
+#endif

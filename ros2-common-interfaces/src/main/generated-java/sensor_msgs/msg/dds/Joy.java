@@ -1,25 +1,26 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * Reports the state of a joystick's axes and buttons.
  */
-public class Joy implements Settable<Joy>, EpsilonComparable<Joy>
+public class Joy extends Packet<Joy> implements Settable<Joy>, EpsilonComparable<Joy>
 {
    /**
     * The timestamp is the time at which data is received from the joystick.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * The axes measurements from a joystick.
     */
-   private us.ihmc.idl.IDLSequence.Float axes_;
+   public us.ihmc.idl.IDLSequence.Float axes_;
    /**
     * The buttons measurements from a joystick.
     */
-   private us.ihmc.idl.IDLSequence.Integer buttons_;
+   public us.ihmc.idl.IDLSequence.Integer buttons_;
 
    public Joy()
    {

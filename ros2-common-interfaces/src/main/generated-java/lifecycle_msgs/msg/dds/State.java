@@ -1,5 +1,6 @@
 package lifecycle_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -8,7 +9,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * as depicted in
  * http://design.ros2.org/articles/node_lifecycle.html
  */
-public class State implements Settable<State>, EpsilonComparable<State>
+public class State extends Packet<State> implements Settable<State>, EpsilonComparable<State>
 {
    /**
     * These are the primary states
@@ -32,8 +33,8 @@ public class State implements Settable<State>, EpsilonComparable<State>
    public static final byte TRANSITION_STATE_ACTIVATING = (byte) 13;
    public static final byte TRANSITION_STATE_DEACTIVATING = (byte) 14;
    public static final byte TRANSITION_STATE_ERRORPROCESSING = (byte) 15;
-   private byte id_;
-   private java.lang.StringBuilder label_;
+   public byte id_;
+   public java.lang.StringBuilder label_;
 
    public State()
    {

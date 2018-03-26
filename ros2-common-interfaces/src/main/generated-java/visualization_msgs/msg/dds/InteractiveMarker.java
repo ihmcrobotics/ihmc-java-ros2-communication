@@ -1,9 +1,10 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonComparable<InteractiveMarker>
+public class InteractiveMarker extends Packet<InteractiveMarker> implements Settable<InteractiveMarker>, EpsilonComparable<InteractiveMarker>
 {
    /**
     * Time/frame info.
@@ -13,32 +14,32 @@ public class InteractiveMarker implements Settable<InteractiveMarker>, EpsilonCo
     * Otherwise, you might receive feedback in a different frame.
     * For rviz, this will be the current 'fixed frame' set by the user.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Initial pose. Also, defines the pivot point for rotations.
     */
-   private us.ihmc.euclid.geometry.Pose3D pose_;
+   public us.ihmc.euclid.geometry.Pose3D pose_;
    /**
     * Identifying string. Must be globally unique in
     * the topic that this message is sent through.
     */
-   private java.lang.StringBuilder name_;
+   public java.lang.StringBuilder name_;
    /**
     * Short description (< 40 characters).
     */
-   private java.lang.StringBuilder description_;
+   public java.lang.StringBuilder description_;
    /**
     * Scale to be used for default controls (default=1).
     */
-   private float scale_;
+   public float scale_;
    /**
     * All menu and submenu entries associated with this marker.
     */
-   private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry> menu_entries_;
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry> menu_entries_;
    /**
     * List of controls displayed for this marker.
     */
-   private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl> controls_;
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl> controls_;
 
    public InteractiveMarker()
    {

@@ -1,11 +1,12 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class Int16 implements Settable<Int16>, EpsilonComparable<Int16>
+public class Int16 extends Packet<Int16> implements Settable<Int16>, EpsilonComparable<Int16>
 {
-   private short data_;
+   public short data_;
 
    public Int16()
    {

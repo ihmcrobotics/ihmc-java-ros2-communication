@@ -1,15 +1,17 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents an estimated twist with reference coordinate frame and timestamp.
  */
-public class TwistWithCovarianceStamped implements Settable<TwistWithCovarianceStamped>, EpsilonComparable<TwistWithCovarianceStamped>
+public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStamped>
+      implements Settable<TwistWithCovarianceStamped>, EpsilonComparable<TwistWithCovarianceStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.TwistWithCovariance twist_;
+   public std_msgs.msg.dds.Header header_;
+   public geometry_msgs.msg.dds.TwistWithCovariance twist_;
 
    public TwistWithCovarianceStamped()
    {

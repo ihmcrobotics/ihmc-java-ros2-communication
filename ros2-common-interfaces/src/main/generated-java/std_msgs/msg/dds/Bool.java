@@ -1,11 +1,12 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class Bool implements Settable<Bool>, EpsilonComparable<Bool>
+public class Bool extends Packet<Bool> implements Settable<Bool>, EpsilonComparable<Bool>
 {
-   private boolean data_;
+   public boolean data_;
 
    public Bool()
    {

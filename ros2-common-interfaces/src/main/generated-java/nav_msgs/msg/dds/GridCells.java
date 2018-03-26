@@ -1,17 +1,18 @@
 package nav_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * An array of cells in a 2D grid
  */
-public class GridCells implements Settable<GridCells>, EpsilonComparable<GridCells>
+public class GridCells extends Packet<GridCells> implements Settable<GridCells>, EpsilonComparable<GridCells>
 {
-   private std_msgs.msg.dds.Header header_;
-   private float cell_width_;
-   private float cell_height_;
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> cells_;
+   public std_msgs.msg.dds.Header header_;
+   public float cell_width_;
+   public float cell_height_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> cells_;
 
    public GridCells()
    {

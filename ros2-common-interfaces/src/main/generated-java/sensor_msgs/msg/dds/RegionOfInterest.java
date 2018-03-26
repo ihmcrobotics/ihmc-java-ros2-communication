@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -11,33 +12,33 @@ import us.ihmc.euclid.interfaces.Settable;
  * width fields for the associated image; or height = width = 0
  * indicates that the full resolution image was captured.
  */
-public class RegionOfInterest implements Settable<RegionOfInterest>, EpsilonComparable<RegionOfInterest>
+public class RegionOfInterest extends Packet<RegionOfInterest> implements Settable<RegionOfInterest>, EpsilonComparable<RegionOfInterest>
 {
    /**
     * Leftmost pixel of the ROI
     */
-   private long x_offset_;
+   public long x_offset_;
    /**
     * (0 if the ROI includes the left edge of the image)
     * Topmost pixel of the ROI
     */
-   private long y_offset_;
+   public long y_offset_;
    /**
     * (0 if the ROI includes the top edge of the image)
     * Height of ROI
     */
-   private long height_;
+   public long height_;
    /**
     * Width of ROI
     */
-   private long width_;
+   public long width_;
    /**
     * True if a distinct rectified ROI should be calculated from the "raw"
     * ROI in this message. Typically this should be False if the full image
     * is captured (ROI not used), and True if a subwindow is captured (ROI
     * used).
     */
-   private boolean do_rectify_;
+   public boolean do_rectify_;
 
    public RegionOfInterest()
    {

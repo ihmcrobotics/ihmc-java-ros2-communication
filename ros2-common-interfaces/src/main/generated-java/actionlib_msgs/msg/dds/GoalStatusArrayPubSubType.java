@@ -11,6 +11,7 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalStatusArray_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public GoalStatusArrayPubSubType()
    {
 

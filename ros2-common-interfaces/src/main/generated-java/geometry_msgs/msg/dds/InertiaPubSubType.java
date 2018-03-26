@@ -11,6 +11,7 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Inertia_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public InertiaPubSubType()
    {
 

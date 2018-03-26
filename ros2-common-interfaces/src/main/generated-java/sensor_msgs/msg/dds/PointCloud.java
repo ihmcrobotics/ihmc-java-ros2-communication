@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -7,23 +8,23 @@ import us.ihmc.euclid.interfaces.Settable;
  * This message holds a collection of 3d points, plus optional additional
  * information about each point.
  */
-public class PointCloud implements Settable<PointCloud>, EpsilonComparable<PointCloud>
+public class PointCloud extends Packet<PointCloud> implements Settable<PointCloud>, EpsilonComparable<PointCloud>
 {
    /**
     * Time of sensor data acquisition, coordinate frame ID.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Array of 3d points. Each Point32 should be interpreted as a 3d point
     * in the frame given in the header.
     */
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> points_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> points_;
    /**
     * Each channel should have the same number of elements as points array,
     * and the data in each channel should correspond 1:1 with each point.
     * Channel names in common practice are listed in ChannelFloat32.msg.
     */
-   private us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> channels_;
+   public us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> channels_;
 
    public PointCloud()
    {

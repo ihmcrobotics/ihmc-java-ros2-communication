@@ -1,15 +1,16 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, EpsilonComparable<InteractiveMarkerInit>
+public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> implements Settable<InteractiveMarkerInit>, EpsilonComparable<InteractiveMarkerInit>
 {
    /**
     * Identifying string. Must be unique in the topic namespace
     * that this server works on.
     */
-   private java.lang.StringBuilder server_id_;
+   public java.lang.StringBuilder server_id_;
    /**
     * Sequence number.
     * The client will use this to detect if it has missed a subsequent
@@ -18,11 +19,11 @@ public class InteractiveMarkerInit implements Settable<InteractiveMarkerInit>, E
     * init topic after a successful initialization to avoid receiving
     * duplicate data.
     */
-   private long seq_num_;
+   public long seq_num_;
    /**
     * All markers.
     */
-   private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
 
    public InteractiveMarkerInit()
    {

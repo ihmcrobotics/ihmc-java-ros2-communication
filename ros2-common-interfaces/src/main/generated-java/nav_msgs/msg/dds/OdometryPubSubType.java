@@ -11,6 +11,7 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
    public static final java.lang.String name = "nav_msgs::msg::dds_::Odometry_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public OdometryPubSubType()
    {
 

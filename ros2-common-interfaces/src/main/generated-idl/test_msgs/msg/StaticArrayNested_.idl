@@ -1,0 +1,21 @@
+#ifndef __test_msgs__msg__StaticArrayNested__idl__
+#define __test_msgs__msg__StaticArrayNested__idl__
+
+#include "test_msgs/msg/./Primitives_.idl"
+module test_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="test_msgs::msg::dds_::StaticArrayNested_")
+      struct StaticArrayNested
+      {
+        test_msgs::msg::dds::Primitives primitive_values[4];
+      };
+    };
+  };
+};
+
+#endif

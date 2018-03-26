@@ -1,12 +1,13 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class InertiaStamped implements Settable<InertiaStamped>, EpsilonComparable<InertiaStamped>
+public class InertiaStamped extends Packet<InertiaStamped> implements Settable<InertiaStamped>, EpsilonComparable<InertiaStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.Inertia inertia_;
+   public std_msgs.msg.dds.Header header_;
+   public geometry_msgs.msg.dds.Inertia inertia_;
 
    public InertiaStamped()
    {

@@ -1,20 +1,21 @@
 package rcl_interfaces.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class SetParametersResult implements Settable<SetParametersResult>, EpsilonComparable<SetParametersResult>
+public class SetParametersResult extends Packet<SetParametersResult> implements Settable<SetParametersResult>, EpsilonComparable<SetParametersResult>
 {
    /**
     * A true value of the same index indicates that the parameter was set successfully.
     * A false value indicates the change was rejected.
     */
-   private boolean successful_;
+   public boolean successful_;
    /**
     * Reason why the setting was either successful or a failure.
     * Should only be used for logging and user interfaces.
     */
-   private java.lang.StringBuilder reason_;
+   public java.lang.StringBuilder reason_;
 
    public SetParametersResult()
    {

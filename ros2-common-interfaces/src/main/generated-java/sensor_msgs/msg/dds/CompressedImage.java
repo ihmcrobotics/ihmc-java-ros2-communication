@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -13,20 +14,20 @@ import us.ihmc.euclid.interfaces.Settable;
  * Acceptable values:
  * jpeg, png
  */
-public class CompressedImage implements Settable<CompressedImage>, EpsilonComparable<CompressedImage>
+public class CompressedImage extends Packet<CompressedImage> implements Settable<CompressedImage>, EpsilonComparable<CompressedImage>
 {
    /**
     * Header timestamp should be acquisition time of image
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Specifies the format of the data
     */
-   private java.lang.StringBuilder format_;
+   public java.lang.StringBuilder format_;
    /**
     * Compressed image buffer
     */
-   private us.ihmc.idl.IDLSequence.Byte data_;
+   public us.ihmc.idl.IDLSequence.Byte data_;
 
    public CompressedImage()
    {

@@ -11,6 +11,7 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
    public static final java.lang.String name = "nav_msgs::msg::dds_::OccupancyGrid_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public OccupancyGridPubSubType()
    {
 

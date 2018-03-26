@@ -1,15 +1,17 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This expresses an estimated pose with a reference coordinate frame and timestamp
  */
-public class PoseWithCovarianceStamped implements Settable<PoseWithCovarianceStamped>, EpsilonComparable<PoseWithCovarianceStamped>
+public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped>
+      implements Settable<PoseWithCovarianceStamped>, EpsilonComparable<PoseWithCovarianceStamped>
 {
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.PoseWithCovariance pose_;
+   public std_msgs.msg.dds.Header header_;
+   public geometry_msgs.msg.dds.PoseWithCovariance pose_;
 
    public PoseWithCovarianceStamped()
    {

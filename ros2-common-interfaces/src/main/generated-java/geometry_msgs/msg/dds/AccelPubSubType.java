@@ -11,6 +11,7 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Accel_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public AccelPubSubType()
    {
 

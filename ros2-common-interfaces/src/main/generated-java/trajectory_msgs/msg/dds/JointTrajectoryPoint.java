@@ -1,5 +1,6 @@
 package trajectory_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -8,13 +9,13 @@ import us.ihmc.euclid.interfaces.Settable;
  * or positions[, effort] for the trajectory to be executed.
  * All specified values are in the same order as the joint names in JointTrajectory.msg.
  */
-public class JointTrajectoryPoint implements Settable<JointTrajectoryPoint>, EpsilonComparable<JointTrajectoryPoint>
+public class JointTrajectoryPoint extends Packet<JointTrajectoryPoint> implements Settable<JointTrajectoryPoint>, EpsilonComparable<JointTrajectoryPoint>
 {
-   private us.ihmc.idl.IDLSequence.Double positions_;
-   private us.ihmc.idl.IDLSequence.Double velocities_;
-   private us.ihmc.idl.IDLSequence.Double accelerations_;
-   private us.ihmc.idl.IDLSequence.Double effort_;
-   private builtin_interfaces.msg.dds.Duration time_from_start_;
+   public us.ihmc.idl.IDLSequence.Double positions_;
+   public us.ihmc.idl.IDLSequence.Double velocities_;
+   public us.ihmc.idl.IDLSequence.Double accelerations_;
+   public us.ihmc.idl.IDLSequence.Double effort_;
+   public builtin_interfaces.msg.dds.Duration time_from_start_;
 
    public JointTrajectoryPoint()
    {

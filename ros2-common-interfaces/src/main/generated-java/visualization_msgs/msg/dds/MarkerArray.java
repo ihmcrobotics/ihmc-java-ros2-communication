@@ -1,11 +1,12 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class MarkerArray implements Settable<MarkerArray>, EpsilonComparable<MarkerArray>
+public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerArray>, EpsilonComparable<MarkerArray>
 {
-   private us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> markers_;
 
    public MarkerArray()
    {

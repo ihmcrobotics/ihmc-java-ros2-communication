@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -20,18 +21,18 @@ import us.ihmc.euclid.interfaces.Settable;
  * "intensity" - laser or pixel intensity.
  * "distance"
  */
-public class ChannelFloat32 implements Settable<ChannelFloat32>, EpsilonComparable<ChannelFloat32>
+public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<ChannelFloat32>, EpsilonComparable<ChannelFloat32>
 {
    /**
     * The channel name should give semantics of the channel (e.g.
     * "intensity" instead of "value").
     */
-   private java.lang.StringBuilder name_;
+   public java.lang.StringBuilder name_;
    /**
     * The values array should be 1-1 with the elements of the associated
     * PointCloud.
     */
-   private us.ihmc.idl.IDLSequence.Float values_;
+   public us.ihmc.idl.IDLSequence.Float values_;
 
    public ChannelFloat32()
    {

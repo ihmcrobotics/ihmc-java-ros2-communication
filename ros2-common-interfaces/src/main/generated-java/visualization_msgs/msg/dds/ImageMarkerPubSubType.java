@@ -11,6 +11,7 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    public static final java.lang.String name = "visualization_msgs::msg::dds_::ImageMarker_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public ImageMarkerPubSubType()
    {
 

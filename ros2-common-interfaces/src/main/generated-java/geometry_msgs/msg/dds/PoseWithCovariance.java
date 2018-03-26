@@ -1,21 +1,22 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * This represents a pose in free space with uncertainty.
  */
-public class PoseWithCovariance implements Settable<PoseWithCovariance>, EpsilonComparable<PoseWithCovariance>
+public class PoseWithCovariance extends Packet<PoseWithCovariance> implements Settable<PoseWithCovariance>, EpsilonComparable<PoseWithCovariance>
 {
-   private us.ihmc.euclid.geometry.Pose3D pose_;
+   public us.ihmc.euclid.geometry.Pose3D pose_;
    /**
     * Row-major representation of the 6x6 covariance matrix
     * The orientation parameters use a fixed-axis representation.
     * In order, the parameters are:
     * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
     */
-   private double[] covariance_;
+   public double[] covariance_;
 
    public PoseWithCovariance()
    {

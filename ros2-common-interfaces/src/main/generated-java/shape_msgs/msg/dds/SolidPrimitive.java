@@ -1,5 +1,6 @@
 package shape_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -15,7 +16,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * Cone and cylinder primitives are defined to be circular. The tip of the cone
  * is pointing up, along +Z axis.
  */
-public class SolidPrimitive implements Settable<SolidPrimitive>, EpsilonComparable<SolidPrimitive>
+public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<SolidPrimitive>, EpsilonComparable<SolidPrimitive>
 {
    public static final byte BOX = (byte) 1;
    public static final byte SPHERE = (byte) 2;
@@ -38,12 +39,12 @@ public class SolidPrimitive implements Settable<SolidPrimitive>, EpsilonComparab
    /**
     * The type of the shape
     */
-   private byte type_;
+   public byte type_;
    /**
     * The dimensions of the shape
     * At no point will dimensions have a length > 3.
     */
-   private us.ihmc.idl.IDLSequence.Double dimensions_;
+   public us.ihmc.idl.IDLSequence.Double dimensions_;
 
    public SolidPrimitive()
    {

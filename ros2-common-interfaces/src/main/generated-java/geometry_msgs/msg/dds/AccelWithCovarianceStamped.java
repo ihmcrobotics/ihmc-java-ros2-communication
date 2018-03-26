@@ -1,15 +1,17 @@
 package geometry_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class AccelWithCovarianceStamped implements Settable<AccelWithCovarianceStamped>, EpsilonComparable<AccelWithCovarianceStamped>
+public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStamped>
+      implements Settable<AccelWithCovarianceStamped>, EpsilonComparable<AccelWithCovarianceStamped>
 {
    /**
     * This represents an estimated accel with reference coordinate frame and timestamp.
     */
-   private std_msgs.msg.dds.Header header_;
-   private geometry_msgs.msg.dds.AccelWithCovariance accel_;
+   public std_msgs.msg.dds.Header header_;
+   public geometry_msgs.msg.dds.AccelWithCovariance accel_;
 
    public AccelWithCovarianceStamped()
    {

@@ -11,6 +11,7 @@ public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sens
    public static final java.lang.String name = "sensor_msgs::msg::dds_::NavSatStatus_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
    public NavSatStatusPubSubType()
    {
 

@@ -1,12 +1,13 @@
 package shape_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
 /**
  * Representation of a plane, using the plane equation ax + by + cz + d = 0.
  */
-public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
+public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComparable<Plane>
 {
    /**
     * a := coef[0]
@@ -14,7 +15,7 @@ public class Plane implements Settable<Plane>, EpsilonComparable<Plane>
     * c := coef[2]
     * d := coef[3]
     */
-   private double[] coef_;
+   public double[] coef_;
 
    public Plane()
    {

@@ -1,5 +1,6 @@
 package visualization_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -10,7 +11,7 @@ import us.ihmc.euclid.interfaces.Settable;
  *
  * for more information on using this message with rviz.
  */
-public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
+public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonComparable<Marker>
 {
    public static final byte ARROW = (byte) 0;
    public static final byte CUBE = (byte) 1;
@@ -31,20 +32,20 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
    /**
     * Header for timestamp and frame id.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Namespace in which to place the object.
     * Used in conjunction with id to create a unique name for the object.
     */
-   private java.lang.StringBuilder ns_;
+   public java.lang.StringBuilder ns_;
    /**
     * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
     */
-   private int id_;
+   public int id_;
    /**
     * Type of object.
     */
-   private int type_;
+   public int type_;
    /**
     * Action to take; one of:
     * - 0 add/modify an object
@@ -52,47 +53,47 @@ public class Marker implements Settable<Marker>, EpsilonComparable<Marker>
     * - 2 deletes an object
     * - 3 deletes all objects
     */
-   private int action_;
+   public int action_;
    /**
     * Pose of the object with respect the frame_id specified in the header.
     */
-   private us.ihmc.euclid.geometry.Pose3D pose_;
+   public us.ihmc.euclid.geometry.Pose3D pose_;
    /**
     * Scale of the object; 1,1,1 means default (usually 1 meter square).
     */
-   private us.ihmc.euclid.tuple3D.Vector3D scale_;
+   public us.ihmc.euclid.tuple3D.Vector3D scale_;
    /**
     * Color of the object; in the range: [0.0-1.0]
     */
-   private std_msgs.msg.dds.ColorRGBA color_;
+   public std_msgs.msg.dds.ColorRGBA color_;
    /**
     * How long the object should last before being automatically deleted.
     * 0 indicates forever.
     */
-   private builtin_interfaces.msg.dds.Duration lifetime_;
+   public builtin_interfaces.msg.dds.Duration lifetime_;
    /**
     * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
     */
-   private boolean frame_locked_;
+   public boolean frame_locked_;
    /**
     * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
     */
-   private us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
+   public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> points_;
    /**
     * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
     * The number of colors provided must either be 0 or equal to the number of points provided.
     * NOTE: alpha is not yet used
     */
-   private us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> colors_;
+   public us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> colors_;
    /**
     * Only used for text markers
     */
-   private java.lang.StringBuilder text_;
+   public java.lang.StringBuilder text_;
    /**
     * Only used for MESH_RESOURCE markers.
     */
-   private java.lang.StringBuilder mesh_resource_;
-   private boolean mesh_use_embedded_materials_;
+   public java.lang.StringBuilder mesh_resource_;
+   public boolean mesh_use_embedded_materials_;
 
    public Marker()
    {

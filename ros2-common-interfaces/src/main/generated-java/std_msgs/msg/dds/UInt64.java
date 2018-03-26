@@ -1,11 +1,12 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class UInt64 implements Settable<UInt64>, EpsilonComparable<UInt64>
+public class UInt64 extends Packet<UInt64> implements Settable<UInt64>, EpsilonComparable<UInt64>
 {
-   private long data_;
+   public long data_;
 
    public UInt64()
    {

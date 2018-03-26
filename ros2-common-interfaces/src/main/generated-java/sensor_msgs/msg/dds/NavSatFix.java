@@ -1,5 +1,6 @@
 package sensor_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
@@ -12,7 +13,7 @@ import us.ihmc.euclid.interfaces.Settable;
  * along the diagonal. If only Dilution of Precision is available,
  * estimate an approximate covariance from that.
  */
-public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatFix>
+public class NavSatFix extends Packet<NavSatFix> implements Settable<NavSatFix>, EpsilonComparable<NavSatFix>
 {
    public static final byte COVARIANCE_TYPE_UNKNOWN = (byte) 0;
    public static final byte COVARIANCE_TYPE_APPROXIMATED = (byte) 1;
@@ -28,24 +29,24 @@ public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatF
     * Euclidean frame relative to the vehicle, not a reference
     * ellipsoid.
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * Satellite fix status information.
     */
-   private sensor_msgs.msg.dds.NavSatStatus status_;
+   public sensor_msgs.msg.dds.NavSatStatus status_;
    /**
     * Latitude [degrees]. Positive is north of equator; negative is south.
     */
-   private double latitude_;
+   public double latitude_;
    /**
     * Longitude [degrees]. Positive is east of prime meridian; negative is west.
     */
-   private double longitude_;
+   public double longitude_;
    /**
     * Altitude [m]. Positive is above the WGS 84 ellipsoid
     * (quiet NaN if no altitude is available).
     */
-   private double altitude_;
+   public double altitude_;
    /**
     * Position covariance [m^2] defined relative to a tangential plane
     * through the reported position. The components are East, North, and
@@ -53,8 +54,8 @@ public class NavSatFix implements Settable<NavSatFix>, EpsilonComparable<NavSatF
     *
     * Beware: this coordinate system exhibits singularities at the poles.
     */
-   private double[] position_covariance_;
-   private byte position_covariance_type_;
+   public double[] position_covariance_;
+   public byte position_covariance_type_;
 
    public NavSatFix()
    {

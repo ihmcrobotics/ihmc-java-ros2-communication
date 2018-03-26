@@ -1,19 +1,20 @@
 package diagnostic_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class DiagnosticArray implements Settable<DiagnosticArray>, EpsilonComparable<DiagnosticArray>
+public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable<DiagnosticArray>, EpsilonComparable<DiagnosticArray>
 {
    /**
     * This message is used to send diagnostic information about the state of the robot.
     * for timestamp
     */
-   private std_msgs.msg.dds.Header header_;
+   public std_msgs.msg.dds.Header header_;
    /**
     * an array of components being reported on
     */
-   private us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> status_;
+   public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> status_;
 
    public DiagnosticArray()
    {

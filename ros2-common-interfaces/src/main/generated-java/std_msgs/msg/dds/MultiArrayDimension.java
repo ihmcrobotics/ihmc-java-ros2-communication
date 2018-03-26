@@ -1,22 +1,23 @@
 package std_msgs.msg.dds;
 
+import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
 
-public class MultiArrayDimension implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
+public class MultiArrayDimension extends Packet<MultiArrayDimension> implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
 {
    /**
     * label of given dimension
     */
-   private java.lang.StringBuilder label_;
+   public java.lang.StringBuilder label_;
    /**
     * size of given dimension (in type units)
     */
-   private long size_;
+   public long size_;
    /**
     * stride of given dimension
     */
-   private long stride_;
+   public long stride_;
 
    public MultiArrayDimension()
    {
