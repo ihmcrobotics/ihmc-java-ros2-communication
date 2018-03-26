@@ -1,160 +1,158 @@
 package sensor_msgs.msg.dds;
-import us.ihmc.euclid.interfaces.Settable;
+
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import us.ihmc.euclid.interfaces.Settable;
+
 /**
-       * This message contains a compressed image.
-       * Header frame_id should be optical frame of camera
-       * origin of frame should be optical center of cameara
-       * +x should point to the right in the image
-       * +y should point down in the image
-       * +z should point into to plane of the image
-       * Acceptable values:
-       * jpeg, png
-       */
+ * This message contains a compressed image.
+ * Header frame_id should be optical frame of camera
+ * origin of frame should be optical center of cameara
+ * +x should point to the right in the image
+ * +y should point down in the image
+ * +z should point into to plane of the image
+ * Acceptable values:
+ * jpeg, png
+ */
 public class CompressedImage implements Settable<CompressedImage>, EpsilonComparable<CompressedImage>
 {
-    public CompressedImage()
-    {
-        	header_ = new std_msgs.msg.dds.Header();
-        	format_ = new java.lang.StringBuilder(255); 
+   /**
+    * Header timestamp should be acquisition time of image
+    */
+   private std_msgs.msg.dds.Header header_;
+   /**
+    * Specifies the format of the data
+    */
+   private java.lang.StringBuilder format_;
+   /**
+    * Compressed image buffer
+    */
+   private us.ihmc.idl.IDLSequence.Byte data_;
 
-        	data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+   public CompressedImage()
+   {
+      header_ = new std_msgs.msg.dds.Header();
+      format_ = new java.lang.StringBuilder(255);
 
-    }
+      data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
+   }
 
-    public CompressedImage(CompressedImage other)
-    {
-        set(other);
-    }
+   public CompressedImage(CompressedImage other)
+   {
+      set(other);
+   }
 
-    public void set(CompressedImage other)
-    {
-           	std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-        	format_.setLength(0);
-        	format_.append(other.format_);
+   public void set(CompressedImage other)
+   {
+      std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+      format_.setLength(0);
+      format_.append(other.format_);
 
-            data_.set(other.data_);	
-    }
+      data_.set(other.data_);
+   }
 
+   /**
+    * Header timestamp should be acquisition time of image
+    */
+   public std_msgs.msg.dds.Header getHeader()
+   {
+      return header_;
+   }
 
-        /**
-                 * Header timestamp should be acquisition time of image
-                 */
-    public std_msgs.msg.dds.Header getHeader()
-    {
-        return header_;
-    }
+   /**
+    * Specifies the format of the data
+    */
+   public java.lang.String getFormatAsString()
+   {
+      return getFormat().toString();
+   }
 
-        
-        /**
-                 * Specifies the format of the data
-                 */
-        public void setFormat(java.lang.String format)
-        {
-        	format_.setLength(0);
-        	format_.append(format);
-        }
+   /**
+    * Specifies the format of the data
+    */
+   public java.lang.StringBuilder getFormat()
+   {
+      return format_;
+   }
 
-        /**
-                 * Specifies the format of the data
-                 */
-        public java.lang.String getFormatAsString()
-        {
-        	return getFormat().toString();
-        }
+   /**
+    * Specifies the format of the data
+    */
+   public void setFormat(java.lang.String format)
+   {
+      format_.setLength(0);
+      format_.append(format);
+   }
 
-        /**
-                 * Specifies the format of the data
-                 */
-    public java.lang.StringBuilder getFormat()
-    {
-        return format_;
-    }
+   /**
+    * Compressed image buffer
+    */
+   public us.ihmc.idl.IDLSequence.Byte getData()
+   {
+      return data_;
+   }
 
-        
+   @Override
+   public boolean epsilonEquals(CompressedImage other, double epsilon)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
 
-        /**
-                 * Compressed image buffer
-                 */
-    public us.ihmc.idl.IDLSequence.Byte  getData()
-    {
-        return data_;
-    }
+      if (!this.header_.epsilonEquals(other.header_, epsilon))
+         return false;
 
-        
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.format_, other.format_, epsilon))
+         return false;
 
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsByteSequence(this.data_, other.data_, epsilon))
+         return false;
 
-    @Override
-    public boolean epsilonEquals(CompressedImage other, double epsilon)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
+      return true;
+   }
 
-                        if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-                
-                        if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.format_, other.format_, epsilon)) return false;
-                
-                        if (!us.ihmc.idl.IDLTools.epsilonEqualsByteSequence(this.data_, other.data_, epsilon)) return false;
-                
+   @Override
+   public boolean equals(Object other)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
+      if (!(other instanceof CompressedImage))
+         return false;
 
-        return true;
-    }
+      CompressedImage otherMyClass = (CompressedImage) other;
 
-    @Override
-    public boolean equals(Object other)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
-        if(!(other instanceof CompressedImage)) return false;
+      if (!this.header_.equals(otherMyClass.header_))
+         return false;
 
-        CompressedImage otherMyClass = (CompressedImage) other;
+      if (!us.ihmc.idl.IDLTools.equals(this.format_, otherMyClass.format_))
+         return false;
 
-                        if (!this.header_.equals(otherMyClass.header_)) return false;
-                
-                        if (!us.ihmc.idl.IDLTools.equals(this.format_, otherMyClass.format_)) return false;
-                
-                        if (!this.data_.equals(otherMyClass.data_)) return false;
-                
+      if (!this.data_.equals(otherMyClass.data_))
+         return false;
 
-        return true;
-    }
+      return true;
+   }
 
-     @Override
-    public java.lang.String toString()
-    {
-		StringBuilder builder = new StringBuilder();
+   @Override
+   public java.lang.String toString()
+   {
+      StringBuilder builder = new StringBuilder();
 
-      	builder.append("CompressedImage {");
-        builder.append("header=");
-        builder.append(this.header_);
+      builder.append("CompressedImage {");
+      builder.append("header=");
+      builder.append(this.header_);
 
-                builder.append(", ");
-        builder.append("format=");
-        builder.append(this.format_);
+      builder.append(", ");
+      builder.append("format=");
+      builder.append(this.format_);
 
-                builder.append(", ");
-        builder.append("data=");
-        builder.append(this.data_);
+      builder.append(", ");
+      builder.append("data=");
+      builder.append(this.data_);
 
-                
-        builder.append("}");
-		return builder.toString();
-    }
-
-    /**
-             * Header timestamp should be acquisition time of image
-             */
-        private std_msgs.msg.dds.Header header_;
-        
-    /**
-             * Specifies the format of the data
-             */
-        private java.lang.StringBuilder format_;
-        
-    /**
-             * Compressed image buffer
-             */
-        private us.ihmc.idl.IDLSequence.Byte  data_;
-        
-
+      builder.append("}");
+      return builder.toString();
+   }
 }

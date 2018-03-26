@@ -1,96 +1,95 @@
 package geometry_msgs.msg.dds;
-import us.ihmc.euclid.interfaces.Settable;
+
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import us.ihmc.euclid.interfaces.Settable;
+
 /**
-       * This represents force in free space, separated into its linear and angular parts.
-       */
+ * This represents force in free space, separated into its linear and angular parts.
+ */
 public class Wrench implements Settable<Wrench>, EpsilonComparable<Wrench>
 {
-    public Wrench()
-    {
-        	force_ = new us.ihmc.euclid.tuple3D.Vector3D();
-        	torque_ = new us.ihmc.euclid.tuple3D.Vector3D();
-    }
+   private us.ihmc.euclid.tuple3D.Vector3D force_;
+   private us.ihmc.euclid.tuple3D.Vector3D torque_;
 
-    public Wrench(Wrench other)
-    {
-        set(other);
-    }
+   public Wrench()
+   {
+      force_ = new us.ihmc.euclid.tuple3D.Vector3D();
+      torque_ = new us.ihmc.euclid.tuple3D.Vector3D();
+   }
 
-    public void set(Wrench other)
-    {
-           	geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.force_, force_);
-           	geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.torque_, torque_);
-    }
+   public Wrench(Wrench other)
+   {
+      set(other);
+   }
 
+   public void set(Wrench other)
+   {
+      geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.force_, force_);
+      geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.torque_, torque_);
+   }
 
-    public us.ihmc.euclid.tuple3D.Vector3D getForce()
-    {
-        return force_;
-    }
+   public us.ihmc.euclid.tuple3D.Vector3D getForce()
+   {
+      return force_;
+   }
 
-        
+   public us.ihmc.euclid.tuple3D.Vector3D getTorque()
+   {
+      return torque_;
+   }
 
-    public us.ihmc.euclid.tuple3D.Vector3D getTorque()
-    {
-        return torque_;
-    }
+   @Override
+   public boolean epsilonEquals(Wrench other, double epsilon)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
 
-        
+      if (!this.force_.epsilonEquals(other.force_, epsilon))
+         return false;
 
+      if (!this.torque_.epsilonEquals(other.torque_, epsilon))
+         return false;
 
-    @Override
-    public boolean epsilonEquals(Wrench other, double epsilon)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
+      return true;
+   }
 
-                        if (!this.force_.epsilonEquals(other.force_, epsilon)) return false;
-                
-                        if (!this.torque_.epsilonEquals(other.torque_, epsilon)) return false;
-                
+   @Override
+   public boolean equals(Object other)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
+      if (!(other instanceof Wrench))
+         return false;
 
-        return true;
-    }
+      Wrench otherMyClass = (Wrench) other;
 
-    @Override
-    public boolean equals(Object other)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
-        if(!(other instanceof Wrench)) return false;
+      if (!this.force_.equals(otherMyClass.force_))
+         return false;
 
-        Wrench otherMyClass = (Wrench) other;
+      if (!this.torque_.equals(otherMyClass.torque_))
+         return false;
 
-                        if (!this.force_.equals(otherMyClass.force_)) return false;
-                
-                        if (!this.torque_.equals(otherMyClass.torque_)) return false;
-                
+      return true;
+   }
 
-        return true;
-    }
+   @Override
+   public java.lang.String toString()
+   {
+      StringBuilder builder = new StringBuilder();
 
-     @Override
-    public java.lang.String toString()
-    {
-		StringBuilder builder = new StringBuilder();
+      builder.append("Wrench {");
+      builder.append("force=");
+      builder.append(this.force_);
 
-      	builder.append("Wrench {");
-        builder.append("force=");
-        builder.append(this.force_);
+      builder.append(", ");
+      builder.append("torque=");
+      builder.append(this.torque_);
 
-                builder.append(", ");
-        builder.append("torque=");
-        builder.append(this.torque_);
-
-                
-        builder.append("}");
-		return builder.toString();
-    }
-
-        private us.ihmc.euclid.tuple3D.Vector3D force_;
-        
-        private us.ihmc.euclid.tuple3D.Vector3D torque_;
-        
-
+      builder.append("}");
+      return builder.toString();
+   }
 }

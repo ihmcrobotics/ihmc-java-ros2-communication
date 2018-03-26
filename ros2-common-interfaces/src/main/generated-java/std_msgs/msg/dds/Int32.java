@@ -1,79 +1,78 @@
 package std_msgs.msg.dds;
-import us.ihmc.euclid.interfaces.Settable;
+
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import us.ihmc.euclid.interfaces.Settable;
+
 public class Int32 implements Settable<Int32>, EpsilonComparable<Int32>
 {
-    public Int32()
-    {
-    }
+   private int data_;
 
-    public Int32(Int32 other)
-    {
-        set(other);
-    }
+   public Int32()
+   {
+   }
 
-    public void set(Int32 other)
-    {
-        	data_ = other.data_;
+   public Int32(Int32 other)
+   {
+      set(other);
+   }
 
-    }
+   public void set(Int32 other)
+   {
+      data_ = other.data_;
+   }
 
-    public void setData(int data)
-    {
-        data_ = data;
-    }
+   public int getData()
+   {
+      return data_;
+   }
 
-    public int getData()
-    {
-        return data_;
-    }
+   public void setData(int data)
+   {
+      data_ = data;
+   }
 
-        
+   @Override
+   public boolean epsilonEquals(Int32 other, double epsilon)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
 
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon))
+         return false;
 
-    @Override
-    public boolean epsilonEquals(Int32 other, double epsilon)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
+      return true;
+   }
 
-                        if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
-                
+   @Override
+   public boolean equals(Object other)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
+      if (!(other instanceof Int32))
+         return false;
 
-        return true;
-    }
+      Int32 otherMyClass = (Int32) other;
 
-    @Override
-    public boolean equals(Object other)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
-        if(!(other instanceof Int32)) return false;
+      if (this.data_ != otherMyClass.data_)
+         return false;
 
-        Int32 otherMyClass = (Int32) other;
+      return true;
+   }
 
-                        if(this.data_ != otherMyClass.data_) return false;
+   @Override
+   public java.lang.String toString()
+   {
+      StringBuilder builder = new StringBuilder();
 
-                
+      builder.append("Int32 {");
+      builder.append("data=");
+      builder.append(this.data_);
 
-        return true;
-    }
-
-     @Override
-    public java.lang.String toString()
-    {
-		StringBuilder builder = new StringBuilder();
-
-      	builder.append("Int32 {");
-        builder.append("data=");
-        builder.append(this.data_);
-
-                
-        builder.append("}");
-		return builder.toString();
-    }
-
-        private int data_;
-        
-
+      builder.append("}");
+      return builder.toString();
+   }
 }
