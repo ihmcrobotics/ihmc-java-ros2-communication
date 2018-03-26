@@ -1,79 +1,78 @@
 package std_msgs.msg.dds;
-import us.ihmc.euclid.interfaces.Settable;
+
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import us.ihmc.euclid.interfaces.Settable;
+
 public class Byte implements Settable<Byte>, EpsilonComparable<Byte>
 {
-    public Byte()
-    {
-    }
+   public byte data_;
 
-    public Byte(Byte other)
-    {
-        set(other);
-    }
+   public Byte()
+   {
+   }
 
-    public void set(Byte other)
-    {
-        	data_ = other.data_;
+   public Byte(Byte other)
+   {
+      set(other);
+   }
 
-    }
+   public void set(Byte other)
+   {
+      data_ = other.data_;
+   }
 
-    public void setData(byte data)
-    {
-        data_ = data;
-    }
+   public byte getData()
+   {
+      return data_;
+   }
 
-    public byte getData()
-    {
-        return data_;
-    }
+   public void setData(byte data)
+   {
+      data_ = data;
+   }
 
-        
+   @Override
+   public boolean epsilonEquals(Byte other, double epsilon)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
 
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon))
+         return false;
 
-    @Override
-    public boolean epsilonEquals(Byte other, double epsilon)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
+      return true;
+   }
 
-                        if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
-                
+   @Override
+   public boolean equals(Object other)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
+      if (!(other instanceof Byte))
+         return false;
 
-        return true;
-    }
+      Byte otherMyClass = (Byte) other;
 
-    @Override
-    public boolean equals(Object other)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
-        if(!(other instanceof Byte)) return false;
+      if (this.data_ != otherMyClass.data_)
+         return false;
 
-        Byte otherMyClass = (Byte) other;
+      return true;
+   }
 
-                        if(this.data_ != otherMyClass.data_) return false;
+   @Override
+   public java.lang.String toString()
+   {
+      StringBuilder builder = new StringBuilder();
 
-                
+      builder.append("Byte {");
+      builder.append("data=");
+      builder.append(this.data_);
 
-        return true;
-    }
-
-     @Override
-    public java.lang.String toString()
-    {
-		StringBuilder builder = new StringBuilder();
-
-      	builder.append("Byte {");
-        builder.append("data=");
-        builder.append(this.data_);
-
-                
-        builder.append("}");
-		return builder.toString();
-    }
-
-        private byte data_;
-        
-
+      builder.append("}");
+      return builder.toString();
+   }
 }

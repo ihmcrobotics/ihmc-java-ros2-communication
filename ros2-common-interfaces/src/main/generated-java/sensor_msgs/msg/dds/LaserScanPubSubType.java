@@ -1,35 +1,155 @@
 package sensor_msgs.msg.dds;
 
 /**
-* 
-* Topic data type of the struct "LaserScan" defined in "LaserScan_.idl". Use this class to provide the TopicDataType to a Participant. 
-*
-* This file was automatically generated from LaserScan_.idl by us.ihmc.idl.generator.IDLGenerator. 
-* Do not update this file directly, edit LaserScan_.idl instead.
-*
-*/
+ * Topic data type of the struct "LaserScan" defined in "LaserScan_.idl". Use this class to provide the TopicDataType to a Participant.
+ *
+ * This file was automatically generated from LaserScan_.idl by us.ihmc.idl.generator.IDLGenerator.
+ * Do not update this file directly, edit LaserScan_.idl instead.
+ */
 public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.LaserScan>
 {
-	public static final java.lang.String name = "sensor_msgs::msg::dds_::LaserScan_";
-	
-	
-	
-    public LaserScanPubSubType()
-    {
-        
-    }
+   public static final java.lang.String name = "sensor_msgs::msg::dds_::LaserScan_";
+   private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
+   private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
 
-	private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
-	private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+   public LaserScanPubSubType()
+   {
 
-    
-    @Override
+   }
+
+   public static int getMaxCdrSerializedSize()
+   {
+      return getMaxCdrSerializedSize(0);
+   }
+
+   public static int getMaxCdrSerializedSize(int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      return current_alignment - initial_alignment;
+   }
+
+   public final static int getCdrSerializedSize(sensor_msgs.msg.dds.LaserScan data)
+   {
+      return getCdrSerializedSize(data, 0);
+   }
+
+   public final static int getCdrSerializedSize(sensor_msgs.msg.dds.LaserScan data, int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (data.getRanges().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (data.getIntensities().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+      return current_alignment - initial_alignment;
+   }
+
+   public static void write(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
+   {
+
+      std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
+      cdr.write_type_5(data.getAngleMin());
+
+      cdr.write_type_5(data.getAngleMax());
+
+      cdr.write_type_5(data.getAngleIncrement());
+
+      cdr.write_type_5(data.getTimeIncrement());
+
+      cdr.write_type_5(data.getScanTime());
+
+      cdr.write_type_5(data.getRangeMin());
+
+      cdr.write_type_5(data.getRangeMax());
+
+      if (data.getRanges().size() <= 100)
+         cdr.write_type_e(data.getRanges());
+      else
+         throw new RuntimeException("ranges field exceeds the maximum length");
+
+      if (data.getIntensities().size() <= 100)
+         cdr.write_type_e(data.getIntensities());
+      else
+         throw new RuntimeException("intensities field exceeds the maximum length");
+   }
+
+   public static void read(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
+   {
+
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
+
+      data.setAngleMin(cdr.read_type_5());
+
+      data.setAngleMax(cdr.read_type_5());
+
+      data.setAngleIncrement(cdr.read_type_5());
+
+      data.setTimeIncrement(cdr.read_type_5());
+
+      data.setScanTime(cdr.read_type_5());
+
+      data.setRangeMin(cdr.read_type_5());
+
+      data.setRangeMax(cdr.read_type_5());
+
+      cdr.read_type_e(data.getRanges());
+
+      cdr.read_type_e(data.getIntensities());
+   }
+
+   public static void staticCopy(sensor_msgs.msg.dds.LaserScan src, sensor_msgs.msg.dds.LaserScan dest)
+   {
+      dest.set(src);
+   }
+
+   @Override
    public void serialize(sensor_msgs.msg.dds.LaserScan data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
    {
       serializeCDR.serialize(serializedPayload);
       write(data, serializeCDR);
       serializeCDR.finishSerialize();
    }
+
    @Override
    public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.LaserScan data) throws java.io.IOException
    {
@@ -37,203 +157,60 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
       read(data, deserializeCDR);
       deserializeCDR.finishDeserialize();
    }
-   
-	public static int getMaxCdrSerializedSize()
-	{
-		return getMaxCdrSerializedSize(0);
-	}
 
-	public static int getMaxCdrSerializedSize(int current_alignment)
-	{
-	    int initial_alignment = current_alignment;
-	            
-	    current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-	    current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-	    current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-	
-	    return current_alignment - initial_alignment;
-	}
-
-
-	public final static int getCdrSerializedSize(sensor_msgs.msg.dds.LaserScan data)
-	{
-		return getCdrSerializedSize(data, 0);
-	}
-
-	public final static int getCdrSerializedSize(sensor_msgs.msg.dds.LaserScan data, int current_alignment)
-	{
-	    int initial_alignment = current_alignment;
-	            
-	    current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-	    current_alignment += (data.getRanges().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-	    current_alignment += (data.getIntensities().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-	
-	    return current_alignment - initial_alignment;
-	}
-	
-   public static void write(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
+   @Override
+   public final void serialize(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.InterchangeSerializer ser)
    {
+      ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-	    std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+      ser.write_type_5("angle_min", data.getAngleMin());
 
-	    cdr.write_type_5(data.getAngleMin());
+      ser.write_type_5("angle_max", data.getAngleMax());
 
-	    cdr.write_type_5(data.getAngleMax());
+      ser.write_type_5("angle_increment", data.getAngleIncrement());
 
-	    cdr.write_type_5(data.getAngleIncrement());
+      ser.write_type_5("time_increment", data.getTimeIncrement());
 
-	    cdr.write_type_5(data.getTimeIncrement());
+      ser.write_type_5("scan_time", data.getScanTime());
 
-	    cdr.write_type_5(data.getScanTime());
+      ser.write_type_5("range_min", data.getRangeMin());
 
-	    cdr.write_type_5(data.getRangeMin());
+      ser.write_type_5("range_max", data.getRangeMax());
 
-	    cdr.write_type_5(data.getRangeMax());
+      ser.write_type_e("ranges", data.getRanges());
 
-	    if(data.getRanges().size() <= 100)
-	    cdr.write_type_e(data.getRanges());else
-	        throw new RuntimeException("ranges field exceeds the maximum length");
-
-	    if(data.getIntensities().size() <= 100)
-	    cdr.write_type_e(data.getIntensities());else
-	        throw new RuntimeException("intensities field exceeds the maximum length");
+      ser.write_type_e("intensities", data.getIntensities());
    }
 
-   public static void read(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
+   @Override
+   public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.LaserScan data)
    {
+      ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-	    	std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      data.setAngleMin(ser.read_type_5("angle_min"));
 
-	    	data.setAngleMin(cdr.read_type_5());
-	    	
+      data.setAngleMax(ser.read_type_5("angle_max"));
 
-	    	data.setAngleMax(cdr.read_type_5());
-	    	
+      data.setAngleIncrement(ser.read_type_5("angle_increment"));
 
-	    	data.setAngleIncrement(cdr.read_type_5());
-	    	
+      data.setTimeIncrement(ser.read_type_5("time_increment"));
 
-	    	data.setTimeIncrement(cdr.read_type_5());
-	    	
+      data.setScanTime(ser.read_type_5("scan_time"));
 
-	    	data.setScanTime(cdr.read_type_5());
-	    	
+      data.setRangeMin(ser.read_type_5("range_min"));
 
-	    	data.setRangeMin(cdr.read_type_5());
-	    	
+      data.setRangeMax(ser.read_type_5("range_max"));
 
-	    	data.setRangeMax(cdr.read_type_5());
-	    	
+      ser.read_type_e("ranges", data.getRanges());
 
-	    	cdr.read_type_e(data.getRanges());	
-
-	    	cdr.read_type_e(data.getIntensities());	
+      ser.read_type_e("intensities", data.getIntensities());
    }
-   
-	@Override
-	public final void serialize(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.InterchangeSerializer ser)
-	{
-			    ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-			    
-			    ser.write_type_5("angle_min", data.getAngleMin());
-			    
-			    ser.write_type_5("angle_max", data.getAngleMax());
-			    
-			    ser.write_type_5("angle_increment", data.getAngleIncrement());
-			    
-			    ser.write_type_5("time_increment", data.getTimeIncrement());
-			    
-			    ser.write_type_5("scan_time", data.getScanTime());
-			    
-			    ser.write_type_5("range_min", data.getRangeMin());
-			    
-			    ser.write_type_5("range_max", data.getRangeMax());
-			    
-			    ser.write_type_e("ranges", data.getRanges());
-			    
-			    ser.write_type_e("intensities", data.getIntensities());
-			    
-	}
-	
-	@Override
-	public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.LaserScan data)
-	{
-	    			ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
-	    	
-	    	    
-	    			data.setAngleMin(ser.read_type_5("angle_min"));	
-	    	    
-	    			data.setAngleMax(ser.read_type_5("angle_max"));	
-	    	    
-	    			data.setAngleIncrement(ser.read_type_5("angle_increment"));	
-	    	    
-	    			data.setTimeIncrement(ser.read_type_5("time_increment"));	
-	    	    
-	    			data.setScanTime(ser.read_type_5("scan_time"));	
-	    	    
-	    			data.setRangeMin(ser.read_type_5("range_min"));	
-	    	    
-	    			data.setRangeMax(ser.read_type_5("range_max"));	
-	    	    
-	    			ser.read_type_e("ranges", data.getRanges());	
-	    	    
-	    			ser.read_type_e("intensities", data.getIntensities());	
-	    	    
-	}
-
-   public static void staticCopy(sensor_msgs.msg.dds.LaserScan src, sensor_msgs.msg.dds.LaserScan dest)
-   {
-      dest.set(src);
-   }
-   
-   
    @Override
    public sensor_msgs.msg.dds.LaserScan createData()
    {
       return new sensor_msgs.msg.dds.LaserScan();
    }
-      
 
    @Override
    public int getTypeSize()
@@ -246,26 +223,25 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       return name;
    }
-   
+
    public void serialize(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
-	{
-		write(data, cdr);
-	}
+   {
+      write(data, cdr);
+   }
 
    public void deserialize(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
    {
-        read(data, cdr);
+      read(data, cdr);
    }
-   
+
    public void copy(sensor_msgs.msg.dds.LaserScan src, sensor_msgs.msg.dds.LaserScan dest)
    {
       staticCopy(src, dest);
-   }	
+   }
 
-   
    @Override
    public LaserScanPubSubType newInstance()
    {
-   	  return new LaserScanPubSubType();
+      return new LaserScanPubSubType();
    }
 }

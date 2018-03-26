@@ -1,167 +1,162 @@
 package std_msgs.msg.dds;
-import us.ihmc.euclid.interfaces.Settable;
+
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import us.ihmc.euclid.interfaces.Settable;
+
 public class MultiArrayDimension implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
 {
-    public MultiArrayDimension()
-    {
-        	label_ = new java.lang.StringBuilder(255); 
+   /**
+    * label of given dimension
+    */
+   public java.lang.StringBuilder label_;
+   /**
+    * size of given dimension (in type units)
+    */
+   public long size_;
+   /**
+    * stride of given dimension
+    */
+   public long stride_;
 
+   public MultiArrayDimension()
+   {
+      label_ = new java.lang.StringBuilder(255);
+   }
 
+   public MultiArrayDimension(MultiArrayDimension other)
+   {
+      set(other);
+   }
 
-    }
+   public void set(MultiArrayDimension other)
+   {
+      label_.setLength(0);
+      label_.append(other.label_);
 
-    public MultiArrayDimension(MultiArrayDimension other)
-    {
-        set(other);
-    }
+      size_ = other.size_;
 
-    public void set(MultiArrayDimension other)
-    {
-        	label_.setLength(0);
-        	label_.append(other.label_);
+      stride_ = other.stride_;
+   }
 
-        	size_ = other.size_;
+   /**
+    * label of given dimension
+    */
+   public java.lang.String getLabelAsString()
+   {
+      return getLabel().toString();
+   }
 
-        	stride_ = other.stride_;
+   /**
+    * label of given dimension
+    */
+   public java.lang.StringBuilder getLabel()
+   {
+      return label_;
+   }
 
-    }
+   /**
+    * label of given dimension
+    */
+   public void setLabel(java.lang.String label)
+   {
+      label_.setLength(0);
+      label_.append(label);
+   }
 
-        /**
-                 * label of given dimension
-                 */
-        public void setLabel(java.lang.String label)
-        {
-        	label_.setLength(0);
-        	label_.append(label);
-        }
+   /**
+    * size of given dimension (in type units)
+    */
+   public long getSize()
+   {
+      return size_;
+   }
 
-        /**
-                 * label of given dimension
-                 */
-        public java.lang.String getLabelAsString()
-        {
-        	return getLabel().toString();
-        }
+   /**
+    * size of given dimension (in type units)
+    */
+   public void setSize(long size)
+   {
+      size_ = size;
+   }
 
-        /**
-                 * label of given dimension
-                 */
-    public java.lang.StringBuilder getLabel()
-    {
-        return label_;
-    }
+   /**
+    * stride of given dimension
+    */
+   public long getStride()
+   {
+      return stride_;
+   }
 
-        
-        /**
-                 * size of given dimension (in type units)
-                 */
-    public void setSize(long size)
-    {
-        size_ = size;
-    }
+   /**
+    * stride of given dimension
+    */
+   public void setStride(long stride)
+   {
+      stride_ = stride;
+   }
 
-        /**
-                 * size of given dimension (in type units)
-                 */
-    public long getSize()
-    {
-        return size_;
-    }
+   @Override
+   public boolean epsilonEquals(MultiArrayDimension other, double epsilon)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
 
-        
-        /**
-                 * stride of given dimension
-                 */
-    public void setStride(long stride)
-    {
-        stride_ = stride;
-    }
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.label_, other.label_, epsilon))
+         return false;
 
-        /**
-                 * stride of given dimension
-                 */
-    public long getStride()
-    {
-        return stride_;
-    }
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.size_, other.size_, epsilon))
+         return false;
 
-        
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.stride_, other.stride_, epsilon))
+         return false;
 
+      return true;
+   }
 
-    @Override
-    public boolean epsilonEquals(MultiArrayDimension other, double epsilon)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
+   @Override
+   public boolean equals(Object other)
+   {
+      if (other == null)
+         return false;
+      if (other == this)
+         return true;
+      if (!(other instanceof MultiArrayDimension))
+         return false;
 
-                        if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.label_, other.label_, epsilon)) return false;
-                
-                        if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.size_, other.size_, epsilon)) return false;
-                
-                        if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.stride_, other.stride_, epsilon)) return false;
-                
+      MultiArrayDimension otherMyClass = (MultiArrayDimension) other;
 
-        return true;
-    }
+      if (!us.ihmc.idl.IDLTools.equals(this.label_, otherMyClass.label_))
+         return false;
 
-    @Override
-    public boolean equals(Object other)
-    {
-        if(other == null) return false;
-        if(other == this) return true;
-        if(!(other instanceof MultiArrayDimension)) return false;
+      if (this.size_ != otherMyClass.size_)
+         return false;
 
-        MultiArrayDimension otherMyClass = (MultiArrayDimension) other;
+      if (this.stride_ != otherMyClass.stride_)
+         return false;
 
-                        if (!us.ihmc.idl.IDLTools.equals(this.label_, otherMyClass.label_)) return false;
-                
-                        if(this.size_ != otherMyClass.size_) return false;
+      return true;
+   }
 
-                
-                        if(this.stride_ != otherMyClass.stride_) return false;
+   @Override
+   public java.lang.String toString()
+   {
+      StringBuilder builder = new StringBuilder();
 
-                
+      builder.append("MultiArrayDimension {");
+      builder.append("label=");
+      builder.append(this.label_);
 
-        return true;
-    }
+      builder.append(", ");
+      builder.append("size=");
+      builder.append(this.size_);
 
-     @Override
-    public java.lang.String toString()
-    {
-		StringBuilder builder = new StringBuilder();
+      builder.append(", ");
+      builder.append("stride=");
+      builder.append(this.stride_);
 
-      	builder.append("MultiArrayDimension {");
-        builder.append("label=");
-        builder.append(this.label_);
-
-                builder.append(", ");
-        builder.append("size=");
-        builder.append(this.size_);
-
-                builder.append(", ");
-        builder.append("stride=");
-        builder.append(this.stride_);
-
-                
-        builder.append("}");
-		return builder.toString();
-    }
-
-    /**
-             * label of given dimension
-             */
-        private java.lang.StringBuilder label_;
-        
-    /**
-             * size of given dimension (in type units)
-             */
-        private long size_;
-        
-    /**
-             * stride of given dimension
-             */
-        private long stride_;
-        
-
+      builder.append("}");
+      return builder.toString();
+   }
 }
