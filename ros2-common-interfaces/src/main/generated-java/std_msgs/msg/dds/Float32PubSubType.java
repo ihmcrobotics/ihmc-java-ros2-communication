@@ -11,7 +11,6 @@ public class Float32PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.
    public static final java.lang.String name = "std_msgs::msg::dds_::Float32_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public Float32PubSubType()
    {
 

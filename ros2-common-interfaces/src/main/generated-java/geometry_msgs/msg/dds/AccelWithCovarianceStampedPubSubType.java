@@ -11,7 +11,6 @@ public class AccelWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    public static final java.lang.String name = "geometry_msgs::msg::dds_::AccelWithCovarianceStamped_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public AccelWithCovarianceStampedPubSubType()
    {
 

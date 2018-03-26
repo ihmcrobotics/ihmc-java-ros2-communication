@@ -11,7 +11,6 @@ public class ParameterEventDescriptorsPubSubType implements us.ihmc.pubsub.Topic
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterEventDescriptors_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public ParameterEventDescriptorsPubSubType()
    {
 

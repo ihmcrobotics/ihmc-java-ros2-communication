@@ -11,7 +11,6 @@ public class StatePubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_m
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::State_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public StatePubSubType()
    {
 

@@ -11,7 +11,6 @@ public class MultiDOFJointStatePubSubType implements us.ihmc.pubsub.TopicDataTyp
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MultiDOFJointState_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public MultiDOFJointStatePubSubType()
    {
 

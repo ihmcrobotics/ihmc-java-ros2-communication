@@ -11,7 +11,6 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ListParametersResult_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public ListParametersResultPubSubType()
    {
 

@@ -11,7 +11,6 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
    public static final java.lang.String name = "stereo_msgs::msg::dds_::DisparityImage_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public DisparityImagePubSubType()
    {
 

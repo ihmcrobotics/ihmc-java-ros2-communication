@@ -11,7 +11,6 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    public static final java.lang.String name = "shape_msgs::msg::dds_::Mesh_";
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
    public MeshPubSubType()
    {
 
