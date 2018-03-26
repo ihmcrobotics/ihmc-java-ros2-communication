@@ -10,7 +10,6 @@ buildscript {
    dependencies {
       classpath "us.ihmc:ihmc-build:0.12.10"
       classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.5.5-alpha"
-      classpath "us.ihmc:ihmc-pub-sub-generator:0.6.3-alpha"
       classpath "org.ajoberstar:grgit:2.1.0"
    }
 }
@@ -56,17 +55,35 @@ task show() {
    }
 }
 
-task generateMessages(type: us.ihmc.ros2.rosidl.RosInterfaceGeneratorTask) {
-   doFirst {
-      setupVendoredRepo(commonInterfacesPath, commonInterfacesUrl, ros2Release)
-      setupVendoredRepo(rclInterfacesPath, rclInterfacesUrl, ros2Release)
-      setupVendoredRepo(geometry2Path, geometry2Url, geomtry2Release)
-   }
-
-   rosPackages = files(rclInterfacesPath, commonInterfacesPath, tf2Path)
-   outputDirectory = file("src/main/generated-java")
-   customIDL = files("src/main/custom-idl")
-}
+////task generateMessages(type: us.ihmc.ros2.rosidl.RosInterfaceGeneratorTask) {
+//task generateMessages(type: us.ihmc.ros2.rosidl.Ros2MessageGenerator) {
+//   doFirst {
+//      setupVendoredRepo(commonInterfacesPath, commonInterfacesUrl, ros2Release)
+//      setupVendoredRepo(rclInterfacesPath, rclInterfacesUrl, ros2Release)
+//      setupVendoredRepo(geometry2Path, geometry2Url, geomtry2Release)
+//
+////      delete("src/main/generated-idl")
+////      delete("src/main/generated-java")
+////
+////      def generator = new us.ihmc.ros2.rosidl.RosInterfaceGenerator();
+////
+////      generator.addPackageRoot(file(rclInterfacesPath).toPath());
+////      generator.addPackageRoot(file(commonInterfacesPath).toPath());
+////      generator.addPackageRoot(file(tf2Path).toPath());
+////
+////      generator.addCustomIDLFiles(file("src/main/custom-idl").toPath());
+////
+////      generator.generate(file("src/main/generated-idl").toPath(), file("src/main/generated-java").toPath());
+////
+////      generator.convertDirectoryToUnixEOL(file("src/main/generated-idl").toPath())
+////      generator.convertDirectoryToUnixEOL(file("src/main/generated-java").toPath())
+//   }
+//
+//   rosPackages = files(rclInterfacesPath, commonInterfacesPath, tf2Path)
+//   idlOutputDirectory = file("src/main/generated-idl")
+//   javaOutputDirectory = file("src/main/generated-java")
+//   customIDLDirectory = files("src/main/custom-idl")
+//}
 
 private void setupVendoredRepo(String clonePath, String vcsUrl, String tagName)
 {
