@@ -1,86 +1,35 @@
 package rcl_interfaces.msg.dds;
 
 /**
- * Topic data type of the struct "Parameter" defined in "Parameter_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Parameter_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Parameter_.idl instead.
- */
+* 
+* Topic data type of the struct "Parameter" defined in "Parameter_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Parameter_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Parameter_.idl instead.
+*
+*/
 public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.Parameter>
 {
-   public static final java.lang.String name = "rcl_interfaces::msg::dds_::Parameter_";
-   private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
-   private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+	public static final java.lang.String name = "rcl_interfaces::msg::dds_::Parameter_";
+	
+	
+	
+    public ParameterPubSubType()
+    {
+        
+    }
 
-   public ParameterPubSubType()
-   {
+	private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
+	private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
 
-   }
-
-   public static int getMaxCdrSerializedSize()
-   {
-      return getMaxCdrSerializedSize(0);
-   }
-
-   public static int getMaxCdrSerializedSize(int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
-      current_alignment += rcl_interfaces.msg.dds.ParameterValuePubSubType.getMaxCdrSerializedSize(current_alignment);
-
-      return current_alignment - initial_alignment;
-   }
-
-   public final static int getCdrSerializedSize(rcl_interfaces.msg.dds.Parameter data)
-   {
-      return getCdrSerializedSize(data, 0);
-   }
-
-   public final static int getCdrSerializedSize(rcl_interfaces.msg.dds.Parameter data, int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
-
-      current_alignment += rcl_interfaces.msg.dds.ParameterValuePubSubType.getCdrSerializedSize(data.getValue(), current_alignment);
-
-      return current_alignment - initial_alignment;
-   }
-
-   public static void write(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
-   {
-
-      if (data.getName().length() <= 255)
-         cdr.write_type_d(data.getName());
-      else
-         throw new RuntimeException("name field exceeds the maximum length");
-
-      rcl_interfaces.msg.dds.ParameterValuePubSubType.write(data.getValue(), cdr);
-   }
-
-   public static void read(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
-   {
-
-      cdr.read_type_d(data.getName());
-
-      rcl_interfaces.msg.dds.ParameterValuePubSubType.read(data.getValue(), cdr);
-   }
-
-   public static void staticCopy(rcl_interfaces.msg.dds.Parameter src, rcl_interfaces.msg.dds.Parameter dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
+    
+    @Override
    public void serialize(rcl_interfaces.msg.dds.Parameter data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
    {
       serializeCDR.serialize(serializedPayload);
       write(data, serializeCDR);
       serializeCDR.finishSerialize();
    }
-
    @Override
    public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, rcl_interfaces.msg.dds.Parameter data) throws java.io.IOException
    {
@@ -88,28 +37,90 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
       read(data, deserializeCDR);
       deserializeCDR.finishDeserialize();
    }
+   
+	public static int getMaxCdrSerializedSize()
+	{
+		return getMaxCdrSerializedSize(0);
+	}
 
-   @Override
-   public final void serialize(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.InterchangeSerializer ser)
+	public static int getMaxCdrSerializedSize(int current_alignment)
+	{
+	    int initial_alignment = current_alignment;
+	            
+	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+
+	    current_alignment += rcl_interfaces.msg.dds.ParameterValuePubSubType.getMaxCdrSerializedSize(current_alignment);
+	
+	    return current_alignment - initial_alignment;
+	}
+
+
+	public final static int getCdrSerializedSize(rcl_interfaces.msg.dds.Parameter data)
+	{
+		return getCdrSerializedSize(data, 0);
+	}
+
+	public final static int getCdrSerializedSize(rcl_interfaces.msg.dds.Parameter data, int current_alignment)
+	{
+	    int initial_alignment = current_alignment;
+	            
+	    current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
+
+	    current_alignment += rcl_interfaces.msg.dds.ParameterValuePubSubType.getCdrSerializedSize(data.getValue(), current_alignment);
+	
+	    return current_alignment - initial_alignment;
+	}
+	
+   public static void write(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
    {
-      ser.write_type_d("name", data.getName());
 
-      ser.write_type_a("value", new rcl_interfaces.msg.dds.ParameterValuePubSubType(), data.getValue());
+	    if(data.getName().length() <= 255)
+	    cdr.write_type_d(data.getName());else
+	        throw new RuntimeException("name field exceeds the maximum length");
+
+	    rcl_interfaces.msg.dds.ParameterValuePubSubType.write(data.getValue(), cdr);
    }
 
-   @Override
-   public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.Parameter data)
+   public static void read(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
    {
-      ser.read_type_d("name", data.getName());
 
-      ser.read_type_a("value", new rcl_interfaces.msg.dds.ParameterValuePubSubType(), data.getValue());
+	    	cdr.read_type_d(data.getName());	
+
+	    	rcl_interfaces.msg.dds.ParameterValuePubSubType.read(data.getValue(), cdr);	
    }
+   
+	@Override
+	public final void serialize(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.InterchangeSerializer ser)
+	{
+			    ser.write_type_d("name", data.getName());
+			    
+			    ser.write_type_a("value", new rcl_interfaces.msg.dds.ParameterValuePubSubType(), data.getValue());
 
+			    
+	}
+	
+	@Override
+	public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.Parameter data)
+	{
+	    			ser.read_type_d("name", data.getName());	
+	    	    
+	    			ser.read_type_a("value", new rcl_interfaces.msg.dds.ParameterValuePubSubType(), data.getValue());
+	    	
+	    	    
+	}
+
+   public static void staticCopy(rcl_interfaces.msg.dds.Parameter src, rcl_interfaces.msg.dds.Parameter dest)
+   {
+      dest.set(src);
+   }
+   
+   
    @Override
    public rcl_interfaces.msg.dds.Parameter createData()
    {
       return new rcl_interfaces.msg.dds.Parameter();
    }
+      
 
    @Override
    public int getTypeSize()
@@ -122,25 +133,26 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
    {
       return name;
    }
-
+   
    public void serialize(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
-   {
-      write(data, cdr);
-   }
+	{
+		write(data, cdr);
+	}
 
    public void deserialize(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
    {
-      read(data, cdr);
+        read(data, cdr);
    }
-
+   
    public void copy(rcl_interfaces.msg.dds.Parameter src, rcl_interfaces.msg.dds.Parameter dest)
    {
       staticCopy(src, dest);
-   }
+   }	
 
+   
    @Override
    public ParameterPubSubType newInstance()
    {
-      return new ParameterPubSubType();
+   	  return new ParameterPubSubType();
    }
 }

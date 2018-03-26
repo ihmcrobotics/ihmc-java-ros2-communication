@@ -1,147 +1,152 @@
 package sensor_msgs.msg.dds;
-
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
-
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 /**
- * Single temperature reading.
- * frame_id is the location of the temperature reading
- */
+       * Single temperature reading.
+       * frame_id is the location of the temperature reading
+       */
 public class Temperature implements Settable<Temperature>, EpsilonComparable<Temperature>
 {
-   /**
-    * timestamp is the time the temperature was measured
-    */
-   public std_msgs.msg.dds.Header header_;
-   /**
-    * Measurement of the Temperature in Degrees Celsius.
-    */
-   public double temperature_;
-   /**
-    * 0 is interpreted as variance unknown.
-    */
-   public double variance_;
+    public Temperature()
+    {
+        	header_ = new std_msgs.msg.dds.Header();
 
-   public Temperature()
-   {
-      header_ = new std_msgs.msg.dds.Header();
-   }
 
-   public Temperature(Temperature other)
-   {
-      set(other);
-   }
+    }
 
-   public void set(Temperature other)
-   {
-      std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-      temperature_ = other.temperature_;
+    public Temperature(Temperature other)
+    {
+        set(other);
+    }
 
-      variance_ = other.variance_;
-   }
+    public void set(Temperature other)
+    {
+           	std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+        	temperature_ = other.temperature_;
 
-   /**
-    * timestamp is the time the temperature was measured
-    */
-   public std_msgs.msg.dds.Header getHeader()
-   {
-      return header_;
-   }
+        	variance_ = other.variance_;
 
-   /**
-    * Measurement of the Temperature in Degrees Celsius.
-    */
-   public double getTemperature()
-   {
-      return temperature_;
-   }
+    }
 
-   /**
-    * Measurement of the Temperature in Degrees Celsius.
-    */
-   public void setTemperature(double temperature)
-   {
-      temperature_ = temperature;
-   }
 
-   /**
-    * 0 is interpreted as variance unknown.
-    */
-   public double getVariance()
-   {
-      return variance_;
-   }
+        /**
+                 * timestamp is the time the temperature was measured
+                 */
+    public std_msgs.msg.dds.Header getHeader()
+    {
+        return header_;
+    }
 
-   /**
-    * 0 is interpreted as variance unknown.
-    */
-   public void setVariance(double variance)
-   {
-      variance_ = variance;
-   }
+        
+        /**
+                 * Measurement of the Temperature in Degrees Celsius.
+                 */
+    public void setTemperature(double temperature)
+    {
+        temperature_ = temperature;
+    }
 
-   @Override
-   public boolean epsilonEquals(Temperature other, double epsilon)
-   {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+        /**
+                 * Measurement of the Temperature in Degrees Celsius.
+                 */
+    public double getTemperature()
+    {
+        return temperature_;
+    }
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
+        
+        /**
+                 * 0 is interpreted as variance unknown.
+                 */
+    public void setVariance(double variance)
+    {
+        variance_ = variance;
+    }
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.temperature_, other.temperature_, epsilon))
-         return false;
+        /**
+                 * 0 is interpreted as variance unknown.
+                 */
+    public double getVariance()
+    {
+        return variance_;
+    }
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.variance_, other.variance_, epsilon))
-         return false;
+        
 
-      return true;
-   }
 
-   @Override
-   public boolean equals(Object other)
-   {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Temperature))
-         return false;
+    @Override
+    public boolean epsilonEquals(Temperature other, double epsilon)
+    {
+        if(other == null) return false;
+        if(other == this) return true;
 
-      Temperature otherMyClass = (Temperature) other;
+                        if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+                
+                        if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.temperature_, other.temperature_, epsilon)) return false;
+                
+                        if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.variance_, other.variance_, epsilon)) return false;
+                
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
+        return true;
+    }
 
-      if (this.temperature_ != otherMyClass.temperature_)
-         return false;
+    @Override
+    public boolean equals(Object other)
+    {
+        if(other == null) return false;
+        if(other == this) return true;
+        if(!(other instanceof Temperature)) return false;
 
-      if (this.variance_ != otherMyClass.variance_)
-         return false;
+        Temperature otherMyClass = (Temperature) other;
 
-      return true;
-   }
+                        if (!this.header_.equals(otherMyClass.header_)) return false;
+                
+                        if(this.temperature_ != otherMyClass.temperature_) return false;
 
-   @Override
-   public java.lang.String toString()
-   {
-      StringBuilder builder = new StringBuilder();
+                
+                        if(this.variance_ != otherMyClass.variance_) return false;
 
-      builder.append("Temperature {");
-      builder.append("header=");
-      builder.append(this.header_);
+                
 
-      builder.append(", ");
-      builder.append("temperature=");
-      builder.append(this.temperature_);
+        return true;
+    }
 
-      builder.append(", ");
-      builder.append("variance=");
-      builder.append(this.variance_);
+     @Override
+    public java.lang.String toString()
+    {
+		StringBuilder builder = new StringBuilder();
 
-      builder.append("}");
-      return builder.toString();
-   }
+      	builder.append("Temperature {");
+        builder.append("header=");
+        builder.append(this.header_);
+
+                builder.append(", ");
+        builder.append("temperature=");
+        builder.append(this.temperature_);
+
+                builder.append(", ");
+        builder.append("variance=");
+        builder.append(this.variance_);
+
+                
+        builder.append("}");
+		return builder.toString();
+    }
+
+    /**
+             * timestamp is the time the temperature was measured
+             */
+        private std_msgs.msg.dds.Header header_;
+        
+    /**
+             * Measurement of the Temperature in Degrees Celsius.
+             */
+        private double temperature_;
+        
+    /**
+             * 0 is interpreted as variance unknown.
+             */
+        private double variance_;
+        
+
 }
