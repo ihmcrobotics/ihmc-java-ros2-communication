@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Header>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Header_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public HeaderPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getStamp(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getFrameId().length() + 1;
 
       return current_alignment - initial_alignment;
@@ -49,9 +47,7 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void write(std_msgs.msg.dds.Header data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getStamp(), cdr);
-
       if (data.getFrameId().length() <= 255)
          cdr.write_type_d(data.getFrameId());
       else
@@ -60,9 +56,7 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void read(std_msgs.msg.dds.Header data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);
-
       cdr.read_type_d(data.getFrameId());
    }
 

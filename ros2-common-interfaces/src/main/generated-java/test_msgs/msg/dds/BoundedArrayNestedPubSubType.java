@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class BoundedArrayNestedPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.BoundedArrayNested>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::BoundedArrayNested_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public BoundedArrayNestedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class BoundedArrayNestedPubSubType implements us.ihmc.pubsub.TopicDataTyp
       {
          current_alignment += test_msgs.msg.dds.PrimitivesPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       return current_alignment - initial_alignment;
    }
 
@@ -55,7 +50,6 @@ public class BoundedArrayNestedPubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void write(test_msgs.msg.dds.BoundedArrayNested data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getPrimitiveValues().size() <= 4)
          cdr.write_type_e(data.getPrimitiveValues());
       else
@@ -64,7 +58,6 @@ public class BoundedArrayNestedPubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void read(test_msgs.msg.dds.BoundedArrayNested data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getPrimitiveValues());
    }
 

@@ -9,13 +9,9 @@ package trajectory_msgs.msg.dds;
 public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataType<trajectory_msgs.msg.dds.JointTrajectoryPoint>
 {
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::JointTrajectoryPoint_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public JointTrajectoryPointPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -71,7 +67,6 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
 
    public static void write(trajectory_msgs.msg.dds.JointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getPositions().size() <= 100)
          cdr.write_type_e(data.getPositions());
       else
@@ -97,15 +92,10 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
 
    public static void read(trajectory_msgs.msg.dds.JointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getPositions());
-
       cdr.read_type_e(data.getVelocities());
-
       cdr.read_type_e(data.getAccelerations());
-
       cdr.read_type_e(data.getEffort());
-
       builtin_interfaces.msg.dds.DurationPubSubType.read(data.getTimeFromStart(), cdr);
    }
 
@@ -136,13 +126,9 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    public final void serialize(trajectory_msgs.msg.dds.JointTrajectoryPoint data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_e("positions", data.getPositions());
-
       ser.write_type_e("velocities", data.getVelocities());
-
       ser.write_type_e("accelerations", data.getAccelerations());
-
       ser.write_type_e("effort", data.getEffort());
-
       ser.write_type_a("time_from_start", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getTimeFromStart());
    }
 
@@ -150,13 +136,9 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, trajectory_msgs.msg.dds.JointTrajectoryPoint data)
    {
       ser.read_type_e("positions", data.getPositions());
-
       ser.read_type_e("velocities", data.getVelocities());
-
       ser.read_type_e("accelerations", data.getAccelerations());
-
       ser.read_type_e("effort", data.getEffort());
-
       ser.read_type_a("time_from_start", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getTimeFromStart());
    }
 

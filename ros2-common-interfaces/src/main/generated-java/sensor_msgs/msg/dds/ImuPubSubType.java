@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Imu>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Imu_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ImuPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,13 +23,17 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       return current_alignment - initial_alignment;
@@ -49,11 +49,15 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getCdrSerializedSize(data.getOrientation(), current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getAngularVelocity(), current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getLinearAcceleration(), current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       return current_alignment - initial_alignment;
@@ -61,25 +65,20 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
    public static void write(sensor_msgs.msg.dds.Imu data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.write(data.getOrientation(), cdr);
-
       for (int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
       {
          cdr.write_type_6(data.getOrientationCovariance()[i0]);
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getAngularVelocity(), cdr);
-
       for (int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
       {
          cdr.write_type_6(data.getAngularVelocityCovariance()[i0]);
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getLinearAcceleration(), cdr);
-
       for (int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
       {
          cdr.write_type_6(data.getLinearAccelerationCovariance()[i0]);
@@ -88,25 +87,20 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
    public static void read(sensor_msgs.msg.dds.Imu data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.read(data.getOrientation(), cdr);
-
       for (int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
       {
          data.getOrientationCovariance()[i0] = cdr.read_type_6();
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngularVelocity(), cdr);
-
       for (int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
       {
          data.getAngularVelocityCovariance()[i0] = cdr.read_type_6();
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinearAcceleration(), cdr);
-
       for (int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
       {
          data.getLinearAccelerationCovariance()[i0] = cdr.read_type_6();
@@ -158,11 +152,9 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       ser.read_type_a("orientation", new geometry_msgs.msg.dds.QuaternionPubSubType(), data.getOrientation());
 
       ser.read_type_f("orientation_covariance", data.getOrientationCovariance());
-
       ser.read_type_a("angular_velocity", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getAngularVelocity());
 
       ser.read_type_f("angular_velocity_covariance", data.getAngularVelocityCovariance());
-
       ser.read_type_a("linear_acceleration", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getLinearAcceleration());
 
       ser.read_type_f("linear_acceleration_covariance", data.getLinearAccelerationCovariance());

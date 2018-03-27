@@ -96,7 +96,6 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.relative_humidity_, other.relative_humidity_, epsilon))
          return false;
 
@@ -120,7 +119,6 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.relative_humidity_ != otherMyClass.relative_humidity_)
          return false;
 
@@ -138,15 +136,12 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
       builder.append("RelativeHumidity {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("relative_humidity=");
       builder.append(this.relative_humidity_);
-
       builder.append(", ");
       builder.append("variance=");
       builder.append(this.variance_);
-
       builder.append("}");
       return builder.toString();
    }

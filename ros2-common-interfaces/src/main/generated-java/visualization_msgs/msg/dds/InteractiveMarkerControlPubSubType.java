@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerControl>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerControl_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public InteractiveMarkerControlPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,8 +23,8 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
@@ -40,7 +36,6 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
       {
          current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
@@ -60,6 +55,7 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
 
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getCdrSerializedSize(data.getOrientation(), current_alignment);
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
@@ -81,14 +77,12 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarkerControl data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getName().length() <= 255)
          cdr.write_type_d(data.getName());
       else
          throw new RuntimeException("name field exceeds the maximum length");
 
       geometry_msgs.msg.dds.QuaternionPubSubType.write(data.getOrientation(), cdr);
-
       cdr.write_type_9(data.getOrientationMode());
 
       cdr.write_type_9(data.getInteractionMode());
@@ -110,11 +104,8 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerControl data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getName());
-
       geometry_msgs.msg.dds.QuaternionPubSubType.read(data.getOrientation(), cdr);
-
       data.setOrientationMode(cdr.read_type_9());
 
       data.setInteractionMode(cdr.read_type_9());
@@ -122,7 +113,6 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
       data.setAlwaysVisible(cdr.read_type_7());
 
       cdr.read_type_e(data.getMarkers());
-
       data.setIndependentMarkerOrientation(cdr.read_type_7());
 
       cdr.read_type_d(data.getDescription());
@@ -155,19 +145,13 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
    public final void serialize(visualization_msgs.msg.dds.InteractiveMarkerControl data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_d("name", data.getName());
-
       ser.write_type_a("orientation", new geometry_msgs.msg.dds.QuaternionPubSubType(), data.getOrientation());
 
       ser.write_type_9("orientation_mode", data.getOrientationMode());
-
       ser.write_type_9("interaction_mode", data.getInteractionMode());
-
       ser.write_type_7("always_visible", data.getAlwaysVisible());
-
       ser.write_type_e("markers", data.getMarkers());
-
       ser.write_type_7("independent_marker_orientation", data.getIndependentMarkerOrientation());
-
       ser.write_type_d("description", data.getDescription());
    }
 
@@ -175,19 +159,13 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, visualization_msgs.msg.dds.InteractiveMarkerControl data)
    {
       ser.read_type_d("name", data.getName());
-
       ser.read_type_a("orientation", new geometry_msgs.msg.dds.QuaternionPubSubType(), data.getOrientation());
 
       data.setOrientationMode(ser.read_type_9("orientation_mode"));
-
       data.setInteractionMode(ser.read_type_9("interaction_mode"));
-
       data.setAlwaysVisible(ser.read_type_7("always_visible"));
-
       ser.read_type_e("markers", data.getMarkers());
-
       data.setIndependentMarkerOrientation(ser.read_type_7("independent_marker_orientation"));
-
       ser.read_type_d("description", data.getDescription());
    }
 

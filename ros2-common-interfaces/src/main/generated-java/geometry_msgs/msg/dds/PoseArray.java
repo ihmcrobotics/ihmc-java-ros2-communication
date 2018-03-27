@@ -50,7 +50,6 @@ public class PoseArray extends Packet<PoseArray> implements Settable<PoseArray>,
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (this.poses_.size() == other.poses_.size())
       {
          return false;
@@ -81,7 +80,6 @@ public class PoseArray extends Packet<PoseArray> implements Settable<PoseArray>,
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.poses_.equals(otherMyClass.poses_))
          return false;
 
@@ -96,11 +94,9 @@ public class PoseArray extends Packet<PoseArray> implements Settable<PoseArray>,
       builder.append("PoseArray {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("poses=");
       builder.append(this.poses_);
-
       builder.append("}");
       return builder.toString();
    }

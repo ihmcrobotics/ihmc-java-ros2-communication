@@ -49,7 +49,6 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.vector_.epsilonEquals(other.vector_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.vector_.equals(otherMyClass.vector_))
          return false;
 
@@ -85,11 +83,9 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
       builder.append("Vector3Stamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("vector=");
       builder.append(this.vector_);
-
       builder.append("}");
       return builder.toString();
    }

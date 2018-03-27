@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.RegionOfInterest>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::RegionOfInterest_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public RegionOfInterestPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -63,7 +59,6 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_4(data.getXOffset());
 
       cdr.write_type_4(data.getYOffset());
@@ -77,7 +72,6 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.CDR cdr)
    {
-
       data.setXOffset(cdr.read_type_4());
 
       data.setYOffset(cdr.read_type_4());
@@ -114,13 +108,9 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    public final void serialize(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_4("x_offset", data.getXOffset());
-
       ser.write_type_4("y_offset", data.getYOffset());
-
       ser.write_type_4("height", data.getHeight());
-
       ser.write_type_4("width", data.getWidth());
-
       ser.write_type_7("do_rectify", data.getDoRectify());
    }
 
@@ -128,13 +118,9 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.RegionOfInterest data)
    {
       data.setXOffset(ser.read_type_4("x_offset"));
-
       data.setYOffset(ser.read_type_4("y_offset"));
-
       data.setHeight(ser.read_type_4("height"));
-
       data.setWidth(ser.read_type_4("width"));
-
       data.setDoRectify(ser.read_type_7("do_rectify"));
    }
 

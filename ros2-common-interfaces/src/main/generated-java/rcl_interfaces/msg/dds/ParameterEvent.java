@@ -19,10 +19,8 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
    {
       new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter>(100, rcl_interfaces.msg.dds.Parameter.class,
                                                                                              new rcl_interfaces.msg.dds.ParameterPubSubType());
-
       changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter>(100, rcl_interfaces.msg.dds.Parameter.class,
                                                                                                  new rcl_interfaces.msg.dds.ParameterPubSubType());
-
       deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter>(100, rcl_interfaces.msg.dds.Parameter.class,
                                                                                                  new rcl_interfaces.msg.dds.ParameterPubSubType());
    }
@@ -118,10 +116,8 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
 
       if (!this.new_parameters_.equals(otherMyClass.new_parameters_))
          return false;
-
       if (!this.changed_parameters_.equals(otherMyClass.changed_parameters_))
          return false;
-
       if (!this.deleted_parameters_.equals(otherMyClass.deleted_parameters_))
          return false;
 
@@ -136,15 +132,12 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
       builder.append("ParameterEvent {");
       builder.append("new_parameters=");
       builder.append(this.new_parameters_);
-
       builder.append(", ");
       builder.append("changed_parameters=");
       builder.append(this.changed_parameters_);
-
       builder.append(", ");
       builder.append("deleted_parameters=");
       builder.append(this.deleted_parameters_);
-
       builder.append("}");
       return builder.toString();
    }

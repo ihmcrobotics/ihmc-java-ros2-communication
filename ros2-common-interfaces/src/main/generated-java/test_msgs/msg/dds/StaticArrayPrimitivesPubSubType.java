@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.StaticArrayPrimitives>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::StaticArrayPrimitives_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public StaticArrayPrimitivesPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -80,7 +76,6 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void write(test_msgs.msg.dds.StaticArrayPrimitives data, us.ihmc.idl.CDR cdr)
    {
-
       for (int i0 = 0; i0 < data.getBoolValues().length; ++i0)
       {
          cdr.write_type_7(data.getBoolValues()[i0]);
@@ -134,7 +129,6 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void read(test_msgs.msg.dds.StaticArrayPrimitives data, us.ihmc.idl.CDR cdr)
    {
-
       for (int i0 = 0; i0 < data.getBoolValues().length; ++i0)
       {
          data.getBoolValues()[i0] = cdr.read_type_7();
@@ -226,23 +220,14 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, test_msgs.msg.dds.StaticArrayPrimitives data)
    {
       ser.read_type_f("bool_values", data.getBoolValues());
-
       ser.read_type_f("byte_values", data.getByteValues());
-
       ser.read_type_f("char_values", data.getCharValues());
-
       ser.read_type_f("float32_values", data.getFloat32Values());
-
       ser.read_type_f("float64_values", data.getFloat64Values());
-
       ser.read_type_f("int8_values", data.getInt8Values());
-
       ser.read_type_f("uint8_values", data.getUint8Values());
-
       ser.read_type_f("int16_values", data.getInt16Values());
-
       ser.read_type_f("int32_values", data.getInt32Values());
-
       ser.read_type_f("string_values", data.getStringValues());
    }
 

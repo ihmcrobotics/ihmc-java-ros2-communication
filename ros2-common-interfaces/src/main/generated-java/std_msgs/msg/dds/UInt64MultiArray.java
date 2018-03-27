@@ -62,7 +62,6 @@ public class UInt64MultiArray extends Packet<UInt64MultiArray> implements Settab
 
       if (!this.layout_.epsilonEquals(other.layout_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsLongSequence(this.data_, other.data_, epsilon))
          return false;
 
@@ -83,7 +82,6 @@ public class UInt64MultiArray extends Packet<UInt64MultiArray> implements Settab
 
       if (!this.layout_.equals(otherMyClass.layout_))
          return false;
-
       if (!this.data_.equals(otherMyClass.data_))
          return false;
 
@@ -98,11 +96,9 @@ public class UInt64MultiArray extends Packet<UInt64MultiArray> implements Settab
       builder.append("UInt64MultiArray {");
       builder.append("layout=");
       builder.append(this.layout_);
-
       builder.append(", ");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

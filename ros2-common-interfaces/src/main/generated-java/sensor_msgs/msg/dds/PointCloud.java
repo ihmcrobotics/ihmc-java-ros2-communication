@@ -31,7 +31,6 @@ public class PointCloud extends Packet<PointCloud> implements Settable<PointClou
       header_ = new std_msgs.msg.dds.Header();
       points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32>(100, us.ihmc.euclid.tuple3D.Point3D32.class,
                                                                                      new geometry_msgs.msg.dds.Point32PubSubType());
-
       channels_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32>(100, sensor_msgs.msg.dds.ChannelFloat32.class,
                                                                                          new sensor_msgs.msg.dds.ChannelFloat32PubSubType());
    }
@@ -85,7 +84,6 @@ public class PointCloud extends Packet<PointCloud> implements Settable<PointClou
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (this.points_.size() == other.points_.size())
       {
          return false;
@@ -129,10 +127,8 @@ public class PointCloud extends Packet<PointCloud> implements Settable<PointClou
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.points_.equals(otherMyClass.points_))
          return false;
-
       if (!this.channels_.equals(otherMyClass.channels_))
          return false;
 
@@ -147,15 +143,12 @@ public class PointCloud extends Packet<PointCloud> implements Settable<PointClou
       builder.append("PointCloud {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("points=");
       builder.append(this.points_);
-
       builder.append(", ");
       builder.append("channels=");
       builder.append(this.channels_);
-
       builder.append("}");
       return builder.toString();
    }

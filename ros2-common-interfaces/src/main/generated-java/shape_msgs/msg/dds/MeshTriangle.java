@@ -9,6 +9,7 @@ import us.ihmc.euclid.interfaces.Settable;
  */
 public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshTriangle>, EpsilonComparable<MeshTriangle>
 {
+
    public MeshTriangle()
    {
    }

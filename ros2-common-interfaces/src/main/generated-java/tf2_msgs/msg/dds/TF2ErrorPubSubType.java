@@ -9,13 +9,9 @@ package tf2_msgs.msg.dds;
 public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs.msg.dds.TF2Error>
 {
    public static final java.lang.String name = "tf2_msgs::msg::dds_::TF2Error_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public TF2ErrorPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -51,7 +47,6 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
 
    public static void write(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getError());
 
       if (data.getErrorString().length() <= 255)
@@ -62,7 +57,6 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
 
    public static void read(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.CDR cdr)
    {
-
       data.setError(cdr.read_type_9());
 
       cdr.read_type_d(data.getErrorString());
@@ -93,7 +87,6 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    public final void serialize(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_9("error", data.getError());
-
       ser.write_type_d("error_string", data.getErrorString());
    }
 
@@ -101,7 +94,6 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, tf2_msgs.msg.dds.TF2Error data)
    {
       data.setError(ser.read_type_9("error"));
-
       ser.read_type_d("error_string", data.getErrorString());
    }
 

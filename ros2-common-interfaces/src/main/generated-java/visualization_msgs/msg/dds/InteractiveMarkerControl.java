@@ -92,12 +92,9 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl>
    public InteractiveMarkerControl()
    {
       name_ = new java.lang.StringBuilder(255);
-
       orientation_ = new us.ihmc.euclid.tuple4D.Quaternion();
-
       markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker>(100, visualization_msgs.msg.dds.Marker.class,
                                                                                        new visualization_msgs.msg.dds.MarkerPubSubType());
-
       description_ = new java.lang.StringBuilder(255);
    }
 
@@ -283,7 +280,6 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl>
 
       if (!this.orientation_.epsilonEquals(other.orientation_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.orientation_mode_, other.orientation_mode_, epsilon))
          return false;
 
@@ -332,7 +328,6 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl>
 
       if (!this.orientation_.equals(otherMyClass.orientation_))
          return false;
-
       if (this.orientation_mode_ != otherMyClass.orientation_mode_)
          return false;
 
@@ -344,7 +339,6 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl>
 
       if (!this.markers_.equals(otherMyClass.markers_))
          return false;
-
       if (this.independent_marker_orientation_ != otherMyClass.independent_marker_orientation_)
          return false;
 
@@ -362,35 +356,27 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl>
       builder.append("InteractiveMarkerControl {");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("orientation=");
       builder.append(this.orientation_);
-
       builder.append(", ");
       builder.append("orientation_mode=");
       builder.append(this.orientation_mode_);
-
       builder.append(", ");
       builder.append("interaction_mode=");
       builder.append(this.interaction_mode_);
-
       builder.append(", ");
       builder.append("always_visible=");
       builder.append(this.always_visible_);
-
       builder.append(", ");
       builder.append("markers=");
       builder.append(this.markers_);
-
       builder.append(", ");
       builder.append("independent_marker_orientation=");
       builder.append(this.independent_marker_orientation_);
-
       builder.append(", ");
       builder.append("description=");
       builder.append(this.description_);
-
       builder.append("}");
       return builder.toString();
    }

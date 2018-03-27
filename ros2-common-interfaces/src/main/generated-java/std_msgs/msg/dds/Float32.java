@@ -72,7 +72,6 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
       builder.append("Float32 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

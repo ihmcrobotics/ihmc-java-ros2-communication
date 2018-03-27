@@ -16,7 +16,6 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
    public Parameter()
    {
       name_ = new java.lang.StringBuilder(255);
-
       value_ = new rcl_interfaces.msg.dds.ParameterValue();
    }
 
@@ -100,11 +99,9 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
       builder.append("Parameter {");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("value=");
       builder.append(this.value_);
-
       builder.append("}");
       return builder.toString();
    }

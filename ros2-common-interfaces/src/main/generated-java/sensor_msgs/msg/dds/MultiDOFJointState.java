@@ -40,10 +40,8 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
       transforms_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform>(100,
                                                                                                           us.ihmc.euclid.transform.QuaternionBasedTransform.class,
                                                                                                           new geometry_msgs.msg.dds.TransformPubSubType());
-
       twist_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist>(100, geometry_msgs.msg.dds.Twist.class,
                                                                                new geometry_msgs.msg.dds.TwistPubSubType());
-
       wrench_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench>(100, geometry_msgs.msg.dds.Wrench.class,
                                                                                  new geometry_msgs.msg.dds.WrenchPubSubType());
    }
@@ -97,7 +95,6 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.joint_names_, other.joint_names_, epsilon))
          return false;
 
@@ -157,16 +154,12 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.joint_names_.equals(otherMyClass.joint_names_))
          return false;
-
       if (!this.transforms_.equals(otherMyClass.transforms_))
          return false;
-
       if (!this.twist_.equals(otherMyClass.twist_))
          return false;
-
       if (!this.wrench_.equals(otherMyClass.wrench_))
          return false;
 
@@ -181,23 +174,18 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
       builder.append("MultiDOFJointState {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("joint_names=");
       builder.append(this.joint_names_);
-
       builder.append(", ");
       builder.append("transforms=");
       builder.append(this.transforms_);
-
       builder.append(", ");
       builder.append("twist=");
       builder.append(this.twist_);
-
       builder.append(", ");
       builder.append("wrench=");
       builder.append(this.wrench_);
-
       builder.append("}");
       return builder.toString();
    }

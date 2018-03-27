@@ -78,7 +78,6 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
       builder.append("LaserEcho {");
       builder.append("echoes=");
       builder.append(this.echoes_);
-
       builder.append("}");
       return builder.toString();
    }

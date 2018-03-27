@@ -90,10 +90,8 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.magnetic_field_.epsilonEquals(other.magnetic_field_, epsilon))
          return false;
-
       for (int i3 = 0; i3 < magnetic_field_covariance_.length; ++i3)
       {
          if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.magnetic_field_covariance_[i3], other.magnetic_field_covariance_[i3], epsilon))
@@ -117,10 +115,8 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.magnetic_field_.equals(otherMyClass.magnetic_field_))
          return false;
-
       for (int i5 = 0; i5 < magnetic_field_covariance_.length; ++i5)
       {
          if (this.magnetic_field_covariance_[i5] != otherMyClass.magnetic_field_covariance_[i5])
@@ -138,15 +134,12 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
       builder.append("MagneticField {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("magnetic_field=");
       builder.append(this.magnetic_field_);
-
       builder.append(", ");
       builder.append("magnetic_field_covariance=");
       builder.append(java.util.Arrays.toString(this.magnetic_field_covariance_));
-
       builder.append("}");
       return builder.toString();
    }

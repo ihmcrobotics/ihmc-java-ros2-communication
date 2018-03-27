@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.MarkerArray>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::MarkerArray_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MarkerArrayPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
       {
          current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       return current_alignment - initial_alignment;
    }
 
@@ -55,7 +50,6 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
    public static void write(visualization_msgs.msg.dds.MarkerArray data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getMarkers().size() <= 100)
          cdr.write_type_e(data.getMarkers());
       else
@@ -64,7 +58,6 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
    public static void read(visualization_msgs.msg.dds.MarkerArray data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getMarkers());
    }
 

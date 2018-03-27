@@ -49,7 +49,6 @@ public class Twist extends Packet<Twist> implements Settable<Twist>, EpsilonComp
 
       if (!this.linear_.epsilonEquals(other.linear_, epsilon))
          return false;
-
       if (!this.angular_.epsilonEquals(other.angular_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class Twist extends Packet<Twist> implements Settable<Twist>, EpsilonComp
 
       if (!this.linear_.equals(otherMyClass.linear_))
          return false;
-
       if (!this.angular_.equals(otherMyClass.angular_))
          return false;
 
@@ -85,11 +83,9 @@ public class Twist extends Packet<Twist> implements Settable<Twist>, EpsilonComp
       builder.append("Twist {");
       builder.append("linear=");
       builder.append(this.linear_);
-
       builder.append(", ");
       builder.append("angular=");
       builder.append(this.angular_);
-
       builder.append("}");
       return builder.toString();
    }

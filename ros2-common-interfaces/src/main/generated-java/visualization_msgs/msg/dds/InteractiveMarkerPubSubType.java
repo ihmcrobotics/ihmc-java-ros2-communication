@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarker>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarker_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public InteractiveMarkerPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,11 +23,11 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -39,7 +35,6 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       {
          current_alignment += visualization_msgs.msg.dds.MenuEntryPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -59,7 +54,9 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getDescription().length() + 1;
@@ -83,11 +80,8 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarker data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
-
       if (data.getName().length() <= 255)
          cdr.write_type_d(data.getName());
       else
@@ -113,19 +107,13 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarker data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
-
       cdr.read_type_d(data.getName());
-
       cdr.read_type_d(data.getDescription());
-
       data.setScale(cdr.read_type_5());
 
       cdr.read_type_e(data.getMenuEntries());
-
       cdr.read_type_e(data.getControls());
    }
 
@@ -160,13 +148,9 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       ser.write_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 
       ser.write_type_d("name", data.getName());
-
       ser.write_type_d("description", data.getDescription());
-
       ser.write_type_5("scale", data.getScale());
-
       ser.write_type_e("menu_entries", data.getMenuEntries());
-
       ser.write_type_e("controls", data.getControls());
    }
 
@@ -178,13 +162,9 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       ser.read_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 
       ser.read_type_d("name", data.getName());
-
       ser.read_type_d("description", data.getDescription());
-
       data.setScale(ser.read_type_5("scale"));
-
       ser.read_type_e("menu_entries", data.getMenuEntries());
-
       ser.read_type_e("controls", data.getControls());
    }
 

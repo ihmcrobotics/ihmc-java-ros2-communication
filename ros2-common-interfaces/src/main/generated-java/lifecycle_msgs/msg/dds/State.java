@@ -38,7 +38,6 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
 
    public State()
    {
-
       label_ = new java.lang.StringBuilder(255);
    }
 
@@ -127,11 +126,9 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
       builder.append("State {");
       builder.append("id=");
       builder.append(this.id_);
-
       builder.append(", ");
       builder.append("label=");
       builder.append(this.label_);
-
       builder.append("}");
       return builder.toString();
    }

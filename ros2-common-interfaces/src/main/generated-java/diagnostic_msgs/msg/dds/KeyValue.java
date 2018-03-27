@@ -18,7 +18,6 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
    public KeyValue()
    {
       key_ = new java.lang.StringBuilder(255);
-
       value_ = new java.lang.StringBuilder(255);
    }
 
@@ -132,11 +131,9 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
       builder.append("KeyValue {");
       builder.append("key=");
       builder.append(this.key_);
-
       builder.append(", ");
       builder.append("value=");
       builder.append(this.value_);
-
       builder.append("}");
       return builder.toString();
    }

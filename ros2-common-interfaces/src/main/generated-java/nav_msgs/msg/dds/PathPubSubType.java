@@ -9,13 +9,9 @@ package nav_msgs.msg.dds;
 public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.Path>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::Path_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public PathPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -46,6 +43,7 @@ public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < data.getPoses().size(); ++i0)
       {
@@ -57,9 +55,7 @@ public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg
 
    public static void write(nav_msgs.msg.dds.Path data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if (data.getPoses().size() <= 100)
          cdr.write_type_e(data.getPoses());
       else
@@ -68,9 +64,7 @@ public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg
 
    public static void read(nav_msgs.msg.dds.Path data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       cdr.read_type_e(data.getPoses());
    }
 

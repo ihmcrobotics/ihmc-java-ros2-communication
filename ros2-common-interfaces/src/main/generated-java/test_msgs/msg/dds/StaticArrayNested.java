@@ -11,6 +11,7 @@ public class StaticArrayNested extends Packet<StaticArrayNested> implements Sett
    public StaticArrayNested()
    {
       primitive_values_ = new test_msgs.msg.dds.Primitives[4];
+
       for (int i1 = 0; i1 < primitive_values_.length; ++i1)
       {
          primitive_values_[i1] = new test_msgs.msg.dds.Primitives();
@@ -69,7 +70,6 @@ public class StaticArrayNested extends Packet<StaticArrayNested> implements Sett
          if (!this.primitive_values_[i7].equals(otherMyClass.primitive_values_[i7]))
             return false;
       }
-
       return true;
    }
 
@@ -81,7 +81,6 @@ public class StaticArrayNested extends Packet<StaticArrayNested> implements Sett
       builder.append("StaticArrayNested {");
       builder.append("primitive_values=");
       builder.append(java.util.Arrays.toString(this.primitive_values_));
-
       builder.append("}");
       return builder.toString();
    }

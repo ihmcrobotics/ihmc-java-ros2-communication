@@ -92,7 +92,6 @@ public class JointState extends Packet<JointState> implements Settable<JointStat
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.name_, other.name_, epsilon))
          return false;
 
@@ -122,16 +121,12 @@ public class JointState extends Packet<JointState> implements Settable<JointStat
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.name_.equals(otherMyClass.name_))
          return false;
-
       if (!this.position_.equals(otherMyClass.position_))
          return false;
-
       if (!this.velocity_.equals(otherMyClass.velocity_))
          return false;
-
       if (!this.effort_.equals(otherMyClass.effort_))
          return false;
 
@@ -146,23 +141,18 @@ public class JointState extends Packet<JointState> implements Settable<JointStat
       builder.append("JointState {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("position=");
       builder.append(this.position_);
-
       builder.append(", ");
       builder.append("velocity=");
       builder.append(this.velocity_);
-
       builder.append(", ");
       builder.append("effort=");
       builder.append(this.effort_);
-
       builder.append("}");
       return builder.toString();
    }

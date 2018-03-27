@@ -54,9 +54,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
    public Image()
    {
       header_ = new std_msgs.msg.dds.Header();
-
       encoding_ = new java.lang.StringBuilder(255);
-
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
@@ -197,7 +195,6 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.height_, other.height_, epsilon))
          return false;
 
@@ -233,7 +230,6 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.height_ != otherMyClass.height_)
          return false;
 
@@ -263,31 +259,24 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
       builder.append("Image {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("height=");
       builder.append(this.height_);
-
       builder.append(", ");
       builder.append("width=");
       builder.append(this.width_);
-
       builder.append(", ");
       builder.append("encoding=");
       builder.append(this.encoding_);
-
       builder.append(", ");
       builder.append("is_bigendian=");
       builder.append(this.is_bigendian_);
-
       builder.append(", ");
       builder.append("step=");
       builder.append(this.step_);
-
       builder.append(", ");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

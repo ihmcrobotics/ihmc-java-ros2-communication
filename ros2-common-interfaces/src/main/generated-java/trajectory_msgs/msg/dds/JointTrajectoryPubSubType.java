@@ -9,13 +9,9 @@ package trajectory_msgs.msg.dds;
 public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<trajectory_msgs.msg.dds.JointTrajectory>
 {
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::JointTrajectory_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public JointTrajectoryPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<t
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -51,6 +48,7 @@ public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<t
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < data.getJointNames().size(); ++i0)
       {
@@ -67,9 +65,7 @@ public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<t
 
    public static void write(trajectory_msgs.msg.dds.JointTrajectory data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if (data.getJointNames().size() <= 100)
          cdr.write_type_e(data.getJointNames());
       else
@@ -83,11 +79,8 @@ public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<t
 
    public static void read(trajectory_msgs.msg.dds.JointTrajectory data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       cdr.read_type_e(data.getJointNames());
-
       cdr.read_type_e(data.getPoints());
    }
 
@@ -118,7 +111,6 @@ public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<t
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_e("joint_names", data.getJointNames());
-
       ser.write_type_e("points", data.getPoints());
    }
 
@@ -128,7 +120,6 @@ public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<t
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.read_type_e("joint_names", data.getJointNames());
-
       ser.read_type_e("points", data.getPoints());
    }
 

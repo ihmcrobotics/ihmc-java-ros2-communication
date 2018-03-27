@@ -19,7 +19,6 @@ public class SetParametersResult extends Packet<SetParametersResult> implements 
 
    public SetParametersResult()
    {
-
       reason_ = new java.lang.StringBuilder(255);
    }
 
@@ -128,11 +127,9 @@ public class SetParametersResult extends Packet<SetParametersResult> implements 
       builder.append("SetParametersResult {");
       builder.append("successful=");
       builder.append(this.successful_);
-
       builder.append(", ");
       builder.append("reason=");
       builder.append(this.reason_);
-
       builder.append("}");
       return builder.toString();
    }

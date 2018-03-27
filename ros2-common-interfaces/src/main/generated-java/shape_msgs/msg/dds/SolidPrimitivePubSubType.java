@@ -9,13 +9,9 @@ package shape_msgs.msg.dds;
 public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.msg.dds.SolidPrimitive>
 {
    public static final java.lang.String name = "shape_msgs::msg::dds_::SolidPrimitive_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public SolidPrimitivePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -53,7 +49,6 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
 
    public static void write(shape_msgs.msg.dds.SolidPrimitive data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getType());
 
       if (data.getDimensions().size() <= 3)
@@ -64,7 +59,6 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
 
    public static void read(shape_msgs.msg.dds.SolidPrimitive data, us.ihmc.idl.CDR cdr)
    {
-
       data.setType(cdr.read_type_9());
 
       cdr.read_type_e(data.getDimensions());
@@ -95,7 +89,6 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
    public final void serialize(shape_msgs.msg.dds.SolidPrimitive data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_9("type", data.getType());
-
       ser.write_type_e("dimensions", data.getDimensions());
    }
 
@@ -103,7 +96,6 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, shape_msgs.msg.dds.SolidPrimitive data)
    {
       data.setType(ser.read_type_9("type"));
-
       ser.read_type_e("dimensions", data.getDimensions());
    }
 

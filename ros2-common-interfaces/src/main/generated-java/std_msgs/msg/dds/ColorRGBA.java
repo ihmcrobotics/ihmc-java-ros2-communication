@@ -13,7 +13,6 @@ public class ColorRGBA extends Packet<ColorRGBA> implements Settable<ColorRGBA>,
 
    public ColorRGBA()
    {
-
    }
 
    public ColorRGBA(ColorRGBA other)
@@ -130,19 +129,15 @@ public class ColorRGBA extends Packet<ColorRGBA> implements Settable<ColorRGBA>,
       builder.append("ColorRGBA {");
       builder.append("r=");
       builder.append(this.r_);
-
       builder.append(", ");
       builder.append("g=");
       builder.append(this.g_);
-
       builder.append(", ");
       builder.append("b=");
       builder.append(this.b_);
-
       builder.append(", ");
       builder.append("a=");
       builder.append(this.a_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -68,9 +68,7 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
 
    public MenuEntry()
    {
-
       title_ = new java.lang.StringBuilder(255);
-
       command_ = new java.lang.StringBuilder(255);
    }
 
@@ -254,23 +252,18 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
       builder.append("MenuEntry {");
       builder.append("id=");
       builder.append(this.id_);
-
       builder.append(", ");
       builder.append("parent_id=");
       builder.append(this.parent_id_);
-
       builder.append(", ");
       builder.append("title=");
       builder.append(this.title_);
-
       builder.append(", ");
       builder.append("command=");
       builder.append(this.command_);
-
       builder.append(", ");
       builder.append("command_type=");
       builder.append(this.command_type_);
-
       builder.append("}");
       return builder.toString();
    }

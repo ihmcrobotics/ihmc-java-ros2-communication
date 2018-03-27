@@ -9,13 +9,9 @@ package rcl_interfaces.msg.dds;
 public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.IntraProcessMessage>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::IntraProcessMessage_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public IntraProcessMessagePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -51,7 +47,6 @@ public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void write(rcl_interfaces.msg.dds.IntraProcessMessage data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_12(data.getPublisherId());
 
       cdr.write_type_12(data.getMessageSequence());
@@ -59,7 +54,6 @@ public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void read(rcl_interfaces.msg.dds.IntraProcessMessage data, us.ihmc.idl.CDR cdr)
    {
-
       data.setPublisherId(cdr.read_type_12());
 
       data.setMessageSequence(cdr.read_type_12());
@@ -91,7 +85,6 @@ public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataTy
    public final void serialize(rcl_interfaces.msg.dds.IntraProcessMessage data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_12("publisher_id", data.getPublisherId());
-
       ser.write_type_12("message_sequence", data.getMessageSequence());
    }
 
@@ -99,7 +92,6 @@ public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataTy
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.IntraProcessMessage data)
    {
       data.setPublisherId(ser.read_type_12("publisher_id"));
-
       data.setMessageSequence(ser.read_type_12("message_sequence"));
    }
 

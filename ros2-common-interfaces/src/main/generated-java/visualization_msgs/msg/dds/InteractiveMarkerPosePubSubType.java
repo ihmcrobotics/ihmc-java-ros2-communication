@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerPose>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerPose_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public InteractiveMarkerPosePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,9 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
       return current_alignment - initial_alignment;
@@ -43,7 +41,9 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
 
       return current_alignment - initial_alignment;
@@ -51,11 +51,8 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarkerPose data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
-
       if (data.getName().length() <= 255)
          cdr.write_type_d(data.getName());
       else
@@ -64,11 +61,8 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerPose data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
-
       cdr.read_type_d(data.getName());
    }
 

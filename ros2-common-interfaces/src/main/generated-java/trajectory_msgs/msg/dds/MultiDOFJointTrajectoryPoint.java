@@ -26,13 +26,10 @@ public class MultiDOFJointTrajectoryPoint extends Packet<MultiDOFJointTrajectory
       transforms_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform>(100,
                                                                                                           us.ihmc.euclid.transform.QuaternionBasedTransform.class,
                                                                                                           new geometry_msgs.msg.dds.TransformPubSubType());
-
       velocities_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist>(100, geometry_msgs.msg.dds.Twist.class,
                                                                                     new geometry_msgs.msg.dds.TwistPubSubType());
-
       accelerations_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist>(100, geometry_msgs.msg.dds.Twist.class,
                                                                                        new geometry_msgs.msg.dds.TwistPubSubType());
-
       time_from_start_ = new builtin_interfaces.msg.dds.Duration();
    }
 
@@ -145,13 +142,10 @@ public class MultiDOFJointTrajectoryPoint extends Packet<MultiDOFJointTrajectory
 
       if (!this.transforms_.equals(otherMyClass.transforms_))
          return false;
-
       if (!this.velocities_.equals(otherMyClass.velocities_))
          return false;
-
       if (!this.accelerations_.equals(otherMyClass.accelerations_))
          return false;
-
       if (!this.time_from_start_.equals(otherMyClass.time_from_start_))
          return false;
 
@@ -166,19 +160,15 @@ public class MultiDOFJointTrajectoryPoint extends Packet<MultiDOFJointTrajectory
       builder.append("MultiDOFJointTrajectoryPoint {");
       builder.append("transforms=");
       builder.append(this.transforms_);
-
       builder.append(", ");
       builder.append("velocities=");
       builder.append(this.velocities_);
-
       builder.append(", ");
       builder.append("accelerations=");
       builder.append(this.accelerations_);
-
       builder.append(", ");
       builder.append("time_from_start=");
       builder.append(this.time_from_start_);
-
       builder.append("}");
       return builder.toString();
    }

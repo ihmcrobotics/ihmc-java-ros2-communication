@@ -72,7 +72,6 @@ public class Int64 extends Packet<Int64> implements Settable<Int64>, EpsilonComp
       builder.append("Int64 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

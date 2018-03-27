@@ -53,10 +53,8 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
    public PointCloud2()
    {
       header_ = new std_msgs.msg.dds.Header();
-
       fields_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField>(100, sensor_msgs.msg.dds.PointField.class,
                                                                                    new sensor_msgs.msg.dds.PointFieldPubSubType());
-
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
@@ -209,7 +207,6 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.height_, other.height_, epsilon))
          return false;
 
@@ -261,7 +258,6 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.height_ != otherMyClass.height_)
          return false;
 
@@ -270,7 +266,6 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
 
       if (!this.fields_.equals(otherMyClass.fields_))
          return false;
-
       if (this.is_bigendian_ != otherMyClass.is_bigendian_)
          return false;
 
@@ -282,7 +277,6 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
 
       if (!this.data_.equals(otherMyClass.data_))
          return false;
-
       if (this.is_dense_ != otherMyClass.is_dense_)
          return false;
 
@@ -297,39 +291,30 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
       builder.append("PointCloud2 {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("height=");
       builder.append(this.height_);
-
       builder.append(", ");
       builder.append("width=");
       builder.append(this.width_);
-
       builder.append(", ");
       builder.append("fields=");
       builder.append(this.fields_);
-
       builder.append(", ");
       builder.append("is_bigendian=");
       builder.append(this.is_bigendian_);
-
       builder.append(", ");
       builder.append("point_step=");
       builder.append(this.point_step_);
-
       builder.append(", ");
       builder.append("row_step=");
       builder.append(this.row_step_);
-
       builder.append(", ");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append(", ");
       builder.append("is_dense=");
       builder.append(this.is_dense_);
-
       builder.append("}");
       return builder.toString();
    }

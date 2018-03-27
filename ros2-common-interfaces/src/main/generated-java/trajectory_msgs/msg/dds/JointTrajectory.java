@@ -55,7 +55,6 @@ public class JointTrajectory extends Packet<JointTrajectory> implements Settable
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.joint_names_, other.joint_names_, epsilon))
          return false;
 
@@ -89,10 +88,8 @@ public class JointTrajectory extends Packet<JointTrajectory> implements Settable
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.joint_names_.equals(otherMyClass.joint_names_))
          return false;
-
       if (!this.points_.equals(otherMyClass.points_))
          return false;
 
@@ -107,15 +104,12 @@ public class JointTrajectory extends Packet<JointTrajectory> implements Settable
       builder.append("JointTrajectory {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("joint_names=");
       builder.append(this.joint_names_);
-
       builder.append(", ");
       builder.append("points=");
       builder.append(this.points_);
-
       builder.append("}");
       return builder.toString();
    }

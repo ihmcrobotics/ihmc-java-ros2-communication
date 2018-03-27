@@ -72,7 +72,6 @@ public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonCompara
       builder.append("Byte {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

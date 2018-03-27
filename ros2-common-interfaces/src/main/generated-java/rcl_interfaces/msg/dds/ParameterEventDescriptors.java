@@ -20,11 +20,9 @@ public class ParameterEventDescriptors extends Packet<ParameterEventDescriptors>
    {
       new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor>(100, rcl_interfaces.msg.dds.ParameterDescriptor.class,
                                                                                                        new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
-
       changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor>(100,
                                                                                                            rcl_interfaces.msg.dds.ParameterDescriptor.class,
                                                                                                            new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
-
       deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor>(100,
                                                                                                            rcl_interfaces.msg.dds.ParameterDescriptor.class,
                                                                                                            new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
@@ -121,10 +119,8 @@ public class ParameterEventDescriptors extends Packet<ParameterEventDescriptors>
 
       if (!this.new_parameters_.equals(otherMyClass.new_parameters_))
          return false;
-
       if (!this.changed_parameters_.equals(otherMyClass.changed_parameters_))
          return false;
-
       if (!this.deleted_parameters_.equals(otherMyClass.deleted_parameters_))
          return false;
 
@@ -139,15 +135,12 @@ public class ParameterEventDescriptors extends Packet<ParameterEventDescriptors>
       builder.append("ParameterEventDescriptors {");
       builder.append("new_parameters=");
       builder.append(this.new_parameters_);
-
       builder.append(", ");
       builder.append("changed_parameters=");
       builder.append(this.changed_parameters_);
-
       builder.append(", ");
       builder.append("deleted_parameters=");
       builder.append(this.deleted_parameters_);
-
       builder.append("}");
       return builder.toString();
    }

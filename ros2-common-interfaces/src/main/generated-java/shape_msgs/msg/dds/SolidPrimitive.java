@@ -48,7 +48,6 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
 
    public SolidPrimitive()
    {
-
       dimensions_ = new us.ihmc.idl.IDLSequence.Double(3, "type_6");
    }
 
@@ -135,11 +134,9 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
       builder.append("SolidPrimitive {");
       builder.append("type=");
       builder.append(this.type_);
-
       builder.append(", ");
       builder.append("dimensions=");
       builder.append(this.dimensions_);
-
       builder.append("}");
       return builder.toString();
    }

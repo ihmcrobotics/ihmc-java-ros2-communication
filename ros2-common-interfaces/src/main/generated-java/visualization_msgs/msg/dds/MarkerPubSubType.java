@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.Marker>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::Marker_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MarkerPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,8 +23,8 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -36,9 +32,13 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -46,17 +46,13 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       {
          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       return current_alignment - initial_alignment;
@@ -72,6 +68,7 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getNs().length() + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -81,9 +78,13 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getScale(), current_alignment);
+
       current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getCdrSerializedSize(data.getColor(), current_alignment);
+
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getCdrSerializedSize(data.getLifetime(), current_alignment);
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -109,9 +110,7 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
 
    public static void write(visualization_msgs.msg.dds.Marker data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if (data.getNs().length() <= 255)
          cdr.write_type_d(data.getNs());
       else
@@ -124,13 +123,9 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       cdr.write_type_2(data.getAction());
 
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getScale(), cdr);
-
       std_msgs.msg.dds.ColorRGBAPubSubType.write(data.getColor(), cdr);
-
       builtin_interfaces.msg.dds.DurationPubSubType.write(data.getLifetime(), cdr);
-
       cdr.write_type_7(data.getFrameLocked());
 
       if (data.getPoints().size() <= 100)
@@ -158,11 +153,8 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
 
    public static void read(visualization_msgs.msg.dds.Marker data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       cdr.read_type_d(data.getNs());
-
       data.setId(cdr.read_type_2());
 
       data.setType(cdr.read_type_2());
@@ -170,23 +162,15 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       data.setAction(cdr.read_type_2());
 
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getScale(), cdr);
-
       std_msgs.msg.dds.ColorRGBAPubSubType.read(data.getColor(), cdr);
-
       builtin_interfaces.msg.dds.DurationPubSubType.read(data.getLifetime(), cdr);
-
       data.setFrameLocked(cdr.read_type_7());
 
       cdr.read_type_e(data.getPoints());
-
       cdr.read_type_e(data.getColors());
-
       cdr.read_type_d(data.getText());
-
       cdr.read_type_d(data.getMeshResource());
-
       data.setMeshUseEmbeddedMaterials(cdr.read_type_7());
    }
 
@@ -217,13 +201,9 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_d("ns", data.getNs());
-
       ser.write_type_2("id", data.getId());
-
       ser.write_type_2("type", data.getType());
-
       ser.write_type_2("action", data.getAction());
-
       ser.write_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 
       ser.write_type_a("scale", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getScale());
@@ -233,15 +213,10 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       ser.write_type_a("lifetime", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getLifetime());
 
       ser.write_type_7("frame_locked", data.getFrameLocked());
-
       ser.write_type_e("points", data.getPoints());
-
       ser.write_type_e("colors", data.getColors());
-
       ser.write_type_d("text", data.getText());
-
       ser.write_type_d("mesh_resource", data.getMeshResource());
-
       ser.write_type_7("mesh_use_embedded_materials", data.getMeshUseEmbeddedMaterials());
    }
 
@@ -251,13 +226,9 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.read_type_d("ns", data.getNs());
-
       data.setId(ser.read_type_2("id"));
-
       data.setType(ser.read_type_2("type"));
-
       data.setAction(ser.read_type_2("action"));
-
       ser.read_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 
       ser.read_type_a("scale", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getScale());
@@ -267,15 +238,10 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       ser.read_type_a("lifetime", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getLifetime());
 
       data.setFrameLocked(ser.read_type_7("frame_locked"));
-
       ser.read_type_e("points", data.getPoints());
-
       ser.read_type_e("colors", data.getColors());
-
       ser.read_type_d("text", data.getText());
-
       ser.read_type_d("mesh_resource", data.getMeshResource());
-
       data.setMeshUseEmbeddedMaterials(ser.read_type_7("mesh_use_embedded_materials"));
    }
 

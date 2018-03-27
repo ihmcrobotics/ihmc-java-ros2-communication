@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.Empty>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::Empty_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public EmptyPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -47,13 +43,11 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.m
 
    public static void write(test_msgs.msg.dds.Empty data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_7(data.getUnusedPlaceholderField());
    }
 
    public static void read(test_msgs.msg.dds.Empty data, us.ihmc.idl.CDR cdr)
    {
-
       data.setUnusedPlaceholderField(cdr.read_type_7());
    }
 

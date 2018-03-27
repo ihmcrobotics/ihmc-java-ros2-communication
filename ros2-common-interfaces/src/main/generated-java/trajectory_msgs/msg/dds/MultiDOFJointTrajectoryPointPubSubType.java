@@ -9,13 +9,9 @@ package trajectory_msgs.msg.dds;
 public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataType<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint>
 {
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::MultiDOFJointTrajectoryPoint_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MultiDOFJointTrajectoryPointPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,19 +27,16 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
       {
          current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -83,7 +76,6 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
 
    public static void write(trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getTransforms().size() <= 100)
          cdr.write_type_e(data.getTransforms());
       else
@@ -104,13 +96,9 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
 
    public static void read(trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getTransforms());
-
       cdr.read_type_e(data.getVelocities());
-
       cdr.read_type_e(data.getAccelerations());
-
       builtin_interfaces.msg.dds.DurationPubSubType.read(data.getTimeFromStart(), cdr);
    }
 
@@ -141,11 +129,8 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
    public final void serialize(trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_e("transforms", data.getTransforms());
-
       ser.write_type_e("velocities", data.getVelocities());
-
       ser.write_type_e("accelerations", data.getAccelerations());
-
       ser.write_type_a("time_from_start", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getTimeFromStart());
    }
 
@@ -153,11 +138,8 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint data)
    {
       ser.read_type_e("transforms", data.getTransforms());
-
       ser.read_type_e("velocities", data.getVelocities());
-
       ser.read_type_e("accelerations", data.getAccelerations());
-
       ser.read_type_a("time_from_start", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getTimeFromStart());
    }
 

@@ -49,13 +49,10 @@ public class InteractiveMarkerUpdate extends Packet<InteractiveMarkerUpdate>
    public InteractiveMarkerUpdate()
    {
       server_id_ = new java.lang.StringBuilder(255);
-
       markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker>(100, visualization_msgs.msg.dds.InteractiveMarker.class,
                                                                                                   new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
-
       poses_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose>(100, visualization_msgs.msg.dds.InteractiveMarkerPose.class,
                                                                                                     new visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType());
-
       erases_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder(100, "type_d");
    }
 
@@ -230,10 +227,8 @@ public class InteractiveMarkerUpdate extends Packet<InteractiveMarkerUpdate>
 
       if (!this.markers_.equals(otherMyClass.markers_))
          return false;
-
       if (!this.poses_.equals(otherMyClass.poses_))
          return false;
-
       if (!this.erases_.equals(otherMyClass.erases_))
          return false;
 
@@ -248,27 +243,21 @@ public class InteractiveMarkerUpdate extends Packet<InteractiveMarkerUpdate>
       builder.append("InteractiveMarkerUpdate {");
       builder.append("server_id=");
       builder.append(this.server_id_);
-
       builder.append(", ");
       builder.append("seq_num=");
       builder.append(this.seq_num_);
-
       builder.append(", ");
       builder.append("type=");
       builder.append(this.type_);
-
       builder.append(", ");
       builder.append("markers=");
       builder.append(this.markers_);
-
       builder.append(", ");
       builder.append("poses=");
       builder.append(this.poses_);
-
       builder.append(", ");
       builder.append("erases=");
       builder.append(this.erases_);
-
       builder.append("}");
       return builder.toString();
    }

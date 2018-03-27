@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class UInt16MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.UInt16MultiArray>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::UInt16MultiArray_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public UInt16MultiArrayPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class UInt16MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.MultiArrayLayoutPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (100 * 2) + us.ihmc.idl.CDR.alignment(current_alignment, 2);
 
@@ -43,6 +40,7 @@ public class UInt16MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.MultiArrayLayoutPubSubType.getCdrSerializedSize(data.getLayout(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getData().size() * 2) + us.ihmc.idl.CDR.alignment(current_alignment, 2);
 
@@ -51,9 +49,7 @@ public class UInt16MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(std_msgs.msg.dds.UInt16MultiArray data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.MultiArrayLayoutPubSubType.write(data.getLayout(), cdr);
-
       if (data.getData().size() <= 100)
          cdr.write_type_e(data.getData());
       else
@@ -62,9 +58,7 @@ public class UInt16MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(std_msgs.msg.dds.UInt16MultiArray data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.MultiArrayLayoutPubSubType.read(data.getLayout(), cdr);
-
       cdr.read_type_e(data.getData());
    }
 

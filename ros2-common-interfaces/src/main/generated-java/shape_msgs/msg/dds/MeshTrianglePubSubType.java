@@ -9,13 +9,9 @@ package shape_msgs.msg.dds;
 public class MeshTrianglePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.msg.dds.MeshTriangle>
 {
    public static final java.lang.String name = "shape_msgs::msg::dds_::MeshTriangle_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MeshTrianglePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {

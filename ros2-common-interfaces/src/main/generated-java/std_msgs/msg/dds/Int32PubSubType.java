@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class Int32PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Int32>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Int32_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public Int32PubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -47,13 +43,11 @@ public class Int32PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
 
    public static void write(std_msgs.msg.dds.Int32 data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_2(data.getData());
    }
 
    public static void read(std_msgs.msg.dds.Int32 data, us.ihmc.idl.CDR cdr)
    {
-
       data.setData(cdr.read_type_2());
    }
 

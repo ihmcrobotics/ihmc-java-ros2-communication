@@ -46,7 +46,6 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.inertia_.epsilonEquals(other.inertia_, epsilon))
          return false;
 
@@ -67,7 +66,6 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.inertia_.equals(otherMyClass.inertia_))
          return false;
 
@@ -82,11 +80,9 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
       builder.append("InertiaStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("inertia=");
       builder.append(this.inertia_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Polygon>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Polygon_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public PolygonPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
       {
          current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       return current_alignment - initial_alignment;
    }
 
@@ -55,7 +50,6 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
    public static void write(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getPoints().size() <= 100)
          cdr.write_type_e(data.getPoints());
       else
@@ -64,7 +58,6 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
    public static void read(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getPoints());
    }
 

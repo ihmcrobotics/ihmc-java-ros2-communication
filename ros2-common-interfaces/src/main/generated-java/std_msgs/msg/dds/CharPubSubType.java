@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class CharPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Char>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Char_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public CharPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -47,13 +43,11 @@ public class CharPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
 
    public static void write(std_msgs.msg.dds.Char data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_8(data.getData());
    }
 
    public static void read(std_msgs.msg.dds.Char data, us.ihmc.idl.CDR cdr)
    {
-
       data.setData(cdr.read_type_8());
    }
 

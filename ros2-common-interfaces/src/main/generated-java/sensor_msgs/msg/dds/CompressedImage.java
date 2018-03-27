@@ -33,7 +33,6 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
    {
       header_ = new std_msgs.msg.dds.Header();
       format_ = new java.lang.StringBuilder(255);
-
       data_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
@@ -102,7 +101,6 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.format_, other.format_, epsilon))
          return false;
 
@@ -126,7 +124,6 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.format_, otherMyClass.format_))
          return false;
 
@@ -144,15 +141,12 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
       builder.append("CompressedImage {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("format=");
       builder.append(this.format_);
-
       builder.append(", ");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package rcl_interfaces.msg.dds;
 public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.ParameterDescriptor>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterDescriptor_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ParameterDescriptorPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,6 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       return current_alignment - initial_alignment;
@@ -51,7 +46,6 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void write(rcl_interfaces.msg.dds.ParameterDescriptor data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getName().length() <= 255)
          cdr.write_type_d(data.getName());
       else
@@ -62,9 +56,7 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void read(rcl_interfaces.msg.dds.ParameterDescriptor data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getName());
-
       data.setType(cdr.read_type_9());
    }
 
@@ -94,7 +86,6 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
    public final void serialize(rcl_interfaces.msg.dds.ParameterDescriptor data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_d("name", data.getName());
-
       ser.write_type_9("type", data.getType());
    }
 
@@ -102,7 +93,6 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterDescriptor data)
    {
       ser.read_type_d("name", data.getName());
-
       data.setType(ser.read_type_9("type"));
    }
 

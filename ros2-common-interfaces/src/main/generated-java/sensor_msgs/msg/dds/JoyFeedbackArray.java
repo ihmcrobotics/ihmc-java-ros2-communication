@@ -85,7 +85,6 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
       builder.append("JoyFeedbackArray {");
       builder.append("array=");
       builder.append(this.array_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -72,7 +72,6 @@ public class Int32 extends Packet<Int32> implements Settable<Int32>, EpsilonComp
       builder.append("Int32 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

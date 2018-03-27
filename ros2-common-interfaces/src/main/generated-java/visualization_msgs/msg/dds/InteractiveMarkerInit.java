@@ -28,7 +28,6 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
    public InteractiveMarkerInit()
    {
       server_id_ = new java.lang.StringBuilder(255);
-
       markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker>(100, visualization_msgs.msg.dds.InteractiveMarker.class,
                                                                                                   new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
    }
@@ -172,15 +171,12 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
       builder.append("InteractiveMarkerInit {");
       builder.append("server_id=");
       builder.append(this.server_id_);
-
       builder.append(", ");
       builder.append("seq_num=");
       builder.append(this.seq_num_);
-
       builder.append(", ");
       builder.append("markers=");
       builder.append(this.markers_);
-
       builder.append("}");
       return builder.toString();
    }

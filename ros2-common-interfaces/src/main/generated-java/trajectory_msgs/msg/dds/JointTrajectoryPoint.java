@@ -109,16 +109,12 @@ public class JointTrajectoryPoint extends Packet<JointTrajectoryPoint> implement
 
       if (!this.positions_.equals(otherMyClass.positions_))
          return false;
-
       if (!this.velocities_.equals(otherMyClass.velocities_))
          return false;
-
       if (!this.accelerations_.equals(otherMyClass.accelerations_))
          return false;
-
       if (!this.effort_.equals(otherMyClass.effort_))
          return false;
-
       if (!this.time_from_start_.equals(otherMyClass.time_from_start_))
          return false;
 
@@ -133,23 +129,18 @@ public class JointTrajectoryPoint extends Packet<JointTrajectoryPoint> implement
       builder.append("JointTrajectoryPoint {");
       builder.append("positions=");
       builder.append(this.positions_);
-
       builder.append(", ");
       builder.append("velocities=");
       builder.append(this.velocities_);
-
       builder.append(", ");
       builder.append("accelerations=");
       builder.append(this.accelerations_);
-
       builder.append(", ");
       builder.append("effort=");
       builder.append(this.effort_);
-
       builder.append(", ");
       builder.append("time_from_start=");
       builder.append(this.time_from_start_);
-
       builder.append("}");
       return builder.toString();
    }

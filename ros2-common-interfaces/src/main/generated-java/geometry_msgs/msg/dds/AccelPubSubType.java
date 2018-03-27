@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Accel>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Accel_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public AccelPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getLinear(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getAngular(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -49,17 +47,13 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
 
    public static void write(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getLinear(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getAngular(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinear(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngular(), cdr);
    }
 

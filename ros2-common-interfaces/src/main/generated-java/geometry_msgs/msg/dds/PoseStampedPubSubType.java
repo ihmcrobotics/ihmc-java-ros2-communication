@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.PoseStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseStamped_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public PoseStampedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -49,17 +47,13 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
 
    public static void write(geometry_msgs.msg.dds.PoseStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.PoseStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
    }
 

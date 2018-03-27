@@ -72,7 +72,6 @@ public class Int16 extends Packet<Int16> implements Settable<Int16>, EpsilonComp
       builder.append("Int16 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

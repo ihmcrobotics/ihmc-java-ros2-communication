@@ -82,7 +82,6 @@ public class Polygon extends Packet<Polygon> implements Settable<Polygon>, Epsil
       builder.append("Polygon {");
       builder.append("points=");
       builder.append(this.points_);
-
       builder.append("}");
       return builder.toString();
    }

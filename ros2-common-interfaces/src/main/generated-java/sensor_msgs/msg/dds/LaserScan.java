@@ -65,7 +65,6 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
    public LaserScan()
    {
       header_ = new std_msgs.msg.dds.Header();
-
       ranges_ = new us.ihmc.idl.IDLSequence.Float(100, "type_5");
 
       intensities_ = new us.ihmc.idl.IDLSequence.Float(100, "type_5");
@@ -248,7 +247,6 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.angle_min_, other.angle_min_, epsilon))
          return false;
 
@@ -293,7 +291,6 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.angle_min_ != otherMyClass.angle_min_)
          return false;
 
@@ -317,7 +314,6 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
 
       if (!this.ranges_.equals(otherMyClass.ranges_))
          return false;
-
       if (!this.intensities_.equals(otherMyClass.intensities_))
          return false;
 
@@ -332,43 +328,33 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
       builder.append("LaserScan {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("angle_min=");
       builder.append(this.angle_min_);
-
       builder.append(", ");
       builder.append("angle_max=");
       builder.append(this.angle_max_);
-
       builder.append(", ");
       builder.append("angle_increment=");
       builder.append(this.angle_increment_);
-
       builder.append(", ");
       builder.append("time_increment=");
       builder.append(this.time_increment_);
-
       builder.append(", ");
       builder.append("scan_time=");
       builder.append(this.scan_time_);
-
       builder.append(", ");
       builder.append("range_min=");
       builder.append(this.range_min_);
-
       builder.append(", ");
       builder.append("range_max=");
       builder.append(this.range_max_);
-
       builder.append(", ");
       builder.append("ranges=");
       builder.append(this.ranges_);
-
       builder.append(", ");
       builder.append("intensities=");
       builder.append(this.intensities_);
-
       builder.append("}");
       return builder.toString();
    }

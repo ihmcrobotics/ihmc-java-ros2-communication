@@ -9,13 +9,9 @@ package nav_msgs.msg.dds;
 public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.GridCells>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::GridCells_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public GridCellsPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -50,6 +47,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -65,9 +63,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
 
    public static void write(nav_msgs.msg.dds.GridCells data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       cdr.write_type_5(data.getCellWidth());
 
       cdr.write_type_5(data.getCellHeight());
@@ -80,9 +76,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
 
    public static void read(nav_msgs.msg.dds.GridCells data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       data.setCellWidth(cdr.read_type_5());
 
       data.setCellHeight(cdr.read_type_5());
@@ -117,9 +111,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_5("cell_width", data.getCellWidth());
-
       ser.write_type_5("cell_height", data.getCellHeight());
-
       ser.write_type_e("cells", data.getCells());
    }
 
@@ -129,9 +121,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       data.setCellWidth(ser.read_type_5("cell_width"));
-
       data.setCellHeight(ser.read_type_5("cell_height"));
-
       ser.read_type_e("cells", data.getCells());
    }
 

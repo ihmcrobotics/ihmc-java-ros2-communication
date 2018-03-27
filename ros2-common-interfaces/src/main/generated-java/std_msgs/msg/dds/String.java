@@ -80,7 +80,6 @@ public class String extends Packet<String> implements Settable<String>, EpsilonC
       builder.append("String {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

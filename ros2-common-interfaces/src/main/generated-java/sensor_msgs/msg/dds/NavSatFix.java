@@ -61,7 +61,6 @@ public class NavSatFix extends Packet<NavSatFix> implements Settable<NavSatFix>,
    {
       header_ = new std_msgs.msg.dds.Header();
       status_ = new sensor_msgs.msg.dds.NavSatStatus();
-
       position_covariance_ = new double[9];
    }
 
@@ -193,10 +192,8 @@ public class NavSatFix extends Packet<NavSatFix> implements Settable<NavSatFix>,
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.status_.epsilonEquals(other.status_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.latitude_, other.latitude_, epsilon))
          return false;
 
@@ -232,10 +229,8 @@ public class NavSatFix extends Packet<NavSatFix> implements Settable<NavSatFix>,
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.status_.equals(otherMyClass.status_))
          return false;
-
       if (this.latitude_ != otherMyClass.latitude_)
          return false;
 
@@ -264,31 +259,24 @@ public class NavSatFix extends Packet<NavSatFix> implements Settable<NavSatFix>,
       builder.append("NavSatFix {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("status=");
       builder.append(this.status_);
-
       builder.append(", ");
       builder.append("latitude=");
       builder.append(this.latitude_);
-
       builder.append(", ");
       builder.append("longitude=");
       builder.append(this.longitude_);
-
       builder.append(", ");
       builder.append("altitude=");
       builder.append(this.altitude_);
-
       builder.append(", ");
       builder.append("position_covariance=");
       builder.append(java.util.Arrays.toString(this.position_covariance_));
-
       builder.append(", ");
       builder.append("position_covariance_type=");
       builder.append(this.position_covariance_type_);
-
       builder.append("}");
       return builder.toString();
    }

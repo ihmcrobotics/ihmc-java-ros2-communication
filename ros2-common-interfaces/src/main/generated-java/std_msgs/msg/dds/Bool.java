@@ -72,7 +72,6 @@ public class Bool extends Packet<Bool> implements Settable<Bool>, EpsilonCompara
       builder.append("Bool {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

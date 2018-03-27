@@ -79,7 +79,6 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
       builder.append("MarkerArray {");
       builder.append("markers=");
       builder.append(this.markers_);
-
       builder.append("}");
       return builder.toString();
    }

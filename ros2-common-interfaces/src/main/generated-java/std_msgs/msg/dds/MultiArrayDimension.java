@@ -148,15 +148,12 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
       builder.append("MultiArrayDimension {");
       builder.append("label=");
       builder.append(this.label_);
-
       builder.append(", ");
       builder.append("size=");
       builder.append(this.size_);
-
       builder.append(", ");
       builder.append("stride=");
       builder.append(this.stride_);
-
       builder.append("}");
       return builder.toString();
    }

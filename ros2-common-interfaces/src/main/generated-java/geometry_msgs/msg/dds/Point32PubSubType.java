@@ -13,11 +13,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
 
-   public Point32PubSubType()
-   {
-
-   }
-
    private static AbstractPoint32PubSubTypeImplementation getImpl()
    {
       if (impl == null)
@@ -43,9 +38,7 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       return current_alignment - initial_alignment;
@@ -71,7 +64,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
 
    public static void write(us.ihmc.euclid.tuple3D.Point3D32 data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_5(getImpl().getX(data));
 
       cdr.write_type_5(getImpl().getY(data));
@@ -81,7 +73,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
 
    public static void read(us.ihmc.euclid.tuple3D.Point3D32 data, us.ihmc.idl.CDR cdr)
    {
-
       getImpl().setX(data, cdr.read_type_5());
 
       getImpl().setY(data, cdr.read_type_5());
@@ -97,7 +88,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    @Override
    public void serialize(us.ihmc.euclid.tuple3D.Point3D32 data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
    {
-
       serializeCDR.serialize(serializedPayload);
       write(data, serializeCDR);
       serializeCDR.finishSerialize();
@@ -115,9 +105,7 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    public final void serialize(us.ihmc.euclid.tuple3D.Point3D32 data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_5("x", getImpl().getX(data));
-
       ser.write_type_5("y", getImpl().getY(data));
-
       ser.write_type_5("z", getImpl().getZ(data));
    }
 
@@ -125,9 +113,7 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, us.ihmc.euclid.tuple3D.Point3D32 data)
    {
       getImpl().setX(data, ser.read_type_5("x"));
-
       getImpl().setY(data, ser.read_type_5("y"));
-
       getImpl().setZ(data, ser.read_type_5("z"));
    }
 
@@ -177,7 +163,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
     */
    public static abstract class AbstractPoint32PubSubTypeImplementation
    {
-
       /**
        * Copy src into dest.
        *

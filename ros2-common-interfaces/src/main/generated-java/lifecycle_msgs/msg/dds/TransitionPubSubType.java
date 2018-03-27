@@ -9,13 +9,9 @@ package lifecycle_msgs.msg.dds;
 public class TransitionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_msgs.msg.dds.Transition>
 {
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::Transition_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public TransitionPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -51,7 +47,6 @@ public class TransitionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecy
 
    public static void write(lifecycle_msgs.msg.dds.Transition data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getId());
 
       if (data.getLabel().length() <= 255)
@@ -62,7 +57,6 @@ public class TransitionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecy
 
    public static void read(lifecycle_msgs.msg.dds.Transition data, us.ihmc.idl.CDR cdr)
    {
-
       data.setId(cdr.read_type_9());
 
       cdr.read_type_d(data.getLabel());
@@ -93,7 +87,6 @@ public class TransitionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecy
    public final void serialize(lifecycle_msgs.msg.dds.Transition data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_9("id", data.getId());
-
       ser.write_type_d("label", data.getLabel());
    }
 
@@ -101,7 +94,6 @@ public class TransitionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecy
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, lifecycle_msgs.msg.dds.Transition data)
    {
       data.setId(ser.read_type_9("id"));
-
       ser.read_type_d("label", data.getLabel());
    }
 

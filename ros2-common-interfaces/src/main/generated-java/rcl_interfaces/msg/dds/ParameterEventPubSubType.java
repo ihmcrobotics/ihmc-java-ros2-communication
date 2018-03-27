@@ -9,13 +9,9 @@ package rcl_interfaces.msg.dds;
 public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.ParameterEvent>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterEvent_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ParameterEventPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,13 +27,11 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
       {
          current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -79,7 +73,6 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void write(rcl_interfaces.msg.dds.ParameterEvent data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getNewParameters().size() <= 100)
          cdr.write_type_e(data.getNewParameters());
       else
@@ -98,11 +91,8 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void read(rcl_interfaces.msg.dds.ParameterEvent data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getNewParameters());
-
       cdr.read_type_e(data.getChangedParameters());
-
       cdr.read_type_e(data.getDeletedParameters());
    }
 
@@ -131,9 +121,7 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
    public final void serialize(rcl_interfaces.msg.dds.ParameterEvent data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_e("new_parameters", data.getNewParameters());
-
       ser.write_type_e("changed_parameters", data.getChangedParameters());
-
       ser.write_type_e("deleted_parameters", data.getDeletedParameters());
    }
 
@@ -141,9 +129,7 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterEvent data)
    {
       ser.read_type_e("new_parameters", data.getNewParameters());
-
       ser.read_type_e("changed_parameters", data.getChangedParameters());
-
       ser.read_type_e("deleted_parameters", data.getDeletedParameters());
    }
 

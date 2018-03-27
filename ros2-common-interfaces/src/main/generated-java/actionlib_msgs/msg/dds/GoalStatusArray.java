@@ -55,7 +55,6 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (this.status_list_.size() == other.status_list_.size())
       {
          return false;
@@ -86,7 +85,6 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.status_list_.equals(otherMyClass.status_list_))
          return false;
 
@@ -101,11 +99,9 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
       builder.append("GoalStatusArray {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("status_list=");
       builder.append(this.status_list_);
-
       builder.append("}");
       return builder.toString();
    }

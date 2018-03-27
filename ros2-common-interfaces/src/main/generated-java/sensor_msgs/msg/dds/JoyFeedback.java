@@ -26,7 +26,6 @@ public class JoyFeedback extends Packet<JoyFeedback> implements Settable<JoyFeed
 
    public JoyFeedback()
    {
-
    }
 
    public JoyFeedback(JoyFeedback other)
@@ -141,15 +140,12 @@ public class JoyFeedback extends Packet<JoyFeedback> implements Settable<JoyFeed
       builder.append("JoyFeedback {");
       builder.append("type=");
       builder.append(this.type_);
-
       builder.append(", ");
       builder.append("id=");
       builder.append(this.id_);
-
       builder.append(", ");
       builder.append("intensity=");
       builder.append(this.intensity_);
-
       builder.append("}");
       return builder.toString();
    }

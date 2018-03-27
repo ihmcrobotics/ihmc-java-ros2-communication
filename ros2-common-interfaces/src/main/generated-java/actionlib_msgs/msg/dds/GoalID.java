@@ -88,7 +88,6 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
 
       if (!this.stamp_.epsilonEquals(other.stamp_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.id_, other.id_, epsilon))
          return false;
 
@@ -109,7 +108,6 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
 
       if (!this.stamp_.equals(otherMyClass.stamp_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.id_, otherMyClass.id_))
          return false;
 
@@ -124,11 +122,9 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
       builder.append("GoalID {");
       builder.append("stamp=");
       builder.append(this.stamp_);
-
       builder.append(", ");
       builder.append("id=");
       builder.append(this.id_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package shape_msgs.msg.dds;
 public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.msg.dds.Mesh>
 {
    public static final java.lang.String name = "shape_msgs::msg::dds_::Mesh_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MeshPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
       {
          current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -67,7 +62,6 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
 
    public static void write(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getTriangles().size() <= 100)
          cdr.write_type_e(data.getTriangles());
       else
@@ -81,9 +75,7 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
 
    public static void read(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getTriangles());
-
       cdr.read_type_e(data.getVertices());
    }
 
@@ -112,7 +104,6 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    public final void serialize(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_e("triangles", data.getTriangles());
-
       ser.write_type_e("vertices", data.getVertices());
    }
 
@@ -120,7 +111,6 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, shape_msgs.msg.dds.Mesh data)
    {
       ser.read_type_e("triangles", data.getTriangles());
-
       ser.read_type_e("vertices", data.getVertices());
    }
 

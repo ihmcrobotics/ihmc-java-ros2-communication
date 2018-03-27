@@ -9,13 +9,9 @@ package lifecycle_msgs.msg.dds;
 public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_msgs.msg.dds.TransitionDescription>
 {
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::TransitionDescription_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public TransitionDescriptionPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,9 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
       int initial_alignment = current_alignment;
 
       current_alignment += lifecycle_msgs.msg.dds.TransitionPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -43,7 +41,9 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
       int initial_alignment = current_alignment;
 
       current_alignment += lifecycle_msgs.msg.dds.TransitionPubSubType.getCdrSerializedSize(data.getTransition(), current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getStartState(), current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getGoalState(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -51,21 +51,15 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void write(lifecycle_msgs.msg.dds.TransitionDescription data, us.ihmc.idl.CDR cdr)
    {
-
       lifecycle_msgs.msg.dds.TransitionPubSubType.write(data.getTransition(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.write(data.getStartState(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.write(data.getGoalState(), cdr);
    }
 
    public static void read(lifecycle_msgs.msg.dds.TransitionDescription data, us.ihmc.idl.CDR cdr)
    {
-
       lifecycle_msgs.msg.dds.TransitionPubSubType.read(data.getTransition(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.read(data.getStartState(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.read(data.getGoalState(), cdr);
    }
 

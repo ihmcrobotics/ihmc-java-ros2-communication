@@ -34,7 +34,6 @@ public class MapMetaData extends Packet<MapMetaData> implements Settable<MapMeta
    public MapMetaData()
    {
       map_load_time_ = new builtin_interfaces.msg.dds.Time();
-
       origin_ = new us.ihmc.euclid.geometry.Pose3D();
    }
 
@@ -130,7 +129,6 @@ public class MapMetaData extends Packet<MapMetaData> implements Settable<MapMeta
 
       if (!this.map_load_time_.epsilonEquals(other.map_load_time_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.resolution_, other.resolution_, epsilon))
          return false;
 
@@ -160,7 +158,6 @@ public class MapMetaData extends Packet<MapMetaData> implements Settable<MapMeta
 
       if (!this.map_load_time_.equals(otherMyClass.map_load_time_))
          return false;
-
       if (this.resolution_ != otherMyClass.resolution_)
          return false;
 
@@ -184,23 +181,18 @@ public class MapMetaData extends Packet<MapMetaData> implements Settable<MapMeta
       builder.append("MapMetaData {");
       builder.append("map_load_time=");
       builder.append(this.map_load_time_);
-
       builder.append(", ");
       builder.append("resolution=");
       builder.append(this.resolution_);
-
       builder.append(", ");
       builder.append("width=");
       builder.append(this.width_);
-
       builder.append(", ");
       builder.append("height=");
       builder.append(this.height_);
-
       builder.append(", ");
       builder.append("origin=");
       builder.append(this.origin_);
-
       builder.append("}");
       return builder.toString();
    }

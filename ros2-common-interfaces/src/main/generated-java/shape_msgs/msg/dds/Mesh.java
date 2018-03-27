@@ -22,7 +22,6 @@ public class Mesh extends Packet<Mesh> implements Settable<Mesh>, EpsilonCompara
    {
       triangles_ = new us.ihmc.idl.IDLSequence.Object<shape_msgs.msg.dds.MeshTriangle>(100, shape_msgs.msg.dds.MeshTriangle.class,
                                                                                        new shape_msgs.msg.dds.MeshTrianglePubSubType());
-
       vertices_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D>(100, us.ihmc.euclid.tuple3D.Point3D.class,
                                                                                      new geometry_msgs.msg.dds.PointPubSubType());
    }
@@ -105,7 +104,6 @@ public class Mesh extends Packet<Mesh> implements Settable<Mesh>, EpsilonCompara
 
       if (!this.triangles_.equals(otherMyClass.triangles_))
          return false;
-
       if (!this.vertices_.equals(otherMyClass.vertices_))
          return false;
 
@@ -120,11 +118,9 @@ public class Mesh extends Packet<Mesh> implements Settable<Mesh>, EpsilonCompara
       builder.append("Mesh {");
       builder.append("triangles=");
       builder.append(this.triangles_);
-
       builder.append(", ");
       builder.append("vertices=");
       builder.append(this.vertices_);
-
       builder.append("}");
       return builder.toString();
    }

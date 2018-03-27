@@ -78,7 +78,6 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
       builder.append("ParameterType {");
       builder.append("unused_placeholder_field=");
       builder.append(this.unused_placeholder_field_);
-
       builder.append("}");
       return builder.toString();
    }

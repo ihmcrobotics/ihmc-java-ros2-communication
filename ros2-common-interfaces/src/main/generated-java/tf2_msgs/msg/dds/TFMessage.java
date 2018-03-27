@@ -79,7 +79,6 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
       builder.append("TFMessage {");
       builder.append("transforms=");
       builder.append(this.transforms_);
-
       builder.append("}");
       return builder.toString();
    }

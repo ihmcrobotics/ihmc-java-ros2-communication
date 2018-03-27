@@ -9,13 +9,9 @@ package rcl_interfaces.msg.dds;
 public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.ParameterValue>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterValue_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ParameterValuePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -35,7 +31,6 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -69,7 +64,6 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void write(rcl_interfaces.msg.dds.ParameterValue data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getType());
 
       cdr.write_type_7(data.getBoolValue());
@@ -91,7 +85,6 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void read(rcl_interfaces.msg.dds.ParameterValue data, us.ihmc.idl.CDR cdr)
    {
-
       data.setType(cdr.read_type_9());
 
       data.setBoolValue(cdr.read_type_7());
@@ -101,7 +94,6 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       data.setDoubleValue(cdr.read_type_6());
 
       cdr.read_type_d(data.getStringValue());
-
       cdr.read_type_e(data.getBytesValue());
    }
 
@@ -130,15 +122,10 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
    public final void serialize(rcl_interfaces.msg.dds.ParameterValue data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_9("type", data.getType());
-
       ser.write_type_7("bool_value", data.getBoolValue());
-
       ser.write_type_11("integer_value", data.getIntegerValue());
-
       ser.write_type_6("double_value", data.getDoubleValue());
-
       ser.write_type_d("string_value", data.getStringValue());
-
       ser.write_type_e("bytes_value", data.getBytesValue());
    }
 
@@ -146,15 +133,10 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterValue data)
    {
       data.setType(ser.read_type_9("type"));
-
       data.setBoolValue(ser.read_type_7("bool_value"));
-
       data.setIntegerValue(ser.read_type_11("integer_value"));
-
       data.setDoubleValue(ser.read_type_6("double_value"));
-
       ser.read_type_d("string_value", data.getStringValue());
-
       ser.read_type_e("bytes_value", data.getBytesValue());
    }
 

@@ -101,7 +101,6 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.illuminance_, other.illuminance_, epsilon))
          return false;
 
@@ -125,7 +124,6 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.illuminance_ != otherMyClass.illuminance_)
          return false;
 
@@ -143,15 +141,12 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
       builder.append("Illuminance {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("illuminance=");
       builder.append(this.illuminance_);
-
       builder.append(", ");
       builder.append("variance=");
       builder.append(this.variance_);
-
       builder.append("}");
       return builder.toString();
    }

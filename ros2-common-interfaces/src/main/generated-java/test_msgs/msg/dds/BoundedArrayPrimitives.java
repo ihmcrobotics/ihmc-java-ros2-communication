@@ -228,46 +228,32 @@ public class BoundedArrayPrimitives extends Packet<BoundedArrayPrimitives>
 
       if (!this.bool_values_.equals(otherMyClass.bool_values_))
          return false;
-
       if (!this.byte_values_.equals(otherMyClass.byte_values_))
          return false;
-
       if (!this.char_values_.equals(otherMyClass.char_values_))
          return false;
-
       if (!this.float32_values_.equals(otherMyClass.float32_values_))
          return false;
-
       if (!this.float64_values_.equals(otherMyClass.float64_values_))
          return false;
-
       if (!this.int8_values_.equals(otherMyClass.int8_values_))
          return false;
-
       if (!this.uint8_values_.equals(otherMyClass.uint8_values_))
          return false;
-
       if (!this.int16_values_.equals(otherMyClass.int16_values_))
          return false;
-
       if (!this.uint16_values_.equals(otherMyClass.uint16_values_))
          return false;
-
       if (!this.int32_values_.equals(otherMyClass.int32_values_))
          return false;
-
       if (!this.uint32_values_.equals(otherMyClass.uint32_values_))
          return false;
-
       if (!this.int64_values_.equals(otherMyClass.int64_values_))
          return false;
-
       if (!this.uint64_values_.equals(otherMyClass.uint64_values_))
          return false;
-
       if (!this.string_values_.equals(otherMyClass.string_values_))
          return false;
-
       if (this.check_ != otherMyClass.check_)
          return false;
 
@@ -282,63 +268,48 @@ public class BoundedArrayPrimitives extends Packet<BoundedArrayPrimitives>
       builder.append("BoundedArrayPrimitives {");
       builder.append("bool_values=");
       builder.append(this.bool_values_);
-
       builder.append(", ");
       builder.append("byte_values=");
       builder.append(this.byte_values_);
-
       builder.append(", ");
       builder.append("char_values=");
       builder.append(this.char_values_);
-
       builder.append(", ");
       builder.append("float32_values=");
       builder.append(this.float32_values_);
-
       builder.append(", ");
       builder.append("float64_values=");
       builder.append(this.float64_values_);
-
       builder.append(", ");
       builder.append("int8_values=");
       builder.append(this.int8_values_);
-
       builder.append(", ");
       builder.append("uint8_values=");
       builder.append(this.uint8_values_);
-
       builder.append(", ");
       builder.append("int16_values=");
       builder.append(this.int16_values_);
-
       builder.append(", ");
       builder.append("uint16_values=");
       builder.append(this.uint16_values_);
-
       builder.append(", ");
       builder.append("int32_values=");
       builder.append(this.int32_values_);
-
       builder.append(", ");
       builder.append("uint32_values=");
       builder.append(this.uint32_values_);
-
       builder.append(", ");
       builder.append("int64_values=");
       builder.append(this.int64_values_);
-
       builder.append(", ");
       builder.append("uint64_values=");
       builder.append(this.uint64_values_);
-
       builder.append(", ");
       builder.append("string_values=");
       builder.append(this.string_values_);
-
       builder.append(", ");
       builder.append("check=");
       builder.append(this.check_);
-
       builder.append("}");
       return builder.toString();
    }

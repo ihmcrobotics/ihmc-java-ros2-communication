@@ -54,10 +54,8 @@ public class TransitionDescription extends Packet<TransitionDescription> impleme
 
       if (!this.transition_.epsilonEquals(other.transition_, epsilon))
          return false;
-
       if (!this.start_state_.epsilonEquals(other.start_state_, epsilon))
          return false;
-
       if (!this.goal_state_.epsilonEquals(other.goal_state_, epsilon))
          return false;
 
@@ -78,10 +76,8 @@ public class TransitionDescription extends Packet<TransitionDescription> impleme
 
       if (!this.transition_.equals(otherMyClass.transition_))
          return false;
-
       if (!this.start_state_.equals(otherMyClass.start_state_))
          return false;
-
       if (!this.goal_state_.equals(otherMyClass.goal_state_))
          return false;
 
@@ -96,15 +92,12 @@ public class TransitionDescription extends Packet<TransitionDescription> impleme
       builder.append("TransitionDescription {");
       builder.append("transition=");
       builder.append(this.transition_);
-
       builder.append(", ");
       builder.append("start_state=");
       builder.append(this.start_state_);
-
       builder.append(", ");
       builder.append("goal_state=");
       builder.append(this.goal_state_);
-
       builder.append("}");
       return builder.toString();
    }

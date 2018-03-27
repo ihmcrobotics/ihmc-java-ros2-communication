@@ -80,7 +80,6 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
          if (this.coef_[i5] != otherMyClass.coef_[i5])
             return false;
       }
-
       return true;
    }
 
@@ -92,7 +91,6 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
       builder.append("Plane {");
       builder.append("coef=");
       builder.append(java.util.Arrays.toString(this.coef_));
-
       builder.append("}");
       return builder.toString();
    }

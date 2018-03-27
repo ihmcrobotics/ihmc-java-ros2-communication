@@ -79,7 +79,6 @@ public class DynamicArrayNested extends Packet<DynamicArrayNested> implements Se
       builder.append("DynamicArrayNested {");
       builder.append("primitive_values=");
       builder.append(this.primitive_values_);
-
       builder.append("}");
       return builder.toString();
    }

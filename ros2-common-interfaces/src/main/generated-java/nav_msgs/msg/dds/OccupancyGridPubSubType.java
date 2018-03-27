@@ -9,13 +9,9 @@ package nav_msgs.msg.dds;
 public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.OccupancyGrid>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::OccupancyGrid_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public OccupancyGridPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,9 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += nav_msgs.msg.dds.MapMetaDataPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -44,7 +42,9 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += nav_msgs.msg.dds.MapMetaDataPubSubType.getCdrSerializedSize(data.getInfo(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getData().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -53,11 +53,8 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
 
    public static void write(nav_msgs.msg.dds.OccupancyGrid data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       nav_msgs.msg.dds.MapMetaDataPubSubType.write(data.getInfo(), cdr);
-
       if (data.getData().size() <= 100)
          cdr.write_type_e(data.getData());
       else
@@ -66,11 +63,8 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
 
    public static void read(nav_msgs.msg.dds.OccupancyGrid data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       nav_msgs.msg.dds.MapMetaDataPubSubType.read(data.getInfo(), cdr);
-
       cdr.read_type_e(data.getData());
    }
 

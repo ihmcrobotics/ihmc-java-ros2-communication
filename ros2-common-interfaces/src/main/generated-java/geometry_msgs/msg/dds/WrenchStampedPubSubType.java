@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class WrenchStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.WrenchStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::WrenchStamped_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public WrenchStampedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class WrenchStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geo
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.WrenchPubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class WrenchStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geo
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.WrenchPubSubType.getCdrSerializedSize(data.getWrench(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -49,17 +47,13 @@ public class WrenchStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geo
 
    public static void write(geometry_msgs.msg.dds.WrenchStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.WrenchPubSubType.write(data.getWrench(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.WrenchStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.WrenchPubSubType.read(data.getWrench(), cdr);
    }
 

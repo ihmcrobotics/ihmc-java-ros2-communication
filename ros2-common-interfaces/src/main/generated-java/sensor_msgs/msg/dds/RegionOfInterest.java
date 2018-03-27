@@ -42,7 +42,6 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
 
    public RegionOfInterest()
    {
-
    }
 
    public RegionOfInterest(RegionOfInterest other)
@@ -217,23 +216,18 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
       builder.append("RegionOfInterest {");
       builder.append("x_offset=");
       builder.append(this.x_offset_);
-
       builder.append(", ");
       builder.append("y_offset=");
       builder.append(this.y_offset_);
-
       builder.append(", ");
       builder.append("height=");
       builder.append(this.height_);
-
       builder.append(", ");
       builder.append("width=");
       builder.append(this.width_);
-
       builder.append(", ");
       builder.append("do_rectify=");
       builder.append(this.do_rectify_);
-
       builder.append("}");
       return builder.toString();
    }

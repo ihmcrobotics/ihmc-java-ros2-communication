@@ -61,13 +61,9 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
    {
       header_ = new std_msgs.msg.dds.Header();
       client_id_ = new java.lang.StringBuilder(255);
-
       marker_name_ = new java.lang.StringBuilder(255);
-
       control_name_ = new java.lang.StringBuilder(255);
-
       pose_ = new us.ihmc.euclid.geometry.Pose3D();
-
       mouse_point_ = new us.ihmc.euclid.tuple3D.Point3D();
    }
 
@@ -239,7 +235,6 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.client_id_, other.client_id_, epsilon))
          return false;
 
@@ -254,13 +249,11 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
 
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.menu_entry_id_, other.menu_entry_id_, epsilon))
          return false;
 
       if (!this.mouse_point_.epsilonEquals(other.mouse_point_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.mouse_point_valid_, other.mouse_point_valid_, epsilon))
          return false;
 
@@ -281,7 +274,6 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.client_id_, otherMyClass.client_id_))
          return false;
 
@@ -296,13 +288,11 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
 
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
-
       if (this.menu_entry_id_ != otherMyClass.menu_entry_id_)
          return false;
 
       if (!this.mouse_point_.equals(otherMyClass.mouse_point_))
          return false;
-
       if (this.mouse_point_valid_ != otherMyClass.mouse_point_valid_)
          return false;
 
@@ -317,39 +307,30 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
       builder.append("InteractiveMarkerFeedback {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("client_id=");
       builder.append(this.client_id_);
-
       builder.append(", ");
       builder.append("marker_name=");
       builder.append(this.marker_name_);
-
       builder.append(", ");
       builder.append("control_name=");
       builder.append(this.control_name_);
-
       builder.append(", ");
       builder.append("event_type=");
       builder.append(this.event_type_);
-
       builder.append(", ");
       builder.append("pose=");
       builder.append(this.pose_);
-
       builder.append(", ");
       builder.append("menu_entry_id=");
       builder.append(this.menu_entry_id_);
-
       builder.append(", ");
       builder.append("mouse_point=");
       builder.append(this.mouse_point_);
-
       builder.append(", ");
       builder.append("mouse_point_valid=");
       builder.append(this.mouse_point_valid_);
-
       builder.append("}");
       return builder.toString();
    }

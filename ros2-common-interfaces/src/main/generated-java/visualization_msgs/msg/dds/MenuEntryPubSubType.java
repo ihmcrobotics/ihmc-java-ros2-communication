@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.MenuEntry>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::MenuEntry_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MenuEntryPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,9 +27,7 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       return current_alignment - initial_alignment;
@@ -63,7 +57,6 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
 
    public static void write(visualization_msgs.msg.dds.MenuEntry data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_4(data.getId());
 
       cdr.write_type_4(data.getParentId());
@@ -83,15 +76,12 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
 
    public static void read(visualization_msgs.msg.dds.MenuEntry data, us.ihmc.idl.CDR cdr)
    {
-
       data.setId(cdr.read_type_4());
 
       data.setParentId(cdr.read_type_4());
 
       cdr.read_type_d(data.getTitle());
-
       cdr.read_type_d(data.getCommand());
-
       data.setCommandType(cdr.read_type_9());
    }
 
@@ -120,13 +110,9 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
    public final void serialize(visualization_msgs.msg.dds.MenuEntry data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_4("id", data.getId());
-
       ser.write_type_4("parent_id", data.getParentId());
-
       ser.write_type_d("title", data.getTitle());
-
       ser.write_type_d("command", data.getCommand());
-
       ser.write_type_9("command_type", data.getCommandType());
    }
 
@@ -134,13 +120,9 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, visualization_msgs.msg.dds.MenuEntry data)
    {
       data.setId(ser.read_type_4("id"));
-
       data.setParentId(ser.read_type_4("parent_id"));
-
       ser.read_type_d("title", data.getTitle());
-
       ser.read_type_d("command", data.getCommand());
-
       data.setCommandType(ser.read_type_9("command_type"));
    }
 

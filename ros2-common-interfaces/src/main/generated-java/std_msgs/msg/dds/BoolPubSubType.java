@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Bool>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Bool_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public BoolPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -47,13 +43,11 @@ public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
 
    public static void write(std_msgs.msg.dds.Bool data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_7(data.getData());
    }
 
    public static void read(std_msgs.msg.dds.Bool data, us.ihmc.idl.CDR cdr)
    {
-
       data.setData(cdr.read_type_7());
    }
 

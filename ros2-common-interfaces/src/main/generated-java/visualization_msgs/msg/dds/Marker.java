@@ -99,20 +99,15 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       header_ = new std_msgs.msg.dds.Header();
       ns_ = new java.lang.StringBuilder(255);
-
       pose_ = new us.ihmc.euclid.geometry.Pose3D();
       scale_ = new us.ihmc.euclid.tuple3D.Vector3D();
       color_ = new std_msgs.msg.dds.ColorRGBA();
       lifetime_ = new builtin_interfaces.msg.dds.Duration();
-
       points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D>(100, us.ihmc.euclid.tuple3D.Point3D.class,
                                                                                    new geometry_msgs.msg.dds.PointPubSubType());
-
       colors_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA>(100, std_msgs.msg.dds.ColorRGBA.class,
                                                                                new std_msgs.msg.dds.ColorRGBAPubSubType());
-
       text_ = new java.lang.StringBuilder(255);
-
       mesh_resource_ = new java.lang.StringBuilder(255);
    }
 
@@ -379,7 +374,6 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.ns_, other.ns_, epsilon))
          return false;
 
@@ -394,16 +388,12 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
 
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
-
       if (!this.scale_.epsilonEquals(other.scale_, epsilon))
          return false;
-
       if (!this.color_.epsilonEquals(other.color_, epsilon))
          return false;
-
       if (!this.lifetime_.epsilonEquals(other.lifetime_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.frame_locked_, other.frame_locked_, epsilon))
          return false;
 
@@ -459,7 +449,6 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.ns_, otherMyClass.ns_))
          return false;
 
@@ -474,25 +463,19 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
 
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
-
       if (!this.scale_.equals(otherMyClass.scale_))
          return false;
-
       if (!this.color_.equals(otherMyClass.color_))
          return false;
-
       if (!this.lifetime_.equals(otherMyClass.lifetime_))
          return false;
-
       if (this.frame_locked_ != otherMyClass.frame_locked_)
          return false;
 
       if (!this.points_.equals(otherMyClass.points_))
          return false;
-
       if (!this.colors_.equals(otherMyClass.colors_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.text_, otherMyClass.text_))
          return false;
 
@@ -513,63 +496,48 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       builder.append("Marker {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("ns=");
       builder.append(this.ns_);
-
       builder.append(", ");
       builder.append("id=");
       builder.append(this.id_);
-
       builder.append(", ");
       builder.append("type=");
       builder.append(this.type_);
-
       builder.append(", ");
       builder.append("action=");
       builder.append(this.action_);
-
       builder.append(", ");
       builder.append("pose=");
       builder.append(this.pose_);
-
       builder.append(", ");
       builder.append("scale=");
       builder.append(this.scale_);
-
       builder.append(", ");
       builder.append("color=");
       builder.append(this.color_);
-
       builder.append(", ");
       builder.append("lifetime=");
       builder.append(this.lifetime_);
-
       builder.append(", ");
       builder.append("frame_locked=");
       builder.append(this.frame_locked_);
-
       builder.append(", ");
       builder.append("points=");
       builder.append(this.points_);
-
       builder.append(", ");
       builder.append("colors=");
       builder.append(this.colors_);
-
       builder.append(", ");
       builder.append("text=");
       builder.append(this.text_);
-
       builder.append(", ");
       builder.append("mesh_resource=");
       builder.append(this.mesh_resource_);
-
       builder.append(", ");
       builder.append("mesh_use_embedded_materials=");
       builder.append(this.mesh_use_embedded_materials_);
-
       builder.append("}");
       return builder.toString();
    }

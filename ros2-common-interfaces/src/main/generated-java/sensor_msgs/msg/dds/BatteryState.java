@@ -100,11 +100,9 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
    public BatteryState()
    {
       header_ = new std_msgs.msg.dds.Header();
-
       cell_voltage_ = new us.ihmc.idl.IDLSequence.Float(100, "type_5");
 
       location_ = new java.lang.StringBuilder(255);
-
       serial_number_ = new java.lang.StringBuilder(255);
    }
 
@@ -380,7 +378,6 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.voltage_, other.voltage_, epsilon))
          return false;
 
@@ -437,7 +434,6 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.voltage_ != otherMyClass.voltage_)
          return false;
 
@@ -470,7 +466,6 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
 
       if (!this.cell_voltage_.equals(otherMyClass.cell_voltage_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.location_, otherMyClass.location_))
          return false;
 
@@ -488,59 +483,45 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       builder.append("BatteryState {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("voltage=");
       builder.append(this.voltage_);
-
       builder.append(", ");
       builder.append("current=");
       builder.append(this.current_);
-
       builder.append(", ");
       builder.append("charge=");
       builder.append(this.charge_);
-
       builder.append(", ");
       builder.append("capacity=");
       builder.append(this.capacity_);
-
       builder.append(", ");
       builder.append("design_capacity=");
       builder.append(this.design_capacity_);
-
       builder.append(", ");
       builder.append("percentage=");
       builder.append(this.percentage_);
-
       builder.append(", ");
       builder.append("power_supply_status=");
       builder.append(this.power_supply_status_);
-
       builder.append(", ");
       builder.append("power_supply_health=");
       builder.append(this.power_supply_health_);
-
       builder.append(", ");
       builder.append("power_supply_technology=");
       builder.append(this.power_supply_technology_);
-
       builder.append(", ");
       builder.append("present=");
       builder.append(this.present_);
-
       builder.append(", ");
       builder.append("cell_voltage=");
       builder.append(this.cell_voltage_);
-
       builder.append(", ");
       builder.append("location=");
       builder.append(this.location_);
-
       builder.append(", ");
       builder.append("serial_number=");
       builder.append(this.serial_number_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.String>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::String_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public StringPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,6 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       return current_alignment - initial_alignment;
    }
 
@@ -47,7 +42,6 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void write(std_msgs.msg.dds.String data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getData().length() <= 255)
          cdr.write_type_d(data.getData());
       else
@@ -56,7 +50,6 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void read(std_msgs.msg.dds.String data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getData());
    }
 

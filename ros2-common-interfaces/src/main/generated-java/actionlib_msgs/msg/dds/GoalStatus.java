@@ -66,7 +66,6 @@ public class GoalStatus extends Packet<GoalStatus> implements Settable<GoalStatu
    public GoalStatus()
    {
       goal_id_ = new actionlib_msgs.msg.dds.GoalID();
-
       text_ = new java.lang.StringBuilder(255);
    }
 
@@ -134,7 +133,6 @@ public class GoalStatus extends Packet<GoalStatus> implements Settable<GoalStatu
 
       if (!this.goal_id_.epsilonEquals(other.goal_id_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.status_, other.status_, epsilon))
          return false;
 
@@ -158,7 +156,6 @@ public class GoalStatus extends Packet<GoalStatus> implements Settable<GoalStatu
 
       if (!this.goal_id_.equals(otherMyClass.goal_id_))
          return false;
-
       if (this.status_ != otherMyClass.status_)
          return false;
 
@@ -176,15 +173,12 @@ public class GoalStatus extends Packet<GoalStatus> implements Settable<GoalStatu
       builder.append("GoalStatus {");
       builder.append("goal_id=");
       builder.append(this.goal_id_);
-
       builder.append(", ");
       builder.append("status=");
       builder.append(this.status_);
-
       builder.append(", ");
       builder.append("text=");
       builder.append(this.text_);
-
       builder.append("}");
       return builder.toString();
    }

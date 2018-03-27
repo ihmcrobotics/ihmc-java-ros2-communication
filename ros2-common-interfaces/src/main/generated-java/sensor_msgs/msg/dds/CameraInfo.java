@@ -151,9 +151,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    public CameraInfo()
    {
       header_ = new std_msgs.msg.dds.Header();
-
       distortion_model_ = new java.lang.StringBuilder(255);
-
       d_ = new us.ihmc.idl.IDLSequence.Double(100, "type_6");
 
       k_ = new double[9];
@@ -398,7 +396,6 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.height_, other.height_, epsilon))
          return false;
 
@@ -455,7 +452,6 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.height_ != otherMyClass.height_)
          return false;
 
@@ -467,7 +463,6 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
       if (!this.d_.equals(otherMyClass.d_))
          return false;
-
       for (int i13 = 0; i13 < k_.length; ++i13)
       {
          if (this.k_[i13] != otherMyClass.k_[i13])
@@ -503,47 +498,36 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
       builder.append("CameraInfo {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("height=");
       builder.append(this.height_);
-
       builder.append(", ");
       builder.append("width=");
       builder.append(this.width_);
-
       builder.append(", ");
       builder.append("distortion_model=");
       builder.append(this.distortion_model_);
-
       builder.append(", ");
       builder.append("d=");
       builder.append(this.d_);
-
       builder.append(", ");
       builder.append("k=");
       builder.append(java.util.Arrays.toString(this.k_));
-
       builder.append(", ");
       builder.append("r=");
       builder.append(java.util.Arrays.toString(this.r_));
-
       builder.append(", ");
       builder.append("p=");
       builder.append(java.util.Arrays.toString(this.p_));
-
       builder.append(", ");
       builder.append("binning_x=");
       builder.append(this.binning_x_);
-
       builder.append(", ");
       builder.append("binning_y=");
       builder.append(this.binning_y_);
-
       builder.append(", ");
       builder.append("roi=");
       builder.append(this.roi_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -71,10 +71,8 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.info_.epsilonEquals(other.info_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsByteSequence(this.data_, other.data_, epsilon))
          return false;
 
@@ -95,10 +93,8 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.info_.equals(otherMyClass.info_))
          return false;
-
       if (!this.data_.equals(otherMyClass.data_))
          return false;
 
@@ -113,15 +109,12 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
       builder.append("OccupancyGrid {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("info=");
       builder.append(this.info_);
-
       builder.append(", ");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -49,7 +49,6 @@ public class PointStamped extends Packet<PointStamped> implements Settable<Point
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.point_.epsilonEquals(other.point_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class PointStamped extends Packet<PointStamped> implements Settable<Point
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.point_.equals(otherMyClass.point_))
          return false;
 
@@ -85,11 +83,9 @@ public class PointStamped extends Packet<PointStamped> implements Settable<Point
       builder.append("PointStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("point=");
       builder.append(this.point_);
-
       builder.append("}");
       return builder.toString();
    }

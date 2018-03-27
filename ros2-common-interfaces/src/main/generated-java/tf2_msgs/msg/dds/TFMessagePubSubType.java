@@ -9,13 +9,9 @@ package tf2_msgs.msg.dds;
 public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs.msg.dds.TFMessage>
 {
    public static final java.lang.String name = "tf2_msgs::msg::dds_::TFMessage_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public TFMessagePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
       {
          current_alignment += geometry_msgs.msg.dds.TransformStampedPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       return current_alignment - initial_alignment;
    }
 
@@ -55,7 +50,6 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
 
    public static void write(tf2_msgs.msg.dds.TFMessage data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getTransforms().size() <= 100)
          cdr.write_type_e(data.getTransforms());
       else
@@ -64,7 +58,6 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
 
    public static void read(tf2_msgs.msg.dds.TFMessage data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getTransforms());
    }
 

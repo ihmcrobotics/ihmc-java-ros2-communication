@@ -23,7 +23,6 @@ public class Primitives extends Packet<Primitives> implements Settable<Primitive
 
    public Primitives()
    {
-
       string_value_ = new java.lang.StringBuilder(255);
    }
 
@@ -328,59 +327,45 @@ public class Primitives extends Packet<Primitives> implements Settable<Primitive
       builder.append("Primitives {");
       builder.append("bool_value=");
       builder.append(this.bool_value_);
-
       builder.append(", ");
       builder.append("byte_value=");
       builder.append(this.byte_value_);
-
       builder.append(", ");
       builder.append("char_value=");
       builder.append(this.char_value_);
-
       builder.append(", ");
       builder.append("float32_value=");
       builder.append(this.float32_value_);
-
       builder.append(", ");
       builder.append("float64_value=");
       builder.append(this.float64_value_);
-
       builder.append(", ");
       builder.append("int8_value=");
       builder.append(this.int8_value_);
-
       builder.append(", ");
       builder.append("uint8_value=");
       builder.append(this.uint8_value_);
-
       builder.append(", ");
       builder.append("int16_value=");
       builder.append(this.int16_value_);
-
       builder.append(", ");
       builder.append("uint16_value=");
       builder.append(this.uint16_value_);
-
       builder.append(", ");
       builder.append("int32_value=");
       builder.append(this.int32_value_);
-
       builder.append(", ");
       builder.append("uint32_value=");
       builder.append(this.uint32_value_);
-
       builder.append(", ");
       builder.append("int64_value=");
       builder.append(this.int64_value_);
-
       builder.append(", ");
       builder.append("uint64_value=");
       builder.append(this.uint64_value_);
-
       builder.append(", ");
       builder.append("string_value=");
       builder.append(this.string_value_);
-
       builder.append("}");
       return builder.toString();
    }

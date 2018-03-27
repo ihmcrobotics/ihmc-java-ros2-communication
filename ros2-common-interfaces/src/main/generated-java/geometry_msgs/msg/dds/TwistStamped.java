@@ -49,7 +49,6 @@ public class TwistStamped extends Packet<TwistStamped> implements Settable<Twist
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.twist_.epsilonEquals(other.twist_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class TwistStamped extends Packet<TwistStamped> implements Settable<Twist
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.twist_.equals(otherMyClass.twist_))
          return false;
 
@@ -85,11 +83,9 @@ public class TwistStamped extends Packet<TwistStamped> implements Settable<Twist
       builder.append("TwistStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("twist=");
       builder.append(this.twist_);
-
       builder.append("}");
       return builder.toString();
    }

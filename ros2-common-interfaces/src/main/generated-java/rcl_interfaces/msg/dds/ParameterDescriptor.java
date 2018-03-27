@@ -111,11 +111,9 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       builder.append("ParameterDescriptor {");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("type=");
       builder.append(this.type_);
-
       builder.append("}");
       return builder.toString();
    }

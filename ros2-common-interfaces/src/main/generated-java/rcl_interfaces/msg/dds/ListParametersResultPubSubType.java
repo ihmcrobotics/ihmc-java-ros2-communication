@@ -9,13 +9,9 @@ package rcl_interfaces.msg.dds;
 public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.ListParametersResult>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ListParametersResult_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ListParametersResultPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -65,7 +61,6 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
 
    public static void write(rcl_interfaces.msg.dds.ListParametersResult data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getNames().size() <= 100)
          cdr.write_type_e(data.getNames());
       else
@@ -79,9 +74,7 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
 
    public static void read(rcl_interfaces.msg.dds.ListParametersResult data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getNames());
-
       cdr.read_type_e(data.getPrefixes());
    }
 
@@ -111,7 +104,6 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
    public final void serialize(rcl_interfaces.msg.dds.ListParametersResult data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_e("names", data.getNames());
-
       ser.write_type_e("prefixes", data.getPrefixes());
    }
 
@@ -119,7 +111,6 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ListParametersResult data)
    {
       ser.read_type_e("names", data.getNames());
-
       ser.read_type_e("prefixes", data.getPrefixes());
    }
 

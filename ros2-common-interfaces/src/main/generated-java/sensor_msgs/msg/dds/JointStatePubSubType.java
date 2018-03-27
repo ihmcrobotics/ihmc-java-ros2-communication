@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.JointState>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JointState_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public JointStatePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -54,6 +51,7 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < data.getName().size(); ++i0)
       {
@@ -73,9 +71,7 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void write(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if (data.getName().size() <= 100)
          cdr.write_type_e(data.getName());
       else
@@ -99,15 +95,10 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void read(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       cdr.read_type_e(data.getName());
-
       cdr.read_type_e(data.getPosition());
-
       cdr.read_type_e(data.getVelocity());
-
       cdr.read_type_e(data.getEffort());
    }
 
@@ -138,11 +129,8 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_e("name", data.getName());
-
       ser.write_type_e("position", data.getPosition());
-
       ser.write_type_e("velocity", data.getVelocity());
-
       ser.write_type_e("effort", data.getEffort());
    }
 
@@ -152,11 +140,8 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.read_type_e("name", data.getName());
-
       ser.read_type_e("position", data.getPosition());
-
       ser.read_type_e("velocity", data.getVelocity());
-
       ser.read_type_e("effort", data.getEffort());
    }
 

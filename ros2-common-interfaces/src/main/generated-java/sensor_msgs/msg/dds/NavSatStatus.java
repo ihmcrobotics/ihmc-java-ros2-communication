@@ -42,7 +42,6 @@ public class NavSatStatus extends Packet<NavSatStatus> implements Settable<NavSa
 
    public NavSatStatus()
    {
-
    }
 
    public NavSatStatus(NavSatStatus other)
@@ -123,11 +122,9 @@ public class NavSatStatus extends Packet<NavSatStatus> implements Settable<NavSa
       builder.append("NavSatStatus {");
       builder.append("status=");
       builder.append(this.status_);
-
       builder.append(", ");
       builder.append("service=");
       builder.append(this.service_);
-
       builder.append("}");
       return builder.toString();
    }

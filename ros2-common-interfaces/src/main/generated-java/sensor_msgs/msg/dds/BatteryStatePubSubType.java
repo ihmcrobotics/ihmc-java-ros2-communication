@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.BatteryState>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::BatteryState_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public BatteryStatePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -51,7 +48,6 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
       return current_alignment - initial_alignment;
@@ -67,6 +63,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -99,9 +96,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
    public static void write(sensor_msgs.msg.dds.BatteryState data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       cdr.write_type_5(data.getVoltage());
 
       cdr.write_type_5(data.getCurrent());
@@ -140,9 +135,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
    public static void read(sensor_msgs.msg.dds.BatteryState data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       data.setVoltage(cdr.read_type_5());
 
       data.setCurrent(cdr.read_type_5());
@@ -164,9 +157,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       data.setPresent(cdr.read_type_7());
 
       cdr.read_type_e(data.getCellVoltage());
-
       cdr.read_type_d(data.getLocation());
-
       cdr.read_type_d(data.getSerialNumber());
    }
 
@@ -197,29 +188,17 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_5("voltage", data.getVoltage());
-
       ser.write_type_5("current", data.getCurrent());
-
       ser.write_type_5("charge", data.getCharge());
-
       ser.write_type_5("capacity", data.getCapacity());
-
       ser.write_type_5("design_capacity", data.getDesignCapacity());
-
       ser.write_type_5("percentage", data.getPercentage());
-
       ser.write_type_9("power_supply_status", data.getPowerSupplyStatus());
-
       ser.write_type_9("power_supply_health", data.getPowerSupplyHealth());
-
       ser.write_type_9("power_supply_technology", data.getPowerSupplyTechnology());
-
       ser.write_type_7("present", data.getPresent());
-
       ser.write_type_e("cell_voltage", data.getCellVoltage());
-
       ser.write_type_d("location", data.getLocation());
-
       ser.write_type_d("serial_number", data.getSerialNumber());
    }
 
@@ -229,29 +208,17 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       data.setVoltage(ser.read_type_5("voltage"));
-
       data.setCurrent(ser.read_type_5("current"));
-
       data.setCharge(ser.read_type_5("charge"));
-
       data.setCapacity(ser.read_type_5("capacity"));
-
       data.setDesignCapacity(ser.read_type_5("design_capacity"));
-
       data.setPercentage(ser.read_type_5("percentage"));
-
       data.setPowerSupplyStatus(ser.read_type_9("power_supply_status"));
-
       data.setPowerSupplyHealth(ser.read_type_9("power_supply_health"));
-
       data.setPowerSupplyTechnology(ser.read_type_9("power_supply_technology"));
-
       data.setPresent(ser.read_type_7("present"));
-
       ser.read_type_e("cell_voltage", data.getCellVoltage());
-
       ser.read_type_d("location", data.getLocation());
-
       ser.read_type_d("serial_number", data.getSerialNumber());
    }
 

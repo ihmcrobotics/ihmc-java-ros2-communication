@@ -9,13 +9,9 @@ package diagnostic_msgs.msg.dds;
 public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnostic_msgs.msg.dds.KeyValue>
 {
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::KeyValue_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public KeyValuePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,6 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
       return current_alignment - initial_alignment;
@@ -51,7 +46,6 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
 
    public static void write(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getKey().length() <= 255)
          cdr.write_type_d(data.getKey());
       else
@@ -65,9 +59,7 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
 
    public static void read(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getKey());
-
       cdr.read_type_d(data.getValue());
    }
 
@@ -96,7 +88,6 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
    public final void serialize(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_d("key", data.getKey());
-
       ser.write_type_d("value", data.getValue());
    }
 
@@ -104,7 +95,6 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, diagnostic_msgs.msg.dds.KeyValue data)
    {
       ser.read_type_d("key", data.getKey());
-
       ser.read_type_d("value", data.getValue());
    }
 

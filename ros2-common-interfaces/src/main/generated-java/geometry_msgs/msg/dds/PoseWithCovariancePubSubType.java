@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.PoseWithCovariance>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseWithCovariance_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public PoseWithCovariancePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += ((36) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
+
       current_alignment += ((36) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       return current_alignment - initial_alignment;
@@ -49,9 +47,7 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void write(geometry_msgs.msg.dds.PoseWithCovariance data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
-
       for (int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
          cdr.write_type_6(data.getCovariance()[i0]);
@@ -60,9 +56,7 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void read(geometry_msgs.msg.dds.PoseWithCovariance data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
-
       for (int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
          data.getCovariance()[i0] = cdr.read_type_6();

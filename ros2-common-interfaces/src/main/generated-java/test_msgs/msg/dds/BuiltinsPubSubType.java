@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class BuiltinsPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.Builtins>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::Builtins_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public BuiltinsPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class BuiltinsPubSubType implements us.ihmc.pubsub.TopicDataType<test_msg
       int initial_alignment = current_alignment;
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class BuiltinsPubSubType implements us.ihmc.pubsub.TopicDataType<test_msg
       int initial_alignment = current_alignment;
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getCdrSerializedSize(data.getDurationValue(), current_alignment);
+
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getTimeValue(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -49,17 +47,13 @@ public class BuiltinsPubSubType implements us.ihmc.pubsub.TopicDataType<test_msg
 
    public static void write(test_msgs.msg.dds.Builtins data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.DurationPubSubType.write(data.getDurationValue(), cdr);
-
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getTimeValue(), cdr);
    }
 
    public static void read(test_msgs.msg.dds.Builtins data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.DurationPubSubType.read(data.getDurationValue(), cdr);
-
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getTimeValue(), cdr);
    }
 

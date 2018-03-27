@@ -72,7 +72,6 @@ public class UInt8 extends Packet<UInt8> implements Settable<UInt8>, EpsilonComp
       builder.append("UInt8 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

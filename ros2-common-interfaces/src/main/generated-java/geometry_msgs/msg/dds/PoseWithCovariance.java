@@ -64,7 +64,6 @@ public class PoseWithCovariance extends Packet<PoseWithCovariance> implements Se
 
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
-
       for (int i3 = 0; i3 < covariance_.length; ++i3)
       {
          if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.covariance_[i3], other.covariance_[i3], epsilon))
@@ -88,7 +87,6 @@ public class PoseWithCovariance extends Packet<PoseWithCovariance> implements Se
 
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
-
       for (int i5 = 0; i5 < covariance_.length; ++i5)
       {
          if (this.covariance_[i5] != otherMyClass.covariance_[i5])
@@ -106,11 +104,9 @@ public class PoseWithCovariance extends Packet<PoseWithCovariance> implements Se
       builder.append("PoseWithCovariance {");
       builder.append("pose=");
       builder.append(this.pose_);
-
       builder.append(", ");
       builder.append("covariance=");
       builder.append(java.util.Arrays.toString(this.covariance_));
-
       builder.append("}");
       return builder.toString();
    }

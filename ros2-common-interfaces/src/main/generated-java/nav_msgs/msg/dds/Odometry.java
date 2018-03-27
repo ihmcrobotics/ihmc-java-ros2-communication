@@ -20,7 +20,6 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
    {
       header_ = new std_msgs.msg.dds.Header();
       child_frame_id_ = new java.lang.StringBuilder(255);
-
       pose_ = new geometry_msgs.msg.dds.PoseWithCovariance();
       twist_ = new geometry_msgs.msg.dds.TwistWithCovariance();
    }
@@ -81,13 +80,11 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.child_frame_id_, other.child_frame_id_, epsilon))
          return false;
 
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
-
       if (!this.twist_.epsilonEquals(other.twist_, epsilon))
          return false;
 
@@ -108,13 +105,11 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.child_frame_id_, otherMyClass.child_frame_id_))
          return false;
 
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
-
       if (!this.twist_.equals(otherMyClass.twist_))
          return false;
 
@@ -129,19 +124,15 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
       builder.append("Odometry {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("child_frame_id=");
       builder.append(this.child_frame_id_);
-
       builder.append(", ");
       builder.append("pose=");
       builder.append(this.pose_);
-
       builder.append(", ");
       builder.append("twist=");
       builder.append(this.twist_);
-
       builder.append("}");
       return builder.toString();
    }

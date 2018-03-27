@@ -46,12 +46,9 @@ public class InteractiveMarker extends Packet<InteractiveMarker> implements Sett
       header_ = new std_msgs.msg.dds.Header();
       pose_ = new us.ihmc.euclid.geometry.Pose3D();
       name_ = new java.lang.StringBuilder(255);
-
       description_ = new java.lang.StringBuilder(255);
-
       menu_entries_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry>(100, visualization_msgs.msg.dds.MenuEntry.class,
                                                                                                new visualization_msgs.msg.dds.MenuEntryPubSubType());
-
       controls_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl>(100,
                                                                                                           visualization_msgs.msg.dds.InteractiveMarkerControl.class,
                                                                                                           new visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType());
@@ -194,10 +191,8 @@ public class InteractiveMarker extends Packet<InteractiveMarker> implements Sett
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon))
          return false;
 
@@ -250,10 +245,8 @@ public class InteractiveMarker extends Packet<InteractiveMarker> implements Sett
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_))
          return false;
 
@@ -265,7 +258,6 @@ public class InteractiveMarker extends Packet<InteractiveMarker> implements Sett
 
       if (!this.menu_entries_.equals(otherMyClass.menu_entries_))
          return false;
-
       if (!this.controls_.equals(otherMyClass.controls_))
          return false;
 
@@ -280,31 +272,24 @@ public class InteractiveMarker extends Packet<InteractiveMarker> implements Sett
       builder.append("InteractiveMarker {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("pose=");
       builder.append(this.pose_);
-
       builder.append(", ");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("description=");
       builder.append(this.description_);
-
       builder.append(", ");
       builder.append("scale=");
       builder.append(this.scale_);
-
       builder.append(", ");
       builder.append("menu_entries=");
       builder.append(this.menu_entries_);
-
       builder.append(", ");
       builder.append("controls=");
       builder.append(this.controls_);
-
       builder.append("}");
       return builder.toString();
    }

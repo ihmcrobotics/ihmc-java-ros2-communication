@@ -188,19 +188,15 @@ public class PointField extends Packet<PointField> implements Settable<PointFiel
       builder.append("PointField {");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("offset=");
       builder.append(this.offset_);
-
       builder.append(", ");
       builder.append("datatype=");
       builder.append(this.datatype_);
-
       builder.append(", ");
       builder.append("count=");
       builder.append(this.count_);
-
       builder.append("}");
       return builder.toString();
    }

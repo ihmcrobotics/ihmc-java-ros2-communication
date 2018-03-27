@@ -72,7 +72,6 @@ public class UInt32 extends Packet<UInt32> implements Settable<UInt32>, EpsilonC
       builder.append("UInt32 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

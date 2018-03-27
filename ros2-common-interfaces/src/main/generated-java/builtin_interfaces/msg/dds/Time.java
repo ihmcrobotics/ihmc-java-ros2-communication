@@ -11,7 +11,6 @@ public class Time extends Packet<Time> implements Settable<Time>, EpsilonCompara
 
    public Time()
    {
-
    }
 
    public Time(Time other)
@@ -92,11 +91,9 @@ public class Time extends Packet<Time> implements Settable<Time>, EpsilonCompara
       builder.append("Time {");
       builder.append("sec=");
       builder.append(this.sec_);
-
       builder.append(", ");
       builder.append("nanosec=");
       builder.append(this.nanosec_);
-
       builder.append("}");
       return builder.toString();
    }

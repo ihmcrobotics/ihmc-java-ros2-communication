@@ -72,7 +72,6 @@ public class Float64 extends Packet<Float64> implements Settable<Float64>, Epsil
       builder.append("Float64 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

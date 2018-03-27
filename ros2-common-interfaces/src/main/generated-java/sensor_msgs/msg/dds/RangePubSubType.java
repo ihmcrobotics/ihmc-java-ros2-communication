@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Range>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Range_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public RangePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -50,6 +47,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -65,9 +63,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
 
    public static void write(sensor_msgs.msg.dds.Range data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       cdr.write_type_9(data.getRadiationType());
 
       cdr.write_type_5(data.getFieldOfView());
@@ -81,9 +77,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
 
    public static void read(sensor_msgs.msg.dds.Range data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       data.setRadiationType(cdr.read_type_9());
 
       data.setFieldOfView(cdr.read_type_5());
@@ -122,13 +116,9 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_9("radiation_type", data.getRadiationType());
-
       ser.write_type_5("field_of_view", data.getFieldOfView());
-
       ser.write_type_5("min_range", data.getMinRange());
-
       ser.write_type_5("max_range", data.getMaxRange());
-
       ser.write_type_5("range", data.getRange());
    }
 
@@ -138,13 +128,9 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       data.setRadiationType(ser.read_type_9("radiation_type"));
-
       data.setFieldOfView(ser.read_type_5("field_of_view"));
-
       data.setMinRange(ser.read_type_5("min_range"));
-
       data.setMaxRange(ser.read_type_5("max_range"));
-
       data.setRange(ser.read_type_5("range"));
    }
 

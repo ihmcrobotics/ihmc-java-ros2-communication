@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.ColorRGBA>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::ColorRGBA_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ColorRGBAPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -59,7 +55,6 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
 
    public static void write(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_5(data.getR());
 
       cdr.write_type_5(data.getG());
@@ -71,7 +66,6 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
 
    public static void read(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.CDR cdr)
    {
-
       data.setR(cdr.read_type_5());
 
       data.setG(cdr.read_type_5());
@@ -106,11 +100,8 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    public final void serialize(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_5("r", data.getR());
-
       ser.write_type_5("g", data.getG());
-
       ser.write_type_5("b", data.getB());
-
       ser.write_type_5("a", data.getA());
    }
 
@@ -118,11 +109,8 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.ColorRGBA data)
    {
       data.setR(ser.read_type_5("r"));
-
       data.setG(ser.read_type_5("g"));
-
       data.setB(ser.read_type_5("b"));
-
       data.setA(ser.read_type_5("a"));
    }
 

@@ -79,7 +79,6 @@ public class BoundedArrayNested extends Packet<BoundedArrayNested> implements Se
       builder.append("BoundedArrayNested {");
       builder.append("primitive_values=");
       builder.append(this.primitive_values_);
-
       builder.append("}");
       return builder.toString();
    }

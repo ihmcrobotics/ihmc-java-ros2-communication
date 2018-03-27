@@ -177,7 +177,6 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.radiation_type_, other.radiation_type_, epsilon))
          return false;
 
@@ -210,7 +209,6 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.radiation_type_ != otherMyClass.radiation_type_)
          return false;
 
@@ -237,27 +235,21 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
       builder.append("Range {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("radiation_type=");
       builder.append(this.radiation_type_);
-
       builder.append(", ");
       builder.append("field_of_view=");
       builder.append(this.field_of_view_);
-
       builder.append(", ");
       builder.append("min_range=");
       builder.append(this.min_range_);
-
       builder.append(", ");
       builder.append("max_range=");
       builder.append(this.max_range_);
-
       builder.append(", ");
       builder.append("range=");
       builder.append(this.range_);
-
       builder.append("}");
       return builder.toString();
    }

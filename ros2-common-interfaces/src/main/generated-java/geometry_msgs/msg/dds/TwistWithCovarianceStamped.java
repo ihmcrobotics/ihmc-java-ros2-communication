@@ -50,7 +50,6 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.twist_.epsilonEquals(other.twist_, epsilon))
          return false;
 
@@ -71,7 +70,6 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.twist_.equals(otherMyClass.twist_))
          return false;
 
@@ -86,11 +84,9 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
       builder.append("TwistWithCovarianceStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("twist=");
       builder.append(this.twist_);
-
       builder.append("}");
       return builder.toString();
    }

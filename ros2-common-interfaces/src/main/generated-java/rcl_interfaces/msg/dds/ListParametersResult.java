@@ -81,7 +81,6 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
 
       if (!this.names_.equals(otherMyClass.names_))
          return false;
-
       if (!this.prefixes_.equals(otherMyClass.prefixes_))
          return false;
 
@@ -96,11 +95,9 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
       builder.append("ListParametersResult {");
       builder.append("names=");
       builder.append(this.names_);
-
       builder.append(", ");
       builder.append("prefixes=");
       builder.append(this.prefixes_);
-
       builder.append("}");
       return builder.toString();
    }

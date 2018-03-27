@@ -24,9 +24,7 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
 
    public ParameterValue()
    {
-
       string_value_ = new java.lang.StringBuilder(255);
-
       bytes_value_ = new us.ihmc.idl.IDLSequence.Byte(100, "type_9");
    }
 
@@ -188,27 +186,21 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
       builder.append("ParameterValue {");
       builder.append("type=");
       builder.append(this.type_);
-
       builder.append(", ");
       builder.append("bool_value=");
       builder.append(this.bool_value_);
-
       builder.append(", ");
       builder.append("integer_value=");
       builder.append(this.integer_value_);
-
       builder.append(", ");
       builder.append("double_value=");
       builder.append(this.double_value_);
-
       builder.append(", ");
       builder.append("string_value=");
       builder.append(this.string_value_);
-
       builder.append(", ");
       builder.append("bytes_value=");
       builder.append(this.bytes_value_);
-
       builder.append("}");
       return builder.toString();
    }

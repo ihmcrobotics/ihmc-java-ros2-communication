@@ -72,7 +72,6 @@ public class UInt16 extends Packet<UInt16> implements Settable<UInt16>, EpsilonC
       builder.append("UInt16 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

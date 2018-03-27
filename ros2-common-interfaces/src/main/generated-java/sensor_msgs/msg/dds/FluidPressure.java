@@ -94,7 +94,6 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.fluid_pressure_, other.fluid_pressure_, epsilon))
          return false;
 
@@ -118,7 +117,6 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.fluid_pressure_ != otherMyClass.fluid_pressure_)
          return false;
 
@@ -136,15 +134,12 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
       builder.append("FluidPressure {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("fluid_pressure=");
       builder.append(this.fluid_pressure_);
-
       builder.append(", ");
       builder.append("variance=");
       builder.append(this.variance_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.MultiArrayDimension>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::MultiArrayDimension_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MultiArrayDimensionPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,6 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -55,7 +50,6 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void write(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getLabel().length() <= 255)
          cdr.write_type_d(data.getLabel());
       else
@@ -68,9 +62,7 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void read(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getLabel());
-
       data.setSize(cdr.read_type_4());
 
       data.setStride(cdr.read_type_4());
@@ -101,9 +93,7 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
    public final void serialize(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_d("label", data.getLabel());
-
       ser.write_type_4("size", data.getSize());
-
       ser.write_type_4("stride", data.getStride());
    }
 
@@ -111,9 +101,7 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.MultiArrayDimension data)
    {
       ser.read_type_d("label", data.getLabel());
-
       data.setSize(ser.read_type_4("size"));
-
       data.setStride(ser.read_type_4("stride"));
    }
 

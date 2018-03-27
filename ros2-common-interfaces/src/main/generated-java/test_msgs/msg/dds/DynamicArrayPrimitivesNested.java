@@ -81,7 +81,6 @@ public class DynamicArrayPrimitivesNested extends Packet<DynamicArrayPrimitivesN
       builder.append("DynamicArrayPrimitivesNested {");
       builder.append("dynamic_array_primitive_values=");
       builder.append(this.dynamic_array_primitive_values_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package actionlib_msgs.msg.dds;
 public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_msgs.msg.dds.GoalID>
 {
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalID_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public GoalIDPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
       int initial_alignment = current_alignment;
 
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
       int initial_alignment = current_alignment;
 
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getStamp(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getId().length() + 1;
 
       return current_alignment - initial_alignment;
@@ -49,9 +47,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
 
    public static void write(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getStamp(), cdr);
-
       if (data.getId().length() <= 255)
          cdr.write_type_d(data.getId());
       else
@@ -60,9 +56,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
 
    public static void read(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);
-
       cdr.read_type_d(data.getId());
    }
 

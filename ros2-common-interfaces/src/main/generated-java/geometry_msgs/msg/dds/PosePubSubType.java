@@ -13,11 +13,6 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
 
-   public PosePubSubType()
-   {
-
-   }
-
    private static AbstractPosePubSubTypeImplementation getImpl()
    {
       if (impl == null)
@@ -58,6 +53,7 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(getImpl().getPosition(data), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getCdrSerializedSize(getImpl().getOrientation(data), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -65,17 +61,13 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
 
    public static void write(us.ihmc.euclid.geometry.Pose3D data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.PointPubSubType.write(getImpl().getPosition(data), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.write(getImpl().getOrientation(data), cdr);
    }
 
    public static void read(us.ihmc.euclid.geometry.Pose3D data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.PointPubSubType.read(getImpl().getPosition(data), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.read(getImpl().getOrientation(data), cdr);
    }
 
@@ -87,7 +79,6 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
    @Override
    public void serialize(us.ihmc.euclid.geometry.Pose3D data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
    {
-
       serializeCDR.serialize(serializedPayload);
       write(data, serializeCDR);
       serializeCDR.finishSerialize();
@@ -163,7 +154,6 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
     */
    public static abstract class AbstractPosePubSubTypeImplementation
    {
-
       /**
        * Copy src into dest.
        *

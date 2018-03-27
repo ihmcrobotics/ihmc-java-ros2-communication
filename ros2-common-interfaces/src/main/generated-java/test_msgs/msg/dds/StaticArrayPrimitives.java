@@ -38,6 +38,7 @@ public class StaticArrayPrimitives extends Packet<StaticArrayPrimitives> impleme
       int32_values_ = new int[3];
 
       string_values_ = new java.lang.StringBuilder[3];
+
       for (int i1 = 0; i1 < string_values_.length; ++i1)
       {
          string_values_[i1] = new java.lang.StringBuilder();
@@ -298,43 +299,33 @@ public class StaticArrayPrimitives extends Packet<StaticArrayPrimitives> impleme
       builder.append("StaticArrayPrimitives {");
       builder.append("bool_values=");
       builder.append(java.util.Arrays.toString(this.bool_values_));
-
       builder.append(", ");
       builder.append("byte_values=");
       builder.append(java.util.Arrays.toString(this.byte_values_));
-
       builder.append(", ");
       builder.append("char_values=");
       builder.append(java.util.Arrays.toString(this.char_values_));
-
       builder.append(", ");
       builder.append("float32_values=");
       builder.append(java.util.Arrays.toString(this.float32_values_));
-
       builder.append(", ");
       builder.append("float64_values=");
       builder.append(java.util.Arrays.toString(this.float64_values_));
-
       builder.append(", ");
       builder.append("int8_values=");
       builder.append(java.util.Arrays.toString(this.int8_values_));
-
       builder.append(", ");
       builder.append("uint8_values=");
       builder.append(java.util.Arrays.toString(this.uint8_values_));
-
       builder.append(", ");
       builder.append("int16_values=");
       builder.append(java.util.Arrays.toString(this.int16_values_));
-
       builder.append(", ");
       builder.append("int32_values=");
       builder.append(java.util.Arrays.toString(this.int32_values_));
-
       builder.append(", ");
       builder.append("string_values=");
       builder.append(java.util.Arrays.toString(this.string_values_));
-
       builder.append("}");
       return builder.toString();
    }

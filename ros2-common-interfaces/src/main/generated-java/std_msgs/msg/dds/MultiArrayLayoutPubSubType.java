@@ -9,13 +9,9 @@ package std_msgs.msg.dds;
 public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.MultiArrayLayout>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::MultiArrayLayout_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MultiArrayLayoutPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
       {
          current_alignment += std_msgs.msg.dds.MultiArrayDimensionPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       return current_alignment - initial_alignment;
@@ -59,7 +54,6 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(std_msgs.msg.dds.MultiArrayLayout data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getDim().size() <= 100)
          cdr.write_type_e(data.getDim());
       else
@@ -70,9 +64,7 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(std_msgs.msg.dds.MultiArrayLayout data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getDim());
-
       data.setDataOffset(cdr.read_type_4());
    }
 
@@ -101,7 +93,6 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    public final void serialize(std_msgs.msg.dds.MultiArrayLayout data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_e("dim", data.getDim());
-
       ser.write_type_4("data_offset", data.getDataOffset());
    }
 
@@ -109,7 +100,6 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.MultiArrayLayout data)
    {
       ser.read_type_e("dim", data.getDim());
-
       data.setDataOffset(ser.read_type_4("data_offset"));
    }
 

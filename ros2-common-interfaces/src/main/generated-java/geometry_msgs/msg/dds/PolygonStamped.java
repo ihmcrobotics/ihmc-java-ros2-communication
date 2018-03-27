@@ -49,7 +49,6 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.polygon_.epsilonEquals(other.polygon_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.polygon_.equals(otherMyClass.polygon_))
          return false;
 
@@ -85,11 +83,9 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
       builder.append("PolygonStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("polygon=");
       builder.append(this.polygon_);
-
       builder.append("}");
       return builder.toString();
    }

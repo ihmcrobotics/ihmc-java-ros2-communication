@@ -132,10 +132,8 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.orientation_.epsilonEquals(other.orientation_, epsilon))
          return false;
-
       for (int i7 = 0; i7 < orientation_covariance_.length; ++i7)
       {
          if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.orientation_covariance_[i7], other.orientation_covariance_[i7], epsilon))
@@ -144,7 +142,6 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
 
       if (!this.angular_velocity_.epsilonEquals(other.angular_velocity_, epsilon))
          return false;
-
       for (int i9 = 0; i9 < angular_velocity_covariance_.length; ++i9)
       {
          if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.angular_velocity_covariance_[i9], other.angular_velocity_covariance_[i9], epsilon))
@@ -153,7 +150,6 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
 
       if (!this.linear_acceleration_.epsilonEquals(other.linear_acceleration_, epsilon))
          return false;
-
       for (int i11 = 0; i11 < linear_acceleration_covariance_.length; ++i11)
       {
          if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.linear_acceleration_covariance_[i11], other.linear_acceleration_covariance_[i11], epsilon))
@@ -177,10 +173,8 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.orientation_.equals(otherMyClass.orientation_))
          return false;
-
       for (int i13 = 0; i13 < orientation_covariance_.length; ++i13)
       {
          if (this.orientation_covariance_[i13] != otherMyClass.orientation_covariance_[i13])
@@ -188,7 +182,6 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
       }
       if (!this.angular_velocity_.equals(otherMyClass.angular_velocity_))
          return false;
-
       for (int i15 = 0; i15 < angular_velocity_covariance_.length; ++i15)
       {
          if (this.angular_velocity_covariance_[i15] != otherMyClass.angular_velocity_covariance_[i15])
@@ -196,7 +189,6 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
       }
       if (!this.linear_acceleration_.equals(otherMyClass.linear_acceleration_))
          return false;
-
       for (int i17 = 0; i17 < linear_acceleration_covariance_.length; ++i17)
       {
          if (this.linear_acceleration_covariance_[i17] != otherMyClass.linear_acceleration_covariance_[i17])
@@ -214,31 +206,24 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
       builder.append("Imu {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("orientation=");
       builder.append(this.orientation_);
-
       builder.append(", ");
       builder.append("orientation_covariance=");
       builder.append(java.util.Arrays.toString(this.orientation_covariance_));
-
       builder.append(", ");
       builder.append("angular_velocity=");
       builder.append(this.angular_velocity_);
-
       builder.append(", ");
       builder.append("angular_velocity_covariance=");
       builder.append(java.util.Arrays.toString(this.angular_velocity_covariance_));
-
       builder.append(", ");
       builder.append("linear_acceleration=");
       builder.append(this.linear_acceleration_);
-
       builder.append(", ");
       builder.append("linear_acceleration_covariance=");
       builder.append(java.util.Arrays.toString(this.linear_acceleration_covariance_));
-
       builder.append("}");
       return builder.toString();
    }

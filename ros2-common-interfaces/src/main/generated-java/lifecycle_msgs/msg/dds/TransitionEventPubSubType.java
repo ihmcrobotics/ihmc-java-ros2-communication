@@ -9,13 +9,9 @@ package lifecycle_msgs.msg.dds;
 public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_msgs.msg.dds.TransitionEvent>
 {
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::TransitionEvent_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public TransitionEventPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -29,7 +25,9 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += lifecycle_msgs.msg.dds.TransitionPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -47,7 +45,9 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += lifecycle_msgs.msg.dds.TransitionPubSubType.getCdrSerializedSize(data.getTransition(), current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getStartState(), current_alignment);
+
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getGoalState(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -55,25 +55,19 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
 
    public static void write(lifecycle_msgs.msg.dds.TransitionEvent data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_12(data.getTimestamp());
 
       lifecycle_msgs.msg.dds.TransitionPubSubType.write(data.getTransition(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.write(data.getStartState(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.write(data.getGoalState(), cdr);
    }
 
    public static void read(lifecycle_msgs.msg.dds.TransitionEvent data, us.ihmc.idl.CDR cdr)
    {
-
       data.setTimestamp(cdr.read_type_12());
 
       lifecycle_msgs.msg.dds.TransitionPubSubType.read(data.getTransition(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.read(data.getStartState(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.read(data.getGoalState(), cdr);
    }
 
@@ -102,7 +96,6 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
    public final void serialize(lifecycle_msgs.msg.dds.TransitionEvent data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_12("timestamp", data.getTimestamp());
-
       ser.write_type_a("transition", new lifecycle_msgs.msg.dds.TransitionPubSubType(), data.getTransition());
 
       ser.write_type_a("start_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getStartState());
@@ -114,7 +107,6 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, lifecycle_msgs.msg.dds.TransitionEvent data)
    {
       data.setTimestamp(ser.read_type_12("timestamp"));
-
       ser.read_type_a("transition", new lifecycle_msgs.msg.dds.TransitionPubSubType(), data.getTransition());
 
       ser.read_type_a("start_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getStartState());

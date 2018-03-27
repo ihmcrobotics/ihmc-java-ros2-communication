@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.NavSatStatus>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::NavSatStatus_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public NavSatStatusPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -51,7 +47,6 @@ public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
    public static void write(sensor_msgs.msg.dds.NavSatStatus data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getStatus());
 
       cdr.write_type_3(data.getService());
@@ -59,7 +54,6 @@ public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
    public static void read(sensor_msgs.msg.dds.NavSatStatus data, us.ihmc.idl.CDR cdr)
    {
-
       data.setStatus(cdr.read_type_9());
 
       data.setService(cdr.read_type_3());
@@ -90,7 +84,6 @@ public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sens
    public final void serialize(sensor_msgs.msg.dds.NavSatStatus data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_9("status", data.getStatus());
-
       ser.write_type_3("service", data.getService());
    }
 
@@ -98,7 +91,6 @@ public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sens
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.NavSatStatus data)
    {
       data.setStatus(ser.read_type_9("status"));
-
       data.setService(ser.read_type_3("service"));
    }
 

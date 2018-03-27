@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class QuaternionStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.QuaternionStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::QuaternionStamped_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public QuaternionStampedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class QuaternionStampedPubSubType implements us.ihmc.pubsub.TopicDataType
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class QuaternionStampedPubSubType implements us.ihmc.pubsub.TopicDataType
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getCdrSerializedSize(data.getQuaternion(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -49,17 +47,13 @@ public class QuaternionStampedPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void write(geometry_msgs.msg.dds.QuaternionStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.write(data.getQuaternion(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.QuaternionStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.read(data.getQuaternion(), cdr);
    }
 

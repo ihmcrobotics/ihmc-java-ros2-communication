@@ -18,7 +18,6 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
 
    public TF2Error()
    {
-
       error_string_ = new java.lang.StringBuilder(255);
    }
 
@@ -107,11 +106,9 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
       builder.append("TF2Error {");
       builder.append("error=");
       builder.append(this.error_);
-
       builder.append(", ");
       builder.append("error_string=");
       builder.append(this.error_string_);
-
       builder.append("}");
       return builder.toString();
    }

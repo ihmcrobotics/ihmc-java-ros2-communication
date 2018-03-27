@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class BoundedArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.BoundedArrayPrimitives>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::BoundedArrayPrimitives_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public BoundedArrayPrimitivesPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -135,7 +131,6 @@ public class BoundedArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicDat
 
    public static void write(test_msgs.msg.dds.BoundedArrayPrimitives data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getBoolValues().size() <= 3)
          cdr.write_type_e(data.getBoolValues());
       else
@@ -211,35 +206,20 @@ public class BoundedArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicDat
 
    public static void read(test_msgs.msg.dds.BoundedArrayPrimitives data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getBoolValues());
-
       cdr.read_type_e(data.getByteValues());
-
       cdr.read_type_e(data.getCharValues());
-
       cdr.read_type_e(data.getFloat32Values());
-
       cdr.read_type_e(data.getFloat64Values());
-
       cdr.read_type_e(data.getInt8Values());
-
       cdr.read_type_e(data.getUint8Values());
-
       cdr.read_type_e(data.getInt16Values());
-
       cdr.read_type_e(data.getUint16Values());
-
       cdr.read_type_e(data.getInt32Values());
-
       cdr.read_type_e(data.getUint32Values());
-
       cdr.read_type_e(data.getInt64Values());
-
       cdr.read_type_e(data.getUint64Values());
-
       cdr.read_type_e(data.getStringValues());
-
       data.setCheck(cdr.read_type_2());
    }
 
@@ -268,33 +248,19 @@ public class BoundedArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicDat
    public final void serialize(test_msgs.msg.dds.BoundedArrayPrimitives data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_e("bool_values", data.getBoolValues());
-
       ser.write_type_e("byte_values", data.getByteValues());
-
       ser.write_type_e("char_values", data.getCharValues());
-
       ser.write_type_e("float32_values", data.getFloat32Values());
-
       ser.write_type_e("float64_values", data.getFloat64Values());
-
       ser.write_type_e("int8_values", data.getInt8Values());
-
       ser.write_type_e("uint8_values", data.getUint8Values());
-
       ser.write_type_e("int16_values", data.getInt16Values());
-
       ser.write_type_e("uint16_values", data.getUint16Values());
-
       ser.write_type_e("int32_values", data.getInt32Values());
-
       ser.write_type_e("uint32_values", data.getUint32Values());
-
       ser.write_type_e("int64_values", data.getInt64Values());
-
       ser.write_type_e("uint64_values", data.getUint64Values());
-
       ser.write_type_e("string_values", data.getStringValues());
-
       ser.write_type_2("check", data.getCheck());
    }
 
@@ -302,33 +268,19 @@ public class BoundedArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicDat
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, test_msgs.msg.dds.BoundedArrayPrimitives data)
    {
       ser.read_type_e("bool_values", data.getBoolValues());
-
       ser.read_type_e("byte_values", data.getByteValues());
-
       ser.read_type_e("char_values", data.getCharValues());
-
       ser.read_type_e("float32_values", data.getFloat32Values());
-
       ser.read_type_e("float64_values", data.getFloat64Values());
-
       ser.read_type_e("int8_values", data.getInt8Values());
-
       ser.read_type_e("uint8_values", data.getUint8Values());
-
       ser.read_type_e("int16_values", data.getInt16Values());
-
       ser.read_type_e("uint16_values", data.getUint16Values());
-
       ser.read_type_e("int32_values", data.getInt32Values());
-
       ser.read_type_e("uint32_values", data.getUint32Values());
-
       ser.read_type_e("int64_values", data.getInt64Values());
-
       ser.read_type_e("uint64_values", data.getUint64Values());
-
       ser.read_type_e("string_values", data.getStringValues());
-
       data.setCheck(ser.read_type_2("check"));
    }
 

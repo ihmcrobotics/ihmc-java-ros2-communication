@@ -46,7 +46,6 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
 
       if (!this.duration_value_.epsilonEquals(other.duration_value_, epsilon))
          return false;
-
       if (!this.time_value_.epsilonEquals(other.time_value_, epsilon))
          return false;
 
@@ -67,7 +66,6 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
 
       if (!this.duration_value_.equals(otherMyClass.duration_value_))
          return false;
-
       if (!this.time_value_.equals(otherMyClass.time_value_))
          return false;
 
@@ -82,11 +80,9 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
       builder.append("Builtins {");
       builder.append("duration_value=");
       builder.append(this.duration_value_);
-
       builder.append(", ");
       builder.append("time_value=");
       builder.append(this.time_value_);
-
       builder.append("}");
       return builder.toString();
    }

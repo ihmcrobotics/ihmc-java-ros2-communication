@@ -29,7 +29,6 @@ public class Inertia extends Packet<Inertia> implements Settable<Inertia>, Epsil
 
    public Inertia()
    {
-
       com_ = new us.ihmc.euclid.tuple3D.Vector3D();
    }
 
@@ -165,7 +164,6 @@ public class Inertia extends Packet<Inertia> implements Settable<Inertia>, Epsil
 
       if (!this.com_.epsilonEquals(other.com_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.ixx_, other.ixx_, epsilon))
          return false;
 
@@ -204,7 +202,6 @@ public class Inertia extends Packet<Inertia> implements Settable<Inertia>, Epsil
 
       if (!this.com_.equals(otherMyClass.com_))
          return false;
-
       if (this.ixx_ != otherMyClass.ixx_)
          return false;
 
@@ -234,35 +231,27 @@ public class Inertia extends Packet<Inertia> implements Settable<Inertia>, Epsil
       builder.append("Inertia {");
       builder.append("m=");
       builder.append(this.m_);
-
       builder.append(", ");
       builder.append("com=");
       builder.append(this.com_);
-
       builder.append(", ");
       builder.append("ixx=");
       builder.append(this.ixx_);
-
       builder.append(", ");
       builder.append("ixy=");
       builder.append(this.ixy_);
-
       builder.append(", ");
       builder.append("ixz=");
       builder.append(this.ixz_);
-
       builder.append(", ");
       builder.append("iyy=");
       builder.append(this.iyy_);
-
       builder.append(", ");
       builder.append("iyz=");
       builder.append(this.iyz_);
-
       builder.append(", ");
       builder.append("izz=");
       builder.append(this.izz_);
-
       builder.append("}");
       return builder.toString();
    }

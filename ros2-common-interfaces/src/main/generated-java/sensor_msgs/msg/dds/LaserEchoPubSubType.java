@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.LaserEcho>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::LaserEcho_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public LaserEchoPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -49,7 +45,6 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void write(sensor_msgs.msg.dds.LaserEcho data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getEchoes().size() <= 100)
          cdr.write_type_e(data.getEchoes());
       else
@@ -58,7 +53,6 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void read(sensor_msgs.msg.dds.LaserEcho data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getEchoes());
    }
 

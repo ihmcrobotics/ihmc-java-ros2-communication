@@ -9,13 +9,9 @@ package diagnostic_msgs.msg.dds;
 public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<diagnostic_msgs.msg.dds.DiagnosticArray>
 {
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public DiagnosticArrayPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -46,6 +43,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < data.getStatus().size(); ++i0)
       {
@@ -57,9 +55,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
 
    public static void write(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if (data.getStatus().size() <= 100)
          cdr.write_type_e(data.getStatus());
       else
@@ -68,9 +64,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
 
    public static void read(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       cdr.read_type_e(data.getStatus());
    }
 

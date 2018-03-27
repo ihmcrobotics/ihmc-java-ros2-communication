@@ -11,7 +11,6 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
 
    public IntraProcessMessage()
    {
-
    }
 
    public IntraProcessMessage(IntraProcessMessage other)
@@ -92,11 +91,9 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
       builder.append("IntraProcessMessage {");
       builder.append("publisher_id=");
       builder.append(this.publisher_id_);
-
       builder.append(", ");
       builder.append("message_sequence=");
       builder.append(this.message_sequence_);
-
       builder.append("}");
       return builder.toString();
    }

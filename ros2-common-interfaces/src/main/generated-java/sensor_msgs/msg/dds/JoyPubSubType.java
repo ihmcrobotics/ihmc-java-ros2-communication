@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Joy>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Joy_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public JoyPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -46,6 +43,7 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getAxes().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -57,9 +55,7 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
    public static void write(sensor_msgs.msg.dds.Joy data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if (data.getAxes().size() <= 100)
          cdr.write_type_e(data.getAxes());
       else
@@ -73,11 +69,8 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
    public static void read(sensor_msgs.msg.dds.Joy data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       cdr.read_type_e(data.getAxes());
-
       cdr.read_type_e(data.getButtons());
    }
 
@@ -108,7 +101,6 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_e("axes", data.getAxes());
-
       ser.write_type_e("buttons", data.getButtons());
    }
 
@@ -118,7 +110,6 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.read_type_e("axes", data.getAxes());
-
       ser.read_type_e("buttons", data.getButtons());
    }
 

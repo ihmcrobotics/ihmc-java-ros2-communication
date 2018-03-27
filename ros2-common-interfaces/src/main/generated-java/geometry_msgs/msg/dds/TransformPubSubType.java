@@ -13,11 +13,6 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
 
-   public TransformPubSubType()
-   {
-
-   }
-
    private static AbstractTransformPubSubTypeImplementation getImpl()
    {
       if (impl == null)
@@ -58,6 +53,7 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(getImpl().getTranslation(data), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getCdrSerializedSize(getImpl().getRotation(data), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -65,17 +61,13 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
 
    public static void write(us.ihmc.euclid.transform.QuaternionBasedTransform data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(getImpl().getTranslation(data), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.write(getImpl().getRotation(data), cdr);
    }
 
    public static void read(us.ihmc.euclid.transform.QuaternionBasedTransform data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(getImpl().getTranslation(data), cdr);
-
       geometry_msgs.msg.dds.QuaternionPubSubType.read(getImpl().getRotation(data), cdr);
    }
 
@@ -88,7 +80,6 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
    public void serialize(us.ihmc.euclid.transform.QuaternionBasedTransform data, us.ihmc.pubsub.common.SerializedPayload serializedPayload)
          throws java.io.IOException
    {
-
       serializeCDR.serialize(serializedPayload);
       write(data, serializeCDR);
       serializeCDR.finishSerialize();
@@ -165,7 +156,6 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
     */
    public static abstract class AbstractTransformPubSubTypeImplementation
    {
-
       /**
        * Copy src into dest.
        *

@@ -76,7 +76,6 @@ public class Joy extends Packet<Joy> implements Settable<Joy>, EpsilonComparable
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsFloatSequence(this.axes_, other.axes_, epsilon))
          return false;
 
@@ -100,10 +99,8 @@ public class Joy extends Packet<Joy> implements Settable<Joy>, EpsilonComparable
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.axes_.equals(otherMyClass.axes_))
          return false;
-
       if (!this.buttons_.equals(otherMyClass.buttons_))
          return false;
 
@@ -118,15 +115,12 @@ public class Joy extends Packet<Joy> implements Settable<Joy>, EpsilonComparable
       builder.append("Joy {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("axes=");
       builder.append(this.axes_);
-
       builder.append(", ");
       builder.append("buttons=");
       builder.append(this.buttons_);
-
       builder.append("}");
       return builder.toString();
    }

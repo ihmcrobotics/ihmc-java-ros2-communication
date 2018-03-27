@@ -37,7 +37,6 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
    public ChannelFloat32()
    {
       name_ = new java.lang.StringBuilder(255);
-
       values_ = new us.ihmc.idl.IDLSequence.Float(100, "type_5");
    }
 
@@ -137,11 +136,9 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
       builder.append("ChannelFloat32 {");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("values=");
       builder.append(this.values_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -49,7 +49,6 @@ public class PoseStamped extends Packet<PoseStamped> implements Settable<PoseSta
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class PoseStamped extends Packet<PoseStamped> implements Settable<PoseSta
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
 
@@ -85,11 +83,9 @@ public class PoseStamped extends Packet<PoseStamped> implements Settable<PoseSta
       builder.append("PoseStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("pose=");
       builder.append(this.pose_);
-
       builder.append("}");
       return builder.toString();
    }

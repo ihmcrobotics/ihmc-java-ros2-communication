@@ -67,10 +67,8 @@ public class MultiEchoLaserScan extends Packet<MultiEchoLaserScan> implements Se
    public MultiEchoLaserScan()
    {
       header_ = new std_msgs.msg.dds.Header();
-
       ranges_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho>(100, sensor_msgs.msg.dds.LaserEcho.class,
                                                                                   new sensor_msgs.msg.dds.LaserEchoPubSubType());
-
       intensities_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho>(100, sensor_msgs.msg.dds.LaserEcho.class,
                                                                                        new sensor_msgs.msg.dds.LaserEchoPubSubType());
    }
@@ -254,7 +252,6 @@ public class MultiEchoLaserScan extends Packet<MultiEchoLaserScan> implements Se
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.angle_min_, other.angle_min_, epsilon))
          return false;
 
@@ -319,7 +316,6 @@ public class MultiEchoLaserScan extends Packet<MultiEchoLaserScan> implements Se
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.angle_min_ != otherMyClass.angle_min_)
          return false;
 
@@ -343,7 +339,6 @@ public class MultiEchoLaserScan extends Packet<MultiEchoLaserScan> implements Se
 
       if (!this.ranges_.equals(otherMyClass.ranges_))
          return false;
-
       if (!this.intensities_.equals(otherMyClass.intensities_))
          return false;
 
@@ -358,43 +353,33 @@ public class MultiEchoLaserScan extends Packet<MultiEchoLaserScan> implements Se
       builder.append("MultiEchoLaserScan {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("angle_min=");
       builder.append(this.angle_min_);
-
       builder.append(", ");
       builder.append("angle_max=");
       builder.append(this.angle_max_);
-
       builder.append(", ");
       builder.append("angle_increment=");
       builder.append(this.angle_increment_);
-
       builder.append(", ");
       builder.append("time_increment=");
       builder.append(this.time_increment_);
-
       builder.append(", ");
       builder.append("scan_time=");
       builder.append(this.scan_time_);
-
       builder.append(", ");
       builder.append("range_min=");
       builder.append(this.range_min_);
-
       builder.append(", ");
       builder.append("range_max=");
       builder.append(this.range_max_);
-
       builder.append(", ");
       builder.append("ranges=");
       builder.append(this.ranges_);
-
       builder.append(", ");
       builder.append("intensities=");
       builder.append(this.intensities_);
-
       builder.append("}");
       return builder.toString();
    }

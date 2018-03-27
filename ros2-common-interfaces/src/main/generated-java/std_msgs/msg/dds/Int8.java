@@ -72,7 +72,6 @@ public class Int8 extends Packet<Int8> implements Settable<Int8>, EpsilonCompara
       builder.append("Int8 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

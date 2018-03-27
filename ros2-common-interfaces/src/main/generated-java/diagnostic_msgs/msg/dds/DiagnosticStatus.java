@@ -39,13 +39,9 @@ public class DiagnosticStatus extends Packet<DiagnosticStatus> implements Settab
 
    public DiagnosticStatus()
    {
-
       name_ = new java.lang.StringBuilder(255);
-
       message_ = new java.lang.StringBuilder(255);
-
       hardware_id_ = new java.lang.StringBuilder(255);
-
       values_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue>(100, diagnostic_msgs.msg.dds.KeyValue.class,
                                                                                      new diagnostic_msgs.msg.dds.KeyValuePubSubType());
    }
@@ -244,23 +240,18 @@ public class DiagnosticStatus extends Packet<DiagnosticStatus> implements Settab
       builder.append("DiagnosticStatus {");
       builder.append("level=");
       builder.append(this.level_);
-
       builder.append(", ");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append(", ");
       builder.append("message=");
       builder.append(this.message_);
-
       builder.append(", ");
       builder.append("hardware_id=");
       builder.append(this.hardware_id_);
-
       builder.append(", ");
       builder.append("values=");
       builder.append(this.values_);
-
       builder.append("}");
       return builder.toString();
    }

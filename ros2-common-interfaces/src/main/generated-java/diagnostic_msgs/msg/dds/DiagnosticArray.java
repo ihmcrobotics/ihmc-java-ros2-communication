@@ -61,7 +61,6 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (this.status_.size() == other.status_.size())
       {
          return false;
@@ -92,7 +91,6 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.status_.equals(otherMyClass.status_))
          return false;
 
@@ -107,11 +105,9 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
       builder.append("DiagnosticArray {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("status=");
       builder.append(this.status_);
-
       builder.append("}");
       return builder.toString();
    }

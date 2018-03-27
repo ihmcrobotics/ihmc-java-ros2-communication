@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class TwistStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.TwistStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TwistStamped_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public TwistStampedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class TwistStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class TwistStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getCdrSerializedSize(data.getTwist(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -49,17 +47,13 @@ public class TwistStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
 
    public static void write(geometry_msgs.msg.dds.TwistStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.TwistPubSubType.write(data.getTwist(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.TwistStamped data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.TwistPubSubType.read(data.getTwist(), cdr);
    }
 

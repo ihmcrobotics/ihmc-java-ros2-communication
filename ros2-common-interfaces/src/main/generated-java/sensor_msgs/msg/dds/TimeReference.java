@@ -94,10 +94,8 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.time_ref_.epsilonEquals(other.time_ref_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.source_, other.source_, epsilon))
          return false;
 
@@ -118,10 +116,8 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.time_ref_.equals(otherMyClass.time_ref_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.source_, otherMyClass.source_))
          return false;
 
@@ -136,15 +132,12 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
       builder.append("TimeReference {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("time_ref=");
       builder.append(this.time_ref_);
-
       builder.append(", ");
       builder.append("source=");
       builder.append(this.source_);
-
       builder.append("}");
       return builder.toString();
    }

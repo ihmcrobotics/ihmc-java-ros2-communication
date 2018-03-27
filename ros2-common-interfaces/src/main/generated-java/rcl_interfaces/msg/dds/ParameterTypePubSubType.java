@@ -9,13 +9,9 @@ package rcl_interfaces.msg.dds;
 public class ParameterTypePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.ParameterType>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterType_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ParameterTypePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -47,13 +43,11 @@ public class ParameterTypePubSubType implements us.ihmc.pubsub.TopicDataType<rcl
 
    public static void write(rcl_interfaces.msg.dds.ParameterType data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_7(data.getUnusedPlaceholderField());
    }
 
    public static void read(rcl_interfaces.msg.dds.ParameterType data, us.ihmc.idl.CDR cdr)
    {
-
       data.setUnusedPlaceholderField(cdr.read_type_7());
    }
 

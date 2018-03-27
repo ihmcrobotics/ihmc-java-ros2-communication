@@ -66,7 +66,6 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
 
    public Transition()
    {
-
       label_ = new java.lang.StringBuilder(255);
    }
 
@@ -155,11 +154,9 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
       builder.append("Transition {");
       builder.append("id=");
       builder.append(this.id_);
-
       builder.append(", ");
       builder.append("label=");
       builder.append(this.label_);
-
       builder.append("}");
       return builder.toString();
    }

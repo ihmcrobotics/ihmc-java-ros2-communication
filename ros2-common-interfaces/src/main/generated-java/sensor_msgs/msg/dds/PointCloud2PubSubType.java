@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.PointCloud2>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::PointCloud2_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public PointCloud2PubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -36,7 +33,6 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
       {
          current_alignment += sensor_msgs.msg.dds.PointFieldPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -61,6 +57,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -87,9 +84,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
    public static void write(sensor_msgs.msg.dds.PointCloud2 data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       cdr.write_type_4(data.getHeight());
 
       cdr.write_type_4(data.getWidth());
@@ -115,15 +110,12 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
    public static void read(sensor_msgs.msg.dds.PointCloud2 data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       data.setHeight(cdr.read_type_4());
 
       data.setWidth(cdr.read_type_4());
 
       cdr.read_type_e(data.getFields());
-
       data.setIsBigendian(cdr.read_type_7());
 
       data.setPointStep(cdr.read_type_4());
@@ -131,7 +123,6 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
       data.setRowStep(cdr.read_type_4());
 
       cdr.read_type_e(data.getData());
-
       data.setIsDense(cdr.read_type_7());
    }
 
@@ -162,19 +153,12 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_4("height", data.getHeight());
-
       ser.write_type_4("width", data.getWidth());
-
       ser.write_type_e("fields", data.getFields());
-
       ser.write_type_7("is_bigendian", data.getIsBigendian());
-
       ser.write_type_4("point_step", data.getPointStep());
-
       ser.write_type_4("row_step", data.getRowStep());
-
       ser.write_type_e("data", data.getData());
-
       ser.write_type_7("is_dense", data.getIsDense());
    }
 
@@ -184,19 +168,12 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       data.setHeight(ser.read_type_4("height"));
-
       data.setWidth(ser.read_type_4("width"));
-
       ser.read_type_e("fields", data.getFields());
-
       data.setIsBigendian(ser.read_type_7("is_bigendian"));
-
       data.setPointStep(ser.read_type_4("point_step"));
-
       data.setRowStep(ser.read_type_4("row_step"));
-
       ser.read_type_e("data", data.getData());
-
       data.setIsDense(ser.read_type_7("is_dense"));
    }
 

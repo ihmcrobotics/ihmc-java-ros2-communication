@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.DynamicArrayPrimitivesNested>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::DynamicArrayPrimitivesNested_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public DynamicArrayPrimitivesNestedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
       {
          current_alignment += test_msgs.msg.dds.DynamicArrayPrimitivesPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       return current_alignment - initial_alignment;
    }
 
@@ -56,7 +51,6 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
 
    public static void write(test_msgs.msg.dds.DynamicArrayPrimitivesNested data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getDynamicArrayPrimitiveValues().size() <= 100)
          cdr.write_type_e(data.getDynamicArrayPrimitiveValues());
       else
@@ -65,7 +59,6 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
 
    public static void read(test_msgs.msg.dds.DynamicArrayPrimitivesNested data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getDynamicArrayPrimitiveValues());
    }
 

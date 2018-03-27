@@ -9,13 +9,9 @@ package rcl_interfaces.msg.dds;
 public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.Parameter>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::Parameter_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public ParameterPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,6 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += rcl_interfaces.msg.dds.ParameterValuePubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -51,7 +46,6 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
 
    public static void write(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getName().length() <= 255)
          cdr.write_type_d(data.getName());
       else
@@ -62,9 +56,7 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
 
    public static void read(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getName());
-
       rcl_interfaces.msg.dds.ParameterValuePubSubType.read(data.getValue(), cdr);
    }
 
@@ -93,7 +85,6 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
    public final void serialize(rcl_interfaces.msg.dds.Parameter data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_d("name", data.getName());
-
       ser.write_type_a("value", new rcl_interfaces.msg.dds.ParameterValuePubSubType(), data.getValue());
    }
 
@@ -101,7 +92,6 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.Parameter data)
    {
       ser.read_type_d("name", data.getName());
-
       ser.read_type_a("value", new rcl_interfaces.msg.dds.ParameterValuePubSubType(), data.getValue());
    }
 

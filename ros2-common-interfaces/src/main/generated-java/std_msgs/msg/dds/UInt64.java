@@ -72,7 +72,6 @@ public class UInt64 extends Packet<UInt64> implements Settable<UInt64>, EpsilonC
       builder.append("UInt64 {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

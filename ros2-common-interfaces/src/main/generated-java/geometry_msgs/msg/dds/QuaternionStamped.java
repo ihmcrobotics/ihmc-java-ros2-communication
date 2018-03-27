@@ -49,7 +49,6 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.quaternion_.epsilonEquals(other.quaternion_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.quaternion_.equals(otherMyClass.quaternion_))
          return false;
 
@@ -85,11 +83,9 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
       builder.append("QuaternionStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("quaternion=");
       builder.append(this.quaternion_);
-
       builder.append("}");
       return builder.toString();
    }

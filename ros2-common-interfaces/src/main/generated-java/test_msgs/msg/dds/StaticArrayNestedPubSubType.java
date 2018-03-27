@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class StaticArrayNestedPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.StaticArrayNested>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::StaticArrayNested_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public StaticArrayNestedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -51,7 +47,6 @@ public class StaticArrayNestedPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void write(test_msgs.msg.dds.StaticArrayNested data, us.ihmc.idl.CDR cdr)
    {
-
       for (int i0 = 0; i0 < data.getPrimitiveValues().length; ++i0)
       {
          test_msgs.msg.dds.PrimitivesPubSubType.write(data.getPrimitiveValues()[i0], cdr);
@@ -60,7 +55,6 @@ public class StaticArrayNestedPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void read(test_msgs.msg.dds.StaticArrayNested data, us.ihmc.idl.CDR cdr)
    {
-
       for (int i0 = 0; i0 < data.getPrimitiveValues().length; ++i0)
       {
          test_msgs.msg.dds.PrimitivesPubSubType.read(data.getPrimitiveValues()[i0], cdr);

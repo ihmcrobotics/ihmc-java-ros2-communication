@@ -49,7 +49,6 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
 
       if (!this.force_.epsilonEquals(other.force_, epsilon))
          return false;
-
       if (!this.torque_.epsilonEquals(other.torque_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
 
       if (!this.force_.equals(otherMyClass.force_))
          return false;
-
       if (!this.torque_.equals(otherMyClass.torque_))
          return false;
 
@@ -85,11 +83,9 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
       builder.append("Wrench {");
       builder.append("force=");
       builder.append(this.force_);
-
       builder.append(", ");
       builder.append("torque=");
       builder.append(this.torque_);
-
       builder.append("}");
       return builder.toString();
    }

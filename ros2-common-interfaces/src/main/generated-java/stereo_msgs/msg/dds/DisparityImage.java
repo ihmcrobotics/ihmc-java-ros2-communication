@@ -51,7 +51,6 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
    {
       header_ = new std_msgs.msg.dds.Header();
       image_ = new sensor_msgs.msg.dds.Image();
-
       valid_window_ = new sensor_msgs.msg.dds.RegionOfInterest();
    }
 
@@ -203,10 +202,8 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.image_.epsilonEquals(other.image_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.f_, other.f_, epsilon))
          return false;
 
@@ -215,7 +212,6 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
 
       if (!this.valid_window_.epsilonEquals(other.valid_window_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.min_disparity_, other.min_disparity_, epsilon))
          return false;
 
@@ -242,10 +238,8 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.image_.equals(otherMyClass.image_))
          return false;
-
       if (this.f_ != otherMyClass.f_)
          return false;
 
@@ -254,7 +248,6 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
 
       if (!this.valid_window_.equals(otherMyClass.valid_window_))
          return false;
-
       if (this.min_disparity_ != otherMyClass.min_disparity_)
          return false;
 
@@ -275,35 +268,27 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
       builder.append("DisparityImage {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("image=");
       builder.append(this.image_);
-
       builder.append(", ");
       builder.append("f=");
       builder.append(this.f_);
-
       builder.append(", ");
       builder.append("t=");
       builder.append(this.t_);
-
       builder.append(", ");
       builder.append("valid_window=");
       builder.append(this.valid_window_);
-
       builder.append(", ");
       builder.append("min_disparity=");
       builder.append(this.min_disparity_);
-
       builder.append(", ");
       builder.append("max_disparity=");
       builder.append(this.max_disparity_);
-
       builder.append(", ");
       builder.append("delta_d=");
       builder.append(this.delta_d_);
-
       builder.append("}");
       return builder.toString();
    }

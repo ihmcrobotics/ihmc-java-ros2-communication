@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerInit>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerInit_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public InteractiveMarkerInitPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,6 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -63,7 +58,6 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarkerInit data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getServerId().length() <= 255)
          cdr.write_type_d(data.getServerId());
       else
@@ -79,9 +73,7 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerInit data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getServerId());
-
       data.setSeqNum(cdr.read_type_12());
 
       cdr.read_type_e(data.getMarkers());
@@ -114,9 +106,7 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
    public final void serialize(visualization_msgs.msg.dds.InteractiveMarkerInit data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_d("server_id", data.getServerId());
-
       ser.write_type_12("seq_num", data.getSeqNum());
-
       ser.write_type_e("markers", data.getMarkers());
    }
 
@@ -124,9 +114,7 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, visualization_msgs.msg.dds.InteractiveMarkerInit data)
    {
       ser.read_type_d("server_id", data.getServerId());
-
       data.setSeqNum(ser.read_type_12("seq_num"));
-
       ser.read_type_e("markers", data.getMarkers());
    }
 

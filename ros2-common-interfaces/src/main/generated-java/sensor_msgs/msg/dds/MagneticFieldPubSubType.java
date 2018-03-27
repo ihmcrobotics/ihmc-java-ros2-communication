@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.MagneticField>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MagneticField_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public MagneticFieldPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,9 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       return current_alignment - initial_alignment;
@@ -43,7 +41,9 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getMagneticField(), current_alignment);
+
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       return current_alignment - initial_alignment;
@@ -51,11 +51,8 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
    public static void write(sensor_msgs.msg.dds.MagneticField data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getMagneticField(), cdr);
-
       for (int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
       {
          cdr.write_type_6(data.getMagneticFieldCovariance()[i0]);
@@ -64,11 +61,8 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
    public static void read(sensor_msgs.msg.dds.MagneticField data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getMagneticField(), cdr);
-
       for (int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
       {
          data.getMagneticFieldCovariance()[i0] = cdr.read_type_6();

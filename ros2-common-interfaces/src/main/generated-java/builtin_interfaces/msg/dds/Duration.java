@@ -11,7 +11,6 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
 
    public Duration()
    {
-
    }
 
    public Duration(Duration other)
@@ -92,11 +91,9 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
       builder.append("Duration {");
       builder.append("sec=");
       builder.append(this.sec_);
-
       builder.append(", ");
       builder.append("nanosec=");
       builder.append(this.nanosec_);
-
       builder.append("}");
       return builder.toString();
    }

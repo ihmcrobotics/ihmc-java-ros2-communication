@@ -91,7 +91,6 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.temperature_, other.temperature_, epsilon))
          return false;
 
@@ -115,7 +114,6 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (this.temperature_ != otherMyClass.temperature_)
          return false;
 
@@ -133,15 +131,12 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
       builder.append("Temperature {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("temperature=");
       builder.append(this.temperature_);
-
       builder.append(", ");
       builder.append("variance=");
       builder.append(this.variance_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package visualization_msgs.msg.dds;
 public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerUpdate>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerUpdate_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public InteractiveMarkerUpdatePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,7 +23,6 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
@@ -37,13 +32,11 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
       {
          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -91,7 +84,6 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getServerId().length() <= 255)
          cdr.write_type_d(data.getServerId());
       else
@@ -119,17 +111,13 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getServerId());
-
       data.setSeqNum(cdr.read_type_12());
 
       data.setType(cdr.read_type_9());
 
       cdr.read_type_e(data.getMarkers());
-
       cdr.read_type_e(data.getPoses());
-
       cdr.read_type_e(data.getErases());
    }
 
@@ -160,15 +148,10 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
    public final void serialize(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_d("server_id", data.getServerId());
-
       ser.write_type_12("seq_num", data.getSeqNum());
-
       ser.write_type_9("type", data.getType());
-
       ser.write_type_e("markers", data.getMarkers());
-
       ser.write_type_e("poses", data.getPoses());
-
       ser.write_type_e("erases", data.getErases());
    }
 
@@ -176,15 +159,10 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, visualization_msgs.msg.dds.InteractiveMarkerUpdate data)
    {
       ser.read_type_d("server_id", data.getServerId());
-
       data.setSeqNum(ser.read_type_12("seq_num"));
-
       data.setType(ser.read_type_9("type"));
-
       ser.read_type_e("markers", data.getMarkers());
-
       ser.read_type_e("poses", data.getPoses());
-
       ser.read_type_e("erases", data.getErases());
    }
 

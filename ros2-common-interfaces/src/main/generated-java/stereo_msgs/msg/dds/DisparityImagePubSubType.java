@@ -9,13 +9,9 @@ package stereo_msgs.msg.dds;
 public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<stereo_msgs.msg.dds.DisparityImage>
 {
    public static final java.lang.String name = "stereo_msgs::msg::dds_::DisparityImage_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public DisparityImagePubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,12 +23,15 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += sensor_msgs.msg.dds.ImagePubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += sensor_msgs.msg.dds.RegionOfInterestPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -52,12 +51,15 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += sensor_msgs.msg.dds.ImagePubSubType.getCdrSerializedSize(data.getImage(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += sensor_msgs.msg.dds.RegionOfInterestPubSubType.getCdrSerializedSize(data.getValidWindow(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -69,17 +71,13 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
 
    public static void write(stereo_msgs.msg.dds.DisparityImage data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       sensor_msgs.msg.dds.ImagePubSubType.write(data.getImage(), cdr);
-
       cdr.write_type_5(data.getF());
 
       cdr.write_type_5(data.getT());
 
       sensor_msgs.msg.dds.RegionOfInterestPubSubType.write(data.getValidWindow(), cdr);
-
       cdr.write_type_5(data.getMinDisparity());
 
       cdr.write_type_5(data.getMaxDisparity());
@@ -89,17 +87,13 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
 
    public static void read(stereo_msgs.msg.dds.DisparityImage data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       sensor_msgs.msg.dds.ImagePubSubType.read(data.getImage(), cdr);
-
       data.setF(cdr.read_type_5());
 
       data.setT(cdr.read_type_5());
 
       sensor_msgs.msg.dds.RegionOfInterestPubSubType.read(data.getValidWindow(), cdr);
-
       data.setMinDisparity(cdr.read_type_5());
 
       data.setMaxDisparity(cdr.read_type_5());
@@ -136,15 +130,11 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
       ser.write_type_a("image", new sensor_msgs.msg.dds.ImagePubSubType(), data.getImage());
 
       ser.write_type_5("f", data.getF());
-
       ser.write_type_5("t", data.getT());
-
       ser.write_type_a("valid_window", new sensor_msgs.msg.dds.RegionOfInterestPubSubType(), data.getValidWindow());
 
       ser.write_type_5("min_disparity", data.getMinDisparity());
-
       ser.write_type_5("max_disparity", data.getMaxDisparity());
-
       ser.write_type_5("delta_d", data.getDeltaD());
    }
 
@@ -156,15 +146,11 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
       ser.read_type_a("image", new sensor_msgs.msg.dds.ImagePubSubType(), data.getImage());
 
       data.setF(ser.read_type_5("f"));
-
       data.setT(ser.read_type_5("t"));
-
       ser.read_type_a("valid_window", new sensor_msgs.msg.dds.RegionOfInterestPubSubType(), data.getValidWindow());
 
       data.setMinDisparity(ser.read_type_5("min_disparity"));
-
       data.setMaxDisparity(ser.read_type_5("max_disparity"));
-
       data.setDeltaD(ser.read_type_5("delta_d"));
    }
 

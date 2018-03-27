@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class NestedPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.Nested>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::Nested_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public NestedPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -47,13 +43,11 @@ public class NestedPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.
 
    public static void write(test_msgs.msg.dds.Nested data, us.ihmc.idl.CDR cdr)
    {
-
       test_msgs.msg.dds.PrimitivesPubSubType.write(data.getPrimitiveValues(), cdr);
    }
 
    public static void read(test_msgs.msg.dds.Nested data, us.ihmc.idl.CDR cdr)
    {
-
       test_msgs.msg.dds.PrimitivesPubSubType.read(data.getPrimitiveValues(), cdr);
    }
 

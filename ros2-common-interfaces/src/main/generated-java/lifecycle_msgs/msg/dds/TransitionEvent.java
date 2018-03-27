@@ -13,7 +13,6 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
    public TransitionEvent()
    {
-
       transition_ = new lifecycle_msgs.msg.dds.Transition();
       start_state_ = new lifecycle_msgs.msg.dds.State();
       goal_state_ = new lifecycle_msgs.msg.dds.State();
@@ -71,10 +70,8 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
       if (!this.transition_.epsilonEquals(other.transition_, epsilon))
          return false;
-
       if (!this.start_state_.epsilonEquals(other.start_state_, epsilon))
          return false;
-
       if (!this.goal_state_.epsilonEquals(other.goal_state_, epsilon))
          return false;
 
@@ -98,10 +95,8 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
       if (!this.transition_.equals(otherMyClass.transition_))
          return false;
-
       if (!this.start_state_.equals(otherMyClass.start_state_))
          return false;
-
       if (!this.goal_state_.equals(otherMyClass.goal_state_))
          return false;
 
@@ -116,19 +111,15 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
       builder.append("TransitionEvent {");
       builder.append("timestamp=");
       builder.append(this.timestamp_);
-
       builder.append(", ");
       builder.append("transition=");
       builder.append(this.transition_);
-
       builder.append(", ");
       builder.append("start_state=");
       builder.append(this.start_state_);
-
       builder.append(", ");
       builder.append("goal_state=");
       builder.append(this.goal_state_);
-
       builder.append("}");
       return builder.toString();
    }

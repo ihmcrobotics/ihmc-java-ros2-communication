@@ -102,7 +102,6 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
 
       if (!this.dim_.equals(otherMyClass.dim_))
          return false;
-
       if (this.data_offset_ != otherMyClass.data_offset_)
          return false;
 
@@ -117,11 +116,9 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
       builder.append("MultiArrayLayout {");
       builder.append("dim=");
       builder.append(this.dim_);
-
       builder.append(", ");
       builder.append("data_offset=");
       builder.append(this.data_offset_);
-
       builder.append("}");
       return builder.toString();
    }

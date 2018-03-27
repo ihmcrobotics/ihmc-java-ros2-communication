@@ -68,16 +68,12 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
    {
       header_ = new std_msgs.msg.dds.Header();
       ns_ = new java.lang.StringBuilder(255);
-
       position_ = new us.ihmc.euclid.tuple3D.Point3D();
-
       outline_color_ = new std_msgs.msg.dds.ColorRGBA();
-
       fill_color_ = new std_msgs.msg.dds.ColorRGBA();
       lifetime_ = new builtin_interfaces.msg.dds.Duration();
       points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D>(100, us.ihmc.euclid.tuple3D.Point3D.class,
                                                                                    new geometry_msgs.msg.dds.PointPubSubType());
-
       outline_colors_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA>(100, std_msgs.msg.dds.ColorRGBA.class,
                                                                                        new std_msgs.msg.dds.ColorRGBAPubSubType());
    }
@@ -280,7 +276,6 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.ns_, other.ns_, epsilon))
          return false;
 
@@ -295,22 +290,18 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
 
       if (!this.position_.epsilonEquals(other.position_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.scale_, other.scale_, epsilon))
          return false;
 
       if (!this.outline_color_.epsilonEquals(other.outline_color_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.filled_, other.filled_, epsilon))
          return false;
 
       if (!this.fill_color_.epsilonEquals(other.fill_color_, epsilon))
          return false;
-
       if (!this.lifetime_.epsilonEquals(other.lifetime_, epsilon))
          return false;
-
       if (this.points_.size() == other.points_.size())
       {
          return false;
@@ -354,7 +345,6 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.ns_, otherMyClass.ns_))
          return false;
 
@@ -369,25 +359,20 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
 
       if (!this.position_.equals(otherMyClass.position_))
          return false;
-
       if (this.scale_ != otherMyClass.scale_)
          return false;
 
       if (!this.outline_color_.equals(otherMyClass.outline_color_))
          return false;
-
       if (this.filled_ != otherMyClass.filled_)
          return false;
 
       if (!this.fill_color_.equals(otherMyClass.fill_color_))
          return false;
-
       if (!this.lifetime_.equals(otherMyClass.lifetime_))
          return false;
-
       if (!this.points_.equals(otherMyClass.points_))
          return false;
-
       if (!this.outline_colors_.equals(otherMyClass.outline_colors_))
          return false;
 
@@ -402,55 +387,42 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
       builder.append("ImageMarker {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("ns=");
       builder.append(this.ns_);
-
       builder.append(", ");
       builder.append("id=");
       builder.append(this.id_);
-
       builder.append(", ");
       builder.append("type=");
       builder.append(this.type_);
-
       builder.append(", ");
       builder.append("action=");
       builder.append(this.action_);
-
       builder.append(", ");
       builder.append("position=");
       builder.append(this.position_);
-
       builder.append(", ");
       builder.append("scale=");
       builder.append(this.scale_);
-
       builder.append(", ");
       builder.append("outline_color=");
       builder.append(this.outline_color_);
-
       builder.append(", ");
       builder.append("filled=");
       builder.append(this.filled_);
-
       builder.append(", ");
       builder.append("fill_color=");
       builder.append(this.fill_color_);
-
       builder.append(", ");
       builder.append("lifetime=");
       builder.append(this.lifetime_);
-
       builder.append(", ");
       builder.append("points=");
       builder.append(this.points_);
-
       builder.append(", ");
       builder.append("outline_colors=");
       builder.append(this.outline_colors_);
-
       builder.append("}");
       return builder.toString();
    }

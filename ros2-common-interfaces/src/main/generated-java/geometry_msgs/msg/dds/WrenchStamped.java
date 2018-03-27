@@ -49,7 +49,6 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.wrench_.epsilonEquals(other.wrench_, epsilon))
          return false;
 
@@ -70,7 +69,6 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.wrench_.equals(otherMyClass.wrench_))
          return false;
 
@@ -85,11 +83,9 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
       builder.append("WrenchStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("wrench=");
       builder.append(this.wrench_);
-
       builder.append("}");
       return builder.toString();
    }

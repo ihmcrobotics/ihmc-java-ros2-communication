@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.PointCloud>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::PointCloud_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public PointCloudPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,12 +23,12 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
          current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < 100; ++i0)
       {
@@ -52,6 +48,7 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for (int i0 = 0; i0 < data.getPoints().size(); ++i0)
       {
@@ -69,9 +66,7 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void write(sensor_msgs.msg.dds.PointCloud data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if (data.getPoints().size() <= 100)
          cdr.write_type_e(data.getPoints());
       else
@@ -85,11 +80,8 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void read(sensor_msgs.msg.dds.PointCloud data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       cdr.read_type_e(data.getPoints());
-
       cdr.read_type_e(data.getChannels());
    }
 
@@ -120,7 +112,6 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_e("points", data.getPoints());
-
       ser.write_type_e("channels", data.getChannels());
    }
 
@@ -130,7 +121,6 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.read_type_e("points", data.getPoints());
-
       ser.read_type_e("channels", data.getChannels());
    }
 

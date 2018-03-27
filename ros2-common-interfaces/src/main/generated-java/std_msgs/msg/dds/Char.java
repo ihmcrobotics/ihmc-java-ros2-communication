@@ -72,7 +72,6 @@ public class Char extends Packet<Char> implements Settable<Char>, EpsilonCompara
       builder.append("Char {");
       builder.append("data=");
       builder.append(this.data_);
-
       builder.append("}");
       return builder.toString();
    }

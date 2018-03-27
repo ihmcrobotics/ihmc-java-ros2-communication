@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.LaserScan>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::LaserScan_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public LaserScanPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -60,6 +57,7 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
       int initial_alignment = current_alignment;
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -85,9 +83,7 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void write(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       cdr.write_type_5(data.getAngleMin());
 
       cdr.write_type_5(data.getAngleMax());
@@ -115,9 +111,7 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void read(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-
       data.setAngleMin(cdr.read_type_5());
 
       data.setAngleMax(cdr.read_type_5());
@@ -133,7 +127,6 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
       data.setRangeMax(cdr.read_type_5());
 
       cdr.read_type_e(data.getRanges());
-
       cdr.read_type_e(data.getIntensities());
    }
 
@@ -164,21 +157,13 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_5("angle_min", data.getAngleMin());
-
       ser.write_type_5("angle_max", data.getAngleMax());
-
       ser.write_type_5("angle_increment", data.getAngleIncrement());
-
       ser.write_type_5("time_increment", data.getTimeIncrement());
-
       ser.write_type_5("scan_time", data.getScanTime());
-
       ser.write_type_5("range_min", data.getRangeMin());
-
       ser.write_type_5("range_max", data.getRangeMax());
-
       ser.write_type_e("ranges", data.getRanges());
-
       ser.write_type_e("intensities", data.getIntensities());
    }
 
@@ -188,21 +173,13 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       data.setAngleMin(ser.read_type_5("angle_min"));
-
       data.setAngleMax(ser.read_type_5("angle_max"));
-
       data.setAngleIncrement(ser.read_type_5("angle_increment"));
-
       data.setTimeIncrement(ser.read_type_5("time_increment"));
-
       data.setScanTime(ser.read_type_5("scan_time"));
-
       data.setRangeMin(ser.read_type_5("range_min"));
-
       data.setRangeMax(ser.read_type_5("range_max"));
-
       ser.read_type_e("ranges", data.getRanges());
-
       ser.read_type_e("intensities", data.getIntensities());
    }
 

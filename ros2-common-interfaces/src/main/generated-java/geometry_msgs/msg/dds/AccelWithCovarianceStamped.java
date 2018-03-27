@@ -53,7 +53,6 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.accel_.epsilonEquals(other.accel_, epsilon))
          return false;
 
@@ -74,7 +73,6 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.accel_.equals(otherMyClass.accel_))
          return false;
 
@@ -89,11 +87,9 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
       builder.append("AccelWithCovarianceStamped {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("accel=");
       builder.append(this.accel_);
-
       builder.append("}");
       return builder.toString();
    }

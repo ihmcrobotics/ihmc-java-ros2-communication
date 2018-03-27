@@ -9,13 +9,9 @@ package sensor_msgs.msg.dds;
 public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.JoyFeedbackArray>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JoyFeedbackArray_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public JoyFeedbackArrayPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -31,7 +27,6 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
       {
          current_alignment += sensor_msgs.msg.dds.JoyFeedbackPubSubType.getMaxCdrSerializedSize(current_alignment);
       }
-
       return current_alignment - initial_alignment;
    }
 
@@ -55,7 +50,6 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(sensor_msgs.msg.dds.JoyFeedbackArray data, us.ihmc.idl.CDR cdr)
    {
-
       if (data.getArray().size() <= 100)
          cdr.write_type_e(data.getArray());
       else
@@ -64,7 +58,6 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(sensor_msgs.msg.dds.JoyFeedbackArray data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getArray());
    }
 

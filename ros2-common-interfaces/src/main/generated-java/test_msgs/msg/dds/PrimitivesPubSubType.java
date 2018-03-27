@@ -9,13 +9,9 @@ package test_msgs.msg.dds;
 public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.Primitives>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::Primitives_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public PrimitivesPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -99,7 +95,6 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
 
    public static void write(test_msgs.msg.dds.Primitives data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_7(data.getBoolValue());
 
       cdr.write_type_9(data.getByteValue());
@@ -134,7 +129,6 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
 
    public static void read(test_msgs.msg.dds.Primitives data, us.ihmc.idl.CDR cdr)
    {
-
       data.setBoolValue(cdr.read_type_7());
 
       data.setByteValue(cdr.read_type_9());
@@ -189,31 +183,18 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
    public final void serialize(test_msgs.msg.dds.Primitives data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_7("bool_value", data.getBoolValue());
-
       ser.write_type_9("byte_value", data.getByteValue());
-
       ser.write_type_8("char_value", data.getCharValue());
-
       ser.write_type_5("float32_value", data.getFloat32Value());
-
       ser.write_type_6("float64_value", data.getFloat64Value());
-
       ser.write_type_9("int8_value", data.getInt8Value());
-
       ser.write_type_9("uint8_value", data.getUint8Value());
-
       ser.write_type_1("int16_value", data.getInt16Value());
-
       ser.write_type_3("uint16_value", data.getUint16Value());
-
       ser.write_type_2("int32_value", data.getInt32Value());
-
       ser.write_type_4("uint32_value", data.getUint32Value());
-
       ser.write_type_11("int64_value", data.getInt64Value());
-
       ser.write_type_12("uint64_value", data.getUint64Value());
-
       ser.write_type_d("string_value", data.getStringValue());
    }
 
@@ -221,31 +202,18 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, test_msgs.msg.dds.Primitives data)
    {
       data.setBoolValue(ser.read_type_7("bool_value"));
-
       data.setByteValue(ser.read_type_9("byte_value"));
-
       data.setCharValue(ser.read_type_8("char_value"));
-
       data.setFloat32Value(ser.read_type_5("float32_value"));
-
       data.setFloat64Value(ser.read_type_6("float64_value"));
-
       data.setInt8Value(ser.read_type_9("int8_value"));
-
       data.setUint8Value(ser.read_type_9("uint8_value"));
-
       data.setInt16Value(ser.read_type_1("int16_value"));
-
       data.setUint16Value(ser.read_type_3("uint16_value"));
-
       data.setInt32Value(ser.read_type_2("int32_value"));
-
       data.setUint32Value(ser.read_type_4("uint32_value"));
-
       data.setInt64Value(ser.read_type_11("int64_value"));
-
       data.setUint64Value(ser.read_type_12("uint64_value"));
-
       ser.read_type_d("string_value", data.getStringValue());
    }
 

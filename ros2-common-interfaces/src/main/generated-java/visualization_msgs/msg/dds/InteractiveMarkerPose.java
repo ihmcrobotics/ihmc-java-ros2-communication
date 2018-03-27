@@ -94,10 +94,8 @@ public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> impleme
 
       if (!this.header_.epsilonEquals(other.header_, epsilon))
          return false;
-
       if (!this.pose_.epsilonEquals(other.pose_, epsilon))
          return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon))
          return false;
 
@@ -118,10 +116,8 @@ public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> impleme
 
       if (!this.header_.equals(otherMyClass.header_))
          return false;
-
       if (!this.pose_.equals(otherMyClass.pose_))
          return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_))
          return false;
 
@@ -136,15 +132,12 @@ public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> impleme
       builder.append("InteractiveMarkerPose {");
       builder.append("header=");
       builder.append(this.header_);
-
       builder.append(", ");
       builder.append("pose=");
       builder.append(this.pose_);
-
       builder.append(", ");
       builder.append("name=");
       builder.append(this.name_);
-
       builder.append("}");
       return builder.toString();
    }

@@ -9,13 +9,9 @@ package geometry_msgs.msg.dds;
 public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Wrench>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Wrench_";
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public WrenchPubSubType()
-   {
-
-   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +23,7 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
 
       return current_alignment - initial_alignment;
@@ -42,6 +39,7 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
       int initial_alignment = current_alignment;
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getForce(), current_alignment);
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getTorque(), current_alignment);
 
       return current_alignment - initial_alignment;
@@ -49,17 +47,13 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
 
    public static void write(geometry_msgs.msg.dds.Wrench data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getForce(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getTorque(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.Wrench data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getForce(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getTorque(), cdr);
    }
 
