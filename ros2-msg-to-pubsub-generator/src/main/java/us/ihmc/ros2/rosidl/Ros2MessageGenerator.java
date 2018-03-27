@@ -16,11 +16,14 @@
 package us.ihmc.ros2.rosidl;
 
 import org.gradle.api.DefaultTask;
+import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.file.FileCollection;
 import org.gradle.api.tasks.TaskAction;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ros2MessageGenerator extends DefaultTask
 {
@@ -44,8 +47,25 @@ public class Ros2MessageGenerator extends DefaultTask
     */
    public FileCollection customIDLDirectory;
 
+   public List<Configuration> configurations = new ArrayList<>();
+   public List<String> artifactIds = new ArrayList<>();
+   public List<File> locations = new ArrayList<>();
+
+   public void artifactDependency(Configuration configuration, String artifactId, File location)
+   {
+      configurations.add(configuration);
+      artifactIds.add(artifactId);
+      locations.add(location);
+   }
+
+//   private WorkResult copyClosure()
+//   {
+//
+//      return WorkResults.didWork(true);
+//   }
+
    @TaskAction
-   public void compile() throws IOException
+   public void generateMessages() throws IOException
    {
       if (rosPackages == null)
       {
@@ -66,6 +86,16 @@ public class Ros2MessageGenerator extends DefaultTask
       {
          idlOutputDirectory = new File(getTemporaryDir(), "idl");
       }
+
+//      locations.forEach(location -> getProject().delete(location));
+//
+//      for (int i = 0; i < configurations.size(); i++)
+//      {
+//         boolean foundDependency = false;
+//         getProject().copy(new MethodClosure(this, "copyClosure"));
+////         getProject().zipTree()
+//      }
+
 
       getProject().delete(javaOutputDirectory);
       getProject().delete(idlOutputDirectory);
