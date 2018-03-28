@@ -88,6 +88,7 @@ public class RosInterfaceGenerator
       customIDLFiles.forEach((key, path) -> {
          try
          {
+            FileTools.ensureDirectoryExists(idlDirectory.resolve(key).getParent());
             Files.copy(path, idlDirectory.resolve(key), StandardCopyOption.REPLACE_EXISTING);
          }
          catch (IOException e)
