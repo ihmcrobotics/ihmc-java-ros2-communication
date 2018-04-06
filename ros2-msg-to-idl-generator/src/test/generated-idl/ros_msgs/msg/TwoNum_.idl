@@ -1,5 +1,3 @@
-// generated from rosidl_generator_dds_idl/resource/msg.idl.em
-
 #ifndef __ros_msgs__msg__TwoNum__idl__
 #define __ros_msgs__msg__TwoNum__idl__
 
@@ -16,9 +14,9 @@ module ros_msgs
       {
         ros_msgs::msg::dds::Num num1;
         ros_msgs::msg::dds::Num num2;
-      };  // struct TwoNum
-    };  // module dds_
-  };  // module msg
-};  // module ros_msgs
+      };
+    };
+  };
+};
 
-#endif  // __ros_msgs__msg__TwoNum__idl__
+#endif

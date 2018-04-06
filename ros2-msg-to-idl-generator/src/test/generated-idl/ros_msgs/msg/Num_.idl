@@ -1,5 +1,3 @@
-// generated from rosidl_generator_dds_idl/resource/msg.idl.em
-
 #ifndef __ros_msgs__msg__Num__idl__
 #define __ros_msgs__msg__Num__idl__
 
@@ -15,10 +13,10 @@ module ros_msgs
        * baby
        * sneaky boi
        */
-      const long Num__X =
+      const long X =
       123;
 
-      const string Num__CATCH_22 =
+      const string CATCH_22 =
       "No doc, watch out!";
 
 
@@ -39,9 +37,9 @@ module ros_msgs
          * hello
          */
         long hello;
-      };  // struct Num
-    };  // module dds_
-  };  // module msg
-};  // module ros_msgs
+      };
+    };
+  };
+};
 
-#endif  // __ros_msgs__msg__Num__idl__
+#endif
