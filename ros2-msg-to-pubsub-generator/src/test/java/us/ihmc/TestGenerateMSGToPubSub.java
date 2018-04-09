@@ -11,10 +11,10 @@ public class TestGenerateMSGToPubSub
    {
       RosInterfaceGenerator generator = new RosInterfaceGenerator();
 
-      generator.addPackageRoot(Paths.get("src/test/ros_msgs"));
+      generator.addPackageRoot(Paths.get("ros_msgs"));
 
-      generator.addCustomIDLFiles(Paths.get("src/test/custom-idl"));
+      generator.addCustomIDLFiles(Paths.get("custom-idl"));
 
-      generator.generate(Paths.get("src/test/generated-idl"), Paths.get("src/test/generated-java"));
+      generator.generate(Paths.get("generated-idl"), Paths.get("generated-java"));
    }
 }
