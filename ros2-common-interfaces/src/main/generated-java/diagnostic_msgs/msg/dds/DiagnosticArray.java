@@ -1,30 +1,31 @@
 package diagnostic_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable<DiagnosticArray>, EpsilonComparable<DiagnosticArray>
 {
    /**
-    * This message is used to send diagnostic information about the state of the robot.
-    * for timestamp
-    */
+            * This message is used to send diagnostic information about the state of the robot.
+            * for timestamp
+            */
    public std_msgs.msg.dds.Header header_;
    /**
-    * an array of components being reported on
-    */
-   public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> status_;
+            * an array of components being reported on
+            */
+   public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus>  status_;
 
    public DiagnosticArray()
    {
       header_ = new std_msgs.msg.dds.Header();
-      status_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus>(100, diagnostic_msgs.msg.dds.DiagnosticStatus.class,
-                                                                                             new diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType());
+      status_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> (100, diagnostic_msgs.msg.dds.DiagnosticStatus.class, new diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType());
+
    }
 
    public DiagnosticArray(DiagnosticArray other)
    {
+      this();
       set(other);
    }
 
@@ -34,45 +35,40 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
       status_.set(other.status_);
    }
 
+
    /**
-    * This message is used to send diagnostic information about the state of the robot.
-    * for timestamp
-    */
+            * This message is used to send diagnostic information about the state of the robot.
+            * for timestamp
+            */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+
    /**
-    * an array of components being reported on
-    */
-   public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> getStatus()
+            * an array of components being reported on
+            */
+   public us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus>  getStatus()
    {
       return status_;
    }
 
+
    @Override
    public boolean epsilonEquals(DiagnosticArray other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
-      if (this.status_.size() == other.status_.size())
-      {
-         return false;
-      }
+      if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+      if (this.status_.size() != other.status_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.status_.size(); i++)
-         {
-            if (!this.status_.get(i).epsilonEquals(other.status_.get(i), epsilon))
-               return false;
-         }
+         {  if (!this.status_.get(i).epsilonEquals(other.status_.get(i), epsilon)) return false; }
       }
+
 
       return true;
    }
@@ -80,19 +76,14 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof DiagnosticArray))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof DiagnosticArray)) return false;
 
       DiagnosticArray otherMyClass = (DiagnosticArray) other;
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
-      if (!this.status_.equals(otherMyClass.status_))
-         return false;
+      if (!this.header_.equals(otherMyClass.header_)) return false;
+      if (!this.status_.equals(otherMyClass.status_)) return false;
 
       return true;
    }
@@ -104,8 +95,7 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
 
       builder.append("DiagnosticArray {");
       builder.append("header=");
-      builder.append(this.header_);
-      builder.append(", ");
+      builder.append(this.header_);      builder.append(", ");
       builder.append("status=");
       builder.append(this.status_);
       builder.append("}");

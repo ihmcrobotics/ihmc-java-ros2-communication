@@ -1,17 +1,35 @@
 package std_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "ColorRGBA" defined in "ColorRGBA_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from ColorRGBA_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ColorRGBA_.idl instead.
- */
+* 
+* Topic data type of the struct "ColorRGBA" defined in "ColorRGBA_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from ColorRGBA_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit ColorRGBA_.idl instead.
+*
+*/
 public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.ColorRGBA>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::ColorRGBA_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(std_msgs.msg.dds.ColorRGBA data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, std_msgs.msg.dds.ColorRGBA data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -30,6 +48,7 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -44,11 +63,16 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -62,38 +86,20 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
       cdr.write_type_5(data.getB());
 
       cdr.write_type_5(data.getA());
+
    }
 
    public static void read(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.CDR cdr)
    {
       data.setR(cdr.read_type_5());
-
+      	
       data.setG(cdr.read_type_5());
-
+      	
       data.setB(cdr.read_type_5());
-
+      	
       data.setA(cdr.read_type_5());
-   }
+      	
 
-   public static void staticCopy(std_msgs.msg.dds.ColorRGBA src, std_msgs.msg.dds.ColorRGBA dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(std_msgs.msg.dds.ColorRGBA data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, std_msgs.msg.dds.ColorRGBA data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -114,12 +120,16 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
       data.setA(ser.read_type_5("a"));
    }
 
+   public static void staticCopy(std_msgs.msg.dds.ColorRGBA src, std_msgs.msg.dds.ColorRGBA dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public std_msgs.msg.dds.ColorRGBA createData()
    {
       return new std_msgs.msg.dds.ColorRGBA();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -131,7 +141,7 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    {
       return name;
    }
-
+   
    public void serialize(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -141,7 +151,7 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    {
       read(data, cdr);
    }
-
+   
    public void copy(std_msgs.msg.dds.ColorRGBA src, std_msgs.msg.dds.ColorRGBA dest)
    {
       staticCopy(src, dest);

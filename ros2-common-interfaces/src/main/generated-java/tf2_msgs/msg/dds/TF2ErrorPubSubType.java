@@ -1,17 +1,35 @@
 package tf2_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "TF2Error" defined in "TF2Error_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from TF2Error_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TF2Error_.idl instead.
- */
+* 
+* Topic data type of the struct "TF2Error" defined in "TF2Error_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from TF2Error_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit TF2Error_.idl instead.
+*
+*/
 public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs.msg.dds.TF2Error>
 {
    public static final java.lang.String name = "tf2_msgs::msg::dds_::TF2Error_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(tf2_msgs.msg.dds.TF2Error data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, tf2_msgs.msg.dds.TF2Error data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -40,7 +58,9 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getErrorString().length() + 1;
+
 
       return current_alignment - initial_alignment;
    }
@@ -49,38 +69,18 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    {
       cdr.write_type_9(data.getError());
 
-      if (data.getErrorString().length() <= 255)
-         cdr.write_type_d(data.getErrorString());
-      else
-         throw new RuntimeException("error_string field exceeds the maximum length");
+      if(data.getErrorString().length() <= 255)
+      cdr.write_type_d(data.getErrorString());else
+          throw new RuntimeException("error_string field exceeds the maximum length");
+
    }
 
    public static void read(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.CDR cdr)
    {
       data.setError(cdr.read_type_9());
+      	
+      cdr.read_type_d(data.getErrorString());	
 
-      cdr.read_type_d(data.getErrorString());
-   }
-
-   public static void staticCopy(tf2_msgs.msg.dds.TF2Error src, tf2_msgs.msg.dds.TF2Error dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(tf2_msgs.msg.dds.TF2Error data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, tf2_msgs.msg.dds.TF2Error data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -97,12 +97,16 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
       ser.read_type_d("error_string", data.getErrorString());
    }
 
+   public static void staticCopy(tf2_msgs.msg.dds.TF2Error src, tf2_msgs.msg.dds.TF2Error dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public tf2_msgs.msg.dds.TF2Error createData()
    {
       return new tf2_msgs.msg.dds.TF2Error();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -114,7 +118,7 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    {
       return name;
    }
-
+   
    public void serialize(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -124,7 +128,7 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    {
       read(data, cdr);
    }
-
+   
    public void copy(tf2_msgs.msg.dds.TF2Error src, tf2_msgs.msg.dds.TF2Error dest)
    {
       staticCopy(src, dest);

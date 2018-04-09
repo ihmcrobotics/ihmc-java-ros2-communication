@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "ChannelFloat32" defined in "ChannelFloat32_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from ChannelFloat32_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ChannelFloat32_.idl instead.
- */
+* 
+* Topic data type of the struct "ChannelFloat32" defined in "ChannelFloat32_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from ChannelFloat32_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit ChannelFloat32_.idl instead.
+*
+*/
 public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.ChannelFloat32>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::ChannelFloat32_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.ChannelFloat32 data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.ChannelFloat32 data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -23,8 +41,8 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       return current_alignment - initial_alignment;
    }
@@ -43,47 +61,28 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getValues().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
+
       return current_alignment - initial_alignment;
    }
 
    public static void write(sensor_msgs.msg.dds.ChannelFloat32 data, us.ihmc.idl.CDR cdr)
    {
-      if (data.getName().length() <= 255)
-         cdr.write_type_d(data.getName());
-      else
-         throw new RuntimeException("name field exceeds the maximum length");
+      if(data.getName().length() <= 255)
+      cdr.write_type_d(data.getName());else
+          throw new RuntimeException("name field exceeds the maximum length");
 
-      if (data.getValues().size() <= 100)
-         cdr.write_type_e(data.getValues());
-      else
-         throw new RuntimeException("values field exceeds the maximum length");
+      if(data.getValues().size() <= 100)
+      cdr.write_type_e(data.getValues());else
+          throw new RuntimeException("values field exceeds the maximum length");
+
    }
 
    public static void read(sensor_msgs.msg.dds.ChannelFloat32 data, us.ihmc.idl.CDR cdr)
    {
-      cdr.read_type_d(data.getName());
-      cdr.read_type_e(data.getValues());
-   }
+      cdr.read_type_d(data.getName());	
+      cdr.read_type_e(data.getValues());	
 
-   public static void staticCopy(sensor_msgs.msg.dds.ChannelFloat32 src, sensor_msgs.msg.dds.ChannelFloat32 dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.ChannelFloat32 data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.ChannelFloat32 data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -100,12 +99,16 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
       ser.read_type_e("values", data.getValues());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.ChannelFloat32 src, sensor_msgs.msg.dds.ChannelFloat32 dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.ChannelFloat32 createData()
    {
       return new sensor_msgs.msg.dds.ChannelFloat32();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -117,7 +120,7 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.ChannelFloat32 data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -127,7 +130,7 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.ChannelFloat32 src, sensor_msgs.msg.dds.ChannelFloat32 dest)
    {
       staticCopy(src, dest);

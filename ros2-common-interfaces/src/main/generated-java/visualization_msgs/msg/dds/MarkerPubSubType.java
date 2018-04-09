@@ -1,17 +1,35 @@
 package visualization_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Marker" defined in "Marker_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Marker_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Marker_.idl instead.
- */
+* 
+* Topic data type of the struct "Marker" defined in "Marker_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Marker_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Marker_.idl instead.
+*
+*/
 public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.Marker>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::Marker_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(visualization_msgs.msg.dds.Marker data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.Marker data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -41,19 +59,16 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);}
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       return current_alignment - initial_alignment;
    }
@@ -73,9 +88,12 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
 
@@ -87,17 +105,16 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getPoints().size(); ++i0)
-      {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);
-      }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getColors().size(); ++i0)
+      for(int i0 = 0; i0 < data.getPoints().size(); ++i0)
       {
-         current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getCdrSerializedSize(data.getColors().get(i0), current_alignment);
-      }
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);}
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getColors().size(); ++i0)
+      {
+          current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getCdrSerializedSize(data.getColors().get(i0), current_alignment);}
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getText().length() + 1;
 
@@ -105,16 +122,17 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
+
       return current_alignment - initial_alignment;
    }
 
    public static void write(visualization_msgs.msg.dds.Marker data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if (data.getNs().length() <= 255)
-         cdr.write_type_d(data.getNs());
-      else
-         throw new RuntimeException("ns field exceeds the maximum length");
+      if(data.getNs().length() <= 255)
+      cdr.write_type_d(data.getNs());else
+          throw new RuntimeException("ns field exceeds the maximum length");
 
       cdr.write_type_2(data.getId());
 
@@ -128,71 +146,49 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       builtin_interfaces.msg.dds.DurationPubSubType.write(data.getLifetime(), cdr);
       cdr.write_type_7(data.getFrameLocked());
 
-      if (data.getPoints().size() <= 100)
-         cdr.write_type_e(data.getPoints());
-      else
-         throw new RuntimeException("points field exceeds the maximum length");
+      if(data.getPoints().size() <= 100)
+      cdr.write_type_e(data.getPoints());else
+          throw new RuntimeException("points field exceeds the maximum length");
 
-      if (data.getColors().size() <= 100)
-         cdr.write_type_e(data.getColors());
-      else
-         throw new RuntimeException("colors field exceeds the maximum length");
+      if(data.getColors().size() <= 100)
+      cdr.write_type_e(data.getColors());else
+          throw new RuntimeException("colors field exceeds the maximum length");
 
-      if (data.getText().length() <= 255)
-         cdr.write_type_d(data.getText());
-      else
-         throw new RuntimeException("text field exceeds the maximum length");
+      if(data.getText().length() <= 255)
+      cdr.write_type_d(data.getText());else
+          throw new RuntimeException("text field exceeds the maximum length");
 
-      if (data.getMeshResource().length() <= 255)
-         cdr.write_type_d(data.getMeshResource());
-      else
-         throw new RuntimeException("mesh_resource field exceeds the maximum length");
+      if(data.getMeshResource().length() <= 255)
+      cdr.write_type_d(data.getMeshResource());else
+          throw new RuntimeException("mesh_resource field exceeds the maximum length");
 
       cdr.write_type_7(data.getMeshUseEmbeddedMaterials());
+
    }
 
    public static void read(visualization_msgs.msg.dds.Marker data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      cdr.read_type_d(data.getNs());
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      cdr.read_type_d(data.getNs());	
       data.setId(cdr.read_type_2());
-
+      	
       data.setType(cdr.read_type_2());
-
+      	
       data.setAction(cdr.read_type_2());
-
-      geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
-      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getScale(), cdr);
-      std_msgs.msg.dds.ColorRGBAPubSubType.read(data.getColor(), cdr);
-      builtin_interfaces.msg.dds.DurationPubSubType.read(data.getLifetime(), cdr);
+      	
+      geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);	
+      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getScale(), cdr);	
+      std_msgs.msg.dds.ColorRGBAPubSubType.read(data.getColor(), cdr);	
+      builtin_interfaces.msg.dds.DurationPubSubType.read(data.getLifetime(), cdr);	
       data.setFrameLocked(cdr.read_type_7());
-
-      cdr.read_type_e(data.getPoints());
-      cdr.read_type_e(data.getColors());
-      cdr.read_type_d(data.getText());
-      cdr.read_type_d(data.getMeshResource());
+      	
+      cdr.read_type_e(data.getPoints());	
+      cdr.read_type_e(data.getColors());	
+      cdr.read_type_d(data.getText());	
+      cdr.read_type_d(data.getMeshResource());	
       data.setMeshUseEmbeddedMaterials(cdr.read_type_7());
-   }
+      	
 
-   public static void staticCopy(visualization_msgs.msg.dds.Marker src, visualization_msgs.msg.dds.Marker dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(visualization_msgs.msg.dds.Marker data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.Marker data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -245,12 +241,16 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       data.setMeshUseEmbeddedMaterials(ser.read_type_7("mesh_use_embedded_materials"));
    }
 
+   public static void staticCopy(visualization_msgs.msg.dds.Marker src, visualization_msgs.msg.dds.Marker dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public visualization_msgs.msg.dds.Marker createData()
    {
       return new visualization_msgs.msg.dds.Marker();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -262,7 +262,7 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
    {
       return name;
    }
-
+   
    public void serialize(visualization_msgs.msg.dds.Marker data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -272,7 +272,7 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
    {
       read(data, cdr);
    }
-
+   
    public void copy(visualization_msgs.msg.dds.Marker src, visualization_msgs.msg.dds.Marker dest)
    {
       staticCopy(src, dest);

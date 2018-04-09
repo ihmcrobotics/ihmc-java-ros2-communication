@@ -1,17 +1,35 @@
 package geometry_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Inertia" defined in "Inertia_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Inertia_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Inertia_.idl instead.
- */
+* 
+* Topic data type of the struct "Inertia" defined in "Inertia_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Inertia_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Inertia_.idl instead.
+*
+*/
 public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Inertia>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Inertia_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(geometry_msgs.msg.dds.Inertia data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, geometry_msgs.msg.dds.Inertia data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -38,6 +56,7 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -52,19 +71,27 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getCom(), current_alignment);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -85,45 +112,27 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
       cdr.write_type_6(data.getIyz());
 
       cdr.write_type_6(data.getIzz());
+
    }
 
    public static void read(geometry_msgs.msg.dds.Inertia data, us.ihmc.idl.CDR cdr)
    {
       data.setM(cdr.read_type_6());
-
-      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getCom(), cdr);
+      	
+      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getCom(), cdr);	
       data.setIxx(cdr.read_type_6());
-
+      	
       data.setIxy(cdr.read_type_6());
-
+      	
       data.setIxz(cdr.read_type_6());
-
+      	
       data.setIyy(cdr.read_type_6());
-
+      	
       data.setIyz(cdr.read_type_6());
-
+      	
       data.setIzz(cdr.read_type_6());
-   }
+      	
 
-   public static void staticCopy(geometry_msgs.msg.dds.Inertia src, geometry_msgs.msg.dds.Inertia dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(geometry_msgs.msg.dds.Inertia data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, geometry_msgs.msg.dds.Inertia data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -154,12 +163,16 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
       data.setIzz(ser.read_type_6("izz"));
    }
 
+   public static void staticCopy(geometry_msgs.msg.dds.Inertia src, geometry_msgs.msg.dds.Inertia dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public geometry_msgs.msg.dds.Inertia createData()
    {
       return new geometry_msgs.msg.dds.Inertia();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -171,7 +184,7 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       return name;
    }
-
+   
    public void serialize(geometry_msgs.msg.dds.Inertia data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -181,7 +194,7 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       read(data, cdr);
    }
-
+   
    public void copy(geometry_msgs.msg.dds.Inertia src, geometry_msgs.msg.dds.Inertia dest)
    {
       staticCopy(src, dest);

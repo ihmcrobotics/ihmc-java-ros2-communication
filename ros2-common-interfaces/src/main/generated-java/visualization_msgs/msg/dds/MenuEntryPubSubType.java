@@ -1,17 +1,35 @@
 package visualization_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "MenuEntry" defined in "MenuEntry_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from MenuEntry_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MenuEntry_.idl instead.
- */
+* 
+* Topic data type of the struct "MenuEntry" defined in "MenuEntry_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from MenuEntry_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit MenuEntry_.idl instead.
+*
+*/
 public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.MenuEntry>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::MenuEntry_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(visualization_msgs.msg.dds.MenuEntry data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.MenuEntry data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -30,6 +48,7 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -44,13 +63,17 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getTitle().length() + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getCommand().length() + 1;
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -61,49 +84,29 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
 
       cdr.write_type_4(data.getParentId());
 
-      if (data.getTitle().length() <= 255)
-         cdr.write_type_d(data.getTitle());
-      else
-         throw new RuntimeException("title field exceeds the maximum length");
+      if(data.getTitle().length() <= 255)
+      cdr.write_type_d(data.getTitle());else
+          throw new RuntimeException("title field exceeds the maximum length");
 
-      if (data.getCommand().length() <= 255)
-         cdr.write_type_d(data.getCommand());
-      else
-         throw new RuntimeException("command field exceeds the maximum length");
+      if(data.getCommand().length() <= 255)
+      cdr.write_type_d(data.getCommand());else
+          throw new RuntimeException("command field exceeds the maximum length");
 
       cdr.write_type_9(data.getCommandType());
+
    }
 
    public static void read(visualization_msgs.msg.dds.MenuEntry data, us.ihmc.idl.CDR cdr)
    {
       data.setId(cdr.read_type_4());
-
+      	
       data.setParentId(cdr.read_type_4());
-
-      cdr.read_type_d(data.getTitle());
-      cdr.read_type_d(data.getCommand());
+      	
+      cdr.read_type_d(data.getTitle());	
+      cdr.read_type_d(data.getCommand());	
       data.setCommandType(cdr.read_type_9());
-   }
+      	
 
-   public static void staticCopy(visualization_msgs.msg.dds.MenuEntry src, visualization_msgs.msg.dds.MenuEntry dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(visualization_msgs.msg.dds.MenuEntry data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.MenuEntry data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -126,12 +129,16 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
       data.setCommandType(ser.read_type_9("command_type"));
    }
 
+   public static void staticCopy(visualization_msgs.msg.dds.MenuEntry src, visualization_msgs.msg.dds.MenuEntry dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public visualization_msgs.msg.dds.MenuEntry createData()
    {
       return new visualization_msgs.msg.dds.MenuEntry();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -143,7 +150,7 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
    {
       return name;
    }
-
+   
    public void serialize(visualization_msgs.msg.dds.MenuEntry data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -153,7 +160,7 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
    {
       read(data, cdr);
    }
-
+   
    public void copy(visualization_msgs.msg.dds.MenuEntry src, visualization_msgs.msg.dds.MenuEntry dest)
    {
       staticCopy(src, dest);

@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "BatteryState" defined in "BatteryState_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from BatteryState_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit BatteryState_.idl instead.
- */
+* 
+* Topic data type of the struct "BatteryState" defined in "BatteryState_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from BatteryState_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit BatteryState_.idl instead.
+*
+*/
 public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.BatteryState>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::BatteryState_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.BatteryState data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.BatteryState data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -44,8 +62,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
@@ -66,30 +83,42 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
+      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getCellVoltage().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getLocation().length() + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getSerialNumber().length() + 1;
+
 
       return current_alignment - initial_alignment;
    }
@@ -117,69 +146,47 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
       cdr.write_type_7(data.getPresent());
 
-      if (data.getCellVoltage().size() <= 100)
-         cdr.write_type_e(data.getCellVoltage());
-      else
-         throw new RuntimeException("cell_voltage field exceeds the maximum length");
+      if(data.getCellVoltage().size() <= 100)
+      cdr.write_type_e(data.getCellVoltage());else
+          throw new RuntimeException("cell_voltage field exceeds the maximum length");
 
-      if (data.getLocation().length() <= 255)
-         cdr.write_type_d(data.getLocation());
-      else
-         throw new RuntimeException("location field exceeds the maximum length");
+      if(data.getLocation().length() <= 255)
+      cdr.write_type_d(data.getLocation());else
+          throw new RuntimeException("location field exceeds the maximum length");
 
-      if (data.getSerialNumber().length() <= 255)
-         cdr.write_type_d(data.getSerialNumber());
-      else
-         throw new RuntimeException("serial_number field exceeds the maximum length");
+      if(data.getSerialNumber().length() <= 255)
+      cdr.write_type_d(data.getSerialNumber());else
+          throw new RuntimeException("serial_number field exceeds the maximum length");
+
    }
 
    public static void read(sensor_msgs.msg.dds.BatteryState data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
       data.setVoltage(cdr.read_type_5());
-
+      	
       data.setCurrent(cdr.read_type_5());
-
+      	
       data.setCharge(cdr.read_type_5());
-
+      	
       data.setCapacity(cdr.read_type_5());
-
+      	
       data.setDesignCapacity(cdr.read_type_5());
-
+      	
       data.setPercentage(cdr.read_type_5());
-
+      	
       data.setPowerSupplyStatus(cdr.read_type_9());
-
+      	
       data.setPowerSupplyHealth(cdr.read_type_9());
-
+      	
       data.setPowerSupplyTechnology(cdr.read_type_9());
-
+      	
       data.setPresent(cdr.read_type_7());
+      	
+      cdr.read_type_e(data.getCellVoltage());	
+      cdr.read_type_d(data.getLocation());	
+      cdr.read_type_d(data.getSerialNumber());	
 
-      cdr.read_type_e(data.getCellVoltage());
-      cdr.read_type_d(data.getLocation());
-      cdr.read_type_d(data.getSerialNumber());
-   }
-
-   public static void staticCopy(sensor_msgs.msg.dds.BatteryState src, sensor_msgs.msg.dds.BatteryState dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.BatteryState data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.BatteryState data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -222,12 +229,16 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       ser.read_type_d("serial_number", data.getSerialNumber());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.BatteryState src, sensor_msgs.msg.dds.BatteryState dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.BatteryState createData()
    {
       return new sensor_msgs.msg.dds.BatteryState();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -239,7 +250,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.BatteryState data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -249,7 +260,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.BatteryState src, sensor_msgs.msg.dds.BatteryState dest)
    {
       staticCopy(src, dest);

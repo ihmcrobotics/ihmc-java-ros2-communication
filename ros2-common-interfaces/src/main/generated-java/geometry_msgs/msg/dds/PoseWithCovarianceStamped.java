@@ -1,14 +1,13 @@
 package geometry_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 /**
- * This expresses an estimated pose with a reference coordinate frame and timestamp
- */
-public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped>
-      implements Settable<PoseWithCovarianceStamped>, EpsilonComparable<PoseWithCovarianceStamped>
+       * This expresses an estimated pose with a reference coordinate frame and timestamp
+       */
+public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped> implements Settable<PoseWithCovarianceStamped>, EpsilonComparable<PoseWithCovarianceStamped>
 {
    public std_msgs.msg.dds.Header header_;
    public geometry_msgs.msg.dds.PoseWithCovariance pose_;
@@ -21,6 +20,7 @@ public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped>
 
    public PoseWithCovarianceStamped(PoseWithCovarianceStamped other)
    {
+      this();
       set(other);
    }
 
@@ -30,28 +30,27 @@ public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped>
       geometry_msgs.msg.dds.PoseWithCovariancePubSubType.staticCopy(other.pose_, pose_);
    }
 
+
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
+
 
    public geometry_msgs.msg.dds.PoseWithCovariance getPose()
    {
       return pose_;
    }
 
+
    @Override
    public boolean epsilonEquals(PoseWithCovarianceStamped other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
-      if (!this.pose_.epsilonEquals(other.pose_, epsilon))
-         return false;
+      if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+      if (!this.pose_.epsilonEquals(other.pose_, epsilon)) return false;
 
       return true;
    }
@@ -59,19 +58,14 @@ public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped>
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof PoseWithCovarianceStamped))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof PoseWithCovarianceStamped)) return false;
 
       PoseWithCovarianceStamped otherMyClass = (PoseWithCovarianceStamped) other;
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
-      if (!this.pose_.equals(otherMyClass.pose_))
-         return false;
+      if (!this.header_.equals(otherMyClass.header_)) return false;
+      if (!this.pose_.equals(otherMyClass.pose_)) return false;
 
       return true;
    }
@@ -83,8 +77,7 @@ public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped>
 
       builder.append("PoseWithCovarianceStamped {");
       builder.append("header=");
-      builder.append(this.header_);
-      builder.append(", ");
+      builder.append(this.header_);      builder.append(", ");
       builder.append("pose=");
       builder.append(this.pose_);
       builder.append("}");

@@ -1,17 +1,35 @@
 package visualization_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "InteractiveMarkerUpdate" defined in "InteractiveMarkerUpdate_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from InteractiveMarkerUpdate_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerUpdate_.idl instead.
- */
+* 
+* Topic data type of the struct "InteractiveMarkerUpdate" defined in "InteractiveMarkerUpdate_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from InteractiveMarkerUpdate_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit InteractiveMarkerUpdate_.idl instead.
+*
+*/
 public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerUpdate>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerUpdate_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.InteractiveMarkerUpdate data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,20 +45,15 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getMaxCdrSerializedSize(current_alignment);}
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getMaxCdrSerializedSize(current_alignment);}
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+        current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
 
       return current_alignment - initial_alignment;
@@ -59,24 +72,24 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getMarkers().size(); ++i0)
-      {
-         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getCdrSerializedSize(data.getMarkers().get(i0), current_alignment);
-      }
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getPoses().size(); ++i0)
+      for(int i0 = 0; i0 < data.getMarkers().size(); ++i0)
       {
-         current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getCdrSerializedSize(data.getPoses().get(i0), current_alignment);
-      }
+          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getCdrSerializedSize(data.getMarkers().get(i0), current_alignment);}
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getErases().size(); ++i0)
+      for(int i0 = 0; i0 < data.getPoses().size(); ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getErases().get(i0).length() + 1;
+          current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getCdrSerializedSize(data.getPoses().get(i0), current_alignment);}
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getErases().size(); ++i0)
+      {
+          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getErases().get(i0).length() + 1;
       }
 
       return current_alignment - initial_alignment;
@@ -84,64 +97,39 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.idl.CDR cdr)
    {
-      if (data.getServerId().length() <= 255)
-         cdr.write_type_d(data.getServerId());
-      else
-         throw new RuntimeException("server_id field exceeds the maximum length");
+      if(data.getServerId().length() <= 255)
+      cdr.write_type_d(data.getServerId());else
+          throw new RuntimeException("server_id field exceeds the maximum length");
 
       cdr.write_type_12(data.getSeqNum());
 
       cdr.write_type_9(data.getType());
 
-      if (data.getMarkers().size() <= 100)
-         cdr.write_type_e(data.getMarkers());
-      else
-         throw new RuntimeException("markers field exceeds the maximum length");
+      if(data.getMarkers().size() <= 100)
+      cdr.write_type_e(data.getMarkers());else
+          throw new RuntimeException("markers field exceeds the maximum length");
 
-      if (data.getPoses().size() <= 100)
-         cdr.write_type_e(data.getPoses());
-      else
-         throw new RuntimeException("poses field exceeds the maximum length");
+      if(data.getPoses().size() <= 100)
+      cdr.write_type_e(data.getPoses());else
+          throw new RuntimeException("poses field exceeds the maximum length");
 
-      if (data.getErases().size() <= 100)
-         cdr.write_type_e(data.getErases());
-      else
-         throw new RuntimeException("erases field exceeds the maximum length");
+      if(data.getErases().size() <= 100)
+      cdr.write_type_e(data.getErases());else
+          throw new RuntimeException("erases field exceeds the maximum length");
+
    }
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.idl.CDR cdr)
    {
-      cdr.read_type_d(data.getServerId());
+      cdr.read_type_d(data.getServerId());	
       data.setSeqNum(cdr.read_type_12());
-
+      	
       data.setType(cdr.read_type_9());
+      	
+      cdr.read_type_e(data.getMarkers());	
+      cdr.read_type_e(data.getPoses());	
+      cdr.read_type_e(data.getErases());	
 
-      cdr.read_type_e(data.getMarkers());
-      cdr.read_type_e(data.getPoses());
-      cdr.read_type_e(data.getErases());
-   }
-
-   public static void staticCopy(visualization_msgs.msg.dds.InteractiveMarkerUpdate src, visualization_msgs.msg.dds.InteractiveMarkerUpdate dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.pubsub.common.SerializedPayload serializedPayload)
-         throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.InteractiveMarkerUpdate data)
-         throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -166,12 +154,16 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
       ser.read_type_e("erases", data.getErases());
    }
 
+   public static void staticCopy(visualization_msgs.msg.dds.InteractiveMarkerUpdate src, visualization_msgs.msg.dds.InteractiveMarkerUpdate dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public visualization_msgs.msg.dds.InteractiveMarkerUpdate createData()
    {
       return new visualization_msgs.msg.dds.InteractiveMarkerUpdate();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -183,7 +175,7 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
    {
       return name;
    }
-
+   
    public void serialize(visualization_msgs.msg.dds.InteractiveMarkerUpdate data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -193,7 +185,7 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
    {
       read(data, cdr);
    }
-
+   
    public void copy(visualization_msgs.msg.dds.InteractiveMarkerUpdate src, visualization_msgs.msg.dds.InteractiveMarkerUpdate dest)
    {
       staticCopy(src, dest);

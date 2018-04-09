@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Joy" defined in "Joy_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Joy_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Joy_.idl instead.
- */
+* 
+* Topic data type of the struct "Joy" defined in "Joy_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Joy_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Joy_.idl instead.
+*
+*/
 public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Joy>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Joy_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.Joy data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Joy data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -24,11 +42,10 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       return current_alignment - initial_alignment;
    }
@@ -47,8 +64,11 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getAxes().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getButtons().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -56,43 +76,22 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    public static void write(sensor_msgs.msg.dds.Joy data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if (data.getAxes().size() <= 100)
-         cdr.write_type_e(data.getAxes());
-      else
-         throw new RuntimeException("axes field exceeds the maximum length");
+      if(data.getAxes().size() <= 100)
+      cdr.write_type_e(data.getAxes());else
+          throw new RuntimeException("axes field exceeds the maximum length");
 
-      if (data.getButtons().size() <= 100)
-         cdr.write_type_e(data.getButtons());
-      else
-         throw new RuntimeException("buttons field exceeds the maximum length");
+      if(data.getButtons().size() <= 100)
+      cdr.write_type_e(data.getButtons());else
+          throw new RuntimeException("buttons field exceeds the maximum length");
+
    }
 
    public static void read(sensor_msgs.msg.dds.Joy data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      cdr.read_type_e(data.getAxes());
-      cdr.read_type_e(data.getButtons());
-   }
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      cdr.read_type_e(data.getAxes());	
+      cdr.read_type_e(data.getButtons());	
 
-   public static void staticCopy(sensor_msgs.msg.dds.Joy src, sensor_msgs.msg.dds.Joy dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.Joy data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Joy data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -113,12 +112,16 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       ser.read_type_e("buttons", data.getButtons());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.Joy src, sensor_msgs.msg.dds.Joy dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.Joy createData()
    {
       return new sensor_msgs.msg.dds.Joy();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -130,7 +133,7 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.Joy data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -140,7 +143,7 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.Joy src, sensor_msgs.msg.dds.Joy dest)
    {
       staticCopy(src, dest);

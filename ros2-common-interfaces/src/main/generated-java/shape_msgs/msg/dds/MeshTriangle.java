@@ -1,12 +1,12 @@
 package shape_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 /**
- * Definition of a triangle's vertices.
- */
+       * Definition of a triangle's vertices.
+       */
 public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshTriangle>, EpsilonComparable<MeshTriangle>
 {
 
@@ -16,6 +16,7 @@ public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshT
 
    public MeshTriangle(MeshTriangle other)
    {
+      this();
       set(other);
    }
 
@@ -23,13 +24,13 @@ public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshT
    {
    }
 
+
    @Override
    public boolean epsilonEquals(MeshTriangle other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
+
 
       return true;
    }
@@ -37,14 +38,12 @@ public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshT
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof MeshTriangle))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof MeshTriangle)) return false;
 
       MeshTriangle otherMyClass = (MeshTriangle) other;
+
 
       return true;
    }

@@ -1,17 +1,35 @@
 package lifecycle_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "TransitionEvent" defined in "TransitionEvent_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from TransitionEvent_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TransitionEvent_.idl instead.
- */
+* 
+* Topic data type of the struct "TransitionEvent" defined in "TransitionEvent_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from TransitionEvent_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit TransitionEvent_.idl instead.
+*
+*/
 public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_msgs.msg.dds.TransitionEvent>
 {
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::TransitionEvent_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(lifecycle_msgs.msg.dds.TransitionEvent data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, lifecycle_msgs.msg.dds.TransitionEvent data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -30,6 +48,7 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
 
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getMaxCdrSerializedSize(current_alignment);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -44,11 +63,13 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       current_alignment += lifecycle_msgs.msg.dds.TransitionPubSubType.getCdrSerializedSize(data.getTransition(), current_alignment);
 
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getStartState(), current_alignment);
 
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getGoalState(), current_alignment);
+
 
       return current_alignment - initial_alignment;
    }
@@ -65,31 +86,11 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
    public static void read(lifecycle_msgs.msg.dds.TransitionEvent data, us.ihmc.idl.CDR cdr)
    {
       data.setTimestamp(cdr.read_type_12());
+      	
+      lifecycle_msgs.msg.dds.TransitionPubSubType.read(data.getTransition(), cdr);	
+      lifecycle_msgs.msg.dds.StatePubSubType.read(data.getStartState(), cdr);	
+      lifecycle_msgs.msg.dds.StatePubSubType.read(data.getGoalState(), cdr);	
 
-      lifecycle_msgs.msg.dds.TransitionPubSubType.read(data.getTransition(), cdr);
-      lifecycle_msgs.msg.dds.StatePubSubType.read(data.getStartState(), cdr);
-      lifecycle_msgs.msg.dds.StatePubSubType.read(data.getGoalState(), cdr);
-   }
-
-   public static void staticCopy(lifecycle_msgs.msg.dds.TransitionEvent src, lifecycle_msgs.msg.dds.TransitionEvent dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(lifecycle_msgs.msg.dds.TransitionEvent data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, lifecycle_msgs.msg.dds.TransitionEvent data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -101,6 +102,7 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
       ser.write_type_a("start_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getStartState());
 
       ser.write_type_a("goal_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getGoalState());
+
    }
 
    @Override
@@ -112,6 +114,12 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
       ser.read_type_a("start_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getStartState());
 
       ser.read_type_a("goal_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getGoalState());
+
+   }
+
+   public static void staticCopy(lifecycle_msgs.msg.dds.TransitionEvent src, lifecycle_msgs.msg.dds.TransitionEvent dest)
+   {
+      dest.set(src);
    }
 
    @Override
@@ -119,7 +127,6 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
    {
       return new lifecycle_msgs.msg.dds.TransitionEvent();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -131,7 +138,7 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
    {
       return name;
    }
-
+   
    public void serialize(lifecycle_msgs.msg.dds.TransitionEvent data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -141,7 +148,7 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
    {
       read(data, cdr);
    }
-
+   
    public void copy(lifecycle_msgs.msg.dds.TransitionEvent src, lifecycle_msgs.msg.dds.TransitionEvent dest)
    {
       staticCopy(src, dest);

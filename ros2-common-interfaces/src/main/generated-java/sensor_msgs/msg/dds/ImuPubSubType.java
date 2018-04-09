@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Imu" defined in "Imu_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Imu_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Imu_.idl instead.
- */
+* 
+* Topic data type of the struct "Imu" defined in "Imu_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Imu_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Imu_.idl instead.
+*
+*/
 public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Imu>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Imu_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.Imu data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Imu data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -35,6 +53,7 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
 
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       return current_alignment - initial_alignment;
    }
@@ -67,65 +86,50 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
       geometry_msgs.msg.dds.QuaternionPubSubType.write(data.getOrientation(), cdr);
-      for (int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
+      for(int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getOrientationCovariance()[i0]);
+        	cdr.write_type_6(data.getOrientationCovariance()[i0]);	
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getAngularVelocity(), cdr);
-      for (int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
+      for(int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getAngularVelocityCovariance()[i0]);
+        	cdr.write_type_6(data.getAngularVelocityCovariance()[i0]);	
       }
 
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getLinearAcceleration(), cdr);
-      for (int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
+      for(int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getLinearAccelerationCovariance()[i0]);
+        	cdr.write_type_6(data.getLinearAccelerationCovariance()[i0]);	
       }
+
    }
 
    public static void read(sensor_msgs.msg.dds.Imu data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      geometry_msgs.msg.dds.QuaternionPubSubType.read(data.getOrientation(), cdr);
-      for (int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      geometry_msgs.msg.dds.QuaternionPubSubType.read(data.getOrientation(), cdr);	
+      for(int i0 = 0; i0 < data.getOrientationCovariance().length; ++i0)
       {
-         data.getOrientationCovariance()[i0] = cdr.read_type_6();
+        	data.getOrientationCovariance()[i0] = cdr.read_type_6();
+        	
       }
-
-      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngularVelocity(), cdr);
-      for (int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
+      	
+      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngularVelocity(), cdr);	
+      for(int i0 = 0; i0 < data.getAngularVelocityCovariance().length; ++i0)
       {
-         data.getAngularVelocityCovariance()[i0] = cdr.read_type_6();
+        	data.getAngularVelocityCovariance()[i0] = cdr.read_type_6();
+        	
       }
-
-      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinearAcceleration(), cdr);
-      for (int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
+      	
+      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinearAcceleration(), cdr);	
+      for(int i0 = 0; i0 < data.getLinearAccelerationCovariance().length; ++i0)
       {
-         data.getLinearAccelerationCovariance()[i0] = cdr.read_type_6();
+        	data.getLinearAccelerationCovariance()[i0] = cdr.read_type_6();
+        	
       }
-   }
+      	
 
-   public static void staticCopy(sensor_msgs.msg.dds.Imu src, sensor_msgs.msg.dds.Imu dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.Imu data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Imu data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -160,12 +164,16 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
       ser.read_type_f("linear_acceleration_covariance", data.getLinearAccelerationCovariance());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.Imu src, sensor_msgs.msg.dds.Imu dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.Imu createData()
    {
       return new sensor_msgs.msg.dds.Imu();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -177,7 +185,7 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.Imu data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -187,7 +195,7 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.Imu src, sensor_msgs.msg.dds.Imu dest)
    {
       staticCopy(src, dest);

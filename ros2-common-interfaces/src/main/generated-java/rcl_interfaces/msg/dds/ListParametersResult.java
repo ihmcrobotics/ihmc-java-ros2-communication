@@ -1,29 +1,30 @@
 package rcl_interfaces.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class ListParametersResult extends Packet<ListParametersResult> implements Settable<ListParametersResult>, EpsilonComparable<ListParametersResult>
 {
    /**
-    * All parameters under the given prefixes.
-    */
-   public us.ihmc.idl.IDLSequence.StringBuilderHolder names_;
+            * All parameters under the given prefixes.
+            */
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder  names_;
    /**
-    * All prefixes under the given prefixes.
-    * TODO(wjwwood): link to prefix definition and rules.
-    */
-   public us.ihmc.idl.IDLSequence.StringBuilderHolder prefixes_;
+            * All prefixes under the given prefixes.
+            * TODO(wjwwood): link to prefix definition and rules.
+            */
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder  prefixes_;
 
    public ListParametersResult()
    {
-      names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder(100, "type_d");
-      prefixes_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder(100, "type_d");
+      names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
+      prefixes_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
    }
 
    public ListParametersResult(ListParametersResult other)
    {
+      this();
       set(other);
    }
 
@@ -33,36 +34,36 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
       prefixes_.set(other.prefixes_);
    }
 
+
    /**
-    * All parameters under the given prefixes.
-    */
-   public us.ihmc.idl.IDLSequence.StringBuilderHolder getNames()
+            * All parameters under the given prefixes.
+            */
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder  getNames()
    {
       return names_;
    }
 
+
    /**
-    * All prefixes under the given prefixes.
-    * TODO(wjwwood): link to prefix definition and rules.
-    */
-   public us.ihmc.idl.IDLSequence.StringBuilderHolder getPrefixes()
+            * All prefixes under the given prefixes.
+            * TODO(wjwwood): link to prefix definition and rules.
+            */
+   public us.ihmc.idl.IDLSequence.StringBuilderHolder  getPrefixes()
    {
       return prefixes_;
    }
 
+
    @Override
    public boolean epsilonEquals(ListParametersResult other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.names_, other.names_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.names_, other.names_, epsilon)) return false;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.prefixes_, other.prefixes_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.prefixes_, other.prefixes_, epsilon)) return false;
+
 
       return true;
    }
@@ -70,19 +71,14 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof ListParametersResult))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof ListParametersResult)) return false;
 
       ListParametersResult otherMyClass = (ListParametersResult) other;
 
-      if (!this.names_.equals(otherMyClass.names_))
-         return false;
-      if (!this.prefixes_.equals(otherMyClass.prefixes_))
-         return false;
+      if (!this.names_.equals(otherMyClass.names_)) return false;
+      if (!this.prefixes_.equals(otherMyClass.prefixes_)) return false;
 
       return true;
    }
@@ -94,8 +90,7 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
 
       builder.append("ListParametersResult {");
       builder.append("names=");
-      builder.append(this.names_);
-      builder.append(", ");
+      builder.append(this.names_);      builder.append(", ");
       builder.append("prefixes=");
       builder.append(this.prefixes_);
       builder.append("}");

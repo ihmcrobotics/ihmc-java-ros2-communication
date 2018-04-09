@@ -1,8 +1,8 @@
 package test_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class Nested extends Packet<Nested> implements Settable<Nested>, EpsilonComparable<Nested>
 {
@@ -15,29 +15,28 @@ public class Nested extends Packet<Nested> implements Settable<Nested>, EpsilonC
 
    public Nested(Nested other)
    {
+      this();
       set(other);
    }
 
    public void set(Nested other)
    {
-      test_msgs.msg.dds.PrimitivesPubSubType.staticCopy(other.primitive_values_, primitive_values_);
-   }
+      test_msgs.msg.dds.PrimitivesPubSubType.staticCopy(other.primitive_values_, primitive_values_);   }
+
 
    public test_msgs.msg.dds.Primitives getPrimitiveValues()
    {
       return primitive_values_;
    }
 
+
    @Override
    public boolean epsilonEquals(Nested other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.primitive_values_.epsilonEquals(other.primitive_values_, epsilon))
-         return false;
+      if (!this.primitive_values_.epsilonEquals(other.primitive_values_, epsilon)) return false;
 
       return true;
    }
@@ -45,17 +44,13 @@ public class Nested extends Packet<Nested> implements Settable<Nested>, EpsilonC
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Nested))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof Nested)) return false;
 
       Nested otherMyClass = (Nested) other;
 
-      if (!this.primitive_values_.equals(otherMyClass.primitive_values_))
-         return false;
+      if (!this.primitive_values_.equals(otherMyClass.primitive_values_)) return false;
 
       return true;
    }

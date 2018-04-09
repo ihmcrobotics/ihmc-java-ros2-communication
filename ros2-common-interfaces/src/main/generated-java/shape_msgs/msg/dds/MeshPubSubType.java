@@ -1,88 +1,19 @@
 package shape_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Mesh" defined in "Mesh_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Mesh_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Mesh_.idl instead.
- */
+* 
+* Topic data type of the struct "Mesh" defined in "Mesh_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Mesh_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Mesh_.idl instead.
+*
+*/
 public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.msg.dds.Mesh>
 {
    public static final java.lang.String name = "shape_msgs::msg::dds_::Mesh_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public static int getMaxCdrSerializedSize()
-   {
-      return getMaxCdrSerializedSize(0);
-   }
-
-   public static int getMaxCdrSerializedSize(int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
-      {
-         current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
-      {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-
-      return current_alignment - initial_alignment;
-   }
-
-   public final static int getCdrSerializedSize(shape_msgs.msg.dds.Mesh data)
-   {
-      return getCdrSerializedSize(data, 0);
-   }
-
-   public final static int getCdrSerializedSize(shape_msgs.msg.dds.Mesh data, int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getTriangles().size(); ++i0)
-      {
-         current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getCdrSerializedSize(data.getTriangles().get(i0), current_alignment);
-      }
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getVertices().size(); ++i0)
-      {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getVertices().get(i0), current_alignment);
-      }
-
-      return current_alignment - initial_alignment;
-   }
-
-   public static void write(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
-   {
-      if (data.getTriangles().size() <= 100)
-         cdr.write_type_e(data.getTriangles());
-      else
-         throw new RuntimeException("triangles field exceeds the maximum length");
-
-      if (data.getVertices().size() <= 100)
-         cdr.write_type_e(data.getVertices());
-      else
-         throw new RuntimeException("vertices field exceeds the maximum length");
-   }
-
-   public static void read(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
-   {
-      cdr.read_type_e(data.getTriangles());
-      cdr.read_type_e(data.getVertices());
-   }
-
-   public static void staticCopy(shape_msgs.msg.dds.Mesh src, shape_msgs.msg.dds.Mesh dest)
-   {
-      dest.set(src);
-   }
 
    @Override
    public void serialize(shape_msgs.msg.dds.Mesh data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
@@ -100,6 +31,67 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
       deserializeCDR.finishDeserialize();
    }
 
+   public static int getMaxCdrSerializedSize()
+   {
+      return getMaxCdrSerializedSize(0);
+   }
+
+   public static int getMaxCdrSerializedSize(int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      {
+          current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getMaxCdrSerializedSize(current_alignment);}
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      {
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
+
+      return current_alignment - initial_alignment;
+   }
+
+   public final static int getCdrSerializedSize(shape_msgs.msg.dds.Mesh data)
+   {
+      return getCdrSerializedSize(data, 0);
+   }
+
+   public final static int getCdrSerializedSize(shape_msgs.msg.dds.Mesh data, int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getTriangles().size(); ++i0)
+      {
+          current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getCdrSerializedSize(data.getTriangles().get(i0), current_alignment);}
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getVertices().size(); ++i0)
+      {
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getVertices().get(i0), current_alignment);}
+
+
+      return current_alignment - initial_alignment;
+   }
+
+   public static void write(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
+   {
+      if(data.getTriangles().size() <= 100)
+      cdr.write_type_e(data.getTriangles());else
+          throw new RuntimeException("triangles field exceeds the maximum length");
+
+      if(data.getVertices().size() <= 100)
+      cdr.write_type_e(data.getVertices());else
+          throw new RuntimeException("vertices field exceeds the maximum length");
+
+   }
+
+   public static void read(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
+   {
+      cdr.read_type_e(data.getTriangles());	
+      cdr.read_type_e(data.getVertices());	
+
+   }
+
    @Override
    public final void serialize(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.InterchangeSerializer ser)
    {
@@ -114,12 +106,16 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
       ser.read_type_e("vertices", data.getVertices());
    }
 
+   public static void staticCopy(shape_msgs.msg.dds.Mesh src, shape_msgs.msg.dds.Mesh dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public shape_msgs.msg.dds.Mesh createData()
    {
       return new shape_msgs.msg.dds.Mesh();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -131,7 +127,7 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    {
       return name;
    }
-
+   
    public void serialize(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -141,7 +137,7 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    {
       read(data, cdr);
    }
-
+   
    public void copy(shape_msgs.msg.dds.Mesh src, shape_msgs.msg.dds.Mesh dest)
    {
       staticCopy(src, dest);

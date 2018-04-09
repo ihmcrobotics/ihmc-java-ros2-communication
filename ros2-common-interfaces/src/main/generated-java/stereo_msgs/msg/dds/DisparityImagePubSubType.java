@@ -1,17 +1,35 @@
 package stereo_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "DisparityImage" defined in "DisparityImage_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from DisparityImage_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit DisparityImage_.idl instead.
- */
+* 
+* Topic data type of the struct "DisparityImage" defined in "DisparityImage_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from DisparityImage_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit DisparityImage_.idl instead.
+*
+*/
 public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<stereo_msgs.msg.dds.DisparityImage>
 {
    public static final java.lang.String name = "stereo_msgs::msg::dds_::DisparityImage_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(stereo_msgs.msg.dds.DisparityImage data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, stereo_msgs.msg.dds.DisparityImage data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -38,6 +56,7 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -56,15 +75,21 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += sensor_msgs.msg.dds.RegionOfInterestPubSubType.getCdrSerializedSize(data.getValidWindow(), current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -83,43 +108,25 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
       cdr.write_type_5(data.getMaxDisparity());
 
       cdr.write_type_5(data.getDeltaD());
+
    }
 
    public static void read(stereo_msgs.msg.dds.DisparityImage data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      sensor_msgs.msg.dds.ImagePubSubType.read(data.getImage(), cdr);
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      sensor_msgs.msg.dds.ImagePubSubType.read(data.getImage(), cdr);	
       data.setF(cdr.read_type_5());
-
+      	
       data.setT(cdr.read_type_5());
-
-      sensor_msgs.msg.dds.RegionOfInterestPubSubType.read(data.getValidWindow(), cdr);
+      	
+      sensor_msgs.msg.dds.RegionOfInterestPubSubType.read(data.getValidWindow(), cdr);	
       data.setMinDisparity(cdr.read_type_5());
-
+      	
       data.setMaxDisparity(cdr.read_type_5());
-
+      	
       data.setDeltaD(cdr.read_type_5());
-   }
+      	
 
-   public static void staticCopy(stereo_msgs.msg.dds.DisparityImage src, stereo_msgs.msg.dds.DisparityImage dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(stereo_msgs.msg.dds.DisparityImage data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, stereo_msgs.msg.dds.DisparityImage data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -154,12 +161,16 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
       data.setDeltaD(ser.read_type_5("delta_d"));
    }
 
+   public static void staticCopy(stereo_msgs.msg.dds.DisparityImage src, stereo_msgs.msg.dds.DisparityImage dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public stereo_msgs.msg.dds.DisparityImage createData()
    {
       return new stereo_msgs.msg.dds.DisparityImage();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -171,7 +182,7 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
    {
       return name;
    }
-
+   
    public void serialize(stereo_msgs.msg.dds.DisparityImage data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -181,7 +192,7 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
    {
       read(data, cdr);
    }
-
+   
    public void copy(stereo_msgs.msg.dds.DisparityImage src, stereo_msgs.msg.dds.DisparityImage dest)
    {
       staticCopy(src, dest);

@@ -1,17 +1,35 @@
 package visualization_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "InteractiveMarkerFeedback" defined in "InteractiveMarkerFeedback_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from InteractiveMarkerFeedback_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerFeedback_.idl instead.
- */
+* 
+* Topic data type of the struct "InteractiveMarkerFeedback" defined in "InteractiveMarkerFeedback_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from InteractiveMarkerFeedback_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit InteractiveMarkerFeedback_.idl instead.
+*
+*/
 public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerFeedback>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerFeedback_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(visualization_msgs.msg.dds.InteractiveMarkerFeedback data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.InteractiveMarkerFeedback data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -37,6 +55,7 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -59,13 +78,17 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getMousePoint(), current_alignment);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -73,20 +96,17 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
    public static void write(visualization_msgs.msg.dds.InteractiveMarkerFeedback data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if (data.getClientId().length() <= 255)
-         cdr.write_type_d(data.getClientId());
-      else
-         throw new RuntimeException("client_id field exceeds the maximum length");
+      if(data.getClientId().length() <= 255)
+      cdr.write_type_d(data.getClientId());else
+          throw new RuntimeException("client_id field exceeds the maximum length");
 
-      if (data.getMarkerName().length() <= 255)
-         cdr.write_type_d(data.getMarkerName());
-      else
-         throw new RuntimeException("marker_name field exceeds the maximum length");
+      if(data.getMarkerName().length() <= 255)
+      cdr.write_type_d(data.getMarkerName());else
+          throw new RuntimeException("marker_name field exceeds the maximum length");
 
-      if (data.getControlName().length() <= 255)
-         cdr.write_type_d(data.getControlName());
-      else
-         throw new RuntimeException("control_name field exceeds the maximum length");
+      if(data.getControlName().length() <= 255)
+      cdr.write_type_d(data.getControlName());else
+          throw new RuntimeException("control_name field exceeds the maximum length");
 
       cdr.write_type_9(data.getEventType());
 
@@ -95,44 +115,24 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
 
       geometry_msgs.msg.dds.PointPubSubType.write(data.getMousePoint(), cdr);
       cdr.write_type_7(data.getMousePointValid());
+
    }
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerFeedback data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      cdr.read_type_d(data.getClientId());
-      cdr.read_type_d(data.getMarkerName());
-      cdr.read_type_d(data.getControlName());
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      cdr.read_type_d(data.getClientId());	
+      cdr.read_type_d(data.getMarkerName());	
+      cdr.read_type_d(data.getControlName());	
       data.setEventType(cdr.read_type_9());
-
-      geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
+      	
+      geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);	
       data.setMenuEntryId(cdr.read_type_4());
-
-      geometry_msgs.msg.dds.PointPubSubType.read(data.getMousePoint(), cdr);
+      	
+      geometry_msgs.msg.dds.PointPubSubType.read(data.getMousePoint(), cdr);	
       data.setMousePointValid(cdr.read_type_7());
-   }
+      	
 
-   public static void staticCopy(visualization_msgs.msg.dds.InteractiveMarkerFeedback src, visualization_msgs.msg.dds.InteractiveMarkerFeedback dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(visualization_msgs.msg.dds.InteractiveMarkerFeedback data, us.ihmc.pubsub.common.SerializedPayload serializedPayload)
-         throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.InteractiveMarkerFeedback data)
-         throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -169,12 +169,16 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
       data.setMousePointValid(ser.read_type_7("mouse_point_valid"));
    }
 
+   public static void staticCopy(visualization_msgs.msg.dds.InteractiveMarkerFeedback src, visualization_msgs.msg.dds.InteractiveMarkerFeedback dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public visualization_msgs.msg.dds.InteractiveMarkerFeedback createData()
    {
       return new visualization_msgs.msg.dds.InteractiveMarkerFeedback();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -186,7 +190,7 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
    {
       return name;
    }
-
+   
    public void serialize(visualization_msgs.msg.dds.InteractiveMarkerFeedback data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -196,7 +200,7 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
    {
       read(data, cdr);
    }
-
+   
    public void copy(visualization_msgs.msg.dds.InteractiveMarkerFeedback src, visualization_msgs.msg.dds.InteractiveMarkerFeedback dest)
    {
       staticCopy(src, dest);

@@ -1,8 +1,8 @@
 package test_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class Builtins extends Packet<Builtins> implements Settable<Builtins>, EpsilonComparable<Builtins>
 {
@@ -17,6 +17,7 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
 
    public Builtins(Builtins other)
    {
+      this();
       set(other);
    }
 
@@ -26,28 +27,27 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
       builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.time_value_, time_value_);
    }
 
+
    public builtin_interfaces.msg.dds.Duration getDurationValue()
    {
       return duration_value_;
    }
+
 
    public builtin_interfaces.msg.dds.Time getTimeValue()
    {
       return time_value_;
    }
 
+
    @Override
    public boolean epsilonEquals(Builtins other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.duration_value_.epsilonEquals(other.duration_value_, epsilon))
-         return false;
-      if (!this.time_value_.epsilonEquals(other.time_value_, epsilon))
-         return false;
+      if (!this.duration_value_.epsilonEquals(other.duration_value_, epsilon)) return false;
+      if (!this.time_value_.epsilonEquals(other.time_value_, epsilon)) return false;
 
       return true;
    }
@@ -55,19 +55,14 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Builtins))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof Builtins)) return false;
 
       Builtins otherMyClass = (Builtins) other;
 
-      if (!this.duration_value_.equals(otherMyClass.duration_value_))
-         return false;
-      if (!this.time_value_.equals(otherMyClass.time_value_))
-         return false;
+      if (!this.duration_value_.equals(otherMyClass.duration_value_)) return false;
+      if (!this.time_value_.equals(otherMyClass.time_value_)) return false;
 
       return true;
    }
@@ -79,8 +74,7 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
 
       builder.append("Builtins {");
       builder.append("duration_value=");
-      builder.append(this.duration_value_);
-      builder.append(", ");
+      builder.append(this.duration_value_);      builder.append(", ");
       builder.append("time_value=");
       builder.append(this.time_value_);
       builder.append("}");

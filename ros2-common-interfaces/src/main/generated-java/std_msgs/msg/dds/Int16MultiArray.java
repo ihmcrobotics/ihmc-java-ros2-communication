@@ -1,32 +1,34 @@
 package std_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 /**
- * Please look at the MultiArrayLayout message definition for
- * documentation on all multiarrays.
- */
+       * Please look at the MultiArrayLayout message definition for
+       * documentation on all multiarrays.
+       */
 public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable<Int16MultiArray>, EpsilonComparable<Int16MultiArray>
 {
    /**
-    * specification of data layout
-    */
+            * specification of data layout
+            */
    public std_msgs.msg.dds.MultiArrayLayout layout_;
    /**
-    * array of data
-    */
-   public us.ihmc.idl.IDLSequence.Short data_;
+            * array of data
+            */
+   public us.ihmc.idl.IDLSequence.Short  data_;
 
    public Int16MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Short(100, "type_1");
+      data_ = new us.ihmc.idl.IDLSequence.Short (100, "type_1");
+
    }
 
    public Int16MultiArray(Int16MultiArray other)
    {
+      this();
       set(other);
    }
 
@@ -36,34 +38,34 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
       data_.set(other.data_);
    }
 
+
    /**
-    * specification of data layout
-    */
+            * specification of data layout
+            */
    public std_msgs.msg.dds.MultiArrayLayout getLayout()
    {
       return layout_;
    }
 
+
    /**
-    * array of data
-    */
-   public us.ihmc.idl.IDLSequence.Short getData()
+            * array of data
+            */
+   public us.ihmc.idl.IDLSequence.Short  getData()
    {
       return data_;
    }
 
+
    @Override
    public boolean epsilonEquals(Int16MultiArray other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.layout_.epsilonEquals(other.layout_, epsilon))
-         return false;
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsShortSequence(this.data_, other.data_, epsilon))
-         return false;
+      if (!this.layout_.epsilonEquals(other.layout_, epsilon)) return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsShortSequence(this.data_, other.data_, epsilon)) return false;
+
 
       return true;
    }
@@ -71,19 +73,14 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Int16MultiArray))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof Int16MultiArray)) return false;
 
       Int16MultiArray otherMyClass = (Int16MultiArray) other;
 
-      if (!this.layout_.equals(otherMyClass.layout_))
-         return false;
-      if (!this.data_.equals(otherMyClass.data_))
-         return false;
+      if (!this.layout_.equals(otherMyClass.layout_)) return false;
+      if (!this.data_.equals(otherMyClass.data_)) return false;
 
       return true;
    }
@@ -95,8 +92,7 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
 
       builder.append("Int16MultiArray {");
       builder.append("layout=");
-      builder.append(this.layout_);
-      builder.append(", ");
+      builder.append(this.layout_);      builder.append(", ");
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

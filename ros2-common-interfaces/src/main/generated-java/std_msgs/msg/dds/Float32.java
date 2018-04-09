@@ -1,8 +1,8 @@
 package std_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class Float32 extends Packet<Float32> implements Settable<Float32>, EpsilonComparable<Float32>
 {
@@ -14,34 +14,33 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
 
    public Float32(Float32 other)
    {
+      this();
       set(other);
    }
 
    public void set(Float32 other)
    {
       data_ = other.data_;
-   }
 
-   public float getData()
-   {
-      return data_;
    }
 
    public void setData(float data)
    {
       data_ = data;
    }
+   public float getData()
+   {
+      return data_;
+   }
+
 
    @Override
    public boolean epsilonEquals(Float32 other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
 
       return true;
    }
@@ -49,17 +48,14 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Float32))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof Float32)) return false;
 
       Float32 otherMyClass = (Float32) other;
 
-      if (this.data_ != otherMyClass.data_)
-         return false;
+      if(this.data_ != otherMyClass.data_) return false;
+
 
       return true;
    }

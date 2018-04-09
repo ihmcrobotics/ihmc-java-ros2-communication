@@ -1,17 +1,35 @@
 package geometry_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "TwistWithCovarianceStamped" defined in "TwistWithCovarianceStamped_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from TwistWithCovarianceStamped_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TwistWithCovarianceStamped_.idl instead.
- */
+* 
+* Topic data type of the struct "TwistWithCovarianceStamped" defined in "TwistWithCovarianceStamped_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from TwistWithCovarianceStamped_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit TwistWithCovarianceStamped_.idl instead.
+*
+*/
 public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.TwistWithCovarianceStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TwistWithCovarianceStamped_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(geometry_msgs.msg.dds.TwistWithCovarianceStamped data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, geometry_msgs.msg.dds.TwistWithCovarianceStamped data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -25,6 +43,7 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
       current_alignment += geometry_msgs.msg.dds.TwistWithCovariancePubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       return current_alignment - initial_alignment;
    }
@@ -42,6 +61,7 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
 
       current_alignment += geometry_msgs.msg.dds.TwistWithCovariancePubSubType.getCdrSerializedSize(data.getTwist(), current_alignment);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -53,31 +73,9 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
 
    public static void read(geometry_msgs.msg.dds.TwistWithCovarianceStamped data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      geometry_msgs.msg.dds.TwistWithCovariancePubSubType.read(data.getTwist(), cdr);
-   }
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      geometry_msgs.msg.dds.TwistWithCovariancePubSubType.read(data.getTwist(), cdr);	
 
-   public static void staticCopy(geometry_msgs.msg.dds.TwistWithCovarianceStamped src, geometry_msgs.msg.dds.TwistWithCovarianceStamped dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(geometry_msgs.msg.dds.TwistWithCovarianceStamped data, us.ihmc.pubsub.common.SerializedPayload serializedPayload)
-         throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, geometry_msgs.msg.dds.TwistWithCovarianceStamped data)
-         throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -86,6 +84,7 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_a("twist", new geometry_msgs.msg.dds.TwistWithCovariancePubSubType(), data.getTwist());
+
    }
 
    @Override
@@ -94,6 +93,12 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.read_type_a("twist", new geometry_msgs.msg.dds.TwistWithCovariancePubSubType(), data.getTwist());
+
+   }
+
+   public static void staticCopy(geometry_msgs.msg.dds.TwistWithCovarianceStamped src, geometry_msgs.msg.dds.TwistWithCovarianceStamped dest)
+   {
+      dest.set(src);
    }
 
    @Override
@@ -101,7 +106,6 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    {
       return new geometry_msgs.msg.dds.TwistWithCovarianceStamped();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -113,7 +117,7 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    {
       return name;
    }
-
+   
    public void serialize(geometry_msgs.msg.dds.TwistWithCovarianceStamped data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -123,7 +127,7 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    {
       read(data, cdr);
    }
-
+   
    public void copy(geometry_msgs.msg.dds.TwistWithCovarianceStamped src, geometry_msgs.msg.dds.TwistWithCovarianceStamped dest)
    {
       staticCopy(src, dest);

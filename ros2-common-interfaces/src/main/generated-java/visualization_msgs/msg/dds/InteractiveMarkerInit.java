@@ -1,39 +1,40 @@
 package visualization_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> implements Settable<InteractiveMarkerInit>, EpsilonComparable<InteractiveMarkerInit>
 {
    /**
-    * Identifying string. Must be unique in the topic namespace
-    * that this server works on.
-    */
+            * Identifying string. Must be unique in the topic namespace
+            * that this server works on.
+            */
    public java.lang.StringBuilder server_id_;
    /**
-    * Sequence number.
-    * The client will use this to detect if it has missed a subsequent
-    * update.  Every update message will have the same sequence number as
-    * an init message.  Clients will likely want to unsubscribe from the
-    * init topic after a successful initialization to avoid receiving
-    * duplicate data.
-    */
+            * Sequence number.
+            * The client will use this to detect if it has missed a subsequent
+            * update.  Every update message will have the same sequence number as
+            * an init message.  Clients will likely want to unsubscribe from the
+            * init topic after a successful initialization to avoid receiving
+            * duplicate data.
+            */
    public long seq_num_;
    /**
-    * All markers.
-    */
-   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> markers_;
+            * All markers.
+            */
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker>  markers_;
 
    public InteractiveMarkerInit()
    {
       server_id_ = new java.lang.StringBuilder(255);
-      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker>(100, visualization_msgs.msg.dds.InteractiveMarker.class,
-                                                                                                  new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
+      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> (100, visualization_msgs.msg.dds.InteractiveMarker.class, new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
+
    }
 
    public InteractiveMarkerInit(InteractiveMarkerInit other)
    {
+      this();
       set(other);
    }
 
@@ -48,27 +49,9 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
    }
 
    /**
-    * Identifying string. Must be unique in the topic namespace
-    * that this server works on.
-    */
-   public java.lang.String getServerIdAsString()
-   {
-      return getServerId().toString();
-   }
-
-   /**
-    * Identifying string. Must be unique in the topic namespace
-    * that this server works on.
-    */
-   public java.lang.StringBuilder getServerId()
-   {
-      return server_id_;
-   }
-
-   /**
-    * Identifying string. Must be unique in the topic namespace
-    * that this server works on.
-    */
+            * Identifying string. Must be unique in the topic namespace
+            * that this server works on.
+            */
    public void setServerId(java.lang.String server_id)
    {
       server_id_.setLength(0);
@@ -76,65 +59,74 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
    }
 
    /**
-    * Sequence number.
-    * The client will use this to detect if it has missed a subsequent
-    * update.  Every update message will have the same sequence number as
-    * an init message.  Clients will likely want to unsubscribe from the
-    * init topic after a successful initialization to avoid receiving
-    * duplicate data.
-    */
+            * Identifying string. Must be unique in the topic namespace
+            * that this server works on.
+            */
+   public java.lang.String getServerIdAsString()
+   {
+      return getServerId().toString();
+   }
+   /**
+            * Identifying string. Must be unique in the topic namespace
+            * that this server works on.
+            */
+   public java.lang.StringBuilder getServerId()
+   {
+      return server_id_;
+   }
+
+   /**
+            * Sequence number.
+            * The client will use this to detect if it has missed a subsequent
+            * update.  Every update message will have the same sequence number as
+            * an init message.  Clients will likely want to unsubscribe from the
+            * init topic after a successful initialization to avoid receiving
+            * duplicate data.
+            */
+   public void setSeqNum(long seq_num)
+   {
+      seq_num_ = seq_num;
+   }
+   /**
+            * Sequence number.
+            * The client will use this to detect if it has missed a subsequent
+            * update.  Every update message will have the same sequence number as
+            * an init message.  Clients will likely want to unsubscribe from the
+            * init topic after a successful initialization to avoid receiving
+            * duplicate data.
+            */
    public long getSeqNum()
    {
       return seq_num_;
    }
 
-   /**
-    * Sequence number.
-    * The client will use this to detect if it has missed a subsequent
-    * update.  Every update message will have the same sequence number as
-    * an init message.  Clients will likely want to unsubscribe from the
-    * init topic after a successful initialization to avoid receiving
-    * duplicate data.
-    */
-   public void setSeqNum(long seq_num)
-   {
-      seq_num_ = seq_num;
-   }
 
    /**
-    * All markers.
-    */
-   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> getMarkers()
+            * All markers.
+            */
+   public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker>  getMarkers()
    {
       return markers_;
    }
 
+
    @Override
    public boolean epsilonEquals(InteractiveMarkerInit other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.server_id_, other.server_id_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.server_id_, other.server_id_, epsilon)) return false;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.seq_num_, other.seq_num_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.seq_num_, other.seq_num_, epsilon)) return false;
 
-      if (this.markers_.size() == other.markers_.size())
-      {
-         return false;
-      }
+      if (this.markers_.size() != other.markers_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.markers_.size(); i++)
-         {
-            if (!this.markers_.get(i).epsilonEquals(other.markers_.get(i), epsilon))
-               return false;
-         }
+         {  if (!this.markers_.get(i).epsilonEquals(other.markers_.get(i), epsilon)) return false; }
       }
+
 
       return true;
    }
@@ -142,23 +134,17 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof InteractiveMarkerInit))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof InteractiveMarkerInit)) return false;
 
       InteractiveMarkerInit otherMyClass = (InteractiveMarkerInit) other;
 
-      if (!us.ihmc.idl.IDLTools.equals(this.server_id_, otherMyClass.server_id_))
-         return false;
+      if (!us.ihmc.idl.IDLTools.equals(this.server_id_, otherMyClass.server_id_)) return false;
 
-      if (this.seq_num_ != otherMyClass.seq_num_)
-         return false;
+      if(this.seq_num_ != otherMyClass.seq_num_) return false;
 
-      if (!this.markers_.equals(otherMyClass.markers_))
-         return false;
+      if (!this.markers_.equals(otherMyClass.markers_)) return false;
 
       return true;
    }
@@ -170,11 +156,9 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
 
       builder.append("InteractiveMarkerInit {");
       builder.append("server_id=");
-      builder.append(this.server_id_);
-      builder.append(", ");
+      builder.append(this.server_id_);      builder.append(", ");
       builder.append("seq_num=");
-      builder.append(this.seq_num_);
-      builder.append(", ");
+      builder.append(this.seq_num_);      builder.append(", ");
       builder.append("markers=");
       builder.append(this.markers_);
       builder.append("}");

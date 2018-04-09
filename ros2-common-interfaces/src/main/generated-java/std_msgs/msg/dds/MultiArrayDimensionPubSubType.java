@@ -1,17 +1,35 @@
 package std_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "MultiArrayDimension" defined in "MultiArrayDimension_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from MultiArrayDimension_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MultiArrayDimension_.idl instead.
- */
+* 
+* Topic data type of the struct "MultiArrayDimension" defined in "MultiArrayDimension_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from MultiArrayDimension_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit MultiArrayDimension_.idl instead.
+*
+*/
 public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.MultiArrayDimension>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::MultiArrayDimension_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, std_msgs.msg.dds.MultiArrayDimension data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -26,6 +44,7 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       return current_alignment - initial_alignment;
    }
@@ -43,50 +62,34 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.idl.CDR cdr)
    {
-      if (data.getLabel().length() <= 255)
-         cdr.write_type_d(data.getLabel());
-      else
-         throw new RuntimeException("label field exceeds the maximum length");
+      if(data.getLabel().length() <= 255)
+      cdr.write_type_d(data.getLabel());else
+          throw new RuntimeException("label field exceeds the maximum length");
 
       cdr.write_type_4(data.getSize());
 
       cdr.write_type_4(data.getStride());
+
    }
 
    public static void read(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.idl.CDR cdr)
    {
-      cdr.read_type_d(data.getLabel());
+      cdr.read_type_d(data.getLabel());	
       data.setSize(cdr.read_type_4());
-
+      	
       data.setStride(cdr.read_type_4());
-   }
+      	
 
-   public static void staticCopy(std_msgs.msg.dds.MultiArrayDimension src, std_msgs.msg.dds.MultiArrayDimension dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, std_msgs.msg.dds.MultiArrayDimension data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -105,12 +108,16 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
       data.setStride(ser.read_type_4("stride"));
    }
 
+   public static void staticCopy(std_msgs.msg.dds.MultiArrayDimension src, std_msgs.msg.dds.MultiArrayDimension dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public std_msgs.msg.dds.MultiArrayDimension createData()
    {
       return new std_msgs.msg.dds.MultiArrayDimension();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -122,7 +129,7 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       return name;
    }
-
+   
    public void serialize(std_msgs.msg.dds.MultiArrayDimension data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -132,7 +139,7 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       read(data, cdr);
    }
-
+   
    public void copy(std_msgs.msg.dds.MultiArrayDimension src, std_msgs.msg.dds.MultiArrayDimension dest)
    {
       staticCopy(src, dest);

@@ -1,17 +1,35 @@
 package rcl_interfaces.msg.dds;
 
 /**
- * Topic data type of the struct "SetParametersResult" defined in "SetParametersResult_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from SetParametersResult_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit SetParametersResult_.idl instead.
- */
+* 
+* Topic data type of the struct "SetParametersResult" defined in "SetParametersResult_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from SetParametersResult_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit SetParametersResult_.idl instead.
+*
+*/
 public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.SetParametersResult>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::SetParametersResult_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(rcl_interfaces.msg.dds.SetParametersResult data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, rcl_interfaces.msg.dds.SetParametersResult data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -40,7 +58,9 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getReason().length() + 1;
+
 
       return current_alignment - initial_alignment;
    }
@@ -49,39 +69,18 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       cdr.write_type_7(data.getSuccessful());
 
-      if (data.getReason().length() <= 255)
-         cdr.write_type_d(data.getReason());
-      else
-         throw new RuntimeException("reason field exceeds the maximum length");
+      if(data.getReason().length() <= 255)
+      cdr.write_type_d(data.getReason());else
+          throw new RuntimeException("reason field exceeds the maximum length");
+
    }
 
    public static void read(rcl_interfaces.msg.dds.SetParametersResult data, us.ihmc.idl.CDR cdr)
    {
       data.setSuccessful(cdr.read_type_7());
+      	
+      cdr.read_type_d(data.getReason());	
 
-      cdr.read_type_d(data.getReason());
-   }
-
-   public static void staticCopy(rcl_interfaces.msg.dds.SetParametersResult src, rcl_interfaces.msg.dds.SetParametersResult dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(rcl_interfaces.msg.dds.SetParametersResult data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, rcl_interfaces.msg.dds.SetParametersResult data)
-         throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -98,12 +97,16 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
       ser.read_type_d("reason", data.getReason());
    }
 
+   public static void staticCopy(rcl_interfaces.msg.dds.SetParametersResult src, rcl_interfaces.msg.dds.SetParametersResult dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public rcl_interfaces.msg.dds.SetParametersResult createData()
    {
       return new rcl_interfaces.msg.dds.SetParametersResult();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -115,7 +118,7 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       return name;
    }
-
+   
    public void serialize(rcl_interfaces.msg.dds.SetParametersResult data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -125,7 +128,7 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       read(data, cdr);
    }
-
+   
    public void copy(rcl_interfaces.msg.dds.SetParametersResult src, rcl_interfaces.msg.dds.SetParametersResult dest)
    {
       staticCopy(src, dest);

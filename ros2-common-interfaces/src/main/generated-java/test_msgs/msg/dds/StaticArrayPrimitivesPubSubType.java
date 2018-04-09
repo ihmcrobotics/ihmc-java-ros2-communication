@@ -1,17 +1,35 @@
 package test_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "StaticArrayPrimitives" defined in "StaticArrayPrimitives_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from StaticArrayPrimitives_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit StaticArrayPrimitives_.idl instead.
- */
+* 
+* Topic data type of the struct "StaticArrayPrimitives" defined in "StaticArrayPrimitives_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from StaticArrayPrimitives_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit StaticArrayPrimitives_.idl instead.
+*
+*/
 public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.StaticArrayPrimitives>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::StaticArrayPrimitives_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(test_msgs.msg.dds.StaticArrayPrimitives data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, test_msgs.msg.dds.StaticArrayPrimitives data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -40,9 +58,9 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
 
       current_alignment += ((3) * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      for (int i0 = 0; i0 < (3); ++i0)
+      for(int i0 = 0; i0 < (3); ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
 
       return current_alignment - initial_alignment;
@@ -66,9 +84,10 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
       current_alignment += ((3) * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
       current_alignment += ((3) * 2) + us.ihmc.idl.CDR.alignment(current_alignment, 2);
       current_alignment += ((3) * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getStringValues().length; ++i0)
+      for(int i0 = 0; i0 < data.getStringValues().length; ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStringValues()[i0].length() + 1;
+              current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStringValues()[i0].length() + 1;
+
       }
 
       return current_alignment - initial_alignment;
@@ -76,129 +95,120 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void write(test_msgs.msg.dds.StaticArrayPrimitives data, us.ihmc.idl.CDR cdr)
    {
-      for (int i0 = 0; i0 < data.getBoolValues().length; ++i0)
+      for(int i0 = 0; i0 < data.getBoolValues().length; ++i0)
       {
-         cdr.write_type_7(data.getBoolValues()[i0]);
+        	cdr.write_type_7(data.getBoolValues()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getByteValues().length; ++i0)
+      for(int i0 = 0; i0 < data.getByteValues().length; ++i0)
       {
-         cdr.write_type_9(data.getByteValues()[i0]);
+        	cdr.write_type_9(data.getByteValues()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getCharValues().length; ++i0)
+      for(int i0 = 0; i0 < data.getCharValues().length; ++i0)
       {
-         cdr.write_type_8(data.getCharValues()[i0]);
+        	cdr.write_type_8(data.getCharValues()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getFloat32Values().length; ++i0)
+      for(int i0 = 0; i0 < data.getFloat32Values().length; ++i0)
       {
-         cdr.write_type_5(data.getFloat32Values()[i0]);
+        	cdr.write_type_5(data.getFloat32Values()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getFloat64Values().length; ++i0)
+      for(int i0 = 0; i0 < data.getFloat64Values().length; ++i0)
       {
-         cdr.write_type_6(data.getFloat64Values()[i0]);
+        	cdr.write_type_6(data.getFloat64Values()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getInt8Values().length; ++i0)
+      for(int i0 = 0; i0 < data.getInt8Values().length; ++i0)
       {
-         cdr.write_type_9(data.getInt8Values()[i0]);
+        	cdr.write_type_9(data.getInt8Values()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getUint8Values().length; ++i0)
+      for(int i0 = 0; i0 < data.getUint8Values().length; ++i0)
       {
-         cdr.write_type_9(data.getUint8Values()[i0]);
+        	cdr.write_type_9(data.getUint8Values()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getInt16Values().length; ++i0)
+      for(int i0 = 0; i0 < data.getInt16Values().length; ++i0)
       {
-         cdr.write_type_1(data.getInt16Values()[i0]);
+        	cdr.write_type_1(data.getInt16Values()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getInt32Values().length; ++i0)
+      for(int i0 = 0; i0 < data.getInt32Values().length; ++i0)
       {
-         cdr.write_type_2(data.getInt32Values()[i0]);
+        	cdr.write_type_2(data.getInt32Values()[i0]);	
       }
 
-      for (int i0 = 0; i0 < data.getStringValues().length; ++i0)
+      for(int i0 = 0; i0 < data.getStringValues().length; ++i0)
       {
-         cdr.write_type_d(data.getStringValues()[i0]);
+        	cdr.write_type_d(data.getStringValues()[i0]);	
       }
+
    }
 
    public static void read(test_msgs.msg.dds.StaticArrayPrimitives data, us.ihmc.idl.CDR cdr)
    {
-      for (int i0 = 0; i0 < data.getBoolValues().length; ++i0)
+      for(int i0 = 0; i0 < data.getBoolValues().length; ++i0)
       {
-         data.getBoolValues()[i0] = cdr.read_type_7();
+        	data.getBoolValues()[i0] = cdr.read_type_7();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getByteValues().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getByteValues().length; ++i0)
       {
-         data.getByteValues()[i0] = cdr.read_type_9();
+        	data.getByteValues()[i0] = cdr.read_type_9();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getCharValues().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getCharValues().length; ++i0)
       {
-         data.getCharValues()[i0] = cdr.read_type_8();
+        	data.getCharValues()[i0] = cdr.read_type_8();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getFloat32Values().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getFloat32Values().length; ++i0)
       {
-         data.getFloat32Values()[i0] = cdr.read_type_5();
+        	data.getFloat32Values()[i0] = cdr.read_type_5();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getFloat64Values().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getFloat64Values().length; ++i0)
       {
-         data.getFloat64Values()[i0] = cdr.read_type_6();
+        	data.getFloat64Values()[i0] = cdr.read_type_6();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getInt8Values().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getInt8Values().length; ++i0)
       {
-         data.getInt8Values()[i0] = cdr.read_type_9();
+        	data.getInt8Values()[i0] = cdr.read_type_9();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getUint8Values().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getUint8Values().length; ++i0)
       {
-         data.getUint8Values()[i0] = cdr.read_type_9();
+        	data.getUint8Values()[i0] = cdr.read_type_9();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getInt16Values().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getInt16Values().length; ++i0)
       {
-         data.getInt16Values()[i0] = cdr.read_type_1();
+        	data.getInt16Values()[i0] = cdr.read_type_1();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getInt32Values().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getInt32Values().length; ++i0)
       {
-         data.getInt32Values()[i0] = cdr.read_type_2();
+        	data.getInt32Values()[i0] = cdr.read_type_2();
+        	
       }
-
-      for (int i0 = 0; i0 < data.getStringValues().length; ++i0)
+      	
+      for(int i0 = 0; i0 < data.getStringValues().length; ++i0)
       {
-         cdr.read_type_d(data.getStringValues()[i0]);
+        	cdr.read_type_d(data.getStringValues()[i0]);	
       }
-   }
+      	
 
-   public static void staticCopy(test_msgs.msg.dds.StaticArrayPrimitives src, test_msgs.msg.dds.StaticArrayPrimitives dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(test_msgs.msg.dds.StaticArrayPrimitives data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, test_msgs.msg.dds.StaticArrayPrimitives data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -231,12 +241,16 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
       ser.read_type_f("string_values", data.getStringValues());
    }
 
+   public static void staticCopy(test_msgs.msg.dds.StaticArrayPrimitives src, test_msgs.msg.dds.StaticArrayPrimitives dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public test_msgs.msg.dds.StaticArrayPrimitives createData()
    {
       return new test_msgs.msg.dds.StaticArrayPrimitives();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -248,7 +262,7 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
    {
       return name;
    }
-
+   
    public void serialize(test_msgs.msg.dds.StaticArrayPrimitives data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -258,7 +272,7 @@ public class StaticArrayPrimitivesPubSubType implements us.ihmc.pubsub.TopicData
    {
       read(data, cdr);
    }
-
+   
    public void copy(test_msgs.msg.dds.StaticArrayPrimitives src, test_msgs.msg.dds.StaticArrayPrimitives dest)
    {
       staticCopy(src, dest);

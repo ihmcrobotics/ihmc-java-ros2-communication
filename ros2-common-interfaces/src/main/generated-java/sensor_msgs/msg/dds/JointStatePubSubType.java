@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "JointState" defined in "JointState_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from JointState_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit JointState_.idl instead.
- */
+* 
+* Topic data type of the struct "JointState" defined in "JointState_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from JointState_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit JointState_.idl instead.
+*
+*/
 public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.JointState>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JointState_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.JointState data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.JointState data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -24,19 +42,16 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+        current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       return current_alignment - initial_alignment;
    }
@@ -53,18 +68,22 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getName().size(); ++i0)
+      for(int i0 = 0; i0 < data.getName().size(); ++i0)
       {
-         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().get(i0).length() + 1;
+          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().get(i0).length() + 1;
       }
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getPosition().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getVelocity().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getEffort().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -72,55 +91,32 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    public static void write(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if (data.getName().size() <= 100)
-         cdr.write_type_e(data.getName());
-      else
-         throw new RuntimeException("name field exceeds the maximum length");
+      if(data.getName().size() <= 100)
+      cdr.write_type_e(data.getName());else
+          throw new RuntimeException("name field exceeds the maximum length");
 
-      if (data.getPosition().size() <= 100)
-         cdr.write_type_e(data.getPosition());
-      else
-         throw new RuntimeException("position field exceeds the maximum length");
+      if(data.getPosition().size() <= 100)
+      cdr.write_type_e(data.getPosition());else
+          throw new RuntimeException("position field exceeds the maximum length");
 
-      if (data.getVelocity().size() <= 100)
-         cdr.write_type_e(data.getVelocity());
-      else
-         throw new RuntimeException("velocity field exceeds the maximum length");
+      if(data.getVelocity().size() <= 100)
+      cdr.write_type_e(data.getVelocity());else
+          throw new RuntimeException("velocity field exceeds the maximum length");
 
-      if (data.getEffort().size() <= 100)
-         cdr.write_type_e(data.getEffort());
-      else
-         throw new RuntimeException("effort field exceeds the maximum length");
+      if(data.getEffort().size() <= 100)
+      cdr.write_type_e(data.getEffort());else
+          throw new RuntimeException("effort field exceeds the maximum length");
+
    }
 
    public static void read(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      cdr.read_type_e(data.getName());
-      cdr.read_type_e(data.getPosition());
-      cdr.read_type_e(data.getVelocity());
-      cdr.read_type_e(data.getEffort());
-   }
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      cdr.read_type_e(data.getName());	
+      cdr.read_type_e(data.getPosition());	
+      cdr.read_type_e(data.getVelocity());	
+      cdr.read_type_e(data.getEffort());	
 
-   public static void staticCopy(sensor_msgs.msg.dds.JointState src, sensor_msgs.msg.dds.JointState dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.JointState data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.JointState data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -145,12 +141,16 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       ser.read_type_e("effort", data.getEffort());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.JointState src, sensor_msgs.msg.dds.JointState dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.JointState createData()
    {
       return new sensor_msgs.msg.dds.JointState();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -162,7 +162,7 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -172,7 +172,7 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.JointState src, sensor_msgs.msg.dds.JointState dest)
    {
       staticCopy(src, dest);

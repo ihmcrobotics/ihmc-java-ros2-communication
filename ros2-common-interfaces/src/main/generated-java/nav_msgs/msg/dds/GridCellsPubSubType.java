@@ -1,17 +1,35 @@
 package nav_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "GridCells" defined in "GridCells_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from GridCells_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit GridCells_.idl instead.
- */
+* 
+* Topic data type of the struct "GridCells" defined in "GridCells_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from GridCells_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit GridCells_.idl instead.
+*
+*/
 public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.GridCells>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::GridCells_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(nav_msgs.msg.dds.GridCells data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, nav_msgs.msg.dds.GridCells data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -28,11 +46,9 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
       return current_alignment - initial_alignment;
    }
@@ -50,13 +66,15 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getCells().size(); ++i0)
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getCells().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getCells().get(i0), current_alignment);
-      }
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getCells().get(i0), current_alignment);}
+
 
       return current_alignment - initial_alignment;
    }
@@ -68,41 +86,21 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
 
       cdr.write_type_5(data.getCellHeight());
 
-      if (data.getCells().size() <= 100)
-         cdr.write_type_e(data.getCells());
-      else
-         throw new RuntimeException("cells field exceeds the maximum length");
+      if(data.getCells().size() <= 100)
+      cdr.write_type_e(data.getCells());else
+          throw new RuntimeException("cells field exceeds the maximum length");
+
    }
 
    public static void read(nav_msgs.msg.dds.GridCells data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
       data.setCellWidth(cdr.read_type_5());
-
+      	
       data.setCellHeight(cdr.read_type_5());
+      	
+      cdr.read_type_e(data.getCells());	
 
-      cdr.read_type_e(data.getCells());
-   }
-
-   public static void staticCopy(nav_msgs.msg.dds.GridCells src, nav_msgs.msg.dds.GridCells dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(nav_msgs.msg.dds.GridCells data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, nav_msgs.msg.dds.GridCells data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -125,12 +123,16 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
       ser.read_type_e("cells", data.getCells());
    }
 
+   public static void staticCopy(nav_msgs.msg.dds.GridCells src, nav_msgs.msg.dds.GridCells dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public nav_msgs.msg.dds.GridCells createData()
    {
       return new nav_msgs.msg.dds.GridCells();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -142,7 +144,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
    {
       return name;
    }
-
+   
    public void serialize(nav_msgs.msg.dds.GridCells data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -152,7 +154,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
    {
       read(data, cdr);
    }
-
+   
    public void copy(nav_msgs.msg.dds.GridCells src, nav_msgs.msg.dds.GridCells dest)
    {
       staticCopy(src, dest);

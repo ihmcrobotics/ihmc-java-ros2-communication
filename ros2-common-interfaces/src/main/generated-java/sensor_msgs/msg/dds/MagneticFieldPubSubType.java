@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "MagneticField" defined in "MagneticField_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from MagneticField_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MagneticField_.idl instead.
- */
+* 
+* Topic data type of the struct "MagneticField" defined in "MagneticField_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from MagneticField_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit MagneticField_.idl instead.
+*
+*/
 public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.MagneticField>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MagneticField_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.MagneticField data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.MagneticField data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -27,6 +45,7 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
 
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       return current_alignment - initial_alignment;
    }
@@ -53,41 +72,24 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getMagneticField(), cdr);
-      for (int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
+      for(int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
       {
-         cdr.write_type_6(data.getMagneticFieldCovariance()[i0]);
+        	cdr.write_type_6(data.getMagneticFieldCovariance()[i0]);	
       }
+
    }
 
    public static void read(sensor_msgs.msg.dds.MagneticField data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getMagneticField(), cdr);
-      for (int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getMagneticField(), cdr);	
+      for(int i0 = 0; i0 < data.getMagneticFieldCovariance().length; ++i0)
       {
-         data.getMagneticFieldCovariance()[i0] = cdr.read_type_6();
+        	data.getMagneticFieldCovariance()[i0] = cdr.read_type_6();
+        	
       }
-   }
+      	
 
-   public static void staticCopy(sensor_msgs.msg.dds.MagneticField src, sensor_msgs.msg.dds.MagneticField dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.MagneticField data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.MagneticField data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -110,12 +112,16 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
       ser.read_type_f("magnetic_field_covariance", data.getMagneticFieldCovariance());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.MagneticField src, sensor_msgs.msg.dds.MagneticField dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.MagneticField createData()
    {
       return new sensor_msgs.msg.dds.MagneticField();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -127,7 +133,7 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.MagneticField data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -137,7 +143,7 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.MagneticField src, sensor_msgs.msg.dds.MagneticField dest)
    {
       staticCopy(src, dest);

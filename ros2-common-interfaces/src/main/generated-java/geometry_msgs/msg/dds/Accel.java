@@ -1,14 +1,14 @@
 package geometry_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComparable<Accel>
 {
    /**
-    * This expresses acceleration in free space broken into its linear and angular parts.
-    */
+            * This expresses acceleration in free space broken into its linear and angular parts.
+            */
    public us.ihmc.euclid.tuple3D.Vector3D linear_;
    public us.ihmc.euclid.tuple3D.Vector3D angular_;
 
@@ -20,6 +20,7 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
 
    public Accel(Accel other)
    {
+      this();
       set(other);
    }
 
@@ -29,31 +30,30 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.angular_, angular_);
    }
 
+
    /**
-    * This expresses acceleration in free space broken into its linear and angular parts.
-    */
+            * This expresses acceleration in free space broken into its linear and angular parts.
+            */
    public us.ihmc.euclid.tuple3D.Vector3D getLinear()
    {
       return linear_;
    }
+
 
    public us.ihmc.euclid.tuple3D.Vector3D getAngular()
    {
       return angular_;
    }
 
+
    @Override
    public boolean epsilonEquals(Accel other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.linear_.epsilonEquals(other.linear_, epsilon))
-         return false;
-      if (!this.angular_.epsilonEquals(other.angular_, epsilon))
-         return false;
+      if (!this.linear_.epsilonEquals(other.linear_, epsilon)) return false;
+      if (!this.angular_.epsilonEquals(other.angular_, epsilon)) return false;
 
       return true;
    }
@@ -61,19 +61,14 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Accel))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof Accel)) return false;
 
       Accel otherMyClass = (Accel) other;
 
-      if (!this.linear_.equals(otherMyClass.linear_))
-         return false;
-      if (!this.angular_.equals(otherMyClass.angular_))
-         return false;
+      if (!this.linear_.equals(otherMyClass.linear_)) return false;
+      if (!this.angular_.equals(otherMyClass.angular_)) return false;
 
       return true;
    }
@@ -85,8 +80,7 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
 
       builder.append("Accel {");
       builder.append("linear=");
-      builder.append(this.linear_);
-      builder.append(", ");
+      builder.append(this.linear_);      builder.append(", ");
       builder.append("angular=");
       builder.append(this.angular_);
       builder.append("}");

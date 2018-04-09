@@ -1,21 +1,21 @@
 package lifecycle_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 /**
- * Default values for transitions
- * as described on
- * http://design.ros2.org/articles/node_lifecycle.html
- */
+       * Default values for transitions
+       * as described on
+       * http://design.ros2.org/articles/node_lifecycle.html
+       */
 public class Transition extends Packet<Transition> implements Settable<Transition>, EpsilonComparable<Transition>
 {
    /**
-    * Externally available transitions.
-    * When a node is in one of these primary states,
-    * these transitions can be invoked.
-    */
+          * Externally available transitions.
+          * When a node is in one of these primary states,
+          * these transitions can be invoked.
+          */
    public static final byte TRANSITION_CREATE = (byte) 0;
    public static final byte TRANSITION_CONFIGURE = (byte) 1;
    public static final byte TRANSITION_CLEANUP = (byte) 2;
@@ -24,12 +24,12 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
    public static final byte TRANSITION_SHUTDOWN = (byte) 5;
    public static final byte TRANSITION_DESTROY = (byte) 6;
    /**
-    * These transitions are not publically
-    * available and cannot be invoked by a user.
-    * The following transitions are implicitly
-    * invoked based on the callback feedback
-    * of the intermediate transition states.
-    */
+          * These transitions are not publically
+          * available and cannot be invoked by a user.
+          * The following transitions are implicitly
+          * invoked based on the callback feedback
+          * of the intermediate transition states.
+          */
    public static final byte TRANSITION_ON_CONFIGURE_SUCCESS = (byte) 10;
    public static final byte TRANSITION_ON_CONFIGURE_FAILURE = (byte) 11;
    public static final byte TRANSITION_ON_CONFIGURE_ERROR = (byte) 12;
@@ -52,12 +52,12 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
    public static final byte TRANSITION_ON_ERROR_FAILURE = (byte) 61;
    public static final byte TRANSITION_ON_ERROR_ERROR = (byte) 62;
    /**
-    * These return values ought to be set
-    * as a return value for each callback.
-    * Depending on which return value,
-    * the transition will be executed correctly
-    * or fallback/error callbacks will be triggered.
-    */
+          * These return values ought to be set
+          * as a return value for each callback.
+          * Depending on which return value,
+          * the transition will be executed correctly
+          * or fallback/error callbacks will be triggered.
+          */
    public static final byte TRANSITION_CALLBACK_SUCCESS = (byte) 97;
    public static final byte TRANSITION_CALLBACK_FAILURE = (byte) 98;
    public static final byte TRANSITION_CALLBACK_ERROR = (byte) 99;
@@ -71,6 +71,7 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
 
    public Transition(Transition other)
    {
+      this();
       set(other);
    }
 
@@ -80,26 +81,16 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
 
       label_.setLength(0);
       label_.append(other.label_);
-   }
 
-   public byte getId()
-   {
-      return id_;
    }
 
    public void setId(byte id)
    {
       id_ = id;
    }
-
-   public java.lang.String getLabelAsString()
+   public byte getId()
    {
-      return getLabel().toString();
-   }
-
-   public java.lang.StringBuilder getLabel()
-   {
-      return label_;
+      return id_;
    }
 
    public void setLabel(java.lang.String label)
@@ -108,19 +99,26 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
       label_.append(label);
    }
 
+   public java.lang.String getLabelAsString()
+   {
+      return getLabel().toString();
+   }
+   public java.lang.StringBuilder getLabel()
+   {
+      return label_;
+   }
+
+
    @Override
    public boolean epsilonEquals(Transition other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.id_, other.id_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.id_, other.id_, epsilon)) return false;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.label_, other.label_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.label_, other.label_, epsilon)) return false;
+
 
       return true;
    }
@@ -128,20 +126,16 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Transition))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof Transition)) return false;
 
       Transition otherMyClass = (Transition) other;
 
-      if (this.id_ != otherMyClass.id_)
-         return false;
+      if(this.id_ != otherMyClass.id_) return false;
 
-      if (!us.ihmc.idl.IDLTools.equals(this.label_, otherMyClass.label_))
-         return false;
+      if (!us.ihmc.idl.IDLTools.equals(this.label_, otherMyClass.label_)) return false;
+
 
       return true;
    }
@@ -153,8 +147,7 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
 
       builder.append("Transition {");
       builder.append("id=");
-      builder.append(this.id_);
-      builder.append(", ");
+      builder.append(this.id_);      builder.append(", ");
       builder.append("label=");
       builder.append(this.label_);
       builder.append("}");

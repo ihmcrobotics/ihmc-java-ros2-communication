@@ -1,17 +1,35 @@
 package visualization_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "ImageMarker" defined in "ImageMarker_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from ImageMarker_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit ImageMarker_.idl instead.
- */
+* 
+* Topic data type of the struct "ImageMarker" defined in "ImageMarker_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from ImageMarker_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit ImageMarker_.idl instead.
+*
+*/
 public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.ImageMarker>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::ImageMarker_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(visualization_msgs.msg.dds.ImageMarker data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.ImageMarker data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -43,16 +61,12 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
       return current_alignment - initial_alignment;
    }
@@ -72,33 +86,37 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getPosition(), current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getCdrSerializedSize(data.getOutlineColor(), current_alignment);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getCdrSerializedSize(data.getFillColor(), current_alignment);
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getCdrSerializedSize(data.getLifetime(), current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getPoints().size(); ++i0)
+      for(int i0 = 0; i0 < data.getPoints().size(); ++i0)
       {
-         current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);
-      }
+          current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);}
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getOutlineColors().size(); ++i0)
+      for(int i0 = 0; i0 < data.getOutlineColors().size(); ++i0)
       {
-         current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getCdrSerializedSize(data.getOutlineColors().get(i0), current_alignment);
-      }
+          current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getCdrSerializedSize(data.getOutlineColors().get(i0), current_alignment);}
+
 
       return current_alignment - initial_alignment;
    }
@@ -106,10 +124,9 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    public static void write(visualization_msgs.msg.dds.ImageMarker data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if (data.getNs().length() <= 255)
-         cdr.write_type_d(data.getNs());
-      else
-         throw new RuntimeException("ns field exceeds the maximum length");
+      if(data.getNs().length() <= 255)
+      cdr.write_type_d(data.getNs());else
+          throw new RuntimeException("ns field exceeds the maximum length");
 
       cdr.write_type_2(data.getId());
 
@@ -125,58 +142,37 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
       std_msgs.msg.dds.ColorRGBAPubSubType.write(data.getFillColor(), cdr);
       builtin_interfaces.msg.dds.DurationPubSubType.write(data.getLifetime(), cdr);
-      if (data.getPoints().size() <= 100)
-         cdr.write_type_e(data.getPoints());
-      else
-         throw new RuntimeException("points field exceeds the maximum length");
+      if(data.getPoints().size() <= 100)
+      cdr.write_type_e(data.getPoints());else
+          throw new RuntimeException("points field exceeds the maximum length");
 
-      if (data.getOutlineColors().size() <= 100)
-         cdr.write_type_e(data.getOutlineColors());
-      else
-         throw new RuntimeException("outline_colors field exceeds the maximum length");
+      if(data.getOutlineColors().size() <= 100)
+      cdr.write_type_e(data.getOutlineColors());else
+          throw new RuntimeException("outline_colors field exceeds the maximum length");
+
    }
 
    public static void read(visualization_msgs.msg.dds.ImageMarker data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      cdr.read_type_d(data.getNs());
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      cdr.read_type_d(data.getNs());	
       data.setId(cdr.read_type_2());
-
+      	
       data.setType(cdr.read_type_2());
-
+      	
       data.setAction(cdr.read_type_2());
-
-      geometry_msgs.msg.dds.PointPubSubType.read(data.getPosition(), cdr);
+      	
+      geometry_msgs.msg.dds.PointPubSubType.read(data.getPosition(), cdr);	
       data.setScale(cdr.read_type_5());
-
-      std_msgs.msg.dds.ColorRGBAPubSubType.read(data.getOutlineColor(), cdr);
+      	
+      std_msgs.msg.dds.ColorRGBAPubSubType.read(data.getOutlineColor(), cdr);	
       data.setFilled(cdr.read_type_9());
+      	
+      std_msgs.msg.dds.ColorRGBAPubSubType.read(data.getFillColor(), cdr);	
+      builtin_interfaces.msg.dds.DurationPubSubType.read(data.getLifetime(), cdr);	
+      cdr.read_type_e(data.getPoints());	
+      cdr.read_type_e(data.getOutlineColors());	
 
-      std_msgs.msg.dds.ColorRGBAPubSubType.read(data.getFillColor(), cdr);
-      builtin_interfaces.msg.dds.DurationPubSubType.read(data.getLifetime(), cdr);
-      cdr.read_type_e(data.getPoints());
-      cdr.read_type_e(data.getOutlineColors());
-   }
-
-   public static void staticCopy(visualization_msgs.msg.dds.ImageMarker src, visualization_msgs.msg.dds.ImageMarker dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(visualization_msgs.msg.dds.ImageMarker data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.ImageMarker data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -225,12 +221,16 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
       ser.read_type_e("outline_colors", data.getOutlineColors());
    }
 
+   public static void staticCopy(visualization_msgs.msg.dds.ImageMarker src, visualization_msgs.msg.dds.ImageMarker dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public visualization_msgs.msg.dds.ImageMarker createData()
    {
       return new visualization_msgs.msg.dds.ImageMarker();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -242,7 +242,7 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    {
       return name;
    }
-
+   
    public void serialize(visualization_msgs.msg.dds.ImageMarker data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -252,7 +252,7 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    {
       read(data, cdr);
    }
-
+   
    public void copy(visualization_msgs.msg.dds.ImageMarker src, visualization_msgs.msg.dds.ImageMarker dest)
    {
       staticCopy(src, dest);

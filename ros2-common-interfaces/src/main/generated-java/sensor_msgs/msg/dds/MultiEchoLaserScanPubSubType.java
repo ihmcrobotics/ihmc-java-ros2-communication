@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "MultiEchoLaserScan" defined in "MultiEchoLaserScan_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from MultiEchoLaserScan_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit MultiEchoLaserScan_.idl instead.
- */
+* 
+* Topic data type of the struct "MultiEchoLaserScan" defined in "MultiEchoLaserScan_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from MultiEchoLaserScan_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit MultiEchoLaserScan_.idl instead.
+*
+*/
 public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.MultiEchoLaserScan>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MultiEchoLaserScan_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.MultiEchoLaserScan data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.MultiEchoLaserScan data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -38,16 +56,12 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+          current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);}
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
       return current_alignment - initial_alignment;
    }
@@ -65,29 +79,35 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getRanges().size(); ++i0)
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getRanges().size(); ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getRanges().get(i0), current_alignment);
-      }
+          current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getRanges().get(i0), current_alignment);}
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getIntensities().size(); ++i0)
+      for(int i0 = 0; i0 < data.getIntensities().size(); ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getIntensities().get(i0), current_alignment);
-      }
+          current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getCdrSerializedSize(data.getIntensities().get(i0), current_alignment);}
+
 
       return current_alignment - initial_alignment;
    }
@@ -109,57 +129,36 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       cdr.write_type_5(data.getRangeMax());
 
-      if (data.getRanges().size() <= 100)
-         cdr.write_type_e(data.getRanges());
-      else
-         throw new RuntimeException("ranges field exceeds the maximum length");
+      if(data.getRanges().size() <= 100)
+      cdr.write_type_e(data.getRanges());else
+          throw new RuntimeException("ranges field exceeds the maximum length");
 
-      if (data.getIntensities().size() <= 100)
-         cdr.write_type_e(data.getIntensities());
-      else
-         throw new RuntimeException("intensities field exceeds the maximum length");
+      if(data.getIntensities().size() <= 100)
+      cdr.write_type_e(data.getIntensities());else
+          throw new RuntimeException("intensities field exceeds the maximum length");
+
    }
 
    public static void read(sensor_msgs.msg.dds.MultiEchoLaserScan data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
       data.setAngleMin(cdr.read_type_5());
-
+      	
       data.setAngleMax(cdr.read_type_5());
-
+      	
       data.setAngleIncrement(cdr.read_type_5());
-
+      	
       data.setTimeIncrement(cdr.read_type_5());
-
+      	
       data.setScanTime(cdr.read_type_5());
-
+      	
       data.setRangeMin(cdr.read_type_5());
-
+      	
       data.setRangeMax(cdr.read_type_5());
+      	
+      cdr.read_type_e(data.getRanges());	
+      cdr.read_type_e(data.getIntensities());	
 
-      cdr.read_type_e(data.getRanges());
-      cdr.read_type_e(data.getIntensities());
-   }
-
-   public static void staticCopy(sensor_msgs.msg.dds.MultiEchoLaserScan src, sensor_msgs.msg.dds.MultiEchoLaserScan dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.MultiEchoLaserScan data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.MultiEchoLaserScan data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -194,12 +193,16 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
       ser.read_type_e("intensities", data.getIntensities());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.MultiEchoLaserScan src, sensor_msgs.msg.dds.MultiEchoLaserScan dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.MultiEchoLaserScan createData()
    {
       return new sensor_msgs.msg.dds.MultiEchoLaserScan();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -211,7 +214,7 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.MultiEchoLaserScan data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -221,7 +224,7 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.MultiEchoLaserScan src, sensor_msgs.msg.dds.MultiEchoLaserScan dest)
    {
       staticCopy(src, dest);

@@ -1,8 +1,8 @@
 package builtin_interfaces.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class Time extends Packet<Time> implements Settable<Time>, EpsilonComparable<Time>
 {
@@ -15,6 +15,7 @@ public class Time extends Packet<Time> implements Settable<Time>, EpsilonCompara
 
    public Time(Time other)
    {
+      this();
       set(other);
    }
 
@@ -23,41 +24,38 @@ public class Time extends Packet<Time> implements Settable<Time>, EpsilonCompara
       sec_ = other.sec_;
 
       nanosec_ = other.nanosec_;
-   }
 
-   public int getSec()
-   {
-      return sec_;
    }
 
    public void setSec(int sec)
    {
       sec_ = sec;
    }
-
-   public long getNanosec()
+   public int getSec()
    {
-      return nanosec_;
+      return sec_;
    }
 
    public void setNanosec(long nanosec)
    {
       nanosec_ = nanosec;
    }
+   public long getNanosec()
+   {
+      return nanosec_;
+   }
+
 
    @Override
    public boolean epsilonEquals(Time other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.sec_, other.sec_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.sec_, other.sec_, epsilon)) return false;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.nanosec_, other.nanosec_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.nanosec_, other.nanosec_, epsilon)) return false;
+
 
       return true;
    }
@@ -65,20 +63,16 @@ public class Time extends Packet<Time> implements Settable<Time>, EpsilonCompara
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof Time))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof Time)) return false;
 
       Time otherMyClass = (Time) other;
 
-      if (this.sec_ != otherMyClass.sec_)
-         return false;
+      if(this.sec_ != otherMyClass.sec_) return false;
 
-      if (this.nanosec_ != otherMyClass.nanosec_)
-         return false;
+      if(this.nanosec_ != otherMyClass.nanosec_) return false;
+
 
       return true;
    }
@@ -90,8 +84,7 @@ public class Time extends Packet<Time> implements Settable<Time>, EpsilonCompara
 
       builder.append("Time {");
       builder.append("sec=");
-      builder.append(this.sec_);
-      builder.append(", ");
+      builder.append(this.sec_);      builder.append(", ");
       builder.append("nanosec=");
       builder.append(this.nanosec_);
       builder.append("}");

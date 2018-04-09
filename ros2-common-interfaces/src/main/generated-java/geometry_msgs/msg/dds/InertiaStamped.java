@@ -1,8 +1,8 @@
 package geometry_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class InertiaStamped extends Packet<InertiaStamped> implements Settable<InertiaStamped>, EpsilonComparable<InertiaStamped>
 {
@@ -17,6 +17,7 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
 
    public InertiaStamped(InertiaStamped other)
    {
+      this();
       set(other);
    }
 
@@ -26,28 +27,27 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
       geometry_msgs.msg.dds.InertiaPubSubType.staticCopy(other.inertia_, inertia_);
    }
 
+
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
+
 
    public geometry_msgs.msg.dds.Inertia getInertia()
    {
       return inertia_;
    }
 
+
    @Override
    public boolean epsilonEquals(InertiaStamped other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
-      if (!this.inertia_.epsilonEquals(other.inertia_, epsilon))
-         return false;
+      if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+      if (!this.inertia_.epsilonEquals(other.inertia_, epsilon)) return false;
 
       return true;
    }
@@ -55,19 +55,14 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof InertiaStamped))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof InertiaStamped)) return false;
 
       InertiaStamped otherMyClass = (InertiaStamped) other;
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
-      if (!this.inertia_.equals(otherMyClass.inertia_))
-         return false;
+      if (!this.header_.equals(otherMyClass.header_)) return false;
+      if (!this.inertia_.equals(otherMyClass.inertia_)) return false;
 
       return true;
    }
@@ -79,8 +74,7 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
 
       builder.append("InertiaStamped {");
       builder.append("header=");
-      builder.append(this.header_);
-      builder.append(", ");
+      builder.append(this.header_);      builder.append(", ");
       builder.append("inertia=");
       builder.append(this.inertia_);
       builder.append("}");

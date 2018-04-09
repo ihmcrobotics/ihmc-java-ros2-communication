@@ -1,66 +1,19 @@
 package geometry_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Accel" defined in "Accel_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Accel_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Accel_.idl instead.
- */
+* 
+* Topic data type of the struct "Accel" defined in "Accel_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Accel_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Accel_.idl instead.
+*
+*/
 public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Accel>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Accel_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public static int getMaxCdrSerializedSize()
-   {
-      return getMaxCdrSerializedSize(0);
-   }
-
-   public static int getMaxCdrSerializedSize(int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
-
-      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
-
-      return current_alignment - initial_alignment;
-   }
-
-   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Accel data)
-   {
-      return getCdrSerializedSize(data, 0);
-   }
-
-   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Accel data, int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getLinear(), current_alignment);
-
-      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getAngular(), current_alignment);
-
-      return current_alignment - initial_alignment;
-   }
-
-   public static void write(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.CDR cdr)
-   {
-      geometry_msgs.msg.dds.Vector3PubSubType.write(data.getLinear(), cdr);
-      geometry_msgs.msg.dds.Vector3PubSubType.write(data.getAngular(), cdr);
-   }
-
-   public static void read(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.CDR cdr)
-   {
-      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinear(), cdr);
-      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngular(), cdr);
-   }
-
-   public static void staticCopy(geometry_msgs.msg.dds.Accel src, geometry_msgs.msg.dds.Accel dest)
-   {
-      dest.set(src);
-   }
 
    @Override
    public void serialize(geometry_msgs.msg.dds.Accel data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
@@ -78,12 +31,60 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
       deserializeCDR.finishDeserialize();
    }
 
+   public static int getMaxCdrSerializedSize()
+   {
+      return getMaxCdrSerializedSize(0);
+   }
+
+   public static int getMaxCdrSerializedSize(int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
+      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
+
+
+      return current_alignment - initial_alignment;
+   }
+
+   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Accel data)
+   {
+      return getCdrSerializedSize(data, 0);
+   }
+
+   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Accel data, int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getLinear(), current_alignment);
+
+      current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getAngular(), current_alignment);
+
+
+      return current_alignment - initial_alignment;
+   }
+
+   public static void write(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.CDR cdr)
+   {
+      geometry_msgs.msg.dds.Vector3PubSubType.write(data.getLinear(), cdr);
+      geometry_msgs.msg.dds.Vector3PubSubType.write(data.getAngular(), cdr);
+   }
+
+   public static void read(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.CDR cdr)
+   {
+      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinear(), cdr);	
+      geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngular(), cdr);	
+
+   }
+
    @Override
    public final void serialize(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_a("linear", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getLinear());
 
       ser.write_type_a("angular", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getAngular());
+
    }
 
    @Override
@@ -92,6 +93,12 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
       ser.read_type_a("linear", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getLinear());
 
       ser.read_type_a("angular", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getAngular());
+
+   }
+
+   public static void staticCopy(geometry_msgs.msg.dds.Accel src, geometry_msgs.msg.dds.Accel dest)
+   {
+      dest.set(src);
    }
 
    @Override
@@ -99,7 +106,6 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    {
       return new geometry_msgs.msg.dds.Accel();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -111,7 +117,7 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    {
       return name;
    }
-
+   
    public void serialize(geometry_msgs.msg.dds.Accel data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -121,7 +127,7 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    {
       read(data, cdr);
    }
-
+   
    public void copy(geometry_msgs.msg.dds.Accel src, geometry_msgs.msg.dds.Accel dest)
    {
       staticCopy(src, dest);

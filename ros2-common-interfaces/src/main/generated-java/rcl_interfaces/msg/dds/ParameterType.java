@@ -1,8 +1,8 @@
 package rcl_interfaces.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class ParameterType extends Packet<ParameterType> implements Settable<ParameterType>, EpsilonComparable<ParameterType>
 {
@@ -20,34 +20,34 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
 
    public ParameterType(ParameterType other)
    {
+      this();
       set(other);
    }
 
    public void set(ParameterType other)
    {
       unused_placeholder_field_ = other.unused_placeholder_field_;
-   }
 
-   public boolean getUnusedPlaceholderField()
-   {
-      return unused_placeholder_field_;
    }
 
    public void setUnusedPlaceholderField(boolean unused_placeholder_field)
    {
       unused_placeholder_field_ = unused_placeholder_field;
    }
+   public boolean getUnusedPlaceholderField()
+   {
+      return unused_placeholder_field_;
+   }
+
 
    @Override
    public boolean epsilonEquals(ParameterType other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.unused_placeholder_field_, other.unused_placeholder_field_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.unused_placeholder_field_, other.unused_placeholder_field_, epsilon)) return false;
+
 
       return true;
    }
@@ -55,17 +55,14 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof ParameterType))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof ParameterType)) return false;
 
       ParameterType otherMyClass = (ParameterType) other;
 
-      if (this.unused_placeholder_field_ != otherMyClass.unused_placeholder_field_)
-         return false;
+      if(this.unused_placeholder_field_ != otherMyClass.unused_placeholder_field_) return false;
+
 
       return true;
    }

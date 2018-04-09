@@ -1,18 +1,18 @@
 package rcl_interfaces.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 /**
- * This is the message to communicate a parameter's descriptor.
- */
+       * This is the message to communicate a parameter's descriptor.
+       */
 public class ParameterDescriptor extends Packet<ParameterDescriptor> implements Settable<ParameterDescriptor>, EpsilonComparable<ParameterDescriptor>
 {
    public java.lang.StringBuilder name_;
    /**
-    * Enum defined in ParameterType.msg
-    */
+            * Enum defined in ParameterType.msg
+            */
    public byte type_;
 
    public ParameterDescriptor()
@@ -22,6 +22,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
 
    public ParameterDescriptor(ParameterDescriptor other)
    {
+      this();
       set(other);
    }
 
@@ -31,16 +32,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       name_.append(other.name_);
 
       type_ = other.type_;
-   }
 
-   public java.lang.String getNameAsString()
-   {
-      return getName().toString();
-   }
-
-   public java.lang.StringBuilder getName()
-   {
-      return name_;
    }
 
    public void setName(java.lang.String name)
@@ -49,35 +41,41 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       name_.append(name);
    }
 
+   public java.lang.String getNameAsString()
+   {
+      return getName().toString();
+   }
+   public java.lang.StringBuilder getName()
+   {
+      return name_;
+   }
+
    /**
-    * Enum defined in ParameterType.msg
-    */
+            * Enum defined in ParameterType.msg
+            */
+   public void setType(byte type)
+   {
+      type_ = type;
+   }
+   /**
+            * Enum defined in ParameterType.msg
+            */
    public byte getType()
    {
       return type_;
    }
 
-   /**
-    * Enum defined in ParameterType.msg
-    */
-   public void setType(byte type)
-   {
-      type_ = type;
-   }
 
    @Override
    public boolean epsilonEquals(ParameterDescriptor other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon)) return false;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.type_, other.type_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.type_, other.type_, epsilon)) return false;
+
 
       return true;
    }
@@ -85,20 +83,16 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof ParameterDescriptor))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof ParameterDescriptor)) return false;
 
       ParameterDescriptor otherMyClass = (ParameterDescriptor) other;
 
-      if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_))
-         return false;
+      if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_)) return false;
 
-      if (this.type_ != otherMyClass.type_)
-         return false;
+      if(this.type_ != otherMyClass.type_) return false;
+
 
       return true;
    }
@@ -110,8 +104,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
 
       builder.append("ParameterDescriptor {");
       builder.append("name=");
-      builder.append(this.name_);
-      builder.append(", ");
+      builder.append(this.name_);      builder.append(", ");
       builder.append("type=");
       builder.append(this.type_);
       builder.append("}");

@@ -1,17 +1,35 @@
 package test_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "DynamicArrayPrimitivesNested" defined in "DynamicArrayPrimitivesNested_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from DynamicArrayPrimitivesNested_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit DynamicArrayPrimitivesNested_.idl instead.
- */
+* 
+* Topic data type of the struct "DynamicArrayPrimitivesNested" defined in "DynamicArrayPrimitivesNested_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from DynamicArrayPrimitivesNested_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit DynamicArrayPrimitivesNested_.idl instead.
+*
+*/
 public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.DynamicArrayPrimitivesNested>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::DynamicArrayPrimitivesNested_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(test_msgs.msg.dds.DynamicArrayPrimitivesNested data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, test_msgs.msg.dds.DynamicArrayPrimitivesNested data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -22,11 +40,9 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += test_msgs.msg.dds.DynamicArrayPrimitivesPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += test_msgs.msg.dds.DynamicArrayPrimitivesPubSubType.getMaxCdrSerializedSize(current_alignment);}
       return current_alignment - initial_alignment;
    }
 
@@ -40,49 +56,25 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getDynamicArrayPrimitiveValues().size(); ++i0)
+      for(int i0 = 0; i0 < data.getDynamicArrayPrimitiveValues().size(); ++i0)
       {
-         current_alignment += test_msgs.msg.dds.DynamicArrayPrimitivesPubSubType
-               .getCdrSerializedSize(data.getDynamicArrayPrimitiveValues().get(i0), current_alignment);
-      }
+          current_alignment += test_msgs.msg.dds.DynamicArrayPrimitivesPubSubType.getCdrSerializedSize(data.getDynamicArrayPrimitiveValues().get(i0), current_alignment);}
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(test_msgs.msg.dds.DynamicArrayPrimitivesNested data, us.ihmc.idl.CDR cdr)
    {
-      if (data.getDynamicArrayPrimitiveValues().size() <= 100)
-         cdr.write_type_e(data.getDynamicArrayPrimitiveValues());
-      else
-         throw new RuntimeException("dynamic_array_primitive_values field exceeds the maximum length");
+      if(data.getDynamicArrayPrimitiveValues().size() <= 100)
+      cdr.write_type_e(data.getDynamicArrayPrimitiveValues());else
+          throw new RuntimeException("dynamic_array_primitive_values field exceeds the maximum length");
+
    }
 
    public static void read(test_msgs.msg.dds.DynamicArrayPrimitivesNested data, us.ihmc.idl.CDR cdr)
    {
-      cdr.read_type_e(data.getDynamicArrayPrimitiveValues());
-   }
+      cdr.read_type_e(data.getDynamicArrayPrimitiveValues());	
 
-   public static void staticCopy(test_msgs.msg.dds.DynamicArrayPrimitivesNested src, test_msgs.msg.dds.DynamicArrayPrimitivesNested dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(test_msgs.msg.dds.DynamicArrayPrimitivesNested data, us.ihmc.pubsub.common.SerializedPayload serializedPayload)
-         throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, test_msgs.msg.dds.DynamicArrayPrimitivesNested data)
-         throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -97,12 +89,16 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
       ser.read_type_e("dynamic_array_primitive_values", data.getDynamicArrayPrimitiveValues());
    }
 
+   public static void staticCopy(test_msgs.msg.dds.DynamicArrayPrimitivesNested src, test_msgs.msg.dds.DynamicArrayPrimitivesNested dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public test_msgs.msg.dds.DynamicArrayPrimitivesNested createData()
    {
       return new test_msgs.msg.dds.DynamicArrayPrimitivesNested();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -114,7 +110,7 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
    {
       return name;
    }
-
+   
    public void serialize(test_msgs.msg.dds.DynamicArrayPrimitivesNested data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -124,7 +120,7 @@ public class DynamicArrayPrimitivesNestedPubSubType implements us.ihmc.pubsub.To
    {
       read(data, cdr);
    }
-
+   
    public void copy(test_msgs.msg.dds.DynamicArrayPrimitivesNested src, test_msgs.msg.dds.DynamicArrayPrimitivesNested dest)
    {
       staticCopy(src, dest);

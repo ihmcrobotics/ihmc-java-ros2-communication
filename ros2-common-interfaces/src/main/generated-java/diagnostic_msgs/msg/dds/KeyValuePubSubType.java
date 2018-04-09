@@ -1,17 +1,35 @@
 package diagnostic_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "KeyValue" defined in "KeyValue_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from KeyValue_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit KeyValue_.idl instead.
- */
+* 
+* Topic data type of the struct "KeyValue" defined in "KeyValue_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from KeyValue_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit KeyValue_.idl instead.
+*
+*/
 public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnostic_msgs.msg.dds.KeyValue>
 {
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::KeyValue_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, diagnostic_msgs.msg.dds.KeyValue data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -41,47 +59,27 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getValue().length() + 1;
 
+
       return current_alignment - initial_alignment;
    }
 
    public static void write(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.idl.CDR cdr)
    {
-      if (data.getKey().length() <= 255)
-         cdr.write_type_d(data.getKey());
-      else
-         throw new RuntimeException("key field exceeds the maximum length");
+      if(data.getKey().length() <= 255)
+      cdr.write_type_d(data.getKey());else
+          throw new RuntimeException("key field exceeds the maximum length");
 
-      if (data.getValue().length() <= 255)
-         cdr.write_type_d(data.getValue());
-      else
-         throw new RuntimeException("value field exceeds the maximum length");
+      if(data.getValue().length() <= 255)
+      cdr.write_type_d(data.getValue());else
+          throw new RuntimeException("value field exceeds the maximum length");
+
    }
 
    public static void read(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.idl.CDR cdr)
    {
-      cdr.read_type_d(data.getKey());
-      cdr.read_type_d(data.getValue());
-   }
+      cdr.read_type_d(data.getKey());	
+      cdr.read_type_d(data.getValue());	
 
-   public static void staticCopy(diagnostic_msgs.msg.dds.KeyValue src, diagnostic_msgs.msg.dds.KeyValue dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, diagnostic_msgs.msg.dds.KeyValue data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -98,12 +96,16 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
       ser.read_type_d("value", data.getValue());
    }
 
+   public static void staticCopy(diagnostic_msgs.msg.dds.KeyValue src, diagnostic_msgs.msg.dds.KeyValue dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public diagnostic_msgs.msg.dds.KeyValue createData()
    {
       return new diagnostic_msgs.msg.dds.KeyValue();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -115,7 +117,7 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
    {
       return name;
    }
-
+   
    public void serialize(diagnostic_msgs.msg.dds.KeyValue data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -125,7 +127,7 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
    {
       read(data, cdr);
    }
-
+   
    public void copy(diagnostic_msgs.msg.dds.KeyValue src, diagnostic_msgs.msg.dds.KeyValue dest)
    {
       staticCopy(src, dest);

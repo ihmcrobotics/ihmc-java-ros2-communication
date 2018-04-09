@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "RegionOfInterest" defined in "RegionOfInterest_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from RegionOfInterest_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit RegionOfInterest_.idl instead.
- */
+* 
+* Topic data type of the struct "RegionOfInterest" defined in "RegionOfInterest_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from RegionOfInterest_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit RegionOfInterest_.idl instead.
+*
+*/
 public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.RegionOfInterest>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::RegionOfInterest_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.RegionOfInterest data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -32,6 +50,7 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -46,13 +65,19 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -68,40 +93,22 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
       cdr.write_type_4(data.getWidth());
 
       cdr.write_type_7(data.getDoRectify());
+
    }
 
    public static void read(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.CDR cdr)
    {
       data.setXOffset(cdr.read_type_4());
-
+      	
       data.setYOffset(cdr.read_type_4());
-
+      	
       data.setHeight(cdr.read_type_4());
-
+      	
       data.setWidth(cdr.read_type_4());
-
+      	
       data.setDoRectify(cdr.read_type_7());
-   }
+      	
 
-   public static void staticCopy(sensor_msgs.msg.dds.RegionOfInterest src, sensor_msgs.msg.dds.RegionOfInterest dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.RegionOfInterest data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -124,12 +131,16 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
       data.setDoRectify(ser.read_type_7("do_rectify"));
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.RegionOfInterest src, sensor_msgs.msg.dds.RegionOfInterest dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.RegionOfInterest createData()
    {
       return new sensor_msgs.msg.dds.RegionOfInterest();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -141,7 +152,7 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -151,7 +162,7 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.RegionOfInterest src, sensor_msgs.msg.dds.RegionOfInterest dest)
    {
       staticCopy(src, dest);

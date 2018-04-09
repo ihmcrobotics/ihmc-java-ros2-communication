@@ -1,12 +1,12 @@
 package geometry_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 /**
- * This represents a Polygon with reference coordinate frame and timestamp
- */
+       * This represents a Polygon with reference coordinate frame and timestamp
+       */
 public class PolygonStamped extends Packet<PolygonStamped> implements Settable<PolygonStamped>, EpsilonComparable<PolygonStamped>
 {
    public std_msgs.msg.dds.Header header_;
@@ -20,6 +20,7 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
 
    public PolygonStamped(PolygonStamped other)
    {
+      this();
       set(other);
    }
 
@@ -29,28 +30,27 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
       geometry_msgs.msg.dds.PolygonPubSubType.staticCopy(other.polygon_, polygon_);
    }
 
+
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
+
 
    public geometry_msgs.msg.dds.Polygon getPolygon()
    {
       return polygon_;
    }
 
+
    @Override
    public boolean epsilonEquals(PolygonStamped other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
-      if (!this.polygon_.epsilonEquals(other.polygon_, epsilon))
-         return false;
+      if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+      if (!this.polygon_.epsilonEquals(other.polygon_, epsilon)) return false;
 
       return true;
    }
@@ -58,19 +58,14 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof PolygonStamped))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof PolygonStamped)) return false;
 
       PolygonStamped otherMyClass = (PolygonStamped) other;
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
-      if (!this.polygon_.equals(otherMyClass.polygon_))
-         return false;
+      if (!this.header_.equals(otherMyClass.header_)) return false;
+      if (!this.polygon_.equals(otherMyClass.polygon_)) return false;
 
       return true;
    }
@@ -82,8 +77,7 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
 
       builder.append("PolygonStamped {");
       builder.append("header=");
-      builder.append(this.header_);
-      builder.append(", ");
+      builder.append(this.header_);      builder.append(", ");
       builder.append("polygon=");
       builder.append(this.polygon_);
       builder.append("}");

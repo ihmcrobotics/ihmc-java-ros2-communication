@@ -1,17 +1,35 @@
 package std_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "String" defined in "String_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from String_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit String_.idl instead.
- */
+* 
+* Topic data type of the struct "String" defined in "String_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from String_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit String_.idl instead.
+*
+*/
 public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.String>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::String_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(std_msgs.msg.dds.String data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, std_msgs.msg.dds.String data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -42,36 +60,16 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void write(std_msgs.msg.dds.String data, us.ihmc.idl.CDR cdr)
    {
-      if (data.getData().length() <= 255)
-         cdr.write_type_d(data.getData());
-      else
-         throw new RuntimeException("data field exceeds the maximum length");
+      if(data.getData().length() <= 255)
+      cdr.write_type_d(data.getData());else
+          throw new RuntimeException("data field exceeds the maximum length");
+
    }
 
    public static void read(std_msgs.msg.dds.String data, us.ihmc.idl.CDR cdr)
    {
-      cdr.read_type_d(data.getData());
-   }
+      cdr.read_type_d(data.getData());	
 
-   public static void staticCopy(std_msgs.msg.dds.String src, std_msgs.msg.dds.String dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(std_msgs.msg.dds.String data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, std_msgs.msg.dds.String data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -86,12 +84,16 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
       ser.read_type_d("data", data.getData());
    }
 
+   public static void staticCopy(std_msgs.msg.dds.String src, std_msgs.msg.dds.String dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public std_msgs.msg.dds.String createData()
    {
       return new std_msgs.msg.dds.String();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -103,7 +105,7 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       return name;
    }
-
+   
    public void serialize(std_msgs.msg.dds.String data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -113,7 +115,7 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       read(data, cdr);
    }
-
+   
    public void copy(std_msgs.msg.dds.String src, std_msgs.msg.dds.String dest)
    {
       staticCopy(src, dest);

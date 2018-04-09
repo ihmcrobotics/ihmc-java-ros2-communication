@@ -1,17 +1,35 @@
 package diagnostic_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "DiagnosticArray" defined in "DiagnosticArray_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from DiagnosticArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit DiagnosticArray_.idl instead.
- */
+* 
+* Topic data type of the struct "DiagnosticArray" defined in "DiagnosticArray_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from DiagnosticArray_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit DiagnosticArray_.idl instead.
+*
+*/
 public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<diagnostic_msgs.msg.dds.DiagnosticArray>
 {
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, diagnostic_msgs.msg.dds.DiagnosticArray data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -24,11 +42,9 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
       return current_alignment - initial_alignment;
    }
@@ -45,10 +61,10 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getStatus().size(); ++i0)
+      for(int i0 = 0; i0 < data.getStatus().size(); ++i0)
       {
-         current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getCdrSerializedSize(data.getStatus().get(i0), current_alignment);
-      }
+          current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getCdrSerializedSize(data.getStatus().get(i0), current_alignment);}
+
 
       return current_alignment - initial_alignment;
    }
@@ -56,37 +72,17 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
    public static void write(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if (data.getStatus().size() <= 100)
-         cdr.write_type_e(data.getStatus());
-      else
-         throw new RuntimeException("status field exceeds the maximum length");
+      if(data.getStatus().size() <= 100)
+      cdr.write_type_e(data.getStatus());else
+          throw new RuntimeException("status field exceeds the maximum length");
+
    }
 
    public static void read(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      cdr.read_type_e(data.getStatus());
-   }
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      cdr.read_type_e(data.getStatus());	
 
-   public static void staticCopy(diagnostic_msgs.msg.dds.DiagnosticArray src, diagnostic_msgs.msg.dds.DiagnosticArray dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, diagnostic_msgs.msg.dds.DiagnosticArray data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -105,12 +101,16 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
       ser.read_type_e("status", data.getStatus());
    }
 
+   public static void staticCopy(diagnostic_msgs.msg.dds.DiagnosticArray src, diagnostic_msgs.msg.dds.DiagnosticArray dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public diagnostic_msgs.msg.dds.DiagnosticArray createData()
    {
       return new diagnostic_msgs.msg.dds.DiagnosticArray();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -122,7 +122,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
    {
       return name;
    }
-
+   
    public void serialize(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -132,7 +132,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
    {
       read(data, cdr);
    }
-
+   
    public void copy(diagnostic_msgs.msg.dds.DiagnosticArray src, diagnostic_msgs.msg.dds.DiagnosticArray dest)
    {
       staticCopy(src, dest);

@@ -1,8 +1,8 @@
 package lifecycle_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class TransitionEvent extends Packet<TransitionEvent> implements Settable<TransitionEvent>, EpsilonComparable<TransitionEvent>
 {
@@ -20,6 +20,7 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
    public TransitionEvent(TransitionEvent other)
    {
+      this();
       set(other);
    }
 
@@ -32,48 +33,45 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
       lifecycle_msgs.msg.dds.StatePubSubType.staticCopy(other.goal_state_, goal_state_);
    }
 
+   public void setTimestamp(long timestamp)
+   {
+      timestamp_ = timestamp;
+   }
    public long getTimestamp()
    {
       return timestamp_;
    }
 
-   public void setTimestamp(long timestamp)
-   {
-      timestamp_ = timestamp;
-   }
 
    public lifecycle_msgs.msg.dds.Transition getTransition()
    {
       return transition_;
    }
 
+
    public lifecycle_msgs.msg.dds.State getStartState()
    {
       return start_state_;
    }
+
 
    public lifecycle_msgs.msg.dds.State getGoalState()
    {
       return goal_state_;
    }
 
+
    @Override
    public boolean epsilonEquals(TransitionEvent other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.timestamp_, other.timestamp_, epsilon))
-         return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.timestamp_, other.timestamp_, epsilon)) return false;
 
-      if (!this.transition_.epsilonEquals(other.transition_, epsilon))
-         return false;
-      if (!this.start_state_.epsilonEquals(other.start_state_, epsilon))
-         return false;
-      if (!this.goal_state_.epsilonEquals(other.goal_state_, epsilon))
-         return false;
+      if (!this.transition_.epsilonEquals(other.transition_, epsilon)) return false;
+      if (!this.start_state_.epsilonEquals(other.start_state_, epsilon)) return false;
+      if (!this.goal_state_.epsilonEquals(other.goal_state_, epsilon)) return false;
 
       return true;
    }
@@ -81,24 +79,17 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof TransitionEvent))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof TransitionEvent)) return false;
 
       TransitionEvent otherMyClass = (TransitionEvent) other;
 
-      if (this.timestamp_ != otherMyClass.timestamp_)
-         return false;
+      if(this.timestamp_ != otherMyClass.timestamp_) return false;
 
-      if (!this.transition_.equals(otherMyClass.transition_))
-         return false;
-      if (!this.start_state_.equals(otherMyClass.start_state_))
-         return false;
-      if (!this.goal_state_.equals(otherMyClass.goal_state_))
-         return false;
+      if (!this.transition_.equals(otherMyClass.transition_)) return false;
+      if (!this.start_state_.equals(otherMyClass.start_state_)) return false;
+      if (!this.goal_state_.equals(otherMyClass.goal_state_)) return false;
 
       return true;
    }
@@ -110,14 +101,11 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
       builder.append("TransitionEvent {");
       builder.append("timestamp=");
-      builder.append(this.timestamp_);
-      builder.append(", ");
+      builder.append(this.timestamp_);      builder.append(", ");
       builder.append("transition=");
-      builder.append(this.transition_);
-      builder.append(", ");
+      builder.append(this.transition_);      builder.append(", ");
       builder.append("start_state=");
-      builder.append(this.start_state_);
-      builder.append(", ");
+      builder.append(this.start_state_);      builder.append(", ");
       builder.append("goal_state=");
       builder.append(this.goal_state_);
       builder.append("}");

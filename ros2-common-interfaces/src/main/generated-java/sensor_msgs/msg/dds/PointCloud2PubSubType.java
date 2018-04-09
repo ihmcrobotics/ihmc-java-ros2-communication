@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "PointCloud2" defined in "PointCloud2_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from PointCloud2_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit PointCloud2_.idl instead.
- */
+* 
+* Topic data type of the struct "PointCloud2" defined in "PointCloud2_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from PointCloud2_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit PointCloud2_.idl instead.
+*
+*/
 public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.PointCloud2>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::PointCloud2_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.PointCloud2 data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.PointCloud2 data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -28,21 +46,19 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.PointFieldPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += sensor_msgs.msg.dds.PointFieldPubSubType.getMaxCdrSerializedSize(current_alignment);}
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       return current_alignment - initial_alignment;
    }
@@ -60,24 +76,31 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getFields().size(); ++i0)
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getFields().size(); ++i0)
       {
-         current_alignment += sensor_msgs.msg.dds.PointFieldPubSubType.getCdrSerializedSize(data.getFields().get(i0), current_alignment);
-      }
+          current_alignment += sensor_msgs.msg.dds.PointFieldPubSubType.getCdrSerializedSize(data.getFields().get(i0), current_alignment);}
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getData().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -89,10 +112,9 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       cdr.write_type_4(data.getWidth());
 
-      if (data.getFields().size() <= 100)
-         cdr.write_type_e(data.getFields());
-      else
-         throw new RuntimeException("fields field exceeds the maximum length");
+      if(data.getFields().size() <= 100)
+      cdr.write_type_e(data.getFields());else
+          throw new RuntimeException("fields field exceeds the maximum length");
 
       cdr.write_type_7(data.getIsBigendian());
 
@@ -100,51 +122,32 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       cdr.write_type_4(data.getRowStep());
 
-      if (data.getData().size() <= 100)
-         cdr.write_type_e(data.getData());
-      else
-         throw new RuntimeException("data field exceeds the maximum length");
+      if(data.getData().size() <= 100)
+      cdr.write_type_e(data.getData());else
+          throw new RuntimeException("data field exceeds the maximum length");
 
       cdr.write_type_7(data.getIsDense());
+
    }
 
    public static void read(sensor_msgs.msg.dds.PointCloud2 data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
       data.setHeight(cdr.read_type_4());
-
+      	
       data.setWidth(cdr.read_type_4());
-
-      cdr.read_type_e(data.getFields());
+      	
+      cdr.read_type_e(data.getFields());	
       data.setIsBigendian(cdr.read_type_7());
-
+      	
       data.setPointStep(cdr.read_type_4());
-
+      	
       data.setRowStep(cdr.read_type_4());
-
-      cdr.read_type_e(data.getData());
+      	
+      cdr.read_type_e(data.getData());	
       data.setIsDense(cdr.read_type_7());
-   }
+      	
 
-   public static void staticCopy(sensor_msgs.msg.dds.PointCloud2 src, sensor_msgs.msg.dds.PointCloud2 dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.PointCloud2 data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.PointCloud2 data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -177,12 +180,16 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
       data.setIsDense(ser.read_type_7("is_dense"));
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.PointCloud2 src, sensor_msgs.msg.dds.PointCloud2 dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.PointCloud2 createData()
    {
       return new sensor_msgs.msg.dds.PointCloud2();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -194,7 +201,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.PointCloud2 data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -204,7 +211,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.PointCloud2 src, sensor_msgs.msg.dds.PointCloud2 dest)
    {
       staticCopy(src, dest);

@@ -1,17 +1,35 @@
 package test_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Primitives" defined in "Primitives_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Primitives_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Primitives_.idl instead.
- */
+* 
+* Topic data type of the struct "Primitives" defined in "Primitives_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Primitives_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Primitives_.idl instead.
+*
+*/
 public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_msgs.msg.dds.Primitives>
 {
    public static final java.lang.String name = "test_msgs::msg::dds_::Primitives_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(test_msgs.msg.dds.Primitives data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, test_msgs.msg.dds.Primitives data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -64,31 +82,45 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
+      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
+      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       current_alignment += 2 + us.ihmc.idl.CDR.alignment(current_alignment, 2);
 
+
       current_alignment += 2 + us.ihmc.idl.CDR.alignment(current_alignment, 2);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStringValue().length() + 1;
+
 
       return current_alignment - initial_alignment;
    }
@@ -121,62 +153,42 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
 
       cdr.write_type_12(data.getUint64Value());
 
-      if (data.getStringValue().length() <= 255)
-         cdr.write_type_d(data.getStringValue());
-      else
-         throw new RuntimeException("string_value field exceeds the maximum length");
+      if(data.getStringValue().length() <= 255)
+      cdr.write_type_d(data.getStringValue());else
+          throw new RuntimeException("string_value field exceeds the maximum length");
+
    }
 
    public static void read(test_msgs.msg.dds.Primitives data, us.ihmc.idl.CDR cdr)
    {
       data.setBoolValue(cdr.read_type_7());
-
+      	
       data.setByteValue(cdr.read_type_9());
-
+      	
       data.setCharValue(cdr.read_type_8());
-
+      	
       data.setFloat32Value(cdr.read_type_5());
-
+      	
       data.setFloat64Value(cdr.read_type_6());
-
+      	
       data.setInt8Value(cdr.read_type_9());
-
+      	
       data.setUint8Value(cdr.read_type_9());
-
+      	
       data.setInt16Value(cdr.read_type_1());
-
+      	
       data.setUint16Value(cdr.read_type_3());
-
+      	
       data.setInt32Value(cdr.read_type_2());
-
+      	
       data.setUint32Value(cdr.read_type_4());
-
+      	
       data.setInt64Value(cdr.read_type_11());
-
+      	
       data.setUint64Value(cdr.read_type_12());
+      	
+      cdr.read_type_d(data.getStringValue());	
 
-      cdr.read_type_d(data.getStringValue());
-   }
-
-   public static void staticCopy(test_msgs.msg.dds.Primitives src, test_msgs.msg.dds.Primitives dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(test_msgs.msg.dds.Primitives data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, test_msgs.msg.dds.Primitives data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -217,12 +229,16 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
       ser.read_type_d("string_value", data.getStringValue());
    }
 
+   public static void staticCopy(test_msgs.msg.dds.Primitives src, test_msgs.msg.dds.Primitives dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public test_msgs.msg.dds.Primitives createData()
    {
       return new test_msgs.msg.dds.Primitives();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -234,7 +250,7 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
    {
       return name;
    }
-
+   
    public void serialize(test_msgs.msg.dds.Primitives data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -244,7 +260,7 @@ public class PrimitivesPubSubType implements us.ihmc.pubsub.TopicDataType<test_m
    {
       read(data, cdr);
    }
-
+   
    public void copy(test_msgs.msg.dds.Primitives src, test_msgs.msg.dds.Primitives dest)
    {
       staticCopy(src, dest);

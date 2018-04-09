@@ -1,52 +1,113 @@
 package geometry_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Pose2D" defined in "Pose2D_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Pose2D_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Pose2D_.idl instead.
- */
+* 
+* Topic data type of the struct "Pose2D" defined in "Pose2D_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Pose2D_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Pose2D_.idl instead.
+*
+*/
 public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euclid.geometry.Pose2D>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Pose2D_";
-   private static AbstractPose2DPubSubTypeImplementation impl = new us.ihmc.ros2.rosidl.geometry_msgs.msg.dds.Pose2DPubSubTypeImpl();
+
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
 
-   private static AbstractPose2DPubSubTypeImplementation getImpl()
+   private static AbstractPose2DPubSubTypeImplementation impl = new us.ihmc.ros2.rosidl.geometry_msgs.msg.dds.Pose2DPubSubTypeImpl();
+   
+   /**
+    * Abstract implementation of Pose2DPubSubType.
+    *
+    * Extend this class to create a custom PubSubType for @Abstract idl datatypes.
+    *
+    */
+   public static abstract class AbstractPose2DPubSubTypeImplementation
    {
-      if (impl == null)
-      {
-         throw new RuntimeException(
-               "Abstract pub/sub type implementation not set. Call setImplementation(AbstractPose2DPubSubTypeImplementation implementation) before using this type.");
-      }
-      return impl;
+   /**
+    * Copy src into dest.
+    *
+    * @param src Source object to copy data from
+    * @param dest Destination object to copy data to
+    */
+   protected abstract void copy(us.ihmc.euclid.geometry.Pose2D src, us.ihmc.euclid.geometry.Pose2D dest);
+   /**
+    * Getter for X
+    *
+    * @param data object to read from
+    * @return value of X
+    */
+   protected abstract double getX(us.ihmc.euclid.geometry.Pose2D data);
+   /**
+    * Setter for X
+    *
+    * @param data object to write to
+    * @param x value
+    */
+   protected abstract void setX(us.ihmc.euclid.geometry.Pose2D data, double x);
+   /**
+    * Getter for Y
+    *
+    * @param data object to read from
+    * @return value of X
+    */
+   protected abstract double getY(us.ihmc.euclid.geometry.Pose2D data);
+   /**
+    * Setter for Y
+    *
+    * @param data object to write to
+    * @param y value
+    */
+   protected abstract void setY(us.ihmc.euclid.geometry.Pose2D data, double y);
+   /**
+    * Getter for Theta
+    *
+    * @param data object to read from
+    * @return value of X
+    */
+   protected abstract double getTheta(us.ihmc.euclid.geometry.Pose2D data);
+   /**
+    * Setter for Theta
+    *
+    * @param data object to write to
+    * @param theta value
+    */
+   protected abstract void setTheta(us.ihmc.euclid.geometry.Pose2D data, double theta);
+      public abstract us.ihmc.euclid.geometry.Pose2D createData();
    }
 
+   private static AbstractPose2DPubSubTypeImplementation getImpl()
+   {
+     if(impl == null)
+     {
+      throw new RuntimeException("Abstract pub/sub type implementation not set. Call setImplementation(AbstractPose2DPubSubTypeImplementation implementation) before using this type.");
+     }
+     return impl;
+   }
+   
    public static void setImplementation(AbstractPose2DPubSubTypeImplementation implementation)
    {
-      Pose2DPubSubType.impl = implementation;
+     Pose2DPubSubType.impl = implementation;
    }
 
    public static int getMaxCdrSerializedSize()
    {
-      return getMaxCdrSerializedSize(0);
+     return getMaxCdrSerializedSize(0);
    }
 
    public static int getMaxCdrSerializedSize(int current_alignment)
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       return current_alignment - initial_alignment;
    }
 
    public final static int getCdrSerializedSize(us.ihmc.euclid.geometry.Pose2D data)
    {
-      return getCdrSerializedSize(data, 0);
+     return getCdrSerializedSize(data, 0);
    }
 
    public final static int getCdrSerializedSize(us.ihmc.euclid.geometry.Pose2D data, int current_alignment)
@@ -55,34 +116,15 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
 
       return current_alignment - initial_alignment;
-   }
-
-   public static void write(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.CDR cdr)
-   {
-      cdr.write_type_6(getImpl().getX(data));
-
-      cdr.write_type_6(getImpl().getY(data));
-
-      cdr.write_type_6(getImpl().getTheta(data));
-   }
-
-   public static void read(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.CDR cdr)
-   {
-      getImpl().setX(data, cdr.read_type_6());
-
-      getImpl().setY(data, cdr.read_type_6());
-
-      getImpl().setTheta(data, cdr.read_type_6());
-   }
-
-   public static void staticCopy(us.ihmc.euclid.geometry.Pose2D src, us.ihmc.euclid.geometry.Pose2D dest)
-   {
-      getImpl().copy(src, dest);
    }
 
    @Override
@@ -101,6 +143,26 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
       deserializeCDR.finishDeserialize();
    }
 
+   public static void write(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.CDR cdr)
+   {
+      cdr.write_type_6(getImpl().getX(data));
+
+      cdr.write_type_6(getImpl().getY(data));
+
+      cdr.write_type_6(getImpl().getTheta(data));
+
+   }
+
+   public static void read(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.CDR cdr)
+   {
+      getImpl().setX(data,cdr.read_type_6());
+      	
+      getImpl().setY(data,cdr.read_type_6());
+      	
+      getImpl().setTheta(data,cdr.read_type_6());
+      	
+   }
+
    @Override
    public final void serialize(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.InterchangeSerializer ser)
    {
@@ -117,12 +179,16 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
       getImpl().setTheta(data, ser.read_type_6("theta"));
    }
 
+   public static void staticCopy(us.ihmc.euclid.geometry.Pose2D src, us.ihmc.euclid.geometry.Pose2D dest)
+   {
+      getImpl().copy(src, dest);
+   }
+
    @Override
    public us.ihmc.euclid.geometry.Pose2D createData()
    {
       return getImpl().createData();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -134,7 +200,7 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
    {
       return name;
    }
-
+   
    public void serialize(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -144,7 +210,7 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
    {
       read(data, cdr);
    }
-
+   
    public void copy(us.ihmc.euclid.geometry.Pose2D src, us.ihmc.euclid.geometry.Pose2D dest)
    {
       staticCopy(src, dest);
@@ -154,71 +220,5 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
    public Pose2DPubSubType newInstance()
    {
       return new Pose2DPubSubType();
-   }
-
-   /**
-    * Abstract implementation of Pose2DPubSubType.
-    *
-    * Extend this class to create a custom PubSubType for @Abstract idl datatypes.
-    */
-   public static abstract class AbstractPose2DPubSubTypeImplementation
-   {
-      /**
-       * Copy src into dest.
-       *
-       * @param src Source object to copy data from
-       * @param dest Destination object to copy data to
-       */
-      protected abstract void copy(us.ihmc.euclid.geometry.Pose2D src, us.ihmc.euclid.geometry.Pose2D dest);
-
-      /**
-       * Getter for X
-       *
-       * @param data object to read from
-       * @return value of X
-       */
-      protected abstract double getX(us.ihmc.euclid.geometry.Pose2D data);
-
-      /**
-       * Setter for X
-       *
-       * @param data object to write to
-       * @param x value
-       */
-      protected abstract void setX(us.ihmc.euclid.geometry.Pose2D data, double x);
-
-      /**
-       * Getter for Y
-       *
-       * @param data object to read from
-       * @return value of X
-       */
-      protected abstract double getY(us.ihmc.euclid.geometry.Pose2D data);
-
-      /**
-       * Setter for Y
-       *
-       * @param data object to write to
-       * @param y value
-       */
-      protected abstract void setY(us.ihmc.euclid.geometry.Pose2D data, double y);
-
-      /**
-       * Getter for Theta
-       *
-       * @param data object to read from
-       * @return value of X
-       */
-      protected abstract double getTheta(us.ihmc.euclid.geometry.Pose2D data);
-
-      /**
-       * Setter for Theta
-       *
-       * @param data object to write to
-       * @param theta value
-       */
-      protected abstract void setTheta(us.ihmc.euclid.geometry.Pose2D data, double theta);
-
-      public abstract us.ihmc.euclid.geometry.Pose2D createData();
    }
 }

@@ -1,70 +1,19 @@
 package geometry_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Polygon" defined in "Polygon_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Polygon_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Polygon_.idl instead.
- */
+* 
+* Topic data type of the struct "Polygon" defined in "Polygon_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Polygon_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Polygon_.idl instead.
+*
+*/
 public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Polygon>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Polygon_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
-
-   public static int getMaxCdrSerializedSize()
-   {
-      return getMaxCdrSerializedSize(0);
-   }
-
-   public static int getMaxCdrSerializedSize(int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
-      {
-         current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
-      return current_alignment - initial_alignment;
-   }
-
-   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Polygon data)
-   {
-      return getCdrSerializedSize(data, 0);
-   }
-
-   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Polygon data, int current_alignment)
-   {
-      int initial_alignment = current_alignment;
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getPoints().size(); ++i0)
-      {
-         current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);
-      }
-
-      return current_alignment - initial_alignment;
-   }
-
-   public static void write(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
-   {
-      if (data.getPoints().size() <= 100)
-         cdr.write_type_e(data.getPoints());
-      else
-         throw new RuntimeException("points field exceeds the maximum length");
-   }
-
-   public static void read(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
-   {
-      cdr.read_type_e(data.getPoints());
-   }
-
-   public static void staticCopy(geometry_msgs.msg.dds.Polygon src, geometry_msgs.msg.dds.Polygon dest)
-   {
-      dest.set(src);
-   }
 
    @Override
    public void serialize(geometry_msgs.msg.dds.Polygon data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
@@ -82,6 +31,52 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
       deserializeCDR.finishDeserialize();
    }
 
+   public static int getMaxCdrSerializedSize()
+   {
+      return getMaxCdrSerializedSize(0);
+   }
+
+   public static int getMaxCdrSerializedSize(int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      {
+          current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);}
+      return current_alignment - initial_alignment;
+   }
+
+   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Polygon data)
+   {
+      return getCdrSerializedSize(data, 0);
+   }
+
+   public final static int getCdrSerializedSize(geometry_msgs.msg.dds.Polygon data, int current_alignment)
+   {
+      int initial_alignment = current_alignment;
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getPoints().size(); ++i0)
+      {
+          current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);}
+
+      return current_alignment - initial_alignment;
+   }
+
+   public static void write(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
+   {
+      if(data.getPoints().size() <= 100)
+      cdr.write_type_e(data.getPoints());else
+          throw new RuntimeException("points field exceeds the maximum length");
+
+   }
+
+   public static void read(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
+   {
+      cdr.read_type_e(data.getPoints());	
+
+   }
+
    @Override
    public final void serialize(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.InterchangeSerializer ser)
    {
@@ -94,12 +89,16 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
       ser.read_type_e("points", data.getPoints());
    }
 
+   public static void staticCopy(geometry_msgs.msg.dds.Polygon src, geometry_msgs.msg.dds.Polygon dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public geometry_msgs.msg.dds.Polygon createData()
    {
       return new geometry_msgs.msg.dds.Polygon();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -111,7 +110,7 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       return name;
    }
-
+   
    public void serialize(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -121,7 +120,7 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       read(data, cdr);
    }
-
+   
    public void copy(geometry_msgs.msg.dds.Polygon src, geometry_msgs.msg.dds.Polygon dest)
    {
       staticCopy(src, dest);

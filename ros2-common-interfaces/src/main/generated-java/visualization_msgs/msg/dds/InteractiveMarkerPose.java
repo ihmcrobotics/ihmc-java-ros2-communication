@@ -1,23 +1,23 @@
 package visualization_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> implements Settable<InteractiveMarkerPose>, EpsilonComparable<InteractiveMarkerPose>
 {
    /**
-    * Time/frame info.
-    */
+            * Time/frame info.
+            */
    public std_msgs.msg.dds.Header header_;
    /**
-    * Initial pose. Also, defines the pivot point for rotations.
-    */
+            * Initial pose. Also, defines the pivot point for rotations.
+            */
    public us.ihmc.euclid.geometry.Pose3D pose_;
    /**
-    * Identifying string. Must be globally unique in
-    * the topic that this message is sent through.
-    */
+            * Identifying string. Must be globally unique in
+            * the topic that this message is sent through.
+            */
    public java.lang.StringBuilder name_;
 
    public InteractiveMarkerPose()
@@ -29,6 +29,7 @@ public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> impleme
 
    public InteractiveMarkerPose(InteractiveMarkerPose other)
    {
+      this();
       set(other);
    }
 
@@ -38,66 +39,65 @@ public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> impleme
       geometry_msgs.msg.dds.PosePubSubType.staticCopy(other.pose_, pose_);
       name_.setLength(0);
       name_.append(other.name_);
+
    }
 
+
    /**
-    * Time/frame info.
-    */
+            * Time/frame info.
+            */
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
 
+
    /**
-    * Initial pose. Also, defines the pivot point for rotations.
-    */
+            * Initial pose. Also, defines the pivot point for rotations.
+            */
    public us.ihmc.euclid.geometry.Pose3D getPose()
    {
       return pose_;
    }
 
    /**
-    * Identifying string. Must be globally unique in
-    * the topic that this message is sent through.
-    */
-   public java.lang.String getNameAsString()
-   {
-      return getName().toString();
-   }
-
-   /**
-    * Identifying string. Must be globally unique in
-    * the topic that this message is sent through.
-    */
-   public java.lang.StringBuilder getName()
-   {
-      return name_;
-   }
-
-   /**
-    * Identifying string. Must be globally unique in
-    * the topic that this message is sent through.
-    */
+            * Identifying string. Must be globally unique in
+            * the topic that this message is sent through.
+            */
    public void setName(java.lang.String name)
    {
       name_.setLength(0);
       name_.append(name);
    }
 
+   /**
+            * Identifying string. Must be globally unique in
+            * the topic that this message is sent through.
+            */
+   public java.lang.String getNameAsString()
+   {
+      return getName().toString();
+   }
+   /**
+            * Identifying string. Must be globally unique in
+            * the topic that this message is sent through.
+            */
+   public java.lang.StringBuilder getName()
+   {
+      return name_;
+   }
+
+
    @Override
    public boolean epsilonEquals(InteractiveMarkerPose other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
-      if (!this.pose_.epsilonEquals(other.pose_, epsilon))
-         return false;
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon))
-         return false;
+      if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+      if (!this.pose_.epsilonEquals(other.pose_, epsilon)) return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon)) return false;
+
 
       return true;
    }
@@ -105,21 +105,16 @@ public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> impleme
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof InteractiveMarkerPose))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof InteractiveMarkerPose)) return false;
 
       InteractiveMarkerPose otherMyClass = (InteractiveMarkerPose) other;
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
-      if (!this.pose_.equals(otherMyClass.pose_))
-         return false;
-      if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_))
-         return false;
+      if (!this.header_.equals(otherMyClass.header_)) return false;
+      if (!this.pose_.equals(otherMyClass.pose_)) return false;
+      if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_)) return false;
+
 
       return true;
    }
@@ -131,11 +126,9 @@ public class InteractiveMarkerPose extends Packet<InteractiveMarkerPose> impleme
 
       builder.append("InteractiveMarkerPose {");
       builder.append("header=");
-      builder.append(this.header_);
-      builder.append(", ");
+      builder.append(this.header_);      builder.append(", ");
       builder.append("pose=");
-      builder.append(this.pose_);
-      builder.append(", ");
+      builder.append(this.pose_);      builder.append(", ");
       builder.append("name=");
       builder.append(this.name_);
       builder.append("}");

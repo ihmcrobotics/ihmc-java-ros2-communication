@@ -1,17 +1,35 @@
 package actionlib_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "GoalID" defined in "GoalID_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from GoalID_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit GoalID_.idl instead.
- */
+* 
+* Topic data type of the struct "GoalID" defined in "GoalID_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from GoalID_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit GoalID_.idl instead.
+*
+*/
 public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_msgs.msg.dds.GoalID>
 {
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalID_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(actionlib_msgs.msg.dds.GoalID data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, actionlib_msgs.msg.dds.GoalID data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -42,43 +60,24 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getId().length() + 1;
 
+
       return current_alignment - initial_alignment;
    }
 
    public static void write(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.CDR cdr)
    {
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getStamp(), cdr);
-      if (data.getId().length() <= 255)
-         cdr.write_type_d(data.getId());
-      else
-         throw new RuntimeException("id field exceeds the maximum length");
+      if(data.getId().length() <= 255)
+      cdr.write_type_d(data.getId());else
+          throw new RuntimeException("id field exceeds the maximum length");
+
    }
 
    public static void read(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.CDR cdr)
    {
-      builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);
-      cdr.read_type_d(data.getId());
-   }
+      builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);	
+      cdr.read_type_d(data.getId());	
 
-   public static void staticCopy(actionlib_msgs.msg.dds.GoalID src, actionlib_msgs.msg.dds.GoalID dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(actionlib_msgs.msg.dds.GoalID data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, actionlib_msgs.msg.dds.GoalID data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -97,12 +96,16 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
       ser.read_type_d("id", data.getId());
    }
 
+   public static void staticCopy(actionlib_msgs.msg.dds.GoalID src, actionlib_msgs.msg.dds.GoalID dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public actionlib_msgs.msg.dds.GoalID createData()
    {
       return new actionlib_msgs.msg.dds.GoalID();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -114,7 +117,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
    {
       return name;
    }
-
+   
    public void serialize(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -124,7 +127,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
    {
       read(data, cdr);
    }
-
+   
    public void copy(actionlib_msgs.msg.dds.GoalID src, actionlib_msgs.msg.dds.GoalID dest)
    {
       staticCopy(src, dest);

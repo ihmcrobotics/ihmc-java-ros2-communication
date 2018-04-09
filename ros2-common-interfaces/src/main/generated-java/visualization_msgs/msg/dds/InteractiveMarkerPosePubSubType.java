@@ -1,17 +1,35 @@
 package visualization_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "InteractiveMarkerPose" defined in "InteractiveMarkerPose_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from InteractiveMarkerPose_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit InteractiveMarkerPose_.idl instead.
- */
+* 
+* Topic data type of the struct "InteractiveMarkerPose" defined in "InteractiveMarkerPose_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from InteractiveMarkerPose_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit InteractiveMarkerPose_.idl instead.
+*
+*/
 public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerPose>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerPose_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(visualization_msgs.msg.dds.InteractiveMarkerPose data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.InteractiveMarkerPose data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -46,6 +64,7 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -53,40 +72,18 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
-      if (data.getName().length() <= 255)
-         cdr.write_type_d(data.getName());
-      else
-         throw new RuntimeException("name field exceeds the maximum length");
+      if(data.getName().length() <= 255)
+      cdr.write_type_d(data.getName());else
+          throw new RuntimeException("name field exceeds the maximum length");
+
    }
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerPose data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);
-      cdr.read_type_d(data.getName());
-   }
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);	
+      cdr.read_type_d(data.getName());	
 
-   public static void staticCopy(visualization_msgs.msg.dds.InteractiveMarkerPose src, visualization_msgs.msg.dds.InteractiveMarkerPose dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(visualization_msgs.msg.dds.InteractiveMarkerPose data, us.ihmc.pubsub.common.SerializedPayload serializedPayload)
-         throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, visualization_msgs.msg.dds.InteractiveMarkerPose data)
-         throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -109,12 +106,16 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
       ser.read_type_d("name", data.getName());
    }
 
+   public static void staticCopy(visualization_msgs.msg.dds.InteractiveMarkerPose src, visualization_msgs.msg.dds.InteractiveMarkerPose dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public visualization_msgs.msg.dds.InteractiveMarkerPose createData()
    {
       return new visualization_msgs.msg.dds.InteractiveMarkerPose();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -126,7 +127,7 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
    {
       return name;
    }
-
+   
    public void serialize(visualization_msgs.msg.dds.InteractiveMarkerPose data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -136,7 +137,7 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
    {
       read(data, cdr);
    }
-
+   
    public void copy(visualization_msgs.msg.dds.InteractiveMarkerPose src, visualization_msgs.msg.dds.InteractiveMarkerPose dest)
    {
       staticCopy(src, dest);

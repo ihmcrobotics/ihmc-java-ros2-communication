@@ -1,14 +1,13 @@
 package geometry_msgs.msg.dds;
 
 import us.ihmc.communication.packets.Packet;
-import us.ihmc.euclid.interfaces.EpsilonComparable;
 import us.ihmc.euclid.interfaces.Settable;
+import us.ihmc.euclid.interfaces.EpsilonComparable;
 
 /**
- * This represents an estimated twist with reference coordinate frame and timestamp.
- */
-public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStamped>
-      implements Settable<TwistWithCovarianceStamped>, EpsilonComparable<TwistWithCovarianceStamped>
+       * This represents an estimated twist with reference coordinate frame and timestamp.
+       */
+public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStamped> implements Settable<TwistWithCovarianceStamped>, EpsilonComparable<TwistWithCovarianceStamped>
 {
    public std_msgs.msg.dds.Header header_;
    public geometry_msgs.msg.dds.TwistWithCovariance twist_;
@@ -21,6 +20,7 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
 
    public TwistWithCovarianceStamped(TwistWithCovarianceStamped other)
    {
+      this();
       set(other);
    }
 
@@ -30,28 +30,27 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
       geometry_msgs.msg.dds.TwistWithCovariancePubSubType.staticCopy(other.twist_, twist_);
    }
 
+
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
+
 
    public geometry_msgs.msg.dds.TwistWithCovariance getTwist()
    {
       return twist_;
    }
 
+
    @Override
    public boolean epsilonEquals(TwistWithCovarianceStamped other, double epsilon)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
+      if(other == null) return false;
+      if(other == this) return true;
 
-      if (!this.header_.epsilonEquals(other.header_, epsilon))
-         return false;
-      if (!this.twist_.epsilonEquals(other.twist_, epsilon))
-         return false;
+      if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+      if (!this.twist_.epsilonEquals(other.twist_, epsilon)) return false;
 
       return true;
    }
@@ -59,19 +58,14 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
    @Override
    public boolean equals(Object other)
    {
-      if (other == null)
-         return false;
-      if (other == this)
-         return true;
-      if (!(other instanceof TwistWithCovarianceStamped))
-         return false;
+      if(other == null) return false;
+      if(other == this) return true;
+      if(!(other instanceof TwistWithCovarianceStamped)) return false;
 
       TwistWithCovarianceStamped otherMyClass = (TwistWithCovarianceStamped) other;
 
-      if (!this.header_.equals(otherMyClass.header_))
-         return false;
-      if (!this.twist_.equals(otherMyClass.twist_))
-         return false;
+      if (!this.header_.equals(otherMyClass.header_)) return false;
+      if (!this.twist_.equals(otherMyClass.twist_)) return false;
 
       return true;
    }
@@ -83,8 +77,7 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
 
       builder.append("TwistWithCovarianceStamped {");
       builder.append("header=");
-      builder.append(this.header_);
-      builder.append(", ");
+      builder.append(this.header_);      builder.append(", ");
       builder.append("twist=");
       builder.append(this.twist_);
       builder.append("}");

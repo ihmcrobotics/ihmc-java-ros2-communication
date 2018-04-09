@@ -1,17 +1,35 @@
 package actionlib_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "GoalStatusArray" defined in "GoalStatusArray_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from GoalStatusArray_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit GoalStatusArray_.idl instead.
- */
+* 
+* Topic data type of the struct "GoalStatusArray" defined in "GoalStatusArray_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from GoalStatusArray_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit GoalStatusArray_.idl instead.
+*
+*/
 public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_msgs.msg.dds.GoalStatusArray>
 {
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalStatusArray_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(actionlib_msgs.msg.dds.GoalStatusArray data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, actionlib_msgs.msg.dds.GoalStatusArray data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -24,11 +42,9 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
-         current_alignment += actionlib_msgs.msg.dds.GoalStatusPubSubType.getMaxCdrSerializedSize(current_alignment);
-      }
+          current_alignment += actionlib_msgs.msg.dds.GoalStatusPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
       return current_alignment - initial_alignment;
    }
@@ -45,10 +61,10 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      for (int i0 = 0; i0 < data.getStatusList().size(); ++i0)
+      for(int i0 = 0; i0 < data.getStatusList().size(); ++i0)
       {
-         current_alignment += actionlib_msgs.msg.dds.GoalStatusPubSubType.getCdrSerializedSize(data.getStatusList().get(i0), current_alignment);
-      }
+          current_alignment += actionlib_msgs.msg.dds.GoalStatusPubSubType.getCdrSerializedSize(data.getStatusList().get(i0), current_alignment);}
+
 
       return current_alignment - initial_alignment;
    }
@@ -56,37 +72,17 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    public static void write(actionlib_msgs.msg.dds.GoalStatusArray data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if (data.getStatusList().size() <= 100)
-         cdr.write_type_e(data.getStatusList());
-      else
-         throw new RuntimeException("status_list field exceeds the maximum length");
+      if(data.getStatusList().size() <= 100)
+      cdr.write_type_e(data.getStatusList());else
+          throw new RuntimeException("status_list field exceeds the maximum length");
+
    }
 
    public static void read(actionlib_msgs.msg.dds.GoalStatusArray data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      cdr.read_type_e(data.getStatusList());
-   }
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      cdr.read_type_e(data.getStatusList());	
 
-   public static void staticCopy(actionlib_msgs.msg.dds.GoalStatusArray src, actionlib_msgs.msg.dds.GoalStatusArray dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(actionlib_msgs.msg.dds.GoalStatusArray data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, actionlib_msgs.msg.dds.GoalStatusArray data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -105,12 +101,16 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
       ser.read_type_e("status_list", data.getStatusList());
    }
 
+   public static void staticCopy(actionlib_msgs.msg.dds.GoalStatusArray src, actionlib_msgs.msg.dds.GoalStatusArray dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public actionlib_msgs.msg.dds.GoalStatusArray createData()
    {
       return new actionlib_msgs.msg.dds.GoalStatusArray();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -122,7 +122,7 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    {
       return name;
    }
-
+   
    public void serialize(actionlib_msgs.msg.dds.GoalStatusArray data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -132,7 +132,7 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    {
       read(data, cdr);
    }
-
+   
    public void copy(actionlib_msgs.msg.dds.GoalStatusArray src, actionlib_msgs.msg.dds.GoalStatusArray dest)
    {
       staticCopy(src, dest);

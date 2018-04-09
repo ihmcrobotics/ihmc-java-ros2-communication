@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "TimeReference" defined in "TimeReference_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from TimeReference_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit TimeReference_.idl instead.
- */
+* 
+* Topic data type of the struct "TimeReference" defined in "TimeReference_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from TimeReference_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit TimeReference_.idl instead.
+*
+*/
 public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.TimeReference>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::TimeReference_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.TimeReference data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.TimeReference data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -44,7 +62,8 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getTimeRef(), current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getSourceAsStringBuilder().length() + 1;
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getSource().length() + 1;
+
 
       return current_alignment - initial_alignment;
    }
@@ -53,38 +72,18 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getTimeRef(), cdr);
-      if (data.getSourceAsStringBuilder().length() <= 255)
-         cdr.write_type_d(data.getSourceAsStringBuilder());
-      else
-         throw new RuntimeException("source field exceeds the maximum length");
+      if(data.getSource().length() <= 255)
+      cdr.write_type_d(data.getSource());else
+          throw new RuntimeException("source field exceeds the maximum length");
+
    }
 
    public static void read(sensor_msgs.msg.dds.TimeReference data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
-      builtin_interfaces.msg.dds.TimePubSubType.read(data.getTimeRef(), cdr);
-      cdr.read_type_d(data.getSourceAsStringBuilder());
-   }
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+      builtin_interfaces.msg.dds.TimePubSubType.read(data.getTimeRef(), cdr);	
+      cdr.read_type_d(data.getSource());	
 
-   public static void staticCopy(sensor_msgs.msg.dds.TimeReference src, sensor_msgs.msg.dds.TimeReference dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.TimeReference data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.TimeReference data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -94,7 +93,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       ser.write_type_a("time_ref", new builtin_interfaces.msg.dds.TimePubSubType(), data.getTimeRef());
 
-      ser.write_type_d("source", data.getSourceAsStringBuilder());
+      ser.write_type_d("source", data.getSource());
    }
 
    @Override
@@ -104,7 +103,12 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
       ser.read_type_a("time_ref", new builtin_interfaces.msg.dds.TimePubSubType(), data.getTimeRef());
 
-      ser.read_type_d("source", data.getSourceAsStringBuilder());
+      ser.read_type_d("source", data.getSource());
+   }
+
+   public static void staticCopy(sensor_msgs.msg.dds.TimeReference src, sensor_msgs.msg.dds.TimeReference dest)
+   {
+      dest.set(src);
    }
 
    @Override
@@ -112,7 +116,6 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       return new sensor_msgs.msg.dds.TimeReference();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -124,7 +127,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.TimeReference data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -134,7 +137,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.TimeReference src, sensor_msgs.msg.dds.TimeReference dest)
    {
       staticCopy(src, dest);

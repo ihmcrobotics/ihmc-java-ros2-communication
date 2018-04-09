@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Range" defined in "Range_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Range_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Range_.idl instead.
- */
+* 
+* Topic data type of the struct "Range" defined in "Range_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Range_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Range_.idl instead.
+*
+*/
 public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Range>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Range_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.Range data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Range data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -34,6 +52,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       return current_alignment - initial_alignment;
    }
 
@@ -50,13 +69,19 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -73,41 +98,23 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
       cdr.write_type_5(data.getMaxRange());
 
       cdr.write_type_5(data.getRange());
+
    }
 
    public static void read(sensor_msgs.msg.dds.Range data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
       data.setRadiationType(cdr.read_type_9());
-
+      	
       data.setFieldOfView(cdr.read_type_5());
-
+      	
       data.setMinRange(cdr.read_type_5());
-
+      	
       data.setMaxRange(cdr.read_type_5());
-
+      	
       data.setRange(cdr.read_type_5());
-   }
+      	
 
-   public static void staticCopy(sensor_msgs.msg.dds.Range src, sensor_msgs.msg.dds.Range dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.Range data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Range data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -134,12 +141,16 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
       data.setRange(ser.read_type_5("range"));
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.Range src, sensor_msgs.msg.dds.Range dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.Range createData()
    {
       return new sensor_msgs.msg.dds.Range();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -151,7 +162,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.Range data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -161,7 +172,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.Range src, sensor_msgs.msg.dds.Range dest)
    {
       staticCopy(src, dest);

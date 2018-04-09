@@ -1,17 +1,35 @@
 package sensor_msgs.msg.dds;
 
 /**
- * Topic data type of the struct "Image" defined in "Image_.idl". Use this class to provide the TopicDataType to a Participant.
- *
- * This file was automatically generated from Image_.idl by us.ihmc.idl.generator.IDLGenerator.
- * Do not update this file directly, edit Image_.idl instead.
- */
+* 
+* Topic data type of the struct "Image" defined in "Image_.idl". Use this class to provide the TopicDataType to a Participant. 
+*
+* This file was automatically generated from Image_.idl by us.ihmc.idl.generator.IDLGenerator. 
+* Do not update this file directly, edit Image_.idl instead.
+*
+*/
 public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Image>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Image_";
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
+
+   @Override
+   public void serialize(sensor_msgs.msg.dds.Image data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
+   {
+      serializeCDR.serialize(serializedPayload);
+      write(data, serializeCDR);
+      serializeCDR.finishSerialize();
+   }
+
+   @Override
+   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Image data) throws java.io.IOException
+   {
+      deserializeCDR.deserialize(serializedPayload);
+      read(data, deserializeCDR);
+      deserializeCDR.finishDeserialize();
+   }
 
    public static int getMaxCdrSerializedSize()
    {
@@ -33,8 +51,8 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       return current_alignment - initial_alignment;
    }
@@ -52,16 +70,22 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getEncoding().length() + 1;
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getData().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
 
       return current_alignment - initial_alignment;
    }
@@ -73,55 +97,34 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
 
       cdr.write_type_4(data.getWidth());
 
-      if (data.getEncoding().length() <= 255)
-         cdr.write_type_d(data.getEncoding());
-      else
-         throw new RuntimeException("encoding field exceeds the maximum length");
+      if(data.getEncoding().length() <= 255)
+      cdr.write_type_d(data.getEncoding());else
+          throw new RuntimeException("encoding field exceeds the maximum length");
 
       cdr.write_type_9(data.getIsBigendian());
 
       cdr.write_type_4(data.getStep());
 
-      if (data.getData().size() <= 100)
-         cdr.write_type_e(data.getData());
-      else
-         throw new RuntimeException("data field exceeds the maximum length");
+      if(data.getData().size() <= 100)
+      cdr.write_type_e(data.getData());else
+          throw new RuntimeException("data field exceeds the maximum length");
+
    }
 
    public static void read(sensor_msgs.msg.dds.Image data, us.ihmc.idl.CDR cdr)
    {
-      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);
+      std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
       data.setHeight(cdr.read_type_4());
-
+      	
       data.setWidth(cdr.read_type_4());
-
-      cdr.read_type_d(data.getEncoding());
+      	
+      cdr.read_type_d(data.getEncoding());	
       data.setIsBigendian(cdr.read_type_9());
-
+      	
       data.setStep(cdr.read_type_4());
+      	
+      cdr.read_type_e(data.getData());	
 
-      cdr.read_type_e(data.getData());
-   }
-
-   public static void staticCopy(sensor_msgs.msg.dds.Image src, sensor_msgs.msg.dds.Image dest)
-   {
-      dest.set(src);
-   }
-
-   @Override
-   public void serialize(sensor_msgs.msg.dds.Image data, us.ihmc.pubsub.common.SerializedPayload serializedPayload) throws java.io.IOException
-   {
-      serializeCDR.serialize(serializedPayload);
-      write(data, serializeCDR);
-      serializeCDR.finishSerialize();
-   }
-
-   @Override
-   public void deserialize(us.ihmc.pubsub.common.SerializedPayload serializedPayload, sensor_msgs.msg.dds.Image data) throws java.io.IOException
-   {
-      deserializeCDR.deserialize(serializedPayload);
-      read(data, deserializeCDR);
-      deserializeCDR.finishDeserialize();
    }
 
    @Override
@@ -150,12 +153,16 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
       ser.read_type_e("data", data.getData());
    }
 
+   public static void staticCopy(sensor_msgs.msg.dds.Image src, sensor_msgs.msg.dds.Image dest)
+   {
+      dest.set(src);
+   }
+
    @Override
    public sensor_msgs.msg.dds.Image createData()
    {
       return new sensor_msgs.msg.dds.Image();
    }
-
    @Override
    public int getTypeSize()
    {
@@ -167,7 +174,7 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    {
       return name;
    }
-
+   
    public void serialize(sensor_msgs.msg.dds.Image data, us.ihmc.idl.CDR cdr)
    {
       write(data, cdr);
@@ -177,7 +184,7 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    {
       read(data, cdr);
    }
-
+   
    public void copy(sensor_msgs.msg.dds.Image src, sensor_msgs.msg.dds.Image dest)
    {
       staticCopy(src, dest);
