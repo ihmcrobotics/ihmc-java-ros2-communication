@@ -77,12 +77,12 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
             */
    public java.lang.String getSourceAsString()
    {
-      return getSource().toString();
+      return getSourceAsStringBuilder().toString();
    }
    /**
             * (optional) name of time source
             */
-   public java.lang.StringBuilder getSource()
+   public java.lang.StringBuilder getSourceAsStringBuilder()
    {
       return source_;
    }
