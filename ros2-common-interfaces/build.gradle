@@ -9,7 +9,7 @@ buildscript {
    }
    dependencies {
       classpath "us.ihmc:ihmc-build:0.13.0"
-      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.5.10-alpha"
+      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.5.11-alpha"
       classpath "org.ajoberstar:grgit:2.1.0"
    }
 }
@@ -44,7 +44,7 @@ mainDependencies {
 }
 
 generatorDependencies {
-   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: "0.5.10-alpha"
+   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: "0.5.11-alpha"
 }
 
 task show() {
