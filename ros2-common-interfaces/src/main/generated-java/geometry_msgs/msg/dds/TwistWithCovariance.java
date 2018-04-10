@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This expresses velocity in free space with uncertainty.
@@ -60,6 +61,11 @@ public class TwistWithCovariance extends Packet<TwistWithCovariance> implements 
       return covariance_;
    }
 
+
+   public static Supplier<TwistWithCovariancePubSubType> getPubSubType()
+   {
+      return TwistWithCovariancePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TwistWithCovariance other, double epsilon)

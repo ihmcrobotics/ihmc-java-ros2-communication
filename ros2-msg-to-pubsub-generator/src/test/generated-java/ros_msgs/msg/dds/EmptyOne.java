@@ -3,6 +3,7 @@ package ros_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class EmptyOne extends Packet<EmptyOne> implements Settable<EmptyOne>, EpsilonComparable<EmptyOne>
 {
@@ -33,6 +34,11 @@ public class EmptyOne extends Packet<EmptyOne> implements Settable<EmptyOne>, Ep
       return unused_placeholder_field_;
    }
 
+
+   public static Supplier<EmptyOnePubSubType> getPubSubType()
+   {
+      return EmptyOnePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(EmptyOne other, double epsilon)

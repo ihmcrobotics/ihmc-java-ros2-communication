@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Single photometric illuminance measurement.  Light should be assumed to be
@@ -92,6 +93,11 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
       return variance_;
    }
 
+
+   public static Supplier<IlluminancePubSubType> getPubSubType()
+   {
+      return IlluminancePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Illuminance other, double epsilon)

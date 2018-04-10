@@ -3,6 +3,7 @@ package std_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Please look at the MultiArrayLayout message definition for
@@ -56,6 +57,11 @@ public class Float64MultiArray extends Packet<Float64MultiArray> implements Sett
       return data_;
    }
 
+
+   public static Supplier<Float64MultiArrayPubSubType> getPubSubType()
+   {
+      return Float64MultiArrayPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Float64MultiArray other, double epsilon)

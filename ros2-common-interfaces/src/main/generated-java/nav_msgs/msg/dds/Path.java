@@ -3,6 +3,7 @@ package nav_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * An array of poses that represents a Path for a robot to follow.
@@ -43,6 +44,11 @@ public class Path extends Packet<Path> implements Settable<Path>, EpsilonCompara
       return poses_;
    }
 
+
+   public static Supplier<PathPubSubType> getPubSubType()
+   {
+      return PathPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Path other, double epsilon)

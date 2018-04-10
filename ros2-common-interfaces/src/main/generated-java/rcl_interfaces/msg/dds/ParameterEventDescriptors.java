@@ -3,6 +3,7 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This message contains descriptors of a parameter event.
@@ -54,6 +55,11 @@ public class ParameterEventDescriptors extends Packet<ParameterEventDescriptors>
       return deleted_parameters_;
    }
 
+
+   public static Supplier<ParameterEventDescriptorsPubSubType> getPubSubType()
+   {
+      return ParameterEventDescriptorsPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(ParameterEventDescriptors other, double epsilon)

@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Single scan from a planar laser range-finder
@@ -235,6 +236,11 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
       return intensities_;
    }
 
+
+   public static Supplier<LaserScanPubSubType> getPubSubType()
+   {
+      return LaserScanPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(LaserScan other, double epsilon)

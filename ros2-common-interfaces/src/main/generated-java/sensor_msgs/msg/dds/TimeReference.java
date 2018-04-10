@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Measurement from an external time source not actively synchronized with the system clock.
@@ -87,6 +88,11 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
       return source_;
    }
 
+
+   public static Supplier<TimeReferencePubSubType> getPubSubType()
+   {
+      return TimeReferencePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TimeReference other, double epsilon)

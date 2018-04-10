@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Single range reading from an active ranger that emits energy and reports
@@ -165,6 +166,11 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
       return range_;
    }
 
+
+   public static Supplier<RangePubSubType> getPubSubType()
+   {
+      return RangePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Range other, double epsilon)

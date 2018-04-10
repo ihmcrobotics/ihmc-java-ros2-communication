@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This represents an orientation with reference coordinate frame and timestamp.
@@ -42,6 +43,11 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
       return quaternion_;
    }
 
+
+   public static Supplier<QuaternionStampedPubSubType> getPubSubType()
+   {
+      return QuaternionStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(QuaternionStamped other, double epsilon)

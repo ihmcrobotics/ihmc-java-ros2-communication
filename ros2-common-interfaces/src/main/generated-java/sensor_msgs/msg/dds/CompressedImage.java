@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This message contains a compressed image.
@@ -94,6 +95,11 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
       return data_;
    }
 
+
+   public static Supplier<CompressedImagePubSubType> getPubSubType()
+   {
+      return CompressedImagePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(CompressedImage other, double epsilon)

@@ -3,6 +3,7 @@ package lifecycle_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Default values for transitions
@@ -108,6 +109,11 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
       return label_;
    }
 
+
+   public static Supplier<TransitionPubSubType> getPubSubType()
+   {
+      return TransitionPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Transition other, double epsilon)

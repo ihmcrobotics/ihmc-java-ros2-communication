@@ -3,6 +3,7 @@ package nav_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This represents a 2-D grid map, in which each cell represents the probability of occupancy.
@@ -66,6 +67,11 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
       return data_;
    }
 
+
+   public static Supplier<OccupancyGridPubSubType> getPubSubType()
+   {
+      return OccupancyGridPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(OccupancyGrid other, double epsilon)

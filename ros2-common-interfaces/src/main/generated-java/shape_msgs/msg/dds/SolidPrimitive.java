@@ -3,6 +3,7 @@ package shape_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Defines box, sphere, cylinder, and cone.
@@ -90,6 +91,11 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
       return dimensions_;
    }
 
+
+   public static Supplier<SolidPrimitivePubSubType> getPubSubType()
+   {
+      return SolidPrimitivePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(SolidPrimitive other, double epsilon)

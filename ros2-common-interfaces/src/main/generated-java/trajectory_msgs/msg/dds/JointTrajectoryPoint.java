@@ -3,6 +3,7 @@ package trajectory_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Each trajectory point specifies either positions[, velocities[, accelerations]]
@@ -75,6 +76,11 @@ public class JointTrajectoryPoint extends Packet<JointTrajectoryPoint> implement
       return time_from_start_;
    }
 
+
+   public static Supplier<JointTrajectoryPointPubSubType> getPubSubType()
+   {
+      return JointTrajectoryPointPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(JointTrajectoryPoint other, double epsilon)

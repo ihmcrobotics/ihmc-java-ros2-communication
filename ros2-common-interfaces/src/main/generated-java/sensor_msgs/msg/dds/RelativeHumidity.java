@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Single reading from a relative humidity sensor.
@@ -87,6 +88,11 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
       return variance_;
    }
 
+
+   public static Supplier<RelativeHumidityPubSubType> getPubSubType()
+   {
+      return RelativeHumidityPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(RelativeHumidity other, double epsilon)

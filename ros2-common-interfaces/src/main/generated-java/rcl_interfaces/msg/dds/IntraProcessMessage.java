@@ -3,6 +3,7 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class IntraProcessMessage extends Packet<IntraProcessMessage> implements Settable<IntraProcessMessage>, EpsilonComparable<IntraProcessMessage>
 {
@@ -45,6 +46,11 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
       return message_sequence_;
    }
 
+
+   public static Supplier<IntraProcessMessagePubSubType> getPubSubType()
+   {
+      return IntraProcessMessagePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(IntraProcessMessage other, double epsilon)

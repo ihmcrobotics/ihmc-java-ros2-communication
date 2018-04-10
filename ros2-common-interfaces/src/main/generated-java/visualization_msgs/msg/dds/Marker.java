@@ -3,6 +3,7 @@ package visualization_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * See:
@@ -364,6 +365,11 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       return mesh_use_embedded_materials_;
    }
 
+
+   public static Supplier<MarkerPubSubType> getPubSubType()
+   {
+      return MarkerPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Marker other, double epsilon)

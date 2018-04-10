@@ -3,6 +3,7 @@ package tf2_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>, EpsilonComparable<TFMessage>
 {
@@ -31,6 +32,11 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
       return transforms_;
    }
 
+
+   public static Supplier<TFMessagePubSubType> getPubSubType()
+   {
+      return TFMessagePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TFMessage other, double epsilon)

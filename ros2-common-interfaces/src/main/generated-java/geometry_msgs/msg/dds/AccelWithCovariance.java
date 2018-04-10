@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This expresses acceleration in free space with uncertainty.
@@ -60,6 +61,11 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
       return covariance_;
    }
 
+
+   public static Supplier<AccelWithCovariancePubSubType> getPubSubType()
+   {
+      return AccelWithCovariancePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(AccelWithCovariance other, double epsilon)

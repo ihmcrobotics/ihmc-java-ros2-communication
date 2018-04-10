@@ -3,6 +3,7 @@ package builtin_interfaces.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class Duration extends Packet<Duration> implements Settable<Duration>, EpsilonComparable<Duration>
 {
@@ -45,6 +46,11 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
       return nanosec_;
    }
 
+
+   public static Supplier<DurationPubSubType> getPubSubType()
+   {
+      return DurationPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Duration other, double epsilon)

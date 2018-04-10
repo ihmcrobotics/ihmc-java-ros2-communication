@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This expresses velocity in free space broken into its linear and angular parts.
@@ -42,6 +43,11 @@ public class Twist extends Packet<Twist> implements Settable<Twist>, EpsilonComp
       return angular_;
    }
 
+
+   public static Supplier<TwistPubSubType> getPubSubType()
+   {
+      return TwistPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Twist other, double epsilon)

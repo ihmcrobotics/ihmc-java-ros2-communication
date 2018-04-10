@@ -3,6 +3,7 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This is the message to communicate a parameter's descriptor.
@@ -65,6 +66,11 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       return type_;
    }
 
+
+   public static Supplier<ParameterDescriptorPubSubType> getPubSubType()
+   {
+      return ParameterDescriptorPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(ParameterDescriptor other, double epsilon)

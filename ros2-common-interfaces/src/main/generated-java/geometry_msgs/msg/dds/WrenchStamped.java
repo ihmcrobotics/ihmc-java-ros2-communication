@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * A wrench with reference coordinate frame and timestamp
@@ -42,6 +43,11 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
       return wrench_;
    }
 
+
+   public static Supplier<WrenchStampedPubSubType> getPubSubType()
+   {
+      return WrenchStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(WrenchStamped other, double epsilon)

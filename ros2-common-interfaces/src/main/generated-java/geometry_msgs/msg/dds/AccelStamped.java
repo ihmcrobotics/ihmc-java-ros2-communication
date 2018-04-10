@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class AccelStamped extends Packet<AccelStamped> implements Settable<AccelStamped>, EpsilonComparable<AccelStamped>
 {
@@ -45,6 +46,11 @@ public class AccelStamped extends Packet<AccelStamped> implements Settable<Accel
       return accel_;
    }
 
+
+   public static Supplier<AccelStampedPubSubType> getPubSubType()
+   {
+      return AccelStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(AccelStamped other, double epsilon)

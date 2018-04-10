@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This is a message to hold data from an IMU (Inertial Measurement Unit)
@@ -135,6 +136,11 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
       return linear_acceleration_covariance_;
    }
 
+
+   public static Supplier<ImuPubSubType> getPubSubType()
+   {
+      return ImuPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Imu other, double epsilon)

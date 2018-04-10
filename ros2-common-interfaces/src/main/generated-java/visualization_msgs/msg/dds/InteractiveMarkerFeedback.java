@@ -3,6 +3,7 @@ package visualization_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Feedback message sent back from the GUI, e.g.
@@ -223,6 +224,11 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
       return mouse_point_valid_;
    }
 
+
+   public static Supplier<InteractiveMarkerFeedbackPubSubType> getPubSubType()
+   {
+      return InteractiveMarkerFeedbackPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(InteractiveMarkerFeedback other, double epsilon)

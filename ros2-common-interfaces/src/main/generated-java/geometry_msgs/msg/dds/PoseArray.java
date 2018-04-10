@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * An array of poses with a header for global reference.
@@ -43,6 +44,11 @@ public class PoseArray extends Packet<PoseArray> implements Settable<PoseArray>,
       return poses_;
    }
 
+
+   public static Supplier<PoseArrayPubSubType> getPubSubType()
+   {
+      return PoseArrayPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(PoseArray other, double epsilon)

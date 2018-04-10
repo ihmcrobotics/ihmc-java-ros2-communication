@@ -3,6 +3,7 @@ package ros_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * we don't support this
@@ -143,6 +144,11 @@ public class TwoNum extends Packet<TwoNum> implements Settable<TwoNum>, EpsilonC
       return str5_;
    }
 
+
+   public static Supplier<TwoNumPubSubType> getPubSubType()
+   {
+      return TwoNumPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TwoNum other, double epsilon)

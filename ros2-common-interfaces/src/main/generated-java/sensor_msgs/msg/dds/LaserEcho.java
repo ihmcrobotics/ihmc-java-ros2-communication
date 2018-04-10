@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This message is a submessage of MultiEchoLaserScan and is not intended
@@ -41,6 +42,11 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
       return echoes_;
    }
 
+
+   public static Supplier<LaserEchoPubSubType> getPubSubType()
+   {
+      return LaserEchoPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(LaserEcho other, double epsilon)

@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Reports the state of a joystick's axes and buttons.
@@ -71,6 +72,11 @@ public class Joy extends Packet<Joy> implements Settable<Joy>, EpsilonComparable
       return buttons_;
    }
 
+
+   public static Supplier<JoyPubSubType> getPubSubType()
+   {
+      return JoyPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Joy other, double epsilon)

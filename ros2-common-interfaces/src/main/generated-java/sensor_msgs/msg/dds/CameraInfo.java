@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This message defines meta information for a camera. It should be in a
@@ -391,6 +392,11 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
       return roi_;
    }
 
+
+   public static Supplier<CameraInfoPubSubType> getPubSubType()
+   {
+      return CameraInfoPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(CameraInfo other, double epsilon)

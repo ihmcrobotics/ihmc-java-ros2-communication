@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This message holds a collection of 3d points, plus optional additional
@@ -77,6 +78,11 @@ public class PointCloud extends Packet<PointCloud> implements Settable<PointClou
       return channels_;
    }
 
+
+   public static Supplier<PointCloudPubSubType> getPubSubType()
+   {
+      return PointCloudPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(PointCloud other, double epsilon)

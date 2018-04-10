@@ -3,6 +3,7 @@ package visualization_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMarker>, EpsilonComparable<ImageMarker>
 {
@@ -267,6 +268,11 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
       return outline_colors_;
    }
 
+
+   public static Supplier<ImageMarkerPubSubType> getPubSubType()
+   {
+      return ImageMarkerPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(ImageMarker other, double epsilon)

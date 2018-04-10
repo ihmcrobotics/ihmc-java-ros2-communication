@@ -3,6 +3,7 @@ package lifecycle_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Primary state definitions
@@ -80,6 +81,11 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
       return label_;
    }
 
+
+   public static Supplier<StatePubSubType> getPubSubType()
+   {
+      return StatePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(State other, double epsilon)

@@ -3,6 +3,7 @@ package test_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class DynamicArrayPrimitivesNested extends Packet<DynamicArrayPrimitivesNested> implements Settable<DynamicArrayPrimitivesNested>, EpsilonComparable<DynamicArrayPrimitivesNested>
 {
@@ -31,6 +32,11 @@ public class DynamicArrayPrimitivesNested extends Packet<DynamicArrayPrimitivesN
       return dynamic_array_primitive_values_;
    }
 
+
+   public static Supplier<DynamicArrayPrimitivesNestedPubSubType> getPubSubType()
+   {
+      return DynamicArrayPrimitivesNestedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(DynamicArrayPrimitivesNested other, double epsilon)

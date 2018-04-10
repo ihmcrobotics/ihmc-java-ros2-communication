@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * A Pose with reference coordinate frame and timestamp
@@ -42,6 +43,11 @@ public class PoseStamped extends Packet<PoseStamped> implements Settable<PoseSta
       return pose_;
    }
 
+
+   public static Supplier<PoseStampedPubSubType> getPubSubType()
+   {
+      return PoseStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(PoseStamped other, double epsilon)

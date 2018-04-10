@@ -3,6 +3,7 @@ package trajectory_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * A representation of a multi-dof joint trajectory (each point is a transformation)
@@ -61,6 +62,11 @@ public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> imp
       return points_;
    }
 
+
+   public static Supplier<MultiDOFJointTrajectoryPubSubType> getPubSubType()
+   {
+      return MultiDOFJointTrajectoryPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MultiDOFJointTrajectory other, double epsilon)

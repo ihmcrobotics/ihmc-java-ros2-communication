@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This represents force in free space, separated into its linear and angular parts.
@@ -42,6 +43,11 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
       return torque_;
    }
 
+
+   public static Supplier<WrenchPubSubType> getPubSubType()
+   {
+      return WrenchPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Wrench other, double epsilon)

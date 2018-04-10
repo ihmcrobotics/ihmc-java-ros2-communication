@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This message holds a collection of N-dimensional points, which may
@@ -197,6 +198,11 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
       return is_dense_;
    }
 
+
+   public static Supplier<PointCloud2PubSubType> getPubSubType()
+   {
+      return PointCloud2PubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(PointCloud2 other, double epsilon)

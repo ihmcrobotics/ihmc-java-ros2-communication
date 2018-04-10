@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Navigation Satellite fix for any Global Navigation Satellite System
@@ -185,6 +186,11 @@ public class NavSatFix extends Packet<NavSatFix> implements Settable<NavSatFix>,
       return position_covariance_type_;
    }
 
+
+   public static Supplier<NavSatFixPubSubType> getPubSubType()
+   {
+      return NavSatFixPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(NavSatFix other, double epsilon)

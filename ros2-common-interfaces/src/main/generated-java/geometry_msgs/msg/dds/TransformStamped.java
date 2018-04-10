@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This expresses a transform from coordinate frame header.frame_id
@@ -79,6 +80,11 @@ public class TransformStamped extends Packet<TransformStamped> implements Settab
       return transform_;
    }
 
+
+   public static Supplier<TransformStampedPubSubType> getPubSubType()
+   {
+      return TransformStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TransformStamped other, double epsilon)

@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This represents an estimated twist with reference coordinate frame and timestamp.
@@ -42,6 +43,11 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
       return twist_;
    }
 
+
+   public static Supplier<TwistWithCovarianceStampedPubSubType> getPubSubType()
+   {
+      return TwistWithCovarianceStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TwistWithCovarianceStamped other, double epsilon)

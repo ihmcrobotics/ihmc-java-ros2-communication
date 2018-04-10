@@ -3,6 +3,7 @@ package visualization_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Represents a control that is to be displayed together with an interactive marker
@@ -264,6 +265,11 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
       return description_;
    }
 
+
+   public static Supplier<InteractiveMarkerControlPubSubType> getPubSubType()
+   {
+      return InteractiveMarkerControlPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(InteractiveMarkerControl other, double epsilon)

@@ -3,6 +3,7 @@ package std_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class MultiArrayDimension extends Packet<MultiArrayDimension> implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
 {
@@ -95,6 +96,11 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
       return stride_;
    }
 
+
+   public static Supplier<MultiArrayDimensionPubSubType> getPubSubType()
+   {
+      return MultiArrayDimensionPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MultiArrayDimension other, double epsilon)

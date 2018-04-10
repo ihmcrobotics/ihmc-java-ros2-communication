@@ -3,6 +3,7 @@ package diagnostic_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, EpsilonComparable<KeyValue>
 {
@@ -85,6 +86,11 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
       return value_;
    }
 
+
+   public static Supplier<KeyValuePubSubType> getPubSubType()
+   {
+      return KeyValuePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(KeyValue other, double epsilon)

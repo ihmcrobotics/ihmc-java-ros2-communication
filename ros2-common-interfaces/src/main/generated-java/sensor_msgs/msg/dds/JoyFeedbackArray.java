@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settable<JoyFeedbackArray>, EpsilonComparable<JoyFeedbackArray>
 {
@@ -37,6 +38,11 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
       return array_;
    }
 
+
+   public static Supplier<JoyFeedbackArrayPubSubType> getPubSubType()
+   {
+      return JoyFeedbackArrayPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(JoyFeedbackArray other, double epsilon)

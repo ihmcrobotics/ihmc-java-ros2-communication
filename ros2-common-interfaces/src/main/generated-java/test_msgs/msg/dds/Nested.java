@@ -3,6 +3,7 @@ package test_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class Nested extends Packet<Nested> implements Settable<Nested>, EpsilonComparable<Nested>
 {
@@ -29,6 +30,11 @@ public class Nested extends Packet<Nested> implements Settable<Nested>, EpsilonC
       return primitive_values_;
    }
 
+
+   public static Supplier<NestedPubSubType> getPubSubType()
+   {
+      return NestedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Nested other, double epsilon)

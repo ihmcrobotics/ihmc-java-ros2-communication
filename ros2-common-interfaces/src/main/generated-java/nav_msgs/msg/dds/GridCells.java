@@ -3,6 +3,7 @@ package nav_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * An array of cells in a 2D grid
@@ -67,6 +68,11 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
       return cells_;
    }
 
+
+   public static Supplier<GridCellsPubSubType> getPubSubType()
+   {
+      return GridCellsPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(GridCells other, double epsilon)

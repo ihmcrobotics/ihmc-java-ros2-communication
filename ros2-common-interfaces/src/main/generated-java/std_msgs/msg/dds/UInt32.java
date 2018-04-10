@@ -3,6 +3,7 @@ package std_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class UInt32 extends Packet<UInt32> implements Settable<UInt32>, EpsilonComparable<UInt32>
 {
@@ -33,6 +34,11 @@ public class UInt32 extends Packet<UInt32> implements Settable<UInt32>, EpsilonC
       return data_;
    }
 
+
+   public static Supplier<UInt32PubSubType> getPubSubType()
+   {
+      return UInt32PubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(UInt32 other, double epsilon)

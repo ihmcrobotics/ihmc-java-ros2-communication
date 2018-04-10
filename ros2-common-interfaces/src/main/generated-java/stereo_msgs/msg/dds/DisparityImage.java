@@ -3,6 +3,7 @@ package stereo_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class DisparityImage extends Packet<DisparityImage> implements Settable<DisparityImage>, EpsilonComparable<DisparityImage>
 {
@@ -192,6 +193,11 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
       return delta_d_;
    }
 
+
+   public static Supplier<DisparityImagePubSubType> getPubSubType()
+   {
+      return DisparityImagePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(DisparityImage other, double epsilon)

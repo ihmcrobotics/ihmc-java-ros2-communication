@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This message is used to specify a region of interest within an image.
@@ -149,6 +150,11 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
       return do_rectify_;
    }
 
+
+   public static Supplier<RegionOfInterestPubSubType> getPubSubType()
+   {
+      return RegionOfInterestPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(RegionOfInterest other, double epsilon)

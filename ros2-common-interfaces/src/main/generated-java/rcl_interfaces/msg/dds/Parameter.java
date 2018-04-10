@@ -3,6 +3,7 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This is the message to communicate a parameter.
@@ -54,6 +55,11 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
       return value_;
    }
 
+
+   public static Supplier<ParameterPubSubType> getPubSubType()
+   {
+      return ParameterPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Parameter other, double epsilon)

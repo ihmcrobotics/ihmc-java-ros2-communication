@@ -3,6 +3,7 @@ package shape_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Definition of a triangle's vertices.
@@ -24,6 +25,11 @@ public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshT
    {
    }
 
+
+   public static Supplier<MeshTrianglePubSubType> getPubSubType()
+   {
+      return MeshTrianglePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MeshTriangle other, double epsilon)

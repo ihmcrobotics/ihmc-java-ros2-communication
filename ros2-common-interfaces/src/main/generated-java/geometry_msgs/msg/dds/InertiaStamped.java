@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class InertiaStamped extends Packet<InertiaStamped> implements Settable<InertiaStamped>, EpsilonComparable<InertiaStamped>
 {
@@ -39,6 +40,11 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
       return inertia_;
    }
 
+
+   public static Supplier<InertiaStampedPubSubType> getPubSubType()
+   {
+      return InertiaStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(InertiaStamped other, double epsilon)

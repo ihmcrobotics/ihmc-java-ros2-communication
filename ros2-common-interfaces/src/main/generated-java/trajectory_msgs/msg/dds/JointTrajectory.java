@@ -3,6 +3,7 @@ package trajectory_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class JointTrajectory extends Packet<JointTrajectory> implements Settable<JointTrajectory>, EpsilonComparable<JointTrajectory>
 {
@@ -49,6 +50,11 @@ public class JointTrajectory extends Packet<JointTrajectory> implements Settable
       return points_;
    }
 
+
+   public static Supplier<JointTrajectoryPubSubType> getPubSubType()
+   {
+      return JointTrajectoryPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(JointTrajectory other, double epsilon)

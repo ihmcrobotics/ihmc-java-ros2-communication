@@ -3,6 +3,7 @@ package lifecycle_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class TransitionDescription extends Packet<TransitionDescription> implements Settable<TransitionDescription>, EpsilonComparable<TransitionDescription>
 {
@@ -48,6 +49,11 @@ public class TransitionDescription extends Packet<TransitionDescription> impleme
       return goal_state_;
    }
 
+
+   public static Supplier<TransitionDescriptionPubSubType> getPubSubType()
+   {
+      return TransitionDescriptionPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TransitionDescription other, double epsilon)

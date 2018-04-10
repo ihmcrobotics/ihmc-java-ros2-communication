@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Representation of state for joints with multiple degrees of freedom,
@@ -88,6 +89,11 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
       return wrench_;
    }
 
+
+   public static Supplier<MultiDOFJointStatePubSubType> getPubSubType()
+   {
+      return MultiDOFJointStatePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MultiDOFJointState other, double epsilon)

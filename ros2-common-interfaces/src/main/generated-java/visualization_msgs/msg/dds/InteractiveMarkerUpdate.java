@@ -3,6 +3,7 @@ package visualization_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Note: No guarantees on the order of processing.
@@ -154,6 +155,11 @@ public class InteractiveMarkerUpdate extends Packet<InteractiveMarkerUpdate> imp
       return erases_;
    }
 
+
+   public static Supplier<InteractiveMarkerUpdatePubSubType> getPubSubType()
+   {
+      return InteractiveMarkerUpdatePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(InteractiveMarkerUpdate other, double epsilon)

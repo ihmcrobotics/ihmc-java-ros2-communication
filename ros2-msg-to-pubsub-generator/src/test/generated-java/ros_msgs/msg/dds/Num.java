@@ -3,6 +3,7 @@ package ros_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This is the header
@@ -113,6 +114,11 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
       return hello_;
    }
 
+
+   public static Supplier<NumPubSubType> getPubSubType()
+   {
+      return NumPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Num other, double epsilon)

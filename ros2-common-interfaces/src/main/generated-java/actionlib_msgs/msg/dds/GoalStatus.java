@@ -3,6 +3,7 @@ package actionlib_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * be sent over the wire by an action server.
@@ -124,6 +125,11 @@ public class GoalStatus extends Packet<GoalStatus> implements Settable<GoalStatu
       return text_;
    }
 
+
+   public static Supplier<GoalStatusPubSubType> getPubSubType()
+   {
+      return GoalStatusPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(GoalStatus other, double epsilon)

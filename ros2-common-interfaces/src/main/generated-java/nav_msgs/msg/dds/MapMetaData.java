@@ -3,6 +3,7 @@ package nav_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This hold basic information about the characterists of the OccupancyGrid
@@ -119,6 +120,11 @@ public class MapMetaData extends Packet<MapMetaData> implements Settable<MapMeta
       return origin_;
    }
 
+
+   public static Supplier<MapMetaDataPubSubType> getPubSubType()
+   {
+      return MapMetaDataPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MapMetaData other, double epsilon)

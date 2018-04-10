@@ -3,6 +3,7 @@ package rcl_interfaces.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Used to determine which of the next *_value fields are set.
@@ -114,6 +115,11 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
       return bytes_value_;
    }
 
+
+   public static Supplier<ParameterValuePubSubType> getPubSubType()
+   {
+      return ParameterValuePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(ParameterValue other, double epsilon)

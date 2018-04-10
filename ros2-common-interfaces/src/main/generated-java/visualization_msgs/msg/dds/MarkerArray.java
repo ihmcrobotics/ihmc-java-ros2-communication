@@ -3,6 +3,7 @@ package visualization_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerArray>, EpsilonComparable<MarkerArray>
 {
@@ -31,6 +32,11 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
       return markers_;
    }
 
+
+   public static Supplier<MarkerArrayPubSubType> getPubSubType()
+   {
+      return MarkerArrayPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MarkerArray other, double epsilon)

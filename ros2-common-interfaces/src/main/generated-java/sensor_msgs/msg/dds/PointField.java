@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class PointField extends Packet<PointField> implements Settable<PointField>, EpsilonComparable<PointField>
 {
@@ -128,6 +129,11 @@ public class PointField extends Packet<PointField> implements Settable<PointFiel
       return count_;
    }
 
+
+   public static Supplier<PointFieldPubSubType> getPubSubType()
+   {
+      return PointFieldPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(PointField other, double epsilon)

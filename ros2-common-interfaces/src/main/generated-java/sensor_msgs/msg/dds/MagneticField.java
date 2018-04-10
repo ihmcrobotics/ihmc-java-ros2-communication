@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Measurement of the Magnetic Field vector at a specific location.
@@ -87,6 +88,11 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
       return magnetic_field_covariance_;
    }
 
+
+   public static Supplier<MagneticFieldPubSubType> getPubSubType()
+   {
+      return MagneticFieldPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MagneticField other, double epsilon)

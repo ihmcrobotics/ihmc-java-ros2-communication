@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This is a message that holds data to describe the state of a set of torque controlled joints.
@@ -89,6 +90,11 @@ public class JointState extends Packet<JointState> implements Settable<JointStat
       return effort_;
    }
 
+
+   public static Supplier<JointStatePubSubType> getPubSubType()
+   {
+      return JointStatePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(JointState other, double epsilon)

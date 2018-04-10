@@ -3,6 +3,7 @@ package actionlib_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable<GoalStatusArray>, EpsilonComparable<GoalStatusArray>
 {
@@ -48,6 +49,11 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
       return status_list_;
    }
 
+
+   public static Supplier<GoalStatusArrayPubSubType> getPubSubType()
+   {
+      return GoalStatusArrayPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(GoalStatusArray other, double epsilon)

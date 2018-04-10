@@ -3,6 +3,7 @@ package shape_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Definition of a mesh.
@@ -55,6 +56,11 @@ public class Mesh extends Packet<Mesh> implements Settable<Mesh>, EpsilonCompara
       return vertices_;
    }
 
+
+   public static Supplier<MeshPubSubType> getPubSubType()
+   {
+      return MeshPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Mesh other, double epsilon)

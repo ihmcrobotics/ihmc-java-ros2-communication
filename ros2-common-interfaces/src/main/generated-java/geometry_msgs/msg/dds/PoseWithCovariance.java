@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * This represents a pose in free space with uncertainty.
@@ -60,6 +61,11 @@ public class PoseWithCovariance extends Packet<PoseWithCovariance> implements Se
       return covariance_;
    }
 
+
+   public static Supplier<PoseWithCovariancePubSubType> getPubSubType()
+   {
+      return PoseWithCovariancePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(PoseWithCovariance other, double epsilon)

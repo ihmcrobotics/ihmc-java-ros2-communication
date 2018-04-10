@@ -3,6 +3,7 @@ package actionlib_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonComparable<GoalID>
 {
@@ -80,6 +81,11 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
       return id_;
    }
 
+
+   public static Supplier<GoalIDPubSubType> getPubSubType()
+   {
+      return GoalIDPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(GoalID other, double epsilon)

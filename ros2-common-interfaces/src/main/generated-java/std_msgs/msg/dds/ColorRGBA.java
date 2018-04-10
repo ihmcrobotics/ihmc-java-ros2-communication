@@ -3,6 +3,7 @@ package std_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class ColorRGBA extends Packet<ColorRGBA> implements Settable<ColorRGBA>, EpsilonComparable<ColorRGBA>
 {
@@ -69,6 +70,11 @@ public class ColorRGBA extends Packet<ColorRGBA> implements Settable<ColorRGBA>,
       return a_;
    }
 
+
+   public static Supplier<ColorRGBAPubSubType> getPubSubType()
+   {
+      return ColorRGBAPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(ColorRGBA other, double epsilon)

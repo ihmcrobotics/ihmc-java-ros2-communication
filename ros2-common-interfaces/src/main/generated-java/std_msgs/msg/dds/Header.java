@@ -3,6 +3,7 @@ package std_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Standard metadata for higher-level stamped data types.
@@ -73,6 +74,11 @@ public class Header extends Packet<Header> implements Settable<Header>, EpsilonC
       return frame_id_;
    }
 
+
+   public static Supplier<HeaderPubSubType> getPubSubType()
+   {
+      return HeaderPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Header other, double epsilon)

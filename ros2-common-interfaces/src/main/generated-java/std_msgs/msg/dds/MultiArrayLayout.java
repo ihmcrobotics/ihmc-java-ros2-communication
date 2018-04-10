@@ -3,6 +3,7 @@ package std_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * The multiarray declares a generic multi-dimensional array of a
@@ -63,6 +64,11 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
       return data_offset_;
    }
 
+
+   public static Supplier<MultiArrayLayoutPubSubType> getPubSubType()
+   {
+      return MultiArrayLayoutPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MultiArrayLayout other, double epsilon)

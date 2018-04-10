@@ -3,6 +3,7 @@ package sensor_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * Constants are chosen to match the enums in the linux kernel
@@ -360,6 +361,11 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       return serial_number_;
    }
 
+
+   public static Supplier<BatteryStatePubSubType> getPubSubType()
+   {
+      return BatteryStatePubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(BatteryState other, double epsilon)

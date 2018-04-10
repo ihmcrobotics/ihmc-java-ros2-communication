@@ -3,6 +3,7 @@ package visualization_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * MenuEntry message.
@@ -185,6 +186,11 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
       return command_type_;
    }
 
+
+   public static Supplier<MenuEntryPubSubType> getPubSubType()
+   {
+      return MenuEntryPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(MenuEntry other, double epsilon)

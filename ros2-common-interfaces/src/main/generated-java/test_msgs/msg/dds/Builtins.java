@@ -3,6 +3,7 @@ package test_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 public class Builtins extends Packet<Builtins> implements Settable<Builtins>, EpsilonComparable<Builtins>
 {
@@ -39,6 +40,11 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
       return time_value_;
    }
 
+
+   public static Supplier<BuiltinsPubSubType> getPubSubType()
+   {
+      return BuiltinsPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(Builtins other, double epsilon)

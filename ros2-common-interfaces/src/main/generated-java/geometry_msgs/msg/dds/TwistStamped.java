@@ -3,6 +3,7 @@ package geometry_msgs.msg.dds;
 import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
+import java.util.function.Supplier;
 
 /**
        * A twist with reference coordinate frame and timestamp
@@ -42,6 +43,11 @@ public class TwistStamped extends Packet<TwistStamped> implements Settable<Twist
       return twist_;
    }
 
+
+   public static Supplier<TwistStampedPubSubType> getPubSubType()
+   {
+      return TwistStampedPubSubType::new;
+   }
 
    @Override
    public boolean epsilonEquals(TwistStamped other, double epsilon)
