@@ -1,7 +1,6 @@
 package us.ihmc.ros2;
 
 import us.ihmc.pubsub.DomainFactory;
-import us.ihmc.pubsub.impl.intraprocess.IntraProcessDomain;
 
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ import java.io.IOException;
  * @author Duncan Calvert
  *
  */
-public class IntraProcessNode extends RosNodeBasics
+public class IntraProcessRos2Node extends Ros2Node
 {
    /**
     * Create a new intra-process ROS2 node.
@@ -25,7 +24,7 @@ public class IntraProcessNode extends RosNodeBasics
     * @param name Name for the node
     * @throws IOException if no participant can be made
     */
-   public IntraProcessNode(String name) throws IOException
+   public IntraProcessRos2Node(String name) throws IOException
    {
       this(name, "");
    }
@@ -39,7 +38,7 @@ public class IntraProcessNode extends RosNodeBasics
     * @param namespace namespace for the ros node
     * @throws IOException if no participant can be made
     */
-   public IntraProcessNode(String name, String namespace) throws IOException
+   public IntraProcessRos2Node(String name, String namespace) throws IOException
    {
       this(name, namespace, ROS_DEFAULT_DOMAIN_ID);
    }
@@ -52,7 +51,7 @@ public class IntraProcessNode extends RosNodeBasics
     * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
-   public IntraProcessNode(String name, String namespace, int domainId) throws IOException
+   public IntraProcessRos2Node(String name, String namespace, int domainId) throws IOException
    {
       super(DomainFactory.PubSubImplementation.INTRAPROCESS, name, namespace, domainId);
    }
