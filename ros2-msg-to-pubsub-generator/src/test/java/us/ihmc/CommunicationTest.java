@@ -72,6 +72,9 @@ public class CommunicationTest
          e.printStackTrace();
       }
 
+      while (messagesReceived < 10)
+         Thread.yield();
+
       assertEquals("10 messages not received", 10, messagesReceived);
    }
 }
