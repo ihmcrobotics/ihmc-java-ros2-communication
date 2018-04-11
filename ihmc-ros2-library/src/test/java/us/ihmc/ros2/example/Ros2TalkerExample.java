@@ -19,6 +19,7 @@ import java.io.IOException;
 
 import std_msgs.msg.dds.String;
 import std_msgs.msg.dds.StringPubSubType;
+import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.NonRealtimeRos2Node;
 import us.ihmc.ros2.Ros2Publisher;
 
@@ -37,7 +38,7 @@ public class Ros2TalkerExample
    public static void main(String[] args) throws IOException, InterruptedException
    {
       StringPubSubType type = new StringPubSubType();
-      NonRealtimeRos2Node node = new NonRealtimeRos2Node("Ros2TalkerExample");
+      NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.FAST_RTPS, "Ros2TalkerExample");
       Ros2Publisher<String> publisher = node.createPublisher(type, "/chatter");
       
       for(int i = 0; true; i++)
