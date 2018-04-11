@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 
 public class MessageGenerationTest
 {
-   @Test
+   @Test(timeout = 30000)
    public void testMessageGeneration() throws IOException
    {
       Path startingPath;
