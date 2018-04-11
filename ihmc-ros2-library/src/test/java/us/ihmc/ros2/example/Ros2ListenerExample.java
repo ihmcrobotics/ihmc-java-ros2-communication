@@ -21,7 +21,7 @@ import std_msgs.msg.dds.StringPubSubType;
 import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
-import us.ihmc.ros2.RosNode;
+import us.ihmc.ros2.NonRealtimeRos2Node;
 
 /**
  * Java version of the ROS2 demo listener.
@@ -33,7 +33,7 @@ import us.ihmc.ros2.RosNode;
  * @author Jesper Smith
  *
  */
-public class Listener
+public class Ros2ListenerExample
 {
    private static class Callback implements SubscriberListener
    {
@@ -63,7 +63,7 @@ public class Listener
 
    }
 
-   public Listener()
+   public Ros2ListenerExample()
    {
 
    }
@@ -71,7 +71,7 @@ public class Listener
    public static void main(String[] args) throws IOException, InterruptedException
    {
       StringPubSubType type = new StringPubSubType();
-      RosNode node = new RosNode("Listener");
+      NonRealtimeRos2Node node = new NonRealtimeRos2Node("Ros2ListenerExample");
       node.createSubscription(type, new Callback(), "/chatter");
       
       Thread.currentThread().join();

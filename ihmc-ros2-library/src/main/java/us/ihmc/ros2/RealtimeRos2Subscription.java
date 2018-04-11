@@ -24,11 +24,11 @@ package us.ihmc.ros2;
  *
  * @param <T> data type
  */
-public class RealtimeSubscription <T>
+public class RealtimeRos2Subscription<T>
 {
-   private final RealtimeSubscriptionListener<T> listener;
+   private final RealtimeRos2SubscriptionListener<T> listener;
 
-   RealtimeSubscription(RealtimeSubscriptionListener<T> listener)
+   RealtimeRos2Subscription(RealtimeRos2SubscriptionListener<T> listener)
    {
       this.listener = listener;
    }

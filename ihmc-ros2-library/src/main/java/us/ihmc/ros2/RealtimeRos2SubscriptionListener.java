@@ -32,14 +32,14 @@ import us.ihmc.pubsub.subscriber.SubscriberListener;
  *
  * @param <T>
  */
-class RealtimeSubscriptionListener<T> implements SubscriberListener
+class RealtimeRos2SubscriptionListener<T> implements SubscriberListener
 {
    private final T data;
    private final ConcurrentRingBuffer<T> messageQueue;
    private final TopicDataType<T> topicDataTypeForCallback;
    private final TopicDataType<T> topicDataTypeForPoll;
 
-   RealtimeSubscriptionListener(TopicDataType<T> topicDataType, int queueDepth)
+   RealtimeRos2SubscriptionListener(TopicDataType<T> topicDataType, int queueDepth)
    {
       this.data = topicDataType.createData();
       this.messageQueue = new ConcurrentRingBuffer<>(() -> topicDataType.createData(), queueDepth);

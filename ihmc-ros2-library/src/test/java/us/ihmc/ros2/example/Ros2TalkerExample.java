@@ -17,9 +17,10 @@ package us.ihmc.ros2.example;
 
 import java.io.IOException;
 
+import std_msgs.msg.dds.String;
 import std_msgs.msg.dds.StringPubSubType;
-import us.ihmc.ros2.RosNode;
-import us.ihmc.ros2.RosPublisher;
+import us.ihmc.ros2.NonRealtimeRos2Node;
+import us.ihmc.ros2.Ros2Publisher;
 
 /**
  * Java version of the ROS2 demo talker.
@@ -31,13 +32,13 @@ import us.ihmc.ros2.RosPublisher;
  * @author Jesper Smith
  *
  */
-public class Talker
+public class Ros2TalkerExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
       StringPubSubType type = new StringPubSubType();
-      RosNode node = new RosNode("Talker");
-      RosPublisher<std_msgs.msg.dds.String> publisher = node.createPublisher(type, "/chatter");
+      NonRealtimeRos2Node node = new NonRealtimeRos2Node("Ros2TalkerExample");
+      Ros2Publisher<String> publisher = node.createPublisher(type, "/chatter");
       
       for(int i = 0; true; i++)
       {

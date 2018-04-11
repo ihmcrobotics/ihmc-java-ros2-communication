@@ -24,7 +24,7 @@ import us.ihmc.pubsub.attributes.SubscriberAttributes;
  * @author Jesper Smith
  *
  */
-class RosTopicNameMangler
+class Ros2TopicNameMangler
 {
    public static final String ros_topic_prefix = "rt";
    public static final String ros_service_request_prefix = "rq";

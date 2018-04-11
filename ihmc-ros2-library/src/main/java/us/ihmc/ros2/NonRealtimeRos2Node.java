@@ -15,14 +15,7 @@
  */
 package us.ihmc.ros2;
 
-import us.ihmc.pubsub.Domain;
-import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.*;
-import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
-import us.ihmc.pubsub.participant.Participant;
-import us.ihmc.pubsub.subscriber.SubscriberListener;
 
 import java.io.IOException;
 
@@ -34,7 +27,7 @@ import java.io.IOException;
  * @author Jesper Smith
  *
  */
-public class RosNode extends RosNodeBasics
+public class NonRealtimeRos2Node extends Ros2Node
 {
    /**
     * Create a new ROS2 node.
@@ -45,7 +38,7 @@ public class RosNode extends RosNodeBasics
     * @param name Name for the node
     * @throws IOException if no participant can be made
     */
-   public RosNode(String name) throws IOException
+   public NonRealtimeRos2Node(String name) throws IOException
    {
       this(name, "");
    }
@@ -59,7 +52,7 @@ public class RosNode extends RosNodeBasics
     * @param namespace namespace for the ros node
     * @throws IOException if no participant can be made
     */
-   public RosNode(String name, String namespace) throws IOException
+   public NonRealtimeRos2Node(String name, String namespace) throws IOException
    {
       this(name, namespace, ROS_DEFAULT_DOMAIN_ID);
    }
@@ -73,7 +66,7 @@ public class RosNode extends RosNodeBasics
     * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
-   public RosNode(String name, String namespace, int domainId) throws IOException
+   public NonRealtimeRos2Node(String name, String namespace, int domainId) throws IOException
    {
       super(PubSubImplementation.FAST_RTPS, name, namespace, domainId);
    }
