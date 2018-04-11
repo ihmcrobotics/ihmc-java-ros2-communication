@@ -35,13 +35,12 @@ import java.io.IOException;
  */
 public class Ros2ListenerExample
 {
-   private static class Callback implements SubscriberListener
+   public static void main(String[] args) throws IOException, InterruptedException
    {
-      std_msgs.msg.dds.String data = new std_msgs.msg.dds.String();
-
-      @Override
-      public void onNewDataMessage(Subscriber subscriber)
-      {
+      StringPubSubType type = new StringPubSubType();
+      NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
+      node.createSubscription(type, subscriber -> {
+         std_msgs.msg.dds.String data = new std_msgs.msg.dds.String();
          try
          {
             if (subscriber.takeNextData(data, null))
@@ -53,25 +52,7 @@ public class Ros2ListenerExample
          {
             e.printStackTrace();
          }
-      }
-
-      @Override
-      public void onSubscriptionMatched(Subscriber subscriber, MatchingInfo info)
-      {
-
-      }
-   }
-
-   public Ros2ListenerExample()
-   {
-
-   }
-
-   public static void main(String[] args) throws IOException, InterruptedException
-   {
-      StringPubSubType type = new StringPubSubType();
-      NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
-      node.createSubscription(type, new Callback(), "/chatter");
+      }, "/chatter");
 
       Thread.currentThread().join();
    }
