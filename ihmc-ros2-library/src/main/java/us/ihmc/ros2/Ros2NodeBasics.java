@@ -31,7 +31,6 @@ import java.io.IOException;
  *
  * @author Jesper Smith
  * @author Duncan Calvert
- *
  */
 class Ros2NodeBasics
 {
@@ -45,7 +44,6 @@ class Ros2NodeBasics
 
    /**
     * Create a new ROS2 node.
-    *
     *
     * @param name Name for the node
     * @param namespace namespace for the ros node i.e. DDS partition
@@ -74,7 +72,6 @@ class Ros2NodeBasics
     * @param topicDataType The topic data type of the message
     * @param topicName Name for the topic
     * @return A ROS publisher
-    *
     * @throws IOException if no publisher can be made
     */
    public <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
@@ -89,7 +86,6 @@ class Ros2NodeBasics
     * @param topicName Name for the topic
     * @param qosProfile ROS Qos Profile
     * @return A ROS publisher
-    *
     * @throws IOException if no publisher can be made
     */
    public <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException
@@ -119,7 +115,8 @@ class Ros2NodeBasics
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+      Ros2TopicNameMangler
+            .assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
@@ -127,14 +124,12 @@ class Ros2NodeBasics
       }
 
       return new Ros2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
-
    }
 
    /**
     * Create a new ROS2 compatible subscription.
     *
     * This call can be used to make a ROS2 topic with the default qos profile
-    *
     *
     * @param topicDataType The topic data type of the message
     * @param callback Callback for new messages

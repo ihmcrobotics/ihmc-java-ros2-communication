@@ -25,7 +25,6 @@ import java.io.IOException;
  * This node can be used to create ROS2 compatible publishers and subscribers.
  *
  * @author Jesper Smith
- *
  */
 public class NonRealtimeRos2Node extends Ros2NodeBasics
 {
