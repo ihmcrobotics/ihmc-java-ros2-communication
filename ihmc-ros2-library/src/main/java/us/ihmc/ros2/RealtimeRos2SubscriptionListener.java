@@ -19,7 +19,6 @@ import us.ihmc.concurrent.ConcurrentRingBuffer;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
-import us.ihmc.pubsub.subscriber.SubscriberListener;
 
 import java.io.IOException;
 
@@ -31,7 +30,7 @@ import java.io.IOException;
  * @param <T>
  * @author Jesper Smith
  */
-class RealtimeRos2SubscriptionListener<T> implements SubscriberListener
+class RealtimeRos2SubscriptionListener<T> implements NewMessageListener
 {
    private final T data;
    private final ConcurrentRingBuffer<T> messageQueue;

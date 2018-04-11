@@ -6,9 +6,6 @@ import org.junit.Test;
 import ros_msgs.msg.dds.TwoNum;
 import ros_msgs.msg.dds.TwoNumPubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.pubsub.common.MatchingInfo;
-import us.ihmc.pubsub.subscriber.Subscriber;
-import us.ihmc.pubsub.subscriber.SubscriberListener;
 import us.ihmc.ros2.*;
 import us.ihmc.util.PeriodicNonRealtimeThreadScheduler;
 
@@ -30,35 +27,22 @@ public class CommunicationTest
 
          messagesReceived.setValue(0);
 
-         SubscriberListener listener = new SubscriberListener()
-         {
+         node.createSubscription(topicDataType, subscriber -> {
             TwoNum message = new TwoNum();
-
-            @Override
-            public void onNewDataMessage(Subscriber subscriber)
+            try
             {
-               try
+               System.out.println("Incoming message...");
+               if (subscriber.takeNextData(message, null))
                {
-                  System.out.println("Incoming message...");
-                  if (subscriber.takeNextData(message, null))
-                  {
-                     System.out.println("Received: " + message.getStr1());
-                     messagesReceived.setValue(messagesReceived.getValue() + 1);
-                  }
-               }
-               catch (IOException e)
-               {
-                  e.printStackTrace();
+                  System.out.println("Received: " + message.getStr1());
+                  messagesReceived.setValue(messagesReceived.getValue() + 1);
                }
             }
-
-            @Override
-            public void onSubscriptionMatched(Subscriber subscriber, MatchingInfo info)
+            catch (IOException e)
             {
-
+               e.printStackTrace();
             }
-         };
-         Ros2Subscription<TwoNum> subscription = node.createSubscription(topicDataType, listener, "/chatter");
+         }, "/chatter");
 
          for (int i = 0; i < 11; i++)
          {
@@ -107,7 +91,8 @@ public class CommunicationTest
          }
 
          TwoNum incomingMessage = new TwoNum();
-         while (!subscription.poll(incomingMessage));
+         while (!subscription.poll(incomingMessage))
+            ;
          System.out.println("Received: " + incomingMessage.getStr1());
          messagesReceived.setValue(messagesReceived.getValue() + 1);
 
