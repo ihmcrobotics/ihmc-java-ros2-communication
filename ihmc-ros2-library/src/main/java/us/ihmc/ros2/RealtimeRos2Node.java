@@ -1,37 +1,36 @@
 /*
  * Copyright 2017 Florida Institute for Human and Machine Cognition (IHMC)
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *     
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License. 
+ * limitations under the License.
  */
 package us.ihmc.ros2;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
 
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.util.PeriodicThreadScheduler;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * A Realtime-safe implementation of NonRealtimeRos2Node.
- * 
- * Lock-free publishing and subscribing is provided using lock-free buffers.
- * 
- * @author Jesper Smith
  *
+ * Lock-free publishing and subscribing is provided using lock-free buffers.
+ *
+ * @author Jesper Smith
  */
 public class RealtimeRos2Node
 {
@@ -55,7 +54,8 @@ public class RealtimeRos2Node
     * @param namespace Namespace of this NonRealtimeRos2Node
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace)
+         throws IOException
    {
       this(pubSubImplementation, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
    }
@@ -70,19 +70,20 @@ public class RealtimeRos2Node
     * @param domainId Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId)
+         throws IOException
    {
       this.node = new Ros2NodeBasics(pubSubImplementation, name, namespace, domainId);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
    /**
-    * Create a new realtime publisher with default qos profile and queue depth. 
-    * 
+    * Create a new realtime publisher with default qos profile and queue depth.
+    *
     * This publisher will publish data in a separate thread and will never block the calling thread. No memory will be allocated when publishing.
-    * 
+    *
     * This function will allocate a queue of depth 10
-    * 
+    *
     * @param topicDataType Data type to publish
     * @param topicName Topic name
     * @return A realtime-safe ROS2 publisher
@@ -94,20 +95,21 @@ public class RealtimeRos2Node
    }
 
    /**
-    * Create a new realtime publisher. 
-    * 
+    * Create a new realtime publisher.
+    *
     * This publisher will publish data in a separate thread and will never block the calling thread. No memory will be allocated when publishing.
-    * 
+    *
     * The queueSize should weight memory requirements of the message vs the change to lose outgoing messages because the queue is full.
-    * 
+    *
     * @param topicDataType Data type to publish
     * @param topicName Topic name
     * @param qosProfile Desired ros profile
-    * @param queueSize Depth of the publish queue (10 would be a good size for small messages). 
+    * @param queueSize Depth of the publish queue (10 would be a good size for small messages).
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> RealtimeRos2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize) throws IOException
+   public <T> RealtimeRos2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+         throws IOException
    {
       startupLock.lock();
       try
@@ -124,16 +126,15 @@ public class RealtimeRos2Node
       {
          startupLock.unlock();
       }
-
    }
 
    /**
     * Create a new realtime subscription with default qos profile and queue depth.
-    * 
+    *
     * Incoming messages are stored in a queue of depth queueSize and can be polled by the realtime therad.
-    *  
+    *
     * This function will allocate a queue of depth 10
-    *  
+    *
     * @param topicDataType Data type to subscribe to
     * @param topicName Topic name
     * @return A realtime-safe ROS2 subscriber
@@ -146,11 +147,11 @@ public class RealtimeRos2Node
 
    /**
     * Create a new realtime subscription.
-    * 
+    *
     * Incoming messages are stored in a queue of depth queueSize and can be polled by the realtime therad.
-    * 
+    *
     * The queueSize should weight memory requirements of the message vs the change to lose incoming messages because the queue is full.
-    * 
+    *
     * @param topicDataType Data type to subscribe to
     * @param topicName Topic name
     * @param qosProfile Desired ros qos profile
@@ -169,9 +170,8 @@ public class RealtimeRos2Node
 
    /**
     * Start publishing data for this RealtimeRos2Node
-    * 
-    * A periodic thread is spawned that will publish all data every millisecond. 
-    * 
+    *
+    * A periodic thread is spawned that will publish all data every millisecond.
     */
    public void spin()
    {
@@ -196,6 +196,5 @@ public class RealtimeRos2Node
             publishers.get(i).spin();
          }
       }
-
    }
 }
