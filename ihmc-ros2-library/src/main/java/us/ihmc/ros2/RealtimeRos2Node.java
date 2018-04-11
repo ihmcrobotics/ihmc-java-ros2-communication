@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.util.PeriodicThreadScheduler;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
@@ -36,7 +37,7 @@ public class RealtimeRos2Node
 {
    public static int THREAD_PERIOD_MICROSECONDS = 1000;
 
-   private final NonRealtimeRos2Node node;
+   private final Ros2NodeBasics node;
 
    private final ArrayList<RealtimeRos2Publisher<?>> publishers = new ArrayList<>();
 
@@ -47,29 +48,31 @@ public class RealtimeRos2Node
 
    /**
     * Create a new realtime node with the default ROS2 domain ID
-    * 
+    *
+    * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
     * @param name Name of this NonRealtimeRos2Node
     * @param namespace Namespace of this NonRealtimeRos2Node
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
    {
-      this(threadFactory, name, namespace, NonRealtimeRos2Node.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
     * Create a new realtime node
-    * 
+    *
+    * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
     * @param name Name of this NonRealtimeRos2Node
     * @param namespace Namespace of this NonRealtimeRos2Node
     * @param domainId Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
    {
-      this.node = new NonRealtimeRos2Node(name, namespace, domainId);
+      this.node = new Ros2NodeBasics(pubSubImplementation, name, namespace, domainId);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 

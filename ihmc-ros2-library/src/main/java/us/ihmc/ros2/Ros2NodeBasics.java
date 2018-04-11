@@ -33,7 +33,7 @@ import java.io.IOException;
  * @author Duncan Calvert
  *
  */
-public class Ros2Node
+class Ros2NodeBasics
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = 0;
 
@@ -48,11 +48,11 @@ public class Ros2Node
     *
     *
     * @param name Name for the node
-    * @param namespace namespace for the ros node
+    * @param namespace namespace for the ros node i.e. DDS partition
     * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
-   public Ros2Node(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
+   Ros2NodeBasics(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
    {
       this.domain = DomainFactory.getDomain(pubSubImplementation);
 
