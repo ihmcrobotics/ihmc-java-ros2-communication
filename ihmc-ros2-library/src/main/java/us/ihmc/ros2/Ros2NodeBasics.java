@@ -158,7 +158,7 @@ class Ros2NodeBasics
    public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener newMessageListener, String topicName,
                                                      Ros2QosProfile qosProfile) throws IOException
    {
-      return createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
+      return createSubscription(topicDataType, (SubscriberListener) newMessageListener, topicName, qosProfile);
    }
 
    /**
