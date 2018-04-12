@@ -15,12 +15,10 @@
  */
 package us.ihmc.ros2.example;
 
-import std_msgs.msg.dds.StringPubSubType;
+import std_msgs.msg.dds.Int64;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.pubsub.common.MatchingInfo;
-import us.ihmc.pubsub.subscriber.Subscriber;
-import us.ihmc.pubsub.subscriber.SubscriberListener;
 import us.ihmc.ros2.NonRealtimeRos2Node;
+import us.ihmc.ros2.Ros2Publisher;
 
 import java.io.IOException;
 
@@ -33,27 +31,35 @@ import java.io.IOException;
  *
  * @author Jesper Smith
  */
-public class Ros2ListenerExample
+public class NonRealtimeRos2PublishSubscribeExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      StringPubSubType type = new StringPubSubType();
-      NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
-      node.createSubscription(type, subscriber -> {
-         std_msgs.msg.dds.String data = new std_msgs.msg.dds.String();
+      NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2PublishSubscribeExample");
+      node.createSubscription(Int64.getPubSubType().get(), subscriber -> {
+         Int64 message = new Int64();
          try
          {
-            if (subscriber.takeNextData(data, null))
+            if (subscriber.takeNextData(message, null))
             {
-               System.out.println(data.getDataAsString());
+               System.out.println(message.getData());
             }
          }
          catch (IOException e)
          {
-            e.printStackTrace();
+            // something bad happened
          }
-      }, "/chatter");
+      }, "/example");
 
-      Thread.currentThread().join();
+      Ros2Publisher<Int64> publisher = node.createPublisher(Int64.getPubSubType().get(), "/example");
+      Int64 message = new Int64();
+      for (int i = 0; i < 10; i++)
+      {
+         message.setData(i);
+         publisher.publish(message);
+         Thread.sleep(1000);
+      }
+
+      Thread.currentThread().join(); // keep thread alive to receive more messages
    }
 }
