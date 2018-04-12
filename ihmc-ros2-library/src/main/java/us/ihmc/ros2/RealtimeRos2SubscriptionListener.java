@@ -21,7 +21,6 @@ import us.ihmc.concurrent.ConcurrentRingBuffer;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
-import us.ihmc.pubsub.subscriber.SubscriberListener;
 
 /**
  * Helper listener for the Realtime subscription.
@@ -32,7 +31,7 @@ import us.ihmc.pubsub.subscriber.SubscriberListener;
  *
  * @param <T>
  */
-class RealtimeRos2SubscriptionListener<T> implements SubscriberListener
+class RealtimeRos2SubscriptionListener<T> implements NewMessageListener
 {
    private final T data;
    private final ConcurrentRingBuffer<T> messageQueue;

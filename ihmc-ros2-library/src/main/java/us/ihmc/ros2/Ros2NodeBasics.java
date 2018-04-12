@@ -21,7 +21,9 @@ import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.attributes.*;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
+import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.participant.Participant;
+import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
 
 import java.io.IOException;
@@ -137,28 +139,78 @@ class Ros2NodeBasics
     *
     *
     * @param topicDataType The topic data type of the message
-    * @param callback Callback for new messages
+    * @param newMessageListener New message listener
     * @param topicName Name for the topic
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName) throws IOException
+   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener newMessageListener, String topicName) throws IOException
    {
-      return createSubscription(topicDataType, callback, topicName, Ros2QosProfile.DEFAULT());
+      return createSubscription(topicDataType, newMessageListener, topicName, Ros2QosProfile.DEFAULT());
+   }
+
+   /**
+    * Create a new ROS2 compatible subscription.
+    *
+    * This call can be used to make a ROS2 topic with the default qos profile
+    *
+    * @param topicDataType The topic data type of the message
+    * @param newMessageListener New message listener
+    * @param topicName Name for the topic
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
+   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener newMessageListener, String topicName,
+                                                     Ros2QosProfile qosProfile) throws IOException
+   {
+      return createSubscription(topicDataType, (SubscriberListener) newMessageListener, topicName, qosProfile);
+   }
+
+   /**
+    * Create a new ROS2 compatible subscription.
+    *
+    * This call can be used to make a ROS2 topic with the default qos profile
+    *
+    * @param topicDataType The topic data type of the message
+    * @param newMessageListener New message listener
+    * @param subscriptionMatchedListener Subscription matched listener
+    * @param topicName Name for the topic
+    * @param qosProfile ROS Qos Profile
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
+   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener newMessageListener,
+                                                     SubscriptionMatchedListener subscriptionMatchedListener, String topicName,
+                                                     Ros2QosProfile qosProfile) throws IOException
+   {
+
+      return createSubscription(topicDataType, new SubscriberListener()
+      {
+         @Override
+         public void onNewDataMessage(Subscriber subscriber)
+         {
+            newMessageListener.onNewDataMessage(subscriber);
+         }
+
+         @Override
+         public void onSubscriptionMatched(Subscriber subscriber, MatchingInfo info)
+         {
+            subscriptionMatchedListener.onSubscriptionMatched(subscriber, info);
+         }
+      }, topicName, qosProfile);
    }
 
    /**
     * Create a new ROS2 compatible subscription.
     *
     * @param topicDataType The topic data type of the message
-    * @param callback Callback for new messages
     * @param topicName Name for the topic
     * @param qosProfile ROS Qos Profile
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener callback, String topicName, Ros2QosProfile qosProfile)
-         throws IOException
+   private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener subscriberListener, String topicName,
+                                                      Ros2QosProfile qosProfile) throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
       if (registeredType == null)
@@ -188,6 +240,6 @@ class Ros2NodeBasics
       Ros2TopicNameMangler
             .assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
-      return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, callback));
+      return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }
 }
