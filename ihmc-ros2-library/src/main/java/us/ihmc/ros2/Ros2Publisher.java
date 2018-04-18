@@ -15,33 +15,46 @@
  */
 package us.ihmc.ros2;
 
-import us.ihmc.pubsub.Domain;
-import us.ihmc.pubsub.subscriber.Subscriber;
+import java.io.IOException;
 
+import us.ihmc.pubsub.Domain;
+import us.ihmc.pubsub.publisher.Publisher;
 
 /**
- * Simple ROS2 compatible subscription
+ * Simple ROS2 publisher
+ * 
  * 
  * @author Jesper Smith
  *
- * @param <T> Data type of this subscriber
+ * @param <T> The data type to send
  */
-public class RosSubscription<T> 
+public class Ros2Publisher<T>
 {
    private final Domain domain;
-   private final Subscriber subscriber;
-   
-   RosSubscription(Domain domain, Subscriber subscriber)
+   private final Publisher publisher;
+
+   Ros2Publisher(Domain domain, Publisher publisher)
    {
       this.domain = domain;
-      this.subscriber = subscriber;
+      this.publisher = publisher;
    }
-   
+
    /**
-    * Remove this subscription from the domain
+    * Publish data to the ROS2 domain
+    * 
+    * @param data Data to publisher
+    * @throws IOException If the data cannot be serialized or another error occurs
+    */
+   public void publish(T data) throws IOException
+   {
+      publisher.write(data);
+   }
+
+   /**
+    * Remove this publisher from the ROS domain
     */
    public void remove()
    {
-      domain.removeSubscriber(subscriber);
+      domain.removePublisher(publisher);
    }
 }

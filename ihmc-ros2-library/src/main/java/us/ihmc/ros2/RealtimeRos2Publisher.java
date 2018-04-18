@@ -29,14 +29,14 @@ import us.ihmc.pubsub.TopicDataType;
  *
  * @param <T> Data type to publish
  */
-public class RealtimePublisher<T>
+public class RealtimeRos2Publisher<T>
 {
    private final TopicDataType<T> topicDataType;
-   private final RosPublisher<T> rosPublisher;   
+   private final Ros2Publisher<T> rosPublisher;
    
    private final ConcurrentRingBuffer<T> concurrentRingBuffer;
    
-   RealtimePublisher(TopicDataType<T> topicDataType, RosPublisher<T> rosPublisher, int queueDepth)
+   RealtimeRos2Publisher(TopicDataType<T> topicDataType, Ros2Publisher<T> rosPublisher, int queueDepth)
    {
       this.topicDataType = topicDataType.newInstance();
       this.rosPublisher = rosPublisher;

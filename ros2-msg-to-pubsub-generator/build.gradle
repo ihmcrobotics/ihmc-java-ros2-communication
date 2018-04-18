@@ -33,6 +33,7 @@ mainDependencies {
 
 testDependencies {
    compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.6.9-alpha"
+   compile group: "us.ihmc", name: "ihmc-ros2-library", version: version
 }
 
 task show() {
