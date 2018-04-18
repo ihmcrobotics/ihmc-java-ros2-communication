@@ -26,7 +26,7 @@ compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.7.0-a
 
 This library provides a minimal implementation of a Ros2Node in Java. Two versions are available:
 
-- **NonRealtimeRos2Node**: Publishes in the same thread and uses direct callbacks for incoming messages.
+- **Ros2Node**: Publishes in the same thread and uses direct callbacks for incoming messages.
 - **RealtimeRos2Node**:	Stores outgoing and incoming messages in a queue and uses non-blocking calls to publish messages and allows polling for new messages.
 
 ### Non-realtime example
@@ -34,7 +34,7 @@ This library provides a minimal implementation of a Ros2Node in Java. Two versio
 ###### Publisher
 
 ```java
-NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
+Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
 Ros2Publisher<Int64> publisher = node.createPublisher(Int64.getPubSubType().get(), "/example");
 Int64 message = new Int64();
 for (int i = 0; i < 10; i++)
@@ -48,7 +48,7 @@ for (int i = 0; i < 10; i++)
 ###### Subscriber
 
 ```java
-NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
+Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
 node.createSubscription(Int64.getPubSubType().get(), subscriber -> {
    Int64 message = new Int64();
    try
