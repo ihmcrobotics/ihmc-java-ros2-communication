@@ -26,7 +26,7 @@ import us.ihmc.util.PeriodicThreadScheduler;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
 
 /**
- * A Realtime-safe implementation of NonRealtimeRos2Node.
+ * A Realtime-safe implementation of Ros2Node.
  * 
  * Lock-free publishing and subscribing is provided using lock-free buffers.
  * 
@@ -51,8 +51,8 @@ public class RealtimeRos2Node
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
-    * @param name Name of this NonRealtimeRos2Node
-    * @param namespace Namespace of this NonRealtimeRos2Node
+    * @param name Name of this Ros2Node
+    * @param namespace Namespace of this Ros2Node
     * @throws IOException if the participant cannot be made
     */
    public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
@@ -65,8 +65,8 @@ public class RealtimeRos2Node
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
-    * @param name Name of this NonRealtimeRos2Node
-    * @param namespace Namespace of this NonRealtimeRos2Node
+    * @param name Name of this Ros2Node
+    * @param namespace Namespace of this Ros2Node
     * @param domainId Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */

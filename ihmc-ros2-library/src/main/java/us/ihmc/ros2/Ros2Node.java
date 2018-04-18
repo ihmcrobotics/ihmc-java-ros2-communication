@@ -27,7 +27,7 @@ import java.io.IOException;
  * @author Jesper Smith
  *
  */
-public class NonRealtimeRos2Node extends Ros2NodeBasics
+public class Ros2Node extends Ros2NodeBasics
 {
    /**
     * Create a new ROS2 node.
@@ -39,7 +39,7 @@ public class NonRealtimeRos2Node extends Ros2NodeBasics
     * @param name Name for the node
     * @throws IOException if no participant can be made
     */
-   public NonRealtimeRos2Node(PubSubImplementation pubSubImplementation, String name) throws IOException
+   public Ros2Node(PubSubImplementation pubSubImplementation, String name) throws IOException
    {
       this(pubSubImplementation, name, "");
    }
@@ -54,7 +54,7 @@ public class NonRealtimeRos2Node extends Ros2NodeBasics
     * @param namespace namespace for the ros node i.e. DDS partition
     * @throws IOException if no participant can be made
     */
-   public NonRealtimeRos2Node(PubSubImplementation pubSubImplementation, String name, String namespace) throws IOException
+   public Ros2Node(PubSubImplementation pubSubImplementation, String name, String namespace) throws IOException
    {
       this(pubSubImplementation, name, namespace, ROS_DEFAULT_DOMAIN_ID);
    }
@@ -68,7 +68,7 @@ public class NonRealtimeRos2Node extends Ros2NodeBasics
     * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
-   public NonRealtimeRos2Node(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
+   public Ros2Node(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
    {
       super(pubSubImplementation, name, namespace, domainId);
    }

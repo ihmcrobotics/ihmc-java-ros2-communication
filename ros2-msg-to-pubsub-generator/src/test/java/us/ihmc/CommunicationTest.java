@@ -21,7 +21,7 @@ public class CommunicationTest
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
-         NonRealtimeRos2Node node = new NonRealtimeRos2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
+         Ros2Node node = new Ros2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
          TwoNumPubSubType topicDataType = TwoNum.getPubSubType().get();
          Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
