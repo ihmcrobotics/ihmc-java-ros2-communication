@@ -41,7 +41,6 @@ public class RealtimeRos2Node
 
    private final ArrayList<RealtimeRos2Publisher<?>> publishers = new ArrayList<>();
 
-   private final RealtimeNodeThread realtimeNodeThread = new RealtimeNodeThread();
    private final ReentrantLock startupLock = new ReentrantLock();
    private final PeriodicThreadScheduler scheduler;
    private boolean spinning = false;
@@ -181,21 +180,15 @@ public class RealtimeRos2Node
          throw new RuntimeException("This RealtimeRos2Node is already spinning");
       }
       spinning = true;
-      scheduler.schedule(realtimeNodeThread, THREAD_PERIOD_MICROSECONDS, TimeUnit.MICROSECONDS);
+      scheduler.schedule(this::realtimeNodeThread, THREAD_PERIOD_MICROSECONDS, TimeUnit.MICROSECONDS);
       startupLock.unlock();
    }
 
-   private class RealtimeNodeThread implements Runnable
+   private void realtimeNodeThread()
    {
-
-      @Override
-      public void run()
+      for (int i = 0; i < publishers.size(); i++)
       {
-         for (int i = 0; i < publishers.size(); i++)
-         {
-            publishers.get(i).spin();
-         }
+         publishers.get(i).spin();
       }
-
    }
 }
