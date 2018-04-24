@@ -9,7 +9,7 @@ buildscript {
    }
    dependencies {
       classpath "us.ihmc:ihmc-build:0.13.0"
-      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.7.1-alpha"
+      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.7.2-alpha"
       classpath "org.ajoberstar:grgit:2.1.0"
    }
 }

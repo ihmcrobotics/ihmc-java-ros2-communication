@@ -138,9 +138,9 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeRos2Subscription<T> createSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public <T> RealtimeRos2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createSubscription(topicDataType, topicName, Ros2QosProfile.DEFAULT(), 10);
+      return createQueuedSubscription(topicDataType, topicName, Ros2QosProfile.DEFAULT(), 10);
    }
 
    /**
@@ -157,13 +157,45 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeRos2Subscription<T> createSubscription(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+   public <T> RealtimeRos2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
          throws IOException
    {
       RealtimeRos2SubscriptionListener<T> listener = new RealtimeRos2SubscriptionListener<>(topicDataType, queueSize);
       node.createSubscription(topicDataType, listener, topicName, qosProfile);
       RealtimeRos2Subscription<T> subscription = new RealtimeRos2Subscription<>(listener);
       return subscription;
+   }
+
+   /**
+    * Create a new realtime subscription with default qos profile and your own callback.
+    *
+    * Incoming messages on the RTPS thread are passed to new message listener.
+    *
+    * @param topicDataType Data type to subscribe to
+    * @param topicName Topic name
+    * @return A realtime-safe ROS2 subscriber
+    * @throws IOException
+    */
+   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener newMessageListener) throws IOException
+   {
+      createCallbackSubscription(topicDataType, topicName, newMessageListener, Ros2QosProfile.DEFAULT());
+   }
+
+   /**
+    * Create a new realtime subscription with default qos profile and your own callback.
+    *
+    * Incoming messages on the RTPS thread are passed to new message listener.
+    *
+    * @param topicDataType Data type to subscribe to
+    * @param topicName Topic name
+    * @param qosProfile Desired ros qos profile
+    * @return A realtime-safe ROS2 subscriber
+    * @throws IOException
+    */
+   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener newMessageListener, Ros2QosProfile qosProfile)
+         throws IOException
+   {
+      node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
    }
 
    /**

@@ -45,7 +45,7 @@ public class RealtimeRos2PublishSubscribeExample
             new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
       RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "");
       RealtimeRos2Publisher<Int64> publisher = node.createPublisher(Int64.getPubSubType().get(), "/example");
-      RealtimeRos2Subscription<Int64> subscription = node.createSubscription(Int64.getPubSubType().get(), "/example");
+      RealtimeRos2Subscription<Int64> subscription = node.createQueuedSubscription(Int64.getPubSubType().get(), "/example");
 
       node.spin(); // start the realtime node thread
 
