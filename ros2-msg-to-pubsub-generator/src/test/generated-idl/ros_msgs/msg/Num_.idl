@@ -33,6 +33,7 @@ module ros_msgs
          */
         @defaultValue(value=5)
         long long num;
+        double double_test;
         /**
          * I have some doc not relevant to the next
          */

@@ -26,6 +26,7 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
             * this num should have default value 5
             */
    public long num_ = 5;
+   public double double_test_;
    /**
             * I have some doc not relevant to the next
             */
@@ -51,6 +52,8 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
    {
       num_ = other.num_;
 
+      double_test_ = other.double_test_;
+
       no_default_with_doc_ = other.no_default_with_doc_;
 
       no_doc_num_ = other.no_doc_num_;
@@ -72,6 +75,15 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
    public long getNum()
    {
       return num_;
+   }
+
+   public void setDoubleTest(double double_test)
+   {
+      double_test_ = double_test;
+   }
+   public double getDoubleTest()
+   {
+      return double_test_;
    }
 
    /**
@@ -135,6 +147,8 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.num_, other.num_, epsilon)) return false;
 
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.double_test_, other.double_test_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.no_default_with_doc_, other.no_default_with_doc_, epsilon)) return false;
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.no_doc_num_, other.no_doc_num_, epsilon)) return false;
@@ -156,6 +170,8 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
 
       if(this.num_ != otherMyClass.num_) return false;
 
+      if(this.double_test_ != otherMyClass.double_test_) return false;
+
       if(this.no_default_with_doc_ != otherMyClass.no_default_with_doc_) return false;
 
       if(this.no_doc_num_ != otherMyClass.no_doc_num_) return false;
@@ -174,6 +190,8 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
       builder.append("Num {");
       builder.append("num=");
       builder.append(this.num_);      builder.append(", ");
+      builder.append("double_test=");
+      builder.append(this.double_test_);      builder.append(", ");
       builder.append("no_default_with_doc=");
       builder.append(this.no_default_with_doc_);      builder.append(", ");
       builder.append("no_doc_num=");

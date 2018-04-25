@@ -46,6 +46,8 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
@@ -70,6 +72,9 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
@@ -80,6 +85,8 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
    public static void write(ros_msgs.msg.dds.Num data, us.ihmc.idl.CDR cdr)
    {
       cdr.write_type_11(data.getNum());
+
+      cdr.write_type_6(data.getDoubleTest());
 
       cdr.write_type_11(data.getNoDefaultWithDoc());
 
@@ -92,6 +99,8 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
    public static void read(ros_msgs.msg.dds.Num data, us.ihmc.idl.CDR cdr)
    {
       data.setNum(cdr.read_type_11());
+      	
+      data.setDoubleTest(cdr.read_type_6());
       	
       data.setNoDefaultWithDoc(cdr.read_type_11());
       	
@@ -106,6 +115,7 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
    public final void serialize(ros_msgs.msg.dds.Num data, us.ihmc.idl.InterchangeSerializer ser)
    {
       ser.write_type_11("num", data.getNum());
+      ser.write_type_6("double_test", data.getDoubleTest());
       ser.write_type_11("no_default_with_doc", data.getNoDefaultWithDoc());
       ser.write_type_11("no_doc_num", data.getNoDocNum());
       ser.write_type_2("hello", data.getHello());
@@ -115,6 +125,7 @@ public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, ros_msgs.msg.dds.Num data)
    {
       data.setNum(ser.read_type_11("num"));
+      data.setDoubleTest(ser.read_type_6("double_test"));
       data.setNoDefaultWithDoc(ser.read_type_11("no_default_with_doc"));
       data.setNoDocNum(ser.read_type_11("no_doc_num"));
       data.setHello(ser.read_type_2("hello"));
