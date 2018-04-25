@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Feedback message sent back from the GUI, e.g.
@@ -226,6 +227,12 @@ public class InteractiveMarkerFeedback extends Packet<InteractiveMarkerFeedback>
 
 
    public static Supplier<InteractiveMarkerFeedbackPubSubType> getPubSubType()
+   {
+      return InteractiveMarkerFeedbackPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return InteractiveMarkerFeedbackPubSubType::new;
    }

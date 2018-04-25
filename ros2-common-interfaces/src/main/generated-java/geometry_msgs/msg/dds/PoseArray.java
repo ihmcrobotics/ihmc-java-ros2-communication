@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * An array of poses with a header for global reference.
@@ -46,6 +47,12 @@ public class PoseArray extends Packet<PoseArray> implements Settable<PoseArray>,
 
 
    public static Supplier<PoseArrayPubSubType> getPubSubType()
+   {
+      return PoseArrayPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PoseArrayPubSubType::new;
    }

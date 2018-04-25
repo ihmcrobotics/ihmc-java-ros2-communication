@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Single range reading from an active ranger that emits energy and reports
@@ -168,6 +169,12 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
 
 
    public static Supplier<RangePubSubType> getPubSubType()
+   {
+      return RangePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return RangePubSubType::new;
    }

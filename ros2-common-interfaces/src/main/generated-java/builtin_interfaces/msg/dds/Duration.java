@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class Duration extends Packet<Duration> implements Settable<Duration>, EpsilonComparable<Duration>
 {
@@ -48,6 +49,12 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
 
 
    public static Supplier<DurationPubSubType> getPubSubType()
+   {
+      return DurationPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return DurationPubSubType::new;
    }

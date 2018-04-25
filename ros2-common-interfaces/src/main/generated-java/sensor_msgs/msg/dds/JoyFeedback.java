@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class JoyFeedback extends Packet<JoyFeedback> implements Settable<JoyFeedback>, EpsilonComparable<JoyFeedback>
 {
@@ -90,6 +91,12 @@ public class JoyFeedback extends Packet<JoyFeedback> implements Settable<JoyFeed
 
 
    public static Supplier<JoyFeedbackPubSubType> getPubSubType()
+   {
+      return JoyFeedbackPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return JoyFeedbackPubSubType::new;
    }

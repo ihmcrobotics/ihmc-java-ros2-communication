@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, EpsilonComparable<TF2Error>
 {
@@ -63,6 +64,12 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
 
 
    public static Supplier<TF2ErrorPubSubType> getPubSubType()
+   {
+      return TF2ErrorPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TF2ErrorPubSubType::new;
    }

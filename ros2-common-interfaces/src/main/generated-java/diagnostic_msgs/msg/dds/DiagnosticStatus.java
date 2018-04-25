@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message holds the status of an individual component of the robot.
@@ -167,6 +168,12 @@ public class DiagnosticStatus extends Packet<DiagnosticStatus> implements Settab
 
 
    public static Supplier<DiagnosticStatusPubSubType> getPubSubType()
+   {
+      return DiagnosticStatusPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return DiagnosticStatusPubSubType::new;
    }

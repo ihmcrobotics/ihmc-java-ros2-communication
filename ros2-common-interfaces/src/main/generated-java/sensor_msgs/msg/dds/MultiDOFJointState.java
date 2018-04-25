@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Representation of state for joints with multiple degrees of freedom,
@@ -91,6 +92,12 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
 
 
    public static Supplier<MultiDOFJointStatePubSubType> getPubSubType()
+   {
+      return MultiDOFJointStatePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MultiDOFJointStatePubSubType::new;
    }

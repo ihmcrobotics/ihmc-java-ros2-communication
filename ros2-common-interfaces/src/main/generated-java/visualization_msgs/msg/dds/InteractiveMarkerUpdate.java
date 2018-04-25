@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Note: No guarantees on the order of processing.
@@ -157,6 +158,12 @@ public class InteractiveMarkerUpdate extends Packet<InteractiveMarkerUpdate> imp
 
 
    public static Supplier<InteractiveMarkerUpdatePubSubType> getPubSubType()
+   {
+      return InteractiveMarkerUpdatePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return InteractiveMarkerUpdatePubSubType::new;
    }

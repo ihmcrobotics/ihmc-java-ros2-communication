@@ -37,7 +37,7 @@ public class NonRealtimeRos2TalkerExample
    {
       Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2ChatterExample");
 
-      Ros2Publisher<std_msgs.msg.dds.String> publisher = node.createPublisher(std_msgs.msg.dds.String.getPubSubType().get(), "/chatter");
+      Ros2Publisher<std_msgs.msg.dds.String> publisher = node.createPublisher(new std_msgs.msg.dds.StringPubSubType(), "/chatter");
       std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
       for (int i = 0; i < 10; i++)
       {

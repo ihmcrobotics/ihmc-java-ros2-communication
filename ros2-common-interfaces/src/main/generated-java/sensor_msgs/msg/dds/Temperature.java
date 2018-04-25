@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Single temperature reading.
@@ -85,6 +86,12 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
 
 
    public static Supplier<TemperaturePubSubType> getPubSubType()
+   {
+      return TemperaturePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TemperaturePubSubType::new;
    }

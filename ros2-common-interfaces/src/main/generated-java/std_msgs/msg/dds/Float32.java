@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class Float32 extends Packet<Float32> implements Settable<Float32>, EpsilonComparable<Float32>
 {
@@ -36,6 +37,12 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
 
 
    public static Supplier<Float32PubSubType> getPubSubType()
+   {
+      return Float32PubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return Float32PubSubType::new;
    }

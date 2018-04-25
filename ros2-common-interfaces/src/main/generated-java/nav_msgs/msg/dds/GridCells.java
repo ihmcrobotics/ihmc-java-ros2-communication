@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * An array of cells in a 2D grid
@@ -70,6 +71,12 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
 
 
    public static Supplier<GridCellsPubSubType> getPubSubType()
+   {
+      return GridCellsPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return GridCellsPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Definition of a mesh.
@@ -58,6 +59,12 @@ public class Mesh extends Packet<Mesh> implements Settable<Mesh>, EpsilonCompara
 
 
    public static Supplier<MeshPubSubType> getPubSubType()
+   {
+      return MeshPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MeshPubSubType::new;
    }

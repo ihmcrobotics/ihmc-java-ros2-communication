@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * An array of poses that represents a Path for a robot to follow.
@@ -46,6 +47,12 @@ public class Path extends Packet<Path> implements Settable<Path>, EpsilonCompara
 
 
    public static Supplier<PathPubSubType> getPubSubType()
+   {
+      return PathPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PathPubSubType::new;
    }

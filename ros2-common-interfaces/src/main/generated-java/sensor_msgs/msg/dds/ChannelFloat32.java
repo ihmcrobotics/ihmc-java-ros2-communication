@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message is used by the PointCloud message to hold optional data
@@ -95,6 +96,12 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
 
 
    public static Supplier<ChannelFloat32PubSubType> getPubSubType()
+   {
+      return ChannelFloat32PubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ChannelFloat32PubSubType::new;
    }

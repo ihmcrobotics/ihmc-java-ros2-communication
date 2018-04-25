@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * The multiarray declares a generic multi-dimensional array of a
@@ -66,6 +67,12 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
 
 
    public static Supplier<MultiArrayLayoutPubSubType> getPubSubType()
+   {
+      return MultiArrayLayoutPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MultiArrayLayoutPubSubType::new;
    }

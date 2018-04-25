@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This expresses an estimated pose with a reference coordinate frame and timestamp
@@ -45,6 +46,12 @@ public class PoseWithCovarianceStamped extends Packet<PoseWithCovarianceStamped>
 
 
    public static Supplier<PoseWithCovarianceStampedPubSubType> getPubSubType()
+   {
+      return PoseWithCovarianceStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PoseWithCovarianceStampedPubSubType::new;
    }

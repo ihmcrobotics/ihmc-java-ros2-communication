@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Constants are chosen to match the enums in the linux kernel
@@ -363,6 +364,12 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
 
 
    public static Supplier<BatteryStatePubSubType> getPubSubType()
+   {
+      return BatteryStatePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return BatteryStatePubSubType::new;
    }

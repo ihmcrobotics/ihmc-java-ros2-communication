@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents a Polygon with reference coordinate frame and timestamp
@@ -45,6 +46,12 @@ public class PolygonStamped extends Packet<PolygonStamped> implements Settable<P
 
 
    public static Supplier<PolygonStampedPubSubType> getPubSubType()
+   {
+      return PolygonStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PolygonStampedPubSubType::new;
    }

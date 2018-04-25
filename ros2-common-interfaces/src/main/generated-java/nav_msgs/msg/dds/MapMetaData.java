@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This hold basic information about the characterists of the OccupancyGrid
@@ -122,6 +123,12 @@ public class MapMetaData extends Packet<MapMetaData> implements Settable<MapMeta
 
 
    public static Supplier<MapMetaDataPubSubType> getPubSubType()
+   {
+      return MapMetaDataPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MapMetaDataPubSubType::new;
    }

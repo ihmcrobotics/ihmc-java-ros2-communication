@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable<GoalStatusArray>, EpsilonComparable<GoalStatusArray>
 {
@@ -51,6 +52,12 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
 
 
    public static Supplier<GoalStatusArrayPubSubType> getPubSubType()
+   {
+      return GoalStatusArrayPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return GoalStatusArrayPubSubType::new;
    }

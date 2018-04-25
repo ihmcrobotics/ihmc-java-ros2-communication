@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message contains an uncompressed image
@@ -187,6 +188,12 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
 
 
    public static Supplier<ImagePubSubType> getPubSubType()
+   {
+      return ImagePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ImagePubSubType::new;
    }

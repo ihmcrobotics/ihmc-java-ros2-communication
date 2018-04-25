@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * A Pose with reference coordinate frame and timestamp
@@ -45,6 +46,12 @@ public class PoseStamped extends Packet<PoseStamped> implements Settable<PoseSta
 
 
    public static Supplier<PoseStampedPubSubType> getPubSubType()
+   {
+      return PoseStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PoseStampedPubSubType::new;
    }

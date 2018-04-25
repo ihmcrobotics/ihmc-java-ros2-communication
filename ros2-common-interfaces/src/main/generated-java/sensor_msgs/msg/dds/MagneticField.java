@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Measurement of the Magnetic Field vector at a specific location.
@@ -90,6 +91,12 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
 
 
    public static Supplier<MagneticFieldPubSubType> getPubSubType()
+   {
+      return MagneticFieldPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MagneticFieldPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * MenuEntry message.
@@ -188,6 +189,12 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
 
 
    public static Supplier<MenuEntryPubSubType> getPubSubType()
+   {
+      return MenuEntryPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MenuEntryPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Please look at the MultiArrayLayout message definition for
@@ -59,6 +60,12 @@ public class UInt16MultiArray extends Packet<UInt16MultiArray> implements Settab
 
 
    public static Supplier<UInt16MultiArrayPubSubType> getPubSubType()
+   {
+      return UInt16MultiArrayPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return UInt16MultiArrayPubSubType::new;
    }

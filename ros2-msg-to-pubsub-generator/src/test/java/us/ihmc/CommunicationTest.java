@@ -22,7 +22,7 @@ public class CommunicationTest
       try
       {
          Ros2Node node = new Ros2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
-         TwoNumPubSubType topicDataType = TwoNum.getPubSubType().get();
+         TwoNumPubSubType topicDataType = new TwoNumPubSubType();
          Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
          messagesReceived.setValue(0);
@@ -72,7 +72,7 @@ public class CommunicationTest
       {
          RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.INTRAPROCESS, PeriodicNonRealtimeThreadScheduler::new, "Ros2CommunicationTest",
                                                       "/us/ihmc");
-         TwoNumPubSubType topicDataType = TwoNum.getPubSubType().get();
+         TwoNumPubSubType topicDataType = new TwoNumPubSubType();
          RealtimeRos2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
          messagesReceived.setValue(0);

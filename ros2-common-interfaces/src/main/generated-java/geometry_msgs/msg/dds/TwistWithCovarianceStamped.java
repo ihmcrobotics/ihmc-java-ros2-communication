@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents an estimated twist with reference coordinate frame and timestamp.
@@ -45,6 +46,12 @@ public class TwistWithCovarianceStamped extends Packet<TwistWithCovarianceStampe
 
 
    public static Supplier<TwistWithCovarianceStampedPubSubType> getPubSubType()
+   {
+      return TwistWithCovarianceStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TwistWithCovarianceStampedPubSubType::new;
    }

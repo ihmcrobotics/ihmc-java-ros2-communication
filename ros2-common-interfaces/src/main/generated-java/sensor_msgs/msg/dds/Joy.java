@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Reports the state of a joystick's axes and buttons.
@@ -74,6 +75,12 @@ public class Joy extends Packet<Joy> implements Settable<Joy>, EpsilonComparable
 
 
    public static Supplier<JoyPubSubType> getPubSubType()
+   {
+      return JoyPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return JoyPubSubType::new;
    }

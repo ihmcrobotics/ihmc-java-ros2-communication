@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Navigation Satellite fix for any Global Navigation Satellite System
@@ -188,6 +189,12 @@ public class NavSatFix extends Packet<NavSatFix> implements Settable<NavSatFix>,
 
 
    public static Supplier<NavSatFixPubSubType> getPubSubType()
+   {
+      return NavSatFixPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return NavSatFixPubSubType::new;
    }

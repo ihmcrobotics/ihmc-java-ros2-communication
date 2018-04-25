@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents a Point with reference coordinate frame and timestamp
@@ -45,6 +46,12 @@ public class PointStamped extends Packet<PointStamped> implements Settable<Point
 
 
    public static Supplier<PointStampedPubSubType> getPubSubType()
+   {
+      return PointStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PointStampedPubSubType::new;
    }

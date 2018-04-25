@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Defines box, sphere, cylinder, and cone.
@@ -93,6 +94,12 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
 
 
    public static Supplier<SolidPrimitivePubSubType> getPubSubType()
+   {
+      return SolidPrimitivePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return SolidPrimitivePubSubType::new;
    }

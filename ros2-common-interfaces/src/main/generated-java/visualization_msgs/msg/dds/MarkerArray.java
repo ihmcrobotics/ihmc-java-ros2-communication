@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerArray>, EpsilonComparable<MarkerArray>
 {
@@ -34,6 +35,12 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
 
 
    public static Supplier<MarkerArrayPubSubType> getPubSubType()
+   {
+      return MarkerArrayPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MarkerArrayPubSubType::new;
    }

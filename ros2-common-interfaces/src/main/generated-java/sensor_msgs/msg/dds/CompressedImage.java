@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message contains a compressed image.
@@ -97,6 +98,12 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
 
 
    public static Supplier<CompressedImagePubSubType> getPubSubType()
+   {
+      return CompressedImagePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return CompressedImagePubSubType::new;
    }

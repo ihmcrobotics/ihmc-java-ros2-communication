@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This is the message to communicate a parameter.
@@ -57,6 +58,12 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
 
 
    public static Supplier<ParameterPubSubType> getPubSubType()
+   {
+      return ParameterPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ParameterPubSubType::new;
    }

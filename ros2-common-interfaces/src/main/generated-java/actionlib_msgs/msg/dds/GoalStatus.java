@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * be sent over the wire by an action server.
@@ -127,6 +128,12 @@ public class GoalStatus extends Packet<GoalStatus> implements Settable<GoalStatu
 
 
    public static Supplier<GoalStatusPubSubType> getPubSubType()
+   {
+      return GoalStatusPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return GoalStatusPubSubType::new;
    }

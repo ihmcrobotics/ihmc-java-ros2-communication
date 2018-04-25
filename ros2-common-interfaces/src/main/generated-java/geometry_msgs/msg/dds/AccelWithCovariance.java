@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This expresses acceleration in free space with uncertainty.
@@ -63,6 +64,12 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
 
 
    public static Supplier<AccelWithCovariancePubSubType> getPubSubType()
+   {
+      return AccelWithCovariancePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return AccelWithCovariancePubSubType::new;
    }

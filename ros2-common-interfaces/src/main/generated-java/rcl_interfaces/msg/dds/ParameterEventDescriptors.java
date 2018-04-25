@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message contains descriptors of a parameter event.
@@ -57,6 +58,12 @@ public class ParameterEventDescriptors extends Packet<ParameterEventDescriptors>
 
 
    public static Supplier<ParameterEventDescriptorsPubSubType> getPubSubType()
+   {
+      return ParameterEventDescriptorsPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ParameterEventDescriptorsPubSubType::new;
    }

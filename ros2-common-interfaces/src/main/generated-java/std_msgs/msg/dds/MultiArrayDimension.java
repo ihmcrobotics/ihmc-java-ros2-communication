@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class MultiArrayDimension extends Packet<MultiArrayDimension> implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
 {
@@ -98,6 +99,12 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
 
 
    public static Supplier<MultiArrayDimensionPubSubType> getPubSubType()
+   {
+      return MultiArrayDimensionPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MultiArrayDimensionPubSubType::new;
    }

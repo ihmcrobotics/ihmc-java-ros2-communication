@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class ColorRGBA extends Packet<ColorRGBA> implements Settable<ColorRGBA>, EpsilonComparable<ColorRGBA>
 {
@@ -72,6 +73,12 @@ public class ColorRGBA extends Packet<ColorRGBA> implements Settable<ColorRGBA>,
 
 
    public static Supplier<ColorRGBAPubSubType> getPubSubType()
+   {
+      return ColorRGBAPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ColorRGBAPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class BoundedArrayPrimitives extends Packet<BoundedArrayPrimitives> implements Settable<BoundedArrayPrimitives>, EpsilonComparable<BoundedArrayPrimitives>
 {
@@ -175,6 +176,12 @@ public class BoundedArrayPrimitives extends Packet<BoundedArrayPrimitives> imple
 
 
    public static Supplier<BoundedArrayPrimitivesPubSubType> getPubSubType()
+   {
+      return BoundedArrayPrimitivesPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return BoundedArrayPrimitivesPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This is a message that holds data to describe the state of a set of torque controlled joints.
@@ -92,6 +93,12 @@ public class JointState extends Packet<JointState> implements Settable<JointStat
 
 
    public static Supplier<JointStatePubSubType> getPubSubType()
+   {
+      return JointStatePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return JointStatePubSubType::new;
    }

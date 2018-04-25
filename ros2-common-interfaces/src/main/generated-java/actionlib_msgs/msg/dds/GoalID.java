@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonComparable<GoalID>
 {
@@ -83,6 +84,12 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
 
 
    public static Supplier<GoalIDPubSubType> getPubSubType()
+   {
+      return GoalIDPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return GoalIDPubSubType::new;
    }

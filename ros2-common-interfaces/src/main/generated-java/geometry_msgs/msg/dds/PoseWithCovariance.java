@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents a pose in free space with uncertainty.
@@ -63,6 +64,12 @@ public class PoseWithCovariance extends Packet<PoseWithCovariance> implements Se
 
 
    public static Supplier<PoseWithCovariancePubSubType> getPubSubType()
+   {
+      return PoseWithCovariancePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PoseWithCovariancePubSubType::new;
    }

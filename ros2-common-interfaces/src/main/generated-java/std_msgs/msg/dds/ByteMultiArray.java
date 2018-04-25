@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Please look at the MultiArrayLayout message definition for
@@ -59,6 +60,12 @@ public class ByteMultiArray extends Packet<ByteMultiArray> implements Settable<B
 
 
    public static Supplier<ByteMultiArrayPubSubType> getPubSubType()
+   {
+      return ByteMultiArrayPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ByteMultiArrayPubSubType::new;
    }

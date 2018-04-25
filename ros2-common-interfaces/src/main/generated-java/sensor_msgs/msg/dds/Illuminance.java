@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Single photometric illuminance measurement.  Light should be assumed to be
@@ -95,6 +96,12 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
 
 
    public static Supplier<IlluminancePubSubType> getPubSubType()
+   {
+      return IlluminancePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return IlluminancePubSubType::new;
    }

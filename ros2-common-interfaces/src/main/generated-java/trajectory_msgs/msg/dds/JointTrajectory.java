@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class JointTrajectory extends Packet<JointTrajectory> implements Settable<JointTrajectory>, EpsilonComparable<JointTrajectory>
 {
@@ -52,6 +53,12 @@ public class JointTrajectory extends Packet<JointTrajectory> implements Settable
 
 
    public static Supplier<JointTrajectoryPubSubType> getPubSubType()
+   {
+      return JointTrajectoryPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return JointTrajectoryPubSubType::new;
    }

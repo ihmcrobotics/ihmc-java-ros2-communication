@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonComparable<Byte>
 {
@@ -36,6 +37,12 @@ public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonCompara
 
 
    public static Supplier<BytePubSubType> getPubSubType()
+   {
+      return BytePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return BytePubSubType::new;
    }

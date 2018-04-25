@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This is a message to hold data from an IMU (Inertial Measurement Unit)
@@ -138,6 +139,12 @@ public class Imu extends Packet<Imu> implements Settable<Imu>, EpsilonComparable
 
 
    public static Supplier<ImuPubSubType> getPubSubType()
+   {
+      return ImuPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ImuPubSubType::new;
    }

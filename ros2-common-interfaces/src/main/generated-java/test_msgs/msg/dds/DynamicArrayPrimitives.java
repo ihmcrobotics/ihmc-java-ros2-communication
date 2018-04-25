@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class DynamicArrayPrimitives extends Packet<DynamicArrayPrimitives> implements Settable<DynamicArrayPrimitives>, EpsilonComparable<DynamicArrayPrimitives>
 {
@@ -175,6 +176,12 @@ public class DynamicArrayPrimitives extends Packet<DynamicArrayPrimitives> imple
 
 
    public static Supplier<DynamicArrayPrimitivesPubSubType> getPubSubType()
+   {
+      return DynamicArrayPrimitivesPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return DynamicArrayPrimitivesPubSubType::new;
    }

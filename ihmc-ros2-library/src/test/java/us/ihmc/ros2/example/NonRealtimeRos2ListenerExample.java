@@ -35,7 +35,7 @@ public class NonRealtimeRos2ListenerExample
    public static void main(String[] args) throws IOException, InterruptedException
    {
       Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2ChatterExample");
-      node.createSubscription(std_msgs.msg.dds.String.getPubSubType().get(), subscriber -> {
+      node.createSubscription(new std_msgs.msg.dds.StringPubSubType(), subscriber -> {
          std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
          try
          {

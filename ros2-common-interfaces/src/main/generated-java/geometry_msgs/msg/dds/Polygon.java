@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * A specification of a polygon where the first and last points are assumed to be connected
@@ -37,6 +38,12 @@ public class Polygon extends Packet<Polygon> implements Settable<Polygon>, Epsil
 
 
    public static Supplier<PolygonPubSubType> getPubSubType()
+   {
+      return PolygonPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PolygonPubSubType::new;
    }

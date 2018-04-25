@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class Nested extends Packet<Nested> implements Settable<Nested>, EpsilonComparable<Nested>
 {
@@ -32,6 +33,12 @@ public class Nested extends Packet<Nested> implements Settable<Nested>, EpsilonC
 
 
    public static Supplier<NestedPubSubType> getPubSubType()
+   {
+      return NestedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return NestedPubSubType::new;
    }

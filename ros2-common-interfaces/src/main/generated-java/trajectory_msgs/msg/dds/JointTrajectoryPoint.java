@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Each trajectory point specifies either positions[, velocities[, accelerations]]
@@ -78,6 +79,12 @@ public class JointTrajectoryPoint extends Packet<JointTrajectoryPoint> implement
 
 
    public static Supplier<JointTrajectoryPointPubSubType> getPubSubType()
+   {
+      return JointTrajectoryPointPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return JointTrajectoryPointPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Represents a control that is to be displayed together with an interactive marker
@@ -267,6 +268,12 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
 
 
    public static Supplier<InteractiveMarkerControlPubSubType> getPubSubType()
+   {
+      return InteractiveMarkerControlPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return InteractiveMarkerControlPubSubType::new;
    }

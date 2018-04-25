@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Default values for transitions
@@ -111,6 +112,12 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
 
 
    public static Supplier<TransitionPubSubType> getPubSubType()
+   {
+      return TransitionPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TransitionPubSubType::new;
    }

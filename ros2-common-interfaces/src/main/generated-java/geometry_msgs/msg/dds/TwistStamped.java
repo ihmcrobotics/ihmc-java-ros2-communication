@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * A twist with reference coordinate frame and timestamp
@@ -45,6 +46,12 @@ public class TwistStamped extends Packet<TwistStamped> implements Settable<Twist
 
 
    public static Supplier<TwistStampedPubSubType> getPubSubType()
+   {
+      return TwistStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TwistStampedPubSubType::new;
    }

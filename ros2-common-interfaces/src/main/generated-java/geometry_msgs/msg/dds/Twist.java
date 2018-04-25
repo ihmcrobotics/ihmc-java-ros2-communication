@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This expresses velocity in free space broken into its linear and angular parts.
@@ -45,6 +46,12 @@ public class Twist extends Packet<Twist> implements Settable<Twist>, EpsilonComp
 
 
    public static Supplier<TwistPubSubType> getPubSubType()
+   {
+      return TwistPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TwistPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents a Vector3 with reference coordinate frame and timestamp
@@ -45,6 +46,12 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
 
 
    public static Supplier<Vector3StampedPubSubType> getPubSubType()
+   {
+      return Vector3StampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return Vector3StampedPubSubType::new;
    }

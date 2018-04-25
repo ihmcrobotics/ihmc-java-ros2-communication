@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Definition of a triangle's vertices.
@@ -27,6 +28,12 @@ public class MeshTriangle extends Packet<MeshTriangle> implements Settable<MeshT
 
 
    public static Supplier<MeshTrianglePubSubType> getPubSubType()
+   {
+      return MeshTrianglePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MeshTrianglePubSubType::new;
    }

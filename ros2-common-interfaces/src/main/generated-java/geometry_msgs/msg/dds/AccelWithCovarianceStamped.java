@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStamped> implements Settable<AccelWithCovarianceStamped>, EpsilonComparable<AccelWithCovarianceStamped>
 {
@@ -48,6 +49,12 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
 
 
    public static Supplier<AccelWithCovarianceStampedPubSubType> getPubSubType()
+   {
+      return AccelWithCovarianceStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return AccelWithCovarianceStampedPubSubType::new;
    }

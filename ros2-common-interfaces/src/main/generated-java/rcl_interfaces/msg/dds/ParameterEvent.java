@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message contains a parameter event.
@@ -57,6 +58,12 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
 
 
    public static Supplier<ParameterEventPubSubType> getPubSubType()
+   {
+      return ParameterEventPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ParameterEventPubSubType::new;
    }

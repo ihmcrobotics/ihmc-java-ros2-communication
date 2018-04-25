@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message holds a collection of N-dimensional points, which may
@@ -200,6 +201,12 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
 
 
    public static Supplier<PointCloud2PubSubType> getPubSubType()
+   {
+      return PointCloud2PubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PointCloud2PubSubType::new;
    }

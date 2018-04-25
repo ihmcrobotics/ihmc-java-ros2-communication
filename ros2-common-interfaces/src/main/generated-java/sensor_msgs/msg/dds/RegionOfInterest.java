@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message is used to specify a region of interest within an image.
@@ -152,6 +153,12 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
 
 
    public static Supplier<RegionOfInterestPubSubType> getPubSubType()
+   {
+      return RegionOfInterestPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return RegionOfInterestPubSubType::new;
    }

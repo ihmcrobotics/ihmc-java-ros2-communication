@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, EpsilonComparable<KeyValue>
 {
@@ -88,6 +89,12 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
 
 
    public static Supplier<KeyValuePubSubType> getPubSubType()
+   {
+      return KeyValuePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return KeyValuePubSubType::new;
    }

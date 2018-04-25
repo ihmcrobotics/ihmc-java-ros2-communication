@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>, EpsilonComparable<TFMessage>
 {
@@ -34,6 +35,12 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
 
 
    public static Supplier<TFMessagePubSubType> getPubSubType()
+   {
+      return TFMessagePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TFMessagePubSubType::new;
    }

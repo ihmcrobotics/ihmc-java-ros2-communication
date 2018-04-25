@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Representation of a plane, using the plane equation ax + by + cz + d = 0.
@@ -53,6 +54,12 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
 
 
    public static Supplier<PlanePubSubType> getPubSubType()
+   {
+      return PlanePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PlanePubSubType::new;
    }

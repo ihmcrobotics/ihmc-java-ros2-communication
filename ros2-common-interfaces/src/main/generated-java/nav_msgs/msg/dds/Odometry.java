@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents an estimate of a position and velocity in free space.
@@ -76,6 +77,12 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
 
 
    public static Supplier<OdometryPubSubType> getPubSubType()
+   {
+      return OdometryPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return OdometryPubSubType::new;
    }

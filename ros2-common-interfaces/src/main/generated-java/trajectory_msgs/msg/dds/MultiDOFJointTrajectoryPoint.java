@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class MultiDOFJointTrajectoryPoint extends Packet<MultiDOFJointTrajectoryPoint> implements Settable<MultiDOFJointTrajectoryPoint>, EpsilonComparable<MultiDOFJointTrajectoryPoint>
 {
@@ -79,6 +80,12 @@ public class MultiDOFJointTrajectoryPoint extends Packet<MultiDOFJointTrajectory
 
 
    public static Supplier<MultiDOFJointTrajectoryPointPubSubType> getPubSubType()
+   {
+      return MultiDOFJointTrajectoryPointPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MultiDOFJointTrajectoryPointPubSubType::new;
    }

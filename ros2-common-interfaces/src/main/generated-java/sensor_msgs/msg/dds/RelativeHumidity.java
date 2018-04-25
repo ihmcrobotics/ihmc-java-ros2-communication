@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Single reading from a relative humidity sensor.
@@ -90,6 +91,12 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
 
 
    public static Supplier<RelativeHumidityPubSubType> getPubSubType()
+   {
+      return RelativeHumidityPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return RelativeHumidityPubSubType::new;
    }

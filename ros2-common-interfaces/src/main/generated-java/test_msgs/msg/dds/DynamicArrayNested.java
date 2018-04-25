@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class DynamicArrayNested extends Packet<DynamicArrayNested> implements Settable<DynamicArrayNested>, EpsilonComparable<DynamicArrayNested>
 {
@@ -34,6 +35,12 @@ public class DynamicArrayNested extends Packet<DynamicArrayNested> implements Se
 
 
    public static Supplier<DynamicArrayNestedPubSubType> getPubSubType()
+   {
+      return DynamicArrayNestedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return DynamicArrayNestedPubSubType::new;
    }

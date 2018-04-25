@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * A wrench with reference coordinate frame and timestamp
@@ -45,6 +46,12 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
 
 
    public static Supplier<WrenchStampedPubSubType> getPubSubType()
+   {
+      return WrenchStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return WrenchStampedPubSubType::new;
    }

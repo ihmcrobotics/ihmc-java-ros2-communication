@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Used to determine which of the next *_value fields are set.
@@ -117,6 +118,12 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
 
 
    public static Supplier<ParameterValuePubSubType> getPubSubType()
+   {
+      return ParameterValuePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return ParameterValuePubSubType::new;
    }

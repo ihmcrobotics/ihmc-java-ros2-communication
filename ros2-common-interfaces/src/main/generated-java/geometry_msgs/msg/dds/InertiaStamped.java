@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class InertiaStamped extends Packet<InertiaStamped> implements Settable<InertiaStamped>, EpsilonComparable<InertiaStamped>
 {
@@ -42,6 +43,12 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
 
 
    public static Supplier<InertiaStampedPubSubType> getPubSubType()
+   {
+      return InertiaStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return InertiaStampedPubSubType::new;
    }

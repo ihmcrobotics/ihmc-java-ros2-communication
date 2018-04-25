@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class UInt32 extends Packet<UInt32> implements Settable<UInt32>, EpsilonComparable<UInt32>
 {
@@ -36,6 +37,12 @@ public class UInt32 extends Packet<UInt32> implements Settable<UInt32>, EpsilonC
 
 
    public static Supplier<UInt32PubSubType> getPubSubType()
+   {
+      return UInt32PubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return UInt32PubSubType::new;
    }

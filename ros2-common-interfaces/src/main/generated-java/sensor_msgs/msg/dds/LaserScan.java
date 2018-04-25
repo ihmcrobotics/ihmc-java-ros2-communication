@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Single scan from a planar laser range-finder
@@ -238,6 +239,12 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
 
 
    public static Supplier<LaserScanPubSubType> getPubSubType()
+   {
+      return LaserScanPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return LaserScanPubSubType::new;
    }

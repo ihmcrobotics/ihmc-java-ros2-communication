@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComparable<Accel>
 {
@@ -48,6 +49,12 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
 
 
    public static Supplier<AccelPubSubType> getPubSubType()
+   {
+      return AccelPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return AccelPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Single scan from a multi-echo planar laser range-finder
@@ -241,6 +242,12 @@ public class MultiEchoLaserScan extends Packet<MultiEchoLaserScan> implements Se
 
 
    public static Supplier<MultiEchoLaserScanPubSubType> getPubSubType()
+   {
+      return MultiEchoLaserScanPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return MultiEchoLaserScanPubSubType::new;
    }

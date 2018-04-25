@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents a 2-D grid map, in which each cell represents the probability of occupancy.
@@ -69,6 +70,12 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
 
 
    public static Supplier<OccupancyGridPubSubType> getPubSubType()
+   {
+      return OccupancyGridPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return OccupancyGridPubSubType::new;
    }

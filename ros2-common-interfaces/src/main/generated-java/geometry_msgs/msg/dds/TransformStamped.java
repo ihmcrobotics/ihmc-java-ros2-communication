@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This expresses a transform from coordinate frame header.frame_id
@@ -82,6 +83,12 @@ public class TransformStamped extends Packet<TransformStamped> implements Settab
 
 
    public static Supplier<TransformStampedPubSubType> getPubSubType()
+   {
+      return TransformStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TransformStampedPubSubType::new;
    }

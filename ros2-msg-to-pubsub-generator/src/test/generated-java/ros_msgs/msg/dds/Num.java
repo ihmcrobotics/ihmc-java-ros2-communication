@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This is the header
@@ -116,6 +117,12 @@ public class Num extends Packet<Num> implements Settable<Num>, EpsilonComparable
 
 
    public static Supplier<NumPubSubType> getPubSubType()
+   {
+      return NumPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return NumPubSubType::new;
    }

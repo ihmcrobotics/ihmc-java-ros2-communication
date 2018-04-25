@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class TransitionEvent extends Packet<TransitionEvent> implements Settable<TransitionEvent>, EpsilonComparable<TransitionEvent>
 {
@@ -63,6 +64,12 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
 
    public static Supplier<TransitionEventPubSubType> getPubSubType()
+   {
+      return TransitionEventPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TransitionEventPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class PointField extends Packet<PointField> implements Settable<PointField>, EpsilonComparable<PointField>
 {
@@ -131,6 +132,12 @@ public class PointField extends Packet<PointField> implements Settable<PointFiel
 
 
    public static Supplier<PointFieldPubSubType> getPubSubType()
+   {
+      return PointFieldPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return PointFieldPubSubType::new;
    }

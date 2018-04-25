@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * we don't support this
@@ -146,6 +147,12 @@ public class TwoNum extends Packet<TwoNum> implements Settable<TwoNum>, EpsilonC
 
 
    public static Supplier<TwoNumPubSubType> getPubSubType()
+   {
+      return TwoNumPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return TwoNumPubSubType::new;
    }

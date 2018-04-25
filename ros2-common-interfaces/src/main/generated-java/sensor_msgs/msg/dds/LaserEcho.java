@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This message is a submessage of MultiEchoLaserScan and is not intended
@@ -44,6 +45,12 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
 
 
    public static Supplier<LaserEchoPubSubType> getPubSubType()
+   {
+      return LaserEchoPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return LaserEchoPubSubType::new;
    }

@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * Primary state definitions
@@ -83,6 +84,12 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
 
 
    public static Supplier<StatePubSubType> getPubSubType()
+   {
+      return StatePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return StatePubSubType::new;
    }

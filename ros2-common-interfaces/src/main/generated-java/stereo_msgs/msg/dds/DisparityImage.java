@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class DisparityImage extends Packet<DisparityImage> implements Settable<DisparityImage>, EpsilonComparable<DisparityImage>
 {
@@ -195,6 +196,12 @@ public class DisparityImage extends Packet<DisparityImage> implements Settable<D
 
 
    public static Supplier<DisparityImagePubSubType> getPubSubType()
+   {
+      return DisparityImagePubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return DisparityImagePubSubType::new;
    }

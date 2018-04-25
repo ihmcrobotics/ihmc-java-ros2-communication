@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 public class Builtins extends Packet<Builtins> implements Settable<Builtins>, EpsilonComparable<Builtins>
 {
@@ -42,6 +43,12 @@ public class Builtins extends Packet<Builtins> implements Settable<Builtins>, Ep
 
 
    public static Supplier<BuiltinsPubSubType> getPubSubType()
+   {
+      return BuiltinsPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return BuiltinsPubSubType::new;
    }

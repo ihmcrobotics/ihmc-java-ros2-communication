@@ -4,6 +4,7 @@ import us.ihmc.communication.packets.Packet;
 import us.ihmc.euclid.interfaces.Settable;
 import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
+import us.ihmc.pubsub.TopicDataType;
 
 /**
        * This represents an orientation with reference coordinate frame and timestamp.
@@ -45,6 +46,12 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
 
 
    public static Supplier<QuaternionStampedPubSubType> getPubSubType()
+   {
+      return QuaternionStampedPubSubType::new;
+   }
+
+   @Override
+   public Supplier<TopicDataType> getPubSubTypePacket()
    {
       return QuaternionStampedPubSubType::new;
    }
