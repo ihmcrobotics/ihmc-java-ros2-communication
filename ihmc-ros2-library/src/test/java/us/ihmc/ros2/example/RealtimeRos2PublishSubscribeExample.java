@@ -44,7 +44,7 @@ public class RealtimeRos2PublishSubscribeExample
       PeriodicThreadSchedulerFactory threadFactory = SystemUtils.IS_OS_LINUX ? // realtime threads only work on linux
             new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
             new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
-      RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "");
+      RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "/us/ihmc");
       RealtimeRos2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example");
       RealtimeRos2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example");
 
@@ -55,6 +55,7 @@ public class RealtimeRos2PublishSubscribeExample
       {
          message.setData(i);
          publisher.publish(message);
+         System.out.println("Sending: " + message);
       }
 
       Int64 incomingMessage = new Int64();
@@ -66,7 +67,7 @@ public class RealtimeRos2PublishSubscribeExample
       {
          if (subscription.poll(incomingMessage))
          {
-            System.out.println(incomingMessage);
+            System.out.println("Receiving: " + incomingMessage);
             i++;
          }
          else
