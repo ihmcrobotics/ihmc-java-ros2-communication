@@ -37,16 +37,9 @@ public class NonRealtimeRos2ListenerExample
       Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2ChatterExample");
       node.createSubscription(new std_msgs.msg.dds.StringPubSubType(), subscriber -> {
          std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
-         try
+         if (subscriber.takeNextData(message, null))
          {
-            if (subscriber.takeNextData(message, null))
-            {
-               System.out.println(message.getData());
-            }
-         }
-         catch (IOException e)
-         {
-            // something bad happened
+            System.out.println(message.getData());
          }
       }, "/chatter");
 

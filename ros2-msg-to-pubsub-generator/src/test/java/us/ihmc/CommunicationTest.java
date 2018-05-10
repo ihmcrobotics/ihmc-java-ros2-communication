@@ -9,8 +9,6 @@ import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.*;
 import us.ihmc.util.PeriodicNonRealtimeThreadScheduler;
 
-import java.io.IOException;
-
 import static org.junit.Assert.*;
 
 public class CommunicationTest
@@ -29,18 +27,11 @@ public class CommunicationTest
 
          node.createSubscription(topicDataType, subscriber -> {
             TwoNum message = new TwoNum();
-            try
+            System.out.println("Incoming message...");
+            if (subscriber.takeNextData(message, null))
             {
-               System.out.println("Incoming message...");
-               if (subscriber.takeNextData(message, null))
-               {
-                  System.out.println("Received: " + message.getStr1());
-                  messagesReceived.setValue(messagesReceived.getValue() + 1);
-               }
-            }
-            catch (IOException e)
-            {
-               e.printStackTrace();
+               System.out.println("Received: " + message.getStr1());
+               messagesReceived.setValue(messagesReceived.getValue() + 1);
             }
          }, "/chatter");
 

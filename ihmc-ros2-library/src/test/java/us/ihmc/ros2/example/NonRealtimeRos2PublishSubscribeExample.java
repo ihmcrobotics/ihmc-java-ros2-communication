@@ -41,16 +41,9 @@ public class NonRealtimeRos2PublishSubscribeExample
       Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2PublishSubscribeExample");
       node.createSubscription(new Int32PubSubType(), subscriber -> {
          Int64 message = new Int64();
-         try
+         if (subscriber.takeNextData(message, null))
          {
-            if (subscriber.takeNextData(message, null))
-            {
-               System.out.println(message.getData());
-            }
-         }
-         catch (IOException e)
-         {
-            // something bad happened
+            System.out.println(message.getData());
          }
       }, "/example");
 

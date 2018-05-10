@@ -15,8 +15,6 @@
  */
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
 import us.ihmc.concurrent.ConcurrentRingBuffer;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.common.MatchingInfo;
@@ -86,21 +84,14 @@ class RealtimeRos2SubscriptionListener<T> implements NewMessageListener
    @Override
    public void onNewDataMessage(Subscriber subscriber)
    {
-      try
+      if (subscriber.takeNextData(data, null))
       {
-         if (subscriber.takeNextData(data, null))
+         T next = messageQueue.next();
+         if (next != null)
          {
-            T next = messageQueue.next();
-            if (next != null)
-            {
-               topicDataTypeForCallback.copy(data, next);
-               messageQueue.commit();
-            }
+            topicDataTypeForCallback.copy(data, next);
+            messageQueue.commit();
          }
-      }
-      catch (IOException e)
-      {
-         e.printStackTrace();
       }
    }
 

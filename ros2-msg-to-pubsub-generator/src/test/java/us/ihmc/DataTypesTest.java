@@ -10,8 +10,6 @@ import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.Ros2Node;
 import us.ihmc.ros2.Ros2Publisher;
 
-import java.io.IOException;
-
 import static org.junit.Assert.*;
 
 public class DataTypesTest
@@ -34,48 +32,41 @@ public class DataTypesTest
 
          node.createSubscription(topicDataType, subscriber -> {
             Num message = new Num();
-            try
+            System.out.println("Incoming message...");
+            if (subscriber.takeNextData(message, null))
             {
-               System.out.println("Incoming message...");
-               if (subscriber.takeNextData(message, null))
+               switch (messagesReceived.getValue())
                {
-                  switch (messagesReceived.getValue())
-                  {
-                  case 0:
-                     assertEquals("Wasn't NaN", Double.NaN, message.getDoubleTest(), 0.0);
-                     break;
-                  case 1:
-                     assertEquals("Wasn't MAX_VALUE", Double.MAX_VALUE, message.getDoubleTest(), 0.0);
-                     break;
-                  case 2:
-                     assertEquals("Wasn't MIN_VALUE", Double.MIN_VALUE, message.getDoubleTest(), 0.0);
-                     break;
-                  case 3:
-                     assertEquals("Wasn't MAX_EXPONENT", Double.MAX_EXPONENT, message.getDoubleTest(), 0.0);
-                     break;
-                  case 4:
-                     assertEquals("Wasn't MIN_EXPONENT", Double.MIN_EXPONENT, message.getDoubleTest(), 0.0);
-                     break;
-                  case 5:
-                     assertEquals("Wasn't MIN_NORMAL", Double.MIN_NORMAL, message.getDoubleTest(), 0.0);
-                     break;
-                  case 6:
-                     assertEquals("Wasn't POSITIVE_INFINITY", Double.POSITIVE_INFINITY, message.getDoubleTest(), 0.0);
-                     break;
-                  case 7:
-                     assertEquals("Wasn't NEGATIVE_INFINITY", Double.NEGATIVE_INFINITY, message.getDoubleTest(), 0.0);
-                     break;
-                  default:
-                     break;
-                  }
-                  System.out.println("Received: " + message.getDoubleTest());
-
-                  messagesReceived.setValue(messagesReceived.getValue() + 1);
+               case 0:
+                  assertEquals("Wasn't NaN", Double.NaN, message.getDoubleTest(), 0.0);
+                  break;
+               case 1:
+                  assertEquals("Wasn't MAX_VALUE", Double.MAX_VALUE, message.getDoubleTest(), 0.0);
+                  break;
+               case 2:
+                  assertEquals("Wasn't MIN_VALUE", Double.MIN_VALUE, message.getDoubleTest(), 0.0);
+                  break;
+               case 3:
+                  assertEquals("Wasn't MAX_EXPONENT", Double.MAX_EXPONENT, message.getDoubleTest(), 0.0);
+                  break;
+               case 4:
+                  assertEquals("Wasn't MIN_EXPONENT", Double.MIN_EXPONENT, message.getDoubleTest(), 0.0);
+                  break;
+               case 5:
+                  assertEquals("Wasn't MIN_NORMAL", Double.MIN_NORMAL, message.getDoubleTest(), 0.0);
+                  break;
+               case 6:
+                  assertEquals("Wasn't POSITIVE_INFINITY", Double.POSITIVE_INFINITY, message.getDoubleTest(), 0.0);
+                  break;
+               case 7:
+                  assertEquals("Wasn't NEGATIVE_INFINITY", Double.NEGATIVE_INFINITY, message.getDoubleTest(), 0.0);
+                  break;
+               default:
+                  break;
                }
-            }
-            catch (IOException e)
-            {
-               e.printStackTrace();
+               System.out.println("Received: " + message.getDoubleTest());
+
+               messagesReceived.setValue(messagesReceived.getValue() + 1);
             }
          }, "/chatter");
 
