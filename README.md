@@ -17,9 +17,9 @@ This library builds on [IHMC Pub Sub](https://github.com/ihmcrobotics/ihmc-pub-s
 ## Artifacts
 
 ```gradle
-compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.7.0-alpha  // publish/subscribe API
-compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.7.0-alpha  // ROS2 common message library
-compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.7.0-alpha  // generator for .msg -> .java
+compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.7.4-alpha  // publish/subscribe API
+compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.7.4-alpha  // ROS2 common message library
+compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.7.4-alpha  // generator for .msg -> .java
 ```
 
 ## IHMC ROS2 Library
@@ -51,16 +51,9 @@ for (int i = 0; i < 10; i++)
 Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
 node.createSubscription(Int64.getPubSubType().get(), subscriber -> {
    Int64 message = new Int64();
-   try
+   if (subscriber.takeNextData(message, null))
    {
-      if (subscriber.takeNextData(message, null))
-      {
-         System.out.println(message.getData());
-      }
-   }
-   catch (IOException e)
-   {
-      // something bad happened
+      System.out.println(message.getData());
    }
 }, "/example");
 
