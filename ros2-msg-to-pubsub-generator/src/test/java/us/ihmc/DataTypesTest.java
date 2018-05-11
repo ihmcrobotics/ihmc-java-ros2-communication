@@ -7,6 +7,7 @@ import ros_msgs.msg.dds.Num;
 import ros_msgs.msg.dds.NumPubSubType;
 import us.ihmc.continuousIntegration.ContinuousIntegrationTools;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
+import us.ihmc.pubsub.common.SampleInfo;
 import us.ihmc.ros2.Ros2Node;
 import us.ihmc.ros2.Ros2Publisher;
 
@@ -33,7 +34,7 @@ public class DataTypesTest
          node.createSubscription(topicDataType, subscriber -> {
             Num message = new Num();
             System.out.println("Incoming message...");
-            if (subscriber.takeNextData(message, null))
+            if (subscriber.takeNextData(message, new SampleInfo()))
             {
                switch (messagesReceived.getValue())
                {
