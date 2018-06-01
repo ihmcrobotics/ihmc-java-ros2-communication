@@ -1,0 +1,53 @@
+#ifndef __sensor_msgs__msg__Imu__idl__
+#define __sensor_msgs__msg__Imu__idl__
+
+#include "geometry_msgs/msg/./Quaternion_.idl"
+#include "geometry_msgs/msg/./Vector3_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This is a message to hold data from an IMU (Inertial Measurement Unit)
+       * 
+       * Accelerations should be in m/s^2 (not in g's), and rotational velocity should be in rad/sec
+       * 
+       * If the covariance of the measurement is known, it should be filled in (if all you know is the
+       * variance of each measurement, e.g. from the datasheet, just put those along the diagonal)
+       * A covariance matrix of all zeros will be interpreted as "covariance unknown", and to use the
+       * data a covariance will have to be assumed or gotten from some other source
+       * 
+       * If you have no estimate for one of the data elements (e.g. your IMU doesn't produce an
+       * orientation estimate), please set element 0 of the associated covariance matrix to -1
+       * If you are interpreting this message, please check for a value of -1 in the first element of each
+       * covariance matrix, and disregard the associated estimate.
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::Imu_")
+      struct Imu
+      {
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::Quaternion orientation;
+        /**
+         * Row major about x, y, z axes
+         */
+        double orientation_covariance[9];
+        geometry_msgs::msg::dds::Vector3 angular_velocity;
+        /**
+         * Row major about x, y, z axes
+         */
+        double angular_velocity_covariance[9];
+        geometry_msgs::msg::dds::Vector3 linear_acceleration;
+        /**
+         * Row major x, y z
+         */
+        double linear_acceleration_covariance[9];
+      };
+    };
+  };
+};
+
+#endif

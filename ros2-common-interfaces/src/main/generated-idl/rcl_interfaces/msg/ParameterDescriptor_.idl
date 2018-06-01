@@ -1,0 +1,27 @@
+#ifndef __rcl_interfaces__msg__ParameterDescriptor__idl__
+#define __rcl_interfaces__msg__ParameterDescriptor__idl__
+
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This is the message to communicate a parameter's descriptor.
+       */
+      @TypeCode(type="rcl_interfaces::msg::dds_::ParameterDescriptor_")
+      struct ParameterDescriptor
+      {
+        string name;
+        /**
+         * Enum defined in ParameterType.msg
+         */
+        octet type;
+      };
+    };
+  };
+};
+
+#endif

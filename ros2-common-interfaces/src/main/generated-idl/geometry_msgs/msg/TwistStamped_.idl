@@ -1,0 +1,26 @@
+#ifndef __geometry_msgs__msg__TwistStamped__idl__
+#define __geometry_msgs__msg__TwistStamped__idl__
+
+#include "geometry_msgs/msg/./Twist_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * A twist with reference coordinate frame and timestamp
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::TwistStamped_")
+      struct TwistStamped
+      {
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::Twist twist;
+      };
+    };
+  };
+};
+
+#endif

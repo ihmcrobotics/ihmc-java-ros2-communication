@@ -1,0 +1,58 @@
+#ifndef __diagnostic_msgs__msg__DiagnosticStatus__idl__
+#define __diagnostic_msgs__msg__DiagnosticStatus__idl__
+
+#include "diagnostic_msgs/msg/./KeyValue_.idl"
+module diagnostic_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * Possible levels of operations.
+       */
+      const octet OK =
+      0;
+
+      const octet WARN =
+      1;
+
+      const octet ERROR =
+      2;
+
+      const octet STALE =
+      3;
+
+
+      /**
+       * This message holds the status of an individual component of the robot.
+       */
+      @TypeCode(type="diagnostic_msgs::msg::dds_::DiagnosticStatus_")
+      struct DiagnosticStatus
+      {
+        /**
+         * Level of operation enumerated above.
+         */
+        octet level;
+        /**
+         * A description of the test/component reporting.
+         */
+        string name;
+        /**
+         * A description of the status.
+         */
+        string message;
+        /**
+         * A hardware unique string.
+         */
+        string hardware_id;
+        /**
+         * An array of values associated with the status.
+         */
+        sequence<diagnostic_msgs::msg::dds::KeyValue> values;
+      };
+    };
+  };
+};
+
+#endif

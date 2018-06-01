@@ -1,0 +1,36 @@
+#ifndef __sensor_msgs__msg__Temperature__idl__
+#define __sensor_msgs__msg__Temperature__idl__
+
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Single temperature reading.
+       * frame_id is the location of the temperature reading
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::Temperature_")
+      struct Temperature
+      {
+        /**
+         * timestamp is the time the temperature was measured
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * Measurement of the Temperature in Degrees Celsius.
+         */
+        double temperature;
+        /**
+         * 0 is interpreted as variance unknown.
+         */
+        double variance;
+      };
+    };
+  };
+};
+
+#endif

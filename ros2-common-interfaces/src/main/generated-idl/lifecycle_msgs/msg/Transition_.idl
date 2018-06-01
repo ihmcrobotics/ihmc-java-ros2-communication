@@ -1,0 +1,138 @@
+#ifndef __lifecycle_msgs__msg__Transition__idl__
+#define __lifecycle_msgs__msg__Transition__idl__
+
+module lifecycle_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * Externally available transitions.
+       * When a node is in one of these primary states,
+       * these transitions can be invoked.
+       */
+      const octet TRANSITION_CREATE =
+      0;
+
+      const octet TRANSITION_CONFIGURE =
+      1;
+
+      const octet TRANSITION_CLEANUP =
+      2;
+
+      const octet TRANSITION_ACTIVATE =
+      3;
+
+      const octet TRANSITION_DEACTIVATE =
+      4;
+
+      const octet TRANSITION_SHUTDOWN =
+      5;
+
+      const octet TRANSITION_DESTROY =
+      6;
+
+      /**
+       * These transitions are not publically
+       * available and cannot be invoked by a user.
+       * The following transitions are implicitly
+       * invoked based on the callback feedback
+       * of the intermediate transition states.
+       */
+      const octet TRANSITION_ON_CONFIGURE_SUCCESS =
+      10;
+
+      const octet TRANSITION_ON_CONFIGURE_FAILURE =
+      11;
+
+      const octet TRANSITION_ON_CONFIGURE_ERROR =
+      12;
+
+      const octet TRANSITION_ON_CLEANUP_SUCCESS =
+      20;
+
+      const octet TRANSITION_ON_CLEANUP_FAILURE =
+      21;
+
+      const octet TRANSITION_ON_CLEANUP_ERROR =
+      22;
+
+      const octet TRANSITION_ON_ACTIVATE_SUCCESS =
+      30;
+
+      const octet TRANSITION_ON_ACTIVATE_FAILURE =
+      31;
+
+      const octet TRANSITION_ON_ACTIVATE_ERROR =
+      32;
+
+      const octet TRANSITION_ON_DEACTIVATE_SUCCESS =
+      40;
+
+      const octet TRANSITION_ON_DEACTIVATE_FAILURE =
+      41;
+
+      const octet TRANSITION_ON_DEACTIVATE_ERROR =
+      42;
+
+      const octet TRANSITION_UNCONFIGURED_SHUTDOWN =
+      50;
+
+      const octet TRANSITION_INACTIVE_SHUTDOWN =
+      51;
+
+      const octet TRANSITION_ACTIVE_SHUTDOWN =
+      52;
+
+      const octet TRANSITION_ON_SHUTDOWN_SUCCESS =
+      53;
+
+      const octet TRANSITION_ON_SHUTDOWN_FAILURE =
+      54;
+
+      const octet TRANSITION_ON_SHUTDOWN_ERROR =
+      55;
+
+      const octet TRANSITION_ON_ERROR_SUCCESS =
+      60;
+
+      const octet TRANSITION_ON_ERROR_FAILURE =
+      61;
+
+      const octet TRANSITION_ON_ERROR_ERROR =
+      62;
+
+      /**
+       * These return values ought to be set
+       * as a return value for each callback.
+       * Depending on which return value,
+       * the transition will be executed correctly
+       * or fallback/error callbacks will be triggered.
+       */
+      const octet TRANSITION_CALLBACK_SUCCESS =
+      97;
+
+      const octet TRANSITION_CALLBACK_FAILURE =
+      98;
+
+      const octet TRANSITION_CALLBACK_ERROR =
+      99;
+
+
+      /**
+       * Default values for transitions
+       * as described on
+       * http://design.ros2.org/articles/node_lifecycle.html
+       */
+      @TypeCode(type="lifecycle_msgs::msg::dds_::Transition_")
+      struct Transition
+      {
+        octet id;
+        string label;
+      };
+    };
+  };
+};
+
+#endif

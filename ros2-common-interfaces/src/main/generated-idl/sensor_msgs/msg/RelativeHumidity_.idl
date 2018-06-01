@@ -1,0 +1,41 @@
+#ifndef __sensor_msgs__msg__RelativeHumidity__idl__
+#define __sensor_msgs__msg__RelativeHumidity__idl__
+
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Single reading from a relative humidity sensor.
+       * Defines the ratio of partial pressure of water vapor to the saturated vapor
+       * pressure at a temperature.
+       * frame_id is the location of the humidity sensor
+       * from 0.0 to 1.0.
+       * 0.0 is no partial pressure of water vapor
+       * 1.0 represents partial pressure of saturation
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::RelativeHumidity_")
+      struct RelativeHumidity
+      {
+        /**
+         * timestamp of the measurement
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * Expression of the relative humidity
+         */
+        double relative_humidity;
+        /**
+         * 0 is interpreted as variance unknown
+         */
+        double variance;
+      };
+    };
+  };
+};
+
+#endif

@@ -1,0 +1,32 @@
+#ifndef __std_msgs__msg__UInt16MultiArray__idl__
+#define __std_msgs__msg__UInt16MultiArray__idl__
+
+#include "std_msgs/msg/./MultiArrayLayout_.idl"
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Please look at the MultiArrayLayout message definition for
+       * documentation on all multiarrays.
+       */
+      @TypeCode(type="std_msgs::msg::dds_::UInt16MultiArray_")
+      struct UInt16MultiArray
+      {
+        /**
+         * specification of data layout
+         */
+        std_msgs::msg::dds::MultiArrayLayout layout;
+        /**
+         * array of data
+         */
+        sequence<unsigned short> data;
+      };
+    };
+  };
+};
+
+#endif

@@ -1,0 +1,31 @@
+#ifndef __geometry_msgs__msg__TwistWithCovariance__idl__
+#define __geometry_msgs__msg__TwistWithCovariance__idl__
+
+#include "geometry_msgs/msg/./Twist_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This expresses velocity in free space with uncertainty.
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::TwistWithCovariance_")
+      struct TwistWithCovariance
+      {
+        geometry_msgs::msg::dds::Twist twist;
+        /**
+         * Row-major representation of the 6x6 covariance matrix
+         * The orientation parameters use a fixed-axis representation.
+         * In order, the parameters are:
+         * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+         */
+        double covariance[36];
+      };
+    };
+  };
+};
+
+#endif

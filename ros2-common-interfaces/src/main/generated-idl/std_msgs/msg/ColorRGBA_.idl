@@ -1,0 +1,23 @@
+#ifndef __std_msgs__msg__ColorRGBA__idl__
+#define __std_msgs__msg__ColorRGBA__idl__
+
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="std_msgs::msg::dds_::ColorRGBA_")
+      struct ColorRGBA
+      {
+        float r;
+        float g;
+        float b;
+        float a;
+      };
+    };
+  };
+};
+
+#endif

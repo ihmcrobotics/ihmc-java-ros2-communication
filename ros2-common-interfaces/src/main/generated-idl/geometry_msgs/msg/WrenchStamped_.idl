@@ -1,0 +1,26 @@
+#ifndef __geometry_msgs__msg__WrenchStamped__idl__
+#define __geometry_msgs__msg__WrenchStamped__idl__
+
+#include "geometry_msgs/msg/./Wrench_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * A wrench with reference coordinate frame and timestamp
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::WrenchStamped_")
+      struct WrenchStamped
+      {
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::Wrench wrench;
+      };
+    };
+  };
+};
+
+#endif

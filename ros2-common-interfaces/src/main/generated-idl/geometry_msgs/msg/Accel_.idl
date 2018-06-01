@@ -1,0 +1,25 @@
+#ifndef __geometry_msgs__msg__Accel__idl__
+#define __geometry_msgs__msg__Accel__idl__
+
+#include "geometry_msgs/msg/./Vector3_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="geometry_msgs::msg::dds_::Accel_")
+      struct Accel
+      {
+        /**
+         * This expresses acceleration in free space broken into its linear and angular parts.
+         */
+        geometry_msgs::msg::dds::Vector3 linear;
+        geometry_msgs::msg::dds::Vector3 angular;
+      };
+    };
+  };
+};
+
+#endif

@@ -1,0 +1,42 @@
+#ifndef __tf2_msgs__msg__TF2Error__idl__
+#define __tf2_msgs__msg__TF2Error__idl__
+
+module tf2_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      const octet NO_ERROR =
+      0;
+
+      const octet LOOKUP_ERROR =
+      1;
+
+      const octet CONNECTIVITY_ERROR =
+      2;
+
+      const octet EXTRAPOLATION_ERROR =
+      3;
+
+      const octet INVALID_ARGUMENT_ERROR =
+      4;
+
+      const octet TIMEOUT_ERROR =
+      5;
+
+      const octet TRANSFORM_ERROR =
+      6;
+
+
+      @TypeCode(type="tf2_msgs::msg::dds_::TF2Error_")
+      struct TF2Error
+      {
+        octet error;
+        string error_string;
+      };
+    };
+  };
+};
+
+#endif

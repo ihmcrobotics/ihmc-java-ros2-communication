@@ -1,0 +1,24 @@
+#ifndef __geometry_msgs__msg__Polygon__idl__
+#define __geometry_msgs__msg__Polygon__idl__
+
+#include "geometry_msgs/msg/./Point32_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * A specification of a polygon where the first and last points are assumed to be connected
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::Polygon_")
+      struct Polygon
+      {
+        sequence<geometry_msgs::msg::dds::Point32> points;
+      };
+    };
+  };
+};
+
+#endif

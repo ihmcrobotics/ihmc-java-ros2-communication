@@ -1,0 +1,31 @@
+#ifndef __geometry_msgs__msg__AccelWithCovariance__idl__
+#define __geometry_msgs__msg__AccelWithCovariance__idl__
+
+#include "geometry_msgs/msg/./Accel_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This expresses acceleration in free space with uncertainty.
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::AccelWithCovariance_")
+      struct AccelWithCovariance
+      {
+        geometry_msgs::msg::dds::Accel accel;
+        /**
+         * Row-major representation of the 6x6 covariance matrix
+         * The orientation parameters use a fixed-axis representation.
+         * In order, the parameters are:
+         * (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+         */
+        double covariance[36];
+      };
+    };
+  };
+};
+
+#endif

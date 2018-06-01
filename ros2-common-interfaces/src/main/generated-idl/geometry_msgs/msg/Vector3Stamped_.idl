@@ -1,0 +1,26 @@
+#ifndef __geometry_msgs__msg__Vector3Stamped__idl__
+#define __geometry_msgs__msg__Vector3Stamped__idl__
+
+#include "geometry_msgs/msg/./Vector3_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This represents a Vector3 with reference coordinate frame and timestamp
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::Vector3Stamped_")
+      struct Vector3Stamped
+      {
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::Vector3 vector;
+      };
+    };
+  };
+};
+
+#endif

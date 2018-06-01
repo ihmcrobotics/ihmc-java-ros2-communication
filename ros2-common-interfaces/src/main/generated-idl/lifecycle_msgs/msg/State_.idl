@@ -1,0 +1,70 @@
+#ifndef __lifecycle_msgs__msg__State__idl__
+#define __lifecycle_msgs__msg__State__idl__
+
+module lifecycle_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * These are the primary states
+       * State changes can only be requested
+       * when the node is in one of these states.
+       */
+      const octet PRIMARY_STATE_UNKNOWN =
+      0;
+
+      const octet PRIMARY_STATE_UNCONFIGURED =
+      1;
+
+      const octet PRIMARY_STATE_INACTIVE =
+      2;
+
+      const octet PRIMARY_STATE_ACTIVE =
+      3;
+
+      const octet PRIMARY_STATE_FINALIZED =
+      4;
+
+      /**
+       * Temporary intermediate states
+       * When a transition is requested, the
+       * node changes its state into one
+       * of these states.
+       */
+      const octet TRANSITION_STATE_CONFIGURING =
+      10;
+
+      const octet TRANSITION_STATE_CLEANINGUP =
+      11;
+
+      const octet TRANSITION_STATE_SHUTTINGDOWN =
+      12;
+
+      const octet TRANSITION_STATE_ACTIVATING =
+      13;
+
+      const octet TRANSITION_STATE_DEACTIVATING =
+      14;
+
+      const octet TRANSITION_STATE_ERRORPROCESSING =
+      15;
+
+
+      /**
+       * Primary state definitions
+       * as depicted in
+       * http://design.ros2.org/articles/node_lifecycle.html
+       */
+      @TypeCode(type="lifecycle_msgs::msg::dds_::State_")
+      struct State
+      {
+        octet id;
+        string label;
+      };
+    };
+  };
+};
+
+#endif

@@ -1,0 +1,26 @@
+buildscript {
+   repositories {
+      maven { url "https://plugins.gradle.org/m2/" }
+      mavenLocal()
+   }
+   dependencies {
+      classpath "us.ihmc:ihmc-build:0.13.7"
+   }
+}
+apply plugin: "us.ihmc.ihmc-build"
+apply plugin: "application"
+
+ihmc {
+   loadProductProperties("../group.gradle.properties")
+
+   configureDependencyResolution()
+   resourceDirectory("main", "python")
+   resourceDirectory("test", "generated-idl")
+   resourceDirectory("test", "ros_msgs")
+   configurePublications()
+}
+
+mainDependencies {
+   compile group: "org.glassfish", name: "javax.json", version: "1.0.4"
+   compile group: "org.python", name: "jython-standalone", version: "2.7.1"
+}

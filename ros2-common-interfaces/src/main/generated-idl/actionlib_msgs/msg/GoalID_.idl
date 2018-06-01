@@ -1,0 +1,32 @@
+#ifndef __actionlib_msgs__msg__GoalID__idl__
+#define __actionlib_msgs__msg__GoalID__idl__
+
+#include "builtin_interfaces/msg/./Time_.idl"
+module actionlib_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="actionlib_msgs::msg::dds_::GoalID_")
+      struct GoalID
+      {
+        /**
+         * The stamp should store the time at which this goal was requested.
+         * It is used by an action server when it tries to preempt all
+         * goals that were requested before a certain time
+         */
+        builtin_interfaces::msg::dds::Time stamp;
+        /**
+         * The id provides a way to associate feedback and
+         * result message with specific goal requests. The id
+         * specified must be unique.
+         */
+        string id;
+      };
+    };
+  };
+};
+
+#endif

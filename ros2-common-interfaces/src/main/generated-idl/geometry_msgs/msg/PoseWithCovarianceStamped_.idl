@@ -1,0 +1,26 @@
+#ifndef __geometry_msgs__msg__PoseWithCovarianceStamped__idl__
+#define __geometry_msgs__msg__PoseWithCovarianceStamped__idl__
+
+#include "geometry_msgs/msg/./PoseWithCovariance_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This expresses an estimated pose with a reference coordinate frame and timestamp
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::PoseWithCovarianceStamped_")
+      struct PoseWithCovarianceStamped
+      {
+        std_msgs::msg::dds::Header header;
+        geometry_msgs::msg::dds::PoseWithCovariance pose;
+      };
+    };
+  };
+};
+
+#endif

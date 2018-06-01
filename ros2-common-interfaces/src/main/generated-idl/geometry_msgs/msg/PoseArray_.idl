@@ -1,0 +1,26 @@
+#ifndef __geometry_msgs__msg__PoseArray__idl__
+#define __geometry_msgs__msg__PoseArray__idl__
+
+#include "geometry_msgs/msg/./Pose_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * An array of poses with a header for global reference.
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::PoseArray_")
+      struct PoseArray
+      {
+        std_msgs::msg::dds::Header header;
+        sequence<geometry_msgs::msg::dds::Pose> poses;
+      };
+    };
+  };
+};
+
+#endif

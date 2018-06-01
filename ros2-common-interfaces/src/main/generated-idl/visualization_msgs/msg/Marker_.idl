@@ -1,0 +1,145 @@
+#ifndef __visualization_msgs__msg__Marker__idl__
+#define __visualization_msgs__msg__Marker__idl__
+
+#include "builtin_interfaces/msg/./Duration_.idl"
+#include "geometry_msgs/msg/./Point_.idl"
+#include "geometry_msgs/msg/./Pose_.idl"
+#include "geometry_msgs/msg/./Vector3_.idl"
+#include "std_msgs/msg/./ColorRGBA_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module visualization_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      const octet ARROW =
+      0;
+
+      const octet CUBE =
+      1;
+
+      const octet SPHERE =
+      2;
+
+      const octet CYLINDER =
+      3;
+
+      const octet LINE_STRIP =
+      4;
+
+      const octet LINE_LIST =
+      5;
+
+      const octet CUBE_LIST =
+      6;
+
+      const octet SPHERE_LIST =
+      7;
+
+      const octet POINTS =
+      8;
+
+      const octet TEXT_VIEW_FACING =
+      9;
+
+      const octet MESH_RESOURCE =
+      10;
+
+      const octet TRIANGLE_LIST =
+      11;
+
+      const octet ADD =
+      0;
+
+      const octet MODIFY =
+      0;
+
+      const octet DELETE =
+      2;
+
+      const octet DELETEALL =
+      3;
+
+
+      /**
+       * See:
+       * - http://www.ros.org/wiki/rviz/DisplayTypes/Marker
+       * - http://www.ros.org/wiki/rviz/Tutorials/Markers%3A%20Basic%20Shapes
+       * 
+       * for more information on using this message with rviz.
+       */
+      @TypeCode(type="visualization_msgs::msg::dds_::Marker_")
+      struct Marker
+      {
+        /**
+         * Header for timestamp and frame id.
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * Namespace in which to place the object.
+         * Used in conjunction with id to create a unique name for the object.
+         */
+        string ns;
+        /**
+         * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
+         */
+        long id;
+        /**
+         * Type of object.
+         */
+        long type;
+        /**
+         * Action to take; one of:
+         * - 0 add/modify an object
+         * - 1 (deprecated)
+         * - 2 deletes an object
+         * - 3 deletes all objects
+         */
+        long action;
+        /**
+         * Pose of the object with respect the frame_id specified in the header.
+         */
+        geometry_msgs::msg::dds::Pose pose;
+        /**
+         * Scale of the object; 1,1,1 means default (usually 1 meter square).
+         */
+        geometry_msgs::msg::dds::Vector3 scale;
+        /**
+         * Color of the object; in the range: [0.0-1.0]
+         */
+        std_msgs::msg::dds::ColorRGBA color;
+        /**
+         * How long the object should last before being automatically deleted.
+         * 0 indicates forever.
+         */
+        builtin_interfaces::msg::dds::Duration lifetime;
+        /**
+         * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
+         */
+        boolean frame_locked;
+        /**
+         * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
+         */
+        sequence<geometry_msgs::msg::dds::Point> points;
+        /**
+         * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
+         * The number of colors provided must either be 0 or equal to the number of points provided.
+         * NOTE: alpha is not yet used
+         */
+        sequence<std_msgs::msg::dds::ColorRGBA> colors;
+        /**
+         * Only used for text markers
+         */
+        string text;
+        /**
+         * Only used for MESH_RESOURCE markers.
+         */
+        string mesh_resource;
+        boolean mesh_use_embedded_materials;
+      };
+    };
+  };
+};
+
+#endif

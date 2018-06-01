@@ -1,0 +1,32 @@
+#ifndef __shape_msgs__msg__Mesh__idl__
+#define __shape_msgs__msg__Mesh__idl__
+
+#include "geometry_msgs/msg/./Point_.idl"
+#include "shape_msgs/msg/./MeshTriangle_.idl"
+module shape_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Definition of a mesh.
+       */
+      @TypeCode(type="shape_msgs::msg::dds_::Mesh_")
+      struct Mesh
+      {
+        /**
+         * List of triangles; the index values refer to positions in vertices[].
+         */
+        sequence<shape_msgs::msg::dds::MeshTriangle> triangles;
+        /**
+         * The actual vertices that make up the mesh.
+         */
+        sequence<geometry_msgs::msg::dds::Point> vertices;
+      };
+    };
+  };
+};
+
+#endif

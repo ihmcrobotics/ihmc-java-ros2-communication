@@ -1,0 +1,27 @@
+#ifndef __diagnostic_msgs__msg__KeyValue__idl__
+#define __diagnostic_msgs__msg__KeyValue__idl__
+
+module diagnostic_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="diagnostic_msgs::msg::dds_::KeyValue_")
+      struct KeyValue
+      {
+        /**
+         * What to label this value when viewing.
+         */
+        string key;
+        /**
+         * A value to track over time.
+         */
+        string value;
+      };
+    };
+  };
+};
+
+#endif

@@ -1,0 +1,38 @@
+#ifndef __visualization_msgs__msg__InteractiveMarkerInit__idl__
+#define __visualization_msgs__msg__InteractiveMarkerInit__idl__
+
+#include "visualization_msgs/msg/./InteractiveMarker_.idl"
+module visualization_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="visualization_msgs::msg::dds_::InteractiveMarkerInit_")
+      struct InteractiveMarkerInit
+      {
+        /**
+         * Identifying string. Must be unique in the topic namespace
+         * that this server works on.
+         */
+        string server_id;
+        /**
+         * Sequence number.
+         * The client will use this to detect if it has missed a subsequent
+         * update.  Every update message will have the same sequence number as
+         * an init message.  Clients will likely want to unsubscribe from the
+         * init topic after a successful initialization to avoid receiving
+         * duplicate data.
+         */
+        unsigned long long seq_num;
+        /**
+         * All markers.
+         */
+        sequence<visualization_msgs::msg::dds::InteractiveMarker> markers;
+      };
+    };
+  };
+};
+
+#endif

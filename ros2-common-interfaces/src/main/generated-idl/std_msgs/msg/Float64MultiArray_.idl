@@ -1,0 +1,32 @@
+#ifndef __std_msgs__msg__Float64MultiArray__idl__
+#define __std_msgs__msg__Float64MultiArray__idl__
+
+#include "std_msgs/msg/./MultiArrayLayout_.idl"
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Please look at the MultiArrayLayout message definition for
+       * documentation on all multiarrays.
+       */
+      @TypeCode(type="std_msgs::msg::dds_::Float64MultiArray_")
+      struct Float64MultiArray
+      {
+        /**
+         * specification of data layout
+         */
+        std_msgs::msg::dds::MultiArrayLayout layout;
+        /**
+         * array of data
+         */
+        sequence<double> data;
+      };
+    };
+  };
+};
+
+#endif

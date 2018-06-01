@@ -1,0 +1,94 @@
+#ifndef __visualization_msgs__msg__ImageMarker__idl__
+#define __visualization_msgs__msg__ImageMarker__idl__
+
+#include "builtin_interfaces/msg/./Duration_.idl"
+#include "geometry_msgs/msg/./Point_.idl"
+#include "std_msgs/msg/./ColorRGBA_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module visualization_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      const octet CIRCLE =
+      0;
+
+      const octet LINE_STRIP =
+      1;
+
+      const octet LINE_LIST =
+      2;
+
+      const octet POLYGON =
+      3;
+
+      const octet POINTS =
+      4;
+
+      const octet ADD =
+      0;
+
+      const octet REMOVE =
+      1;
+
+
+      @TypeCode(type="visualization_msgs::msg::dds_::ImageMarker_")
+      struct ImageMarker
+      {
+        std_msgs::msg::dds::Header header;
+        /**
+         * Namespace which is used with the id to form a unique id.
+         */
+        string ns;
+        /**
+         * Unique id within the namespace.
+         */
+        long id;
+        /**
+         * One of the above types, e.g. CIRCLE, LINE_STRIP, etc.
+         */
+        long type;
+        /**
+         * Either ADD or REMOVE.
+         */
+        long action;
+        /**
+         * Two-dimensional coordinate position, in pixel-coordinates.
+         */
+        geometry_msgs::msg::dds::Point position;
+        /**
+         * The scale of the object, e.g. the diameter for a CIRCLE.
+         */
+        float scale;
+        /**
+         * The outline color of the marker.
+         */
+        std_msgs::msg::dds::ColorRGBA outline_color;
+        /**
+         * Whether or not to fill in the shape with color.
+         */
+        octet filled;
+        /**
+         * Fill color; in the range: [0.0-1.0]
+         */
+        std_msgs::msg::dds::ColorRGBA fill_color;
+        /**
+         * How long the object should last before being automatically deleted.
+         * 0 indicates forever.
+         */
+        builtin_interfaces::msg::dds::Duration lifetime;
+        /**
+         * Coordinates in 2D in pixel coords. Used for LINE_STRIP, LINE_LIST, POINTS, etc.
+         */
+        sequence<geometry_msgs::msg::dds::Point> points;
+        /**
+         * The color for each line, point, etc. in the points field.
+         */
+        sequence<std_msgs::msg::dds::ColorRGBA> outline_colors;
+      };
+    };
+  };
+};
+
+#endif

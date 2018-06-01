@@ -1,0 +1,64 @@
+#ifndef __sensor_msgs__msg__PointCloud2__idl__
+#define __sensor_msgs__msg__PointCloud2__idl__
+
+#include "sensor_msgs/msg/./PointField_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This message holds a collection of N-dimensional points, which may
+       * contain additional information such as normals, intensity, etc. The
+       * point data is stored as a binary blob, its layout described by the
+       * contents of the "fields" array.
+       * The point cloud data may be organized 2d (image-like) or 1d (unordered).
+       * Point clouds organized as 2d images may be produced by camera depth sensors
+       * such as stereo or time-of-flight.
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::PointCloud2_")
+      struct PointCloud2
+      {
+        /**
+         * Time of sensor data acquisition, and the coordinate frame ID (for 3d points).
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * 2D structure of the point cloud. If the cloud is unordered, height is
+         * 1 and width is the length of the point cloud.
+         */
+        unsigned long height;
+        unsigned long width;
+        /**
+         * Describes the channels and their layout in the binary data blob.
+         */
+        sequence<sensor_msgs::msg::dds::PointField> fields;
+        /**
+         * Is this data bigendian?
+         */
+        boolean is_bigendian;
+        /**
+         * Length of a point in bytes
+         */
+        unsigned long point_step;
+        /**
+         * Length of a row in bytes
+         */
+        unsigned long row_step;
+        /**
+         * Actual point data, size is (row_step*height)
+         */
+        sequence<octet> data;
+        /**
+         * True if there are no invalid points
+         */
+        boolean is_dense;
+      };
+    };
+  };
+};
+
+#endif

@@ -1,0 +1,34 @@
+#ifndef __nav_msgs__msg__OccupancyGrid__idl__
+#define __nav_msgs__msg__OccupancyGrid__idl__
+
+#include "nav_msgs/msg/./MapMetaData_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module nav_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This represents a 2-D grid map, in which each cell represents the probability of occupancy.
+       */
+      @TypeCode(type="nav_msgs::msg::dds_::OccupancyGrid_")
+      struct OccupancyGrid
+      {
+        std_msgs::msg::dds::Header header;
+        /**
+         * MetaData for the map
+         */
+        nav_msgs::msg::dds::MapMetaData info;
+        /**
+         * The map data, in row-major order, starting with (0,0).  Occupancy
+         * probabilities are in the range [0,100].  Unknown is -1.
+         */
+        sequence<octet> data;
+      };
+    };
+  };
+};
+
+#endif

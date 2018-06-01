@@ -1,0 +1,27 @@
+#ifndef __actionlib_msgs__msg__GoalStatusArray__idl__
+#define __actionlib_msgs__msg__GoalStatusArray__idl__
+
+#include "actionlib_msgs/msg/./GoalStatus_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module actionlib_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="actionlib_msgs::msg::dds_::GoalStatusArray_")
+      struct GoalStatusArray
+      {
+        /**
+         * Stores the statuses for goals that are currently being tracked
+         * by an action server
+         */
+        std_msgs::msg::dds::Header header;
+        sequence<actionlib_msgs::msg::dds::GoalStatus> status_list;
+      };
+    };
+  };
+};
+
+#endif

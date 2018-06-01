@@ -1,0 +1,44 @@
+buildscript {
+   repositories {
+      maven { url "https://plugins.gradle.org/m2/" }
+      mavenLocal()
+   }
+   dependencies {
+      classpath "us.ihmc:ihmc-build:0.13.7"
+   }
+}
+apply plugin: "us.ihmc.ihmc-build"
+//apply plugin: "application"
+
+ihmc {
+   loadProductProperties("../group.gradle.properties")
+
+   configureDependencyResolution()
+   javaDirectory("main", "java-generated")
+   resourceDirectory("test", "generated-idl")
+   resourceDirectory("test", "custom-idl")
+   javaDirectory("test", "generated-java")
+   resourceDirectory("test", "ros_msgs")
+   configurePublications()
+}
+
+dependencies {
+   compile gradleApi()
+}
+
+mainDependencies {
+   compile group: "us.ihmc", name: "ihmc-pub-sub-generator", version: "0.7.0"
+   compile group: "us.ihmc", name: "ros2-msg-to-idl-generator", version: version
+}
+
+testDependencies {
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.7.0"
+}
+
+task show() {
+   doLast {
+      project.gradle.includedBuilds.each { println it }
+      buildscript.configurations.classpath.each { println "Buildscript: " + it }
+      configurations.compile.each { println "Compile: " + it }
+   }
+}

@@ -1,0 +1,26 @@
+#ifndef __rcl_interfaces__msg__Parameter__idl__
+#define __rcl_interfaces__msg__Parameter__idl__
+
+#include "rcl_interfaces/msg/./ParameterValue_.idl"
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This is the message to communicate a parameter.
+       * It is an open struct with an enum in the descriptor to select which value is active.
+       */
+      @TypeCode(type="rcl_interfaces::msg::dds_::Parameter_")
+      struct Parameter
+      {
+        string name;
+        rcl_interfaces::msg::dds::ParameterValue value;
+      };
+    };
+  };
+};
+
+#endif

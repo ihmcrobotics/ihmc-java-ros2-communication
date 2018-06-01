@@ -1,0 +1,20 @@
+#ifndef __std_msgs__msg__Int32__idl__
+#define __std_msgs__msg__Int32__idl__
+
+module std_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="std_msgs::msg::dds_::Int32_")
+      struct Int32
+      {
+        long data;
+      };
+    };
+  };
+};
+
+#endif

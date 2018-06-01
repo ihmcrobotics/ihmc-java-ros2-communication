@@ -1,0 +1,23 @@
+#ifndef __shape_msgs__msg__MeshTriangle__idl__
+#define __shape_msgs__msg__MeshTriangle__idl__
+
+module shape_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Definition of a triangle's vertices.
+       */
+      @TypeCode(type="shape_msgs::msg::dds_::MeshTriangle_")
+      struct MeshTriangle
+      {
+        unsigned_long vertex_indices[3];
+      };
+    };
+  };
+};
+
+#endif

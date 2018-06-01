@@ -1,0 +1,25 @@
+#ifndef __geometry_msgs__msg__Wrench__idl__
+#define __geometry_msgs__msg__Wrench__idl__
+
+#include "geometry_msgs/msg/./Vector3_.idl"
+module geometry_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This represents force in free space, separated into its linear and angular parts.
+       */
+      @TypeCode(type="geometry_msgs::msg::dds_::Wrench_")
+      struct Wrench
+      {
+        geometry_msgs::msg::dds::Vector3 force;
+        geometry_msgs::msg::dds::Vector3 torque;
+      };
+    };
+  };
+};
+
+#endif

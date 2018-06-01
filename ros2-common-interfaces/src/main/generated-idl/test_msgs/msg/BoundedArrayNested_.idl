@@ -1,0 +1,21 @@
+#ifndef __test_msgs__msg__BoundedArrayNested__idl__
+#define __test_msgs__msg__BoundedArrayNested__idl__
+
+#include "test_msgs/msg/./Primitives_.idl"
+module test_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="test_msgs::msg::dds_::BoundedArrayNested_")
+      struct BoundedArrayNested
+      {
+        sequence<test_msgs::msg::dds::Primitives, 4> primitive_values;
+      };
+    };
+  };
+};
+
+#endif

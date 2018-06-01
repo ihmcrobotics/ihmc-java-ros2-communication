@@ -1,0 +1,37 @@
+#ifndef __sensor_msgs__msg__TimeReference__idl__
+#define __sensor_msgs__msg__TimeReference__idl__
+
+#include "builtin_interfaces/msg/./Time_.idl"
+#include "std_msgs/msg/./Header_.idl"
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * Measurement from an external time source not actively synchronized with the system clock.
+       * frame_id is not used
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::TimeReference_")
+      struct TimeReference
+      {
+        /**
+         * stamp is system time for which measurement was valid
+         */
+        std_msgs::msg::dds::Header header;
+        /**
+         * corresponding time from this external source
+         */
+        builtin_interfaces::msg::dds::Time time_ref;
+        /**
+         * (optional) name of time source
+         */
+        string source;
+      };
+    };
+  };
+};
+
+#endif

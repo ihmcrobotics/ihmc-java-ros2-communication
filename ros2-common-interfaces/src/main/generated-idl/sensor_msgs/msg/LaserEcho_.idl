@@ -1,0 +1,27 @@
+#ifndef __sensor_msgs__msg__LaserEcho__idl__
+#define __sensor_msgs__msg__LaserEcho__idl__
+
+module sensor_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This message is a submessage of MultiEchoLaserScan and is not intended
+       * to be used separately.
+       */
+      @TypeCode(type="sensor_msgs::msg::dds_::LaserEcho_")
+      struct LaserEcho
+      {
+        /**
+         * Multiple values of ranges or intensities.
+         */
+        sequence<float> echoes;
+      };
+    };
+  };
+};
+
+#endif

@@ -1,0 +1,28 @@
+#ifndef __rcl_interfaces__msg__ParameterEventDescriptors__idl__
+#define __rcl_interfaces__msg__ParameterEventDescriptors__idl__
+
+#include "rcl_interfaces/msg/./ParameterDescriptor_.idl"
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * This message contains descriptors of a parameter event.
+       * It was an atomic update.
+       * A specific parameter name can only be in one of the three sets.
+       */
+      @TypeCode(type="rcl_interfaces::msg::dds_::ParameterEventDescriptors_")
+      struct ParameterEventDescriptors
+      {
+        sequence<rcl_interfaces::msg::dds::ParameterDescriptor> new_parameters;
+        sequence<rcl_interfaces::msg::dds::ParameterDescriptor> changed_parameters;
+        sequence<rcl_interfaces::msg::dds::ParameterDescriptor> deleted_parameters;
+      };
+    };
+  };
+};
+
+#endif
