@@ -21,3 +21,4 @@ swig/FastRTPS/generated/us/ihmc/rtps/impl/fastRTPS/FastRTPSJAVA_wrap.cxx
 **/*\$py.class
 **/target
 **/*.pyc
+.vscode/
