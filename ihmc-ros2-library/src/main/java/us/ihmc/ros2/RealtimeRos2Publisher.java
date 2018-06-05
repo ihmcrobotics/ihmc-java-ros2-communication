@@ -15,8 +15,6 @@
  */
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
 import us.ihmc.concurrent.ConcurrentRingBuffer;
 import us.ihmc.pubsub.TopicDataType;
 
@@ -77,7 +75,7 @@ public class RealtimeRos2Publisher<T>
             {
                rosPublisher.publish(next);
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                e.printStackTrace();
             }
