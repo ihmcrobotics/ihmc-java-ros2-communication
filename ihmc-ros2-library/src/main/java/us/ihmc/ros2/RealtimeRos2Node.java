@@ -223,4 +223,14 @@ public class RealtimeRos2Node
          publishers.get(i).spin();
       }
    }
+
+   /**
+    * Stop the realtime periodic thread.
+    */
+   public void stopSpinning()
+   {
+      scheduler.shutdown();
+      startupLock.lock();
+      spinning = false;
+   }
 }
