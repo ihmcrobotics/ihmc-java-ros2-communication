@@ -4,7 +4,7 @@ import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
 
 @FunctionalInterface
-public interface SubscriptionMatchedListener
+public interface SubscriptionMatchedListener<T>
 {
    /**
     * Virtual method to be called when the subscriber is matched with a new Writer (or unmatched); i.e., when a writer publishing in the same topic is discovered
@@ -12,5 +12,5 @@ public interface SubscriptionMatchedListener
     * @param subscriber
     * @param info
     */
-   public void onSubscriptionMatched(Subscriber subscriber, MatchingInfo info);
+   public void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info);
 }

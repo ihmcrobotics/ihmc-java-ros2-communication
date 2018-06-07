@@ -144,7 +144,7 @@ class Ros2NodeBasics
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener newMessageListener, String topicName) throws IOException
+   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName) throws IOException
    {
       return createSubscription(topicDataType, newMessageListener, topicName, Ros2QosProfile.DEFAULT());
    }
@@ -160,10 +160,10 @@ class Ros2NodeBasics
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener newMessageListener, String topicName,
+   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
                                                      Ros2QosProfile qosProfile) throws IOException
    {
-      return createSubscription(topicDataType, (SubscriberListener) newMessageListener, topicName, qosProfile);
+      return createSubscription(topicDataType, (SubscriberListener<T>) newMessageListener, topicName, qosProfile);
    }
 
    /**
@@ -179,21 +179,21 @@ class Ros2NodeBasics
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener newMessageListener,
-                                                     SubscriptionMatchedListener subscriptionMatchedListener, String topicName,
+   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
+                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName,
                                                      Ros2QosProfile qosProfile) throws IOException
    {
 
-      return createSubscription(topicDataType, new SubscriberListener()
+      return createSubscription(topicDataType, new SubscriberListener<T>()
       {
          @Override
-         public void onNewDataMessage(Subscriber subscriber)
+         public void onNewDataMessage(Subscriber<T> subscriber)
          {
             newMessageListener.onNewDataMessage(subscriber);
          }
 
          @Override
-         public void onSubscriptionMatched(Subscriber subscriber, MatchingInfo info)
+         public void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info)
          {
             subscriptionMatchedListener.onSubscriptionMatched(subscriber, info);
          }
@@ -209,7 +209,7 @@ class Ros2NodeBasics
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener subscriberListener, String topicName,
+   private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
                                                       Ros2QosProfile qosProfile) throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());

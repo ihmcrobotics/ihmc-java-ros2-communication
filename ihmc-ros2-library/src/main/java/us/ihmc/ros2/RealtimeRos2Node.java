@@ -176,7 +176,7 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener newMessageListener) throws IOException
+   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener) throws IOException
    {
       createCallbackSubscription(topicDataType, topicName, newMessageListener, Ros2QosProfile.DEFAULT());
    }
@@ -192,7 +192,7 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener newMessageListener, Ros2QosProfile qosProfile)
+   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener, Ros2QosProfile qosProfile)
          throws IOException
    {
       node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
