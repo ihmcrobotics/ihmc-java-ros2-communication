@@ -29,7 +29,7 @@ import us.ihmc.pubsub.subscriber.Subscriber;
  *
  * @param <T>
  */
-class RealtimeRos2SubscriptionListener<T> implements NewMessageListener
+class RealtimeRos2SubscriptionListener<T> implements NewMessageListener<T>
 {
    private final T data;
    private final ConcurrentRingBuffer<T> messageQueue;
@@ -82,7 +82,7 @@ class RealtimeRos2SubscriptionListener<T> implements NewMessageListener
    }
    
    @Override
-   public void onNewDataMessage(Subscriber subscriber)
+   public void onNewDataMessage(Subscriber<T> subscriber)
    {
       if (subscriber.takeNextData(data, null))
       {
@@ -96,7 +96,7 @@ class RealtimeRos2SubscriptionListener<T> implements NewMessageListener
    }
 
    @Override
-   public void onSubscriptionMatched(Subscriber subscriber, MatchingInfo info)
+   public void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info)
    {
 
    }
