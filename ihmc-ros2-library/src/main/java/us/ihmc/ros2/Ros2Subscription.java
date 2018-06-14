@@ -29,9 +29,9 @@ import us.ihmc.pubsub.subscriber.Subscriber;
 public class Ros2Subscription<T>
 {
    private final Domain domain;
-   private final Subscriber subscriber;
+   private final Subscriber<T> subscriber;
    
-   Ros2Subscription(Domain domain, Subscriber subscriber)
+   Ros2Subscription(Domain domain, Subscriber<T> subscriber)
    {
       this.domain = domain;
       this.subscriber = subscriber;

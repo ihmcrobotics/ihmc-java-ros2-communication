@@ -15,14 +15,13 @@
  */
 package us.ihmc.ros2.example;
 
-import std_msgs.msg.dds.Int32PubSubType;
+import java.io.IOException;
+
 import std_msgs.msg.dds.Int64;
 import std_msgs.msg.dds.Int64PubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.Ros2Node;
 import us.ihmc.ros2.Ros2Publisher;
-
-import java.io.IOException;
 
 /**
  * Java version of the ROS2 demo listener.
@@ -39,7 +38,7 @@ public class NonRealtimeRos2PublishSubscribeExample
    public static void main(String[] args) throws IOException, InterruptedException
    {
       Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2PublishSubscribeExample");
-      node.createSubscription(new Int32PubSubType(), subscriber -> {
+      node.createSubscription(new Int64PubSubType(), subscriber -> {
          Int64 message = new Int64();
          if (subscriber.takeNextData(message, null))
          {
