@@ -25,7 +25,7 @@ public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> imp
    {
       header_ = new std_msgs.msg.dds.Header();
       joint_names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
-      points_ = new us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint> (100, trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint.class, new trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPointPubSubType());
+      points_ = new us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint> (100, new trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPointPubSubType());
 
    }
 

@@ -19,9 +19,9 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
 
    public ParameterEvent()
    {
-      new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, rcl_interfaces.msg.dds.Parameter.class, new rcl_interfaces.msg.dds.ParameterPubSubType());
-      changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, rcl_interfaces.msg.dds.Parameter.class, new rcl_interfaces.msg.dds.ParameterPubSubType());
-      deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, rcl_interfaces.msg.dds.Parameter.class, new rcl_interfaces.msg.dds.ParameterPubSubType());
+      new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
+      changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
+      deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
 
    }
 

@@ -74,8 +74,8 @@ public class ImageMarker extends Packet<ImageMarker> implements Settable<ImageMa
       outline_color_ = new std_msgs.msg.dds.ColorRGBA();
       fill_color_ = new std_msgs.msg.dds.ColorRGBA();
       lifetime_ = new builtin_interfaces.msg.dds.Duration();
-      points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, us.ihmc.euclid.tuple3D.Point3D.class, new geometry_msgs.msg.dds.PointPubSubType());
-      outline_colors_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> (100, std_msgs.msg.dds.ColorRGBA.class, new std_msgs.msg.dds.ColorRGBAPubSubType());
+      points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, new geometry_msgs.msg.dds.PointPubSubType());
+      outline_colors_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> (100, new std_msgs.msg.dds.ColorRGBAPubSubType());
 
    }
 

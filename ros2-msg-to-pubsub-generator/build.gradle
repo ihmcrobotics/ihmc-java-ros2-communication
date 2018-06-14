@@ -27,12 +27,12 @@ dependencies {
 }
 
 mainDependencies {
-   compile group: "us.ihmc", name: "ihmc-pub-sub-generator", version: "0.8.2"
+   compile group: "us.ihmc", name: "ihmc-pub-sub-generator", version: "0.8.3"
    compile group: "us.ihmc", name: "ros2-msg-to-idl-generator", version: version
 }
 
 testDependencies {
-   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.8.2"
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.8.3"
 }
 
 task show() {

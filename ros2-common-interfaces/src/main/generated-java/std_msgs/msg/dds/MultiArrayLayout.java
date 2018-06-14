@@ -24,7 +24,7 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
 
    public MultiArrayLayout()
    {
-      dim_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.MultiArrayDimension> (100, std_msgs.msg.dds.MultiArrayDimension.class, new std_msgs.msg.dds.MultiArrayDimensionPubSubType());
+      dim_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.MultiArrayDimension> (100, new std_msgs.msg.dds.MultiArrayDimensionPubSubType());
 
    }
 

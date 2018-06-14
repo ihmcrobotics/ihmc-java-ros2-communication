@@ -105,8 +105,8 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       scale_ = new us.ihmc.euclid.tuple3D.Vector3D();
       color_ = new std_msgs.msg.dds.ColorRGBA();
       lifetime_ = new builtin_interfaces.msg.dds.Duration();
-      points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, us.ihmc.euclid.tuple3D.Point3D.class, new geometry_msgs.msg.dds.PointPubSubType());
-      colors_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> (100, std_msgs.msg.dds.ColorRGBA.class, new std_msgs.msg.dds.ColorRGBAPubSubType());
+      points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, new geometry_msgs.msg.dds.PointPubSubType());
+      colors_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> (100, new std_msgs.msg.dds.ColorRGBAPubSubType());
       text_ = new java.lang.StringBuilder(255);
       mesh_resource_ = new java.lang.StringBuilder(255);
 

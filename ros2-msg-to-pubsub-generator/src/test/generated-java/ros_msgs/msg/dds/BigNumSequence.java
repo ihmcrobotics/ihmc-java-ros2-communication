@@ -12,7 +12,7 @@ public class BigNumSequence extends Packet<BigNumSequence> implements Settable<B
 
    public BigNumSequence()
    {
-      large_sequence_ = new us.ihmc.idl.IDLSequence.Object<ros_msgs.msg.dds.Num> (10000, ros_msgs.msg.dds.Num.class, new ros_msgs.msg.dds.NumPubSubType());
+      large_sequence_ = new us.ihmc.idl.IDLSequence.Object<ros_msgs.msg.dds.Num> (100, new ros_msgs.msg.dds.NumPubSubType());
 
    }
 

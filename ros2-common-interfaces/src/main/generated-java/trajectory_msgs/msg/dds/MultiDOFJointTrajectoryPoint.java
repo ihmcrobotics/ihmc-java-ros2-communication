@@ -24,9 +24,9 @@ public class MultiDOFJointTrajectoryPoint extends Packet<MultiDOFJointTrajectory
 
    public MultiDOFJointTrajectoryPoint()
    {
-      transforms_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> (100, us.ihmc.euclid.transform.QuaternionBasedTransform.class, new geometry_msgs.msg.dds.TransformPubSubType());
-      velocities_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> (100, geometry_msgs.msg.dds.Twist.class, new geometry_msgs.msg.dds.TwistPubSubType());
-      accelerations_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> (100, geometry_msgs.msg.dds.Twist.class, new geometry_msgs.msg.dds.TwistPubSubType());
+      transforms_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> (100, new geometry_msgs.msg.dds.TransformPubSubType());
+      velocities_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> (100, new geometry_msgs.msg.dds.TwistPubSubType());
+      accelerations_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> (100, new geometry_msgs.msg.dds.TwistPubSubType());
       time_from_start_ = new builtin_interfaces.msg.dds.Duration();
 
    }
