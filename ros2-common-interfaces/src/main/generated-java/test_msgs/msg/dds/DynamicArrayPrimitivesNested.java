@@ -12,7 +12,7 @@ public class DynamicArrayPrimitivesNested extends Packet<DynamicArrayPrimitivesN
 
    public DynamicArrayPrimitivesNested()
    {
-      dynamic_array_primitive_values_ = new us.ihmc.idl.IDLSequence.Object<test_msgs.msg.dds.DynamicArrayPrimitives> (100, test_msgs.msg.dds.DynamicArrayPrimitives.class, new test_msgs.msg.dds.DynamicArrayPrimitivesPubSubType());
+      dynamic_array_primitive_values_ = new us.ihmc.idl.IDLSequence.Object<test_msgs.msg.dds.DynamicArrayPrimitives> (100, new test_msgs.msg.dds.DynamicArrayPrimitivesPubSubType());
 
    }
 

@@ -22,8 +22,8 @@ public class Mesh extends Packet<Mesh> implements Settable<Mesh>, EpsilonCompara
 
    public Mesh()
    {
-      triangles_ = new us.ihmc.idl.IDLSequence.Object<shape_msgs.msg.dds.MeshTriangle> (100, shape_msgs.msg.dds.MeshTriangle.class, new shape_msgs.msg.dds.MeshTrianglePubSubType());
-      vertices_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, us.ihmc.euclid.tuple3D.Point3D.class, new geometry_msgs.msg.dds.PointPubSubType());
+      triangles_ = new us.ihmc.idl.IDLSequence.Object<shape_msgs.msg.dds.MeshTriangle> (100, new shape_msgs.msg.dds.MeshTrianglePubSubType());
+      vertices_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, new geometry_msgs.msg.dds.PointPubSubType());
 
    }
 

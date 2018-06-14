@@ -55,7 +55,7 @@ public class PointCloud2 extends Packet<PointCloud2> implements Settable<PointCl
    public PointCloud2()
    {
       header_ = new std_msgs.msg.dds.Header();
-      fields_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> (100, sensor_msgs.msg.dds.PointField.class, new sensor_msgs.msg.dds.PointFieldPubSubType());
+      fields_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.PointField> (100, new sensor_msgs.msg.dds.PointFieldPubSubType());
       data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
 
 

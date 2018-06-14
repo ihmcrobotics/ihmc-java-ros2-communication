@@ -12,7 +12,7 @@ public class BoundedArrayNested extends Packet<BoundedArrayNested> implements Se
 
    public BoundedArrayNested()
    {
-      primitive_values_ = new us.ihmc.idl.IDLSequence.Object<test_msgs.msg.dds.Primitives> (4, test_msgs.msg.dds.Primitives.class, new test_msgs.msg.dds.PrimitivesPubSubType());
+      primitive_values_ = new us.ihmc.idl.IDLSequence.Object<test_msgs.msg.dds.Primitives> (4, new test_msgs.msg.dds.PrimitivesPubSubType());
 
    }
 

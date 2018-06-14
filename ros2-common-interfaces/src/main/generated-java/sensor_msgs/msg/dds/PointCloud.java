@@ -31,8 +31,8 @@ public class PointCloud extends Packet<PointCloud> implements Settable<PointClou
    public PointCloud()
    {
       header_ = new std_msgs.msg.dds.Header();
-      points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> (100, us.ihmc.euclid.tuple3D.Point3D32.class, new geometry_msgs.msg.dds.Point32PubSubType());
-      channels_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> (100, sensor_msgs.msg.dds.ChannelFloat32.class, new sensor_msgs.msg.dds.ChannelFloat32PubSubType());
+      points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> (100, new geometry_msgs.msg.dds.Point32PubSubType());
+      channels_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.ChannelFloat32> (100, new sensor_msgs.msg.dds.ChannelFloat32PubSubType());
 
    }
 

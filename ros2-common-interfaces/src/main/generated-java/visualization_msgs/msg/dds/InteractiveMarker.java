@@ -49,8 +49,8 @@ public class InteractiveMarker extends Packet<InteractiveMarker> implements Sett
       pose_ = new us.ihmc.euclid.geometry.Pose3D();
       name_ = new java.lang.StringBuilder(255);
       description_ = new java.lang.StringBuilder(255);
-      menu_entries_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry> (100, visualization_msgs.msg.dds.MenuEntry.class, new visualization_msgs.msg.dds.MenuEntryPubSubType());
-      controls_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl> (100, visualization_msgs.msg.dds.InteractiveMarkerControl.class, new visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType());
+      menu_entries_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.MenuEntry> (100, new visualization_msgs.msg.dds.MenuEntryPubSubType());
+      controls_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerControl> (100, new visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType());
 
    }
 
