@@ -4,7 +4,7 @@ ROS2 messaging for Java.
 
 ## Introduction
 
-This library builds on [IHMC Pub Sub](https://github.com/ihmcrobotics/ihmc-pub-sub), an allocation free Java library for DDSI-RTPS messaging. It uses modified versions of [rosidl utilities](https://github.com/ros2/rosidl) to convert .msg files into Java types.
+This library builds on [IHMC Pub Sub Group](https://github.com/ihmcrobotics/ihmc-pub-sub-group), an allocation free Java library for DDSI-RTPS messaging. It uses modified versions of [rosidl utilities](https://github.com/ros2/rosidl) to convert .msg files into Java types.
 
 ## Features
 
@@ -17,9 +17,9 @@ This library builds on [IHMC Pub Sub](https://github.com/ihmcrobotics/ihmc-pub-s
 ## Artifacts
 
 ```gradle
-compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.7.5-alpha  // publish/subscribe API
-compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.7.5-alpha  // ROS2 common message library
-compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.7.5-alpha  // generator for .msg -> .java
+compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.8.1  // publish/subscribe API
+compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.8.1  // ROS2 common message library
+compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.8.1  // generator for .msg -> .java
 ```
 
 ## IHMC ROS2 Library
@@ -110,19 +110,5 @@ Apache 2.0
 
 ## Maintainer Notes
 
-### Generating Messages
-
-`gradle generateMessages`
-
-Refactor getSource() to getSourceAsStringBuilder()
-
-### Publish
-
-##### To maven local:
-
-`gradle publishAll -PpublishUrl=local`
-
-##### To IHMC Bintray Maven Release:
-
-`gradle publishAll -PpublishUrl=ihmcRelease`
+See [docs/Making a release.md](docs/Making%20a%20release.md)
  
