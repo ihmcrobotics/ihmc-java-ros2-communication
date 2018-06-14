@@ -233,4 +233,16 @@ public class RealtimeRos2Node
       startupLock.lock();
       spinning = false;
    }
+
+   /**
+    * Stop the realtime periodic if spinning and then destroys the internal ROS node.
+    * 
+    * @see Ros2NodeBasics#destroy()
+    */
+   public void destroy()
+   {
+      if (spinning)
+         stopSpinning();
+      node.destroy();
+   }
 }
