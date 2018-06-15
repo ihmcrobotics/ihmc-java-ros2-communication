@@ -17,9 +17,9 @@ This library builds on [IHMC Pub Sub Group](https://github.com/ihmcrobotics/ihmc
 ## Artifacts
 
 ```gradle
-compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.8.1  // publish/subscribe API
-compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.8.1  // ROS2 common message library
-compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.8.1  // generator for .msg -> .java
+compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.9.0  // publish/subscribe API
+compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.9.0  // ROS2 common message library
+compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.9.0  // generator for .msg -> .java
 ```
 
 ## IHMC ROS2 Library
@@ -43,6 +43,7 @@ for (int i = 0; i < 10; i++)
    publisher.publish(message);
    Thread.sleep(1000);
 }
+node.destroy(); // release system resources
 ```
 
 ###### Subscriber
