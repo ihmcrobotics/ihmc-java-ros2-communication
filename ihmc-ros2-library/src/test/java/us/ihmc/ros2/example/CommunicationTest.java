@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class CommunicationTest
 {
-   @Test(timeout = 30000)
+   @Test(timeout = 5000)
    public void testSimpleIntraProcessCommunication()
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
@@ -43,6 +43,8 @@ public class CommunicationTest
             publisher.publish(message);
             System.out.println("Published: " + message.getStr1());
          }
+
+         node.destroy();
       }
       catch (Exception e)
       {
@@ -51,11 +53,93 @@ public class CommunicationTest
 
       while (messagesReceived.getValue() < 10)
          Thread.yield();
-
-      assertEquals("10 messages not received", 10, (int) messagesReceived.getValue());
    }
 
-   @Test(timeout = 30000)
+   @Test(timeout = 5000)
+   public void testSimpleRealRTPSCommunication()
+   {
+      Pair<Integer, Integer> messagesReceived = new MutablePair<>();
+      try
+      {
+         Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
+         TwoNumPubSubType topicDataType = new TwoNumPubSubType();
+         Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+
+         messagesReceived.setValue(0);
+
+         node.createSubscription(topicDataType, subscriber -> {
+            TwoNum message = new TwoNum();
+            System.out.println("Incoming message...");
+            if (subscriber.takeNextData(message, null))
+            {
+               System.out.println("Received: " + message.getStr1());
+               messagesReceived.setValue(messagesReceived.getValue() + 1);
+            }
+         }, "/chatter");
+
+         for (int i = 0; i < 11; i++)
+         {
+            TwoNum message = new TwoNum();
+            message.getStr1().append("Hello world: " + i);
+            System.out.println("Publishing: " + message.getStr1());
+            publisher.publish(message);
+            System.out.println("Published: " + message.getStr1());
+         }
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+      }
+
+      while (messagesReceived.getValue() < 5)
+         Thread.yield();
+   }
+
+
+
+   @Test(timeout = 5000)
+   public void testSimpleRealRTPSCommunicationAndDestroy()
+   {
+      Pair<Integer, Integer> messagesReceived = new MutablePair<>();
+      try
+      {
+         Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
+         TwoNumPubSubType topicDataType = new TwoNumPubSubType();
+         Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+
+         messagesReceived.setValue(0);
+
+         node.createSubscription(topicDataType, subscriber -> {
+            TwoNum message = new TwoNum();
+            System.out.println("Incoming message...");
+            if (subscriber.takeNextData(message, null))
+            {
+               System.out.println("Received: " + message.getStr1());
+               messagesReceived.setValue(messagesReceived.getValue() + 1);
+            }
+         }, "/chatter");
+
+         for (int i = 0; i < 11; i++)
+         {
+            TwoNum message = new TwoNum();
+            message.getStr1().append("Hello world: " + i);
+            System.out.println("Publishing: " + message.getStr1());
+            publisher.publish(message);
+            System.out.println("Published: " + message.getStr1());
+         }
+
+         node.destroy();
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+      }
+
+      while (messagesReceived.getValue() < 5)
+         Thread.yield();
+   }
+
+   @Test(timeout = 5000)
    public void testSimpleIntraProcessCommunicationRealtime()
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
@@ -105,7 +189,5 @@ public class CommunicationTest
       {
          e.printStackTrace();
       }
-
-      assertEquals("10 messages not received", 10, (int) messagesReceived.getValue());
    }
 }
