@@ -80,7 +80,7 @@ Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcr
 
 #### Step 6: Draft and publish release on GitHub
 
-1. Go to [https://github.com/ihmcrobotics/ihmc-pub-sub/releases](https://github.com/ihmcrobotics/ihmc-pub-sub/releases)
+1. Go to [https://github.com/ihmcrobotics/ihmc-java-ros2-communication/releases](https://github.com/ihmcrobotics/ihmc-java-ros2-communication/releases)
 1. Click "Draft a new release"
 1. Enter version X.X.X as the tag name
 1. Title the release "X.X.X Release Notes"
