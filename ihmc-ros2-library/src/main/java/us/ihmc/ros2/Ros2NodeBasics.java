@@ -39,8 +39,8 @@ class Ros2NodeBasics
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = 0;
 
-   private final Domain domain;
-   private final Participant participant;
+   private Domain domain;
+   private Participant participant;
 
    private final String nodeName;
    private final String namespace;
@@ -241,5 +241,23 @@ class Ros2NodeBasics
             .assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
+   }
+
+   /**
+    * Destroys this node.
+    * <p>
+    * This effectively removes this node's {@code Participant} from the domain and clear the
+    * internal references to these two.
+    * </p>
+    * <p>
+    * After calling this method, this node becomes unusable, i.e. publisher or subscriber can no
+    * longer be created.
+    * </p>
+    */
+   public void destroy()
+   {
+      domain.removeParticipant(participant);
+      domain = null;
+      participant = null;
    }
 }
