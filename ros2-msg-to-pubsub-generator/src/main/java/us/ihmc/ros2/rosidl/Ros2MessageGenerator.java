@@ -43,6 +43,11 @@ public class Ros2MessageGenerator extends DefaultTask
    public File idlOutputDirectory;
 
    /**
+    * [Required] Generated ROS 1 output directory
+    */
+   public File ros1OutputDirectory;
+
+   /**
     * [Optional] List of directories containing custom .idl files that override the generated ones
     */
    public FileCollection customIDLDirectory;
@@ -75,6 +80,11 @@ public class Ros2MessageGenerator extends DefaultTask
       if (javaOutputDirectory == null)
       {
          throw new IOException("Please set javaOutputDirectory = files(\"path/to/java/output\")");
+      }
+
+      if(ros1OutputDirectory == null)
+      {
+         throw new IOException("Please set ros1OutputDirectory = files(\"path/to/ros1/output\")");
       }
 
       if (javaOutputDirectory.exists() && !javaOutputDirectory.isDirectory())
@@ -115,7 +125,7 @@ public class Ros2MessageGenerator extends DefaultTask
          }
       }
 
-      generator.generate(idlOutputDirectory.toPath(), javaOutputDirectory.toPath());
+      generator.generate(idlOutputDirectory.toPath(), ros1OutputDirectory.toPath(), javaOutputDirectory.toPath());
 
       generator.convertDirectoryToUnixEOL(idlOutputDirectory.toPath());
       generator.convertDirectoryToUnixEOL(javaOutputDirectory.toPath());

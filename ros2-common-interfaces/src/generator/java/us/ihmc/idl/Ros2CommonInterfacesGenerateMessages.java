@@ -23,6 +23,6 @@ public class Ros2CommonInterfacesGenerateMessages
 
       generator.addCustomIDLFiles(Paths.get("src/main/custom-idl"));
 
-      generator.generate(Paths.get("src/main/generated-idl"), Paths.get("src/main/generated-java"));
+      generator.generate(Paths.get("src/main/generated-idl"), Paths.get("src/main/generated-ros1"), Paths.get("src/main/generated-java"));
    }
 }

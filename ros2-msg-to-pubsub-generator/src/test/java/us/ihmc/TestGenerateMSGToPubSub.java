@@ -19,6 +19,6 @@ public class TestGenerateMSGToPubSub
 
       generator.addCustomIDLFiles(Paths.get("custom-idl"));
 
-      generator.generate(Paths.get("generated-idl"), Paths.get("generated-java"));
+      generator.generate(Paths.get("generated-idl"), Paths.get("generated-ros1"), Paths.get("generated-java"));
    }
 }
