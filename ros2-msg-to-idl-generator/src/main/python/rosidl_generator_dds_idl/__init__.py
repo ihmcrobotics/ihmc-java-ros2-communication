@@ -35,7 +35,7 @@ def generate_dds_idl(generator_arguments_file, subfolders, extension_module_name
     functions = {
         'get_include_directives': get_include_directives,
         'get_post_struct_lines': get_post_struct_lines,
-        'msg_type_to_idl': msg_type_to_idl,
+        'msg_type_to_idl': msg_type_to_idl_2,
     }
     if extension_module_name is not None:
         pkg = __import__(extension_module_name)
@@ -180,6 +180,28 @@ def msg_type_to_idl(type_):
             idl_type = '%s::msg::dds_::%s_' % (type_.pkg_name, type_.type)
     return _msg_type_to_idl(type_, idl_type, string_upper_bound=string_upper_bound)
 
+
+def msg_type_to_idl_2(type_):
+    """
+    Convert a message type into the DDS declaration.
+
+    Example input: uint32, std_msgs/String
+    Example output: uint32_t, std_msgs::String_<ContainerAllocator>
+
+    @param type: The message type
+    @type type: rosidl_parser.Type
+    """
+    string_upper_bound = None
+    if type_.is_primitive_type():
+        idl_type = MSG_TYPE_TO_IDL[type_.type]
+        if type_.type == 'string' and type_.string_upper_bound is not None:
+            string_upper_bound = type_.string_upper_bound
+    else:
+        if type_.type.endswith('_Request') or type_.type.endswith('_Response'):
+            idl_type = '%s::srv::dds::%s' % (type_.pkg_name, type_.type)
+        else:
+            idl_type = '%s::msg::dds::%s' % (type_.pkg_name, type_.type)
+    return _msg_type_to_idl(type_, idl_type, string_upper_bound=string_upper_bound)
 
 def _msg_type_to_idl(type_, idl_type, string_upper_bound=None):
     if type_.is_array:
