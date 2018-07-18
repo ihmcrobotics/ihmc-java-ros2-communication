@@ -149,7 +149,7 @@ def get_include_directives(spec, subfolders):
     for field in spec.fields:
         if field.type.is_primitive_type():
             continue
-        include_directive = '#include "%s/%s_.idl"' % \
+        include_directive = '#include "%s/%s.msg"' % \
             ('/'.join([field.type.pkg_name] + subfolders), field.type.type)
         include_directives.add(include_directive)
     return sorted(include_directives)
@@ -188,33 +188,6 @@ def ros2_type_to_ros1(type_):
 
 def _ros2_type_to_ros1(type_, ros1_type, string_upper_bound=None):
     if type_.is_array:
-        if type_.is_upper_bound or type_.array_size:
-            return ['', '', '%s[%u]' % (ros1_type, type_.array_size)]
-        # if type_.array_size is None or type_.is_upper_bound:
-        #     sequence_type = ros1_type
-        #     if string_upper_bound is not None:
-        #         sequence_type += '<%s>' % string_upper_bound
-        #     if type_.is_upper_bound:
-        #         sequence_type += ', %u' % type_.array_size
-        #     return [
-        #         '', '',
-        #         'sequence<%s%s>' % (sequence_type, ' ' if sequence_type.endswith('>') else '')]
-        else:
-            typename = ros1_type.replace(' ', '_')
-            return [
-                '',
-                '',
-                '%s[]' % ros1_type
-            ]
-            # typename = '%s_array_%s' % \
-            #     (idl_type.replace(' ', '_').replace('::', '__'), type_.array_size)
-            # return [
-            #     'typedef %s' % idl_type,
-            #     '%s[%s];' % (typename, type_.array_size),
-            #     '%s' % typename
-            # ]
-    elif type_.string_upper_bound is not None and \
-            type_.is_primitive_type() and type_.type == 'string':
-        return ['', '', '%s<%u>' % (ros1_type, type_.string_upper_bound)]
+        return ['', '', '%s[]' % ros1_type]
     else:
         return ['', '', ros1_type]
