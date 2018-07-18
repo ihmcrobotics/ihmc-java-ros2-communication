@@ -149,18 +149,8 @@ public class Ros2MsgToRos1MsgGenerator
 
    private void convertPackageToROS1(String name, PackageDescription pkg, Path outputDirectory)
    {
-      HashSet<String> dependencies = new HashSet<>();
-      addDependencies(pkg, dependencies);
-
-      List<Path> dependencyFiles = new ArrayList<>();
-      for (String dependency : dependencies)
-      {
-         PackageDescription desc = packages.get(dependency);
-         dependencyFiles.addAll(desc.msg);
-      }
-
       Path packageOutputDirectory = outputDirectory.resolve(name);
-      createJSON(pkg, packageOutputDirectory, template_dir, dependencyFiles);
+      createJSON(pkg, packageOutputDirectory, template_dir);
 
       List<String> subFolders = new ArrayList<>();
       subFolders.add(".");
@@ -170,36 +160,13 @@ public class Ros2MsgToRos1MsgGenerator
    }
 
    /**
-    * Recursive function to add all .msg files that are necessary to compile this package
-    *
-    * @param description package description
-    * @param dependencies Output set of dependencies
-    */
-   private void addDependencies(PackageDescription description, HashSet<String> dependencies)
-   {
-      for (String dependency : description.dependencies)
-      {
-         dependencies.add(dependency);
-         if (packages.containsKey(dependency))
-         {
-            addDependencies(packages.get(dependency), dependencies);
-         }
-         else
-         {
-            throw new RuntimeException("Cannot find dependency " + dependency + " for " + description.packageName);
-         }
-      }
-   }
-
-   /**
     * Helper function to generate the json format the ros2 idl compiler requires
     *
     * @param desc packageDescription
     * @param outputDirectory directory to put the generated idl files in
     * @param template_dir directory where the msg.idl.em template can be found
-    * @param dependencies list of paths of .msg files that are required to generate this .msg file
     */
-   private void createJSON(PackageDescription desc, Path outputDirectory, Path template_dir, List<Path> dependencies)
+   private void createJSON(PackageDescription desc, Path outputDirectory, Path template_dir)
    {
       JsonObjectBuilder json = Json.createObjectBuilder();
 
@@ -220,8 +187,8 @@ public class Ros2MsgToRos1MsgGenerator
       json.add("ros_interface_files", ros_interface_files);
 
       JsonArrayBuilder ros_interface_dependencies = Json.createArrayBuilder();
-      for (Path dep : dependencies)
-         ros_interface_dependencies.add(dep.toString());
+//      for (Path dep : dependencies)
+//         ros_interface_dependencies.add(dep.toString());
 
       // The ros interface files necessary to compile this interface
       json.add("ros_interface_dependencies", ros_interface_dependencies);

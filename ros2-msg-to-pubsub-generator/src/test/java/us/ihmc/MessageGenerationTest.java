@@ -24,7 +24,8 @@ public class MessageGenerationTest
       FileTools.deleteQuietly(startingPath.resolve("generated-idl"));
 
       RosInterfaceGenerator generator = new RosInterfaceGenerator();
-      generator.addPackageRoot(startingPath.resolve("ros_msgs"));
+      generator.addPackageRootToIDLGenerator(startingPath.resolve("ros_msgs"));
+      generator.addPackageRootToROS1Generator(startingPath.resolve("ros_msgs"));
       generator.addCustomIDLFiles(startingPath.resolve("custom-idl"));
       generator.generate(startingPath.resolve("generated-idl"), Paths.get("generated-ros1"), startingPath.resolve("generated-java"));
    }

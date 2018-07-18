@@ -68,9 +68,26 @@ public class RosInterfaceGenerator
     * @param rootPath The root directory of packages to add
     * @throws IOException If the rootPath cannot be read
     */
-   public void addPackageRoot(Path rootPath) throws IOException
+   public void addPackageRootToIDLGenerator(Path rootPath) throws IOException
    {
       ros2MsgToIdlGenerator.addPackageRoot(rootPath);
+   }
+
+   /**
+    * Add a directory with ros packages to the list of interfaces to be compiled.
+    *
+    * The expected directory structure is
+    * - rootPath
+    * - packageName
+    * - package.xml
+    *
+    * A package xml with at least <name /> and optionally <build_depends />
+    *
+    * @param rootPath The root directory of packages to add
+    * @throws IOException If the rootPath cannot be read
+    */
+   public void addPackageRootToROS1Generator(Path rootPath) throws IOException
+   {
       ros2MsgToRos1MsgGenerator.addPackageRoot(rootPath);
    }
 

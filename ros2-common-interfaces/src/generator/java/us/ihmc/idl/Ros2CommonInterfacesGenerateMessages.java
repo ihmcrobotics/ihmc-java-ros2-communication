@@ -18,8 +18,8 @@ public class Ros2CommonInterfacesGenerateMessages
       InputStream ihmcPubSubTemplate = Thread.currentThread().getContextClassLoader().getResourceAsStream("us/ihmc/idl/msg.idl.em");
       RosInterfaceGenerator generator = new RosInterfaceGenerator();
 
-      generator.addPackageRoot(Paths.get("src/main/vendor/rcl_interfaces"));
-      generator.addPackageRoot(Paths.get("src/main/vendor/common_interfaces"));
+      generator.addPackageRootToIDLGenerator(Paths.get("src/main/vendor/rcl_interfaces"));
+      generator.addPackageRootToIDLGenerator(Paths.get("src/main/vendor/common_interfaces"));
 
       generator.addCustomIDLFiles(Paths.get("src/main/custom-idl"));
 

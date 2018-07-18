@@ -114,7 +114,7 @@ public class Ros2MessageGenerator extends DefaultTask
 
       for (File rosPackage : rosPackages)
       {
-         generator.addPackageRoot(rosPackage.toPath());
+         generator.addPackageRootToIDLGenerator(rosPackage.toPath());
       }
 
       if (customIDLDirectory != null)
