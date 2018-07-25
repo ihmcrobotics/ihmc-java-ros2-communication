@@ -76,7 +76,7 @@ Publish artifacts to Bintray.
 
 `gradle publishAll -PpublishUrl=ihmcRelease`
 
-Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcrobotics/maven-release) and "Publish All".
+Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcrobotics/maven-release) and "Publish".
 
 #### Step 6: Draft and publish release on GitHub
 
