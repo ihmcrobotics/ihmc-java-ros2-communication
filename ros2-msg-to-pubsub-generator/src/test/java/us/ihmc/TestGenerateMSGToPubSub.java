@@ -16,9 +16,14 @@ public class TestGenerateMSGToPubSub
       RosInterfaceGenerator generator = new RosInterfaceGenerator();
 
       generator.addPackageRootToIDLGenerator(Paths.get("ros_msgs"));
+      generator.addPackageRootToROS1Generator(Paths.get("ros_msgs"));
 
       generator.addCustomIDLFiles(Paths.get("custom-idl"));
 
       generator.generate(Paths.get("generated-idl"), Paths.get("generated-ros1"), Paths.get("generated-java"));
+
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-idl"));
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-ros1"));
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-java"));
    }
 }
