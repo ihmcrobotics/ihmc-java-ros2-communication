@@ -10,16 +10,17 @@ This library builds on [IHMC Pub Sub Group](https://github.com/ihmcrobotics/ihmc
 
 - Easy-to-use API for publishing and subscribing to ROS2 topics
 - Allocation free modules for realtime support
-- Carries documentation from *.msg files into Javadoc
+- Carries documentation from .msg files into Javadoc
 - Gradle task for .msg -> .java generation
 - Provided Java library for ROS [common_interfaces](https://github.com/ros2/common_interfaces), [rcl_interfaces](https://github.com/ros2/rcl_interfaces), and [geometry2](https://github.com/ros2/geometry2)
+- ROS 2 .msg to ROS 1 .msg generation
 
 ## Artifacts
 
 ```gradle
-compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.9.0  // publish/subscribe API
-compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.9.0  // ROS2 common message library
-compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.9.0  // generator for .msg -> .java
+compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.10.0  // publish/subscribe API
+compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.10.0  // ROS2 common message library
+compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.10.0  // generator for .msg -> .java
 ```
 
 ## IHMC ROS2 Library
