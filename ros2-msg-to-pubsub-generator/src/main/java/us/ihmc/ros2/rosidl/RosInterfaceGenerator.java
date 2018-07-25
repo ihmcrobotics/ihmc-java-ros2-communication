@@ -22,6 +22,7 @@ import us.ihmc.commons.nio.PathTools;
 import us.ihmc.commons.nio.WriteOption;
 import us.ihmc.idl.generator.IDLGenerator;
 import us.ihmc.rosidl.Ros2MsgToIdlGenerator;
+import us.ihmc.rosidl.Ros2MsgToRos1MsgGenerator;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,6 +38,7 @@ import java.util.List;
  */
 public class RosInterfaceGenerator
 {
+   private final Ros2MsgToRos1MsgGenerator ros2MsgToRos1MsgGenerator;
    private Ros2MsgToIdlGenerator ros2MsgToIdlGenerator;
 
    // Holder for all packages found
@@ -50,6 +52,7 @@ public class RosInterfaceGenerator
    public RosInterfaceGenerator() throws IOException
    {
       ros2MsgToIdlGenerator = new Ros2MsgToIdlGenerator();
+      ros2MsgToRos1MsgGenerator = new Ros2MsgToRos1MsgGenerator();
    }
 
    /**
@@ -65,9 +68,27 @@ public class RosInterfaceGenerator
     * @param rootPath The root directory of packages to add
     * @throws IOException If the rootPath cannot be read
     */
-   public void addPackageRoot(Path rootPath) throws IOException
+   public void addPackageRootToIDLGenerator(Path rootPath) throws IOException
    {
       ros2MsgToIdlGenerator.addPackageRoot(rootPath);
+   }
+
+   /**
+    * Add a directory with ros packages to the list of interfaces to be compiled.
+    *
+    * The expected directory structure is
+    * - rootPath
+    * - packageName
+    * - package.xml
+    *
+    * A package xml with at least <name /> and optionally <build_depends />
+    *
+    * @param rootPath The root directory of packages to add
+    * @throws IOException If the rootPath cannot be read
+    */
+   public void addPackageRootToROS1Generator(Path rootPath) throws IOException
+   {
+      ros2MsgToRos1MsgGenerator.addPackageRoot(rootPath);
    }
 
    /**
@@ -79,10 +100,11 @@ public class RosInterfaceGenerator
     * @param javaDirectory directory to put generated .java files in
     * @throws IOException
     */
-   public void generate(Path idlDirectory, Path javaDirectory) throws IOException
+   public void generate(Path idlDirectory, Path ros1Directory, Path javaDirectory) throws IOException
    {
       // Convert all packages to .idl
       ros2MsgToIdlGenerator.convertToIDL(idlDirectory);
+      ros2MsgToRos1MsgGenerator.convertToROS1(ros1Directory);
 
       // Copy custom idl files to the idl directory
       customIDLFiles.forEach((key, path) -> {
