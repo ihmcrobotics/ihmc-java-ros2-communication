@@ -24,10 +24,31 @@ from rosidl_parser import parse_service_file
 from rosidl_parser import Type
 
 
-def generate_dds_idl(generator_arguments_file, subfolders, extension_module_name):
+# used by the template
+ROS2_TO_ROS1_TYPES = {
+    'bool': 'bool',
+    'byte': 'int8',
+    'char': 'uint8',
+    'int8': 'int8',
+    'uint8': 'uint8',
+    'int16': 'int16',
+    'uint16': 'uint16',
+    'int32': 'int32',
+    'uint32': 'uint32',
+    'int64': 'int64',
+    'uint64': 'uint64',
+    'float32': 'float32',
+    'float64': 'float64',
+    'string': 'string',
+    'std_msgs/Header' : 'Header',
+    'builtin_interfaces/Time' : 'time',
+    'builtin_interfaces/Duration' : 'duration'
+}
+
+def generate_ros_msg(generator_arguments_file, subfolders, extension_module_name):
     args = read_generator_arguments(generator_arguments_file)
 
-    template_file = os.path.join(args['template_dir'], 'msg.idl.em')
+    template_file = os.path.join(args['template_dir'], 'msg.ros1.em')
     assert os.path.exists(template_file), \
         "The template '%s' does not exist" % template_file
 
@@ -35,7 +56,7 @@ def generate_dds_idl(generator_arguments_file, subfolders, extension_module_name
     functions = {
         'get_include_directives': get_include_directives,
         'get_post_struct_lines': get_post_struct_lines,
-        'msg_type_to_idl': msg_type_to_idl_2,
+        'ros2_type_to_ros1': ros2_type_to_ros1,
     }
     if extension_module_name is not None:
         pkg = __import__(extension_module_name)
@@ -58,7 +79,7 @@ def generate_dds_idl(generator_arguments_file, subfolders, extension_module_name
             output_path = os.path.join(output_path, sub)
         if extension == '.msg':
             spec = parse_message_file(pkg_name, ros_interface_file)
-            generated_file = os.path.join(output_path, '%s_.idl' % spec.base_type.type)
+            generated_file = os.path.join(output_path, '%s.msg' % spec.base_type.type)
 
             data = {'spec': spec, 'subfolder': subfolder, 'subfolders': subfolders}
             data.update(functions)
@@ -106,9 +127,9 @@ def generate_dds_idl(generator_arguments_file, subfolders, extension_module_name
 
             generated_files = [
                 (sample_spec_request, os.path.join(
-                    output_path, '%s_.idl' % sample_spec_request.base_type.type)),
+                    output_path, '%s.msg' % sample_spec_request.base_type.type)),
                 (sample_spec_response, os.path.join(
-                    output_path, '%s_.idl' % sample_spec_response.base_type.type)),
+                    output_path, '%s.msg' % sample_spec_response.base_type.type)),
             ]
 
             for spec, generated_file in generated_files:
@@ -121,24 +142,6 @@ def generate_dds_idl(generator_arguments_file, subfolders, extension_module_name
     return 0
 
 
-# used by the template
-MSG_TYPE_TO_IDL = {
-    'bool': 'boolean',
-    'byte': 'octet',
-    'char': 'char',
-    'int8': 'octet',
-    'uint8': 'octet',
-    'int16': 'short',
-    'uint16': 'unsigned short',
-    'int32': 'long',
-    'uint32': 'unsigned long',
-    'int64': 'long long',
-    'uint64': 'unsigned long long',
-    'float32': 'float',
-    'float64': 'double',
-    'string': 'string',
-}
-
 
 # used by the template
 def get_include_directives(spec, subfolders):
@@ -146,7 +149,7 @@ def get_include_directives(spec, subfolders):
     for field in spec.fields:
         if field.type.is_primitive_type():
             continue
-        include_directive = '#include "%s/%s_.idl"' % \
+        include_directive = '#include "%s/%s.msg"' % \
             ('/'.join([field.type.pkg_name] + subfolders), field.type.type)
         include_directives.add(include_directive)
     return sorted(include_directives)
@@ -156,11 +159,10 @@ def get_include_directives(spec, subfolders):
 def get_post_struct_lines(spec):
     return []
 
-
 # used by the template
-def msg_type_to_idl(type_):
+def ros2_type_to_ros1(type_):
     """
-    Convert a message type into the DDS declaration.
+    Convert a ROS 2 type into a ROS 1 type.
 
     Example input: uint32, std_msgs/String
     Example output: uint32_t, std_msgs::String_<ContainerAllocator>
@@ -169,67 +171,23 @@ def msg_type_to_idl(type_):
     @type type: rosidl_parser.Type
     """
     string_upper_bound = None
-    if type_.is_primitive_type():
-        idl_type = MSG_TYPE_TO_IDL[type_.type]
-        if type_.type == 'string' and type_.string_upper_bound is not None:
-            string_upper_bound = type_.string_upper_bound
+    compound_type = '%s/%s' % (type_.pkg_name, type_.type)
+
+    if type_.type in ROS2_TO_ROS1_TYPES or type_.is_primitive_type():
+        ros1_type = ROS2_TO_ROS1_TYPES[type_.type]
+    elif compound_type in ROS2_TO_ROS1_TYPES:
+        ros1_type = ROS2_TO_ROS1_TYPES[compound_type]
     else:
         if type_.type.endswith('_Request') or type_.type.endswith('_Response'):
-            idl_type = '%s::srv::dds_::%s_' % (type_.pkg_name, type_.type)
+            # ros1_type = '%s::srv::dds_::%s_' % (type_.pkg_name, type_.type)
+            ros1_type = compound_type
         else:
-            idl_type = '%s::msg::dds_::%s_' % (type_.pkg_name, type_.type)
-    return _msg_type_to_idl(type_, idl_type, string_upper_bound=string_upper_bound)
+            ros1_type = compound_type
+    return _ros2_type_to_ros1(type_, ros1_type, string_upper_bound=string_upper_bound)
 
 
-def msg_type_to_idl_2(type_):
-    """
-    Convert a message type into the DDS declaration.
-
-    Example input: uint32, std_msgs/String
-    Example output: uint32_t, std_msgs::String_<ContainerAllocator>
-
-    @param type: The message type
-    @type type: rosidl_parser.Type
-    """
-    string_upper_bound = None
-    if type_.is_primitive_type():
-        idl_type = MSG_TYPE_TO_IDL[type_.type]
-        if type_.type == 'string' and type_.string_upper_bound is not None:
-            string_upper_bound = type_.string_upper_bound
-    else:
-        if type_.type.endswith('_Request') or type_.type.endswith('_Response'):
-            idl_type = '%s::srv::dds::%s' % (type_.pkg_name, type_.type)
-        else:
-            idl_type = '%s::msg::dds::%s' % (type_.pkg_name, type_.type)
-    return _msg_type_to_idl(type_, idl_type, string_upper_bound=string_upper_bound)
-
-def _msg_type_to_idl(type_, idl_type, string_upper_bound=None):
+def _ros2_type_to_ros1(type_, ros1_type, string_upper_bound=None):
     if type_.is_array:
-        if type_.array_size is None or type_.is_upper_bound:
-            sequence_type = idl_type
-            if string_upper_bound is not None:
-                sequence_type += '<%s>' % string_upper_bound
-            if type_.is_upper_bound:
-                sequence_type += ', %u' % type_.array_size
-            return [
-                '', '',
-                'sequence<%s%s>' % (sequence_type, ' ' if sequence_type.endswith('>') else '')]
-        else:
-            typename = idl_type.replace(' ', '_')
-            return [
-                '',
-                '[%s]' % type_.array_size,
-                '%s' % typename
-            ]
-            # typename = '%s_array_%s' % \
-            #     (idl_type.replace(' ', '_').replace('::', '__'), type_.array_size)
-            # return [
-            #     'typedef %s' % idl_type,
-            #     '%s[%s];' % (typename, type_.array_size),
-            #     '%s' % typename
-            # ]
-    elif type_.string_upper_bound is not None and \
-            type_.is_primitive_type() and type_.type == 'string':
-        return ['', '', '%s<%u>' % (idl_type, type_.string_upper_bound)]
+        return ['', '', '%s[]' % ros1_type]
     else:
-        return ['', '', idl_type]
+        return ['', '', ros1_type]

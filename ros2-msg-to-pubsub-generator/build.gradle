@@ -17,6 +17,7 @@ ihmc {
    javaDirectory("main", "java-generated")
    resourceDirectory("test", "generated-idl")
    resourceDirectory("test", "custom-idl")
+   resourceDirectory("test", "generated-ros1")
    javaDirectory("test", "generated-java")
    resourceDirectory("test", "ros_msgs")
    configurePublications()
