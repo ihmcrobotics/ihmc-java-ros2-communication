@@ -1,5 +1,6 @@
 # IHMC Java ROS2 Communication
 
+
 ROS2 messaging for Java.
 
 ## Introduction
@@ -15,13 +16,21 @@ This library builds on [IHMC Pub Sub Group](https://github.com/ihmcrobotics/ihmc
 - Provided Java library for ROS [common_interfaces](https://github.com/ros2/common_interfaces), [rcl_interfaces](https://github.com/ros2/rcl_interfaces), and [geometry2](https://github.com/ros2/geometry2)
 - ROS 2 .msg to ROS 1 .msg generation
 
-## Artifacts
+## Download
 
-```gradle
-compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.10.0  // publish/subscribe API
-compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.10.0  // ROS2 common message library
-compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.10.0  // generator for .msg -> .java
-```
+In your build.gradle:
+
+`compile group: "us.ihmc", name: "ihmc-ros2-library", version: `
+[ ![ihmc-ros2-library](https://api.bintray.com/packages/ihmcrobotics/maven-release/ihmc-ros2-library/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ihmc-ros2-library/_latestVersion)
+`  // publish/subscribe API`
+ 
+`compile group: "us.ihmc", name: "ros2-common-interfaces", version: `
+[ ![ros2-common-interfaces](https://api.bintray.com/packages/ihmcrobotics/maven-release/ros2-common-interfaces/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ros2-common-interfaces/_latestVersion)
+` // ROS2 common message library`
+
+`compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: `
+[ ![ros2-msg-to-pubsub-generator](https://api.bintray.com/packages/ihmcrobotics/maven-release/ros2-msg-to-pubsub-generator/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ros2-msg-to-pubsub-generator/_latestVersion)
+` // generator for .msg -> .java`
 
 ## IHMC ROS2 Library
 
