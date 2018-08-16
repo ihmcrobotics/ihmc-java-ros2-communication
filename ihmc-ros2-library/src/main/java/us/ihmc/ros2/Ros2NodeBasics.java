@@ -209,6 +209,7 @@ class Ros2NodeBasics
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
+   @SuppressWarnings("unchecked")
    private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
                                                       Ros2QosProfile qosProfile) throws IOException
    {
@@ -243,6 +244,28 @@ class Ros2NodeBasics
       return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }
 
+   
+   /**
+    * 
+    * @return the name of this node
+    */
+   public String getName()
+   {
+      return nodeName;
+   }
+   
+   /**
+    * 
+    * @return the namespace of this node
+    */
+   public String getNamespace()
+   {
+      return namespace;
+   }
+   
+   
+   
+   
    /**
     * Destroys this node.
     * <p>

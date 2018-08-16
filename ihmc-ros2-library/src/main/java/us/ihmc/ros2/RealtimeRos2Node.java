@@ -75,6 +75,20 @@ public class RealtimeRos2Node
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
+
+   /**
+    * Create a new realtime node using an existing ROS2 node
+    * 
+    * @param ros2Node existing Ros2Node to use for this realtime node
+    * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    */
+   public RealtimeRos2Node(Ros2Node ros2Node, PeriodicThreadSchedulerFactory threadFactory)
+   {
+      this.node = ros2Node;
+      this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + this.node.getName() + "/" + this.node.getNamespace());
+   }
+   
+   
    /**
     * Create a new realtime publisher with default qos profile and queue depth. 
     * 
