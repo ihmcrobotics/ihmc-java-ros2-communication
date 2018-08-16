@@ -42,9 +42,8 @@ class Ros2TopicNameMangler
       }
       else
       {
-         String[] fqn = getFQN(namespace, nodeName, topic);
-         attributes.getTopic().setTopicName(getDDSTopicName(fqn));
-         attributes.getQos().addPartition(getDDSPartition(fqn));
+         String fqn = getFQN(namespace, nodeName, topic);
+         attributes.getTopic().setTopicName(fqn);
       }
    }
 
@@ -60,32 +59,12 @@ class Ros2TopicNameMangler
       }
       else
       {
-         String[] fqn = getFQN(namespace, nodeName, topic);
-         attributes.getTopic().setTopicName(getDDSTopicName(fqn));
-         attributes.getQos().addPartition(getDDSPartition(fqn));
+         String fqn = getFQN(namespace, nodeName, topic);
+         attributes.getTopic().setTopicName(fqn);
       }
    }
 
-   private static String getDDSTopicName(String[] fqn)
-   {
-      return fqn[fqn.length - 1];
-   }
-
-   private static String getDDSPartition(String[] fqn)
-   {
-      StringBuilder partition = new StringBuilder();
-      for (int i = 0; i < fqn.length - 1; i++)
-      {
-         partition.append(fqn[i]);
-         if (i < fqn.length - 2)
-         {
-            partition.append('/');
-         }
-      }
-      return partition.toString();
-   }
-
-   private static String[] getFQN(String namespace, String nodeName, String topic)
+   private static String getFQN(String namespace, String nodeName, String topic)
    {
       if (topic.startsWith("~/"))
       {
@@ -110,8 +89,7 @@ class Ros2TopicNameMangler
          fqn = ros_topic_prefix + namespace + "/" + topic;
       }
 
-      String[] fqnArray = fqn.split("/");
-      return fqnArray;
+      return fqn;
    }
 
    static void checkNodename(String nodename)
