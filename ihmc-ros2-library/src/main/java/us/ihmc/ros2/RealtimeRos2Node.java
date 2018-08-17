@@ -110,7 +110,6 @@ public class RealtimeRos2Node
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
-
    /**
     * Create a new realtime node using an existing ROS2 node
     * 
@@ -122,7 +121,6 @@ public class RealtimeRos2Node
       this.node = ros2Node;
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + this.node.getName() + "/" + this.node.getNamespace());
    }
-   
    
    /**
     * Create a new realtime publisher with default qos profile and queue depth. 
@@ -172,7 +170,6 @@ public class RealtimeRos2Node
       {
          startupLock.unlock();
       }
-
    }
 
    /**

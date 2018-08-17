@@ -30,12 +30,13 @@ class Ros2TopicNameMangler
    public static final String ros_service_request_prefix = "rq";
    public static final String ros_service_response_prefix = "rq";
 
-   static void assignNameAndPartitionsToAttributes(Ros2Version ros2Version, PublisherAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
+   static void assignNameAndPartitionsToAttributes(Ros2Version ros2Version, PublisherAttributes attributes, String namespace, String nodeName, String topic,
+                                                   boolean avoidRosNamespace)
    {
-      if(avoidRosNamespace)
+      if (avoidRosNamespace)
       {
          attributes.getTopic().setTopicName(topic);
-         if(namespace != null && !namespace.isEmpty())
+         if (namespace != null && !namespace.isEmpty())
          {
             attributes.getQos().addPartition(namespace);
          }
@@ -54,12 +55,13 @@ class Ros2TopicNameMangler
       }
    }
 
-   static void assignNameAndPartitionsToAttributes(Ros2Version ros2Version, SubscriberAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
+   static void assignNameAndPartitionsToAttributes(Ros2Version ros2Version, SubscriberAttributes attributes, String namespace, String nodeName, String topic,
+                                                   boolean avoidRosNamespace)
    {
-      if(avoidRosNamespace)
+      if (avoidRosNamespace)
       {
          attributes.getTopic().setTopicName(topic);
-         if(namespace != null && !namespace.isEmpty())
+         if (namespace != null && !namespace.isEmpty())
          {
             attributes.getQos().addPartition(namespace);
          }
@@ -77,7 +79,7 @@ class Ros2TopicNameMangler
          attributes.getTopic().setTopicName(fqn);
       }
    }
-   
+
    private static String getDDSTopicName(String[] fqn)
    {
       return fqn[fqn.length - 1];
@@ -96,7 +98,6 @@ class Ros2TopicNameMangler
       }
       return partition.toString();
    }
-
 
    private static String getFQN(String namespace, String nodeName, String topic)
    {
