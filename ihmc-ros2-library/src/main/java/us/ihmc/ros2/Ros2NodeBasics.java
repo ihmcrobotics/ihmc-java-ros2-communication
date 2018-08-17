@@ -15,18 +15,22 @@
  */
 package us.ihmc.ros2;
 
+import java.io.IOException;
+
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.*;
+import us.ihmc.pubsub.attributes.DurabilityKind;
+import us.ihmc.pubsub.attributes.ParticipantAttributes;
+import us.ihmc.pubsub.attributes.PublishModeKind;
+import us.ihmc.pubsub.attributes.PublisherAttributes;
+import us.ihmc.pubsub.attributes.SubscriberAttributes;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
 import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.participant.Participant;
 import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
-
-import java.io.IOException;
 
 /**
  * Internal class to share implementation between intra and inter process ROS2 nodes.
@@ -39,6 +43,8 @@ class Ros2NodeBasics
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = 0;
 
+   private final Ros2Version ros2Version;
+   
    private Domain domain;
    private Participant participant;
 
@@ -54,10 +60,11 @@ class Ros2NodeBasics
     * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
-   Ros2NodeBasics(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
+   Ros2NodeBasics(PubSubImplementation pubSubImplementation, Ros2Version ros2Version, String name, String namespace, int domainId) throws IOException
    {
       this.domain = DomainFactory.getDomain(pubSubImplementation);
-
+      this.ros2Version = ros2Version;
+      
       Ros2TopicNameMangler.checkNodename(name);
       Ros2TopicNameMangler.checkNamespace(namespace);
 
@@ -121,7 +128,7 @@ class Ros2NodeBasics
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Version, publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
@@ -238,7 +245,7 @@ class Ros2NodeBasics
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
       Ros2TopicNameMangler
-            .assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+            .assignNameAndPartitionsToAttributes(ros2Version, subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }

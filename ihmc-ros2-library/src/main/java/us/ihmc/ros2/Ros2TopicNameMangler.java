@@ -30,7 +30,7 @@ class Ros2TopicNameMangler
    public static final String ros_service_request_prefix = "rq";
    public static final String ros_service_response_prefix = "rq";
 
-   static void assignNameAndPartitionsToAttributes(PublisherAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
+   static void assignNameAndPartitionsToAttributes(Ros2Version ros2Version, PublisherAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
    {
       if(avoidRosNamespace)
       {
@@ -40,14 +40,21 @@ class Ros2TopicNameMangler
             attributes.getQos().addPartition(namespace);
          }
       }
-      else
+      else if (ros2Version == Ros2Version.ARDENT)
+      {
+         String fqn = getFQN(namespace, nodeName, topic);
+         String[] fqnArray = fqn.split("/");
+         attributes.getTopic().setTopicName(getDDSTopicName(fqnArray));
+         attributes.getQos().addPartition(getDDSPartition(fqnArray));
+      }
+      else if (ros2Version == Ros2Version.BOUNCY)
       {
          String fqn = getFQN(namespace, nodeName, topic);
          attributes.getTopic().setTopicName(fqn);
       }
    }
 
-   static void assignNameAndPartitionsToAttributes(SubscriberAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
+   static void assignNameAndPartitionsToAttributes(Ros2Version ros2Version, SubscriberAttributes attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
    {
       if(avoidRosNamespace)
       {
@@ -57,12 +64,39 @@ class Ros2TopicNameMangler
             attributes.getQos().addPartition(namespace);
          }
       }
-      else
+      else if (ros2Version == Ros2Version.ARDENT)
+      {
+         String fqn = getFQN(namespace, nodeName, topic);
+         String[] fqnArray = fqn.split("/");
+         attributes.getTopic().setTopicName(getDDSTopicName(fqnArray));
+         attributes.getQos().addPartition(getDDSPartition(fqnArray));
+      }
+      else if (ros2Version == Ros2Version.BOUNCY)
       {
          String fqn = getFQN(namespace, nodeName, topic);
          attributes.getTopic().setTopicName(fqn);
       }
    }
+   
+   private static String getDDSTopicName(String[] fqn)
+   {
+      return fqn[fqn.length - 1];
+   }
+
+   private static String getDDSPartition(String[] fqn)
+   {
+      StringBuilder partition = new StringBuilder();
+      for (int i = 0; i < fqn.length - 1; i++)
+      {
+         partition.append(fqn[i]);
+         if (i < fqn.length - 2)
+         {
+            partition.append('/');
+         }
+      }
+      return partition.toString();
+   }
+
 
    private static String getFQN(String namespace, String nodeName, String topic)
    {

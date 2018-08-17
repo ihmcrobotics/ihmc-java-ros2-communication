@@ -34,6 +34,7 @@ public class Ros2Node extends Ros2NodeBasics
     *
     * Namespace is set to empty ("")
     * Domain ID is set to the default ROS2 domain ID (0)
+    * Ros2Version is set to ARDENT
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
@@ -48,6 +49,7 @@ public class Ros2Node extends Ros2NodeBasics
     * Create a new ROS2 node.
     *
     * Domain ID is set to the default ROS2 domain ID (0)
+    * Ros2Version is set to ARDENT
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
@@ -62,6 +64,38 @@ public class Ros2Node extends Ros2NodeBasics
    /**
     * Create a new ROS2 node.
     *
+    * Namespace is set to empty ("")
+    * Domain ID is set to the default ROS2 domain ID (0)
+    *
+    * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
+    * @param name Name for the node
+    * @throws IOException if no participant can be made
+    */
+   public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Version ros2Version, String name) throws IOException
+   {
+      this(pubSubImplementation, ros2Version, name, "");
+   }
+   
+   /**
+    * Create a new ROS2 node.
+    *
+    * Domain ID is set to the default ROS2 domain ID (0)
+    *
+    * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
+    * @param name Name for the node
+    * @param namespace namespace for the ros node i.e. DDS partition
+    * @throws IOException if no participant can be made
+    */
+   public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Version ros2Version, String name, String namespace) throws IOException
+   {
+      this(pubSubImplementation, ros2Version, name, namespace, ROS_DEFAULT_DOMAIN_ID);
+   }
+
+   /**
+    * Create a new ROS2 node.
+    * 
+    * Ros2Version is set to ARDENT
+    *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
     * @param namespace namespace for the ros node i.e. DDS partition
@@ -70,6 +104,21 @@ public class Ros2Node extends Ros2NodeBasics
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
    {
-      super(pubSubImplementation, name, namespace, domainId);
+      this(pubSubImplementation, Ros2Version.ARDENT, name, namespace, domainId);
+   }
+
+   /**
+    * Create a new ROS2 node.
+    *
+    * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
+    * @param ros2Version Version of ROS2 to use.
+    * @param name Name for the node
+    * @param namespace namespace for the ros node i.e. DDS partition
+    * @param domainId Domain ID for the ros node
+    * @throws IOException if no participant can be made
+    */
+   public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Version ros2Version, String name, String namespace, int domainId) throws IOException
+   {
+      super(pubSubImplementation, ros2Version, name, namespace, domainId);
    }
 }
