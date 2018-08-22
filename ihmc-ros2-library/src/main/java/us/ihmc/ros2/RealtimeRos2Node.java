@@ -48,7 +48,7 @@ public class RealtimeRos2Node
    /**
     * Create a new realtime node with the default ROS2 domain ID
     *
-    * Ros2Version is set to ARDENT
+    * Ros2Version is set to ROS_DISTRO environment variable (or ARDENT if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
@@ -79,7 +79,7 @@ public class RealtimeRos2Node
    /**
     * Create a new realtime node
     * 
-    * Ros2Version is set to ARDENT
+    * Ros2Version is set to ROS_DISTRO environment variable (or ARDENT if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
@@ -90,7 +90,7 @@ public class RealtimeRos2Node
     */
    public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
    {
-      this(pubSubImplementation, Ros2Version.ARDENT, threadFactory, name, namespace, domainId);
+      this(pubSubImplementation, Ros2Version.getRos2DistroFromEnvironment(), threadFactory, name, namespace, domainId);
    }
 
    /**

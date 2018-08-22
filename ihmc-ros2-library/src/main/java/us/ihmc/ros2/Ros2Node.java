@@ -34,7 +34,7 @@ public class Ros2Node extends Ros2NodeBasics
     *
     * Namespace is set to empty ("")
     * Domain ID is set to the default ROS2 domain ID (0)
-    * Ros2Version is set to ARDENT
+    * Ros2Version is set to ROS_DISTRO environment variable (or ARDENT if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
@@ -49,7 +49,7 @@ public class Ros2Node extends Ros2NodeBasics
     * Create a new ROS2 node.
     *
     * Domain ID is set to the default ROS2 domain ID (0)
-    * Ros2Version is set to ARDENT
+    * Ros2Version is set to ROS_DISTRO environment variable (or ARDENT if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
@@ -94,7 +94,7 @@ public class Ros2Node extends Ros2NodeBasics
    /**
     * Create a new ROS2 node.
     * 
-    * Ros2Version is set to ARDENT
+    * Ros2Version is set to ROS_DISTRO environment variable (or ARDENT if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
@@ -104,7 +104,7 @@ public class Ros2Node extends Ros2NodeBasics
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
    {
-      this(pubSubImplementation, Ros2Version.ARDENT, name, namespace, domainId);
+      this(pubSubImplementation, Ros2Version.getRos2DistroFromEnvironment(), name, namespace, domainId);
    }
 
    /**

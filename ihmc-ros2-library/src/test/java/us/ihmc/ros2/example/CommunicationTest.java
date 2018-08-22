@@ -9,59 +9,39 @@ import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.*;
 import us.ihmc.util.PeriodicNonRealtimeThreadScheduler;
 
-import static org.junit.Assert.*;
-
 public class CommunicationTest
 {
    @Test(timeout = 5000)
    public void testSimpleIntraProcessCommunication()
    {
-      Pair<Integer, Integer> messagesReceived = new MutablePair<>();
-      try
-      {
-         Ros2Node node = new Ros2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
-         TwoNumPubSubType topicDataType = new TwoNumPubSubType();
-         Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
-
-         messagesReceived.setValue(0);
-
-         node.createSubscription(topicDataType, subscriber -> {
-            TwoNum message = new TwoNum();
-            System.out.println("Incoming message...");
-            if (subscriber.takeNextData(message, null))
-            {
-               System.out.println("Received: " + message.getStr1());
-               messagesReceived.setValue(messagesReceived.getValue() + 1);
-            }
-         }, "/chatter");
-
-         for (int i = 0; i < 11; i++)
-         {
-            TwoNum message = new TwoNum();
-            message.getStr1().append("Hello world: " + i);
-            System.out.println("Publishing: " + message.getStr1());
-            publisher.publish(message);
-            System.out.println("Published: " + message.getStr1());
-         }
-
-         node.destroy();
-      }
-      catch (Exception e)
-      {
-         e.printStackTrace();
-      }
-
-      while (messagesReceived.getValue() < 10)
-         Thread.yield();
+      testSimpleCommunication(PubSubImplementation.INTRAPROCESS, null);
    }
 
    @Test(timeout = 5000)
-   public void testSimpleRealRTPSCommunication()
+   public void testSimpleRealRTPSCommunicationDefaultRosVersion()
+   {
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, null);
+   }
+
+   @Test(timeout = 5000)
+   public void testSimpleRealRTPSCommunicationArdent()
+   {
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Version.ARDENT);
+   }
+
+   @Test(timeout = 5000)
+   public void testSimpleRealRTPSCommunicationBouncy()
+   {
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Version.BOUNCY);
+   }
+
+   private void testSimpleCommunication(PubSubImplementation pubSubImplementation, Ros2Version ros2Version)
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
-         Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
+         String name = "Ros2CommunicationTest";
+         Ros2Node node = ros2Version == null ? new Ros2Node(pubSubImplementation, name) : new Ros2Node(pubSubImplementation, ros2Version, name);
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
          Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
@@ -94,8 +74,6 @@ public class CommunicationTest
       while (messagesReceived.getValue() < 5)
          Thread.yield();
    }
-
-
 
    @Test(timeout = 5000)
    public void testSimpleRealRTPSCommunicationAndDestroy()
