@@ -26,22 +26,22 @@ public class CommunicationTest
    @Test(timeout = 5000)
    public void testSimpleRealRTPSCommunicationArdent()
    {
-      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Version.ARDENT);
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.ARDENT);
    }
 
    @Test(timeout = 5000)
    public void testSimpleRealRTPSCommunicationBouncy()
    {
-      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Version.BOUNCY);
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.BOUNCY);
    }
 
-   private void testSimpleCommunication(PubSubImplementation pubSubImplementation, Ros2Version ros2Version)
+   private void testSimpleCommunication(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro)
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
          String name = "Ros2CommunicationTest";
-         Ros2Node node = ros2Version == null ? new Ros2Node(pubSubImplementation, name) : new Ros2Node(pubSubImplementation, ros2Version, name);
+         Ros2Node node = ros2Distro == null ? new Ros2Node(pubSubImplementation, name) : new Ros2Node(pubSubImplementation, ros2Distro, name);
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
          Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 

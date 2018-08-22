@@ -43,7 +43,7 @@ class Ros2NodeBasics
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = 0;
 
-   private final Ros2Version ros2Version;
+   private final Ros2Distro ros2Distro;
    
    private Domain domain;
    private Participant participant;
@@ -60,10 +60,10 @@ class Ros2NodeBasics
     * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
-   Ros2NodeBasics(PubSubImplementation pubSubImplementation, Ros2Version ros2Version, String name, String namespace, int domainId) throws IOException
+   Ros2NodeBasics(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId) throws IOException
    {
       this.domain = DomainFactory.getDomain(pubSubImplementation);
-      this.ros2Version = ros2Version;
+      this.ros2Distro = ros2Distro;
       
       Ros2TopicNameMangler.checkNodename(name);
       Ros2TopicNameMangler.checkNamespace(namespace);
@@ -128,7 +128,7 @@ class Ros2NodeBasics
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Version, publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Distro, publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
@@ -245,7 +245,7 @@ class Ros2NodeBasics
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
       Ros2TopicNameMangler
-            .assignNameAndPartitionsToAttributes(ros2Version, subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+            .assignNameAndPartitionsToAttributes(ros2Distro, subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }

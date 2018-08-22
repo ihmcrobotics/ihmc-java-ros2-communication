@@ -48,7 +48,7 @@ public class RealtimeRos2Node
    /**
     * Create a new realtime node with the default ROS2 domain ID
     *
-    * Ros2Version is set to ROS_DISTRO environment variable (or ARDENT if unset)
+    * Ros2Distro is set to ROS_DISTRO environment variable (or ARDENT if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
@@ -65,21 +65,21 @@ public class RealtimeRos2Node
     * Create a new realtime node with the default ROS2 domain ID
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
-    * @param ros2Version Version of ROS2 to use.
+    * @param ros2Distro Version of ROS2 to use.
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
     * @param name Name of this Ros2Node
     * @param namespace Namespace of this Ros2Node
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Version ros2Version, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
    {
-      this(pubSubImplementation, ros2Version, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
     * Create a new realtime node
     * 
-    * Ros2Version is set to ROS_DISTRO environment variable (or ARDENT if unset)
+    * Ros2Distro is set to ROS_DISTRO environment variable (or ARDENT if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
@@ -90,23 +90,23 @@ public class RealtimeRos2Node
     */
    public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
    {
-      this(pubSubImplementation, Ros2Version.getRos2DistroFromEnvironment(), threadFactory, name, namespace, domainId);
+      this(pubSubImplementation, Ros2Distro.fromEnvironment(), threadFactory, name, namespace, domainId);
    }
 
    /**
     * Create a new realtime node
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
-    * @param ros2Version Version of ROS2 to use.
+    * @param ros2Distro Version of ROS2 to use.
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
     * @param name Name of this Ros2Node
     * @param namespace Namespace of this Ros2Node
     * @param domainId Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Version ros2Version, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
    {
-      this.node = new Ros2NodeBasics(pubSubImplementation, ros2Version, name, namespace, domainId);
+      this.node = new Ros2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
