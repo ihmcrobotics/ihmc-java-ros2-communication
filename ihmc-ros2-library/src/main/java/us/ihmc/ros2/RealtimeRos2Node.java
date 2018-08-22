@@ -48,7 +48,7 @@ public class RealtimeRos2Node
    /**
     * Create a new realtime node with the default ROS2 domain ID
     *
-    * Ros2Distro is set to ROS_DISTRO environment variable (or ARDENT if unset)
+    * Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
@@ -79,7 +79,7 @@ public class RealtimeRos2Node
    /**
     * Create a new realtime node
     * 
-    * Ros2Distro is set to ROS_DISTRO environment variable (or ARDENT if unset)
+    * Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
