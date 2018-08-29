@@ -48,6 +48,8 @@ public class RealtimeRos2Node
    /**
     * Create a new realtime node with the default ROS2 domain ID
     *
+    * Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
+    *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
     * @param name Name of this Ros2Node
@@ -60,7 +62,24 @@ public class RealtimeRos2Node
    }
 
    /**
+    * Create a new realtime node with the default ROS2 domain ID
+    *
+    * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
+    * @param ros2Distro Version of ROS2 to use.
+    * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    * @param name Name of this Ros2Node
+    * @param namespace Namespace of this Ros2Node
+    * @throws IOException if the participant cannot be made
+    */
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
+   {
+      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+   }
+
+   /**
     * Create a new realtime node
+    * 
+    * Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
@@ -71,10 +90,38 @@ public class RealtimeRos2Node
     */
    public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
    {
-      this.node = new Ros2NodeBasics(pubSubImplementation, name, namespace, domainId);
+      this(pubSubImplementation, Ros2Distro.fromEnvironment(), threadFactory, name, namespace, domainId);
+   }
+
+   /**
+    * Create a new realtime node
+    *
+    * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
+    * @param ros2Distro Version of ROS2 to use.
+    * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    * @param name Name of this Ros2Node
+    * @param namespace Namespace of this Ros2Node
+    * @param domainId Desired ROS domain ID
+    * @throws IOException if the participant cannot be made
+    */
+   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
+   {
+      this.node = new Ros2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
+   /**
+    * Create a new realtime node using an existing ROS2 node
+    * 
+    * @param ros2Node existing Ros2Node to use for this realtime node
+    * @param threadFactory Thread factory for the publisher. Either PeriodicRealtimeThreadSchedulerFactory or PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    */
+   public RealtimeRos2Node(Ros2Node ros2Node, PeriodicThreadSchedulerFactory threadFactory)
+   {
+      this.node = ros2Node;
+      this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + this.node.getName() + "/" + this.node.getNamespace());
+   }
+   
    /**
     * Create a new realtime publisher with default qos profile and queue depth. 
     * 
@@ -123,7 +170,6 @@ public class RealtimeRos2Node
       {
          startupLock.unlock();
       }
-
    }
 
    /**

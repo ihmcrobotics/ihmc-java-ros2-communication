@@ -1,4 +1,5 @@
-# IHMC Java ROS2 Communication
+# IHMC Java ROS 2 Communication
+
 
 ROS2 messaging for Java.
 
@@ -8,20 +9,29 @@ This library builds on [IHMC Pub Sub Group](https://github.com/ihmcrobotics/ihmc
 
 ## Features
 
-- Easy-to-use API for publishing and subscribing to ROS2 topics
+- Easy-to-use API for publishing and subscribing to ROS 2 topics
 - Allocation free modules for realtime support
 - Carries documentation from .msg files into Javadoc
 - Gradle task for .msg -> .java generation
 - Provided Java library for ROS [common_interfaces](https://github.com/ros2/common_interfaces), [rcl_interfaces](https://github.com/ros2/rcl_interfaces), and [geometry2](https://github.com/ros2/geometry2)
 - ROS 2 .msg to ROS 1 .msg generation
+- ROS 2 ardent and bouncy compatibility
 
-## Artifacts
+## Download
 
-```gradle
-compile group: "us.ihmc", name: "ihmc-ros2-library", version: 0.10.0  // publish/subscribe API
-compile group: "us.ihmc", name: "ros2-common-interfaces", version: 0.10.0  // ROS2 common message library
-compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: 0.10.0  // generator for .msg -> .java
-```
+In your build.gradle:
+
+`compile group: "us.ihmc", name: "ihmc-ros2-library", version: `
+[ ![ihmc-ros2-library](https://api.bintray.com/packages/ihmcrobotics/maven-release/ihmc-ros2-library/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ihmc-ros2-library/_latestVersion)
+`  // publish/subscribe API`
+ 
+`compile group: "us.ihmc", name: "ros2-common-interfaces", version: `
+[ ![ros2-common-interfaces](https://api.bintray.com/packages/ihmcrobotics/maven-release/ros2-common-interfaces/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ros2-common-interfaces/_latestVersion)
+` // ROS2 common message library`
+
+`compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: `
+[ ![ros2-msg-to-pubsub-generator](https://api.bintray.com/packages/ihmcrobotics/maven-release/ros2-msg-to-pubsub-generator/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ros2-msg-to-pubsub-generator/_latestVersion)
+` // generator for .msg -> .java`
 
 ## IHMC ROS2 Library
 
@@ -30,39 +40,7 @@ This library provides a minimal implementation of a Ros2Node in Java. Two versio
 - **Ros2Node**: Publishes in the same thread and uses direct callbacks for incoming messages.
 - **RealtimeRos2Node**:	Stores outgoing and incoming messages in a queue and uses non-blocking calls to publish messages and allows polling for new messages.
 
-### Non-realtime example
-
-###### Publisher
-
-```java
-Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
-Ros2Publisher<Int64> publisher = node.createPublisher(Int64.getPubSubType().get(), "/example");
-Int64 message = new Int64();
-for (int i = 0; i < 10; i++)
-{
-   message.setData(i);
-   publisher.publish(message);
-   Thread.sleep(1000);
-}
-node.destroy(); // release system resources
-```
-
-###### Subscriber
-
-```java
-Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2ListenerExample");
-node.createSubscription(Int64.getPubSubType().get(), subscriber -> {
-   Int64 message = new Int64();
-   if (subscriber.takeNextData(message, null))
-   {
-      System.out.println(message.getData());
-   }
-}, "/example");
-
-Thread.currentThread().join(); // keep thread alive to receive more messages
-```
-
-### Realtime example
+### Example
 
 ###### Publish/Subscribe
 
