@@ -36,6 +36,7 @@ import us.ihmc.util.PeriodicThreadSchedulerFactory;
 public class RealtimeRos2Node
 {
    public static int THREAD_PERIOD_MICROSECONDS = 1000;
+   public static final int DEFAULT_QUEUE_SIZE = 10;
 
    private final Ros2NodeBasics node;
 
@@ -136,7 +137,7 @@ public class RealtimeRos2Node
     */
    public <T> RealtimeRos2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT(), 10);
+      return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -186,7 +187,7 @@ public class RealtimeRos2Node
     */
    public <T> RealtimeRos2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createQueuedSubscription(topicDataType, topicName, Ros2QosProfile.DEFAULT(), 10);
+      return createQueuedSubscription(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
