@@ -22,6 +22,7 @@ import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.RealtimeRos2Node;
 import us.ihmc.ros2.RealtimeRos2Publisher;
 import us.ihmc.ros2.RealtimeRos2Subscription;
+import us.ihmc.ros2.Ros2QosProfile;
 import us.ihmc.util.PeriodicNonRealtimeThreadSchedulerFactory;
 import us.ihmc.util.PeriodicRealtimeThreadSchedulerFactory;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
@@ -45,9 +46,10 @@ public class RealtimeRos2PublishSubscribeExample
             new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
             new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
       RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "/us/ihmc");
-      RealtimeRos2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example");
-      RealtimeRos2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example");
+      RealtimeRos2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example", Ros2QosProfile.KEEP_HISTORY(3), 10);
+      RealtimeRos2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example", Ros2QosProfile.KEEP_HISTORY(3), 10);
 
+      
       node.spin(); // start the realtime node thread
 
       Int64 message = new Int64();
@@ -61,7 +63,7 @@ public class RealtimeRos2PublishSubscribeExample
       Int64 incomingMessage = new Int64();
       while (!subscription.poll(incomingMessage))
          ; // just waiting for the first message
-      System.out.println(incomingMessage); // first message
+      System.out.println("Receiving: " + incomingMessage); // first message
       int i = 1;
       while (i < 10)
       {
@@ -75,5 +77,8 @@ public class RealtimeRos2PublishSubscribeExample
             // no available messages
          }
       }
+      System.out.println("Received all messages!");
+      
+      node.destroy();
    }
 }
