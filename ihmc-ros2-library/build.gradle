@@ -28,4 +28,5 @@ mainDependencies {
 testDependencies {
    compile group: "us.ihmc", name: "ros2-common-interfaces", version: version
    compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator-test", version: version
+   compile group: "us.ihmc", name: "ihmc-ci-core-api", version: "0.18.0"
 }
