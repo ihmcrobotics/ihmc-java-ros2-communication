@@ -48,9 +48,10 @@ This library provides a minimal implementation of a Ros2Node in Java. Two versio
 PeriodicThreadSchedulerFactory threadFactory = SystemUtils.IS_OS_LINUX ? // realtime threads only work on linux
       new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
       new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
-RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "");
-RealtimeRos2Publisher<Int64> publisher = node.createPublisher(Int64.getPubSubType().get(), "/example");
-RealtimeRos2Subscription<Int64> subscription = node.createSubscription(Int64.getPubSubType().get(), "/example");
+RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "/us/ihmc");
+RealtimeRos2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example", Ros2QosProfile.KEEP_HISTORY(3), 10);
+RealtimeRos2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example", Ros2QosProfile.KEEP_HISTORY(3), 10);
+
 
 node.spin(); // start the realtime node thread
 
@@ -58,19 +59,20 @@ Int64 message = new Int64();
 for (int i = 0; i < 10; i++)
 {
    message.setData(i);
-   publisher.publish(message);  // publish
+   publisher.publish(message);
+   System.out.println("Sending: " + message);
 }
 
 Int64 incomingMessage = new Int64();
 while (!subscription.poll(incomingMessage))
    ; // just waiting for the first message
-System.out.println(incomingMessage); // first message
+System.out.println("Receiving: " + incomingMessage); // first message
 int i = 1;
 while (i < 10)
 {
-   if (subscription.poll(incomingMessage))  // poll for new messages
+   if (subscription.poll(incomingMessage))
    {
-      System.out.println(incomingMessage);
+      System.out.println("Receiving: " + incomingMessage);
       i++;
    }
    else
@@ -78,6 +80,9 @@ while (i < 10)
       // no available messages
    }
 }
+System.out.println("Received all messages!");
+
+node.destroy();
 ```
 
 ## Note

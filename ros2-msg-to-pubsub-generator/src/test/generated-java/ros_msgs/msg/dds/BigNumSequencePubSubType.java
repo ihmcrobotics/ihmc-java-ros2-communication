@@ -40,7 +40,7 @@ public class BigNumSequencePubSubType implements us.ihmc.pubsub.TopicDataType<ro
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000; ++i0)
       {
           current_alignment += ros_msgs.msg.dds.NumPubSubType.getMaxCdrSerializedSize(current_alignment);}
       return current_alignment - initial_alignment;
@@ -65,7 +65,7 @@ public class BigNumSequencePubSubType implements us.ihmc.pubsub.TopicDataType<ro
 
    public static void write(ros_msgs.msg.dds.BigNumSequence data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getLargeSequence().size() <= 100)
+      if(data.getLargeSequence().size() <= 10000)
       cdr.write_type_e(data.getLargeSequence());else
           throw new RuntimeException("large_sequence field exceeds the maximum length");
 

@@ -4,7 +4,7 @@ buildscript {
       mavenLocal()
    }
    dependencies {
-      classpath "us.ihmc:ihmc-build:0.14.0"
+      classpath "us.ihmc:ihmc-build:0.15.1"
    }
 }
 apply plugin: "us.ihmc.ihmc-build"
@@ -28,12 +28,13 @@ dependencies {
 }
 
 mainDependencies {
-   compile group: "us.ihmc", name: "ihmc-pub-sub-generator", version: "0.8.3"
+   compile group: "us.ihmc", name: "ihmc-pub-sub-generator", version: "0.9.0"
    compile group: "us.ihmc", name: "ros2-msg-to-idl-generator", version: version
 }
 
 testDependencies {
-   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.8.3"
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.9.0"
+   compile group: "us.ihmc", name: "ihmc-ci-core-api", version: "0.18.0"
 }
 
 task show() {

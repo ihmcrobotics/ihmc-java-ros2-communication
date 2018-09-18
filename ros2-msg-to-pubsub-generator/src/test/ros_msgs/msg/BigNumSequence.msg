@@ -1,1 +1,1 @@
-Num[<=100] large_sequence
+Num[<=10000] large_sequence

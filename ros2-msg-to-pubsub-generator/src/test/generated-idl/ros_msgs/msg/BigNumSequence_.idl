@@ -12,7 +12,7 @@ module ros_msgs
       @TypeCode(type="ros_msgs::msg::dds_::BigNumSequence_")
       struct BigNumSequence
       {
-        sequence<ros_msgs::msg::dds::Num, 100> large_sequence;
+        sequence<ros_msgs::msg::dds::Num, 10000> large_sequence;
       };
     };
   };

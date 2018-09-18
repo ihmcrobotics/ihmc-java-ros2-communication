@@ -17,6 +17,7 @@ package us.ihmc.ros2;
 
 import java.io.IOException;
 
+import us.ihmc.commons.PrintTools;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
@@ -41,7 +42,7 @@ import us.ihmc.pubsub.subscriber.SubscriberListener;
  */
 class Ros2NodeBasics
 {
-   public static final int ROS_DEFAULT_DOMAIN_ID = 0;
+   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
    private final Ros2Distro ros2Distro;
    
@@ -284,5 +285,29 @@ class Ros2NodeBasics
       domain.removeParticipant(participant);
       domain = null;
       participant = null;
+   }
+
+   public static int domainFromEnvironment()
+   {
+      String rosDomainId = System.getenv("ROS_DOMAIN_ID");
+
+      int rosDomainIdAsInteger = 0; // default to 0
+
+      if (rosDomainId != null)
+      {
+         rosDomainId = rosDomainId.trim();
+         try
+         {
+            rosDomainIdAsInteger = Integer.valueOf(rosDomainId);
+         }
+         catch (NumberFormatException e)
+         {
+            PrintTools.warn("Environment variable ROS_DOMAIN_ID cannot be parsed as an integer: " + rosDomainId);
+         }
+      }
+
+      PrintTools.info(Ros2NodeBasics.class, "Default ROS_DOMAIN_ID: " + rosDomainIdAsInteger);
+
+      return rosDomainIdAsInteger;
    }
 }
