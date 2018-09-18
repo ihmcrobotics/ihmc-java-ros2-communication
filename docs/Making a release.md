@@ -8,6 +8,13 @@
 
 #### Step 2: Generate messages
 
+###### Call `generateMessages`
+
+```
+> cd ihmc-java-ros2-communication/ros2-common-interfaces
+> gradle generateMessages
+```
+
 ###### Generate ros2-common-interfaces
 
 Run `us.ihmc.idl.Ros2CommonInterfacesGenerateMessages`, 
