@@ -25,8 +25,17 @@ public class ROS2PubSubGeneratorPlugin implements Plugin<Project>
       this.project = project;
       projectPath = project.getProjectDir().toPath();
 
-      createExtension("messageGenerator", settings);
-      createTask(project, "generateMessages");
+      try
+      {
+         createExtension("messageGenerator", new RosInterfaceGenerator(TEMPORARY_DIRECTORY + ROS_2_COMMON_INTERFACES));
+      }
+      catch (IOException e)
+      {
+         throw new GradleException("Failed to configure generator.");
+      }
+
+      //      createExtension("messageGenerator", settings);
+//      createTask(project, "generateMessages");
    }
 
    public void generateMessages()
