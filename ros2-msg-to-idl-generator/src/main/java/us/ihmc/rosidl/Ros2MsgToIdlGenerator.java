@@ -12,7 +12,6 @@ import javax.json.JsonWriter;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,6 +25,11 @@ import java.util.List;
 
 public class Ros2MsgToIdlGenerator
 {
+   public static void main(String[] args)
+   {
+      new Ros2MsgToIdlGenerator();
+   }
+
    private static final boolean compile_srv = false;
 
    // Template to use
@@ -41,6 +45,11 @@ public class Ros2MsgToIdlGenerator
 
    public Ros2MsgToIdlGenerator()
    {
+      this(null);
+   }
+
+   public Ros2MsgToIdlGenerator(String localEmFilePath)
+   {
       try
       {
 //         new File("build/tmp").mkdirs();
@@ -53,15 +62,28 @@ public class Ros2MsgToIdlGenerator
 //         Path templateDirPath = Paths.get("build/tmp/templates");
 //         Files.deleteIfExists(templateDirPath);
 //         template_dir = Files.createDirectory(templateDirPath);
-         template_dir = Files.createTempDirectory("RosInterfaceCompilerTemplates");
-         template_dir.toFile().deleteOnExit();
 
-         InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream(pub_sub_template_name);
-         Path template_file = template_dir.resolve(pub_sub_template_name);
-         Files.copy(template, template_file);
 
-         template_file.toFile().deleteOnExit();
-         template.close();
+         if (localEmFilePath == null)
+         {
+            template_dir = Files.createTempDirectory("RosInterfaceCompilerTemplates");
+            template_dir.toFile().deleteOnExit();
+
+            InputStream inputStream = getClass().getResourceAsStream(pub_sub_template_name);
+            if (inputStream == null)
+            {
+               throw new RuntimeException("Could not find msg.idl.em");
+            }
+            //         InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream(pub_sub_template_name);
+            Path template_file = template_dir.resolve(pub_sub_template_name);
+            Files.copy(inputStream, template_file);
+            template_file.toFile().deleteOnExit();
+            inputStream.close();
+         }
+         else
+         {
+            template_dir = Paths.get(localEmFilePath);
+         }
       }
       catch (IOException e)
       {
@@ -147,6 +169,8 @@ public class Ros2MsgToIdlGenerator
     */
    public void convertToIDL(Path outputDirectory)
    {
+      System.out.println(packages.keySet());
+
       packages.forEach((name, pkg) -> convertPackageToIDL(name, pkg, outputDirectory));
    }
 

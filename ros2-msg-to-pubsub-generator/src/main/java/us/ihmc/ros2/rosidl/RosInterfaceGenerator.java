@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Utility to convert ROS2 IDL files (.msg & .srv) to Java files compatible with IHMC Pub/Sub
+ * Utility to convert ROS2 IDL files {@code (.msg & .srv)} to Java files compatible with IHMC Pub/Sub
  *
  * @author Jesper Smith
  */
@@ -44,15 +44,21 @@ public class RosInterfaceGenerator
    // Holder for all packages found
    private final HashMap<String, Path> customIDLFiles = new HashMap<>();
 
+   public RosInterfaceGenerator() throws IOException
+   {
+      this(null);
+   }
+
    /**
     * Compile Ros interfaces to Java files for IHMC pub sub
     *
+    * @param localEmFilePath localEmFilePath
     * @throws IOException if no temporary files and directories can be made
     */
-   public RosInterfaceGenerator() throws IOException
+   public RosInterfaceGenerator(String localEmFilePath) throws IOException
    {
-      ros2MsgToIdlGenerator = new Ros2MsgToIdlGenerator();
-      ros2MsgToRos1MsgGenerator = new Ros2MsgToRos1MsgGenerator();
+      ros2MsgToIdlGenerator = new Ros2MsgToIdlGenerator(localEmFilePath);
+      ros2MsgToRos1MsgGenerator = new Ros2MsgToRos1MsgGenerator(localEmFilePath);
    }
 
    /**
@@ -63,7 +69,7 @@ public class RosInterfaceGenerator
     * - packageName
     * - package.xml
     *
-    * A package xml with at least <name /> and optionally <build_depends />
+    * {@code A package xml with at least <name /\> and optionally <build_depends />}
     *
     * @param rootPath The root directory of packages to add
     * @throws IOException If the rootPath cannot be read
@@ -81,7 +87,7 @@ public class RosInterfaceGenerator
     * - packageName
     * - package.xml
     *
-    * A package xml with at least <name /> and optionally <build_depends />
+    * {@code A package xml with at least <name /\> and optionally <build_depends />}
     *
     * @param rootPath The root directory of packages to add
     * @throws IOException If the rootPath cannot be read
@@ -97,8 +103,9 @@ public class RosInterfaceGenerator
     * This function can ber called
     *
     * @param idlDirectory directory to put .idl files in
+    * @param ros1Directory directory to put ros1 msg files in
     * @param javaDirectory directory to put generated .java files in
-    * @throws IOException
+    * @throws IOException if io fails
     */
    public void generate(Path idlDirectory, Path ros1Directory, Path javaDirectory) throws IOException
    {
@@ -174,7 +181,7 @@ public class RosInterfaceGenerator
    /**
     * Convert a directory to Unix EOL.
     *
-    * @param directory
+    * @param directory dir to set to Unix EOL
     */
    public static void convertDirectoryToUnixEOL(Path directory)
    {
@@ -202,8 +209,8 @@ public class RosInterfaceGenerator
     *
     * This will probably be fixed in a future version.
     *
-    * @param outputDirectory
-    * @param packagesToKeep
+    * @param outputDirectory outputDirectory
+    * @param packagesToKeep packagesToKeep
     */
    public static void deleteAllExcept(Path outputDirectory, String... packagesToKeep)
    {

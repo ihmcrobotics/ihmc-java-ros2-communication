@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -38,6 +39,11 @@ public class Ros2MsgToRos1MsgGenerator
 
    public Ros2MsgToRos1MsgGenerator()
    {
+      this(null);
+   }
+
+   public Ros2MsgToRos1MsgGenerator(String localEmFilePath)
+   {
       try
       {
 //         new File("build/tmp").mkdirs();
@@ -50,15 +56,26 @@ public class Ros2MsgToRos1MsgGenerator
 //         Path templateDirPath = Paths.get("build/tmp/templates");
 //         Files.deleteIfExists(templateDirPath);
 //         template_dir = Files.createDirectory(templateDirPath);
-         template_dir = Files.createTempDirectory("RosInterfaceCompilerTemplates");
-         template_dir.toFile().deleteOnExit();
+         if (localEmFilePath == null)
+         {
+            template_dir = Files.createTempDirectory("RosInterfaceCompilerTemplates");
+            template_dir.toFile().deleteOnExit();
 
-         InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream(pub_sub_template_name);
-         Path template_file = template_dir.resolve(pub_sub_template_name);
-         Files.copy(template, template_file);
-
-         template_file.toFile().deleteOnExit();
-         template.close();
+            InputStream inputStream = getClass().getResourceAsStream(pub_sub_template_name);
+            if (inputStream == null)
+            {
+               throw new RuntimeException("Could not find msg.ros1.em");
+            }
+            //         InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream(pub_sub_template_name);
+            Path template_file = template_dir.resolve(pub_sub_template_name);
+            Files.copy(inputStream, template_file);
+            template_file.toFile().deleteOnExit();
+            inputStream.close();
+         }
+         else
+         {
+            template_dir = Paths.get(localEmFilePath);
+         }
       }
       catch (IOException e)
       {
@@ -144,6 +161,8 @@ public class Ros2MsgToRos1MsgGenerator
     */
    public void convertToROS1(Path outputDirectory)
    {
+      System.out.println(packages.keySet());
+
       packages.forEach((name, pkg) -> convertPackageToROS1(name, pkg, outputDirectory));
    }
 

@@ -5,16 +5,16 @@ buildscript {
    }
    dependencies {
       classpath "us.ihmc:ihmc-build:0.15.1"
+      classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
    }
 }
 apply plugin: "us.ihmc.ihmc-build"
-//apply plugin: "application"
+apply plugin: "com.gradle.plugin-publish"
 
 ihmc {
    loadProductProperties("../group.gradle.properties")
 
    configureDependencyResolution()
-   javaDirectory("main", "java-generated")
    resourceDirectory("test", "generated-idl")
    resourceDirectory("test", "custom-idl")
    resourceDirectory("test", "generated-ros1")
@@ -36,6 +36,27 @@ mainDependencies {
 
 testDependencies {
    compile pubsub
+}
+
+pluginBundle {
+   website = 'https://github.com/ihmcrobotics/ihmc-java-ros2-communication'
+   vcsUrl = 'https://github.com/ihmcrobotics/ihmc-java-ros2-communication'
+   description = 'Java type generation from ROS 2 .msg files.'
+
+   plugins {
+      ihmcRos2MsgToPubSubGeneratorPlugin {
+         id = project.group + '.' + project.name
+         displayName = 'IHMC ROS 2 to Pub Sub Generator Plugin'
+         tags = ['ros2', 'pubsub', 'ihmc', 'robotics']
+         version = project.version
+      }
+   }
+
+   mavenCoordinates {
+      groupId = project.group
+      artifactId = project.name
+      version = project.version
+   }
 }
 
 task show() {
