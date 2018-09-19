@@ -2,7 +2,6 @@ package us.ihmc;
 
 import org.junit.Test;
 import us.ihmc.commons.nio.FileTools;
-import us.ihmc.continuousIntegration.ContinuousIntegrationTools;
 import us.ihmc.ros2.rosidl.RosInterfaceGenerator;
 
 import java.io.IOException;
@@ -15,10 +14,7 @@ public class MessageGenerationTest
    public void testMessageGeneration() throws IOException
    {
       Path startingPath;
-      if (ContinuousIntegrationTools.isRunningOnContinuousIntegrationServer())
-         startingPath = Paths.get("ros2-msg-to-pubsub-generator/src/test");
-      else
-         startingPath = Paths.get("");
+      startingPath = Paths.get("ros2-msg-to-pubsub-generator/src/test");
 
       FileTools.deleteQuietly(startingPath.resolve("generated-java"));
       FileTools.deleteQuietly(startingPath.resolve("generated-idl"));

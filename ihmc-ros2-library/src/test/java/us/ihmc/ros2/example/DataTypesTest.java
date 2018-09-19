@@ -5,7 +5,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Test;
 import ros_msgs.msg.dds.Num;
 import ros_msgs.msg.dds.NumPubSubType;
-import us.ihmc.continuousIntegration.ContinuousIntegrationTools;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.common.SampleInfo;
 import us.ihmc.ros2.Ros2Node;
@@ -23,9 +22,7 @@ public class DataTypesTest
       int NUMBER_OF_MESSAGES_TO_SEND = 10;
       try
       {
-         Ros2Node node = ContinuousIntegrationTools.isRunningOnContinuousIntegrationServer() ?
-               new Ros2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest") :
-               new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
+         Ros2Node node = new Ros2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
          NumPubSubType topicDataType = new NumPubSubType();
          Ros2Publisher<Num> publisher = node.createPublisher(topicDataType, "/chatter");
 
