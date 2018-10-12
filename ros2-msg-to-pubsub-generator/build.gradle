@@ -23,18 +23,19 @@ ihmc {
    configurePublications()
 }
 
-dependencies {
-   compile gradleApi()
-}
+def pubsubVersion = "0.10.0"
+def pubsub = "us.ihmc:ihmc-pub-sub:$pubsubVersion"
+def pubsubGen = "us.ihmc:ihmc-pub-sub-generator:$pubsubVersion"
+def ros2IdlGen = "us.ihmc:ros2-msg-to-idl-generator:$version"
 
 mainDependencies {
-   compile group: "us.ihmc", name: "ihmc-pub-sub-generator", version: "0.9.0"
-   compile group: "us.ihmc", name: "ros2-msg-to-idl-generator", version: version
+   compile dependencies.gradleApi()
+   compile pubsubGen
+   compile ros2IdlGen
 }
 
 testDependencies {
-   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.9.0"
-   compile group: "us.ihmc", name: "ihmc-ci-core-api", version: "0.18.0"
+   compile pubsub
 }
 
 task show() {
