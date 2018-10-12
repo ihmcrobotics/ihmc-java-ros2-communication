@@ -38,7 +38,7 @@ ihmc {
 }
 
 mainDependencies {
-   compile group: "us.ihmc", name: "euclid", version: "0.8.2"
+   compile group: "us.ihmc", name: "euclid", version: "0.9.3"
    compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.9.0"
 }
 
