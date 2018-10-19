@@ -14,7 +14,7 @@ public class MessageGenerationTest
    public void testMessageGeneration() throws IOException
    {
       Path startingPath;
-      startingPath = Paths.get("ros2-msg-to-pubsub-generator/src/test");
+      startingPath = Paths.get("test");
 
       FileTools.deleteQuietly(startingPath.resolve("generated-java"));
       FileTools.deleteQuietly(startingPath.resolve("generated-idl"));
