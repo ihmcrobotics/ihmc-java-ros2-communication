@@ -1,14 +1,7 @@
-buildscript {
-   repositories {
-      maven { url "https://plugins.gradle.org/m2/" }
-      mavenLocal()
-   }
-   dependencies {
-      classpath "us.ihmc:ihmc-build:0.15.1"
-   }
+plugins {
+   id("us.ihmc.ihmc-build") version "0.15.1"
+   id("us.ihmc.ihmc-ci") version "1.0.9"
 }
-apply plugin: "us.ihmc.ihmc-build"
-//apply plugin: "application"
 
 ihmc {
    loadProductProperties("../group.gradle.properties")
@@ -36,12 +29,4 @@ mainDependencies {
 
 testDependencies {
    compile pubsub
-}
-
-task show() {
-   doLast {
-      project.gradle.includedBuilds.each { println it }
-      buildscript.configurations.classpath.each { println "Buildscript: " + it }
-      configurations.compile.each { println "Compile: " + it }
-   }
 }
