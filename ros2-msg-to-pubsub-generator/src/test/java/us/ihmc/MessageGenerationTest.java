@@ -1,6 +1,7 @@
 package us.ihmc;
 
 import org.junit.Test;
+import us.ihmc.commons.LogTools;
 import us.ihmc.commons.nio.FileTools;
 import us.ihmc.ros2.rosidl.RosInterfaceGenerator;
 
@@ -14,6 +15,7 @@ public class MessageGenerationTest
    public void testMessageGeneration() throws IOException
    {
       Path startingPath;
+      LogTools.info("Working dir: " + Paths.get(".").toAbsolutePath());
       startingPath = Paths.get("test");
 
       FileTools.deleteQuietly(startingPath.resolve("generated-java"));
