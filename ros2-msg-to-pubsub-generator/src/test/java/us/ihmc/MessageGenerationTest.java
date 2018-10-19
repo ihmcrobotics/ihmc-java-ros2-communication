@@ -16,7 +16,7 @@ public class MessageGenerationTest
    {
       Path startingPath;
       LogTools.info("Working dir: " + Paths.get(".").toAbsolutePath());
-      startingPath = Paths.get("test");
+      startingPath = Paths.get(".");
 
       FileTools.deleteQuietly(startingPath.resolve("generated-java"));
       FileTools.deleteQuietly(startingPath.resolve("generated-idl"));
