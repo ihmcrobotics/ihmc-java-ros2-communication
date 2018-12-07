@@ -2,7 +2,7 @@ package us.ihmc.ros2.example;
 
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ros_msgs.msg.dds.Num;
 import ros_msgs.msg.dds.NumPubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
@@ -10,11 +10,11 @@ import us.ihmc.pubsub.common.SampleInfo;
 import us.ihmc.ros2.Ros2Node;
 import us.ihmc.ros2.Ros2Publisher;
 
-import static org.junit.Assert.*;
+import static us.ihmc.robotics.Assert.*;
 
 public class DataTypesTest
 {
-   @Test(timeout = 30000)
+   @Test// timeout = 30000
    public void testAllDoubleValuesGetAcross()
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
