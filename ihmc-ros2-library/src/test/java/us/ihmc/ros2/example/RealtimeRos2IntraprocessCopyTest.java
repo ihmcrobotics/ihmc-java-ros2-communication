@@ -16,7 +16,7 @@
 package us.ihmc.ros2.example;
 
 import org.apache.commons.lang3.SystemUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ros_msgs.msg.dds.BigNumSequence;
 import ros_msgs.msg.dds.BigNumSequencePubSubType;
 import ros_msgs.msg.dds.Num;
@@ -44,7 +44,7 @@ public class RealtimeRos2IntraprocessCopyTest
 {
    public static final int NUMBER_OF_MESSAGES_TO_SEND = 20;
 
-   @Test(timeout = 300000)
+   @Test// timeout = 300000
    public void testIntraprocessCopy() throws IOException, InterruptedException
    {
       Random random = new Random(892141240123L);

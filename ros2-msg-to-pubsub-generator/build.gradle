@@ -1,14 +1,7 @@
-buildscript {
-   repositories {
-      maven { url "https://plugins.gradle.org/m2/" }
-      mavenLocal()
-   }
-   dependencies {
-      classpath "us.ihmc:ihmc-build:0.15.1"
-   }
+plugins {
+   id("us.ihmc.ihmc-build") version "0.15.5"
+   id("us.ihmc.ihmc-ci") version "3.4"
 }
-apply plugin: "us.ihmc.ihmc-build"
-//apply plugin: "application"
 
 ihmc {
    loadProductProperties("../group.gradle.properties")
@@ -23,7 +16,7 @@ ihmc {
    configurePublications()
 }
 
-def pubsubVersion = "0.10.0"
+def pubsubVersion = "0.10.1"
 def pubsub = "us.ihmc:ihmc-pub-sub:$pubsubVersion"
 def pubsubGen = "us.ihmc:ihmc-pub-sub-generator:$pubsubVersion"
 def ros2IdlGen = "us.ihmc:ros2-msg-to-idl-generator:$version"
@@ -36,12 +29,5 @@ mainDependencies {
 
 testDependencies {
    compile pubsub
-}
-
-task show() {
-   doLast {
-      project.gradle.includedBuilds.each { println it }
-      buildscript.configurations.classpath.each { println "Buildscript: " + it }
-      configurations.compile.each { println "Compile: " + it }
-   }
+   compile "us.ihmc:ihmc-commons:0.25.0"
 }

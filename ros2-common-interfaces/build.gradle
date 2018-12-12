@@ -8,12 +8,16 @@ buildscript {
       jcenter()
    }
    dependencies {
-      classpath "us.ihmc:ihmc-build:0.15.1"
       classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.13.0"
       classpath "org.ajoberstar:grgit:2.1.0"
    }
 }
-apply plugin: "us.ihmc.ihmc-build"
+
+plugins {
+   id("us.ihmc.ihmc-build") version "0.15.5"
+   id("us.ihmc.ihmc-ci") version "3.4"
+}
+
 apply plugin: "org.ajoberstar.grgit"
 
 def rclInterfacesPath = "src/main/vendor/rcl_interfaces"
@@ -38,8 +42,8 @@ ihmc {
 }
 
 mainDependencies {
-   compile group: "us.ihmc", name: "euclid", version: "0.9.3"
-   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.10.0"
+   compile group: "us.ihmc", name: "euclid-geometry", version: "0.11.0"
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.10.1"
 }
 
 generatorDependencies {

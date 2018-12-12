@@ -1,6 +1,7 @@
 package us.ihmc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import us.ihmc.log.LogTools;
 import us.ihmc.commons.nio.FileTools;
 import us.ihmc.ros2.rosidl.RosInterfaceGenerator;
 
@@ -10,11 +11,12 @@ import java.nio.file.Paths;
 
 public class MessageGenerationTest
 {
-   @Test(timeout = 30000)
+   @Test// timeout = 30000
    public void testMessageGeneration() throws IOException
    {
       Path startingPath;
-      startingPath = Paths.get("ros2-msg-to-pubsub-generator/src/test");
+      LogTools.info("Working dir: " + Paths.get(".").toAbsolutePath());
+      startingPath = Paths.get(".");
 
       FileTools.deleteQuietly(startingPath.resolve("generated-java"));
       FileTools.deleteQuietly(startingPath.resolve("generated-idl"));

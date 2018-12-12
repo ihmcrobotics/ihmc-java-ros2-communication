@@ -2,7 +2,7 @@ package us.ihmc.ros2.example;
 
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ros_msgs.msg.dds.TwoNum;
 import ros_msgs.msg.dds.TwoNumPubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
@@ -11,25 +11,25 @@ import us.ihmc.util.PeriodicNonRealtimeThreadScheduler;
 
 public class CommunicationTest
 {
-   @Test(timeout = 5000)
+   @Test// timeout = 5000
    public void testSimpleIntraProcessCommunication()
    {
       testSimpleCommunication(PubSubImplementation.INTRAPROCESS, null);
    }
 
-   @Test(timeout = 5000)
+   @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationDefaultRosVersion()
    {
       testSimpleCommunication(PubSubImplementation.FAST_RTPS, null);
    }
 
-   @Test(timeout = 5000)
+   @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationArdent()
    {
       testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.ARDENT);
    }
 
-   @Test(timeout = 5000)
+   @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationBouncy()
    {
       testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.BOUNCY);
@@ -75,7 +75,7 @@ public class CommunicationTest
          Thread.yield();
    }
 
-   @Test(timeout = 5000)
+   @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationAndDestroy()
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
@@ -117,7 +117,7 @@ public class CommunicationTest
          Thread.yield();
    }
 
-   @Test(timeout = 5000)
+   @Test// timeout = 5000
    public void testSimpleIntraProcessCommunicationRealtime()
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
