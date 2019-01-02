@@ -2,7 +2,7 @@
 
 #### Step 1: Update ihmc-pub-sub dependencies
 
-1. Check for the latest version here: https://github.com/ihmcrobotics/ihmc-pub-sub/releases
+1. Check for the latest version here: https://github.com/ihmcrobotics/ihmc-pub-sub/releases or here: https://bintray.com/ihmcrobotics/maven-release/ihmc-pub-sub
 1. Run "Find and replace" for ihmc-pub-sub, ihmc-pub-sub-generator and update the versions
 1. Refresh Gradle
 
@@ -41,6 +41,8 @@ located in `ros2-msg-to-pubsub-generator/src/test/java`
 with `ihmc-java-ros2-communication/ros2-msg-to-pubsub-generator/src/test` set as the working directory.
 
 Make sure the generated files have LF (Unix) line separators.
+
+In TimeReference.java, you must refactor getSource() to getSourceAsStringBuilder().
 
 > Note: In IntelliJ, you may need to build with Eclipse compiler and use "Build, no error check".
 

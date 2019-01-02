@@ -8,14 +8,14 @@ buildscript {
       jcenter()
    }
    dependencies {
-      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.13.0"
+      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.13.2"
       classpath "org.ajoberstar:grgit:2.1.0"
    }
 }
 
 plugins {
    id("us.ihmc.ihmc-build") version "0.15.5"
-   id("us.ihmc.ihmc-ci") version "3.4"
+   id("us.ihmc.ihmc-ci") version "4.4"
 }
 
 apply plugin: "org.ajoberstar.grgit"
@@ -67,6 +67,7 @@ task generateMessages(type: us.ihmc.ros2.rosidl.Ros2MessageGenerator) {
 
    rosPackages = files(rclInterfacesPath, commonInterfacesPath, tf2Path)
    idlOutputDirectory = file("src/main/generated-idl")
+   ros1OutputDirectory = file("src/main/generated-ros1")
    javaOutputDirectory = file("src/main/generated-java")
    customIDLDirectory = files("src/main/custom-idl")
 }
