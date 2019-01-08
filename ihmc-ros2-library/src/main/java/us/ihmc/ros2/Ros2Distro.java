@@ -9,9 +9,10 @@ public enum Ros2Distro
    {
       String rosDistro = System.getenv("ROS_DISTRO");
 
-      if (rosDistro == null || !rosDistro.trim().toLowerCase().contains("ardent"))
-         return BOUNCY;
-      else
+      if (rosDistro != null && (rosDistro.trim().toLowerCase().contains("ardent") ||
+                                rosDistro.trim().toLowerCase().contains("kinetic")))
          return ARDENT;
+      else
+         return BOUNCY;
    }
 }
