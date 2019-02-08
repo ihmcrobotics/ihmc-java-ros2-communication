@@ -256,6 +256,7 @@ public class RealtimeRos2Node
       startupLock.lock();
       if (spinning)
       {
+         startupLock.unlock();
          throw new RuntimeException("This RealtimeRos2Node is already spinning");
       }
       spinning = true;
