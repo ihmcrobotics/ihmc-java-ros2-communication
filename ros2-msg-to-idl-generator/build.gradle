@@ -18,4 +18,5 @@ ihmc {
 mainDependencies {
    compile group: "org.glassfish", name: "javax.json", version: "1.0.4"
    compile group: "org.python", name: "jython-standalone", version: "2.7.1"
+   compile group: "com.sun.xml.bind", name: "jaxb-core", version: "2.3.0.1"
 }
