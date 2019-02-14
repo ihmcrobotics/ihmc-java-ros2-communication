@@ -15,7 +15,7 @@ buildscript {
 
 plugins {
    id("us.ihmc.ihmc-build") version "0.15.5"
-   id("us.ihmc.ihmc-ci") version "4.8"
+   id("us.ihmc.ihmc-ci") version "4.9"
 }
 
 apply plugin: "org.ajoberstar.grgit"
