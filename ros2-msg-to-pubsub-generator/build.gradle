@@ -29,5 +29,5 @@ mainDependencies {
 
 testDependencies {
    compile pubsub
-   compile "us.ihmc:ihmc-commons:0.25.3"
+   compile "us.ihmc:ihmc-commons:0.25.4"
 }
