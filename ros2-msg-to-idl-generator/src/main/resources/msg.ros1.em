@@ -25,6 +25,15 @@ from rosidl_generator_cpp import escape_string
 from rosidl_generator_ros1 import ROS2_TO_ROS1_TYPES
 }@
 @#
+@# Find the header comments and put them at the top of the file
+@#
+@[if spec.header_comments]@
+@[for comment in spec.header_comments]@
+# @(comment)
+@[end for]@
+@[end if]@
+
+@#
 @# Find the header field and inline it first since it has special meaning in ROS 1
 @#
 @{header_field = None}@
