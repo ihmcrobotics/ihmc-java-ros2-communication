@@ -12,7 +12,7 @@ ihmc {
 }
 
 mainDependencies {
-   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.10.2"
+   compile group: "us.ihmc", name: "ihmc-pub-sub", version: "0.10.3"
    compile group: "us.ihmc", name: "ihmc-realtime", version: "1.2.6"
    compile group: "us.ihmc", name: "ihmc-commons", version: "0.26.3"
 }
