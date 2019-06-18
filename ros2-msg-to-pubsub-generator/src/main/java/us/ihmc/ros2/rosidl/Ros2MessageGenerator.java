@@ -127,7 +127,7 @@ public class Ros2MessageGenerator extends DefaultTask
 
       generator.generate(idlOutputDirectory.toPath(), ros1OutputDirectory.toPath(), javaOutputDirectory.toPath());
 
-      generator.convertDirectoryToUnixEOL(idlOutputDirectory.toPath());
-      generator.convertDirectoryToUnixEOL(javaOutputDirectory.toPath());
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(idlOutputDirectory.toPath());
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(javaOutputDirectory.toPath());
    }
 }

@@ -32,13 +32,13 @@ public class TransformPubSubTypeImpl extends AbstractTransformPubSubTypeImplemen
    @Override
    protected Vector3D getTranslation(QuaternionBasedTransform data)
    {
-      return (Vector3D) data.getTranslationVector();
+      return (Vector3D) data.getTranslation();
    }
 
    @Override
    protected Quaternion getRotation(QuaternionBasedTransform data)
    {
-      return (Quaternion) data.getQuaternion();
+      return (Quaternion) data.getRotation();
    }
 
    @Override

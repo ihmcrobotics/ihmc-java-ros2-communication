@@ -17,7 +17,7 @@ package us.ihmc.ros2;
 
 import java.io.IOException;
 
-import us.ihmc.commons.PrintTools;
+import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
@@ -217,6 +217,7 @@ class Ros2NodeBasics
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
+   @SuppressWarnings("unchecked")
    private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
                                                       Ros2QosProfile qosProfile) throws IOException
    {
@@ -302,11 +303,11 @@ class Ros2NodeBasics
          }
          catch (NumberFormatException e)
          {
-            PrintTools.warn("Environment variable ROS_DOMAIN_ID cannot be parsed as an integer: " + rosDomainId);
+            LogTools.warn("Environment variable ROS_DOMAIN_ID cannot be parsed as an integer: {}", rosDomainId);
          }
       }
 
-      PrintTools.info(Ros2NodeBasics.class, "Default ROS_DOMAIN_ID: " + rosDomainIdAsInteger);
+      LogTools.info("Default ROS_DOMAIN_ID: {}", rosDomainIdAsInteger);
 
       return rosDomainIdAsInteger;
    }
