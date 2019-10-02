@@ -15,14 +15,12 @@
 > gradle generateMessages
 ```
 
-###### Generate ros2-common-interfaces
+###### (Alternative to gradle generateMessages) Generate ros2-common-interfaces using java application
 
 Run `us.ihmc.idl.Ros2CommonInterfacesGenerateMessages`, 
 located in `ros2-common-interfaces/src/generator/java` 
 with `ihmc-java-ros2-communication/ros2-common-interfaces` set as the working directory.
 
-In `ihmc-java-ros2-communication\ros2-common-interfaces\src\main\generated-java\sensor_msgs\msg\dds\TimeReference.java`, line 87, 
-refactor `getSource()` to `getSourceAsStringBuilder()` (do not refactor the base method in `us.ihmc.communication.packets.Packet`).
 
 ###### Generate test IDLs
 
@@ -42,7 +40,6 @@ with `ihmc-java-ros2-communication/ros2-msg-to-pubsub-generator/src/test` set as
 
 Make sure the generated files have LF (Unix) line separators.
 
-In TimeReference.java, you must refactor getSource() to getSourceAsStringBuilder().
 
 > Note: In IntelliJ, you may need to build with Eclipse compiler and use "Build, no error check".
 
