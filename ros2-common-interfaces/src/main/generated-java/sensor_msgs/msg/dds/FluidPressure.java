@@ -10,6 +10,7 @@ import us.ihmc.pubsub.TopicDataType;
        * Single pressure reading.  This message is appropriate for measuring the
        * pressure inside of a fluid (air, water, etc).  This also includes
        * atmospheric or barometric pressure.
+       * 
        * This message is not appropriate for force/pressure contact sensors.
        * frame_id is the location of the pressure sensor
        */

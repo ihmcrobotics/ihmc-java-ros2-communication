@@ -23,7 +23,7 @@ module sensor_msgs
        * The legal values for encoding are in file src/image_encodings.cpp
        * If you want to standardize a new string format, join
        * ros-users@lists.ros.org and send an email proposing a new encoding.
-       * taken from the list of strings in include/sensor_msgs/image_encodings.h
+       * taken from the list of strings in include/sensor_msgs/image_encodings.hpp
        */
       @TypeCode(type="sensor_msgs::msg::dds_::Image_")
       struct Image

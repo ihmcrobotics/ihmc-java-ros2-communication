@@ -18,6 +18,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -80,12 +82,25 @@ public class Ros2MsgToIdlGenerator
     * A package xml with at least <name /> and optionally <build_depends />
     *
     * @param rootPath The root directory of packages to add
+    * @param rclInterfacesToIgnore Optional array of packages to ignore
     * @throws IOException If the rootPath cannot be read
     */
-   public void addPackageRoot(Path rootPath) throws IOException
+   public void addPackageRoot(Path rootPath, String... rclInterfacesToIgnore) throws IOException
    {
+      List<String> ignoredInterfaces; 
+      if(rclInterfacesToIgnore != null)
+      {
+         ignoredInterfaces = Arrays.asList(rclInterfacesToIgnore);
+      }
+      else
+      {
+         ignoredInterfaces = Collections.emptyList();
+      }
+      
       // Find all subdirectories with a package.xml in them and call this.addPackage()
-      Files.find(rootPath, 2, (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().equals("package.xml")).forEach(this::addPackage);
+      Files.find(rootPath, 2, (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().equals("package.xml"))
+         .filter((path) -> !ignoredInterfaces.contains(path.getParent().getFileName().toString()))
+         .forEach(this::addPackage);
    }
 
    /**

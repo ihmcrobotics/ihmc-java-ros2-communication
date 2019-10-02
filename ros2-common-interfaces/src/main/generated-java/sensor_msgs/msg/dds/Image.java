@@ -20,7 +20,7 @@ import us.ihmc.pubsub.TopicDataType;
        * The legal values for encoding are in file src/image_encodings.cpp
        * If you want to standardize a new string format, join
        * ros-users@lists.ros.org and send an email proposing a new encoding.
-       * taken from the list of strings in include/sensor_msgs/image_encodings.h
+       * taken from the list of strings in include/sensor_msgs/image_encodings.hpp
        */
 public class Image extends Packet<Image> implements Settable<Image>, EpsilonComparable<Image>
 {

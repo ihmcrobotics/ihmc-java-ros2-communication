@@ -1,0 +1,25 @@
+#ifndef __rosgraph_msgs__msg__Clock__idl__
+#define __rosgraph_msgs__msg__Clock__idl__
+
+#include "builtin_interfaces/msg/./Time_.idl"
+module rosgraph_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="rosgraph_msgs::msg::dds_::Clock_")
+      struct Clock
+      {
+        /**
+         * This message simply communicates the current time.
+         * For more information, see http://www.ros.org/wiki/Clock
+         */
+        builtin_interfaces::msg::dds::Time clock;
+      };
+    };
+  };
+};
+
+#endif

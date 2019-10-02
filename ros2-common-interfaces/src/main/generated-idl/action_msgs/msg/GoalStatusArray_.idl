@@ -1,0 +1,24 @@
+#ifndef __action_msgs__msg__GoalStatusArray__idl__
+#define __action_msgs__msg__GoalStatusArray__idl__
+
+#include "action_msgs/msg/./GoalStatus_.idl"
+module action_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="action_msgs::msg::dds_::GoalStatusArray_")
+      struct GoalStatusArray
+      {
+        /**
+         * An array of goal statuses
+         */
+        sequence<action_msgs::msg::dds::GoalStatus> status_list;
+      };
+    };
+  };
+};
+
+#endif

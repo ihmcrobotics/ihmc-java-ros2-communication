@@ -27,11 +27,17 @@ module lifecycle_msgs
       const octet TRANSITION_DEACTIVATE =
       4;
 
-      const octet TRANSITION_SHUTDOWN =
+      const octet TRANSITION_UNCONFIGURED_SHUTDOWN =
       5;
 
-      const octet TRANSITION_DESTROY =
+      const octet TRANSITION_INACTIVE_SHUTDOWN =
       6;
+
+      const octet TRANSITION_ACTIVE_SHUTDOWN =
+      7;
+
+      const octet TRANSITION_DESTROY =
+      8;
 
       /**
        * These transitions are not publically
@@ -76,23 +82,14 @@ module lifecycle_msgs
       const octet TRANSITION_ON_DEACTIVATE_ERROR =
       42;
 
-      const octet TRANSITION_UNCONFIGURED_SHUTDOWN =
+      const octet TRANSITION_ON_SHUTDOWN_SUCCESS =
       50;
 
-      const octet TRANSITION_INACTIVE_SHUTDOWN =
+      const octet TRANSITION_ON_SHUTDOWN_FAILURE =
       51;
 
-      const octet TRANSITION_ACTIVE_SHUTDOWN =
-      52;
-
-      const octet TRANSITION_ON_SHUTDOWN_SUCCESS =
-      53;
-
-      const octet TRANSITION_ON_SHUTDOWN_FAILURE =
-      54;
-
       const octet TRANSITION_ON_SHUTDOWN_ERROR =
-      55;
+      52;
 
       const octet TRANSITION_ON_ERROR_SUCCESS =
       60;

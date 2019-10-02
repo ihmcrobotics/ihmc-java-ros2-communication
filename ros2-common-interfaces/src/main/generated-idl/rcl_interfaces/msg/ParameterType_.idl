@@ -22,8 +22,20 @@ module rcl_interfaces
       const octet PARAMETER_STRING =
       4;
 
-      const octet PARAMETER_BYTES =
+      const octet PARAMETER_BYTE_ARRAY =
       5;
+
+      const octet PARAMETER_BOOL_ARRAY =
+      6;
+
+      const octet PARAMETER_INTEGER_ARRAY =
+      7;
+
+      const octet PARAMETER_DOUBLE_ARRAY =
+      8;
+
+      const octet PARAMETER_STRING_ARRAY =
+      9;
 
 
       @TypeCode(type="rcl_interfaces::msg::dds_::ParameterType_")

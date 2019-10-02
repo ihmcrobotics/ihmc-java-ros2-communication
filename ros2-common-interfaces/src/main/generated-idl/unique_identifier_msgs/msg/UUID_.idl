@@ -1,0 +1,26 @@
+#ifndef __unique_identifier_msgs__msg__UUID__idl__
+#define __unique_identifier_msgs__msg__UUID__idl__
+
+module unique_identifier_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      /**
+       * A universally unique identifier (UUID).
+       * 
+       * http://en.wikipedia.org/wiki/Universally_unique_identifier
+       * http://tools.ietf.org/html/rfc4122.html
+       */
+      @TypeCode(type="unique_identifier_msgs::msg::dds_::UUID_")
+      struct UUID
+      {
+        octet uuid[16];
+      };
+    };
+  };
+};
+
+#endif

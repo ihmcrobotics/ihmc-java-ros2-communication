@@ -6,12 +6,11 @@ import us.ihmc.euclid.interfaces.EpsilonComparable;
 import java.util.function.Supplier;
 import us.ihmc.pubsub.TopicDataType;
 
-/**
-       * Representation of a plane, using the plane equation ax + by + cz + d = 0.
-       */
 public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComparable<Plane>
 {
    /**
+            * Representation of a plane, using the plane equation ax + by + cz + d = 0.
+            * 
             * a := coef[0]
             * b := coef[1]
             * c := coef[2]
@@ -42,6 +41,8 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
 
 
    /**
+            * Representation of a plane, using the plane equation ax + by + cz + d = 0.
+            * 
             * a := coef[0]
             * b := coef[1]
             * c := coef[2]

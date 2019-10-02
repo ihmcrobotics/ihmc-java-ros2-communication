@@ -1,6 +1,7 @@
 #ifndef __rcl_interfaces__msg__ParameterEvent__idl__
 #define __rcl_interfaces__msg__ParameterEvent__idl__
 
+#include "builtin_interfaces/msg/./Time_.idl"
 #include "rcl_interfaces/msg/./Parameter_.idl"
 module rcl_interfaces
 {
@@ -17,6 +18,11 @@ module rcl_interfaces
       @TypeCode(type="rcl_interfaces::msg::dds_::ParameterEvent_")
       struct ParameterEvent
       {
+        builtin_interfaces::msg::dds::Time stamp;
+        /**
+         * Fully qualified ROS path to node
+         */
+        string node;
         sequence<rcl_interfaces::msg::dds::Parameter> new_parameters;
         sequence<rcl_interfaces::msg::dds::Parameter> changed_parameters;
         sequence<rcl_interfaces::msg::dds::Parameter> deleted_parameters;

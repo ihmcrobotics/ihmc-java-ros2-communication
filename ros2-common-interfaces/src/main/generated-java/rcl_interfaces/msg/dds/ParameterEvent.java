@@ -13,12 +13,19 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class ParameterEvent extends Packet<ParameterEvent> implements Settable<ParameterEvent>, EpsilonComparable<ParameterEvent>
 {
+   public builtin_interfaces.msg.dds.Time stamp_;
+   /**
+            * Fully qualified ROS path to node
+            */
+   public java.lang.StringBuilder node_;
    public us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter>  new_parameters_;
    public us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter>  changed_parameters_;
    public us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter>  deleted_parameters_;
 
    public ParameterEvent()
    {
+      stamp_ = new builtin_interfaces.msg.dds.Time();
+      node_ = new java.lang.StringBuilder(255);
       new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
       changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
       deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
@@ -33,9 +40,43 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
 
    public void set(ParameterEvent other)
    {
+      builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.stamp_, stamp_);
+      node_.setLength(0);
+      node_.append(other.node_);
+
       new_parameters_.set(other.new_parameters_);
       changed_parameters_.set(other.changed_parameters_);
       deleted_parameters_.set(other.deleted_parameters_);
+   }
+
+
+   public builtin_interfaces.msg.dds.Time getStamp()
+   {
+      return stamp_;
+   }
+
+   /**
+            * Fully qualified ROS path to node
+            */
+   public void setNode(java.lang.String node)
+   {
+      node_.setLength(0);
+      node_.append(node);
+   }
+
+   /**
+            * Fully qualified ROS path to node
+            */
+   public java.lang.String getNodeAsString()
+   {
+      return getNode().toString();
+   }
+   /**
+            * Fully qualified ROS path to node
+            */
+   public java.lang.StringBuilder getNode()
+   {
+      return node_;
    }
 
 
@@ -74,6 +115,9 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
       if(other == null) return false;
       if(other == this) return true;
 
+      if (!this.stamp_.epsilonEquals(other.stamp_, epsilon)) return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.node_, other.node_, epsilon)) return false;
+
       if (this.new_parameters_.size() != other.new_parameters_.size()) { return false; }
       else
       {
@@ -108,6 +152,9 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
 
       ParameterEvent otherMyClass = (ParameterEvent) other;
 
+      if (!this.stamp_.equals(otherMyClass.stamp_)) return false;
+      if (!us.ihmc.idl.IDLTools.equals(this.node_, otherMyClass.node_)) return false;
+
       if (!this.new_parameters_.equals(otherMyClass.new_parameters_)) return false;
       if (!this.changed_parameters_.equals(otherMyClass.changed_parameters_)) return false;
       if (!this.deleted_parameters_.equals(otherMyClass.deleted_parameters_)) return false;
@@ -121,6 +168,10 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
       StringBuilder builder = new StringBuilder();
 
       builder.append("ParameterEvent {");
+      builder.append("stamp=");
+      builder.append(this.stamp_);      builder.append(", ");
+      builder.append("node=");
+      builder.append(this.node_);      builder.append(", ");
       builder.append("new_parameters=");
       builder.append(this.new_parameters_);      builder.append(", ");
       builder.append("changed_parameters=");

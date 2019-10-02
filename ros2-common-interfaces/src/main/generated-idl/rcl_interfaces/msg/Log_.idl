@@ -1,0 +1,80 @@
+#ifndef __rcl_interfaces__msg__Log__idl__
+#define __rcl_interfaces__msg__Log__idl__
+
+#include "builtin_interfaces/msg/./Time_.idl"
+module rcl_interfaces
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * #
+       * # Severity level constants
+       * #
+       * debug level
+       */
+      const octet DEBUG =
+      10;
+
+      /**
+       * general level
+       */
+      const octet INFO =
+      20;
+
+      /**
+       * warning level
+       */
+      const octet WARN =
+      30;
+
+      /**
+       * error level
+       */
+      const octet ERROR =
+      40;
+
+      /**
+       * fatal/critical level
+       */
+      const octet FATAL =
+      50;
+
+
+      @TypeCode(type="rcl_interfaces::msg::dds_::Log_")
+      struct Log
+      {
+        /**
+         * #
+         * # Fields
+         * #
+         */
+        builtin_interfaces::msg::dds::Time stamp;
+        octet level;
+        /**
+         * the name representing the logger this message came from
+         */
+        string name;
+        /**
+         * message
+         */
+        string msg;
+        /**
+         * file the message came from
+         */
+        string file;
+        /**
+         * function the message came from
+         */
+        string function;
+        /**
+         * line the message came from
+         */
+        unsigned long line;
+      };
+    };
+  };
+};
+
+#endif

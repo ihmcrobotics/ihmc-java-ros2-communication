@@ -23,8 +23,10 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
    public static final byte TRANSITION_CLEANUP = (byte) 2;
    public static final byte TRANSITION_ACTIVATE = (byte) 3;
    public static final byte TRANSITION_DEACTIVATE = (byte) 4;
-   public static final byte TRANSITION_SHUTDOWN = (byte) 5;
-   public static final byte TRANSITION_DESTROY = (byte) 6;
+   public static final byte TRANSITION_UNCONFIGURED_SHUTDOWN = (byte) 5;
+   public static final byte TRANSITION_INACTIVE_SHUTDOWN = (byte) 6;
+   public static final byte TRANSITION_ACTIVE_SHUTDOWN = (byte) 7;
+   public static final byte TRANSITION_DESTROY = (byte) 8;
    /**
           * These transitions are not publically
           * available and cannot be invoked by a user.
@@ -44,12 +46,9 @@ public class Transition extends Packet<Transition> implements Settable<Transitio
    public static final byte TRANSITION_ON_DEACTIVATE_SUCCESS = (byte) 40;
    public static final byte TRANSITION_ON_DEACTIVATE_FAILURE = (byte) 41;
    public static final byte TRANSITION_ON_DEACTIVATE_ERROR = (byte) 42;
-   public static final byte TRANSITION_UNCONFIGURED_SHUTDOWN = (byte) 50;
-   public static final byte TRANSITION_INACTIVE_SHUTDOWN = (byte) 51;
-   public static final byte TRANSITION_ACTIVE_SHUTDOWN = (byte) 52;
-   public static final byte TRANSITION_ON_SHUTDOWN_SUCCESS = (byte) 53;
-   public static final byte TRANSITION_ON_SHUTDOWN_FAILURE = (byte) 54;
-   public static final byte TRANSITION_ON_SHUTDOWN_ERROR = (byte) 55;
+   public static final byte TRANSITION_ON_SHUTDOWN_SUCCESS = (byte) 50;
+   public static final byte TRANSITION_ON_SHUTDOWN_FAILURE = (byte) 51;
+   public static final byte TRANSITION_ON_SHUTDOWN_ERROR = (byte) 52;
    public static final byte TRANSITION_ON_ERROR_SUCCESS = (byte) 60;
    public static final byte TRANSITION_ON_ERROR_FAILURE = (byte) 61;
    public static final byte TRANSITION_ON_ERROR_ERROR = (byte) 62;

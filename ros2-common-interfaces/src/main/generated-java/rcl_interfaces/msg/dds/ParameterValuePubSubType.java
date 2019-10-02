@@ -51,6 +51,16 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      {
+        current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+      }
 
       return current_alignment - initial_alignment;
    }
@@ -79,9 +89,26 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStringValue().length() + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-      current_alignment += (data.getBytesValue().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += (data.getByteArrayValue().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (data.getBoolArrayValue().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (data.getIntegerArrayValue().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (data.getDoubleArrayValue().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      for(int i0 = 0; i0 < data.getStringArrayValue().size(); ++i0)
+      {
+          current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStringArrayValue().get(i0).length() + 1;
+      }
 
       return current_alignment - initial_alignment;
    }
@@ -100,9 +127,25 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       cdr.write_type_d(data.getStringValue());else
           throw new RuntimeException("string_value field exceeds the maximum length");
 
-      if(data.getBytesValue().size() <= 100)
-      cdr.write_type_e(data.getBytesValue());else
-          throw new RuntimeException("bytes_value field exceeds the maximum length");
+      if(data.getByteArrayValue().size() <= 100)
+      cdr.write_type_e(data.getByteArrayValue());else
+          throw new RuntimeException("byte_array_value field exceeds the maximum length");
+
+      if(data.getBoolArrayValue().size() <= 100)
+      cdr.write_type_e(data.getBoolArrayValue());else
+          throw new RuntimeException("bool_array_value field exceeds the maximum length");
+
+      if(data.getIntegerArrayValue().size() <= 100)
+      cdr.write_type_e(data.getIntegerArrayValue());else
+          throw new RuntimeException("integer_array_value field exceeds the maximum length");
+
+      if(data.getDoubleArrayValue().size() <= 100)
+      cdr.write_type_e(data.getDoubleArrayValue());else
+          throw new RuntimeException("double_array_value field exceeds the maximum length");
+
+      if(data.getStringArrayValue().size() <= 100)
+      cdr.write_type_e(data.getStringArrayValue());else
+          throw new RuntimeException("string_array_value field exceeds the maximum length");
 
    }
 
@@ -117,7 +160,11 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       data.setDoubleValue(cdr.read_type_6());
       	
       cdr.read_type_d(data.getStringValue());	
-      cdr.read_type_e(data.getBytesValue());	
+      cdr.read_type_e(data.getByteArrayValue());	
+      cdr.read_type_e(data.getBoolArrayValue());	
+      cdr.read_type_e(data.getIntegerArrayValue());	
+      cdr.read_type_e(data.getDoubleArrayValue());	
+      cdr.read_type_e(data.getStringArrayValue());	
 
    }
 
@@ -129,7 +176,11 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       ser.write_type_11("integer_value", data.getIntegerValue());
       ser.write_type_6("double_value", data.getDoubleValue());
       ser.write_type_d("string_value", data.getStringValue());
-      ser.write_type_e("bytes_value", data.getBytesValue());
+      ser.write_type_e("byte_array_value", data.getByteArrayValue());
+      ser.write_type_e("bool_array_value", data.getBoolArrayValue());
+      ser.write_type_e("integer_array_value", data.getIntegerArrayValue());
+      ser.write_type_e("double_array_value", data.getDoubleArrayValue());
+      ser.write_type_e("string_array_value", data.getStringArrayValue());
    }
 
    @Override
@@ -140,7 +191,11 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       data.setIntegerValue(ser.read_type_11("integer_value"));
       data.setDoubleValue(ser.read_type_6("double_value"));
       ser.read_type_d("string_value", data.getStringValue());
-      ser.read_type_e("bytes_value", data.getBytesValue());
+      ser.read_type_e("byte_array_value", data.getByteArrayValue());
+      ser.read_type_e("bool_array_value", data.getBoolArrayValue());
+      ser.read_type_e("integer_array_value", data.getIntegerArrayValue());
+      ser.read_type_e("double_array_value", data.getDoubleArrayValue());
+      ser.read_type_e("string_array_value", data.getStringArrayValue());
    }
 
    public static void staticCopy(rcl_interfaces.msg.dds.ParameterValue src, rcl_interfaces.msg.dds.ParameterValue dest)

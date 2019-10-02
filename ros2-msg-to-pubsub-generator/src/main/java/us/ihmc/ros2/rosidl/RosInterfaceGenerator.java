@@ -66,11 +66,12 @@ public class RosInterfaceGenerator
     * A package xml with at least <name /> and optionally <build_depends />
     *
     * @param rootPath The root directory of packages to add
+    * @param rclInterfacesToIgnore Optional array of package names to ignore 
     * @throws IOException If the rootPath cannot be read
     */
-   public void addPackageRootToIDLGenerator(Path rootPath) throws IOException
+   public void addPackageRootToIDLGenerator(Path rootPath, String... rclInterfacesToIgnore) throws IOException
    {
-      ros2MsgToIdlGenerator.addPackageRoot(rootPath);
+      ros2MsgToIdlGenerator.addPackageRoot(rootPath, rclInterfacesToIgnore);
    }
 
    /**

@@ -1,0 +1,53 @@
+#ifndef __action_msgs__msg__GoalStatus__idl__
+#define __action_msgs__msg__GoalStatus__idl__
+
+#include "action_msgs/msg/./GoalInfo_.idl"
+module action_msgs
+{
+  module msg
+  {
+    module dds
+    {
+      /**
+       * An action goal can be in one of these states after it is accepted by an action server.
+       * For more information, see http://design.ros2.org/articles/actions.html
+       */
+      const octet STATUS_UNKNOWN =
+      0;
+
+      const octet STATUS_ACCEPTED =
+      1;
+
+      const octet STATUS_EXECUTING =
+      2;
+
+      const octet STATUS_CANCELING =
+      3;
+
+      const octet STATUS_SUCCEEDED =
+      4;
+
+      const octet STATUS_CANCELED =
+      5;
+
+      const octet STATUS_ABORTED =
+      6;
+
+
+      @TypeCode(type="action_msgs::msg::dds_::GoalStatus_")
+      struct GoalStatus
+      {
+        /**
+         * Goal info (contains ID and timestamp)
+         */
+        action_msgs::msg::dds::GoalInfo goal_info;
+        /**
+         * Goal status
+         */
+        octet status;
+      };
+    };
+  };
+};
+
+#endif

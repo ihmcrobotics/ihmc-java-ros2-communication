@@ -8,6 +8,7 @@ import us.ihmc.pubsub.TopicDataType;
 
 /**
        * MenuEntry message.
+       * 
        * Each InteractiveMarker message has an array of MenuEntry messages.
        * A collection of MenuEntries together describe a
        * menu/submenu/subsubmenu/etc tree, though they are stored in a flat
@@ -16,6 +17,7 @@ import us.ihmc.pubsub.TopicDataType;
        * ones with parent_id = 0.  Menu entries are ordered within their
        * level the same way they are ordered in the containing array.  Parent
        * entries must appear before their children.
+       * 
        * Example:
        * - id = 3
        * parent_id = 0

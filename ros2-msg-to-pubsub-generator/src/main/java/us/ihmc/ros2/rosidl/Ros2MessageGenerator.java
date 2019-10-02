@@ -55,6 +55,8 @@ public class Ros2MessageGenerator extends DefaultTask
    public List<Configuration> configurations = new ArrayList<>();
    public List<String> artifactIds = new ArrayList<>();
    public List<File> locations = new ArrayList<>();
+   
+   public List<String> ignoredPackages = new ArrayList<String>();
 
    public void artifactDependency(Configuration configuration, String artifactId, File location)
    {
@@ -112,9 +114,10 @@ public class Ros2MessageGenerator extends DefaultTask
 
       RosInterfaceGenerator generator = new RosInterfaceGenerator();
 
+      String[] ignoredPackagesArray = ignoredPackages.toArray(new String[ignoredPackages.size()]);
       for (File rosPackage : rosPackages)
       {
-         generator.addPackageRootToIDLGenerator(rosPackage.toPath());
+         generator.addPackageRootToIDLGenerator(rosPackage.toPath(), ignoredPackagesArray);
       }
 
       if (customIDLDirectory != null)

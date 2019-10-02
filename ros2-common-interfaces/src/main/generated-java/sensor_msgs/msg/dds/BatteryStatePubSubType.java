@@ -54,13 +54,17 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -99,6 +103,9 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -115,6 +122,10 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       current_alignment += (data.getCellVoltage().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += (data.getCellTemperature().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getLocation().length() + 1;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getSerialNumber().length() + 1;
@@ -127,6 +138,8 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
       cdr.write_type_5(data.getVoltage());
+
+      cdr.write_type_5(data.getTemperature());
 
       cdr.write_type_5(data.getCurrent());
 
@@ -150,6 +163,10 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       cdr.write_type_e(data.getCellVoltage());else
           throw new RuntimeException("cell_voltage field exceeds the maximum length");
 
+      if(data.getCellTemperature().size() <= 100)
+      cdr.write_type_e(data.getCellTemperature());else
+          throw new RuntimeException("cell_temperature field exceeds the maximum length");
+
       if(data.getLocation().length() <= 255)
       cdr.write_type_d(data.getLocation());else
           throw new RuntimeException("location field exceeds the maximum length");
@@ -164,6 +181,8 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
    {
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
       data.setVoltage(cdr.read_type_5());
+      	
+      data.setTemperature(cdr.read_type_5());
       	
       data.setCurrent(cdr.read_type_5());
       	
@@ -184,6 +203,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       data.setPresent(cdr.read_type_7());
       	
       cdr.read_type_e(data.getCellVoltage());	
+      cdr.read_type_e(data.getCellTemperature());	
       cdr.read_type_d(data.getLocation());	
       cdr.read_type_d(data.getSerialNumber());	
 
@@ -195,6 +215,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       ser.write_type_5("voltage", data.getVoltage());
+      ser.write_type_5("temperature", data.getTemperature());
       ser.write_type_5("current", data.getCurrent());
       ser.write_type_5("charge", data.getCharge());
       ser.write_type_5("capacity", data.getCapacity());
@@ -205,6 +226,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       ser.write_type_9("power_supply_technology", data.getPowerSupplyTechnology());
       ser.write_type_7("present", data.getPresent());
       ser.write_type_e("cell_voltage", data.getCellVoltage());
+      ser.write_type_e("cell_temperature", data.getCellTemperature());
       ser.write_type_d("location", data.getLocation());
       ser.write_type_d("serial_number", data.getSerialNumber());
    }
@@ -215,6 +237,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
       data.setVoltage(ser.read_type_5("voltage"));
+      data.setTemperature(ser.read_type_5("temperature"));
       data.setCurrent(ser.read_type_5("current"));
       data.setCharge(ser.read_type_5("charge"));
       data.setCapacity(ser.read_type_5("capacity"));
@@ -225,6 +248,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
       data.setPowerSupplyTechnology(ser.read_type_9("power_supply_technology"));
       data.setPresent(ser.read_type_7("present"));
       ser.read_type_e("cell_voltage", data.getCellVoltage());
+      ser.read_type_e("cell_temperature", data.getCellTemperature());
       ser.read_type_d("location", data.getLocation());
       ser.read_type_d("serial_number", data.getSerialNumber());
    }

@@ -1,0 +1,29 @@
+#ifndef __action_msgs__msg__GoalInfo__idl__
+#define __action_msgs__msg__GoalInfo__idl__
+
+#include "builtin_interfaces/msg/./Time_.idl"
+#include "unique_identifier_msgs/msg/./UUID_.idl"
+module action_msgs
+{
+  module msg
+  {
+    module dds
+    {
+
+      @TypeCode(type="action_msgs::msg::dds_::GoalInfo_")
+      struct GoalInfo
+      {
+        /**
+         * Goal ID
+         */
+        unique_identifier_msgs::msg::dds::UUID goal_id;
+        /**
+         * Time when the goal was accepted
+         */
+        builtin_interfaces::msg::dds::Time stamp;
+      };
+    };
+  };
+};
+
+#endif

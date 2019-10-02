@@ -22,14 +22,16 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
    public builtin_interfaces.msg.dds.Time time_ref_;
    /**
             * (optional) name of time source
+            *
+            * NOTE: Renamed from "source" to avoid conflicts with the Packet<> class in the IHMC ROS2 library
             */
-   public java.lang.StringBuilder source_;
+   public java.lang.StringBuilder timeSource_;
 
    public TimeReference()
    {
       header_ = new std_msgs.msg.dds.Header();
       time_ref_ = new builtin_interfaces.msg.dds.Time();
-      source_ = new java.lang.StringBuilder(255);
+      timeSource_ = new java.lang.StringBuilder(255);
    }
 
    public TimeReference(TimeReference other)
@@ -42,8 +44,8 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
    {
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
       builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.time_ref_, time_ref_);
-      source_.setLength(0);
-      source_.append(other.source_);
+      timeSource_.setLength(0);
+      timeSource_.append(other.timeSource_);
 
    }
 
@@ -67,26 +69,32 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
    /**
             * (optional) name of time source
+            *
+            * NOTE: Renamed from "source" to avoid conflicts with the Packet<> class in the IHMC ROS2 library
             */
-   public void setSource(java.lang.String source)
+   public void setTimeSource(java.lang.String timeSource)
    {
-      source_.setLength(0);
-      source_.append(source);
+      timeSource_.setLength(0);
+      timeSource_.append(timeSource);
    }
 
    /**
             * (optional) name of time source
+            *
+            * NOTE: Renamed from "source" to avoid conflicts with the Packet<> class in the IHMC ROS2 library
             */
-   public java.lang.String getSourceAsString()
+   public java.lang.String getTimeSourceAsString()
    {
-      return getSourceAsStringBuilder().toString();
+      return getTimeSource().toString();
    }
    /**
             * (optional) name of time source
+            *
+            * NOTE: Renamed from "source" to avoid conflicts with the Packet<> class in the IHMC ROS2 library
             */
-   public java.lang.StringBuilder getSourceAsStringBuilder()
+   public java.lang.StringBuilder getTimeSource()
    {
-      return source_;
+      return timeSource_;
    }
 
 
@@ -109,7 +117,7 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
       if (!this.time_ref_.epsilonEquals(other.time_ref_, epsilon)) return false;
-      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.source_, other.source_, epsilon)) return false;
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.timeSource_, other.timeSource_, epsilon)) return false;
 
 
       return true;
@@ -126,7 +134,7 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
       if (!this.header_.equals(otherMyClass.header_)) return false;
       if (!this.time_ref_.equals(otherMyClass.time_ref_)) return false;
-      if (!us.ihmc.idl.IDLTools.equals(this.source_, otherMyClass.source_)) return false;
+      if (!us.ihmc.idl.IDLTools.equals(this.timeSource_, otherMyClass.timeSource_)) return false;
 
 
       return true;
@@ -142,8 +150,8 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
       builder.append(this.header_);      builder.append(", ");
       builder.append("time_ref=");
       builder.append(this.time_ref_);      builder.append(", ");
-      builder.append("source=");
-      builder.append(this.source_);
+      builder.append("timeSource=");
+      builder.append(this.timeSource_);
       builder.append("}");
       return builder.toString();
    }

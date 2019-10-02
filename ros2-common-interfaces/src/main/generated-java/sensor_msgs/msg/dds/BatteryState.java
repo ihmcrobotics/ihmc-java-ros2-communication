@@ -50,6 +50,10 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
             */
    public float voltage_;
    /**
+            * Temperature in Degrees Celsius (If unmeasured NaN)
+            */
+   public float temperature_;
+   /**
             * Negative when discharging (A)  (If unmeasured NaN)
             */
    public float current_;
@@ -91,6 +95,11 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
    public us.ihmc.idl.IDLSequence.Float  cell_voltage_;
    /**
             * If individual voltages unknown but number of cells known set each to NaN
+            * An array of individual cell temperatures for each cell in the pack
+            */
+   public us.ihmc.idl.IDLSequence.Float  cell_temperature_;
+   /**
+            * If individual temperatures unknown but number of cells known set each to NaN
             * The location into which the battery is inserted. (slot number or plug)
             */
    public java.lang.StringBuilder location_;
@@ -103,6 +112,8 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
    {
       header_ = new std_msgs.msg.dds.Header();
       cell_voltage_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+
+      cell_temperature_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
 
       location_ = new java.lang.StringBuilder(255);
       serial_number_ = new java.lang.StringBuilder(255);
@@ -118,6 +129,8 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
    {
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
       voltage_ = other.voltage_;
+
+      temperature_ = other.temperature_;
 
       current_ = other.current_;
 
@@ -138,6 +151,7 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       present_ = other.present_;
 
       cell_voltage_.set(other.cell_voltage_);
+      cell_temperature_.set(other.cell_temperature_);
       location_.setLength(0);
       location_.append(other.location_);
 
@@ -165,6 +179,21 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
    public float getVoltage()
    {
       return voltage_;
+   }
+
+   /**
+            * Temperature in Degrees Celsius (If unmeasured NaN)
+            */
+   public void setTemperature(float temperature)
+   {
+      temperature_ = temperature;
+   }
+   /**
+            * Temperature in Degrees Celsius (If unmeasured NaN)
+            */
+   public float getTemperature()
+   {
+      return temperature_;
    }
 
    /**
@@ -311,8 +340,18 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       return cell_voltage_;
    }
 
+
    /**
             * If individual voltages unknown but number of cells known set each to NaN
+            * An array of individual cell temperatures for each cell in the pack
+            */
+   public us.ihmc.idl.IDLSequence.Float  getCellTemperature()
+   {
+      return cell_temperature_;
+   }
+
+   /**
+            * If individual temperatures unknown but number of cells known set each to NaN
             * The location into which the battery is inserted. (slot number or plug)
             */
    public void setLocation(java.lang.String location)
@@ -322,7 +361,7 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
    }
 
    /**
-            * If individual voltages unknown but number of cells known set each to NaN
+            * If individual temperatures unknown but number of cells known set each to NaN
             * The location into which the battery is inserted. (slot number or plug)
             */
    public java.lang.String getLocationAsString()
@@ -330,7 +369,7 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       return getLocation().toString();
    }
    /**
-            * If individual voltages unknown but number of cells known set each to NaN
+            * If individual temperatures unknown but number of cells known set each to NaN
             * The location into which the battery is inserted. (slot number or plug)
             */
    public java.lang.StringBuilder getLocation()
@@ -383,6 +422,8 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.voltage_, other.voltage_, epsilon)) return false;
 
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.temperature_, other.temperature_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.current_, other.current_, epsilon)) return false;
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.charge_, other.charge_, epsilon)) return false;
@@ -402,6 +443,8 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.present_, other.present_, epsilon)) return false;
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsFloatSequence(this.cell_voltage_, other.cell_voltage_, epsilon)) return false;
+
+      if (!us.ihmc.idl.IDLTools.epsilonEqualsFloatSequence(this.cell_temperature_, other.cell_temperature_, epsilon)) return false;
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.location_, other.location_, epsilon)) return false;
 
@@ -423,6 +466,8 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       if (!this.header_.equals(otherMyClass.header_)) return false;
       if(this.voltage_ != otherMyClass.voltage_) return false;
 
+      if(this.temperature_ != otherMyClass.temperature_) return false;
+
       if(this.current_ != otherMyClass.current_) return false;
 
       if(this.charge_ != otherMyClass.charge_) return false;
@@ -442,6 +487,7 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       if(this.present_ != otherMyClass.present_) return false;
 
       if (!this.cell_voltage_.equals(otherMyClass.cell_voltage_)) return false;
+      if (!this.cell_temperature_.equals(otherMyClass.cell_temperature_)) return false;
       if (!us.ihmc.idl.IDLTools.equals(this.location_, otherMyClass.location_)) return false;
 
       if (!us.ihmc.idl.IDLTools.equals(this.serial_number_, otherMyClass.serial_number_)) return false;
@@ -460,6 +506,8 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       builder.append(this.header_);      builder.append(", ");
       builder.append("voltage=");
       builder.append(this.voltage_);      builder.append(", ");
+      builder.append("temperature=");
+      builder.append(this.temperature_);      builder.append(", ");
       builder.append("current=");
       builder.append(this.current_);      builder.append(", ");
       builder.append("charge=");
@@ -480,6 +528,8 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
       builder.append(this.present_);      builder.append(", ");
       builder.append("cell_voltage=");
       builder.append(this.cell_voltage_);      builder.append(", ");
+      builder.append("cell_temperature=");
+      builder.append(this.cell_temperature_);      builder.append(", ");
       builder.append("location=");
       builder.append(this.location_);      builder.append(", ");
       builder.append("serial_number=");

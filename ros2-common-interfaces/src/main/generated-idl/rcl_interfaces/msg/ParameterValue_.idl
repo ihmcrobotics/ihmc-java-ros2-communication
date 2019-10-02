@@ -25,7 +25,11 @@ module rcl_interfaces
         long long integer_value;
         double double_value;
         string string_value;
-        sequence<octet> bytes_value;
+        sequence<octet> byte_array_value;
+        sequence<boolean> bool_array_value;
+        sequence<long long> integer_array_value;
+        sequence<double> double_array_value;
+        sequence<string> string_array_value;
       };
     };
   };

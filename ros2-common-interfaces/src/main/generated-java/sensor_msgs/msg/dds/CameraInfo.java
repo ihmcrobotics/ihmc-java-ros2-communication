@@ -74,7 +74,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    public long width_;
    /**
             * The distortion model used. Supported models are listed in
-            * sensor_msgs/distortion_models.h. For most cameras, "plumb_bob" - a
+            * sensor_msgs/distortion_models.hpp. For most cameras, "plumb_bob" - a
             * simple model of radial and tangential distortion - is sufficent.
             */
    public java.lang.StringBuilder distortion_model_;
@@ -245,7 +245,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
    /**
             * The distortion model used. Supported models are listed in
-            * sensor_msgs/distortion_models.h. For most cameras, "plumb_bob" - a
+            * sensor_msgs/distortion_models.hpp. For most cameras, "plumb_bob" - a
             * simple model of radial and tangential distortion - is sufficent.
             */
    public void setDistortionModel(java.lang.String distortion_model)
@@ -256,7 +256,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
    /**
             * The distortion model used. Supported models are listed in
-            * sensor_msgs/distortion_models.h. For most cameras, "plumb_bob" - a
+            * sensor_msgs/distortion_models.hpp. For most cameras, "plumb_bob" - a
             * simple model of radial and tangential distortion - is sufficent.
             */
    public java.lang.String getDistortionModelAsString()
@@ -265,7 +265,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    }
    /**
             * The distortion model used. Supported models are listed in
-            * sensor_msgs/distortion_models.h. For most cameras, "plumb_bob" - a
+            * sensor_msgs/distortion_models.hpp. For most cameras, "plumb_bob" - a
             * simple model of radial and tangential distortion - is sufficent.
             */
    public java.lang.StringBuilder getDistortionModel()

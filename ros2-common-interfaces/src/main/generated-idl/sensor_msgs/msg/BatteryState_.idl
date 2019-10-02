@@ -96,6 +96,10 @@ module sensor_msgs
          */
         float voltage;
         /**
+         * Temperature in Degrees Celsius (If unmeasured NaN)
+         */
+        float temperature;
+        /**
          * Negative when discharging (A)  (If unmeasured NaN)
          */
         float current;
@@ -137,6 +141,11 @@ module sensor_msgs
         sequence<float> cell_voltage;
         /**
          * If individual voltages unknown but number of cells known set each to NaN
+         * An array of individual cell temperatures for each cell in the pack
+         */
+        sequence<float> cell_temperature;
+        /**
+         * If individual temperatures unknown but number of cells known set each to NaN
          * The location into which the battery is inserted. (slot number or plug)
          */
         string location;

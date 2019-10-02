@@ -13,7 +13,11 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
    public static final byte PARAMETER_INTEGER = (byte) 2;
    public static final byte PARAMETER_DOUBLE = (byte) 3;
    public static final byte PARAMETER_STRING = (byte) 4;
-   public static final byte PARAMETER_BYTES = (byte) 5;
+   public static final byte PARAMETER_BYTE_ARRAY = (byte) 5;
+   public static final byte PARAMETER_BOOL_ARRAY = (byte) 6;
+   public static final byte PARAMETER_INTEGER_ARRAY = (byte) 7;
+   public static final byte PARAMETER_DOUBLE_ARRAY = (byte) 8;
+   public static final byte PARAMETER_STRING_ARRAY = (byte) 9;
    public boolean unused_placeholder_field_;
 
    public ParameterType()

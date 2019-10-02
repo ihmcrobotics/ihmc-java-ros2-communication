@@ -40,6 +40,9 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
    {
       int initial_alignment = current_alignment;
 
+      current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);}
@@ -62,6 +65,10 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
    {
       int initial_alignment = current_alignment;
 
+      current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getStamp(), current_alignment);
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getNode().length() + 1;
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getNewParameters().size(); ++i0)
       {
@@ -83,6 +90,11 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void write(rcl_interfaces.msg.dds.ParameterEvent data, us.ihmc.idl.CDR cdr)
    {
+      builtin_interfaces.msg.dds.TimePubSubType.write(data.getStamp(), cdr);
+      if(data.getNode().length() <= 255)
+      cdr.write_type_d(data.getNode());else
+          throw new RuntimeException("node field exceeds the maximum length");
+
       if(data.getNewParameters().size() <= 100)
       cdr.write_type_e(data.getNewParameters());else
           throw new RuntimeException("new_parameters field exceeds the maximum length");
@@ -99,6 +111,8 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void read(rcl_interfaces.msg.dds.ParameterEvent data, us.ihmc.idl.CDR cdr)
    {
+      builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);	
+      cdr.read_type_d(data.getNode());	
       cdr.read_type_e(data.getNewParameters());	
       cdr.read_type_e(data.getChangedParameters());	
       cdr.read_type_e(data.getDeletedParameters());	
@@ -108,6 +122,9 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
    @Override
    public final void serialize(rcl_interfaces.msg.dds.ParameterEvent data, us.ihmc.idl.InterchangeSerializer ser)
    {
+      ser.write_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
+
+      ser.write_type_d("node", data.getNode());
       ser.write_type_e("new_parameters", data.getNewParameters());
       ser.write_type_e("changed_parameters", data.getChangedParameters());
       ser.write_type_e("deleted_parameters", data.getDeletedParameters());
@@ -116,6 +133,9 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterEvent data)
    {
+      ser.read_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
+
+      ser.read_type_d("node", data.getNode());
       ser.read_type_e("new_parameters", data.getNewParameters());
       ser.read_type_e("changed_parameters", data.getChangedParameters());
       ser.read_type_e("deleted_parameters", data.getDeletedParameters());
