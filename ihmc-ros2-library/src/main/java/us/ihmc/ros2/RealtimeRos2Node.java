@@ -293,4 +293,22 @@ public class RealtimeRos2Node
          stopSpinning();
       node.destroy();
    }
+   
+   /**
+    * 
+    * @return the name of this node
+    */
+   public String getName()
+   {
+      return node.getName();
+   }
+   
+   /**
+    * 
+    * @return the namespace of this node
+    */
+   public String getNamespace()
+   {
+      return node.getNamespace();
+   }
 }
