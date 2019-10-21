@@ -135,7 +135,7 @@ class Ros2TopicNameMangler
       }
       if (nodename.matches("^.*[^a-zA-Z0-9_].*$"))
       {
-         throw new RuntimeException("Invalid node name: node name must not contain characters other than alphanumericsand '_': " + nodename);
+         throw new RuntimeException("Invalid node name: node name must not contain characters other than alphanumerics and '_': " + nodename);
       }
    }
 

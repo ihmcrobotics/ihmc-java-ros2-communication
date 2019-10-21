@@ -1,5 +1,36 @@
 # Making a release
 
+
+While setup as a composite build, this repo does not work like one. This project contains both a build plugin and repositories that depend on the build plugin. To release, you'll have to first publish the build plugins after which you can build the rest of the repositories.
+
+## Scripted
+
+A script called "publish.sh" is available in the root directory of this project. Run this to automatically build and publish 
+
+
+To publish to your local maven repository, run
+
+```
+./publish.sh local
+```
+
+To publish to the ihmc bintray run
+
+```
+./publish.sh ihmcRelease
+```
+
+To publish to a custom bintray repository
+
+```
+./publish.sh https://api.bintray.com/content/[organization name]/[repo name] [username] [password]
+```
+Note: The package names get automatically appended to the publish url.
+
+## Manual
+
+
+
 #### Step 1: Update ihmc-pub-sub dependencies
 
 1. Check for the latest version here: https://github.com/ihmcrobotics/ihmc-pub-sub/releases or here: https://bintray.com/ihmcrobotics/maven-release/ihmc-pub-sub
@@ -15,14 +46,12 @@
 > gradle generateMessages
 ```
 
-###### Generate ros2-common-interfaces
+###### (Alternative to gradle generateMessages) Generate ros2-common-interfaces using java application
 
 Run `us.ihmc.idl.Ros2CommonInterfacesGenerateMessages`, 
 located in `ros2-common-interfaces/src/generator/java` 
 with `ihmc-java-ros2-communication/ros2-common-interfaces` set as the working directory.
 
-In `ihmc-java-ros2-communication\ros2-common-interfaces\src\main\generated-java\sensor_msgs\msg\dds\TimeReference.java`, line 87, 
-refactor `getSource()` to `getSourceAsStringBuilder()` (do not refactor the base method in `us.ihmc.communication.packets.Packet`).
 
 ###### Generate test IDLs
 
@@ -42,7 +71,6 @@ with `ihmc-java-ros2-communication/ros2-msg-to-pubsub-generator/src/test` set as
 
 Make sure the generated files have LF (Unix) line separators.
 
-In TimeReference.java, you must refactor getSource() to getSourceAsStringBuilder().
 
 > Note: In IntelliJ, you may need to build with Eclipse compiler and use "Build, no error check".
 
