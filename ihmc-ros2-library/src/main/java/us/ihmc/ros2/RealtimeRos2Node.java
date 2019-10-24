@@ -38,7 +38,7 @@ public class RealtimeRos2Node
    public static int THREAD_PERIOD_MICROSECONDS = 1000;
    public static final int DEFAULT_QUEUE_SIZE = 10;
 
-   private final Ros2NodeBasics node;
+   private final Ros2NodeBase node;
 
    private final ArrayList<RealtimeRos2Publisher<?>> publishers = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class RealtimeRos2Node
     */
    public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
    {
-      this(pubSubImplementation, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, threadFactory, name, namespace, Ros2NodeBase.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
@@ -74,7 +74,7 @@ public class RealtimeRos2Node
     */
    public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
    {
-      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, Ros2NodeBase.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
@@ -107,7 +107,7 @@ public class RealtimeRos2Node
     */
    public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId) throws IOException
    {
-      this.node = new Ros2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId);
+      this.node = new Ros2NodeBase(pubSubImplementation, ros2Distro, name, namespace, domainId);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
@@ -285,7 +285,7 @@ public class RealtimeRos2Node
    /**
     * Stop the realtime periodic if spinning and then destroys the internal ROS node.
     * 
-    * @see Ros2NodeBasics#destroy()
+    * @see Ros2NodeBase#destroy()
     */
    public void destroy()
    {

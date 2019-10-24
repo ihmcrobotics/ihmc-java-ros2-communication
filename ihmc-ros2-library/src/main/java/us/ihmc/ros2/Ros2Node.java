@@ -27,7 +27,7 @@ import java.io.IOException;
  * @author Jesper Smith
  *
  */
-public class Ros2Node extends Ros2NodeBasics
+public class Ros2Node extends Ros2NodeBase
 {
    /**
     * Create a new ROS2 node.
