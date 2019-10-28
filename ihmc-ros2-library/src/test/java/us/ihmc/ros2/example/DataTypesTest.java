@@ -22,7 +22,7 @@ public class DataTypesTest
       int NUMBER_OF_MESSAGES_TO_SEND = 10;
       try
       {
-         ROS2Node node = new ROS2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
+         ROS2Node node = new ROS2Node(PubSubImplementation.INTRAPROCESS, "ROS2CommunicationTest");
          NumPubSubType topicDataType = new NumPubSubType();
          ROS2Publisher<Num> publisher = node.createPublisher(topicDataType, "/chatter");
 

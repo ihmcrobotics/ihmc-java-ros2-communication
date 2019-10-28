@@ -37,7 +37,7 @@ public class NonRealtimeROS2TalkerExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, ROS2Distro.BOUNCY, "NonRealtimeRos2ChatterExample", "/us/ihmc", 112);
+      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, ROS2Distro.BOUNCY, "NonRealtimeROS2ChatterExample", "/us/ihmc", 112);
 
       ROS2Publisher<String> publisher = node.createPublisher(new std_msgs.msg.dds.StringPubSubType(), "/chatter");
       std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();

@@ -1,7 +1,7 @@
 import org.python.core.Py;
 import org.python.core.PyString;
 import org.python.core.PySystemState;
-import us.ihmc.rosidl.Ros2MsgToIdlGenerator;
+import us.ihmc.rosidl.ROS2MsgToIdlGenerator;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -15,7 +15,7 @@ public class TestGenerateMSGToIDL
             systemState.path.append(new PyString("__pyclasspath__/Lib"));
       systemState.path.append(new PyString("src/main/python"));
 
-      Ros2MsgToIdlGenerator ros2MsgToIdlGenerator = new Ros2MsgToIdlGenerator();
+      ROS2MsgToIdlGenerator ros2MsgToIdlGenerator = new ROS2MsgToIdlGenerator();
 
       ros2MsgToIdlGenerator.addPackageRoot(Paths.get("src/test/ros_msgs"));
       ros2MsgToIdlGenerator.convertToIDL(Paths.get("src/test/generated-idl"));
@@ -23,11 +23,11 @@ public class TestGenerateMSGToIDL
 
       //      if (args.length != 3 && args.length != 2)
       //      {
-      //         System.out.println("Usage: Ros2MsgToIdlGenerator [argFile] [subFolders] [extension]");
+      //         System.out.println("Usage: ROS2MsgToIdlGenerator [argFile] [subFolders] [extension]");
       //         System.exit(-1);
       //      }
       //
-      //      Ros2MsgToIdlGenerator gen = new Ros2MsgToIdlGenerator();
+      //      ROS2MsgToIdlGenerator gen = new ROS2MsgToIdlGenerator();
       //      if (args.length == 2)
       //      {
       //         gen.generate_dds_idl(args[0], Collections.singletonList(args[1]), null);

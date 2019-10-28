@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-public class Ros2MsgToIdlGenerator
+public class ROS2MsgToIdlGenerator
 {
    private static final boolean compile_srv = false;
 
@@ -39,7 +39,7 @@ public class Ros2MsgToIdlGenerator
 
    private final HashMap<String, PackageDescription> packages = new HashMap<>();
 
-   public Ros2MsgToIdlGenerator()
+   public ROS2MsgToIdlGenerator()
    {
       try
       {

@@ -34,7 +34,7 @@ public class NonRealtimeROS2ListenerExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2ChatterExample");
+      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeROS2ChatterExample");
       node.createSubscription(new std_msgs.msg.dds.StringPubSubType(), subscriber -> {
          std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
          if (subscriber.takeNextData(message, null))

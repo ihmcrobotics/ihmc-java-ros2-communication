@@ -34,7 +34,7 @@ public class ROS2Node extends ROS2NodeBase
     *
     * Namespace is set to empty ("")
     * Domain ID is set to the default ROS2 domain ID (0)
-    * Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
+    * ROS2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
@@ -49,7 +49,7 @@ public class ROS2Node extends ROS2NodeBase
     * Create a new ROS2 node.
     *
     * Domain ID is set to the default ROS2 domain ID (0)
-    * Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
+    * ROS2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node
@@ -94,7 +94,7 @@ public class ROS2Node extends ROS2NodeBase
    /**
     * Create a new ROS2 node.
     * 
-    * Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
+    * ROS2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation PubSubImplementation}
     * @param name Name for the node

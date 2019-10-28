@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 
-public class Ros2CommonInterfacesGenerateMessages
+public class ROS2CommonInterfacesGenerateMessages
 {
    /**
     * Must be run from ros2-common-interfaces dir!!!

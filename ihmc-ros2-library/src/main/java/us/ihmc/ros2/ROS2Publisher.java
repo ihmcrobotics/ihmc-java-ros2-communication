@@ -23,12 +23,11 @@ import us.ihmc.pubsub.publisher.Publisher;
 /**
  * Simple ROS2 publisher
  * 
- * 
  * @author Jesper Smith
  *
  * @param <T> The data type to send
  */
-public class ROS2Publisher<T>
+public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
 {
    private final Domain domain;
    private final Publisher publisher;
@@ -45,6 +44,7 @@ public class ROS2Publisher<T>
     * @param data Data to publisher
     * @throws IOException If the data cannot be serialized or another error occurs
     */
+   @Override
    public void publish(T data) throws IOException
    {
       publisher.write(data);

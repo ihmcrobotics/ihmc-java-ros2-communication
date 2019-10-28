@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Ros2MsgToRos1MsgGenerator
+public class ROS2MsgToRos1MsgGenerator
 {
    private static final boolean compile_srv = false;
 
@@ -35,7 +35,7 @@ public class Ros2MsgToRos1MsgGenerator
 
    private final HashMap<String, PackageDescription> packages = new HashMap<>();
 
-   public Ros2MsgToRos1MsgGenerator()
+   public ROS2MsgToRos1MsgGenerator()
    {
       try
       {
