@@ -1,11 +1,11 @@
 package us.ihmc.ros2;
 
-public enum Ros2Distro
+public enum ROS2Distro
 {
    ARDENT,
    BOUNCY;
 
-   public static Ros2Distro fromEnvironment()
+   public static ROS2Distro fromEnvironment()
    {
       String rosDistro = System.getenv("ROS_DISTRO");
 

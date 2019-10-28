@@ -26,24 +26,24 @@ public class CommunicationTest
    @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationArdent()
    {
-      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.ARDENT);
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, ROS2Distro.ARDENT);
    }
 
    @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationBouncy()
    {
-      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.BOUNCY);
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, ROS2Distro.BOUNCY);
    }
 
-   private void testSimpleCommunication(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro)
+   private void testSimpleCommunication(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro)
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
          String name = "Ros2CommunicationTest";
-         Ros2Node node = ros2Distro == null ? new Ros2Node(pubSubImplementation, name) : new Ros2Node(pubSubImplementation, ros2Distro, name);
+         ROS2Node node = ros2Distro == null ? new ROS2Node(pubSubImplementation, name) : new ROS2Node(pubSubImplementation, ros2Distro, name);
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
-         Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+         ROS2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
          messagesReceived.setValue(0);
 
@@ -81,9 +81,9 @@ public class CommunicationTest
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
-         Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
+         ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
-         Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+         ROS2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
          messagesReceived.setValue(0);
 
@@ -123,14 +123,14 @@ public class CommunicationTest
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
-         RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.INTRAPROCESS, PeriodicNonRealtimeThreadScheduler::new, "Ros2CommunicationTest",
+         RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.INTRAPROCESS, PeriodicNonRealtimeThreadScheduler::new, "Ros2CommunicationTest",
                                                       "/us/ihmc");
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
-         RealtimeRos2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+         RealtimeROS2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
          messagesReceived.setValue(0);
 
-         RealtimeRos2Subscription<TwoNum> subscription = node.createQueuedSubscription(topicDataType, "/chatter");
+         RealtimeROS2Subscription<TwoNum> subscription = node.createQueuedSubscription(topicDataType, "/chatter");
 
          node.spin();
 

@@ -28,12 +28,12 @@ import us.ihmc.pubsub.publisher.Publisher;
  *
  * @param <T> The data type to send
  */
-public class Ros2Publisher<T>
+public class ROS2Publisher<T>
 {
    private final Domain domain;
    private final Publisher publisher;
 
-   Ros2Publisher(Domain domain, Publisher publisher)
+   ROS2Publisher(Domain domain, Publisher publisher)
    {
       this.domain = domain;
       this.publisher = publisher;

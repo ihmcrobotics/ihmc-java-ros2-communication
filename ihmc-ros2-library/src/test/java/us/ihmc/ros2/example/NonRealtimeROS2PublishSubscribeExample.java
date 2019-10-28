@@ -15,12 +15,13 @@
  */
 package us.ihmc.ros2.example;
 
-import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.ros2.Ros2Distro;
-import us.ihmc.ros2.Ros2Node;
-import us.ihmc.ros2.Ros2Publisher;
-
 import java.io.IOException;
+
+import std_msgs.msg.dds.Int64;
+import std_msgs.msg.dds.Int64PubSubType;
+import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
+import us.ihmc.ros2.ROS2Node;
+import us.ihmc.ros2.ROS2Publisher;
 
 /**
  * Java version of the ROS2 demo listener.
@@ -32,18 +33,24 @@ import java.io.IOException;
  * @author Jesper Smith
  *
  */
-public class NonRealtimeRos2TalkerExample
+public class NonRealtimeROS2PublishSubscribeExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, Ros2Distro.BOUNCY, "NonRealtimeRos2ChatterExample", "/us/ihmc", 112);
+      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2PublishSubscribeExample");
+      node.createSubscription(new Int64PubSubType(), subscriber -> {
+         Int64 message = new Int64();
+         if (subscriber.takeNextData(message, null))
+         {
+            System.out.println(message.getData());
+         }
+      }, "/example");
 
-      Ros2Publisher<std_msgs.msg.dds.String> publisher = node.createPublisher(new std_msgs.msg.dds.StringPubSubType(), "/chatter");
-      std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
-      for (int i = 0; i < 1000000000; i++)
+      ROS2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example");
+      Int64 message = new Int64();
+      for (int i = 0; i < 10; i++)
       {
-         message.setData("Hello " + i);
-         System.out.println("Publishing: " + message.getData());
+         message.setData(i);
          publisher.publish(message);
          Thread.sleep(1000);
       }
