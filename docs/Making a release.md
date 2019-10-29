@@ -105,7 +105,7 @@ Update the README.md to document any changed procedures, new features, etc.
 
 Publish artifacts to Bintray.
 
-`gradle publishAll -PpublishUrl=ihmcRelease`
+`gradle compositePublish -PpublishUrl=ihmcRelease`
 
 Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcrobotics/maven-release) and "Publish".
 
