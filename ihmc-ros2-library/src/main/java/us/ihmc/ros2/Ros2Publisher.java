@@ -28,7 +28,7 @@ import us.ihmc.pubsub.publisher.Publisher;
  *
  * @param <T> The data type to send
  */
-public class Ros2Publisher<T>
+public class Ros2Publisher<T> implements Ros2PublisherBasics<T>
 {
    private final Domain domain;
    private final Publisher publisher;
@@ -45,6 +45,7 @@ public class Ros2Publisher<T>
     * @param data Data to publisher
     * @throws IOException If the data cannot be serialized or another error occurs
     */
+   @Override
    public void publish(T data) throws IOException
    {
       publisher.write(data);
@@ -53,6 +54,7 @@ public class Ros2Publisher<T>
    /**
     * Remove this publisher from the ROS domain
     */
+   @Override
    public void remove()
    {
       domain.removePublisher(publisher);

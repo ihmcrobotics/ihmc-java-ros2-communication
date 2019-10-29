@@ -17,7 +17,7 @@ public interface Ros2NodeInterface
     *
     * @throws IOException if no publisher can be made
     */
-   <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException;
+   <T> Ros2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException;
 
    /**
     * Create a new ROS2 compatible publisher in this Node
@@ -29,7 +29,7 @@ public interface Ros2NodeInterface
     *
     * @throws IOException if no publisher can be made
     */
-   <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException;
+   <T> Ros2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException;
 
    /**
     * Create a new ROS2 compatible subscription.
