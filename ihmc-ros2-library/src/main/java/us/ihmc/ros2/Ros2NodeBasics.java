@@ -1,21 +1,16 @@
 /*
- * Copyright 2017 Florida Institute for Human and Machine Cognition (IHMC)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2017 Florida Institute for Human and Machine Cognition (IHMC) Licensed under the Apache
+ * License, Version 2.0 (the "License"); you may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package us.ihmc.ros2;
 
 import java.io.IOException;
+import java.net.InetAddress;
 
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
@@ -38,14 +33,13 @@ import us.ihmc.pubsub.subscriber.SubscriberListener;
  *
  * @author Jesper Smith
  * @author Duncan Calvert
- *
  */
 class Ros2NodeBasics implements Ros2NodeInterface
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
    private final Ros2Distro ros2Distro;
-   
+
    private Domain domain;
    private Participant participant;
 
@@ -55,17 +49,20 @@ class Ros2NodeBasics implements Ros2NodeInterface
    /**
     * Create a new ROS2 node.
     *
-    *
-    * @param name Name for the node
-    * @param namespace namespace for the ros node i.e. DDS partition
-    * @param domainId Domain ID for the ros node
+    * @param name               Name for the node
+    * @param namespace          namespace for the ros node i.e. DDS partition
+    * @param domainId           Domain ID for the ros node
+    * @param addressRestriction Restrict network traffic to the given address. When provided, it should
+    *                           describe one of the addresses of the computer hosting this node.
+    *                           Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
-   Ros2NodeBasics(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId) throws IOException
+   Ros2NodeBasics(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
+         throws IOException
    {
       this.domain = DomainFactory.getDomain(pubSubImplementation);
       this.ros2Distro = ros2Distro;
-      
+
       Ros2TopicNameMangler.checkNodename(name);
       Ros2TopicNameMangler.checkNamespace(namespace);
 
@@ -73,18 +70,18 @@ class Ros2NodeBasics implements Ros2NodeInterface
       this.namespace = namespace;
 
       ParticipantAttributes attr = domain.createParticipantAttributes(domainId, name);
+      if (addressRestriction != null)
+         attr.bindToAddress(addressRestriction);
       participant = domain.createParticipant(attr);
    }
 
    /**
-    * Create a new ROS2 compatible publisher in this Node
-    *
-    * This call makes a publisher with the default settings
+    * Create a new ROS2 compatible publisher in this Node This call makes a publisher with the default
+    * settings
     *
     * @param topicDataType The topic data type of the message
-    * @param topicName Name for the topic
+    * @param topicName     Name for the topic
     * @return A ROS publisher
-    *
     * @throws IOException if no publisher can be made
     */
    @Override
@@ -97,10 +94,9 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * Create a new ROS2 compatible publisher in this Node
     *
     * @param topicDataType The topic data type of the message
-    * @param topicName Name for the topic
-    * @param qosProfile ROS Qos Profile
+    * @param topicName     Name for the topic
+    * @param qosProfile    ROS Qos Profile
     * @return A ROS publisher
-    *
     * @throws IOException if no publisher can be made
     */
    @Override
@@ -120,18 +116,23 @@ class Ros2NodeBasics implements Ros2NodeInterface
 
       switch (qosProfile.getDurability())
       {
-      case TRANSIENT_LOCAL:
-         publisherAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
-         break;
-      case VOLATILE:
-         publisherAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
-         break;
+         case TRANSIENT_LOCAL:
+            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
+            break;
+         case VOLATILE:
+            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
+            break;
       }
 
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Distro, publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Distro,
+                                                               publisherAttributes,
+                                                               namespace,
+                                                               nodeName,
+                                                               topicName,
+                                                               qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
@@ -143,58 +144,56 @@ class Ros2NodeBasics implements Ros2NodeInterface
    }
 
    /**
-    * Create a new ROS2 compatible subscription.
+    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
+    * default qos profile
     *
-    * This call can be used to make a ROS2 topic with the default qos profile
-    *
-    *
-    * @param topicDataType The topic data type of the message
+    * @param topicDataType      The topic data type of the message
     * @param newMessageListener New message listener
-    * @param topicName Name for the topic
+    * @param topicName          Name for the topic
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName) throws IOException
+   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
+         throws IOException
    {
       return createSubscription(topicDataType, newMessageListener, topicName, Ros2QosProfile.DEFAULT());
    }
 
    /**
-    * Create a new ROS2 compatible subscription.
+    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
+    * default qos profile
     *
-    * This call can be used to make a ROS2 topic with the default qos profile
-    *
-    * @param topicDataType The topic data type of the message
+    * @param topicDataType      The topic data type of the message
     * @param newMessageListener New message listener
-    * @param topicName Name for the topic
+    * @param topicName          Name for the topic
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
    @Override
    public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
-                                                     Ros2QosProfile qosProfile) throws IOException
+                                                     Ros2QosProfile qosProfile)
+         throws IOException
    {
       return createSubscription(topicDataType, (SubscriberListener<T>) newMessageListener, topicName, qosProfile);
    }
 
    /**
-    * Create a new ROS2 compatible subscription.
+    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
+    * default qos profile
     *
-    * This call can be used to make a ROS2 topic with the default qos profile
-    *
-    * @param topicDataType The topic data type of the message
-    * @param newMessageListener New message listener
+    * @param topicDataType               The topic data type of the message
+    * @param newMessageListener          New message listener
     * @param subscriptionMatchedListener Subscription matched listener
-    * @param topicName Name for the topic
-    * @param qosProfile ROS Qos Profile
+    * @param topicName                   Name for the topic
+    * @param qosProfile                  ROS Qos Profile
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
    @Override
    public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
-                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName,
-                                                     Ros2QosProfile qosProfile) throws IOException
+                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName, Ros2QosProfile qosProfile)
+         throws IOException
    {
 
       return createSubscription(topicDataType, new SubscriberListener<T>()
@@ -217,14 +216,15 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * Create a new ROS2 compatible subscription.
     *
     * @param topicDataType The topic data type of the message
-    * @param topicName Name for the topic
-    * @param qosProfile ROS Qos Profile
+    * @param topicName     Name for the topic
+    * @param qosProfile    ROS Qos Profile
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
    @SuppressWarnings("unchecked")
    private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
-                                                      Ros2QosProfile qosProfile) throws IOException
+                                                      Ros2QosProfile qosProfile)
+         throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
       if (registeredType == null)
@@ -240,25 +240,28 @@ class Ros2NodeBasics implements Ros2NodeInterface
 
       switch (qosProfile.getDurability())
       {
-      case TRANSIENT_LOCAL:
-         subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
-         break;
-      case VOLATILE:
-         subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
-         break;
+         case TRANSIENT_LOCAL:
+            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
+            break;
+         case VOLATILE:
+            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
+            break;
       }
 
       subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      Ros2TopicNameMangler
-            .assignNameAndPartitionsToAttributes(ros2Distro, subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Distro,
+                                                               subscriberAttributes,
+                                                               namespace,
+                                                               nodeName,
+                                                               topicName,
+                                                               qosProfile.isAvoidRosNamespaceConventions());
 
       return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }
 
    /**
-    * 
     * @return the name of this node
     */
    @Override
@@ -266,9 +269,8 @@ class Ros2NodeBasics implements Ros2NodeInterface
    {
       return nodeName;
    }
-   
+
    /**
-    * 
     * @return the namespace of this node
     */
    @Override
@@ -276,16 +278,16 @@ class Ros2NodeBasics implements Ros2NodeInterface
    {
       return namespace;
    }
-   
+
    /**
     * Destroys this node.
     * <p>
-    * This effectively removes this node's {@code Participant} from the domain and clear the
-    * internal references to these two.
+    * This effectively removes this node's {@code Participant} from the domain and clear the internal
+    * references to these two.
     * </p>
     * <p>
-    * After calling this method, this node becomes unusable, i.e. publisher or subscriber can no
-    * longer be created.
+    * After calling this method, this node becomes unusable, i.e. publisher or subscriber can no longer
+    * be created.
     * </p>
     */
    public void destroy()
