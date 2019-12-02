@@ -332,7 +332,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
          }
       }
 
-      LogTools.info("Default ROS_DOMAIN_ID: {}", rosDomainIdAsInteger);
+      LogTools.info("ROS_DOMAIN_ID from environment is {} (fallback only; ignore if set manually)", rosDomainIdAsInteger);
 
       return rosDomainIdAsInteger;
    }
