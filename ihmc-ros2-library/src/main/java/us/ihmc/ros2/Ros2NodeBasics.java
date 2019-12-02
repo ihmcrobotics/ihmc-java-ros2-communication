@@ -23,16 +23,14 @@ import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.DurabilityKind;
-import us.ihmc.pubsub.attributes.ParticipantAttributes;
-import us.ihmc.pubsub.attributes.PublishModeKind;
-import us.ihmc.pubsub.attributes.PublisherAttributes;
-import us.ihmc.pubsub.attributes.SubscriberAttributes;
+import us.ihmc.pubsub.attributes.*;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
 import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.participant.Participant;
 import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
+import us.ihmc.rtps.impl.fastRTPS.FastRTPSPublisherAttributes;
+import us.ihmc.rtps.impl.fastRTPS.Time_t;
 
 /**
  * Internal class to share implementation between intra and inter process ROS2 nodes.
@@ -119,6 +117,18 @@ class Ros2NodeBasics implements Ros2NodeInterface
       publisherAttributes.getTopic().setTopicDataType(topicDataType.getName());
 
       publisherAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
+      
+      if (publisherAttributes instanceof FastRTPSPublisherAttributes)
+      {
+         FastRTPSPublisherAttributes fastRTPSPublisherAttributes = (FastRTPSPublisherAttributes) publisherAttributes;
+         Time_t heartbeatPeriod = new Time_t();
+         heartbeatPeriod.setSeconds(0);
+         // based on C_FRACTIONS_PER_SEC = 4294967296ULL, set the number of fractions to be approx 100ms
+         long fraction = (long)(0.001 * 4294967296.0);
+         LogTools.info("Fraction: {}", fraction);
+         heartbeatPeriod.setFraction(fraction);
+         fastRTPSPublisherAttributes.getTimes().setHeartbeatPeriod(heartbeatPeriod);
+      }
 
       switch (qosProfile.getDurability())
       {
