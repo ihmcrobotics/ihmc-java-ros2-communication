@@ -18,6 +18,7 @@ package us.ihmc.ros2;
 import java.io.IOException;
 import java.net.InetAddress;
 
+import us.ihmc.commons.thread.ThreadTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.DomainFactory;
@@ -77,6 +78,14 @@ class Ros2NodeBasics implements Ros2NodeInterface
       if (addressRestriction != null)
          attr.bindToAddress(addressRestriction);
       participant = domain.createParticipant(attr);
+
+      Runtime.getRuntime().addShutdownHook(new Thread(() ->
+      {
+         LogTools.info("Shutting down ROS2 node " + name);
+         destroy();
+         // It appears that without a small sleep, the printout does not show up.
+         ThreadTools.sleep(10);
+      }, "IHMCROS2-ROS2NodeBasics-destroy"));
    }
 
    /**
