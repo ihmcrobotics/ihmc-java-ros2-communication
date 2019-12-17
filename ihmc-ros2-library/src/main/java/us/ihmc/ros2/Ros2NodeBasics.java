@@ -308,8 +308,12 @@ class Ros2NodeBasics implements Ros2NodeInterface
     */
    public void destroy()
    {
-      domain.removeParticipant(participant);
-      domain = null;
+      if (domain != null)
+      {
+         domain.removeParticipant(participant);
+         domain = null;
+      }
+
       participant = null;
    }
 
