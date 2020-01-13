@@ -125,7 +125,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
          heartbeatPeriod.setSeconds(0);
          // based on C_FRACTIONS_PER_SEC = 4294967296ULL, set the number of fractions to be approx 100ms
          long fraction = (long)(0.001 * 4294967296.0);
-         LogTools.info("Fraction: {}", fraction);
+         LogTools.debug("Fraction: {}", fraction);
          heartbeatPeriod.setFraction(fraction);
          fastRTPSPublisherAttributes.getTimes().setHeartbeatPeriod(heartbeatPeriod);
       }
