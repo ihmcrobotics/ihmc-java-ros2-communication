@@ -48,7 +48,8 @@ public class Ros2Publisher<T> implements Ros2PublisherBasics<T>
    @Override
    public void publish(T data) throws IOException
    {
-      publisher.write(data);
+      if (publisher.isAvailable())
+         publisher.write(data);
    }
 
    /**
