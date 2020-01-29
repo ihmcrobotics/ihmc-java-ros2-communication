@@ -1,39 +1,12 @@
 # Making a release
 
-
-While setup as a composite build, this repo does not work like one. This project contains both a build plugin and repositories that depend on the build plugin. To release, you'll have to first publish the build plugins after which you can build the rest of the repositories.
-
-## Scripted
-
-A script called "publish.sh" is available in the root directory of this project. Run this to automatically build and publish 
-
-
-To publish to your local maven repository, run
-
-```
-./publish.sh local
-```
-
-To publish to the ihmc bintray run
-
-```
-./publish.sh ihmcRelease
-```
-
-To publish to a custom bintray repository
-
-```
-./publish.sh https://api.bintray.com/content/[organization name]/[repo name] [username] [password]
-```
-Note: The package names get automatically appended to the publish url.
-
-## Manual
-
-
+This project is a group of project and contains a Gradle plugin. It requires various levels of attention and care
+dependending on what changes are included in the upgrade.
 
 #### Step 1: Update ihmc-pub-sub dependencies
 
-1. Check for the latest version here: https://github.com/ihmcrobotics/ihmc-pub-sub/releases or here: https://bintray.com/ihmcrobotics/maven-release/ihmc-pub-sub
+1. Check for the latest version here: https://bintray.com/ihmcrobotics/maven-release/ihmc-pub-sub
+   or here: https://github.com/ihmcrobotics/ihmc-pub-sub
 1. Run "Find and replace" for ihmc-pub-sub, ihmc-pub-sub-generator and update the versions
 1. Refresh Gradle
 
@@ -61,6 +34,8 @@ Run `TestGenerateMSGToIDL`,
 located in `ros2-msg-to-idl-generator/src/test/java` 
 with `ihmc-java-ros2-communication/ros2-msg-to-idl-generator` set as the working directory.
 
+Note: This currently doesn't convert the generated files to Unix line endings
+
 ###### Generate test messages
 
 If there are no changes to the .msg to .idl parser, you can ignore this step.
@@ -70,7 +45,6 @@ located in `ros2-msg-to-pubsub-generator/src/test/java`
 with `ihmc-java-ros2-communication/ros2-msg-to-pubsub-generator/src/test` set as the working directory.
 
 Make sure the generated files have LF (Unix) line separators.
-
 
 > Note: In IntelliJ, you may need to build with Eclipse compiler and use "Build, no error check".
 
@@ -85,14 +59,6 @@ Visit these urls to view test results:
 ```
 file:///path/to/ihmc-java-ros2-communication/ihmc-ros2-library/src/test/build/reports/tests/test/index.html
 file:///path/to/ihmc-java-ros2-communication/ros2-msg-to-pubsub-generator/src/test/build/reports/tests/test/index.html
-```
-
-#### Step 4: Start git flow release
-
-First, perform a git-flow release. Optionally, use you Git GUI program to do this.
-
-```
-> git flow release start X.X.X
 ```
 
 You now be on a branch called `release/X.X.X`.
@@ -113,15 +79,7 @@ Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcr
 
 Update the version of `ros2-msg-to-pubsub-generator` plugin in `ihmc-java-ros2-communication/ros2-common-interfaces`.
 
-#### Step 7: Finish git flow release
-
-Perform a git-flow finish release.
-
-```
-> git flow release finish X.X.X
-```
-
-#### Step 8: Draft and publish release on GitHub
+#### Step 8: (Optional) Draft and publish release on GitHub
 
 1. Go to [https://github.com/ihmcrobotics/ihmc-java-ros2-communication/releases](https://github.com/ihmcrobotics/ihmc-java-ros2-communication/releases)
 1. Click "Draft a new release"
