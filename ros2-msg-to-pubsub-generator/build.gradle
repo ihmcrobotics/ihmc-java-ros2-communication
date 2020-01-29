@@ -17,7 +17,7 @@ ihmc {
    configurePublications()
 }
 
-def pubsubVersion = "0.10.3"
+def pubsubVersion = "0.11.0"
 def pubsub = "us.ihmc:ihmc-pub-sub:$pubsubVersion"
 def pubsubGen = "us.ihmc:ihmc-pub-sub-generator:$pubsubVersion"
 def ros2IdlGen = "us.ihmc:ros2-msg-to-idl-generator:$version"
