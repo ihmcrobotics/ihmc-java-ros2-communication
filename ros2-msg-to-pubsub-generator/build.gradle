@@ -17,18 +17,13 @@ ihmc {
    configurePublications()
 }
 
-def pubsubVersion = "0.11.0"
-def pubsub = "us.ihmc:ihmc-pub-sub:$pubsubVersion"
-def pubsubGen = "us.ihmc:ihmc-pub-sub-generator:$pubsubVersion"
-def ros2IdlGen = "us.ihmc:ros2-msg-to-idl-generator:$version"
-
 mainDependencies {
    compile dependencies.gradleApi()
-   compile pubsubGen
-   compile ros2IdlGen
+   compile "us.ihmc:ihmc-pub-sub-generator:0.11.0"
+   compile "us.ihmc:ros2-msg-to-idl-generator:$version"
 }
 
 testDependencies {
-   compile pubsub
+   compile "us.ihmc:ihmc-pub-sub:0.11.0"
    compile "us.ihmc:ihmc-commons:0.26.6"
 }
