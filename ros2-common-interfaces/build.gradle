@@ -66,10 +66,11 @@ task generateMessages(type: us.ihmc.ros2.rosidl.Ros2MessageGenerator) {
       setupVendoredRepo(rclInterfacesPath, rclInterfacesUrl, ros2Release)
       setupVendoredRepo(geometry2Path, geometry2Url, geomtry2Release)
       setupVendoredRepo(uuidPath, uuidUrl, uuidRelease)
+
+      delete(file("src/main/vendor/rcl_interfaces/test_msgs"))
    }
 
    rosPackages = files(rclInterfacesPath, commonInterfacesPath, tf2Path, uuidPath)
-   ignoredPackages = [ 'test_msgs' ]
    idlOutputDirectory = file("src/main/generated-idl")
    ros1OutputDirectory = file("src/main/generated-ros1")
    javaOutputDirectory = file("src/main/generated-java")
