@@ -49,7 +49,12 @@ public class RealtimeRos2IntraprocessCopyTest
    {
       Random random = new Random(892141240123L);
 
-      PeriodicThreadSchedulerFactory threadFactory = SystemUtils.IS_OS_LINUX ? // realtime threads only work on linux
+      // TODO: the real check here would be to check `uname -a` for the IHMC or Halodi RT kernel
+      String runningOnContinuousIntegrationServerString = System.getenv("RUNNING_ON_CONTINUOUS_INTEGRATION_SERVER");
+      boolean runningOnContinuousIntegrationServer = runningOnContinuousIntegrationServerString != null &&
+                                                     runningOnContinuousIntegrationServerString.trim().toLowerCase().contains("true");
+      PeriodicThreadSchedulerFactory threadFactory = SystemUtils.IS_OS_LINUX &&
+                                                     runningOnContinuousIntegrationServer ? // realtime threads only work on linux w/ RT kernel
             new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
             new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
       RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeRos2IntraprocessCopyTest", "/us/ihmc");
