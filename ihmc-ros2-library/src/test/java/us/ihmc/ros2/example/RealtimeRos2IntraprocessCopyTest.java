@@ -44,19 +44,17 @@ public class RealtimeRos2IntraprocessCopyTest
 {
    public static final int NUMBER_OF_MESSAGES_TO_SEND = 20;
 
+   // TODO: the real check here would be to check `uname -a` for the IHMC or Halodi RT kernel
+   private static final boolean RUN_USING_REALTIME_THREAD = Boolean.parseBoolean(System.getProperty("realtime"));
+
    @Test// timeout = 300000
    public void testIntraprocessCopy() throws IOException, InterruptedException
    {
       Random random = new Random(892141240123L);
 
-      // TODO: the real check here would be to check `uname -a` for the IHMC or Halodi RT kernel
-      String runningOnContinuousIntegrationServerString = System.getenv("RUNNING_ON_CONTINUOUS_INTEGRATION_SERVER");
-      boolean runningOnContinuousIntegrationServer = runningOnContinuousIntegrationServerString != null &&
-                                                     runningOnContinuousIntegrationServerString.trim().toLowerCase().contains("true");
-      PeriodicThreadSchedulerFactory threadFactory = SystemUtils.IS_OS_LINUX &&
-                                                     runningOnContinuousIntegrationServer ? // realtime threads only work on linux w/ RT kernel
-            new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
-            new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
+      PeriodicThreadSchedulerFactory threadFactory = RUN_USING_REALTIME_THREAD ? // realtime threads only work on linux w/ RT kernel
+                      new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
+                      new PeriodicNonRealtimeThreadSchedulerFactory();           // to setup realtime threads
       RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeRos2IntraprocessCopyTest", "/us/ihmc");
       RealtimeRos2Publisher<BigNumSequence> publisher = node.createPublisher(new BigNumSequencePubSubType(), "/example");
       RealtimeRos2Subscription<BigNumSequence> subscription = node.createQueuedSubscription(new BigNumSequencePubSubType(), "/example");
