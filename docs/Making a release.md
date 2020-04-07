@@ -19,13 +19,6 @@ dependending on what changes are included in the upgrade.
 > gradle generateMessages
 ```
 
-###### (Alternative to gradle generateMessages) Generate ros2-common-interfaces using java application
-
-Run `us.ihmc.idl.Ros2CommonInterfacesGenerateMessages`, 
-located in `ros2-common-interfaces/src/generator/java` 
-with `ihmc-java-ros2-communication/ros2-common-interfaces` set as the working directory.
-
-
 ###### Generate test IDLs
 
 If there are no changes to the .msg to .idl parser, you can ignore this step.
@@ -50,6 +43,8 @@ Make sure the generated files have LF (Unix) line separators.
 
 #### Step 3: Run tests
 
+Wait for Bamboo or run the tests manually as follows.
+
 ```
 > cd /path/to/ihmc-java-ros2-communication
 > gradle compositeTask -PtaskName=test --info
@@ -61,25 +56,23 @@ file:///path/to/ihmc-java-ros2-communication/ihmc-ros2-library/src/test/build/re
 file:///path/to/ihmc-java-ros2-communication/ros2-msg-to-pubsub-generator/src/test/build/reports/tests/test/index.html
 ```
 
-You now be on a branch called `release/X.X.X`.
+#### Step 4: Publish artifacts
 
-Run a "Find and replace" on all files (not just *.gradle) in the repo to replace the old version with new version. Make sure to search over all files, not just *.gradle.
+Bump version number in `ihmc-java-ros2-communication/group.gradle.properties`
 
 Update the README.md to document any changed procedures, new features, etc.
 
-#### Step 5: Publish artifacts
-
-Publish artifacts to Bintray.
-
-`gradle compositePublish -PpublishUrl=ihmcRelease`
+Publish artifacts to Bintray: `gradle compositePublish -PpublishUrl=ihmcRelease` from `ihmc-java-ros2-communication/`
 
 Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcrobotics/maven-release) and "Publish".
 
-#### Step 6: Update generator version
+#### Step 5: Update generator version
 
-Update the version of `ros2-msg-to-pubsub-generator` plugin in `ihmc-java-ros2-communication/ros2-common-interfaces`.
+1. Update the version of `ros2-msg-to-pubsub-generator` plugin in `ihmc-java-ros2-communication/ros2-common-interfaces/build.gradle`.
+1. Commit and push with message `:bookmark: X.X.X` and tag `X.X.X`
+1. It will take several minutes before the newly published jars are available for Gradle to download such that it will take a moment before Gradle is able to assemble `ros2-common-interfaces`.
 
-#### Step 8: (Optional) Draft and publish release on GitHub
+#### Step 6: (Optional) Draft and publish release on GitHub
 
 1. Go to [https://github.com/ihmcrobotics/ihmc-java-ros2-communication/releases](https://github.com/ihmcrobotics/ihmc-java-ros2-communication/releases)
 1. Click "Draft a new release"
