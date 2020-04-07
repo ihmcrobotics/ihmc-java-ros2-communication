@@ -8,11 +8,14 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class String extends Packet<String> implements Settable<String>, EpsilonComparable<String>
 {
+
    public java.lang.StringBuilder data_;
 
    public String()
    {
+
       data_ = new java.lang.StringBuilder(255);
+
    }
 
    public String(String other)
@@ -23,9 +26,12 @@ public class String extends Packet<String> implements Settable<String>, EpsilonC
 
    public void set(String other)
    {
+
       data_.setLength(0);
       data_.append(other.data_);
+
    }
+
 
    public void setData(java.lang.String data)
    {
@@ -60,7 +66,9 @@ public class String extends Packet<String> implements Settable<String>, EpsilonC
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.data_, other.data_, epsilon)) return false;
+
 
       return true;
    }
@@ -74,7 +82,9 @@ public class String extends Packet<String> implements Settable<String>, EpsilonC
 
       String otherMyClass = (String) other;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.data_, otherMyClass.data_)) return false;
+
 
       return true;
    }
@@ -85,6 +95,7 @@ public class String extends Packet<String> implements Settable<String>, EpsilonC
       StringBuilder builder = new StringBuilder();
 
       builder.append("String {");
+
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

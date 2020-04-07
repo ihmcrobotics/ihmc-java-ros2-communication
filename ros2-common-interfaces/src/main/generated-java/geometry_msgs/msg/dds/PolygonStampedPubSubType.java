@@ -40,7 +40,9 @@ public class PolygonStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.PolygonPubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -57,7 +59,9 @@ public class PolygonStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.PolygonPubSubType.getCdrSerializedSize(data.getPolygon(), current_alignment);
 
@@ -67,13 +71,17 @@ public class PolygonStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
 
    public static void write(geometry_msgs.msg.dds.PolygonStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       geometry_msgs.msg.dds.PolygonPubSubType.write(data.getPolygon(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.PolygonStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       geometry_msgs.msg.dds.PolygonPubSubType.read(data.getPolygon(), cdr);	
 
    }
@@ -81,7 +89,9 @@ public class PolygonStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    @Override
    public final void serialize(geometry_msgs.msg.dds.PolygonStamped data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.write_type_a("polygon", new geometry_msgs.msg.dds.PolygonPubSubType(), data.getPolygon());
 
@@ -90,7 +100,9 @@ public class PolygonStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.PolygonStamped data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.read_type_a("polygon", new geometry_msgs.msg.dds.PolygonPubSubType(), data.getPolygon());
 

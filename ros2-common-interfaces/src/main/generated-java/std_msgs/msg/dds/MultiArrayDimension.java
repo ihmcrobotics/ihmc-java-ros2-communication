@@ -8,14 +8,17 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class MultiArrayDimension extends Packet<MultiArrayDimension> implements Settable<MultiArrayDimension>, EpsilonComparable<MultiArrayDimension>
 {
+
    /**
             * label of given dimension
             */
    public java.lang.StringBuilder label_;
+
    /**
             * size of given dimension (in type units)
             */
    public long size_;
+
    /**
             * stride of given dimension
             */
@@ -23,7 +26,11 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
 
    public MultiArrayDimension()
    {
+
       label_ = new java.lang.StringBuilder(255);
+
+
+
    }
 
    public MultiArrayDimension(MultiArrayDimension other)
@@ -34,14 +41,18 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
 
    public void set(MultiArrayDimension other)
    {
+
       label_.setLength(0);
       label_.append(other.label_);
 
+
       size_ = other.size_;
+
 
       stride_ = other.stride_;
 
    }
+
 
    /**
             * label of given dimension
@@ -67,6 +78,7 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
       return label_;
    }
 
+
    /**
             * size of given dimension (in type units)
             */
@@ -81,6 +93,7 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
    {
       return size_;
    }
+
 
    /**
             * stride of given dimension
@@ -115,9 +128,12 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.label_, other.label_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.size_, other.size_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.stride_, other.stride_, epsilon)) return false;
 
@@ -134,9 +150,12 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
 
       MultiArrayDimension otherMyClass = (MultiArrayDimension) other;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.label_, otherMyClass.label_)) return false;
 
+
       if(this.size_ != otherMyClass.size_) return false;
+
 
       if(this.stride_ != otherMyClass.stride_) return false;
 
@@ -150,10 +169,13 @@ public class MultiArrayDimension extends Packet<MultiArrayDimension> implements 
       StringBuilder builder = new StringBuilder();
 
       builder.append("MultiArrayDimension {");
+
       builder.append("label=");
       builder.append(this.label_);      builder.append(", ");
+
       builder.append("size=");
       builder.append(this.size_);      builder.append(", ");
+
       builder.append("stride=");
       builder.append(this.stride_);
       builder.append("}");

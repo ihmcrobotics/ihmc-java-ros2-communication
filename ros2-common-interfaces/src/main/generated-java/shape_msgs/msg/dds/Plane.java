@@ -8,6 +8,7 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComparable<Plane>
 {
+
    /**
             * Representation of a plane, using the plane equation ax + by + cz + d = 0.
             * 
@@ -20,7 +21,9 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
 
    public Plane()
    {
+
       coef_ = new double[4];
+
 
    }
 
@@ -32,12 +35,15 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
 
    public void set(Plane other)
    {
+
       for(int i1 = 0; i1 < coef_.length; ++i1)
       {
             coef_[i1] = other.coef_[i1];
 
       }
+
    }
+
 
 
    /**
@@ -71,10 +77,12 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
       if(other == null) return false;
       if(other == this) return true;
 
+
       for(int i3 = 0; i3 < coef_.length; ++i3)
       {
                 if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.coef_[i3], other.coef_[i3], epsilon)) return false;
       }
+
 
       return true;
    }
@@ -88,11 +96,13 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
 
       Plane otherMyClass = (Plane) other;
 
+
       for(int i5 = 0; i5 < coef_.length; ++i5)
       {
                 if(this.coef_[i5] != otherMyClass.coef_[i5]) return false;
 
       }
+
       return true;
    }
 
@@ -102,6 +112,7 @@ public class Plane extends Packet<Plane> implements Settable<Plane>, EpsilonComp
       StringBuilder builder = new StringBuilder();
 
       builder.append("Plane {");
+
       builder.append("coef=");
       builder.append(java.util.Arrays.toString(this.coef_));
       builder.append("}");

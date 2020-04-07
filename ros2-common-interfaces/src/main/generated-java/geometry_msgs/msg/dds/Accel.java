@@ -8,16 +8,21 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComparable<Accel>
 {
+
    /**
             * This expresses acceleration in free space broken into its linear and angular parts.
             */
    public us.ihmc.euclid.tuple3D.Vector3D linear_;
+
    public us.ihmc.euclid.tuple3D.Vector3D angular_;
 
    public Accel()
    {
+
       linear_ = new us.ihmc.euclid.tuple3D.Vector3D();
+
       angular_ = new us.ihmc.euclid.tuple3D.Vector3D();
+
    }
 
    public Accel(Accel other)
@@ -28,9 +33,12 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
 
    public void set(Accel other)
    {
+
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.linear_, linear_);
+
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.angular_, angular_);
    }
+
 
 
    /**
@@ -40,6 +48,7 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
    {
       return linear_;
    }
+
 
 
    public us.ihmc.euclid.tuple3D.Vector3D getAngular()
@@ -65,7 +74,9 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.linear_.epsilonEquals(other.linear_, epsilon)) return false;
+
       if (!this.angular_.epsilonEquals(other.angular_, epsilon)) return false;
 
       return true;
@@ -80,7 +91,9 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
 
       Accel otherMyClass = (Accel) other;
 
+
       if (!this.linear_.equals(otherMyClass.linear_)) return false;
+
       if (!this.angular_.equals(otherMyClass.angular_)) return false;
 
       return true;
@@ -92,8 +105,10 @@ public class Accel extends Packet<Accel> implements Settable<Accel>, EpsilonComp
       StringBuilder builder = new StringBuilder();
 
       builder.append("Accel {");
+
       builder.append("linear=");
       builder.append(this.linear_);      builder.append(", ");
+
       builder.append("angular=");
       builder.append(this.angular_);
       builder.append("}");

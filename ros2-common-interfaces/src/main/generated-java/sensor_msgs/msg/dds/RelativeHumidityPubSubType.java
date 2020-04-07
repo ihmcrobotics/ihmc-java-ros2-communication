@@ -40,9 +40,12 @@ public class RelativeHumidityPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -59,9 +62,12 @@ public class RelativeHumidityPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -73,8 +79,11 @@ public class RelativeHumidityPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(sensor_msgs.msg.dds.RelativeHumidity data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       cdr.write_type_6(data.getRelativeHumidity());
+
 
       cdr.write_type_6(data.getVariance());
 
@@ -82,9 +91,12 @@ public class RelativeHumidityPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(sensor_msgs.msg.dds.RelativeHumidity data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       data.setRelativeHumidity(cdr.read_type_6());
       	
+
       data.setVariance(cdr.read_type_6());
       	
 
@@ -93,18 +105,24 @@ public class RelativeHumidityPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final void serialize(sensor_msgs.msg.dds.RelativeHumidity data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       ser.write_type_6("relative_humidity", data.getRelativeHumidity());
+
       ser.write_type_6("variance", data.getVariance());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.RelativeHumidity data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       data.setRelativeHumidity(ser.read_type_6("relative_humidity"));
+
       data.setVariance(ser.read_type_6("variance"));
    }
 

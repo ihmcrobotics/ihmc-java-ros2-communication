@@ -15,39 +15,60 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonComparable<Marker>
 {
+
    public static final byte ARROW = (byte) 0;
+
    public static final byte CUBE = (byte) 1;
+
    public static final byte SPHERE = (byte) 2;
+
    public static final byte CYLINDER = (byte) 3;
+
    public static final byte LINE_STRIP = (byte) 4;
+
    public static final byte LINE_LIST = (byte) 5;
+
    public static final byte CUBE_LIST = (byte) 6;
+
    public static final byte SPHERE_LIST = (byte) 7;
+
    public static final byte POINTS = (byte) 8;
+
    public static final byte TEXT_VIEW_FACING = (byte) 9;
+
    public static final byte MESH_RESOURCE = (byte) 10;
+
    public static final byte TRIANGLE_LIST = (byte) 11;
+
    public static final byte ADD = (byte) 0;
+
    public static final byte MODIFY = (byte) 0;
+
    public static final byte DELETE = (byte) 2;
+
    public static final byte DELETEALL = (byte) 3;
+
    /**
             * Header for timestamp and frame id.
             */
    public std_msgs.msg.dds.Header header_;
+
    /**
             * Namespace in which to place the object.
             * Used in conjunction with id to create a unique name for the object.
             */
    public java.lang.StringBuilder ns_;
+
    /**
             * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
             */
    public int id_;
+
    /**
             * Type of object.
             */
    public int type_;
+
    /**
             * Action to take; one of:
             * - 0 add/modify an object
@@ -56,59 +77,84 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
             * - 3 deletes all objects
             */
    public int action_;
+
    /**
             * Pose of the object with respect the frame_id specified in the header.
             */
    public us.ihmc.euclid.geometry.Pose3D pose_;
+
    /**
             * Scale of the object; 1,1,1 means default (usually 1 meter square).
             */
    public us.ihmc.euclid.tuple3D.Vector3D scale_;
+
    /**
             * Color of the object; in the range: [0.0-1.0]
             */
    public std_msgs.msg.dds.ColorRGBA color_;
+
    /**
             * How long the object should last before being automatically deleted.
             * 0 indicates forever.
             */
    public builtin_interfaces.msg.dds.Duration lifetime_;
+
    /**
             * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
             */
    public boolean frame_locked_;
+
    /**
             * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
             */
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D>  points_;
+
    /**
             * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
             * The number of colors provided must either be 0 or equal to the number of points provided.
             * NOTE: alpha is not yet used
             */
    public us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA>  colors_;
+
    /**
             * Only used for text markers
             */
    public java.lang.StringBuilder text_;
+
    /**
             * Only used for MESH_RESOURCE markers.
             */
    public java.lang.StringBuilder mesh_resource_;
+
    public boolean mesh_use_embedded_materials_;
 
    public Marker()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
       ns_ = new java.lang.StringBuilder(255);
+
+
+
+
       pose_ = new us.ihmc.euclid.geometry.Pose3D();
+
       scale_ = new us.ihmc.euclid.tuple3D.Vector3D();
+
       color_ = new std_msgs.msg.dds.ColorRGBA();
+
       lifetime_ = new builtin_interfaces.msg.dds.Duration();
+
+
       points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, new geometry_msgs.msg.dds.PointPubSubType());
+
       colors_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.ColorRGBA> (100, new std_msgs.msg.dds.ColorRGBAPubSubType());
+
       text_ = new java.lang.StringBuilder(255);
+
       mesh_resource_ = new java.lang.StringBuilder(255);
+
 
    }
 
@@ -120,33 +166,49 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
 
    public void set(Marker other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       ns_.setLength(0);
       ns_.append(other.ns_);
 
+
       id_ = other.id_;
+
 
       type_ = other.type_;
 
+
       action_ = other.action_;
 
+
       geometry_msgs.msg.dds.PosePubSubType.staticCopy(other.pose_, pose_);
+
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.scale_, scale_);
+
       std_msgs.msg.dds.ColorRGBAPubSubType.staticCopy(other.color_, color_);
+
       builtin_interfaces.msg.dds.DurationPubSubType.staticCopy(other.lifetime_, lifetime_);
+
       frame_locked_ = other.frame_locked_;
 
+
       points_.set(other.points_);
+
       colors_.set(other.colors_);
+
       text_.setLength(0);
       text_.append(other.text_);
+
 
       mesh_resource_.setLength(0);
       mesh_resource_.append(other.mesh_resource_);
 
+
       mesh_use_embedded_materials_ = other.mesh_use_embedded_materials_;
 
    }
+
 
 
    /**
@@ -156,6 +218,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return header_;
    }
+
 
    /**
             * Namespace in which to place the object.
@@ -184,6 +247,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       return ns_;
    }
 
+
    /**
             * Object ID used in conjunction with the namespace for manipulating and deleting the object later.
             */
@@ -199,6 +263,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       return id_;
    }
 
+
    /**
             * Type of object.
             */
@@ -213,6 +278,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return type_;
    }
+
 
    /**
             * Action to take; one of:
@@ -238,6 +304,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    }
 
 
+
    /**
             * Pose of the object with respect the frame_id specified in the header.
             */
@@ -245,6 +312,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return pose_;
    }
+
 
 
    /**
@@ -256,6 +324,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    }
 
 
+
    /**
             * Color of the object; in the range: [0.0-1.0]
             */
@@ -263,6 +332,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return color_;
    }
+
 
 
    /**
@@ -273,6 +343,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return lifetime_;
    }
+
 
    /**
             * If this marker should be frame-locked, i.e. retransformed into its frame every timestep.
@@ -290,6 +361,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    }
 
 
+
    /**
             * Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, etc.)
             */
@@ -297,6 +369,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return points_;
    }
+
 
 
    /**
@@ -308,6 +381,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return colors_;
    }
+
 
    /**
             * Only used for text markers
@@ -333,6 +407,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       return text_;
    }
 
+
    /**
             * Only used for MESH_RESOURCE markers.
             */
@@ -356,6 +431,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
    {
       return mesh_resource_;
    }
+
 
    public void setMeshUseEmbeddedMaterials(boolean mesh_use_embedded_materials)
    {
@@ -384,20 +460,31 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.ns_, other.ns_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.id_, other.id_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.type_, other.type_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.action_, other.action_, epsilon)) return false;
 
+
       if (!this.pose_.epsilonEquals(other.pose_, epsilon)) return false;
+
       if (!this.scale_.epsilonEquals(other.scale_, epsilon)) return false;
+
       if (!this.color_.epsilonEquals(other.color_, epsilon)) return false;
+
       if (!this.lifetime_.epsilonEquals(other.lifetime_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.frame_locked_, other.frame_locked_, epsilon)) return false;
+
 
       if (this.points_.size() != other.points_.size()) { return false; }
       else
@@ -406,6 +493,7 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
          {  if (!this.points_.get(i).epsilonEquals(other.points_.get(i), epsilon)) return false; }
       }
 
+
       if (this.colors_.size() != other.colors_.size()) { return false; }
       else
       {
@@ -413,9 +501,12 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
          {  if (!this.colors_.get(i).epsilonEquals(other.colors_.get(i), epsilon)) return false; }
       }
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.text_, other.text_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.mesh_resource_, other.mesh_resource_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.mesh_use_embedded_materials_, other.mesh_use_embedded_materials_, epsilon)) return false;
 
@@ -432,26 +523,41 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
 
       Marker otherMyClass = (Marker) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if (!us.ihmc.idl.IDLTools.equals(this.ns_, otherMyClass.ns_)) return false;
+
 
       if(this.id_ != otherMyClass.id_) return false;
 
+
       if(this.type_ != otherMyClass.type_) return false;
+
 
       if(this.action_ != otherMyClass.action_) return false;
 
+
       if (!this.pose_.equals(otherMyClass.pose_)) return false;
+
       if (!this.scale_.equals(otherMyClass.scale_)) return false;
+
       if (!this.color_.equals(otherMyClass.color_)) return false;
+
       if (!this.lifetime_.equals(otherMyClass.lifetime_)) return false;
+
       if(this.frame_locked_ != otherMyClass.frame_locked_) return false;
 
+
       if (!this.points_.equals(otherMyClass.points_)) return false;
+
       if (!this.colors_.equals(otherMyClass.colors_)) return false;
+
       if (!us.ihmc.idl.IDLTools.equals(this.text_, otherMyClass.text_)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.mesh_resource_, otherMyClass.mesh_resource_)) return false;
+
 
       if(this.mesh_use_embedded_materials_ != otherMyClass.mesh_use_embedded_materials_) return false;
 
@@ -465,34 +571,49 @@ public class Marker extends Packet<Marker> implements Settable<Marker>, EpsilonC
       StringBuilder builder = new StringBuilder();
 
       builder.append("Marker {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("ns=");
       builder.append(this.ns_);      builder.append(", ");
+
       builder.append("id=");
       builder.append(this.id_);      builder.append(", ");
+
       builder.append("type=");
       builder.append(this.type_);      builder.append(", ");
+
       builder.append("action=");
       builder.append(this.action_);      builder.append(", ");
+
       builder.append("pose=");
       builder.append(this.pose_);      builder.append(", ");
+
       builder.append("scale=");
       builder.append(this.scale_);      builder.append(", ");
+
       builder.append("color=");
       builder.append(this.color_);      builder.append(", ");
+
       builder.append("lifetime=");
       builder.append(this.lifetime_);      builder.append(", ");
+
       builder.append("frame_locked=");
       builder.append(this.frame_locked_);      builder.append(", ");
+
       builder.append("points=");
       builder.append(this.points_);      builder.append(", ");
+
       builder.append("colors=");
       builder.append(this.colors_);      builder.append(", ");
+
       builder.append("text=");
       builder.append(this.text_);      builder.append(", ");
+
       builder.append("mesh_resource=");
       builder.append(this.mesh_resource_);      builder.append(", ");
+
       builder.append("mesh_use_embedded_materials=");
       builder.append(this.mesh_use_embedded_materials_);
       builder.append("}");

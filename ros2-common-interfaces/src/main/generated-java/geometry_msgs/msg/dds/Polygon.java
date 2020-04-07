@@ -11,10 +11,12 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Polygon extends Packet<Polygon> implements Settable<Polygon>, EpsilonComparable<Polygon>
 {
+
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32>  points_;
 
    public Polygon()
    {
+
       points_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32> (100, new geometry_msgs.msg.dds.Point32PubSubType());
 
    }
@@ -27,8 +29,10 @@ public class Polygon extends Packet<Polygon> implements Settable<Polygon>, Epsil
 
    public void set(Polygon other)
    {
+
       points_.set(other.points_);
    }
+
 
 
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D32>  getPoints()
@@ -54,12 +58,14 @@ public class Polygon extends Packet<Polygon> implements Settable<Polygon>, Epsil
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (this.points_.size() != other.points_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.points_.size(); i++)
          {  if (!this.points_.get(i).epsilonEquals(other.points_.get(i), epsilon)) return false; }
       }
+
 
       return true;
    }
@@ -73,6 +79,7 @@ public class Polygon extends Packet<Polygon> implements Settable<Polygon>, Epsil
 
       Polygon otherMyClass = (Polygon) other;
 
+
       if (!this.points_.equals(otherMyClass.points_)) return false;
 
       return true;
@@ -84,6 +91,7 @@ public class Polygon extends Packet<Polygon> implements Settable<Polygon>, Epsil
       StringBuilder builder = new StringBuilder();
 
       builder.append("Polygon {");
+
       builder.append("points=");
       builder.append(this.points_);
       builder.append("}");

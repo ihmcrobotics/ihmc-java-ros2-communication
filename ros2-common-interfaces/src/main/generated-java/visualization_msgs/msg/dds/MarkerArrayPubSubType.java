@@ -40,9 +40,11 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getMaxCdrSerializedSize(current_alignment);}
+
       return current_alignment - initial_alignment;
    }
 
@@ -55,16 +57,19 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getMarkers().size(); ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getCdrSerializedSize(data.getMarkers().get(i0), current_alignment);}
+
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(visualization_msgs.msg.dds.MarkerArray data, us.ihmc.idl.CDR cdr)
    {
+
       if(data.getMarkers().size() <= 100)
       cdr.write_type_e(data.getMarkers());else
           throw new RuntimeException("markers field exceeds the maximum length");
@@ -73,6 +78,7 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
    public static void read(visualization_msgs.msg.dds.MarkerArray data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.read_type_e(data.getMarkers());	
 
    }
@@ -80,12 +86,14 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    @Override
    public final void serialize(visualization_msgs.msg.dds.MarkerArray data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_e("markers", data.getMarkers());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, visualization_msgs.msg.dds.MarkerArray data)
    {
+
       ser.read_type_e("markers", data.getMarkers());
    }
 

@@ -14,17 +14,23 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> implements Settable<MultiDOFJointTrajectory>, EpsilonComparable<MultiDOFJointTrajectory>
 {
+
    /**
             * The header is used to specify the coordinate frame and the reference time for the trajectory durations
             */
    public std_msgs.msg.dds.Header header_;
+
    public us.ihmc.idl.IDLSequence.StringBuilderHolder  joint_names_;
+
    public us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint>  points_;
 
    public MultiDOFJointTrajectory()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
       joint_names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
+
       points_ = new us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint> (100, new trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPointPubSubType());
 
    }
@@ -37,10 +43,14 @@ public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> imp
 
    public void set(MultiDOFJointTrajectory other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       joint_names_.set(other.joint_names_);
+
       points_.set(other.points_);
    }
+
 
 
    /**
@@ -52,10 +62,12 @@ public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> imp
    }
 
 
+
    public us.ihmc.idl.IDLSequence.StringBuilderHolder  getJointNames()
    {
       return joint_names_;
    }
+
 
 
    public us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint>  getPoints()
@@ -81,8 +93,11 @@ public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> imp
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.joint_names_, other.joint_names_, epsilon)) return false;
+
 
       if (this.points_.size() != other.points_.size()) { return false; }
       else
@@ -104,8 +119,11 @@ public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> imp
 
       MultiDOFJointTrajectory otherMyClass = (MultiDOFJointTrajectory) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if (!this.joint_names_.equals(otherMyClass.joint_names_)) return false;
+
       if (!this.points_.equals(otherMyClass.points_)) return false;
 
       return true;
@@ -117,10 +135,13 @@ public class MultiDOFJointTrajectory extends Packet<MultiDOFJointTrajectory> imp
       StringBuilder builder = new StringBuilder();
 
       builder.append("MultiDOFJointTrajectory {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("joint_names=");
       builder.append(this.joint_names_);      builder.append(", ");
+
       builder.append("points=");
       builder.append(this.points_);
       builder.append("}");

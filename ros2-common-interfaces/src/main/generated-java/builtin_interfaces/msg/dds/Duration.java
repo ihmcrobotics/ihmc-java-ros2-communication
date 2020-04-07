@@ -8,11 +8,16 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Duration extends Packet<Duration> implements Settable<Duration>, EpsilonComparable<Duration>
 {
+
    public int sec_;
+
    public long nanosec_;
 
    public Duration()
    {
+
+
+
    }
 
    public Duration(Duration other)
@@ -23,11 +28,14 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
 
    public void set(Duration other)
    {
+
       sec_ = other.sec_;
+
 
       nanosec_ = other.nanosec_;
 
    }
+
 
    public void setSec(int sec)
    {
@@ -37,6 +45,7 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
    {
       return sec_;
    }
+
 
    public void setNanosec(long nanosec)
    {
@@ -65,7 +74,9 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.sec_, other.sec_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.nanosec_, other.nanosec_, epsilon)) return false;
 
@@ -82,7 +93,9 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
 
       Duration otherMyClass = (Duration) other;
 
+
       if(this.sec_ != otherMyClass.sec_) return false;
+
 
       if(this.nanosec_ != otherMyClass.nanosec_) return false;
 
@@ -96,8 +109,10 @@ public class Duration extends Packet<Duration> implements Settable<Duration>, Ep
       StringBuilder builder = new StringBuilder();
 
       builder.append("Duration {");
+
       builder.append("sec=");
       builder.append(this.sec_);      builder.append(", ");
+
       builder.append("nanosec=");
       builder.append(this.nanosec_);
       builder.append("}");

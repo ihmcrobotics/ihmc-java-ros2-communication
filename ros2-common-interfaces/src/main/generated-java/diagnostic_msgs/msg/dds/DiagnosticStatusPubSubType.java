@@ -40,11 +40,16 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += diagnostic_msgs.msg.dds.KeyValuePubSubType.getMaxCdrSerializedSize(current_alignment);}
@@ -61,14 +66,19 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getMessage().length() + 1;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getHardwareId().length() + 1;
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getValues().size(); ++i0)
@@ -81,19 +91,24 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(diagnostic_msgs.msg.dds.DiagnosticStatus data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.write_type_9(data.getLevel());
+
 
       if(data.getName().length() <= 255)
       cdr.write_type_d(data.getName());else
           throw new RuntimeException("name field exceeds the maximum length");
 
+
       if(data.getMessage().length() <= 255)
       cdr.write_type_d(data.getMessage());else
           throw new RuntimeException("message field exceeds the maximum length");
 
+
       if(data.getHardwareId().length() <= 255)
       cdr.write_type_d(data.getHardwareId());else
           throw new RuntimeException("hardware_id field exceeds the maximum length");
+
 
       if(data.getValues().size() <= 100)
       cdr.write_type_e(data.getValues());else
@@ -103,11 +118,16 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(diagnostic_msgs.msg.dds.DiagnosticStatus data, us.ihmc.idl.CDR cdr)
    {
+
       data.setLevel(cdr.read_type_9());
       	
+
       cdr.read_type_d(data.getName());	
+
       cdr.read_type_d(data.getMessage());	
+
       cdr.read_type_d(data.getHardwareId());	
+
       cdr.read_type_e(data.getValues());	
 
    }
@@ -115,20 +135,30 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final void serialize(diagnostic_msgs.msg.dds.DiagnosticStatus data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_9("level", data.getLevel());
+
       ser.write_type_d("name", data.getName());
+
       ser.write_type_d("message", data.getMessage());
+
       ser.write_type_d("hardware_id", data.getHardwareId());
+
       ser.write_type_e("values", data.getValues());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, diagnostic_msgs.msg.dds.DiagnosticStatus data)
    {
+
       data.setLevel(ser.read_type_9("level"));
+
       ser.read_type_d("name", data.getName());
+
       ser.read_type_d("message", data.getMessage());
+
       ser.read_type_d("hardware_id", data.getHardwareId());
+
       ser.read_type_e("values", data.getValues());
    }
 

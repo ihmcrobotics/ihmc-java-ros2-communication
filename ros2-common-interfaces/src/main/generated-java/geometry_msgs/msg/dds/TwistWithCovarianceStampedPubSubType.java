@@ -40,7 +40,9 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.TwistWithCovariancePubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -57,7 +59,9 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.TwistWithCovariancePubSubType.getCdrSerializedSize(data.getTwist(), current_alignment);
 
@@ -67,13 +71,17 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
 
    public static void write(geometry_msgs.msg.dds.TwistWithCovarianceStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       geometry_msgs.msg.dds.TwistWithCovariancePubSubType.write(data.getTwist(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.TwistWithCovarianceStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       geometry_msgs.msg.dds.TwistWithCovariancePubSubType.read(data.getTwist(), cdr);	
 
    }
@@ -81,7 +89,9 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    @Override
    public final void serialize(geometry_msgs.msg.dds.TwistWithCovarianceStamped data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.write_type_a("twist", new geometry_msgs.msg.dds.TwistWithCovariancePubSubType(), data.getTwist());
 
@@ -90,7 +100,9 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.TwistWithCovarianceStamped data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.read_type_a("twist", new geometry_msgs.msg.dds.TwistWithCovariancePubSubType(), data.getTwist());
 

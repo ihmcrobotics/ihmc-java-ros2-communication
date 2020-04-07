@@ -40,9 +40,12 @@ public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataTyp
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -59,10 +62,13 @@ public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataTyp
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -74,9 +80,12 @@ public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void write(rcl_interfaces.msg.dds.FloatingPointRange data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.write_type_6(data.getFromValue());
 
+
       cdr.write_type_6(data.getToValue());
+
 
       cdr.write_type_6(data.getStep());
 
@@ -84,10 +93,13 @@ public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void read(rcl_interfaces.msg.dds.FloatingPointRange data, us.ihmc.idl.CDR cdr)
    {
+
       data.setFromValue(cdr.read_type_6());
       	
+
       data.setToValue(cdr.read_type_6());
       	
+
       data.setStep(cdr.read_type_6());
       	
 
@@ -96,16 +108,22 @@ public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataTyp
    @Override
    public final void serialize(rcl_interfaces.msg.dds.FloatingPointRange data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_6("from_value", data.getFromValue());
+
       ser.write_type_6("to_value", data.getToValue());
+
       ser.write_type_6("step", data.getStep());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.FloatingPointRange data)
    {
+
       data.setFromValue(ser.read_type_6("from_value"));
+
       data.setToValue(ser.read_type_6("to_value"));
+
       data.setStep(ser.read_type_6("step"));
    }
 

@@ -11,13 +11,18 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonComparable<Wrench>
 {
+
    public us.ihmc.euclid.tuple3D.Vector3D force_;
+
    public us.ihmc.euclid.tuple3D.Vector3D torque_;
 
    public Wrench()
    {
+
       force_ = new us.ihmc.euclid.tuple3D.Vector3D();
+
       torque_ = new us.ihmc.euclid.tuple3D.Vector3D();
+
    }
 
    public Wrench(Wrench other)
@@ -28,15 +33,19 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
 
    public void set(Wrench other)
    {
+
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.force_, force_);
+
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.torque_, torque_);
    }
+
 
 
    public us.ihmc.euclid.tuple3D.Vector3D getForce()
    {
       return force_;
    }
+
 
 
    public us.ihmc.euclid.tuple3D.Vector3D getTorque()
@@ -62,7 +71,9 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.force_.epsilonEquals(other.force_, epsilon)) return false;
+
       if (!this.torque_.epsilonEquals(other.torque_, epsilon)) return false;
 
       return true;
@@ -77,7 +88,9 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
 
       Wrench otherMyClass = (Wrench) other;
 
+
       if (!this.force_.equals(otherMyClass.force_)) return false;
+
       if (!this.torque_.equals(otherMyClass.torque_)) return false;
 
       return true;
@@ -89,8 +102,10 @@ public class Wrench extends Packet<Wrench> implements Settable<Wrench>, EpsilonC
       StringBuilder builder = new StringBuilder();
 
       builder.append("Wrench {");
+
       builder.append("force=");
       builder.append(this.force_);      builder.append(", ");
+
       builder.append("torque=");
       builder.append(this.torque_);
       builder.append("}");

@@ -40,12 +40,15 @@ public class ParameterEventDescriptorsPubSubType implements us.ihmc.pubsub.Topic
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterDescriptorPubSubType.getMaxCdrSerializedSize(current_alignment);}
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterDescriptorPubSubType.getMaxCdrSerializedSize(current_alignment);}
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterDescriptorPubSubType.getMaxCdrSerializedSize(current_alignment);}
@@ -62,15 +65,18 @@ public class ParameterEventDescriptorsPubSubType implements us.ihmc.pubsub.Topic
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getNewParameters().size(); ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterDescriptorPubSubType.getCdrSerializedSize(data.getNewParameters().get(i0), current_alignment);}
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getChangedParameters().size(); ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterDescriptorPubSubType.getCdrSerializedSize(data.getChangedParameters().get(i0), current_alignment);}
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getDeletedParameters().size(); ++i0)
@@ -83,13 +89,16 @@ public class ParameterEventDescriptorsPubSubType implements us.ihmc.pubsub.Topic
 
    public static void write(rcl_interfaces.msg.dds.ParameterEventDescriptors data, us.ihmc.idl.CDR cdr)
    {
+
       if(data.getNewParameters().size() <= 100)
       cdr.write_type_e(data.getNewParameters());else
           throw new RuntimeException("new_parameters field exceeds the maximum length");
 
+
       if(data.getChangedParameters().size() <= 100)
       cdr.write_type_e(data.getChangedParameters());else
           throw new RuntimeException("changed_parameters field exceeds the maximum length");
+
 
       if(data.getDeletedParameters().size() <= 100)
       cdr.write_type_e(data.getDeletedParameters());else
@@ -99,8 +108,11 @@ public class ParameterEventDescriptorsPubSubType implements us.ihmc.pubsub.Topic
 
    public static void read(rcl_interfaces.msg.dds.ParameterEventDescriptors data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.read_type_e(data.getNewParameters());	
+
       cdr.read_type_e(data.getChangedParameters());	
+
       cdr.read_type_e(data.getDeletedParameters());	
 
    }
@@ -108,16 +120,22 @@ public class ParameterEventDescriptorsPubSubType implements us.ihmc.pubsub.Topic
    @Override
    public final void serialize(rcl_interfaces.msg.dds.ParameterEventDescriptors data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_e("new_parameters", data.getNewParameters());
+
       ser.write_type_e("changed_parameters", data.getChangedParameters());
+
       ser.write_type_e("deleted_parameters", data.getDeletedParameters());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterEventDescriptors data)
    {
+
       ser.read_type_e("new_parameters", data.getNewParameters());
+
       ser.read_type_e("changed_parameters", data.getChangedParameters());
+
       ser.read_type_e("deleted_parameters", data.getDeletedParameters());
    }
 

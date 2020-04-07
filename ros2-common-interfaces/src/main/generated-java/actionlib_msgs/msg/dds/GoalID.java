@@ -8,12 +8,14 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonComparable<GoalID>
 {
+
    /**
             * The stamp should store the time at which this goal was requested.
             * It is used by an action server when it tries to preempt all
             * goals that were requested before a certain time
             */
    public builtin_interfaces.msg.dds.Time stamp_;
+
    /**
             * The id provides a way to associate feedback and
             * result message with specific goal requests. The id
@@ -23,8 +25,11 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
 
    public GoalID()
    {
+
       stamp_ = new builtin_interfaces.msg.dds.Time();
+
       id_ = new java.lang.StringBuilder(255);
+
    }
 
    public GoalID(GoalID other)
@@ -35,11 +40,14 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
 
    public void set(GoalID other)
    {
+
       builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.stamp_, stamp_);
+
       id_.setLength(0);
       id_.append(other.id_);
 
    }
+
 
 
    /**
@@ -51,6 +59,7 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
    {
       return stamp_;
    }
+
 
    /**
             * The id provides a way to associate feedback and
@@ -100,7 +109,9 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.stamp_.epsilonEquals(other.stamp_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.id_, other.id_, epsilon)) return false;
 
 
@@ -116,7 +127,9 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
 
       GoalID otherMyClass = (GoalID) other;
 
+
       if (!this.stamp_.equals(otherMyClass.stamp_)) return false;
+
       if (!us.ihmc.idl.IDLTools.equals(this.id_, otherMyClass.id_)) return false;
 
 
@@ -129,8 +142,10 @@ public class GoalID extends Packet<GoalID> implements Settable<GoalID>, EpsilonC
       StringBuilder builder = new StringBuilder();
 
       builder.append("GoalID {");
+
       builder.append("stamp=");
       builder.append(this.stamp_);      builder.append(", ");
+
       builder.append("id=");
       builder.append(this.id_);
       builder.append("}");

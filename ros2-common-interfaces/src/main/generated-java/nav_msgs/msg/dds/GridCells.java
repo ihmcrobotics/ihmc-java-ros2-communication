@@ -11,14 +11,22 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class GridCells extends Packet<GridCells> implements Settable<GridCells>, EpsilonComparable<GridCells>
 {
+
    public std_msgs.msg.dds.Header header_;
+
    public float cell_width_;
+
    public float cell_height_;
+
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D>  cells_;
 
    public GridCells()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
+
+
       cells_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, new geometry_msgs.msg.dds.PointPubSubType());
 
    }
@@ -31,19 +39,25 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
 
    public void set(GridCells other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       cell_width_ = other.cell_width_;
+
 
       cell_height_ = other.cell_height_;
 
+
       cells_.set(other.cells_);
    }
+
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
+
 
    public void setCellWidth(float cell_width)
    {
@@ -54,6 +68,7 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
       return cell_width_;
    }
 
+
    public void setCellHeight(float cell_height)
    {
       cell_height_ = cell_height;
@@ -62,6 +77,7 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
    {
       return cell_height_;
    }
+
 
 
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D>  getCells()
@@ -87,10 +103,14 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.cell_width_, other.cell_width_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.cell_height_, other.cell_height_, epsilon)) return false;
+
 
       if (this.cells_.size() != other.cells_.size()) { return false; }
       else
@@ -112,10 +132,14 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
 
       GridCells otherMyClass = (GridCells) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if(this.cell_width_ != otherMyClass.cell_width_) return false;
 
+
       if(this.cell_height_ != otherMyClass.cell_height_) return false;
+
 
       if (!this.cells_.equals(otherMyClass.cells_)) return false;
 
@@ -128,12 +152,16 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
       StringBuilder builder = new StringBuilder();
 
       builder.append("GridCells {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("cell_width=");
       builder.append(this.cell_width_);      builder.append(", ");
+
       builder.append("cell_height=");
       builder.append(this.cell_height_);      builder.append(", ");
+
       builder.append("cells=");
       builder.append(this.cells_);
       builder.append("}");

@@ -29,18 +29,28 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Settable<MultiDOFJointState>, EpsilonComparable<MultiDOFJointState>
 {
+
    public std_msgs.msg.dds.Header header_;
+
    public us.ihmc.idl.IDLSequence.StringBuilderHolder  joint_names_;
+
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform>  transforms_;
+
    public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist>  twist_;
+
    public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench>  wrench_;
 
    public MultiDOFJointState()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
       joint_names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
+
       transforms_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> (100, new geometry_msgs.msg.dds.TransformPubSubType());
+
       twist_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> (100, new geometry_msgs.msg.dds.TwistPubSubType());
+
       wrench_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench> (100, new geometry_msgs.msg.dds.WrenchPubSubType());
 
    }
@@ -53,12 +63,18 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
 
    public void set(MultiDOFJointState other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       joint_names_.set(other.joint_names_);
+
       transforms_.set(other.transforms_);
+
       twist_.set(other.twist_);
+
       wrench_.set(other.wrench_);
    }
+
 
 
    public std_msgs.msg.dds.Header getHeader()
@@ -67,10 +83,12 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
    }
 
 
+
    public us.ihmc.idl.IDLSequence.StringBuilderHolder  getJointNames()
    {
       return joint_names_;
    }
+
 
 
    public us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform>  getTransforms()
@@ -79,10 +97,12 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
    }
 
 
+
    public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist>  getTwist()
    {
       return twist_;
    }
+
 
 
    public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench>  getWrench()
@@ -108,8 +128,11 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.joint_names_, other.joint_names_, epsilon)) return false;
+
 
       if (this.transforms_.size() != other.transforms_.size()) { return false; }
       else
@@ -118,12 +141,14 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
          {  if (!this.transforms_.get(i).epsilonEquals(other.transforms_.get(i), epsilon)) return false; }
       }
 
+
       if (this.twist_.size() != other.twist_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.twist_.size(); i++)
          {  if (!this.twist_.get(i).epsilonEquals(other.twist_.get(i), epsilon)) return false; }
       }
+
 
       if (this.wrench_.size() != other.wrench_.size()) { return false; }
       else
@@ -145,10 +170,15 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
 
       MultiDOFJointState otherMyClass = (MultiDOFJointState) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if (!this.joint_names_.equals(otherMyClass.joint_names_)) return false;
+
       if (!this.transforms_.equals(otherMyClass.transforms_)) return false;
+
       if (!this.twist_.equals(otherMyClass.twist_)) return false;
+
       if (!this.wrench_.equals(otherMyClass.wrench_)) return false;
 
       return true;
@@ -160,14 +190,19 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
       StringBuilder builder = new StringBuilder();
 
       builder.append("MultiDOFJointState {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("joint_names=");
       builder.append(this.joint_names_);      builder.append(", ");
+
       builder.append("transforms=");
       builder.append(this.transforms_);      builder.append(", ");
+
       builder.append("twist=");
       builder.append(this.twist_);      builder.append(", ");
+
       builder.append("wrench=");
       builder.append(this.wrench_);
       builder.append("}");

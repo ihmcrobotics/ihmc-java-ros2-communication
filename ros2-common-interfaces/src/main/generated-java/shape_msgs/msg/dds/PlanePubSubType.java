@@ -40,7 +40,9 @@ public class PlanePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += ((4) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       return current_alignment - initial_alignment;
    }
@@ -54,20 +56,25 @@ public class PlanePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += ((4) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
       return current_alignment - initial_alignment;
    }
 
    public static void write(shape_msgs.msg.dds.Plane data, us.ihmc.idl.CDR cdr)
    {
+
       for(int i0 = 0; i0 < data.getCoef().length; ++i0)
       {
         	cdr.write_type_6(data.getCoef()[i0]);	
       }
+
    }
 
    public static void read(shape_msgs.msg.dds.Plane data, us.ihmc.idl.CDR cdr)
    {
+
       for(int i0 = 0; i0 < data.getCoef().length; ++i0)
       {
         	data.getCoef()[i0] = cdr.read_type_6();
@@ -80,12 +87,16 @@ public class PlanePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.
    @Override
    public final void serialize(shape_msgs.msg.dds.Plane data, us.ihmc.idl.InterchangeSerializer ser)
    {
-      ser.write_type_f("coef", data.getCoef());   }
+
+      ser.write_type_f("coef", data.getCoef());
+   }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, shape_msgs.msg.dds.Plane data)
    {
-      ser.read_type_f("coef", data.getCoef());   }
+
+      ser.read_type_f("coef", data.getCoef());
+   }
 
    public static void staticCopy(shape_msgs.msg.dds.Plane src, shape_msgs.msg.dds.Plane dest)
    {

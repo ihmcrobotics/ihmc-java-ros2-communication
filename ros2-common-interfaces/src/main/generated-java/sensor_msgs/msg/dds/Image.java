@@ -24,30 +24,37 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Image extends Packet<Image> implements Settable<Image>, EpsilonComparable<Image>
 {
+
    /**
             * Header timestamp should be acquisition time of image
             */
    public std_msgs.msg.dds.Header header_;
+
    /**
             * image height, that is, number of rows
             */
    public long height_;
+
    /**
             * image width, that is, number of columns
             */
    public long width_;
+
    /**
             * Encoding of pixels -- channel meaning, ordering, size
             */
    public java.lang.StringBuilder encoding_;
+
    /**
             * is this data bigendian?
             */
    public byte is_bigendian_;
+
    /**
             * Full row length in bytes
             */
    public long step_;
+
    /**
             * actual matrix data, size is (step * rows)
             */
@@ -55,9 +62,17 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
 
    public Image()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
+
+
       encoding_ = new java.lang.StringBuilder(255);
+
+
+
       data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+
 
    }
 
@@ -69,20 +84,28 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
 
    public void set(Image other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       height_ = other.height_;
 
+
       width_ = other.width_;
+
 
       encoding_.setLength(0);
       encoding_.append(other.encoding_);
 
+
       is_bigendian_ = other.is_bigendian_;
+
 
       step_ = other.step_;
 
+
       data_.set(other.data_);
    }
+
 
 
    /**
@@ -92,6 +115,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
    {
       return header_;
    }
+
 
    /**
             * image height, that is, number of rows
@@ -108,6 +132,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
       return height_;
    }
 
+
    /**
             * image width, that is, number of columns
             */
@@ -122,6 +147,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
    {
       return width_;
    }
+
 
    /**
             * Encoding of pixels -- channel meaning, ordering, size
@@ -147,6 +173,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
       return encoding_;
    }
 
+
    /**
             * is this data bigendian?
             */
@@ -162,6 +189,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
       return is_bigendian_;
    }
 
+
    /**
             * Full row length in bytes
             */
@@ -176,6 +204,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
    {
       return step_;
    }
+
 
 
    /**
@@ -204,16 +233,23 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.height_, other.height_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.width_, other.width_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.encoding_, other.encoding_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.is_bigendian_, other.is_bigendian_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.step_, other.step_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsByteSequence(this.data_, other.data_, epsilon)) return false;
 
@@ -230,16 +266,23 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
 
       Image otherMyClass = (Image) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if(this.height_ != otherMyClass.height_) return false;
+
 
       if(this.width_ != otherMyClass.width_) return false;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.encoding_, otherMyClass.encoding_)) return false;
+
 
       if(this.is_bigendian_ != otherMyClass.is_bigendian_) return false;
 
+
       if(this.step_ != otherMyClass.step_) return false;
+
 
       if (!this.data_.equals(otherMyClass.data_)) return false;
 
@@ -252,18 +295,25 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
       StringBuilder builder = new StringBuilder();
 
       builder.append("Image {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("height=");
       builder.append(this.height_);      builder.append(", ");
+
       builder.append("width=");
       builder.append(this.width_);      builder.append(", ");
+
       builder.append("encoding=");
       builder.append(this.encoding_);      builder.append(", ");
+
       builder.append("is_bigendian=");
       builder.append(this.is_bigendian_);      builder.append(", ");
+
       builder.append("step=");
       builder.append(this.step_);      builder.append(", ");
+
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

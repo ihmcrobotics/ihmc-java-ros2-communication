@@ -40,23 +40,33 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -73,31 +83,41 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getRanges().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -110,24 +130,34 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void write(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       cdr.write_type_5(data.getAngleMin());
+
 
       cdr.write_type_5(data.getAngleMax());
 
+
       cdr.write_type_5(data.getAngleIncrement());
+
 
       cdr.write_type_5(data.getTimeIncrement());
 
+
       cdr.write_type_5(data.getScanTime());
+
 
       cdr.write_type_5(data.getRangeMin());
 
+
       cdr.write_type_5(data.getRangeMax());
+
 
       if(data.getRanges().size() <= 100)
       cdr.write_type_e(data.getRanges());else
           throw new RuntimeException("ranges field exceeds the maximum length");
+
 
       if(data.getIntensities().size() <= 100)
       cdr.write_type_e(data.getIntensities());else
@@ -137,22 +167,32 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void read(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       data.setAngleMin(cdr.read_type_5());
       	
+
       data.setAngleMax(cdr.read_type_5());
       	
+
       data.setAngleIncrement(cdr.read_type_5());
       	
+
       data.setTimeIncrement(cdr.read_type_5());
       	
+
       data.setScanTime(cdr.read_type_5());
       	
+
       data.setRangeMin(cdr.read_type_5());
       	
+
       data.setRangeMax(cdr.read_type_5());
       	
+
       cdr.read_type_e(data.getRanges());	
+
       cdr.read_type_e(data.getIntensities());	
 
    }
@@ -160,32 +200,52 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    @Override
    public final void serialize(sensor_msgs.msg.dds.LaserScan data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       ser.write_type_5("angle_min", data.getAngleMin());
+
       ser.write_type_5("angle_max", data.getAngleMax());
+
       ser.write_type_5("angle_increment", data.getAngleIncrement());
+
       ser.write_type_5("time_increment", data.getTimeIncrement());
+
       ser.write_type_5("scan_time", data.getScanTime());
+
       ser.write_type_5("range_min", data.getRangeMin());
+
       ser.write_type_5("range_max", data.getRangeMax());
+
       ser.write_type_e("ranges", data.getRanges());
+
       ser.write_type_e("intensities", data.getIntensities());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.LaserScan data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       data.setAngleMin(ser.read_type_5("angle_min"));
+
       data.setAngleMax(ser.read_type_5("angle_max"));
+
       data.setAngleIncrement(ser.read_type_5("angle_increment"));
+
       data.setTimeIncrement(ser.read_type_5("time_increment"));
+
       data.setScanTime(ser.read_type_5("scan_time"));
+
       data.setRangeMin(ser.read_type_5("range_min"));
+
       data.setRangeMax(ser.read_type_5("range_max"));
+
       ser.read_type_e("ranges", data.getRanges());
+
       ser.read_type_e("intensities", data.getIntensities());
    }
 

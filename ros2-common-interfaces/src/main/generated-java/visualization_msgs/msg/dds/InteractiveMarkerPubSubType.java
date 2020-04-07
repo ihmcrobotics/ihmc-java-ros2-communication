@@ -40,17 +40,24 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.MenuEntryPubSubType.getMaxCdrSerializedSize(current_alignment);}
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType.getMaxCdrSerializedSize(current_alignment);}
@@ -67,21 +74,28 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getDescription().length() + 1;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getMenuEntries().size(); ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.MenuEntryPubSubType.getCdrSerializedSize(data.getMenuEntries().get(i0), current_alignment);}
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getControls().size(); ++i0)
@@ -94,21 +108,28 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarker data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
+
       if(data.getName().length() <= 255)
       cdr.write_type_d(data.getName());else
           throw new RuntimeException("name field exceeds the maximum length");
+
 
       if(data.getDescription().length() <= 255)
       cdr.write_type_d(data.getDescription());else
           throw new RuntimeException("description field exceeds the maximum length");
 
+
       cdr.write_type_5(data.getScale());
+
 
       if(data.getMenuEntries().size() <= 100)
       cdr.write_type_e(data.getMenuEntries());else
           throw new RuntimeException("menu_entries field exceeds the maximum length");
+
 
       if(data.getControls().size() <= 100)
       cdr.write_type_e(data.getControls());else
@@ -118,13 +139,20 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarker data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);	
+
       cdr.read_type_d(data.getName());	
+
       cdr.read_type_d(data.getDescription());	
+
       data.setScale(cdr.read_type_5());
       	
+
       cdr.read_type_e(data.getMenuEntries());	
+
       cdr.read_type_e(data.getControls());	
 
    }
@@ -132,28 +160,42 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
    @Override
    public final void serialize(visualization_msgs.msg.dds.InteractiveMarker data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.write_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 
+
       ser.write_type_d("name", data.getName());
+
       ser.write_type_d("description", data.getDescription());
+
       ser.write_type_5("scale", data.getScale());
+
       ser.write_type_e("menu_entries", data.getMenuEntries());
+
       ser.write_type_e("controls", data.getControls());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, visualization_msgs.msg.dds.InteractiveMarker data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.read_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 
+
       ser.read_type_d("name", data.getName());
+
       ser.read_type_d("description", data.getDescription());
+
       data.setScale(ser.read_type_5("scale"));
+
       ser.read_type_e("menu_entries", data.getMenuEntries());
+
       ser.read_type_e("controls", data.getControls());
    }
 

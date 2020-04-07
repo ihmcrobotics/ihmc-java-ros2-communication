@@ -40,9 +40,11 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TransformStampedPubSubType.getMaxCdrSerializedSize(current_alignment);}
+
       return current_alignment - initial_alignment;
    }
 
@@ -55,16 +57,19 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getTransforms().size(); ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TransformStampedPubSubType.getCdrSerializedSize(data.getTransforms().get(i0), current_alignment);}
+
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(tf2_msgs.msg.dds.TFMessage data, us.ihmc.idl.CDR cdr)
    {
+
       if(data.getTransforms().size() <= 100)
       cdr.write_type_e(data.getTransforms());else
           throw new RuntimeException("transforms field exceeds the maximum length");
@@ -73,6 +78,7 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
 
    public static void read(tf2_msgs.msg.dds.TFMessage data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.read_type_e(data.getTransforms());	
 
    }
@@ -80,12 +86,14 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
    @Override
    public final void serialize(tf2_msgs.msg.dds.TFMessage data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_e("transforms", data.getTransforms());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, tf2_msgs.msg.dds.TFMessage data)
    {
+
       ser.read_type_e("transforms", data.getTransforms());
    }
 

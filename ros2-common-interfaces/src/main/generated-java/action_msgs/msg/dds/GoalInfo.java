@@ -8,10 +8,12 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class GoalInfo extends Packet<GoalInfo> implements Settable<GoalInfo>, EpsilonComparable<GoalInfo>
 {
+
    /**
             * Goal ID
             */
    public unique_identifier_msgs.msg.dds.UUID goal_id_;
+
    /**
             * Time when the goal was accepted
             */
@@ -19,8 +21,11 @@ public class GoalInfo extends Packet<GoalInfo> implements Settable<GoalInfo>, Ep
 
    public GoalInfo()
    {
+
       goal_id_ = new unique_identifier_msgs.msg.dds.UUID();
+
       stamp_ = new builtin_interfaces.msg.dds.Time();
+
    }
 
    public GoalInfo(GoalInfo other)
@@ -31,9 +36,12 @@ public class GoalInfo extends Packet<GoalInfo> implements Settable<GoalInfo>, Ep
 
    public void set(GoalInfo other)
    {
+
       unique_identifier_msgs.msg.dds.UUIDPubSubType.staticCopy(other.goal_id_, goal_id_);
+
       builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.stamp_, stamp_);
    }
+
 
 
    /**
@@ -43,6 +51,7 @@ public class GoalInfo extends Packet<GoalInfo> implements Settable<GoalInfo>, Ep
    {
       return goal_id_;
    }
+
 
 
    /**
@@ -71,7 +80,9 @@ public class GoalInfo extends Packet<GoalInfo> implements Settable<GoalInfo>, Ep
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.goal_id_.epsilonEquals(other.goal_id_, epsilon)) return false;
+
       if (!this.stamp_.epsilonEquals(other.stamp_, epsilon)) return false;
 
       return true;
@@ -86,7 +97,9 @@ public class GoalInfo extends Packet<GoalInfo> implements Settable<GoalInfo>, Ep
 
       GoalInfo otherMyClass = (GoalInfo) other;
 
+
       if (!this.goal_id_.equals(otherMyClass.goal_id_)) return false;
+
       if (!this.stamp_.equals(otherMyClass.stamp_)) return false;
 
       return true;
@@ -98,8 +111,10 @@ public class GoalInfo extends Packet<GoalInfo> implements Settable<GoalInfo>, Ep
       StringBuilder builder = new StringBuilder();
 
       builder.append("GoalInfo {");
+
       builder.append("goal_id=");
       builder.append(this.goal_id_);      builder.append(", ");
+
       builder.append("stamp=");
       builder.append(this.stamp_);
       builder.append("}");

@@ -17,14 +17,17 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class RelativeHumidity extends Packet<RelativeHumidity> implements Settable<RelativeHumidity>, EpsilonComparable<RelativeHumidity>
 {
+
    /**
             * timestamp of the measurement
             */
    public std_msgs.msg.dds.Header header_;
+
    /**
             * Expression of the relative humidity
             */
    public double relative_humidity_;
+
    /**
             * 0 is interpreted as variance unknown
             */
@@ -32,7 +35,11 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
 
    public RelativeHumidity()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
+
+
    }
 
    public RelativeHumidity(RelativeHumidity other)
@@ -43,12 +50,16 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
 
    public void set(RelativeHumidity other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       relative_humidity_ = other.relative_humidity_;
+
 
       variance_ = other.variance_;
 
    }
+
 
 
    /**
@@ -58,6 +69,7 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
    {
       return header_;
    }
+
 
    /**
             * Expression of the relative humidity
@@ -73,6 +85,7 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
    {
       return relative_humidity_;
    }
+
 
    /**
             * 0 is interpreted as variance unknown
@@ -107,8 +120,11 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.relative_humidity_, other.relative_humidity_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.variance_, other.variance_, epsilon)) return false;
 
@@ -125,8 +141,11 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
 
       RelativeHumidity otherMyClass = (RelativeHumidity) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if(this.relative_humidity_ != otherMyClass.relative_humidity_) return false;
+
 
       if(this.variance_ != otherMyClass.variance_) return false;
 
@@ -140,10 +159,13 @@ public class RelativeHumidity extends Packet<RelativeHumidity> implements Settab
       StringBuilder builder = new StringBuilder();
 
       builder.append("RelativeHumidity {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("relative_humidity=");
       builder.append(this.relative_humidity_);      builder.append(", ");
+
       builder.append("variance=");
       builder.append(this.variance_);
       builder.append("}");

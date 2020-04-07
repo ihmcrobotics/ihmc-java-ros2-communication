@@ -40,7 +40,9 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
@@ -58,7 +60,9 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getPoses().size(); ++i0)
@@ -71,7 +75,9 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
 
    public static void write(geometry_msgs.msg.dds.PoseArray data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       if(data.getPoses().size() <= 100)
       cdr.write_type_e(data.getPoses());else
           throw new RuntimeException("poses field exceeds the maximum length");
@@ -80,7 +86,9 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
 
    public static void read(geometry_msgs.msg.dds.PoseArray data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       cdr.read_type_e(data.getPoses());	
 
    }
@@ -88,7 +96,9 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
    @Override
    public final void serialize(geometry_msgs.msg.dds.PoseArray data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.write_type_e("poses", data.getPoses());
    }
@@ -96,7 +106,9 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.PoseArray data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.read_type_e("poses", data.getPoses());
    }

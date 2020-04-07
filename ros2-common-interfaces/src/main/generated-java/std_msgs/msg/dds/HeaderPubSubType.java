@@ -40,7 +40,9 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
@@ -56,7 +58,9 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getStamp(), current_alignment);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getFrameId().length() + 1;
 
@@ -66,7 +70,9 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void write(std_msgs.msg.dds.Header data, us.ihmc.idl.CDR cdr)
    {
+
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getStamp(), cdr);
+
       if(data.getFrameId().length() <= 255)
       cdr.write_type_d(data.getFrameId());else
           throw new RuntimeException("frame_id field exceeds the maximum length");
@@ -75,7 +81,9 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void read(std_msgs.msg.dds.Header data, us.ihmc.idl.CDR cdr)
    {
+
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);	
+
       cdr.read_type_d(data.getFrameId());	
 
    }
@@ -83,7 +91,9 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    @Override
    public final void serialize(std_msgs.msg.dds.Header data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
+
 
       ser.write_type_d("frame_id", data.getFrameId());
    }
@@ -91,7 +101,9 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.Header data)
    {
+
       ser.read_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
+
 
       ser.read_type_d("frame_id", data.getFrameId());
    }

@@ -40,7 +40,9 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -57,7 +59,9 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -69,7 +73,9 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
 
    public static void write(builtin_interfaces.msg.dds.Duration data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.write_type_2(data.getSec());
+
 
       cdr.write_type_4(data.getNanosec());
 
@@ -77,8 +83,10 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
 
    public static void read(builtin_interfaces.msg.dds.Duration data, us.ihmc.idl.CDR cdr)
    {
+
       data.setSec(cdr.read_type_2());
       	
+
       data.setNanosec(cdr.read_type_4());
       	
 
@@ -87,14 +95,18 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
    @Override
    public final void serialize(builtin_interfaces.msg.dds.Duration data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_2("sec", data.getSec());
+
       ser.write_type_4("nanosec", data.getNanosec());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, builtin_interfaces.msg.dds.Duration data)
    {
+
       data.setSec(ser.read_type_2("sec"));
+
       data.setNanosec(ser.read_type_4("nanosec"));
    }
 

@@ -13,10 +13,12 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Header extends Packet<Header> implements Settable<Header>, EpsilonComparable<Header>
 {
+
    /**
             * Two-integer timestamp that is expressed as seconds and nanoseconds.
             */
    public builtin_interfaces.msg.dds.Time stamp_;
+
    /**
             * Transform frame with which this data is associated.
             */
@@ -24,8 +26,11 @@ public class Header extends Packet<Header> implements Settable<Header>, EpsilonC
 
    public Header()
    {
+
       stamp_ = new builtin_interfaces.msg.dds.Time();
+
       frame_id_ = new java.lang.StringBuilder(255);
+
    }
 
    public Header(Header other)
@@ -36,11 +41,14 @@ public class Header extends Packet<Header> implements Settable<Header>, EpsilonC
 
    public void set(Header other)
    {
+
       builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.stamp_, stamp_);
+
       frame_id_.setLength(0);
       frame_id_.append(other.frame_id_);
 
    }
+
 
 
    /**
@@ -50,6 +58,7 @@ public class Header extends Packet<Header> implements Settable<Header>, EpsilonC
    {
       return stamp_;
    }
+
 
    /**
             * Transform frame with which this data is associated.
@@ -93,7 +102,9 @@ public class Header extends Packet<Header> implements Settable<Header>, EpsilonC
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.stamp_.epsilonEquals(other.stamp_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.frame_id_, other.frame_id_, epsilon)) return false;
 
 
@@ -109,7 +120,9 @@ public class Header extends Packet<Header> implements Settable<Header>, EpsilonC
 
       Header otherMyClass = (Header) other;
 
+
       if (!this.stamp_.equals(otherMyClass.stamp_)) return false;
+
       if (!us.ihmc.idl.IDLTools.equals(this.frame_id_, otherMyClass.frame_id_)) return false;
 
 
@@ -122,8 +135,10 @@ public class Header extends Packet<Header> implements Settable<Header>, EpsilonC
       StringBuilder builder = new StringBuilder();
 
       builder.append("Header {");
+
       builder.append("stamp=");
       builder.append(this.stamp_);      builder.append(", ");
+
       builder.append("frame_id=");
       builder.append(this.frame_id_);
       builder.append("}");

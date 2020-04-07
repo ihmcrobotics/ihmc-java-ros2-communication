@@ -14,32 +14,53 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class ParameterValue extends Packet<ParameterValue> implements Settable<ParameterValue>, EpsilonComparable<ParameterValue>
 {
+
    public byte type_;
+
    /**
             * "Variant" style storage of the parameter value.
             */
    public boolean bool_value_;
+
    public long integer_value_;
+
    public double double_value_;
+
    public java.lang.StringBuilder string_value_;
+
    public us.ihmc.idl.IDLSequence.Byte  byte_array_value_;
+
    public us.ihmc.idl.IDLSequence.Boolean  bool_array_value_;
+
    public us.ihmc.idl.IDLSequence.Long  integer_array_value_;
+
    public us.ihmc.idl.IDLSequence.Double  double_array_value_;
+
    public us.ihmc.idl.IDLSequence.StringBuilderHolder  string_array_value_;
 
    public ParameterValue()
    {
+
+
+
+
+
       string_value_ = new java.lang.StringBuilder(255);
+
       byte_array_value_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+
 
       bool_array_value_ = new us.ihmc.idl.IDLSequence.Boolean (100, "type_7");
 
+
       integer_array_value_ = new us.ihmc.idl.IDLSequence.Long (100, "type_11");
+
 
       double_array_value_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
 
+
       string_array_value_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
+
    }
 
    public ParameterValue(ParameterValue other)
@@ -50,23 +71,34 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
 
    public void set(ParameterValue other)
    {
+
       type_ = other.type_;
+
 
       bool_value_ = other.bool_value_;
 
+
       integer_value_ = other.integer_value_;
 
+
       double_value_ = other.double_value_;
+
 
       string_value_.setLength(0);
       string_value_.append(other.string_value_);
 
+
       byte_array_value_.set(other.byte_array_value_);
+
       bool_array_value_.set(other.bool_array_value_);
+
       integer_array_value_.set(other.integer_array_value_);
+
       double_array_value_.set(other.double_array_value_);
+
       string_array_value_.set(other.string_array_value_);
    }
+
 
    public void setType(byte type)
    {
@@ -76,6 +108,7 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
    {
       return type_;
    }
+
 
    /**
             * "Variant" style storage of the parameter value.
@@ -92,6 +125,7 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
       return bool_value_;
    }
 
+
    public void setIntegerValue(long integer_value)
    {
       integer_value_ = integer_value;
@@ -101,6 +135,7 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
       return integer_value_;
    }
 
+
    public void setDoubleValue(double double_value)
    {
       double_value_ = double_value;
@@ -109,6 +144,7 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
    {
       return double_value_;
    }
+
 
    public void setStringValue(java.lang.String string_value)
    {
@@ -126,10 +162,12 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
    }
 
 
+
    public us.ihmc.idl.IDLSequence.Byte  getByteArrayValue()
    {
       return byte_array_value_;
    }
+
 
 
    public us.ihmc.idl.IDLSequence.Boolean  getBoolArrayValue()
@@ -138,16 +176,19 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
    }
 
 
+
    public us.ihmc.idl.IDLSequence.Long  getIntegerArrayValue()
    {
       return integer_array_value_;
    }
 
 
+
    public us.ihmc.idl.IDLSequence.Double  getDoubleArrayValue()
    {
       return double_array_value_;
    }
+
 
 
    public us.ihmc.idl.IDLSequence.StringBuilderHolder  getStringArrayValue()
@@ -173,23 +214,33 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.type_, other.type_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.bool_value_, other.bool_value_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.integer_value_, other.integer_value_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.double_value_, other.double_value_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.string_value_, other.string_value_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsByteSequence(this.byte_array_value_, other.byte_array_value_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBooleanSequence(this.bool_array_value_, other.bool_array_value_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsLongSequence(this.integer_array_value_, other.integer_array_value_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsDoubleSequence(this.double_array_value_, other.double_array_value_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.string_array_value_, other.string_array_value_, epsilon)) return false;
 
@@ -206,20 +257,30 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
 
       ParameterValue otherMyClass = (ParameterValue) other;
 
+
       if(this.type_ != otherMyClass.type_) return false;
+
 
       if(this.bool_value_ != otherMyClass.bool_value_) return false;
 
+
       if(this.integer_value_ != otherMyClass.integer_value_) return false;
+
 
       if(this.double_value_ != otherMyClass.double_value_) return false;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.string_value_, otherMyClass.string_value_)) return false;
 
+
       if (!this.byte_array_value_.equals(otherMyClass.byte_array_value_)) return false;
+
       if (!this.bool_array_value_.equals(otherMyClass.bool_array_value_)) return false;
+
       if (!this.integer_array_value_.equals(otherMyClass.integer_array_value_)) return false;
+
       if (!this.double_array_value_.equals(otherMyClass.double_array_value_)) return false;
+
       if (!this.string_array_value_.equals(otherMyClass.string_array_value_)) return false;
 
       return true;
@@ -231,24 +292,34 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
       StringBuilder builder = new StringBuilder();
 
       builder.append("ParameterValue {");
+
       builder.append("type=");
       builder.append(this.type_);      builder.append(", ");
+
       builder.append("bool_value=");
       builder.append(this.bool_value_);      builder.append(", ");
+
       builder.append("integer_value=");
       builder.append(this.integer_value_);      builder.append(", ");
+
       builder.append("double_value=");
       builder.append(this.double_value_);      builder.append(", ");
+
       builder.append("string_value=");
       builder.append(this.string_value_);      builder.append(", ");
+
       builder.append("byte_array_value=");
       builder.append(this.byte_array_value_);      builder.append(", ");
+
       builder.append("bool_array_value=");
       builder.append(this.bool_array_value_);      builder.append(", ");
+
       builder.append("integer_array_value=");
       builder.append(this.integer_array_value_);      builder.append(", ");
+
       builder.append("double_array_value=");
       builder.append(this.double_array_value_);      builder.append(", ");
+
       builder.append("string_array_value=");
       builder.append(this.string_array_value_);
       builder.append("}");

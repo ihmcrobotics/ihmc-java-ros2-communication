@@ -40,6 +40,7 @@ public class UInt64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
@@ -55,6 +56,7 @@ public class UInt64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
@@ -64,12 +66,14 @@ public class UInt64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void write(std_msgs.msg.dds.UInt64 data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.write_type_12(data.getData());
 
    }
 
    public static void read(std_msgs.msg.dds.UInt64 data, us.ihmc.idl.CDR cdr)
    {
+
       data.setData(cdr.read_type_12());
       	
 
@@ -78,13 +82,16 @@ public class UInt64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    @Override
    public final void serialize(std_msgs.msg.dds.UInt64 data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_12("data", data.getData());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.UInt64 data)
    {
-      data.setData(ser.read_type_12("data"));   }
+
+      data.setData(ser.read_type_12("data"));
+   }
 
    public static void staticCopy(std_msgs.msg.dds.UInt64 src, std_msgs.msg.dds.UInt64 dest)
    {

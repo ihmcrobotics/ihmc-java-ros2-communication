@@ -40,7 +40,9 @@ public class UUIDPubSubType implements us.ihmc.pubsub.TopicDataType<unique_ident
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += ((16) * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
 
       return current_alignment - initial_alignment;
    }
@@ -54,20 +56,25 @@ public class UUIDPubSubType implements us.ihmc.pubsub.TopicDataType<unique_ident
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += ((16) * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+
       return current_alignment - initial_alignment;
    }
 
    public static void write(unique_identifier_msgs.msg.dds.UUID data, us.ihmc.idl.CDR cdr)
    {
+
       for(int i0 = 0; i0 < data.getUuid().length; ++i0)
       {
         	cdr.write_type_9(data.getUuid()[i0]);	
       }
+
    }
 
    public static void read(unique_identifier_msgs.msg.dds.UUID data, us.ihmc.idl.CDR cdr)
    {
+
       for(int i0 = 0; i0 < data.getUuid().length; ++i0)
       {
         	data.getUuid()[i0] = cdr.read_type_9();
@@ -80,12 +87,16 @@ public class UUIDPubSubType implements us.ihmc.pubsub.TopicDataType<unique_ident
    @Override
    public final void serialize(unique_identifier_msgs.msg.dds.UUID data, us.ihmc.idl.InterchangeSerializer ser)
    {
-      ser.write_type_f("uuid", data.getUuid());   }
+
+      ser.write_type_f("uuid", data.getUuid());
+   }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, unique_identifier_msgs.msg.dds.UUID data)
    {
-      ser.read_type_f("uuid", data.getUuid());   }
+
+      ser.read_type_f("uuid", data.getUuid());
+   }
 
    public static void staticCopy(unique_identifier_msgs.msg.dds.UUID src, unique_identifier_msgs.msg.dds.UUID dest)
    {

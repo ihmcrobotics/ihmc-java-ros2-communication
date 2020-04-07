@@ -8,10 +8,12 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>, EpsilonComparable<TFMessage>
 {
+
    public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.TransformStamped>  transforms_;
 
    public TFMessage()
    {
+
       transforms_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.TransformStamped> (100, new geometry_msgs.msg.dds.TransformStampedPubSubType());
 
    }
@@ -24,8 +26,10 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
 
    public void set(TFMessage other)
    {
+
       transforms_.set(other.transforms_);
    }
+
 
 
    public us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.TransformStamped>  getTransforms()
@@ -51,12 +55,14 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (this.transforms_.size() != other.transforms_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.transforms_.size(); i++)
          {  if (!this.transforms_.get(i).epsilonEquals(other.transforms_.get(i), epsilon)) return false; }
       }
+
 
       return true;
    }
@@ -70,6 +76,7 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
 
       TFMessage otherMyClass = (TFMessage) other;
 
+
       if (!this.transforms_.equals(otherMyClass.transforms_)) return false;
 
       return true;
@@ -81,6 +88,7 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
       StringBuilder builder = new StringBuilder();
 
       builder.append("TFMessage {");
+
       builder.append("transforms=");
       builder.append(this.transforms_);
       builder.append("}");

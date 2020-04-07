@@ -14,15 +14,19 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class ParameterDescriptor extends Packet<ParameterDescriptor> implements Settable<ParameterDescriptor>, EpsilonComparable<ParameterDescriptor>
 {
+
    public java.lang.StringBuilder name_;
+
    /**
             * Enum values are defined in the `ParameterType.msg` message.
             */
    public byte type_;
+
    /**
             * Description of the parameter, visible from introspection tools.
             */
    public java.lang.StringBuilder description_;
+
    /**
             * Plain English description of additional constraints which cannot be expressed
             * with the available constraints, e.g. "only prime numbers".
@@ -30,15 +34,18 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
             * be completely expressed with the parameter constraints below.
             */
    public java.lang.StringBuilder additional_constraints_;
+
    /**
             * If 'true' then the value cannot change after it has been initialized.
             */
    public boolean read_only_;
+
    /**
             * FloatingPointRange consists of a from_value, a to_value, and a step.
             * FloatingPointRange and IntegerRange are mutually exclusive.
             */
    public us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.FloatingPointRange>  floating_point_range_;
+
    /**
             * IntegerRange consists of a from_value, a to_value, and a step.
             * FloatingPointRange and IntegerRange are mutually exclusive.
@@ -47,10 +54,17 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
 
    public ParameterDescriptor()
    {
+
       name_ = new java.lang.StringBuilder(255);
+
+
       description_ = new java.lang.StringBuilder(255);
+
       additional_constraints_ = new java.lang.StringBuilder(255);
+
+
       floating_point_range_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.FloatingPointRange> (1, new rcl_interfaces.msg.dds.FloatingPointRangePubSubType());
+
       integer_range_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.IntegerRange> (1, new rcl_interfaces.msg.dds.IntegerRangePubSubType());
 
    }
@@ -63,22 +77,30 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
 
    public void set(ParameterDescriptor other)
    {
+
       name_.setLength(0);
       name_.append(other.name_);
 
+
       type_ = other.type_;
+
 
       description_.setLength(0);
       description_.append(other.description_);
 
+
       additional_constraints_.setLength(0);
       additional_constraints_.append(other.additional_constraints_);
 
+
       read_only_ = other.read_only_;
 
+
       floating_point_range_.set(other.floating_point_range_);
+
       integer_range_.set(other.integer_range_);
    }
+
 
    public void setName(java.lang.String name)
    {
@@ -95,6 +117,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       return name_;
    }
 
+
    /**
             * Enum values are defined in the `ParameterType.msg` message.
             */
@@ -109,6 +132,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
    {
       return type_;
    }
+
 
    /**
             * Description of the parameter, visible from introspection tools.
@@ -133,6 +157,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
    {
       return description_;
    }
+
 
    /**
             * Plain English description of additional constraints which cannot be expressed
@@ -167,6 +192,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       return additional_constraints_;
    }
 
+
    /**
             * If 'true' then the value cannot change after it has been initialized.
             */
@@ -183,6 +209,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
    }
 
 
+
    /**
             * FloatingPointRange consists of a from_value, a to_value, and a step.
             * FloatingPointRange and IntegerRange are mutually exclusive.
@@ -191,6 +218,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
    {
       return floating_point_range_;
    }
+
 
 
    /**
@@ -220,15 +248,21 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.type_, other.type_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.description_, other.description_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.additional_constraints_, other.additional_constraints_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.read_only_, other.read_only_, epsilon)) return false;
+
 
       if (this.floating_point_range_.size() != other.floating_point_range_.size()) { return false; }
       else
@@ -236,6 +270,7 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
          for (int i = 0; i < this.floating_point_range_.size(); i++)
          {  if (!this.floating_point_range_.get(i).epsilonEquals(other.floating_point_range_.get(i), epsilon)) return false; }
       }
+
 
       if (this.integer_range_.size() != other.integer_range_.size()) { return false; }
       else
@@ -257,17 +292,24 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
 
       ParameterDescriptor otherMyClass = (ParameterDescriptor) other;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_)) return false;
+
 
       if(this.type_ != otherMyClass.type_) return false;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.description_, otherMyClass.description_)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.equals(this.additional_constraints_, otherMyClass.additional_constraints_)) return false;
 
+
       if(this.read_only_ != otherMyClass.read_only_) return false;
 
+
       if (!this.floating_point_range_.equals(otherMyClass.floating_point_range_)) return false;
+
       if (!this.integer_range_.equals(otherMyClass.integer_range_)) return false;
 
       return true;
@@ -279,18 +321,25 @@ public class ParameterDescriptor extends Packet<ParameterDescriptor> implements 
       StringBuilder builder = new StringBuilder();
 
       builder.append("ParameterDescriptor {");
+
       builder.append("name=");
       builder.append(this.name_);      builder.append(", ");
+
       builder.append("type=");
       builder.append(this.type_);      builder.append(", ");
+
       builder.append("description=");
       builder.append(this.description_);      builder.append(", ");
+
       builder.append("additional_constraints=");
       builder.append(this.additional_constraints_);      builder.append(", ");
+
       builder.append("read_only=");
       builder.append(this.read_only_);      builder.append(", ");
+
       builder.append("floating_point_range=");
       builder.append(this.floating_point_range_);      builder.append(", ");
+
       builder.append("integer_range=");
       builder.append(this.integer_range_);
       builder.append("}");

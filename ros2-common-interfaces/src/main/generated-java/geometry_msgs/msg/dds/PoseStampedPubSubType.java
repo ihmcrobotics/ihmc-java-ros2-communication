@@ -40,7 +40,9 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -57,7 +59,9 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
 
@@ -67,13 +71,17 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
 
    public static void write(geometry_msgs.msg.dds.PoseStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.PoseStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);	
 
    }
@@ -81,7 +89,9 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
    @Override
    public final void serialize(geometry_msgs.msg.dds.PoseStamped data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.write_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 
@@ -90,7 +100,9 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.PoseStamped data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.read_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
 

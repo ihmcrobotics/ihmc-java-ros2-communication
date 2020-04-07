@@ -32,6 +32,7 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
     * @param dest Destination object to copy data to
     */
    protected abstract void copy(us.ihmc.euclid.geometry.Pose3D src, us.ihmc.euclid.geometry.Pose3D dest);
+
    /**
     * Getter for Position
     *
@@ -39,6 +40,7 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
     * @return value of X
     */
    protected abstract us.ihmc.euclid.tuple3D.Point3D getPosition(us.ihmc.euclid.geometry.Pose3D data);
+
 
    /**
     * Getter for Orientation
@@ -88,7 +90,9 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += geometry_msgs.msg.dds.PointPubSubType.getCdrSerializedSize(getImpl().getPosition(data), current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getCdrSerializedSize(getImpl().getOrientation(data), current_alignment);
 
@@ -114,7 +118,9 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
 
    public static void write(us.ihmc.euclid.geometry.Pose3D data, us.ihmc.idl.CDR cdr)
    {
+
       geometry_msgs.msg.dds.PointPubSubType.write(getImpl().getPosition(data), cdr);
+
       geometry_msgs.msg.dds.QuaternionPubSubType.write(getImpl().getOrientation(data), cdr);
    }
 
@@ -127,7 +133,9 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
    @Override
    public final void serialize(us.ihmc.euclid.geometry.Pose3D data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("position", new geometry_msgs.msg.dds.PointPubSubType(), getImpl().getPosition(data));
+
 
       ser.write_type_a("orientation", new geometry_msgs.msg.dds.QuaternionPubSubType(), getImpl().getOrientation(data));
 
@@ -136,7 +144,9 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, us.ihmc.euclid.geometry.Pose3D data)
    {
+
       ser.read_type_a("position", new geometry_msgs.msg.dds.PointPubSubType(), getImpl().getPosition(data));
+
 
       ser.read_type_a("orientation", new geometry_msgs.msg.dds.QuaternionPubSubType(), getImpl().getOrientation(data));
 

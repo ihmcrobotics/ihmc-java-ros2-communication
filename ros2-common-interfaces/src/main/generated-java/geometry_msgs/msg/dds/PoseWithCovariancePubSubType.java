@@ -40,7 +40,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += ((36) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -57,7 +59,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
+
 
       current_alignment += ((36) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -66,7 +70,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void write(geometry_msgs.msg.dds.PoseWithCovariance data, us.ihmc.idl.CDR cdr)
    {
+
       geometry_msgs.msg.dds.PosePubSubType.write(data.getPose(), cdr);
+
       for(int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
         	cdr.write_type_6(data.getCovariance()[i0]);	
@@ -76,7 +82,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
    public static void read(geometry_msgs.msg.dds.PoseWithCovariance data, us.ihmc.idl.CDR cdr)
    {
+
       geometry_msgs.msg.dds.PosePubSubType.read(data.getPose(), cdr);	
+
       for(int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
         	data.getCovariance()[i0] = cdr.read_type_6();
@@ -89,7 +97,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
    @Override
    public final void serialize(geometry_msgs.msg.dds.PoseWithCovariance data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
+
 
       ser.write_type_f("covariance", data.getCovariance());
    }
@@ -97,7 +107,9 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.PoseWithCovariance data)
    {
+
       ser.read_type_a("pose", new geometry_msgs.msg.dds.PosePubSubType(), data.getPose());
+
 
       ser.read_type_f("covariance", data.getCovariance());
    }

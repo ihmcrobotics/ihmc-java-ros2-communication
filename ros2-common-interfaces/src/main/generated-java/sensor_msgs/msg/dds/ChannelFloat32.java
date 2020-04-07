@@ -26,11 +26,13 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<ChannelFloat32>, EpsilonComparable<ChannelFloat32>
 {
+
    /**
             * The channel name should give semantics of the channel (e.g.
             * "intensity" instead of "value").
             */
    public java.lang.StringBuilder name_;
+
    /**
             * The values array should be 1-1 with the elements of the associated
             * PointCloud.
@@ -39,8 +41,11 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
 
    public ChannelFloat32()
    {
+
       name_ = new java.lang.StringBuilder(255);
+
       values_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+
 
    }
 
@@ -52,11 +57,14 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
 
    public void set(ChannelFloat32 other)
    {
+
       name_.setLength(0);
       name_.append(other.name_);
 
+
       values_.set(other.values_);
    }
+
 
    /**
             * The channel name should give semantics of the channel (e.g.
@@ -86,6 +94,7 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
    }
 
 
+
    /**
             * The values array should be 1-1 with the elements of the associated
             * PointCloud.
@@ -113,7 +122,9 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsFloatSequence(this.values_, other.values_, epsilon)) return false;
 
@@ -130,7 +141,9 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
 
       ChannelFloat32 otherMyClass = (ChannelFloat32) other;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_)) return false;
+
 
       if (!this.values_.equals(otherMyClass.values_)) return false;
 
@@ -143,8 +156,10 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
       StringBuilder builder = new StringBuilder();
 
       builder.append("ChannelFloat32 {");
+
       builder.append("name=");
       builder.append(this.name_);      builder.append(", ");
+
       builder.append("values=");
       builder.append(this.values_);
       builder.append("}");

@@ -33,10 +33,12 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settable<MultiArrayLayout>, EpsilonComparable<MultiArrayLayout>
 {
+
    /**
             * Array of dimension properties
             */
    public us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.MultiArrayDimension>  dim_;
+
    /**
             * padding bytes at front of data
             */
@@ -44,7 +46,9 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
 
    public MultiArrayLayout()
    {
+
       dim_ = new us.ihmc.idl.IDLSequence.Object<std_msgs.msg.dds.MultiArrayDimension> (100, new std_msgs.msg.dds.MultiArrayDimensionPubSubType());
+
 
    }
 
@@ -56,10 +60,13 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
 
    public void set(MultiArrayLayout other)
    {
+
       dim_.set(other.dim_);
+
       data_offset_ = other.data_offset_;
 
    }
+
 
 
    /**
@@ -69,6 +76,7 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
    {
       return dim_;
    }
+
 
    /**
             * padding bytes at front of data
@@ -103,12 +111,14 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (this.dim_.size() != other.dim_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.dim_.size(); i++)
          {  if (!this.dim_.get(i).epsilonEquals(other.dim_.get(i), epsilon)) return false; }
       }
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_offset_, other.data_offset_, epsilon)) return false;
 
@@ -125,7 +135,9 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
 
       MultiArrayLayout otherMyClass = (MultiArrayLayout) other;
 
+
       if (!this.dim_.equals(otherMyClass.dim_)) return false;
+
       if(this.data_offset_ != otherMyClass.data_offset_) return false;
 
 
@@ -138,8 +150,10 @@ public class MultiArrayLayout extends Packet<MultiArrayLayout> implements Settab
       StringBuilder builder = new StringBuilder();
 
       builder.append("MultiArrayLayout {");
+
       builder.append("dim=");
       builder.append(this.dim_);      builder.append(", ");
+
       builder.append("data_offset=");
       builder.append(this.data_offset_);
       builder.append("}");

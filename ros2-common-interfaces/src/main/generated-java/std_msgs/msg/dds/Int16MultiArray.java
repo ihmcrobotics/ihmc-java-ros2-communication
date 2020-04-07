@@ -12,10 +12,12 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable<Int16MultiArray>, EpsilonComparable<Int16MultiArray>
 {
+
    /**
             * specification of data layout
             */
    public std_msgs.msg.dds.MultiArrayLayout layout_;
+
    /**
             * array of data
             */
@@ -23,8 +25,11 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
 
    public Int16MultiArray()
    {
+
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
+
       data_ = new us.ihmc.idl.IDLSequence.Short (100, "type_1");
+
 
    }
 
@@ -36,9 +41,12 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
 
    public void set(Int16MultiArray other)
    {
+
       std_msgs.msg.dds.MultiArrayLayoutPubSubType.staticCopy(other.layout_, layout_);
+
       data_.set(other.data_);
    }
+
 
 
    /**
@@ -48,6 +56,7 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
    {
       return layout_;
    }
+
 
 
    /**
@@ -76,7 +85,9 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.layout_.epsilonEquals(other.layout_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsShortSequence(this.data_, other.data_, epsilon)) return false;
 
 
@@ -92,7 +103,9 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
 
       Int16MultiArray otherMyClass = (Int16MultiArray) other;
 
+
       if (!this.layout_.equals(otherMyClass.layout_)) return false;
+
       if (!this.data_.equals(otherMyClass.data_)) return false;
 
       return true;
@@ -104,8 +117,10 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
       StringBuilder builder = new StringBuilder();
 
       builder.append("Int16MultiArray {");
+
       builder.append("layout=");
       builder.append(this.layout_);      builder.append(", ");
+
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

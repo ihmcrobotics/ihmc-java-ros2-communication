@@ -11,13 +11,18 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class QuaternionStamped extends Packet<QuaternionStamped> implements Settable<QuaternionStamped>, EpsilonComparable<QuaternionStamped>
 {
+
    public std_msgs.msg.dds.Header header_;
+
    public us.ihmc.euclid.tuple4D.Quaternion quaternion_;
 
    public QuaternionStamped()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
       quaternion_ = new us.ihmc.euclid.tuple4D.Quaternion();
+
    }
 
    public QuaternionStamped(QuaternionStamped other)
@@ -28,15 +33,19 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
 
    public void set(QuaternionStamped other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       geometry_msgs.msg.dds.QuaternionPubSubType.staticCopy(other.quaternion_, quaternion_);
    }
+
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
+
 
 
    public us.ihmc.euclid.tuple4D.Quaternion getQuaternion()
@@ -62,7 +71,9 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!this.quaternion_.epsilonEquals(other.quaternion_, epsilon)) return false;
 
       return true;
@@ -77,7 +88,9 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
 
       QuaternionStamped otherMyClass = (QuaternionStamped) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if (!this.quaternion_.equals(otherMyClass.quaternion_)) return false;
 
       return true;
@@ -89,8 +102,10 @@ public class QuaternionStamped extends Packet<QuaternionStamped> implements Sett
       StringBuilder builder = new StringBuilder();
 
       builder.append("QuaternionStamped {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("quaternion=");
       builder.append(this.quaternion_);
       builder.append("}");

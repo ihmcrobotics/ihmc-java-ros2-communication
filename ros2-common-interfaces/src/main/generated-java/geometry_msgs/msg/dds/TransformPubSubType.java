@@ -32,6 +32,7 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
     * @param dest Destination object to copy data to
     */
    protected abstract void copy(us.ihmc.euclid.transform.QuaternionBasedTransform src, us.ihmc.euclid.transform.QuaternionBasedTransform dest);
+
    /**
     * Getter for Translation
     *
@@ -39,6 +40,7 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
     * @return value of X
     */
    protected abstract us.ihmc.euclid.tuple3D.Vector3D getTranslation(us.ihmc.euclid.transform.QuaternionBasedTransform data);
+
 
    /**
     * Getter for Rotation
@@ -88,7 +90,9 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(getImpl().getTranslation(data), current_alignment);
+
 
       current_alignment += geometry_msgs.msg.dds.QuaternionPubSubType.getCdrSerializedSize(getImpl().getRotation(data), current_alignment);
 
@@ -114,7 +118,9 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
 
    public static void write(us.ihmc.euclid.transform.QuaternionBasedTransform data, us.ihmc.idl.CDR cdr)
    {
+
       geometry_msgs.msg.dds.Vector3PubSubType.write(getImpl().getTranslation(data), cdr);
+
       geometry_msgs.msg.dds.QuaternionPubSubType.write(getImpl().getRotation(data), cdr);
    }
 
@@ -127,7 +133,9 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
    @Override
    public final void serialize(us.ihmc.euclid.transform.QuaternionBasedTransform data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("translation", new geometry_msgs.msg.dds.Vector3PubSubType(), getImpl().getTranslation(data));
+
 
       ser.write_type_a("rotation", new geometry_msgs.msg.dds.QuaternionPubSubType(), getImpl().getRotation(data));
 
@@ -136,7 +144,9 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, us.ihmc.euclid.transform.QuaternionBasedTransform data)
    {
+
       ser.read_type_a("translation", new geometry_msgs.msg.dds.Vector3PubSubType(), getImpl().getTranslation(data));
+
 
       ser.read_type_a("rotation", new geometry_msgs.msg.dds.QuaternionPubSubType(), getImpl().getRotation(data));
 

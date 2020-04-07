@@ -40,9 +40,12 @@ public class IlluminancePubSubType implements us.ihmc.pubsub.TopicDataType<senso
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -59,9 +62,12 @@ public class IlluminancePubSubType implements us.ihmc.pubsub.TopicDataType<senso
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -73,8 +79,11 @@ public class IlluminancePubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
    public static void write(sensor_msgs.msg.dds.Illuminance data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       cdr.write_type_6(data.getIlluminance());
+
 
       cdr.write_type_6(data.getVariance());
 
@@ -82,9 +91,12 @@ public class IlluminancePubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
    public static void read(sensor_msgs.msg.dds.Illuminance data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       data.setIlluminance(cdr.read_type_6());
       	
+
       data.setVariance(cdr.read_type_6());
       	
 
@@ -93,18 +105,24 @@ public class IlluminancePubSubType implements us.ihmc.pubsub.TopicDataType<senso
    @Override
    public final void serialize(sensor_msgs.msg.dds.Illuminance data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       ser.write_type_6("illuminance", data.getIlluminance());
+
       ser.write_type_6("variance", data.getVariance());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.Illuminance data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       data.setIlluminance(ser.read_type_6("illuminance"));
+
       data.setVariance(ser.read_type_6("variance"));
    }
 

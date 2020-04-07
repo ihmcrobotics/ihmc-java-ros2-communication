@@ -8,10 +8,13 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Empty extends Packet<Empty> implements Settable<Empty>, EpsilonComparable<Empty>
 {
+
    public boolean unused_placeholder_field_;
 
    public Empty()
    {
+
+
    }
 
    public Empty(Empty other)
@@ -22,9 +25,11 @@ public class Empty extends Packet<Empty> implements Settable<Empty>, EpsilonComp
 
    public void set(Empty other)
    {
+
       unused_placeholder_field_ = other.unused_placeholder_field_;
 
    }
+
 
    public void setUnusedPlaceholderField(boolean unused_placeholder_field)
    {
@@ -53,6 +58,7 @@ public class Empty extends Packet<Empty> implements Settable<Empty>, EpsilonComp
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.unused_placeholder_field_, other.unused_placeholder_field_, epsilon)) return false;
 
 
@@ -68,6 +74,7 @@ public class Empty extends Packet<Empty> implements Settable<Empty>, EpsilonComp
 
       Empty otherMyClass = (Empty) other;
 
+
       if(this.unused_placeholder_field_ != otherMyClass.unused_placeholder_field_) return false;
 
 
@@ -80,6 +87,7 @@ public class Empty extends Packet<Empty> implements Settable<Empty>, EpsilonComp
       StringBuilder builder = new StringBuilder();
 
       builder.append("Empty {");
+
       builder.append("unused_placeholder_field=");
       builder.append(this.unused_placeholder_field_);
       builder.append("}");

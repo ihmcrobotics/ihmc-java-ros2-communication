@@ -11,14 +11,17 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class FloatingPointRange extends Packet<FloatingPointRange> implements Settable<FloatingPointRange>, EpsilonComparable<FloatingPointRange>
 {
+
    /**
             * Start value for valid values, inclusive.
             */
    public double from_value_;
+
    /**
             * End value for valid values, inclusive.
             */
    public double to_value_;
+
    /**
             * Size of valid steps between the from and to bound.
             * Step is considered to be a magnitude, therefore negative values are treated the
@@ -40,6 +43,10 @@ public class FloatingPointRange extends Packet<FloatingPointRange> implements Se
 
    public FloatingPointRange()
    {
+
+
+
+
    }
 
    public FloatingPointRange(FloatingPointRange other)
@@ -50,13 +57,17 @@ public class FloatingPointRange extends Packet<FloatingPointRange> implements Se
 
    public void set(FloatingPointRange other)
    {
+
       from_value_ = other.from_value_;
 
+
       to_value_ = other.to_value_;
+
 
       step_ = other.step_;
 
    }
+
 
    /**
             * Start value for valid values, inclusive.
@@ -73,6 +84,7 @@ public class FloatingPointRange extends Packet<FloatingPointRange> implements Se
       return from_value_;
    }
 
+
    /**
             * End value for valid values, inclusive.
             */
@@ -87,6 +99,7 @@ public class FloatingPointRange extends Packet<FloatingPointRange> implements Se
    {
       return to_value_;
    }
+
 
    /**
             * Size of valid steps between the from and to bound.
@@ -149,9 +162,12 @@ public class FloatingPointRange extends Packet<FloatingPointRange> implements Se
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.from_value_, other.from_value_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.to_value_, other.to_value_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.step_, other.step_, epsilon)) return false;
 
@@ -168,9 +184,12 @@ public class FloatingPointRange extends Packet<FloatingPointRange> implements Se
 
       FloatingPointRange otherMyClass = (FloatingPointRange) other;
 
+
       if(this.from_value_ != otherMyClass.from_value_) return false;
 
+
       if(this.to_value_ != otherMyClass.to_value_) return false;
+
 
       if(this.step_ != otherMyClass.step_) return false;
 
@@ -184,10 +203,13 @@ public class FloatingPointRange extends Packet<FloatingPointRange> implements Se
       StringBuilder builder = new StringBuilder();
 
       builder.append("FloatingPointRange {");
+
       builder.append("from_value=");
       builder.append(this.from_value_);      builder.append(", ");
+
       builder.append("to_value=");
       builder.append(this.to_value_);      builder.append(", ");
+
       builder.append("step=");
       builder.append(this.step_);
       builder.append("}");

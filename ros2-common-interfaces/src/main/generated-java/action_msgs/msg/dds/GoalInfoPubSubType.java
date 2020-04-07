@@ -40,7 +40,9 @@ public class GoalInfoPubSubType implements us.ihmc.pubsub.TopicDataType<action_m
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += unique_identifier_msgs.msg.dds.UUIDPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -57,7 +59,9 @@ public class GoalInfoPubSubType implements us.ihmc.pubsub.TopicDataType<action_m
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += unique_identifier_msgs.msg.dds.UUIDPubSubType.getCdrSerializedSize(data.getGoalId(), current_alignment);
+
 
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getStamp(), current_alignment);
 
@@ -67,13 +71,17 @@ public class GoalInfoPubSubType implements us.ihmc.pubsub.TopicDataType<action_m
 
    public static void write(action_msgs.msg.dds.GoalInfo data, us.ihmc.idl.CDR cdr)
    {
+
       unique_identifier_msgs.msg.dds.UUIDPubSubType.write(data.getGoalId(), cdr);
+
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getStamp(), cdr);
    }
 
    public static void read(action_msgs.msg.dds.GoalInfo data, us.ihmc.idl.CDR cdr)
    {
+
       unique_identifier_msgs.msg.dds.UUIDPubSubType.read(data.getGoalId(), cdr);	
+
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);	
 
    }
@@ -81,7 +89,9 @@ public class GoalInfoPubSubType implements us.ihmc.pubsub.TopicDataType<action_m
    @Override
    public final void serialize(action_msgs.msg.dds.GoalInfo data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("goal_id", new unique_identifier_msgs.msg.dds.UUIDPubSubType(), data.getGoalId());
+
 
       ser.write_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
 
@@ -90,7 +100,9 @@ public class GoalInfoPubSubType implements us.ihmc.pubsub.TopicDataType<action_m
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, action_msgs.msg.dds.GoalInfo data)
    {
+
       ser.read_type_a("goal_id", new unique_identifier_msgs.msg.dds.UUIDPubSubType(), data.getGoalId());
+
 
       ser.read_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
 

@@ -40,7 +40,9 @@ public class Float32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.MultiArrayLayoutPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -57,7 +59,9 @@ public class Float32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.MultiArrayLayoutPubSubType.getCdrSerializedSize(data.getLayout(), current_alignment);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getData().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -69,7 +73,9 @@ public class Float32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void write(std_msgs.msg.dds.Float32MultiArray data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.MultiArrayLayoutPubSubType.write(data.getLayout(), cdr);
+
       if(data.getData().size() <= 100)
       cdr.write_type_e(data.getData());else
           throw new RuntimeException("data field exceeds the maximum length");
@@ -78,7 +84,9 @@ public class Float32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
 
    public static void read(std_msgs.msg.dds.Float32MultiArray data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.MultiArrayLayoutPubSubType.read(data.getLayout(), cdr);	
+
       cdr.read_type_e(data.getData());	
 
    }
@@ -86,7 +94,9 @@ public class Float32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
    @Override
    public final void serialize(std_msgs.msg.dds.Float32MultiArray data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("layout", new std_msgs.msg.dds.MultiArrayLayoutPubSubType(), data.getLayout());
+
 
       ser.write_type_e("data", data.getData());
    }
@@ -94,7 +104,9 @@ public class Float32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.Float32MultiArray data)
    {
+
       ser.read_type_a("layout", new std_msgs.msg.dds.MultiArrayLayoutPubSubType(), data.getLayout());
+
 
       ser.read_type_e("data", data.getData());
    }

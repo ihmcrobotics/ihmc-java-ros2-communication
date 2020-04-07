@@ -40,9 +40,12 @@ public class TransformStampedPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+
       current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getMaxCdrSerializedSize(current_alignment);
 
 
@@ -58,9 +61,12 @@ public class TransformStampedPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getChildFrameId().length() + 1;
+
 
       current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getCdrSerializedSize(data.getTransform(), current_alignment);
 
@@ -70,18 +76,24 @@ public class TransformStampedPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(geometry_msgs.msg.dds.TransformStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       if(data.getChildFrameId().length() <= 255)
       cdr.write_type_d(data.getChildFrameId());else
           throw new RuntimeException("child_frame_id field exceeds the maximum length");
+
 
       geometry_msgs.msg.dds.TransformPubSubType.write(data.getTransform(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.TransformStamped data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       cdr.read_type_d(data.getChildFrameId());	
+
       geometry_msgs.msg.dds.TransformPubSubType.read(data.getTransform(), cdr);	
 
    }
@@ -89,9 +101,12 @@ public class TransformStampedPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final void serialize(geometry_msgs.msg.dds.TransformStamped data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       ser.write_type_d("child_frame_id", data.getChildFrameId());
+
       ser.write_type_a("transform", new geometry_msgs.msg.dds.TransformPubSubType(), data.getTransform());
 
    }
@@ -99,9 +114,12 @@ public class TransformStampedPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.TransformStamped data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
+
       ser.read_type_d("child_frame_id", data.getChildFrameId());
+
       ser.read_type_a("transform", new geometry_msgs.msg.dds.TransformPubSubType(), data.getTransform());
 
    }

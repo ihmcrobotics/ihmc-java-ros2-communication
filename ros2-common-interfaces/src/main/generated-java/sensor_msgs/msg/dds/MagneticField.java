@@ -24,14 +24,17 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class MagneticField extends Packet<MagneticField> implements Settable<MagneticField>, EpsilonComparable<MagneticField>
 {
+
    /**
             * timestamp is the time the
             */
    public std_msgs.msg.dds.Header header_;
+
    /**
             * x, y, and z components of the
             */
    public us.ihmc.euclid.tuple3D.Vector3D magnetic_field_;
+
    /**
             * Row major about x, y, z axes
             */
@@ -39,9 +42,13 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
 
    public MagneticField()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
       magnetic_field_ = new us.ihmc.euclid.tuple3D.Vector3D();
+
       magnetic_field_covariance_ = new double[9];
+
 
    }
 
@@ -53,8 +60,11 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
 
    public void set(MagneticField other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.magnetic_field_, magnetic_field_);
+
       for(int i1 = 0; i1 < magnetic_field_covariance_.length; ++i1)
       {
             magnetic_field_covariance_[i1] = other.magnetic_field_covariance_[i1];
@@ -62,6 +72,7 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
       }
 
    }
+
 
 
    /**
@@ -73,6 +84,7 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
    }
 
 
+
    /**
             * x, y, and z components of the
             */
@@ -80,6 +92,7 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
    {
       return magnetic_field_;
    }
+
 
 
    /**
@@ -108,8 +121,11 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!this.magnetic_field_.epsilonEquals(other.magnetic_field_, epsilon)) return false;
+
       for(int i3 = 0; i3 < magnetic_field_covariance_.length; ++i3)
       {
                 if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.magnetic_field_covariance_[i3], other.magnetic_field_covariance_[i3], epsilon)) return false;
@@ -128,8 +144,11 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
 
       MagneticField otherMyClass = (MagneticField) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if (!this.magnetic_field_.equals(otherMyClass.magnetic_field_)) return false;
+
       for(int i5 = 0; i5 < magnetic_field_covariance_.length; ++i5)
       {
                 if(this.magnetic_field_covariance_[i5] != otherMyClass.magnetic_field_covariance_[i5]) return false;
@@ -145,10 +164,13 @@ public class MagneticField extends Packet<MagneticField> implements Settable<Mag
       StringBuilder builder = new StringBuilder();
 
       builder.append("MagneticField {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("magnetic_field=");
       builder.append(this.magnetic_field_);      builder.append(", ");
+
       builder.append("magnetic_field_covariance=");
       builder.append(java.util.Arrays.toString(this.magnetic_field_covariance_));
       builder.append("}");

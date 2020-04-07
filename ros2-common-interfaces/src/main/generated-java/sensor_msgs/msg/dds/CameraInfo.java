@@ -61,28 +61,34 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInfo>, EpsilonComparable<CameraInfo>
 {
+
    /**
             * Time of image acquisition, camera coordinate frame ID
             * Header timestamp should be acquisition time of image
             */
    public std_msgs.msg.dds.Header header_;
+
    /**
             * The image dimensions with which the camera was calibrated.
             * Normally this will be the full camera resolution in pixels.
             */
    public long height_;
+
    public long width_;
+
    /**
             * The distortion model used. Supported models are listed in
             * sensor_msgs/distortion_models.hpp. For most cameras, "plumb_bob" - a
             * simple model of radial and tangential distortion - is sufficent.
             */
    public java.lang.StringBuilder distortion_model_;
+
    /**
             * The distortion parameters, size depending on the distortion model.
             * For "plumb_bob", the 5 parameters are: (k1, k2, t1, t2, k3).
             */
    public us.ihmc.idl.IDLSequence.Double  d_;
+
    /**
             * Intrinsic camera matrix for the raw (distorted) images.
             * [fx  0 cx]
@@ -94,6 +100,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
             * 3x3 row-major matrix
             */
    public double[] k_;
+
    /**
             * Rectification matrix (stereo cameras only)
             * A rotation matrix aligning the camera coordinate system to the ideal
@@ -102,6 +109,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
             * 3x3 row-major matrix
             */
    public double[] r_;
+
    /**
             * Projection/camera matrix
             * [fx'  0  cx' Tx]
@@ -130,6 +138,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
             * 3x4 row-major matrix
             */
    public double[] p_;
+
    /**
             * Binning refers here to any camera setting which combines rectangular
             * neighborhoods of pixels into larger "super-pixels." It reduces the
@@ -139,7 +148,9 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
             * as binning_x = binning_y = 1 (no subsampling).
             */
    public long binning_x_;
+
    public long binning_y_;
+
    /**
             * Region of interest (subwindow of full camera resolution), given in
             * full resolution (unbinned) image coordinates. A particular ROI
@@ -152,17 +163,29 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
    public CameraInfo()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
+
+
       distortion_model_ = new java.lang.StringBuilder(255);
+
       d_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+
 
       k_ = new double[9];
 
+
       r_ = new double[9];
+
 
       p_ = new double[12];
 
+
+
+
       roi_ = new sensor_msgs.msg.dds.RegionOfInterest();
+
    }
 
    public CameraInfo(CameraInfo other)
@@ -173,20 +196,27 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
    public void set(CameraInfo other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       height_ = other.height_;
 
+
       width_ = other.width_;
+
 
       distortion_model_.setLength(0);
       distortion_model_.append(other.distortion_model_);
 
+
       d_.set(other.d_);
+
       for(int i1 = 0; i1 < k_.length; ++i1)
       {
             k_[i1] = other.k_[i1];
 
       }
+
 
       for(int i3 = 0; i3 < r_.length; ++i3)
       {
@@ -194,18 +224,23 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
       }
 
+
       for(int i5 = 0; i5 < p_.length; ++i5)
       {
             p_[i5] = other.p_[i5];
 
       }
 
+
       binning_x_ = other.binning_x_;
+
 
       binning_y_ = other.binning_y_;
 
+
       sensor_msgs.msg.dds.RegionOfInterestPubSubType.staticCopy(other.roi_, roi_);
    }
+
 
 
    /**
@@ -216,6 +251,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    {
       return header_;
    }
+
 
    /**
             * The image dimensions with which the camera was calibrated.
@@ -234,6 +270,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
       return height_;
    }
 
+
    public void setWidth(long width)
    {
       width_ = width;
@@ -242,6 +279,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    {
       return width_;
    }
+
 
    /**
             * The distortion model used. Supported models are listed in
@@ -274,6 +312,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    }
 
 
+
    /**
             * The distortion parameters, size depending on the distortion model.
             * For "plumb_bob", the 5 parameters are: (k1, k2, t1, t2, k3).
@@ -282,6 +321,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    {
       return d_;
    }
+
 
 
    /**
@@ -300,6 +340,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    }
 
 
+
    /**
             * Rectification matrix (stereo cameras only)
             * A rotation matrix aligning the camera coordinate system to the ideal
@@ -311,6 +352,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    {
       return r_;
    }
+
 
 
    /**
@@ -345,6 +387,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
       return p_;
    }
 
+
    /**
             * Binning refers here to any camera setting which combines rectangular
             * neighborhoods of pixels into larger "super-pixels." It reduces the
@@ -370,6 +413,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
       return binning_x_;
    }
 
+
    public void setBinningY(long binning_y)
    {
       binning_y_ = binning_y;
@@ -378,6 +422,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    {
       return binning_y_;
    }
+
 
 
    /**
@@ -411,33 +456,44 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.height_, other.height_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.width_, other.width_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.distortion_model_, other.distortion_model_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsDoubleSequence(this.d_, other.d_, epsilon)) return false;
+
 
       for(int i7 = 0; i7 < k_.length; ++i7)
       {
                 if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.k_[i7], other.k_[i7], epsilon)) return false;
       }
 
+
       for(int i9 = 0; i9 < r_.length; ++i9)
       {
                 if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.r_[i9], other.r_[i9], epsilon)) return false;
       }
+
 
       for(int i11 = 0; i11 < p_.length; ++i11)
       {
                 if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.p_[i11], other.p_[i11], epsilon)) return false;
       }
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.binning_x_, other.binning_x_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.binning_y_, other.binning_y_, epsilon)) return false;
+
 
       if (!this.roi_.epsilonEquals(other.roi_, epsilon)) return false;
 
@@ -453,32 +509,43 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
 
       CameraInfo otherMyClass = (CameraInfo) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if(this.height_ != otherMyClass.height_) return false;
+
 
       if(this.width_ != otherMyClass.width_) return false;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.distortion_model_, otherMyClass.distortion_model_)) return false;
 
+
       if (!this.d_.equals(otherMyClass.d_)) return false;
+
       for(int i13 = 0; i13 < k_.length; ++i13)
       {
                 if(this.k_[i13] != otherMyClass.k_[i13]) return false;
 
       }
+
       for(int i15 = 0; i15 < r_.length; ++i15)
       {
                 if(this.r_[i15] != otherMyClass.r_[i15]) return false;
 
       }
+
       for(int i17 = 0; i17 < p_.length; ++i17)
       {
                 if(this.p_[i17] != otherMyClass.p_[i17]) return false;
 
       }
+
       if(this.binning_x_ != otherMyClass.binning_x_) return false;
 
+
       if(this.binning_y_ != otherMyClass.binning_y_) return false;
+
 
       if (!this.roi_.equals(otherMyClass.roi_)) return false;
 
@@ -491,26 +558,37 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
       StringBuilder builder = new StringBuilder();
 
       builder.append("CameraInfo {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("height=");
       builder.append(this.height_);      builder.append(", ");
+
       builder.append("width=");
       builder.append(this.width_);      builder.append(", ");
+
       builder.append("distortion_model=");
       builder.append(this.distortion_model_);      builder.append(", ");
+
       builder.append("d=");
       builder.append(this.d_);      builder.append(", ");
+
       builder.append("k=");
       builder.append(java.util.Arrays.toString(this.k_));      builder.append(", ");
+
       builder.append("r=");
       builder.append(java.util.Arrays.toString(this.r_));      builder.append(", ");
+
       builder.append("p=");
       builder.append(java.util.Arrays.toString(this.p_));      builder.append(", ");
+
       builder.append("binning_x=");
       builder.append(this.binning_x_);      builder.append(", ");
+
       builder.append("binning_y=");
       builder.append(this.binning_y_);      builder.append(", ");
+
       builder.append("roi=");
       builder.append(this.roi_);
       builder.append("}");

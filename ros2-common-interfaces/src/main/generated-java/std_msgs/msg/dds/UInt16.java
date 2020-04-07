@@ -8,10 +8,13 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class UInt16 extends Packet<UInt16> implements Settable<UInt16>, EpsilonComparable<UInt16>
 {
+
    public int data_;
 
    public UInt16()
    {
+
+
    }
 
    public UInt16(UInt16 other)
@@ -22,9 +25,11 @@ public class UInt16 extends Packet<UInt16> implements Settable<UInt16>, EpsilonC
 
    public void set(UInt16 other)
    {
+
       data_ = other.data_;
 
    }
+
 
    public void setData(int data)
    {
@@ -53,7 +58,9 @@ public class UInt16 extends Packet<UInt16> implements Settable<UInt16>, EpsilonC
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
+
 
       return true;
    }
@@ -67,6 +74,7 @@ public class UInt16 extends Packet<UInt16> implements Settable<UInt16>, EpsilonC
 
       UInt16 otherMyClass = (UInt16) other;
 
+
       if(this.data_ != otherMyClass.data_) return false;
 
 
@@ -79,6 +87,7 @@ public class UInt16 extends Packet<UInt16> implements Settable<UInt16>, EpsilonC
       StringBuilder builder = new StringBuilder();
 
       builder.append("UInt16 {");
+
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

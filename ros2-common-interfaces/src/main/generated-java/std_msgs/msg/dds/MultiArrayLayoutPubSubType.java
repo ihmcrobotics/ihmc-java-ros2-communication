@@ -40,9 +40,11 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += std_msgs.msg.dds.MultiArrayDimensionPubSubType.getMaxCdrSerializedSize(current_alignment);}
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
@@ -58,10 +60,12 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getDim().size(); ++i0)
       {
           current_alignment += std_msgs.msg.dds.MultiArrayDimensionPubSubType.getCdrSerializedSize(data.getDim().get(i0), current_alignment);}
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -72,9 +76,11 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(std_msgs.msg.dds.MultiArrayLayout data, us.ihmc.idl.CDR cdr)
    {
+
       if(data.getDim().size() <= 100)
       cdr.write_type_e(data.getDim());else
           throw new RuntimeException("dim field exceeds the maximum length");
+
 
       cdr.write_type_4(data.getDataOffset());
 
@@ -82,7 +88,9 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(std_msgs.msg.dds.MultiArrayLayout data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.read_type_e(data.getDim());	
+
       data.setDataOffset(cdr.read_type_4());
       	
 
@@ -91,14 +99,18 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final void serialize(std_msgs.msg.dds.MultiArrayLayout data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_e("dim", data.getDim());
+
       ser.write_type_4("data_offset", data.getDataOffset());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.MultiArrayLayout data)
    {
+
       ser.read_type_e("dim", data.getDim());
+
       data.setDataOffset(ser.read_type_4("data_offset"));
    }
 

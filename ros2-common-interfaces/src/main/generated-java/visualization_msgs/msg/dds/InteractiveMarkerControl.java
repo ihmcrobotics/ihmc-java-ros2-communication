@@ -11,6 +11,7 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> implements Settable<InteractiveMarkerControl>, EpsilonComparable<InteractiveMarkerControl>
 {
+
    /**
           * Orientation mode: controls how orientation changes.
           * INHERIT: Follow orientation of interactive marker
@@ -18,8 +19,11 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
           * VIEW_FACING: Align y-z plane with screen (x: forward, y:left, z:up).
           */
    public static final byte INHERIT = (byte) 0;
+
    public static final byte FIXED = (byte) 1;
+
    public static final byte VIEW_FACING = (byte) 2;
+
    /**
           * Interaction mode for this control
           * 
@@ -32,12 +36,19 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
           * MOVE_ROTATE: Combines MOVE_PLANE and ROTATE_AXIS.
           */
    public static final byte NONE = (byte) 0;
+
    public static final byte MENU = (byte) 1;
+
    public static final byte BUTTON = (byte) 2;
+
    public static final byte MOVE_AXIS = (byte) 3;
+
    public static final byte MOVE_PLANE = (byte) 4;
+
    public static final byte ROTATE_AXIS = (byte) 5;
+
    public static final byte MOVE_ROTATE = (byte) 6;
+
    /**
           * "3D" interaction modes work with the mouse+SHIFT+CTRL or with 3D cursors.
           * MOVE_3D: Translate freely in 3D space.
@@ -45,27 +56,35 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
           * MOVE_ROTATE_3D: Full 6-DOF freedom of translation and rotation about the cursor origin.
           */
    public static final byte MOVE_3D = (byte) 7;
+
    public static final byte ROTATE_3D = (byte) 8;
+
    public static final byte MOVE_ROTATE_3D = (byte) 9;
+
    /**
             * Identifying string for this control.
             * You need to assign a unique value to this to receive feedback from the GUI
             * on what actions the user performs on this control (e.g. a button click).
             */
    public java.lang.StringBuilder name_;
+
    /**
             * Defines the local coordinate frame (relative to the pose of the parent
             * interactive marker) in which is being rotated and translated.
             * Default: Identity
             */
    public us.ihmc.euclid.tuple4D.Quaternion orientation_;
+
    public byte orientation_mode_;
+
    public byte interaction_mode_;
+
    /**
             * If true, the contained markers will also be visible
             * when the gui is not in interactive mode.
             */
    public boolean always_visible_;
+
    /**
             * Markers to be displayed as custom visual representation.
             * Leave this empty to use the default control handles.
@@ -77,12 +96,14 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
             * relative to the pose of the parent interactive marker.
             */
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker>  markers_;
+
    /**
             * In VIEW_FACING mode, set this to true if you don't want the markers
             * to be aligned with the camera view point. The markers will show up
             * as in INHERIT mode.
             */
    public boolean independent_marker_orientation_;
+
    /**
             * Short description (< 40 characters) of what this control does,
             * e.g. "Move the robot".
@@ -92,9 +113,17 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
 
    public InteractiveMarkerControl()
    {
+
       name_ = new java.lang.StringBuilder(255);
+
       orientation_ = new us.ihmc.euclid.tuple4D.Quaternion();
+
+
+
+
       markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> (100, new visualization_msgs.msg.dds.MarkerPubSubType());
+
+
       description_ = new java.lang.StringBuilder(255);
 
    }
@@ -107,23 +136,32 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
 
    public void set(InteractiveMarkerControl other)
    {
+
       name_.setLength(0);
       name_.append(other.name_);
 
+
       geometry_msgs.msg.dds.QuaternionPubSubType.staticCopy(other.orientation_, orientation_);
+
       orientation_mode_ = other.orientation_mode_;
+
 
       interaction_mode_ = other.interaction_mode_;
 
+
       always_visible_ = other.always_visible_;
 
+
       markers_.set(other.markers_);
+
       independent_marker_orientation_ = other.independent_marker_orientation_;
+
 
       description_.setLength(0);
       description_.append(other.description_);
 
    }
+
 
    /**
             * Identifying string for this control.
@@ -156,6 +194,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
    }
 
 
+
    /**
             * Defines the local coordinate frame (relative to the pose of the parent
             * interactive marker) in which is being rotated and translated.
@@ -166,6 +205,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
       return orientation_;
    }
 
+
    public void setOrientationMode(byte orientation_mode)
    {
       orientation_mode_ = orientation_mode;
@@ -175,6 +215,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
       return orientation_mode_;
    }
 
+
    public void setInteractionMode(byte interaction_mode)
    {
       interaction_mode_ = interaction_mode;
@@ -183,6 +224,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
    {
       return interaction_mode_;
    }
+
 
    /**
             * If true, the contained markers will also be visible
@@ -202,6 +244,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
    }
 
 
+
    /**
             * Markers to be displayed as custom visual representation.
             * Leave this empty to use the default control handles.
@@ -216,6 +259,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
    {
       return markers_;
    }
+
 
    /**
             * In VIEW_FACING mode, set this to true if you don't want the markers
@@ -235,6 +279,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
    {
       return independent_marker_orientation_;
    }
+
 
    /**
             * Short description (< 40 characters) of what this control does,
@@ -284,14 +329,20 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon)) return false;
 
+
       if (!this.orientation_.epsilonEquals(other.orientation_, epsilon)) return false;
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.orientation_mode_, other.orientation_mode_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.interaction_mode_, other.interaction_mode_, epsilon)) return false;
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.always_visible_, other.always_visible_, epsilon)) return false;
+
 
       if (this.markers_.size() != other.markers_.size()) { return false; }
       else
@@ -300,7 +351,9 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
          {  if (!this.markers_.get(i).epsilonEquals(other.markers_.get(i), epsilon)) return false; }
       }
 
+
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.independent_marker_orientation_, other.independent_marker_orientation_, epsilon)) return false;
+
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.description_, other.description_, epsilon)) return false;
 
@@ -317,17 +370,25 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
 
       InteractiveMarkerControl otherMyClass = (InteractiveMarkerControl) other;
 
+
       if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_)) return false;
 
+
       if (!this.orientation_.equals(otherMyClass.orientation_)) return false;
+
       if(this.orientation_mode_ != otherMyClass.orientation_mode_) return false;
+
 
       if(this.interaction_mode_ != otherMyClass.interaction_mode_) return false;
 
+
       if(this.always_visible_ != otherMyClass.always_visible_) return false;
 
+
       if (!this.markers_.equals(otherMyClass.markers_)) return false;
+
       if(this.independent_marker_orientation_ != otherMyClass.independent_marker_orientation_) return false;
+
 
       if (!us.ihmc.idl.IDLTools.equals(this.description_, otherMyClass.description_)) return false;
 
@@ -341,20 +402,28 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
       StringBuilder builder = new StringBuilder();
 
       builder.append("InteractiveMarkerControl {");
+
       builder.append("name=");
       builder.append(this.name_);      builder.append(", ");
+
       builder.append("orientation=");
       builder.append(this.orientation_);      builder.append(", ");
+
       builder.append("orientation_mode=");
       builder.append(this.orientation_mode_);      builder.append(", ");
+
       builder.append("interaction_mode=");
       builder.append(this.interaction_mode_);      builder.append(", ");
+
       builder.append("always_visible=");
       builder.append(this.always_visible_);      builder.append(", ");
+
       builder.append("markers=");
       builder.append(this.markers_);      builder.append(", ");
+
       builder.append("independent_marker_orientation=");
       builder.append(this.independent_marker_orientation_);      builder.append(", ");
+
       builder.append("description=");
       builder.append(this.description_);
       builder.append("}");

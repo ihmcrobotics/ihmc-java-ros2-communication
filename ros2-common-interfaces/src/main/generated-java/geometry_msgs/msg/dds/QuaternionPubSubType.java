@@ -32,6 +32,7 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
     * @param dest Destination object to copy data to
     */
    protected abstract void copy(us.ihmc.euclid.tuple4D.Quaternion src, us.ihmc.euclid.tuple4D.Quaternion dest);
+
    /**
     * Getter for X
     *
@@ -46,6 +47,7 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
     * @param x value
     */
    protected abstract void setX(us.ihmc.euclid.tuple4D.Quaternion data, double x);
+
    /**
     * Getter for Y
     *
@@ -60,6 +62,7 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
     * @param y value
     */
    protected abstract void setY(us.ihmc.euclid.tuple4D.Quaternion data, double y);
+
    /**
     * Getter for Z
     *
@@ -74,6 +77,7 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
     * @param z value
     */
    protected abstract void setZ(us.ihmc.euclid.tuple4D.Quaternion data, double z);
+
    /**
     * Getter for W
     *
@@ -128,13 +132,17 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -162,11 +170,15 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
 
    public static void write(us.ihmc.euclid.tuple4D.Quaternion data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.write_type_6(getImpl().getX(data));
+
 
       cdr.write_type_6(getImpl().getY(data));
 
+
       cdr.write_type_6(getImpl().getZ(data));
+
 
       cdr.write_type_6(getImpl().getW(data));
 
@@ -187,18 +199,26 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
    @Override
    public final void serialize(us.ihmc.euclid.tuple4D.Quaternion data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_6("x", getImpl().getX(data));
+
       ser.write_type_6("y", getImpl().getY(data));
+
       ser.write_type_6("z", getImpl().getZ(data));
+
       ser.write_type_6("w", getImpl().getW(data));
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, us.ihmc.euclid.tuple4D.Quaternion data)
    {
+
       getImpl().setX(data, ser.read_type_6("x"));
+
       getImpl().setY(data, ser.read_type_6("y"));
+
       getImpl().setZ(data, ser.read_type_6("z"));
+
       getImpl().setW(data, ser.read_type_6("w"));
    }
 

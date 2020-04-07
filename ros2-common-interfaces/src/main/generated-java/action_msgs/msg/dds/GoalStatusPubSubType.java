@@ -40,7 +40,9 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += action_msgs.msg.dds.GoalInfoPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -57,7 +59,9 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += action_msgs.msg.dds.GoalInfoPubSubType.getCdrSerializedSize(data.getGoalInfo(), current_alignment);
+
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -68,14 +72,18 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
 
    public static void write(action_msgs.msg.dds.GoalStatus data, us.ihmc.idl.CDR cdr)
    {
+
       action_msgs.msg.dds.GoalInfoPubSubType.write(data.getGoalInfo(), cdr);
+
       cdr.write_type_9(data.getStatus());
 
    }
 
    public static void read(action_msgs.msg.dds.GoalStatus data, us.ihmc.idl.CDR cdr)
    {
+
       action_msgs.msg.dds.GoalInfoPubSubType.read(data.getGoalInfo(), cdr);	
+
       data.setStatus(cdr.read_type_9());
       	
 
@@ -84,7 +92,9 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
    @Override
    public final void serialize(action_msgs.msg.dds.GoalStatus data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("goal_info", new action_msgs.msg.dds.GoalInfoPubSubType(), data.getGoalInfo());
+
 
       ser.write_type_9("status", data.getStatus());
    }
@@ -92,7 +102,9 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, action_msgs.msg.dds.GoalStatus data)
    {
+
       ser.read_type_a("goal_info", new action_msgs.msg.dds.GoalInfoPubSubType(), data.getGoalInfo());
+
 
       data.setStatus(ser.read_type_9("status"));
    }

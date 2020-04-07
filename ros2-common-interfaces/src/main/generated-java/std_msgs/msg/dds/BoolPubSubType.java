@@ -40,6 +40,7 @@ public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -55,6 +56,7 @@ public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -64,12 +66,14 @@ public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
 
    public static void write(std_msgs.msg.dds.Bool data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.write_type_7(data.getData());
 
    }
 
    public static void read(std_msgs.msg.dds.Bool data, us.ihmc.idl.CDR cdr)
    {
+
       data.setData(cdr.read_type_7());
       	
 
@@ -78,13 +82,16 @@ public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    @Override
    public final void serialize(std_msgs.msg.dds.Bool data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_7("data", data.getData());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.Bool data)
    {
-      data.setData(ser.read_type_7("data"));   }
+
+      data.setData(ser.read_type_7("data"));
+   }
 
    public static void staticCopy(std_msgs.msg.dds.Bool src, std_msgs.msg.dds.Bool dest)
    {

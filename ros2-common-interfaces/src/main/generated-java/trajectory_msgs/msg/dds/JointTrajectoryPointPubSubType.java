@@ -40,13 +40,18 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -63,20 +68,25 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getPositions().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getVelocities().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getAccelerations().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getEffort().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getCdrSerializedSize(data.getTimeFromStart(), current_alignment);
@@ -87,31 +97,41 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
 
    public static void write(trajectory_msgs.msg.dds.JointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
+
       if(data.getPositions().size() <= 100)
       cdr.write_type_e(data.getPositions());else
           throw new RuntimeException("positions field exceeds the maximum length");
+
 
       if(data.getVelocities().size() <= 100)
       cdr.write_type_e(data.getVelocities());else
           throw new RuntimeException("velocities field exceeds the maximum length");
 
+
       if(data.getAccelerations().size() <= 100)
       cdr.write_type_e(data.getAccelerations());else
           throw new RuntimeException("accelerations field exceeds the maximum length");
 
+
       if(data.getEffort().size() <= 100)
       cdr.write_type_e(data.getEffort());else
           throw new RuntimeException("effort field exceeds the maximum length");
+
 
       builtin_interfaces.msg.dds.DurationPubSubType.write(data.getTimeFromStart(), cdr);
    }
 
    public static void read(trajectory_msgs.msg.dds.JointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.read_type_e(data.getPositions());	
+
       cdr.read_type_e(data.getVelocities());	
+
       cdr.read_type_e(data.getAccelerations());	
+
       cdr.read_type_e(data.getEffort());	
+
       builtin_interfaces.msg.dds.DurationPubSubType.read(data.getTimeFromStart(), cdr);	
 
    }
@@ -119,10 +139,15 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    @Override
    public final void serialize(trajectory_msgs.msg.dds.JointTrajectoryPoint data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_e("positions", data.getPositions());
+
       ser.write_type_e("velocities", data.getVelocities());
+
       ser.write_type_e("accelerations", data.getAccelerations());
+
       ser.write_type_e("effort", data.getEffort());
+
       ser.write_type_a("time_from_start", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getTimeFromStart());
 
    }
@@ -130,10 +155,15 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, trajectory_msgs.msg.dds.JointTrajectoryPoint data)
    {
+
       ser.read_type_e("positions", data.getPositions());
+
       ser.read_type_e("velocities", data.getVelocities());
+
       ser.read_type_e("accelerations", data.getAccelerations());
+
       ser.read_type_e("effort", data.getEffort());
+
       ser.read_type_a("time_from_start", new builtin_interfaces.msg.dds.DurationPubSubType(), data.getTimeFromStart());
 
    }

@@ -8,16 +8,21 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStamped> implements Settable<AccelWithCovarianceStamped>, EpsilonComparable<AccelWithCovarianceStamped>
 {
+
    /**
             * This represents an estimated accel with reference coordinate frame and timestamp.
             */
    public std_msgs.msg.dds.Header header_;
+
    public geometry_msgs.msg.dds.AccelWithCovariance accel_;
 
    public AccelWithCovarianceStamped()
    {
+
       header_ = new std_msgs.msg.dds.Header();
+
       accel_ = new geometry_msgs.msg.dds.AccelWithCovariance();
+
    }
 
    public AccelWithCovarianceStamped(AccelWithCovarianceStamped other)
@@ -28,9 +33,12 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
 
    public void set(AccelWithCovarianceStamped other)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
+
       geometry_msgs.msg.dds.AccelWithCovariancePubSubType.staticCopy(other.accel_, accel_);
    }
+
 
 
    /**
@@ -40,6 +48,7 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
    {
       return header_;
    }
+
 
 
    public geometry_msgs.msg.dds.AccelWithCovariance getAccel()
@@ -65,7 +74,9 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
       if(other == null) return false;
       if(other == this) return true;
 
+
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
+
       if (!this.accel_.epsilonEquals(other.accel_, epsilon)) return false;
 
       return true;
@@ -80,7 +91,9 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
 
       AccelWithCovarianceStamped otherMyClass = (AccelWithCovarianceStamped) other;
 
+
       if (!this.header_.equals(otherMyClass.header_)) return false;
+
       if (!this.accel_.equals(otherMyClass.accel_)) return false;
 
       return true;
@@ -92,8 +105,10 @@ public class AccelWithCovarianceStamped extends Packet<AccelWithCovarianceStampe
       StringBuilder builder = new StringBuilder();
 
       builder.append("AccelWithCovarianceStamped {");
+
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
+
       builder.append("accel=");
       builder.append(this.accel_);
       builder.append("}");

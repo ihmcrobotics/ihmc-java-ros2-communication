@@ -40,13 +40,18 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -63,16 +68,21 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
+
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
+
+
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
@@ -84,13 +94,18 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.CDR cdr)
    {
+
       cdr.write_type_4(data.getXOffset());
+
 
       cdr.write_type_4(data.getYOffset());
 
+
       cdr.write_type_4(data.getHeight());
 
+
       cdr.write_type_4(data.getWidth());
+
 
       cdr.write_type_7(data.getDoRectify());
 
@@ -98,14 +113,19 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.CDR cdr)
    {
+
       data.setXOffset(cdr.read_type_4());
       	
+
       data.setYOffset(cdr.read_type_4());
       	
+
       data.setHeight(cdr.read_type_4());
       	
+
       data.setWidth(cdr.read_type_4());
       	
+
       data.setDoRectify(cdr.read_type_7());
       	
 
@@ -114,20 +134,30 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final void serialize(sensor_msgs.msg.dds.RegionOfInterest data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_4("x_offset", data.getXOffset());
+
       ser.write_type_4("y_offset", data.getYOffset());
+
       ser.write_type_4("height", data.getHeight());
+
       ser.write_type_4("width", data.getWidth());
+
       ser.write_type_7("do_rectify", data.getDoRectify());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.RegionOfInterest data)
    {
+
       data.setXOffset(ser.read_type_4("x_offset"));
+
       data.setYOffset(ser.read_type_4("y_offset"));
+
       data.setHeight(ser.read_type_4("height"));
+
       data.setWidth(ser.read_type_4("width"));
+
       data.setDoRectify(ser.read_type_7("do_rectify"));
    }
 

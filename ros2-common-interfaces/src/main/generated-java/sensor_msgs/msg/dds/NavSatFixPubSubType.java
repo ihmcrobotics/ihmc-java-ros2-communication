@@ -40,17 +40,24 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
+
 
       current_alignment += sensor_msgs.msg.dds.NavSatStatusPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -67,20 +74,27 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       int initial_alignment = current_alignment;
 
+
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
+
 
       current_alignment += sensor_msgs.msg.dds.NavSatStatusPubSubType.getCdrSerializedSize(data.getStatus(), current_alignment);
 
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
+
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
+
+
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
 
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -90,18 +104,25 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void write(sensor_msgs.msg.dds.NavSatFix data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
+
       sensor_msgs.msg.dds.NavSatStatusPubSubType.write(data.getStatus(), cdr);
+
       cdr.write_type_6(data.getLatitude());
+
 
       cdr.write_type_6(data.getLongitude());
 
+
       cdr.write_type_6(data.getAltitude());
+
 
       for(int i0 = 0; i0 < data.getPositionCovariance().length; ++i0)
       {
         	cdr.write_type_6(data.getPositionCovariance()[i0]);	
       }
+
 
       cdr.write_type_9(data.getPositionCovarianceType());
 
@@ -109,20 +130,27 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void read(sensor_msgs.msg.dds.NavSatFix data, us.ihmc.idl.CDR cdr)
    {
+
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
+
       sensor_msgs.msg.dds.NavSatStatusPubSubType.read(data.getStatus(), cdr);	
+
       data.setLatitude(cdr.read_type_6());
       	
+
       data.setLongitude(cdr.read_type_6());
       	
+
       data.setAltitude(cdr.read_type_6());
       	
+
       for(int i0 = 0; i0 < data.getPositionCovariance().length; ++i0)
       {
         	data.getPositionCovariance()[i0] = cdr.read_type_6();
         	
       }
       	
+
       data.setPositionCovarianceType(cdr.read_type_9());
       	
 
@@ -131,28 +159,42 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    @Override
    public final void serialize(sensor_msgs.msg.dds.NavSatFix data, us.ihmc.idl.InterchangeSerializer ser)
    {
+
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.write_type_a("status", new sensor_msgs.msg.dds.NavSatStatusPubSubType(), data.getStatus());
 
+
       ser.write_type_6("latitude", data.getLatitude());
+
       ser.write_type_6("longitude", data.getLongitude());
+
       ser.write_type_6("altitude", data.getAltitude());
+
       ser.write_type_f("position_covariance", data.getPositionCovariance());
+
       ser.write_type_9("position_covariance_type", data.getPositionCovarianceType());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.NavSatFix data)
    {
+
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
+
 
       ser.read_type_a("status", new sensor_msgs.msg.dds.NavSatStatusPubSubType(), data.getStatus());
 
+
       data.setLatitude(ser.read_type_6("latitude"));
+
       data.setLongitude(ser.read_type_6("longitude"));
+
       data.setAltitude(ser.read_type_6("altitude"));
+
       ser.read_type_f("position_covariance", data.getPositionCovariance());
+
       data.setPositionCovarianceType(ser.read_type_9("position_covariance_type"));
    }
 
