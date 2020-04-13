@@ -18,12 +18,12 @@ ihmc {
 }
 
 mainDependencies {
-   compile dependencies.gradleApi()
-   compile "us.ihmc:ihmc-pub-sub-generator:0.12.0"
-   compile "us.ihmc:ros2-msg-to-idl-generator:$version"
+   api(dependencies.gradleApi())
+   api("us.ihmc:ihmc-pub-sub-generator:0.12.0")
+   api("us.ihmc:ros2-msg-to-idl-generator:$version")
 }
 
 testDependencies {
-   compile "us.ihmc:ihmc-pub-sub:0.12.0"
-   compile "us.ihmc:ihmc-commons:0.28.2"
+   api("us.ihmc:ihmc-pub-sub:0.12.0")
+   api("us.ihmc:ihmc-commons:0.28.2")
 }

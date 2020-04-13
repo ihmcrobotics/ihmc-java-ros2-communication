@@ -1,14 +1,14 @@
 buildscript {
    repositories {
       mavenCentral()
-      maven { url "https://dl.bintray.com/ihmcrobotics/maven-release" }
-      maven { url "https://dl.bintray.com/ihmcrobotics/maven-vendor" }
-      maven { url "https://plugins.gradle.org/m2/" }
+      maven { url = uri("https://dl.bintray.com/ihmcrobotics/maven-release") }
+      maven { url = uri("https://dl.bintray.com/ihmcrobotics/maven-vendor") }
+      maven { url = uri("https://plugins.gradle.org/m2/") }
       mavenLocal()
       jcenter()
    }
    dependencies {
-      classpath "us.ihmc:ros2-msg-to-pubsub-generator:0.16.1"
+      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.16.1")
    }
 }
 
@@ -19,18 +19,18 @@ plugins {
    id("org.ajoberstar.grgit") version "3.1.1"
 }
 
-def rclInterfacesPath = "src/main/vendor/rcl_interfaces"
-def rclInterfacesUrl = "https://github.com/ros2/rcl_interfaces.git"
-def commonInterfacesPath = "src/main/vendor/common_interfaces"
-def commonInterfacesUrl = "https://github.com/ros2/common_interfaces.git"
-def ros2Release = "0.8.0"
-def geometry2Path = "src/main/vendor/geometry2"
-def tf2Path = "src/main/vendor/geometry2/tf2_msgs"
-def geometry2Url = "https://github.com/ros2/geometry2.git"
-def geomtry2Release = "0.12.0"
-def uuidPath = "src/main/vendor/unique_identifier_msgs"
-def uuidUrl = "https://github.com/ros2/unique_identifier_msgs.git"
-def uuidRelease = "2.1.0"
+val rclInterfacesPath = "src/main/vendor/rcl_interfaces"
+val rclInterfacesUrl = "https://github.com/ros2/rcl_interfaces.git"
+val commonInterfacesPath = "src/main/vendor/common_interfaces"
+val commonInterfacesUrl = "https://github.com/ros2/common_interfaces.git"
+val ros2Release = "0.8.0"
+val geometry2Path = "src/main/vendor/geometry2"
+val tf2Path = "src/main/vendor/geometry2/tf2_msgs"
+val geometry2Url = "https://github.com/ros2/geometry2.git"
+val geomtry2Release = "0.12.0"
+val uuidPath = "src/main/vendor/unique_identifier_msgs"
+val uuidUrl = "https://github.com/ros2/unique_identifier_msgs.git"
+val uuidRelease = "2.1.0"
 
 ihmc {
    loadProductProperties("../group.gradle.properties")
@@ -49,18 +49,18 @@ mainDependencies {
 }
 
 generatorDependencies {
-   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: version
+   api("us.ihmc:ros2-msg-to-pubsub-generator:$version")
 }
 
-task show() {
+val show by tasks.creating {
    doLast {
-      project.gradle.includedBuilds.each { println it }
-      buildscript.configurations.classpath.each { println "Buildscript: " + it }
-      configurations.compile.each { println "Compile: " + it }
+      project.gradle.includedBuilds.forEach { println(it) }
+      buildscript.configurations.runtime.get().forEach { println("Buildscript: " + it) }
+      configurations.compile.get().forEach { println("Compile: " + it) }
    }
 }
 
-task generateMessages(type: us.ihmc.ros2.rosidl.Ros2MessageGenerator) {
+val generateMessages by tasks.creating(us.ihmc.ros2.rosidl.Ros2MessageGenerator::class) {
    doFirst {
       setupVendoredRepo(commonInterfacesPath, commonInterfacesUrl, ros2Release)
       setupVendoredRepo(rclInterfacesPath, rclInterfacesUrl, ros2Release)
@@ -77,7 +77,7 @@ task generateMessages(type: us.ihmc.ros2.rosidl.Ros2MessageGenerator) {
    customIDLDirectory = files("src/main/custom-idl")
 }
 
-private void setupVendoredRepo(String clonePath, String vcsUrl, String tagName)
+fun setupVendoredRepo(clonePath: String, vcsUrl: String, tagName: String)
 {
    delete(clonePath)
 

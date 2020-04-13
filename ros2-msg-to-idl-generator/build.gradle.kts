@@ -4,8 +4,6 @@ plugins {
    id("us.ihmc.ihmc-cd") version "1.8"
 }
 
-apply plugin: "application"
-
 ihmc {
    loadProductProperties("../group.gradle.properties")
 

@@ -18,6 +18,6 @@ mainDependencies {
 }
 
 testDependencies {
-   compile group: "us.ihmc", name: "ros2-common-interfaces", version: version
-   compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator-test", version: version
+   api("us.ihmc:ros2-common-interfaces:$version")
+   api("us.ihmc:ros2-msg-to-pubsub-generator-test:$version")
 }
