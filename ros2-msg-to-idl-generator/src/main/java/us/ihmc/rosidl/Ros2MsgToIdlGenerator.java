@@ -17,47 +17,34 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 public class Ros2MsgToIdlGenerator
 {
-   private static final boolean COMPILE_ROS_SERVICES = false;
+   public static final boolean COMPILE_ROS_SERVICES = false;
 
    // Template to use
    private static final String MSG_TO_IDL_EM_TEMPLATE_NAME = "msg.idl.em";
 
    private final PythonInterpreter pythonInterpreter = new PythonInterpreter();
-   private Path templateDirectory;
-   private Path argumentsJsonFile;
+   private final Path templateDirectory;
+   private final Path argumentsJsonFile;
 
-   private final HashMap<String, PackageDescription> packages = new HashMap<>();
+   private final HashMap<String, RosPackageDescription> packageNameToDescriptionMap = new HashMap<>();
 
    public Ros2MsgToIdlGenerator()
    {
-      try
-      {
-         argumentsJsonFile = Files.createTempFile("rosInterfaceArguments", "arguments.json");
-         argumentsJsonFile.toFile().deleteOnExit();
-
-         templateDirectory = Files.createTempDirectory("rosInterfaceCompilerTemplates");
-         templateDirectory.toFile().deleteOnExit();
-
-         InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream(MSG_TO_IDL_EM_TEMPLATE_NAME);
-         Path templateFile = templateDirectory.resolve(MSG_TO_IDL_EM_TEMPLATE_NAME);
-         Files.copy(template, templateFile);
-
-         templateFile.toFile().deleteOnExit();
-         template.close();
-      }
-      catch (IOException e)
-      {
-         e.printStackTrace();
-      }
+      argumentsJsonFile = createTempFile("rosInterfaceArguments", "arguments.json");
+      templateDirectory = createTempDirectory("rosInterfaceCompilerTemplates");
+      copyResourceToTempDirectory(templateDirectory, MSG_TO_IDL_EM_TEMPLATE_NAME);
 
       pythonInterpreter.exec("from rosidl_generator_dds_idl import generate_dds_idl");
    }
@@ -78,8 +65,8 @@ public class Ros2MsgToIdlGenerator
     */
    public void addPackageRoot(Path rootPath, String... rclInterfacesToIgnore) throws IOException
    {
-      List<String> ignoredInterfaces; 
-      if(rclInterfacesToIgnore != null)
+      List<String> ignoredInterfaces;
+      if (rclInterfacesToIgnore != null)
       {
          ignoredInterfaces = Arrays.asList(rclInterfacesToIgnore);
       }
@@ -87,11 +74,15 @@ public class Ros2MsgToIdlGenerator
       {
          ignoredInterfaces = Collections.emptyList();
       }
-      
+
       // Find all subdirectories with a package.xml in them and call this.addPackage()
-      Files.find(rootPath, 2, (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().equals("package.xml"))
-         .filter((path) -> !ignoredInterfaces.contains(path.getParent().getFileName().toString()))
-         .forEach(this::addPackage);
+      Path start = rootPath;
+      int maxDepth = 2;
+      BiPredicate<Path, BasicFileAttributes> matcher = (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().equals("package.xml");
+      Predicate<Path> packageIsNotIgnored = path -> !ignoredInterfaces.contains(path.getParent().getFileName().toString());
+      Files.find(start, maxDepth, matcher)
+           .filter(packageIsNotIgnored)
+           .forEach(packageXmlFilePath -> addPackage(packageXmlFilePath, packageNameToDescriptionMap));
    }
 
    /**
@@ -101,45 +92,46 @@ public class Ros2MsgToIdlGenerator
     *
     * The .msg and .srv files to compile are found with a search in the directory.
     *
-    * @param file the package.xml description
+    * @param packageXmlFilePath the package.xml description
     */
-   private void addPackage(Path file)
+   static void addPackage(Path packageXmlFilePath, HashMap<String, RosPackageDescription> packages)
    {
       try
       {
          // Read the XML file
          JAXBContext jaxbContext = JAXBContext.newInstance(RosPackage.class);
          Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-         RosPackage pkg = (RosPackage) unmarshaller.unmarshal(file.toFile());
+         RosPackage rosPackage = (RosPackage) unmarshaller.unmarshal(packageXmlFilePath.toFile());
 
          // Create a package description
-         PackageDescription packageDescription = new PackageDescription();
-         packageDescription.packageName = pkg.getName();
-         packageDescription.root = file.getParent();
-         if (pkg.getBuild_depend() != null)
+         RosPackageDescription packageDescription = new RosPackageDescription(rosPackage.getName(), packageXmlFilePath.getParent());
+         if (rosPackage.getBuild_depend() != null)
          {
-            packageDescription.dependencies.addAll(pkg.getBuild_depend());
+            packageDescription.getDependencies().addAll(rosPackage.getBuild_depend());
          }
 
          // Search for .msg and .srv files and add them to pkgDesc.msg and pkgDesc.srv respectivly
          try
          {
-            Files.find(packageDescription.root, 2, (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().endsWith(".msg")).forEach(packageDescription.msg::add);
+            Files.find(packageDescription.getPackageDirectory(), 2, (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().endsWith(".msg"))
+                 .forEach(path -> packageDescription.getMsgFilePaths().add(path));
             if (COMPILE_ROS_SERVICES)
             {
-               Files.find(packageDescription.root, 2, (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().endsWith(".srv")).forEach(packageDescription.srv::add);
+               Files.find(packageDescription.getPackageDirectory(), 2, (path, attrs) -> attrs.isRegularFile() && path.getFileName().toString().endsWith(".srv"))
+                    .forEach(path -> packageDescription.getSrvFilePaths().add(path));
             }
          }
          catch (IOException e)
          {
-            throw new RuntimeException("Cannot search folder " + packageDescription.root + " for package " + packageDescription.packageName, e);
+            throw new RuntimeException(
+                  "Cannot search folder " + packageDescription.getPackageDirectory() + " for package " + packageDescription.getPackageName(), e);
          }
 
-         packages.put(packageDescription.packageName, packageDescription);
+         packages.put(packageDescription.getPackageName(), packageDescription);
       }
       catch (JAXBException e)
       {
-         throw new RuntimeException("Cannot parse package.xml: " + file, e);
+         throw new RuntimeException("Cannot parse package.xml: " + packageXmlFilePath, e);
       }
    }
 
@@ -150,49 +142,74 @@ public class Ros2MsgToIdlGenerator
     */
    public void convertToIDL(Path outputDirectory)
    {
-      packages.forEach((name, pkg) -> convertPackageToIDL(name, pkg, outputDirectory));
+      packageNameToDescriptionMap.forEach((name, pkg) -> convertPackageToIDL(pkg, outputDirectory));
    }
 
-   private void convertPackageToIDL(String name, PackageDescription packageDescription, Path outputDirectory)
+   private void convertPackageToIDL(RosPackageDescription packageDescription, Path outputDirectory)
    {
       HashSet<String> dependencies = new HashSet<>();
-      addDependencies(packageDescription, dependencies);
+      addDependenciesRecursive(packageDescription, dependencies);
 
       List<Path> dependencyFiles = new ArrayList<>();
       for (String dependency : dependencies)
       {
-         PackageDescription desc = packages.get(dependency);
-         dependencyFiles.addAll(desc.msg);
+         RosPackageDescription desc = packageNameToDescriptionMap.get(dependency);
+         dependencyFiles.addAll(desc.getMsgFilePaths());
       }
 
-      Path packageOutputDirectory = outputDirectory.resolve(name);
+      Path packageOutputDirectory = outputDirectory.resolve(packageDescription.getPackageName());
 
       // generate the json format the ros2 idl compiler requires
+      setupAndWriteJythonJSONFile(packageDescription, dependencyFiles, packageOutputDirectory, templateDirectory, argumentsJsonFile);
 
+      System.out.println("[ROS2 MSG -> IDL] Generating .idl files for " + packageDescription.getPackageName() + " in " + packageOutputDirectory);
+
+      pythonInterpreter.set("argFile", new PyString(argumentsJsonFile.toAbsolutePath().toString()));
+
+      PyList subFolderList = new PyList();
+      subFolderList.add(new PyString("."));
+
+      pythonInterpreter.set("subFolders", subFolderList);
+      pythonInterpreter.set("extension", Py.None);
+      pythonInterpreter.exec("generate_dds_idl(argFile, subFolders, extension)");
+   }
+
+   static void setupAndWriteJythonJSONFile(RosPackageDescription packageDescription,
+                                           List<Path> dependencyFiles,
+                                           Path packageOutputDirectory,
+                                           Path templateDirectory,
+                                           Path argumentsJsonFile)
+   {
       JsonObjectBuilder json = Json.createObjectBuilder();
 
       // package_name is the name of the package
-      json.add("package_name", packageDescription.packageName);
+      json.add("package_name", packageDescription.getPackageName());
       // output_dir is the directory to write the files in. The ros2 idl compiler does not append the package name to this directory.
       json.add("output_dir", packageOutputDirectory.toAbsolutePath().toString());
       // directory where msg.idl.em can be found
       json.add("template_dir", templateDirectory.toAbsolutePath().toString());
 
-      JsonArrayBuilder ros_interface_files = Json.createArrayBuilder();
-      for (Path msg : packageDescription.msg)
-         ros_interface_files.add(msg.toString());
-      for (Path srv : packageDescription.srv)
-         ros_interface_files.add(srv.toString());
+      JsonArrayBuilder rosInterfaceFiles = Json.createArrayBuilder();
+      for (Path msg : packageDescription.getMsgFilePaths())
+      {
+         rosInterfaceFiles.add(msg.toString());
+      }
+      for (Path srv : packageDescription.getSrvFilePaths())
+      {
+         rosInterfaceFiles.add(srv.toString());
+      }
 
       // The ros interface files to compile
-      json.add("ros_interface_files", ros_interface_files);
+      json.add("ros_interface_files", rosInterfaceFiles);
 
-      JsonArrayBuilder ros_interface_dependencies = Json.createArrayBuilder();
+      JsonArrayBuilder rosInterfaceDependencies = Json.createArrayBuilder();
       for (Path dep : dependencyFiles)
-         ros_interface_dependencies.add(dep.toString());
+      {
+         rosInterfaceDependencies.add(dep.toString());
+      }
 
       // The ros interface files necessary to compile this interface
-      json.add("ros_interface_dependencies", ros_interface_dependencies);
+      json.add("ros_interface_dependencies", rosInterfaceDependencies);
 
       // Don't know what this flag does
       json.add("target_dependencies", Json.createArrayBuilder());
@@ -211,53 +228,76 @@ public class Ros2MsgToIdlGenerator
       JsonWriter writer = Json.createWriter(os);
       writer.writeObject(json.build());
       writer.close();
-
-      List<String> subFolders = new ArrayList<>();
-      subFolders.add(".");
-
-      System.out.println("[ROS2 MSG -> IDL] Generating .idl files for " + name + " in " + packageOutputDirectory);
-
-      pythonInterpreter.set("argFile", new PyString(argumentsJsonFile.toAbsolutePath().toString()));
-
-      PyList subFolderList = new PyList();
-      for (String subFolder : subFolders)
-         subFolderList.add(new PyString(subFolder));
-
-      pythonInterpreter.set("subFolders", subFolderList);
-
-      if (null != null && ((List<String>) null).size() > 0)
-      {
-         PyList extensionList = new PyList();
-         for (String extension : (List<String>) null)
-            extensionList.add(new PyString(extension));
-
-         pythonInterpreter.set("extension", extensionList);
-      }
-      else
-         pythonInterpreter.set("extension", Py.None);
-
-      pythonInterpreter.exec("generate_dds_idl(argFile, subFolders, extension)");
    }
 
    /**
     * Recursive function to add all .msg files that are necessary to compile this package
     *
-    * @param description package description
+    * @param rosPackageDescription package description
     * @param dependencies Output set of dependencies
     */
-   private void addDependencies(PackageDescription description, HashSet<String> dependencies)
+   private void addDependenciesRecursive(RosPackageDescription rosPackageDescription, HashSet<String> dependencies)
    {
-      for (String dependency : description.dependencies)
+      for (String dependency : rosPackageDescription.getDependencies())
       {
          dependencies.add(dependency);
-         if (packages.containsKey(dependency))
+         if (packageNameToDescriptionMap.containsKey(dependency))
          {
-            addDependencies(packages.get(dependency), dependencies);
+            addDependenciesRecursive(packageNameToDescriptionMap.get(dependency), dependencies);
          }
          else
          {
-            throw new RuntimeException("Cannot find dependency " + dependency + " for " + description.packageName);
+            throw new RuntimeException("Cannot find dependency " + dependency + " for " + rosPackageDescription.getPackageName());
          }
+      }
+   }
+
+   static Path createTempFile(String prefix, String suffix)
+   {
+      Path tempFile;
+      try
+      {
+         tempFile = Files.createTempFile(prefix, suffix);
+         tempFile.toFile().deleteOnExit();
+      }
+      catch (IOException e)
+      {
+         tempFile = null;
+         e.printStackTrace();
+      }
+      return tempFile;
+   }
+
+   static Path createTempDirectory(String prefix)
+   {
+      Path tempDirectory;
+      try
+      {
+         tempDirectory = Files.createTempDirectory(prefix);
+         tempDirectory.toFile().deleteOnExit();
+      }
+      catch (IOException e)
+      {
+         tempDirectory = null;
+         e.printStackTrace();
+      }
+      return tempDirectory;
+   }
+
+   static void copyResourceToTempDirectory(Path directory, String fileName)
+   {
+      try
+      {
+         InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
+         Path templateFile = directory.resolve(fileName);
+         Files.copy(template, templateFile);
+
+         templateFile.toFile().deleteOnExit();
+         template.close();
+      }
+      catch (IOException e)
+      {
+         e.printStackTrace();
       }
    }
 }
