@@ -12,7 +12,7 @@ public class TestGenerateMSGToIDL
    {
       // Import em.py
       PySystemState systemState = Py.getSystemState();
-            systemState.path.append(new PyString("__pyclasspath__/Lib"));
+      systemState.path.append(new PyString("__pyclasspath__/Lib"));
       systemState.path.append(new PyString("src/main/python"));
 
       Ros2MsgToIdlGenerator ros2MsgToIdlGenerator = new Ros2MsgToIdlGenerator();

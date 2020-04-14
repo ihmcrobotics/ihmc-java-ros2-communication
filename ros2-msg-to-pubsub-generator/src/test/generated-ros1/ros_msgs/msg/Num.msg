@@ -1,3 +1,7 @@
+# This is the header
+# Header line 2
+# This is some dangling comment that will be included in header
+
 # a, b, c
 # 1, 2, 3
 # baby

@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 
 public class MessageGenerationTest
 {
-   @Test// timeout = 30000
+   @Test
    public void testMessageGeneration() throws IOException
    {
       Path startingPath;
@@ -25,6 +25,13 @@ public class MessageGenerationTest
       generator.addPackageRootToIDLGenerator(startingPath.resolve("ros_msgs"));
       generator.addPackageRootToROS1Generator(startingPath.resolve("ros_msgs"));
       generator.addCustomIDLFiles(startingPath.resolve("custom-idl"));
-      generator.generate(startingPath.resolve("generated-idl"), Paths.get("generated-ros1"), startingPath.resolve("generated-java"));
+      Path generatedIDLPath = startingPath.resolve("generated-idl");
+      Path generatedROS1Path = Paths.get("generated-ros1");
+      Path generatedJavaPath = startingPath.resolve("generated-java");
+      generator.generate(generatedIDLPath, generatedROS1Path, generatedJavaPath);
+
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(generatedIDLPath);
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(generatedROS1Path);
+      RosInterfaceGenerator.convertDirectoryToUnixEOL(generatedJavaPath);
    }
 }

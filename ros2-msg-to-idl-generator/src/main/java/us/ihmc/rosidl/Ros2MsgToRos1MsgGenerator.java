@@ -137,7 +137,7 @@ public class Ros2MsgToRos1MsgGenerator
    }
 
    /**
-    * Convert all ROS2 packages to .idl files
+    * Convert all ROS2 packages to ROS 1 compatible .msg files
     *
     * @param outputDirectory Directory to put the generated files in
     */

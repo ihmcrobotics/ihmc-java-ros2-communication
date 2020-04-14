@@ -1,3 +1,6 @@
+# we don't support this
+# int32[] nums [-200, -100, 0, 100, 200]
+
 ros_msgs/Num num1
 
 ros_msgs/Num[] num2
