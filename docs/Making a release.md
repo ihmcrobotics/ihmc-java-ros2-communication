@@ -41,7 +41,7 @@ Make sure the generated files have LF (Unix) line separators.
 
 > Note: In IntelliJ, you may need to build with Eclipse compiler and use "Build, no error check".
 
-#### Step 3: Run tests
+#### Step 3: Ensure tests are passing
 
 Wait for Bamboo or run the tests manually as follows.
 
