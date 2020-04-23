@@ -1,14 +1,6 @@
 buildscript {
-   repositories {
-      mavenCentral()
-      maven { url = uri("https://dl.bintray.com/ihmcrobotics/maven-release") }
-      maven { url = uri("https://dl.bintray.com/ihmcrobotics/maven-vendor") }
-      maven { url = uri("https://plugins.gradle.org/m2/") }
-      mavenLocal()
-      jcenter()
-   }
    dependencies {
-      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.16.1")
+      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.17.0")
    }
 }
 
