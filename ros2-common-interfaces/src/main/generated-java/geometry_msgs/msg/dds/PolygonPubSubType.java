@@ -40,11 +40,9 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);}
-
       return current_alignment - initial_alignment;
    }
 
@@ -57,19 +55,16 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getPoints().size(); ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getCdrSerializedSize(data.getPoints().get(i0), current_alignment);}
-
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getPoints().size() <= 100)
       cdr.write_type_e(data.getPoints());else
           throw new RuntimeException("points field exceeds the maximum length");
@@ -78,7 +73,6 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
    public static void read(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getPoints());	
 
    }
@@ -86,14 +80,12 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    @Override
    public final void serialize(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_e("points", data.getPoints());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.Polygon data)
    {
-
       ser.read_type_e("points", data.getPoints());
    }
 

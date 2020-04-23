@@ -40,9 +40,7 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += geometry_msgs.msg.dds.AccelPubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += ((36) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -59,9 +57,7 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += geometry_msgs.msg.dds.AccelPubSubType.getCdrSerializedSize(data.getAccel(), current_alignment);
-
 
       current_alignment += ((36) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -70,9 +66,7 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void write(geometry_msgs.msg.dds.AccelWithCovariance data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.AccelPubSubType.write(data.getAccel(), cdr);
-
       for(int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
         	cdr.write_type_6(data.getCovariance()[i0]);	
@@ -82,9 +76,7 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void read(geometry_msgs.msg.dds.AccelWithCovariance data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.AccelPubSubType.read(data.getAccel(), cdr);	
-
       for(int i0 = 0; i0 < data.getCovariance().length; ++i0)
       {
         	data.getCovariance()[i0] = cdr.read_type_6();
@@ -97,9 +89,7 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final void serialize(geometry_msgs.msg.dds.AccelWithCovariance data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("accel", new geometry_msgs.msg.dds.AccelPubSubType(), data.getAccel());
-
 
       ser.write_type_f("covariance", data.getCovariance());
    }
@@ -107,9 +97,7 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.AccelWithCovariance data)
    {
-
       ser.read_type_a("accel", new geometry_msgs.msg.dds.AccelPubSubType(), data.getAccel());
-
 
       ser.read_type_f("covariance", data.getCovariance());
    }

@@ -32,7 +32,6 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
     * @param dest Destination object to copy data to
     */
    protected abstract void copy(us.ihmc.euclid.geometry.Pose2D src, us.ihmc.euclid.geometry.Pose2D dest);
-
    /**
     * Getter for X
     *
@@ -47,7 +46,6 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
     * @param x value
     */
    protected abstract void setX(us.ihmc.euclid.geometry.Pose2D data, double x);
-
    /**
     * Getter for Y
     *
@@ -62,7 +60,6 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
     * @param y value
     */
    protected abstract void setY(us.ihmc.euclid.geometry.Pose2D data, double y);
-
    /**
     * Getter for Theta
     *
@@ -117,13 +114,10 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -151,12 +145,9 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
 
    public static void write(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_6(getImpl().getX(data));
 
-
       cdr.write_type_6(getImpl().getY(data));
-
 
       cdr.write_type_6(getImpl().getTheta(data));
 
@@ -175,22 +166,16 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
    @Override
    public final void serialize(us.ihmc.euclid.geometry.Pose2D data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_6("x", getImpl().getX(data));
-
       ser.write_type_6("y", getImpl().getY(data));
-
       ser.write_type_6("theta", getImpl().getTheta(data));
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, us.ihmc.euclid.geometry.Pose2D data)
    {
-
       getImpl().setX(data, ser.read_type_6("x"));
-
       getImpl().setY(data, ser.read_type_6("y"));
-
       getImpl().setTheta(data, ser.read_type_6("theta"));
    }
 

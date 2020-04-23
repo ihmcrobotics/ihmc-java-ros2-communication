@@ -16,29 +16,24 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class RegionOfInterest extends Packet<RegionOfInterest> implements Settable<RegionOfInterest>, EpsilonComparable<RegionOfInterest>
 {
-
    /**
             * Leftmost pixel of the ROI
             */
    public long x_offset_;
-
    /**
             * (0 if the ROI includes the left edge of the image)
             * Topmost pixel of the ROI
             */
    public long y_offset_;
-
    /**
             * (0 if the ROI includes the top edge of the image)
             * Height of ROI
             */
    public long height_;
-
    /**
             * Width of ROI
             */
    public long width_;
-
    /**
             * True if a distinct rectified ROI should be calculated from the "raw"
             * ROI in this message. Typically this should be False if the full image
@@ -49,12 +44,6 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
 
    public RegionOfInterest()
    {
-
-
-
-
-
-
    }
 
    public RegionOfInterest(RegionOfInterest other)
@@ -65,23 +54,17 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
 
    public void set(RegionOfInterest other)
    {
-
       x_offset_ = other.x_offset_;
-
 
       y_offset_ = other.y_offset_;
 
-
       height_ = other.height_;
 
-
       width_ = other.width_;
-
 
       do_rectify_ = other.do_rectify_;
 
    }
-
 
    /**
             * Leftmost pixel of the ROI
@@ -97,7 +80,6 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
    {
       return x_offset_;
    }
-
 
    /**
             * (0 if the ROI includes the left edge of the image)
@@ -116,7 +98,6 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
       return y_offset_;
    }
 
-
    /**
             * (0 if the ROI includes the top edge of the image)
             * Height of ROI
@@ -134,7 +115,6 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
       return height_;
    }
 
-
    /**
             * Width of ROI
             */
@@ -149,7 +129,6 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
    {
       return width_;
    }
-
 
    /**
             * True if a distinct rectified ROI should be calculated from the "raw"
@@ -190,18 +169,13 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.x_offset_, other.x_offset_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.y_offset_, other.y_offset_, epsilon)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.height_, other.height_, epsilon)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.width_, other.width_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.do_rectify_, other.do_rectify_, epsilon)) return false;
 
@@ -218,18 +192,13 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
 
       RegionOfInterest otherMyClass = (RegionOfInterest) other;
 
-
       if(this.x_offset_ != otherMyClass.x_offset_) return false;
-
 
       if(this.y_offset_ != otherMyClass.y_offset_) return false;
 
-
       if(this.height_ != otherMyClass.height_) return false;
 
-
       if(this.width_ != otherMyClass.width_) return false;
-
 
       if(this.do_rectify_ != otherMyClass.do_rectify_) return false;
 
@@ -243,19 +212,14 @@ public class RegionOfInterest extends Packet<RegionOfInterest> implements Settab
       StringBuilder builder = new StringBuilder();
 
       builder.append("RegionOfInterest {");
-
       builder.append("x_offset=");
       builder.append(this.x_offset_);      builder.append(", ");
-
       builder.append("y_offset=");
       builder.append(this.y_offset_);      builder.append(", ");
-
       builder.append("height=");
       builder.append(this.height_);      builder.append(", ");
-
       builder.append("width=");
       builder.append(this.width_);      builder.append(", ");
-
       builder.append("do_rectify=");
       builder.append(this.do_rectify_);
       builder.append("}");

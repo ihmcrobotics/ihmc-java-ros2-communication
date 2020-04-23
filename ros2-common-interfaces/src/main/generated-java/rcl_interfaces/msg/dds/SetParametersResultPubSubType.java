@@ -40,9 +40,7 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
@@ -58,9 +56,7 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getReason().length() + 1;
@@ -71,9 +67,7 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void write(rcl_interfaces.msg.dds.SetParametersResult data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_7(data.getSuccessful());
-
 
       if(data.getReason().length() <= 255)
       cdr.write_type_d(data.getReason());else
@@ -83,10 +77,8 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void read(rcl_interfaces.msg.dds.SetParametersResult data, us.ihmc.idl.CDR cdr)
    {
-
       data.setSuccessful(cdr.read_type_7());
       	
-
       cdr.read_type_d(data.getReason());	
 
    }
@@ -94,18 +86,14 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final void serialize(rcl_interfaces.msg.dds.SetParametersResult data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_7("successful", data.getSuccessful());
-
       ser.write_type_d("reason", data.getReason());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.SetParametersResult data)
    {
-
       data.setSuccessful(ser.read_type_7("successful"));
-
       ser.read_type_d("reason", data.getReason());
    }
 

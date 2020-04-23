@@ -8,33 +8,20 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class ParameterType extends Packet<ParameterType> implements Settable<ParameterType>, EpsilonComparable<ParameterType>
 {
-
    public static final byte PARAMETER_NOT_SET = (byte) 0;
-
    public static final byte PARAMETER_BOOL = (byte) 1;
-
    public static final byte PARAMETER_INTEGER = (byte) 2;
-
    public static final byte PARAMETER_DOUBLE = (byte) 3;
-
    public static final byte PARAMETER_STRING = (byte) 4;
-
    public static final byte PARAMETER_BYTE_ARRAY = (byte) 5;
-
    public static final byte PARAMETER_BOOL_ARRAY = (byte) 6;
-
    public static final byte PARAMETER_INTEGER_ARRAY = (byte) 7;
-
    public static final byte PARAMETER_DOUBLE_ARRAY = (byte) 8;
-
    public static final byte PARAMETER_STRING_ARRAY = (byte) 9;
-
    public boolean unused_placeholder_field_;
 
    public ParameterType()
    {
-
-
    }
 
    public ParameterType(ParameterType other)
@@ -45,11 +32,9 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
 
    public void set(ParameterType other)
    {
-
       unused_placeholder_field_ = other.unused_placeholder_field_;
 
    }
-
 
    public void setUnusedPlaceholderField(boolean unused_placeholder_field)
    {
@@ -78,7 +63,6 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsBoolean(this.unused_placeholder_field_, other.unused_placeholder_field_, epsilon)) return false;
 
 
@@ -94,7 +78,6 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
 
       ParameterType otherMyClass = (ParameterType) other;
 
-
       if(this.unused_placeholder_field_ != otherMyClass.unused_placeholder_field_) return false;
 
 
@@ -107,7 +90,6 @@ public class ParameterType extends Packet<ParameterType> implements Settable<Par
       StringBuilder builder = new StringBuilder();
 
       builder.append("ParameterType {");
-
       builder.append("unused_placeholder_field=");
       builder.append(this.unused_placeholder_field_);
       builder.append("}");

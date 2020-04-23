@@ -32,7 +32,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
     * @param dest Destination object to copy data to
     */
    protected abstract void copy(us.ihmc.euclid.tuple3D.Point3D32 src, us.ihmc.euclid.tuple3D.Point3D32 dest);
-
    /**
     * Getter for X
     *
@@ -47,7 +46,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
     * @param x value
     */
    protected abstract void setX(us.ihmc.euclid.tuple3D.Point3D32 data, float x);
-
    /**
     * Getter for Y
     *
@@ -62,7 +60,6 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
     * @param y value
     */
    protected abstract void setY(us.ihmc.euclid.tuple3D.Point3D32 data, float y);
-
    /**
     * Getter for Z
     *
@@ -117,13 +114,10 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -151,12 +145,9 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
 
    public static void write(us.ihmc.euclid.tuple3D.Point3D32 data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_5(getImpl().getX(data));
 
-
       cdr.write_type_5(getImpl().getY(data));
-
 
       cdr.write_type_5(getImpl().getZ(data));
 
@@ -175,22 +166,16 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    @Override
    public final void serialize(us.ihmc.euclid.tuple3D.Point3D32 data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_5("x", getImpl().getX(data));
-
       ser.write_type_5("y", getImpl().getY(data));
-
       ser.write_type_5("z", getImpl().getZ(data));
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, us.ihmc.euclid.tuple3D.Point3D32 data)
    {
-
       getImpl().setX(data, ser.read_type_5("x"));
-
       getImpl().setY(data, ser.read_type_5("y"));
-
       getImpl().setZ(data, ser.read_type_5("z"));
    }
 

@@ -40,12 +40,9 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -61,12 +58,9 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getFormat().length() + 1;
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getData().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
@@ -78,13 +72,10 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
 
    public static void write(sensor_msgs.msg.dds.CompressedImage data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if(data.getFormat().length() <= 255)
       cdr.write_type_d(data.getFormat());else
           throw new RuntimeException("format field exceeds the maximum length");
-
 
       if(data.getData().size() <= 100)
       cdr.write_type_e(data.getData());else
@@ -94,11 +85,8 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
 
    public static void read(sensor_msgs.msg.dds.CompressedImage data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
-
       cdr.read_type_d(data.getFormat());	
-
       cdr.read_type_e(data.getData());	
 
    }
@@ -106,24 +94,18 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
    @Override
    public final void serialize(sensor_msgs.msg.dds.CompressedImage data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.write_type_d("format", data.getFormat());
-
       ser.write_type_e("data", data.getData());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.CompressedImage data)
    {
-
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.read_type_d("format", data.getFormat());
-
       ser.read_type_e("data", data.getData());
    }
 

@@ -8,13 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Float32 extends Packet<Float32> implements Settable<Float32>, EpsilonComparable<Float32>
 {
-
    public float data_;
 
    public Float32()
    {
-
-
    }
 
    public Float32(Float32 other)
@@ -25,11 +22,9 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
 
    public void set(Float32 other)
    {
-
       data_ = other.data_;
 
    }
-
 
    public void setData(float data)
    {
@@ -58,9 +53,7 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
-
 
       return true;
    }
@@ -74,7 +67,6 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
 
       Float32 otherMyClass = (Float32) other;
 
-
       if(this.data_ != otherMyClass.data_) return false;
 
 
@@ -87,7 +79,6 @@ public class Float32 extends Packet<Float32> implements Settable<Float32>, Epsil
       StringBuilder builder = new StringBuilder();
 
       builder.append("Float32 {");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

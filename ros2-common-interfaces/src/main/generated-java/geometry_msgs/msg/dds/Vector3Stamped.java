@@ -11,18 +11,13 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<Vector3Stamped>, EpsilonComparable<Vector3Stamped>
 {
-
    public std_msgs.msg.dds.Header header_;
-
    public us.ihmc.euclid.tuple3D.Vector3D vector_;
 
    public Vector3Stamped()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       vector_ = new us.ihmc.euclid.tuple3D.Vector3D();
-
    }
 
    public Vector3Stamped(Vector3Stamped other)
@@ -33,19 +28,15 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
 
    public void set(Vector3Stamped other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       geometry_msgs.msg.dds.Vector3PubSubType.staticCopy(other.vector_, vector_);
    }
-
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
-
 
 
    public us.ihmc.euclid.tuple3D.Vector3D getVector()
@@ -71,9 +62,7 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!this.vector_.epsilonEquals(other.vector_, epsilon)) return false;
 
       return true;
@@ -88,9 +77,7 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
 
       Vector3Stamped otherMyClass = (Vector3Stamped) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!this.vector_.equals(otherMyClass.vector_)) return false;
 
       return true;
@@ -102,10 +89,8 @@ public class Vector3Stamped extends Packet<Vector3Stamped> implements Settable<V
       StringBuilder builder = new StringBuilder();
 
       builder.append("Vector3Stamped {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("vector=");
       builder.append(this.vector_);
       builder.append("}");

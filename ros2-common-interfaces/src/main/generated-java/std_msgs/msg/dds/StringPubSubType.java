@@ -40,9 +40,7 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       return current_alignment - initial_alignment;
    }
 
@@ -55,16 +53,13 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getData().length() + 1;
-
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(std_msgs.msg.dds.String data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getData().length() <= 255)
       cdr.write_type_d(data.getData());else
           throw new RuntimeException("data field exceeds the maximum length");
@@ -73,7 +68,6 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void read(std_msgs.msg.dds.String data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getData());	
 
    }
@@ -81,14 +75,12 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    @Override
    public final void serialize(std_msgs.msg.dds.String data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_d("data", data.getData());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.String data)
    {
-
       ser.read_type_d("data", data.getData());
    }
 

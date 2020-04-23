@@ -12,18 +12,13 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Parameter extends Packet<Parameter> implements Settable<Parameter>, EpsilonComparable<Parameter>
 {
-
    public java.lang.StringBuilder name_;
-
    public rcl_interfaces.msg.dds.ParameterValue value_;
 
    public Parameter()
    {
-
       name_ = new java.lang.StringBuilder(255);
-
       value_ = new rcl_interfaces.msg.dds.ParameterValue();
-
    }
 
    public Parameter(Parameter other)
@@ -34,14 +29,11 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
 
    public void set(Parameter other)
    {
-
       name_.setLength(0);
       name_.append(other.name_);
 
-
       rcl_interfaces.msg.dds.ParameterValuePubSubType.staticCopy(other.value_, value_);
    }
-
 
    public void setName(java.lang.String name)
    {
@@ -57,7 +49,6 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
    {
       return name_;
    }
-
 
 
    public rcl_interfaces.msg.dds.ParameterValue getValue()
@@ -83,9 +74,7 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.name_, other.name_, epsilon)) return false;
-
 
       if (!this.value_.epsilonEquals(other.value_, epsilon)) return false;
 
@@ -101,9 +90,7 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
 
       Parameter otherMyClass = (Parameter) other;
 
-
       if (!us.ihmc.idl.IDLTools.equals(this.name_, otherMyClass.name_)) return false;
-
 
       if (!this.value_.equals(otherMyClass.value_)) return false;
 
@@ -116,10 +103,8 @@ public class Parameter extends Packet<Parameter> implements Settable<Parameter>,
       StringBuilder builder = new StringBuilder();
 
       builder.append("Parameter {");
-
       builder.append("name=");
       builder.append(this.name_);      builder.append(", ");
-
       builder.append("value=");
       builder.append(this.value_);
       builder.append("}");

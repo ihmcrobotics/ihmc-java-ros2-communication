@@ -8,13 +8,11 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable<DiagnosticArray>, EpsilonComparable<DiagnosticArray>
 {
-
    /**
             * This message is used to send diagnostic information about the state of the robot.
             * for timestamp
             */
    public std_msgs.msg.dds.Header header_;
-
    /**
             * an array of components being reported on
             */
@@ -22,9 +20,7 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
 
    public DiagnosticArray()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       status_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> (100, new diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType());
 
    }
@@ -37,12 +33,9 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
 
    public void set(DiagnosticArray other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       status_.set(other.status_);
    }
-
 
 
    /**
@@ -53,7 +46,6 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
    {
       return header_;
    }
-
 
 
    /**
@@ -82,9 +74,7 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (this.status_.size() != other.status_.size()) { return false; }
       else
       {
@@ -105,9 +95,7 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
 
       DiagnosticArray otherMyClass = (DiagnosticArray) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!this.status_.equals(otherMyClass.status_)) return false;
 
       return true;
@@ -119,10 +107,8 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
       StringBuilder builder = new StringBuilder();
 
       builder.append("DiagnosticArray {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("status=");
       builder.append(this.status_);
       builder.append("}");

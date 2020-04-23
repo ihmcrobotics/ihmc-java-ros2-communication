@@ -40,11 +40,9 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += action_msgs.msg.dds.GoalStatusPubSubType.getMaxCdrSerializedSize(current_alignment);}
-
       return current_alignment - initial_alignment;
    }
 
@@ -57,19 +55,16 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getStatusList().size(); ++i0)
       {
           current_alignment += action_msgs.msg.dds.GoalStatusPubSubType.getCdrSerializedSize(data.getStatusList().get(i0), current_alignment);}
-
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(action_msgs.msg.dds.GoalStatusArray data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getStatusList().size() <= 100)
       cdr.write_type_e(data.getStatusList());else
           throw new RuntimeException("status_list field exceeds the maximum length");
@@ -78,7 +73,6 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
 
    public static void read(action_msgs.msg.dds.GoalStatusArray data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getStatusList());	
 
    }
@@ -86,14 +80,12 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    @Override
    public final void serialize(action_msgs.msg.dds.GoalStatusArray data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_e("status_list", data.getStatusList());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, action_msgs.msg.dds.GoalStatusArray data)
    {
-
       ser.read_type_e("status_list", data.getStatusList());
    }
 

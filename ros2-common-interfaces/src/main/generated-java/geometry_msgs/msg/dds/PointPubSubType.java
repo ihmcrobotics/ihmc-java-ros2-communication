@@ -32,7 +32,6 @@ public class PointPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euc
     * @param dest Destination object to copy data to
     */
    protected abstract void copy(us.ihmc.euclid.tuple3D.Point3D src, us.ihmc.euclid.tuple3D.Point3D dest);
-
    /**
     * Getter for X
     *
@@ -47,7 +46,6 @@ public class PointPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euc
     * @param x value
     */
    protected abstract void setX(us.ihmc.euclid.tuple3D.Point3D data, double x);
-
    /**
     * Getter for Y
     *
@@ -62,7 +60,6 @@ public class PointPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euc
     * @param y value
     */
    protected abstract void setY(us.ihmc.euclid.tuple3D.Point3D data, double y);
-
    /**
     * Getter for Z
     *
@@ -117,13 +114,10 @@ public class PointPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euc
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -151,12 +145,9 @@ public class PointPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euc
 
    public static void write(us.ihmc.euclid.tuple3D.Point3D data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_6(getImpl().getX(data));
 
-
       cdr.write_type_6(getImpl().getY(data));
-
 
       cdr.write_type_6(getImpl().getZ(data));
 
@@ -175,22 +166,16 @@ public class PointPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euc
    @Override
    public final void serialize(us.ihmc.euclid.tuple3D.Point3D data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_6("x", getImpl().getX(data));
-
       ser.write_type_6("y", getImpl().getY(data));
-
       ser.write_type_6("z", getImpl().getZ(data));
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, us.ihmc.euclid.tuple3D.Point3D data)
    {
-
       getImpl().setX(data, ser.read_type_6("x"));
-
       getImpl().setY(data, ser.read_type_6("y"));
-
       getImpl().setZ(data, ser.read_type_6("z"));
    }
 

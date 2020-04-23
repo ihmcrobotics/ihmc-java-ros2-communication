@@ -40,7 +40,6 @@ public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_ms
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
 
 
@@ -56,7 +55,6 @@ public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_ms
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getClock(), current_alignment);
 
 
@@ -65,13 +63,10 @@ public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_ms
 
    public static void write(rosgraph_msgs.msg.dds.Clock data, us.ihmc.idl.CDR cdr)
    {
-
-      builtin_interfaces.msg.dds.TimePubSubType.write(data.getClock(), cdr);
-   }
+      builtin_interfaces.msg.dds.TimePubSubType.write(data.getClock(), cdr);   }
 
    public static void read(rosgraph_msgs.msg.dds.Clock data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getClock(), cdr);	
 
    }
@@ -79,7 +74,6 @@ public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_ms
    @Override
    public final void serialize(rosgraph_msgs.msg.dds.Clock data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("clock", new builtin_interfaces.msg.dds.TimePubSubType(), data.getClock());
 
    }
@@ -87,9 +81,7 @@ public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_ms
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rosgraph_msgs.msg.dds.Clock data)
    {
-
       ser.read_type_a("clock", new builtin_interfaces.msg.dds.TimePubSubType(), data.getClock());
-
    }
 
    public static void staticCopy(rosgraph_msgs.msg.dds.Clock src, rosgraph_msgs.msg.dds.Clock dest)

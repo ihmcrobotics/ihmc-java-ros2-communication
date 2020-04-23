@@ -8,12 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class ListParametersResult extends Packet<ListParametersResult> implements Settable<ListParametersResult>, EpsilonComparable<ListParametersResult>
 {
-
    /**
             * All parameters under the given prefixes.
             */
    public us.ihmc.idl.IDLSequence.StringBuilderHolder  names_;
-
    /**
             * All prefixes under the given prefixes.
             * TODO(wjwwood): link to prefix definition and rules.
@@ -22,11 +20,8 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
 
    public ListParametersResult()
    {
-
       names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
-
       prefixes_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
-
    }
 
    public ListParametersResult(ListParametersResult other)
@@ -37,12 +32,9 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
 
    public void set(ListParametersResult other)
    {
-
       names_.set(other.names_);
-
       prefixes_.set(other.prefixes_);
    }
-
 
 
    /**
@@ -52,7 +44,6 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
    {
       return names_;
    }
-
 
 
    /**
@@ -82,9 +73,7 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.names_, other.names_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilderSequence(this.prefixes_, other.prefixes_, epsilon)) return false;
 
@@ -101,9 +90,7 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
 
       ListParametersResult otherMyClass = (ListParametersResult) other;
 
-
       if (!this.names_.equals(otherMyClass.names_)) return false;
-
       if (!this.prefixes_.equals(otherMyClass.prefixes_)) return false;
 
       return true;
@@ -115,10 +102,8 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
       StringBuilder builder = new StringBuilder();
 
       builder.append("ListParametersResult {");
-
       builder.append("names=");
       builder.append(this.names_);      builder.append(", ");
-
       builder.append("prefixes=");
       builder.append(this.prefixes_);
       builder.append("}");

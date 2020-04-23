@@ -11,14 +11,11 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<OccupancyGrid>, EpsilonComparable<OccupancyGrid>
 {
-
    public std_msgs.msg.dds.Header header_;
-
    /**
             * MetaData for the map
             */
    public nav_msgs.msg.dds.MapMetaData info_;
-
    /**
             * The map data, in row-major order, starting with (0,0).  Occupancy
             * probabilities are in the range [0,100].  Unknown is -1.
@@ -27,13 +24,9 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
 
    public OccupancyGrid()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       info_ = new nav_msgs.msg.dds.MapMetaData();
-
       data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
-
 
    }
 
@@ -45,21 +38,16 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
 
    public void set(OccupancyGrid other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       nav_msgs.msg.dds.MapMetaDataPubSubType.staticCopy(other.info_, info_);
-
       data_.set(other.data_);
    }
-
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
-
 
 
    /**
@@ -69,7 +57,6 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
    {
       return info_;
    }
-
 
 
    /**
@@ -99,11 +86,8 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!this.info_.epsilonEquals(other.info_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsByteSequence(this.data_, other.data_, epsilon)) return false;
 
 
@@ -119,11 +103,8 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
 
       OccupancyGrid otherMyClass = (OccupancyGrid) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!this.info_.equals(otherMyClass.info_)) return false;
-
       if (!this.data_.equals(otherMyClass.data_)) return false;
 
       return true;
@@ -135,13 +116,10 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
       StringBuilder builder = new StringBuilder();
 
       builder.append("OccupancyGrid {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("info=");
       builder.append(this.info_);      builder.append(", ");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

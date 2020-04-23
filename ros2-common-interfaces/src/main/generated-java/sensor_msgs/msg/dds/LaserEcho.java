@@ -12,7 +12,6 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>, EpsilonComparable<LaserEcho>
 {
-
    /**
             * Multiple values of ranges or intensities.
             */
@@ -20,9 +19,7 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
 
    public LaserEcho()
    {
-
       echoes_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
-
 
    }
 
@@ -34,10 +31,8 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
 
    public void set(LaserEcho other)
    {
-
       echoes_.set(other.echoes_);
    }
-
 
 
    /**
@@ -66,9 +61,7 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsFloatSequence(this.echoes_, other.echoes_, epsilon)) return false;
-
 
       return true;
    }
@@ -82,7 +75,6 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
 
       LaserEcho otherMyClass = (LaserEcho) other;
 
-
       if (!this.echoes_.equals(otherMyClass.echoes_)) return false;
 
       return true;
@@ -94,7 +86,6 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
       StringBuilder builder = new StringBuilder();
 
       builder.append("LaserEcho {");
-
       builder.append("echoes=");
       builder.append(this.echoes_);
       builder.append("}");

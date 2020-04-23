@@ -40,11 +40,9 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += sensor_msgs.msg.dds.JoyFeedbackPubSubType.getMaxCdrSerializedSize(current_alignment);}
-
       return current_alignment - initial_alignment;
    }
 
@@ -57,19 +55,16 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getArray().size(); ++i0)
       {
           current_alignment += sensor_msgs.msg.dds.JoyFeedbackPubSubType.getCdrSerializedSize(data.getArray().get(i0), current_alignment);}
-
 
       return current_alignment - initial_alignment;
    }
 
    public static void write(sensor_msgs.msg.dds.JoyFeedbackArray data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getArray().size() <= 100)
       cdr.write_type_e(data.getArray());else
           throw new RuntimeException("array field exceeds the maximum length");
@@ -78,7 +73,6 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void read(sensor_msgs.msg.dds.JoyFeedbackArray data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getArray());	
 
    }
@@ -86,14 +80,12 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final void serialize(sensor_msgs.msg.dds.JoyFeedbackArray data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_e("array", data.getArray());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.JoyFeedbackArray data)
    {
-
       ser.read_type_e("array", data.getArray());
    }
 

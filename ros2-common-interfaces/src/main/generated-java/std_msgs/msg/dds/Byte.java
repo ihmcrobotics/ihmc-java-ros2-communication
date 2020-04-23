@@ -8,13 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonComparable<Byte>
 {
-
    public byte data_;
 
    public Byte()
    {
-
-
    }
 
    public Byte(Byte other)
@@ -25,11 +22,9 @@ public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonCompara
 
    public void set(Byte other)
    {
-
       data_ = other.data_;
 
    }
-
 
    public void setData(byte data)
    {
@@ -58,9 +53,7 @@ public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonCompara
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
-
 
       return true;
    }
@@ -74,7 +67,6 @@ public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonCompara
 
       Byte otherMyClass = (Byte) other;
 
-
       if(this.data_ != otherMyClass.data_) return false;
 
 
@@ -87,7 +79,6 @@ public class Byte extends Packet<Byte> implements Settable<Byte>, EpsilonCompara
       StringBuilder builder = new StringBuilder();
 
       builder.append("Byte {");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

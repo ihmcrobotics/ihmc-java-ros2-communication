@@ -13,26 +13,17 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Odometry extends Packet<Odometry> implements Settable<Odometry>, EpsilonComparable<Odometry>
 {
-
    public std_msgs.msg.dds.Header header_;
-
    public java.lang.StringBuilder child_frame_id_;
-
    public geometry_msgs.msg.dds.PoseWithCovariance pose_;
-
    public geometry_msgs.msg.dds.TwistWithCovariance twist_;
 
    public Odometry()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       child_frame_id_ = new java.lang.StringBuilder(255);
-
       pose_ = new geometry_msgs.msg.dds.PoseWithCovariance();
-
       twist_ = new geometry_msgs.msg.dds.TwistWithCovariance();
-
    }
 
    public Odometry(Odometry other)
@@ -43,25 +34,19 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
 
    public void set(Odometry other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       child_frame_id_.setLength(0);
       child_frame_id_.append(other.child_frame_id_);
 
-
       geometry_msgs.msg.dds.PoseWithCovariancePubSubType.staticCopy(other.pose_, pose_);
-
       geometry_msgs.msg.dds.TwistWithCovariancePubSubType.staticCopy(other.twist_, twist_);
    }
-
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
-
 
    public void setChildFrameId(java.lang.String child_frame_id)
    {
@@ -79,12 +64,10 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
    }
 
 
-
    public geometry_msgs.msg.dds.PoseWithCovariance getPose()
    {
       return pose_;
    }
-
 
 
    public geometry_msgs.msg.dds.TwistWithCovariance getTwist()
@@ -110,14 +93,10 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.child_frame_id_, other.child_frame_id_, epsilon)) return false;
 
-
       if (!this.pose_.epsilonEquals(other.pose_, epsilon)) return false;
-
       if (!this.twist_.epsilonEquals(other.twist_, epsilon)) return false;
 
       return true;
@@ -132,14 +111,10 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
 
       Odometry otherMyClass = (Odometry) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.child_frame_id_, otherMyClass.child_frame_id_)) return false;
 
-
       if (!this.pose_.equals(otherMyClass.pose_)) return false;
-
       if (!this.twist_.equals(otherMyClass.twist_)) return false;
 
       return true;
@@ -151,16 +126,12 @@ public class Odometry extends Packet<Odometry> implements Settable<Odometry>, Ep
       StringBuilder builder = new StringBuilder();
 
       builder.append("Odometry {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("child_frame_id=");
       builder.append(this.child_frame_id_);      builder.append(", ");
-
       builder.append("pose=");
       builder.append(this.pose_);      builder.append(", ");
-
       builder.append("twist=");
       builder.append(this.twist_);
       builder.append("}");

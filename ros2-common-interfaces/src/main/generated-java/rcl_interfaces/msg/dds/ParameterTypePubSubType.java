@@ -40,7 +40,6 @@ public class ParameterTypePubSubType implements us.ihmc.pubsub.TopicDataType<rcl
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -56,7 +55,6 @@ public class ParameterTypePubSubType implements us.ihmc.pubsub.TopicDataType<rcl
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -66,14 +64,12 @@ public class ParameterTypePubSubType implements us.ihmc.pubsub.TopicDataType<rcl
 
    public static void write(rcl_interfaces.msg.dds.ParameterType data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_7(data.getUnusedPlaceholderField());
 
    }
 
    public static void read(rcl_interfaces.msg.dds.ParameterType data, us.ihmc.idl.CDR cdr)
    {
-
       data.setUnusedPlaceholderField(cdr.read_type_7());
       	
 
@@ -82,16 +78,13 @@ public class ParameterTypePubSubType implements us.ihmc.pubsub.TopicDataType<rcl
    @Override
    public final void serialize(rcl_interfaces.msg.dds.ParameterType data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_7("unused_placeholder_field", data.getUnusedPlaceholderField());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterType data)
    {
-
-      data.setUnusedPlaceholderField(ser.read_type_7("unused_placeholder_field"));
-   }
+      data.setUnusedPlaceholderField(ser.read_type_7("unused_placeholder_field"));   }
 
    public static void staticCopy(rcl_interfaces.msg.dds.ParameterType src, rcl_interfaces.msg.dds.ParameterType dest)
    {

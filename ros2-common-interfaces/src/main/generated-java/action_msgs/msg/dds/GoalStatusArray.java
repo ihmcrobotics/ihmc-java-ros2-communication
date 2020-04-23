@@ -8,7 +8,6 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable<GoalStatusArray>, EpsilonComparable<GoalStatusArray>
 {
-
    /**
             * An array of goal statuses
             */
@@ -16,7 +15,6 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
 
    public GoalStatusArray()
    {
-
       status_list_ = new us.ihmc.idl.IDLSequence.Object<action_msgs.msg.dds.GoalStatus> (100, new action_msgs.msg.dds.GoalStatusPubSubType());
 
    }
@@ -29,10 +27,8 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
 
    public void set(GoalStatusArray other)
    {
-
       status_list_.set(other.status_list_);
    }
-
 
 
    /**
@@ -61,14 +57,12 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (this.status_list_.size() != other.status_list_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.status_list_.size(); i++)
          {  if (!this.status_list_.get(i).epsilonEquals(other.status_list_.get(i), epsilon)) return false; }
       }
-
 
       return true;
    }
@@ -82,7 +76,6 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
 
       GoalStatusArray otherMyClass = (GoalStatusArray) other;
 
-
       if (!this.status_list_.equals(otherMyClass.status_list_)) return false;
 
       return true;
@@ -94,7 +87,6 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
       StringBuilder builder = new StringBuilder();
 
       builder.append("GoalStatusArray {");
-
       builder.append("status_list=");
       builder.append(this.status_list_);
       builder.append("}");

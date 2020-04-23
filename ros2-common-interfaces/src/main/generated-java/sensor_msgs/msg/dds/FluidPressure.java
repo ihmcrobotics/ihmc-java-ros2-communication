@@ -16,17 +16,14 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class FluidPressure extends Packet<FluidPressure> implements Settable<FluidPressure>, EpsilonComparable<FluidPressure>
 {
-
    /**
             * timestamp of the measurement
             */
    public std_msgs.msg.dds.Header header_;
-
    /**
             * Absolute pressure reading in Pascals.
             */
    public double fluid_pressure_;
-
    /**
             * 0 is interpreted as variance unknown
             */
@@ -34,11 +31,7 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
 
    public FluidPressure()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
-
-
    }
 
    public FluidPressure(FluidPressure other)
@@ -49,16 +42,12 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
 
    public void set(FluidPressure other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       fluid_pressure_ = other.fluid_pressure_;
-
 
       variance_ = other.variance_;
 
    }
-
 
 
    /**
@@ -68,7 +57,6 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
    {
       return header_;
    }
-
 
    /**
             * Absolute pressure reading in Pascals.
@@ -84,7 +72,6 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
    {
       return fluid_pressure_;
    }
-
 
    /**
             * 0 is interpreted as variance unknown
@@ -119,11 +106,8 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.fluid_pressure_, other.fluid_pressure_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.variance_, other.variance_, epsilon)) return false;
 
@@ -140,11 +124,8 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
 
       FluidPressure otherMyClass = (FluidPressure) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if(this.fluid_pressure_ != otherMyClass.fluid_pressure_) return false;
-
 
       if(this.variance_ != otherMyClass.variance_) return false;
 
@@ -158,13 +139,10 @@ public class FluidPressure extends Packet<FluidPressure> implements Settable<Flu
       StringBuilder builder = new StringBuilder();
 
       builder.append("FluidPressure {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("fluid_pressure=");
       builder.append(this.fluid_pressure_);      builder.append(", ");
-
       builder.append("variance=");
       builder.append(this.variance_);
       builder.append("}");

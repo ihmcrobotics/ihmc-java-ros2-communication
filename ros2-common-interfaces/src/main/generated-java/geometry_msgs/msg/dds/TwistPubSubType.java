@@ -40,9 +40,7 @@ public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -59,9 +57,7 @@ public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getLinear(), current_alignment);
-
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getAngular(), current_alignment);
 
@@ -71,17 +67,13 @@ public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
 
    public static void write(geometry_msgs.msg.dds.Twist data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getLinear(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getAngular(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.Twist data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getLinear(), cdr);	
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getAngular(), cdr);	
 
    }
@@ -89,9 +81,7 @@ public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    @Override
    public final void serialize(geometry_msgs.msg.dds.Twist data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("linear", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getLinear());
-
 
       ser.write_type_a("angular", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getAngular());
 
@@ -100,9 +90,7 @@ public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.Twist data)
    {
-
       ser.read_type_a("linear", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getLinear());
-
 
       ser.read_type_a("angular", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getAngular());
 

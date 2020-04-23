@@ -8,7 +8,6 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settable<JoyFeedbackArray>, EpsilonComparable<JoyFeedbackArray>
 {
-
    /**
             * This message publishes values for multiple feedback at once.
             */
@@ -16,7 +15,6 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
 
    public JoyFeedbackArray()
    {
-
       array_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.JoyFeedback> (100, new sensor_msgs.msg.dds.JoyFeedbackPubSubType());
 
    }
@@ -29,10 +27,8 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
 
    public void set(JoyFeedbackArray other)
    {
-
       array_.set(other.array_);
    }
-
 
 
    /**
@@ -61,14 +57,12 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (this.array_.size() != other.array_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.array_.size(); i++)
          {  if (!this.array_.get(i).epsilonEquals(other.array_.get(i), epsilon)) return false; }
       }
-
 
       return true;
    }
@@ -82,7 +76,6 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
 
       JoyFeedbackArray otherMyClass = (JoyFeedbackArray) other;
 
-
       if (!this.array_.equals(otherMyClass.array_)) return false;
 
       return true;
@@ -94,7 +87,6 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
       StringBuilder builder = new StringBuilder();
 
       builder.append("JoyFeedbackArray {");
-
       builder.append("array=");
       builder.append(this.array_);
       builder.append("}");

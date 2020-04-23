@@ -8,13 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Int8 extends Packet<Int8> implements Settable<Int8>, EpsilonComparable<Int8>
 {
-
    public byte data_;
 
    public Int8()
    {
-
-
    }
 
    public Int8(Int8 other)
@@ -25,11 +22,9 @@ public class Int8 extends Packet<Int8> implements Settable<Int8>, EpsilonCompara
 
    public void set(Int8 other)
    {
-
       data_ = other.data_;
 
    }
-
 
    public void setData(byte data)
    {
@@ -58,9 +53,7 @@ public class Int8 extends Packet<Int8> implements Settable<Int8>, EpsilonCompara
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
-
 
       return true;
    }
@@ -74,7 +67,6 @@ public class Int8 extends Packet<Int8> implements Settable<Int8>, EpsilonCompara
 
       Int8 otherMyClass = (Int8) other;
 
-
       if(this.data_ != otherMyClass.data_) return false;
 
 
@@ -87,7 +79,6 @@ public class Int8 extends Packet<Int8> implements Settable<Int8>, EpsilonCompara
       StringBuilder builder = new StringBuilder();
 
       builder.append("Int8 {");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

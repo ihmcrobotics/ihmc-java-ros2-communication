@@ -8,12 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, EpsilonComparable<KeyValue>
 {
-
    /**
             * What to label this value when viewing.
             */
    public java.lang.StringBuilder key_;
-
    /**
             * A value to track over time.
             */
@@ -21,11 +19,8 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
 
    public KeyValue()
    {
-
       key_ = new java.lang.StringBuilder(255);
-
       value_ = new java.lang.StringBuilder(255);
-
    }
 
    public KeyValue(KeyValue other)
@@ -36,16 +31,13 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
 
    public void set(KeyValue other)
    {
-
       key_.setLength(0);
       key_.append(other.key_);
-
 
       value_.setLength(0);
       value_.append(other.value_);
 
    }
-
 
    /**
             * What to label this value when viewing.
@@ -70,7 +62,6 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
    {
       return key_;
    }
-
 
    /**
             * A value to track over time.
@@ -114,9 +105,7 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.key_, other.key_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.value_, other.value_, epsilon)) return false;
 
@@ -133,9 +122,7 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
 
       KeyValue otherMyClass = (KeyValue) other;
 
-
       if (!us.ihmc.idl.IDLTools.equals(this.key_, otherMyClass.key_)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.equals(this.value_, otherMyClass.value_)) return false;
 
@@ -149,10 +136,8 @@ public class KeyValue extends Packet<KeyValue> implements Settable<KeyValue>, Ep
       StringBuilder builder = new StringBuilder();
 
       builder.append("KeyValue {");
-
       builder.append("key=");
       builder.append(this.key_);      builder.append(", ");
-
       builder.append("value=");
       builder.append(this.value_);
       builder.append("}");

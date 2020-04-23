@@ -40,12 +40,9 @@ public class FluidPressurePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -62,12 +59,9 @@ public class FluidPressurePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -79,11 +73,8 @@ public class FluidPressurePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
    public static void write(sensor_msgs.msg.dds.FluidPressure data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       cdr.write_type_6(data.getFluidPressure());
-
 
       cdr.write_type_6(data.getVariance());
 
@@ -91,12 +82,9 @@ public class FluidPressurePubSubType implements us.ihmc.pubsub.TopicDataType<sen
 
    public static void read(sensor_msgs.msg.dds.FluidPressure data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
-
       data.setFluidPressure(cdr.read_type_6());
       	
-
       data.setVariance(cdr.read_type_6());
       	
 
@@ -105,24 +93,18 @@ public class FluidPressurePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    @Override
    public final void serialize(sensor_msgs.msg.dds.FluidPressure data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.write_type_6("fluid_pressure", data.getFluidPressure());
-
       ser.write_type_6("variance", data.getVariance());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.FluidPressure data)
    {
-
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       data.setFluidPressure(ser.read_type_6("fluid_pressure"));
-
       data.setVariance(ser.read_type_6("variance"));
    }
 

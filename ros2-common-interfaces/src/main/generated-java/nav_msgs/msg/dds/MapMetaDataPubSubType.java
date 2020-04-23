@@ -40,18 +40,13 @@ public class MapMetaDataPubSubType implements us.ihmc.pubsub.TopicDataType<nav_m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -68,20 +63,15 @@ public class MapMetaDataPubSubType implements us.ihmc.pubsub.TopicDataType<nav_m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getMapLoadTime(), current_alignment);
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
 
       current_alignment += geometry_msgs.msg.dds.PosePubSubType.getCdrSerializedSize(data.getOrigin(), current_alignment);
@@ -92,35 +82,25 @@ public class MapMetaDataPubSubType implements us.ihmc.pubsub.TopicDataType<nav_m
 
    public static void write(nav_msgs.msg.dds.MapMetaData data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getMapLoadTime(), cdr);
-
       cdr.write_type_5(data.getResolution());
-
 
       cdr.write_type_4(data.getWidth());
 
-
       cdr.write_type_4(data.getHeight());
-
 
       geometry_msgs.msg.dds.PosePubSubType.write(data.getOrigin(), cdr);
    }
 
    public static void read(nav_msgs.msg.dds.MapMetaData data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getMapLoadTime(), cdr);	
-
       data.setResolution(cdr.read_type_5());
       	
-
       data.setWidth(cdr.read_type_4());
       	
-
       data.setHeight(cdr.read_type_4());
       	
-
       geometry_msgs.msg.dds.PosePubSubType.read(data.getOrigin(), cdr);	
 
    }
@@ -128,16 +108,11 @@ public class MapMetaDataPubSubType implements us.ihmc.pubsub.TopicDataType<nav_m
    @Override
    public final void serialize(nav_msgs.msg.dds.MapMetaData data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("map_load_time", new builtin_interfaces.msg.dds.TimePubSubType(), data.getMapLoadTime());
 
-
       ser.write_type_5("resolution", data.getResolution());
-
       ser.write_type_4("width", data.getWidth());
-
       ser.write_type_4("height", data.getHeight());
-
       ser.write_type_a("origin", new geometry_msgs.msg.dds.PosePubSubType(), data.getOrigin());
 
    }
@@ -145,16 +120,11 @@ public class MapMetaDataPubSubType implements us.ihmc.pubsub.TopicDataType<nav_m
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, nav_msgs.msg.dds.MapMetaData data)
    {
-
       ser.read_type_a("map_load_time", new builtin_interfaces.msg.dds.TimePubSubType(), data.getMapLoadTime());
 
-
       data.setResolution(ser.read_type_5("resolution"));
-
       data.setWidth(ser.read_type_4("width"));
-
       data.setHeight(ser.read_type_4("height"));
-
       ser.read_type_a("origin", new geometry_msgs.msg.dds.PosePubSubType(), data.getOrigin());
 
    }

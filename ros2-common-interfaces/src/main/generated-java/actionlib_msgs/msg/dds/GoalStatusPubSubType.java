@@ -40,12 +40,9 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += actionlib_msgs.msg.dds.GoalIDPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
@@ -61,12 +58,9 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += actionlib_msgs.msg.dds.GoalIDPubSubType.getCdrSerializedSize(data.getGoalId(), current_alignment);
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getText().length() + 1;
@@ -77,11 +71,8 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
 
    public static void write(actionlib_msgs.msg.dds.GoalStatus data, us.ihmc.idl.CDR cdr)
    {
-
       actionlib_msgs.msg.dds.GoalIDPubSubType.write(data.getGoalId(), cdr);
-
       cdr.write_type_9(data.getStatus());
-
 
       if(data.getText().length() <= 255)
       cdr.write_type_d(data.getText());else
@@ -91,12 +82,9 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
 
    public static void read(actionlib_msgs.msg.dds.GoalStatus data, us.ihmc.idl.CDR cdr)
    {
-
       actionlib_msgs.msg.dds.GoalIDPubSubType.read(data.getGoalId(), cdr);	
-
       data.setStatus(cdr.read_type_9());
       	
-
       cdr.read_type_d(data.getText());	
 
    }
@@ -104,24 +92,18 @@ public class GoalStatusPubSubType implements us.ihmc.pubsub.TopicDataType<action
    @Override
    public final void serialize(actionlib_msgs.msg.dds.GoalStatus data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("goal_id", new actionlib_msgs.msg.dds.GoalIDPubSubType(), data.getGoalId());
 
-
       ser.write_type_9("status", data.getStatus());
-
       ser.write_type_d("text", data.getText());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, actionlib_msgs.msg.dds.GoalStatus data)
    {
-
       ser.read_type_a("goal_id", new actionlib_msgs.msg.dds.GoalIDPubSubType(), data.getGoalId());
 
-
       data.setStatus(ser.read_type_9("status"));
-
       ser.read_type_d("text", data.getText());
    }
 
