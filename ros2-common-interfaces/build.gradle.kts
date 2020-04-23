@@ -49,7 +49,7 @@ mainDependencies {
 }
 
 generatorDependencies {
-   api("us.ihmc:ros2-msg-to-pubsub-generator:$version")
+   api("us.ihmc:ros2-msg-to-pubsub-generator:source")
 }
 
 val show by tasks.creating {

@@ -18,6 +18,6 @@ mainDependencies {
 }
 
 testDependencies {
-   api("us.ihmc:ros2-common-interfaces:$version")
-   api("us.ihmc:ros2-msg-to-pubsub-generator-test:$version")
+   api("us.ihmc:ros2-common-interfaces:source")
+   api("us.ihmc:ros2-msg-to-pubsub-generator-test:source")
 }
