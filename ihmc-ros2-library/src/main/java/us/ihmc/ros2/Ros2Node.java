@@ -33,9 +33,9 @@ public class Ros2Node extends Ros2NodeBasics
     * domain ID (0) Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param name                 Name for the node
+    *       {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
+    *       PubSubImplementation}
+    * @param name Name for the node
     * @throws IOException if no participant can be made
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, String name) throws IOException
@@ -48,10 +48,10 @@ public class Ros2Node extends Ros2NodeBasics
     * ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param name                 Name for the node
-    * @param namespace            namespace for the ros node i.e. DDS partition
+    *       {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
+    *       PubSubImplementation}
+    * @param name Name for the node
+    * @param namespace namespace for the ros node i.e. DDS partition
     * @throws IOException if no participant can be made
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, String name, String namespace) throws IOException
@@ -64,9 +64,9 @@ public class Ros2Node extends Ros2NodeBasics
     * domain ID (0)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param name                 Name for the node
+    *       {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
+    *       PubSubImplementation}
+    * @param name Name for the node
     * @throws IOException if no participant can be made
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name) throws IOException
@@ -78,10 +78,10 @@ public class Ros2Node extends Ros2NodeBasics
     * Create a new ROS2 node. Domain ID is set to the default ROS2 domain ID (0)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param name                 Name for the node
-    * @param namespace            namespace for the ros node i.e. DDS partition
+    *       {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
+    *       PubSubImplementation}
+    * @param name Name for the node
+    * @param namespace namespace for the ros node i.e. DDS partition
     * @throws IOException if no participant can be made
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace) throws IOException
@@ -93,11 +93,11 @@ public class Ros2Node extends Ros2NodeBasics
     * Create a new ROS2 node. Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param name                 Name for the node
-    * @param namespace            namespace for the ros node i.e. DDS partition
-    * @param domainId             Domain ID for the ros node
+    *       {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
+    *       PubSubImplementation}
+    * @param name Name for the node
+    * @param namespace namespace for the ros node i.e. DDS partition
+    * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
@@ -109,12 +109,12 @@ public class Ros2Node extends Ros2NodeBasics
     * Create a new ROS2 node.
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param ros2Distro           Version of ROS2 to use.
-    * @param name                 Name for the node
-    * @param namespace            namespace for the ros node i.e. DDS partition
-    * @param domainId             Domain ID for the ros node
+    *       {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
+    *       PubSubImplementation}
+    * @param ros2Distro Version of ROS2 to use.
+    * @param name Name for the node
+    * @param namespace namespace for the ros node i.e. DDS partition
+    * @param domainId Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
    public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId) throws IOException
@@ -126,20 +126,23 @@ public class Ros2Node extends Ros2NodeBasics
     * Create a new ROS2 node.
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param ros2Distro           Version of ROS2 to use.
-    * @param name                 Name for the node
-    * @param namespace            namespace for the ros node i.e. DDS partition
-    * @param domainId             Domain ID for the ros node
-    * @param addressRestriction   Restrict network traffic to the given address. When provided, it
-    *                             should describe one of the addresses of the computer hosting this
-    *                             node. Optional, ignored when {@code null}.
+    *       {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
+    *       PubSubImplementation}
+    * @param ros2Distro Version of ROS2 to use.
+    * @param name Name for the node
+    * @param namespace namespace for the ros node i.e. DDS partition
+    * @param domainId Domain ID for the ros node
+    * @param addressRestriction Restrict network traffic to the given address. When provided, it
+    *       should describe one of the addresses of the computer hosting this
+    *       node. Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
-   public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId,
-                   InetAddress addressRestriction)
-         throws IOException
+   public Ros2Node(PubSubImplementation pubSubImplementation,
+                   Ros2Distro ros2Distro,
+                   String name,
+                   String namespace,
+                   int domainId,
+                   InetAddress addressRestriction) throws IOException
    {
       super(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
    }
