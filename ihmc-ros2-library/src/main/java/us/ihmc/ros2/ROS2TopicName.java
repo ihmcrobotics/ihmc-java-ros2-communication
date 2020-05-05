@@ -18,6 +18,7 @@ public class ROS2TopicName
    private InputOrOutput inputOrOutput;
    private Class<?> messageType;
    private String name;
+   private Boolean isRemote = null; // can be used by pub/sub creators to set input/output
 
    private String topicNameInBuildOrder = "";
 
@@ -42,7 +43,7 @@ public class ROS2TopicName
 
       topicNameInBuildOrder += processTopicNamePart(prefix);
 
-      return new ROS2TopicName(this);
+      return copyOfThis();
    }
 
    public ROS2TopicName robot(String robotName)
@@ -51,7 +52,7 @@ public class ROS2TopicName
 
       topicNameInBuildOrder += processTopicNamePart(robotName);
 
-      return new ROS2TopicName(this);
+      return copyOfThis();
    }
 
    public ROS2TopicName module(String moduleName)
@@ -60,7 +61,7 @@ public class ROS2TopicName
 
       topicNameInBuildOrder += processTopicNamePart(moduleName);
 
-      return new ROS2TopicName(this);
+      return copyOfThis();
    }
 
    public ROS2TopicName input()
@@ -69,7 +70,7 @@ public class ROS2TopicName
 
       topicNameInBuildOrder += processTopicNamePart(inputOrOutput.name());
 
-      return new ROS2TopicName(this);
+      return copyOfThis();
    }
 
    public ROS2TopicName output()
@@ -78,7 +79,48 @@ public class ROS2TopicName
 
       topicNameInBuildOrder += processTopicNamePart(inputOrOutput.name());
 
-      return new ROS2TopicName(this);
+      return copyOfThis();
+   }
+
+   public ROS2TopicName setInputOrOutputForPublisher()
+   {
+      if (isRemote != null)
+      {
+         if (isRemote)
+         {
+            return input();
+         }
+         else
+         {
+            return output();
+         }
+      }
+
+      return copyOfThis();
+   }
+
+   public ROS2TopicName setInputOrOutputForSubscriber()
+   {
+      if (isRemote != null)
+      {
+         if (isRemote)
+         {
+            return output();
+         }
+         else
+         {
+            return input();
+         }
+      }
+
+      return copyOfThis();
+   }
+
+   public ROS2TopicName setRemote(boolean isRemote)
+   {
+      this.isRemote = isRemote;
+
+      return copyOfThis();
    }
 
    public ROS2TopicName type(Class<?> messageType)
@@ -87,7 +129,7 @@ public class ROS2TopicName
 
       topicNameInBuildOrder += messageTypeToTopicNamePart(messageType);
 
-      return new ROS2TopicName(this);
+      return copyOfThis();
    }
 
    public ROS2TopicName name(String name)
@@ -96,7 +138,12 @@ public class ROS2TopicName
 
       topicNameInBuildOrder += processTopicNamePart(name);
 
-      return new ROS2TopicName(this);
+      return copyOfThis();
+   }
+
+   public Boolean isRemote()
+   {
+      return isRemote;
    }
 
    public String toStringInBuildOrder()
@@ -157,5 +204,10 @@ public class ROS2TopicName
       }
 
       return string;
+   }
+
+   private ROS2TopicName copyOfThis()
+   {
+      return new ROS2TopicName(this);
    }
 }
