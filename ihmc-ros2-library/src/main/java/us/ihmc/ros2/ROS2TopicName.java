@@ -21,6 +21,8 @@ public class ROS2TopicName
    private Class<?> messageType;
    private String name;
 
+   private String topicNameInBuildOrder = "";
+
    public ROS2TopicName()
    {
 
@@ -40,12 +42,16 @@ public class ROS2TopicName
    {
       prefixes.add(prefix);
 
+      topicNameInBuildOrder += processTopicNamePart(prefix);
+
       return new ROS2TopicName(this);
    }
 
    public ROS2TopicName robot(String robotName)
    {
       this.robotName = robotName;
+
+      topicNameInBuildOrder += processTopicNamePart(robotName);
 
       return new ROS2TopicName(this);
    }
@@ -54,12 +60,16 @@ public class ROS2TopicName
    {
       this.moduleName = moduleName;
 
+      topicNameInBuildOrder += processTopicNamePart(moduleName);
+
       return new ROS2TopicName(this);
    }
 
    public ROS2TopicName input()
    {
       inputOrOutput = InputOrOutput.INPUT;
+
+      topicNameInBuildOrder += processTopicNamePart(inputOrOutput.name());
 
       return new ROS2TopicName(this);
    }
@@ -68,6 +78,8 @@ public class ROS2TopicName
    {
       inputOrOutput = InputOrOutput.OUTPUT;
 
+      topicNameInBuildOrder += processTopicNamePart(inputOrOutput.name());
+
       return new ROS2TopicName(this);
    }
 
@@ -75,14 +87,27 @@ public class ROS2TopicName
    {
       this.messageType = messageType;
 
+      String messageTypePart = messageType.getSimpleName();
+      messageTypePart = StringUtils.removeEnd(messageTypePart, "Packet"); // This makes BehaviorControlModePacket => BehaviorControlMode
+      messageTypePart = StringUtils.removeEnd(messageTypePart, "Message"); // This makes ArmTrajectoryMessage => ArmTrajectory
+      // This makes ArmTrajectory => arm_trajectory & handle acronyms as follows: REAStateRequest => rea_state_request
+      topicNameInBuildOrder += processTopicNamePart(ROS2TopicNameTools.toROSTopicFormat(messageTypePart));
+
       return new ROS2TopicName(this);
    }
 
-   public ROS2TopicName name(String titleCasedName)
+   public ROS2TopicName name(String name)
    {
-      this.name = titleCasedName;
+      this.name = name;
+
+      topicNameInBuildOrder += processTopicNamePart(name);
 
       return new ROS2TopicName(this);
+   }
+
+   public String toStringInBuildOrder()
+   {
+      return topicNameInBuildOrder;
    }
 
    @Override
