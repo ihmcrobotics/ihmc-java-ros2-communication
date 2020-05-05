@@ -2,11 +2,8 @@ package us.ihmc.ros2;
 
 import java.util.ArrayList;
 
-public class ROS2TopicName
+public class ROS2TopicName implements ROS2MessageTopicNameGenerator
 {
-   public static final String OUTPUT_ROS_TOPIC_PREFIX = "/output";
-   public static final String INPUT_ROS_TOPIC_PREFIX = "/input";
-
    private enum InputOrOutput
    {
       INPUT, OUTPUT;
@@ -139,6 +136,12 @@ public class ROS2TopicName
       topicNameInBuildOrder += processTopicNamePart(name);
 
       return copyOfThis();
+   }
+
+   @Override
+   public String generateTopicName(Class<?> messageType)
+   {
+      return type(messageType).toString();
    }
 
    public Boolean isRemote()
