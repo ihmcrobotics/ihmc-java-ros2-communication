@@ -68,8 +68,8 @@ class Ros2NodeBasics implements Ros2NodeInterface
       this.domain = DomainFactory.getDomain(pubSubImplementation);
       this.ros2Distro = ros2Distro;
 
-      Ros2TopicNameMangler.checkNodename(name);
-      Ros2TopicNameMangler.checkNamespace(namespace);
+      ROS2TopicNameTools.checkNodename(name);
+      ROS2TopicNameTools.checkNamespace(namespace);
 
       this.nodeName = name;
       this.namespace = namespace;
@@ -152,12 +152,12 @@ class Ros2NodeBasics implements Ros2NodeInterface
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Distro,
-                                                               publisherAttributes,
-                                                               namespace,
-                                                               nodeName,
-                                                               topicName,
-                                                               qosProfile.isAvoidRosNamespaceConventions());
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
+                                                             publisherAttributes,
+                                                             namespace,
+                                                             nodeName,
+                                                             topicName,
+                                                             qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
@@ -276,12 +276,12 @@ class Ros2NodeBasics implements Ros2NodeInterface
       subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      Ros2TopicNameMangler.assignNameAndPartitionsToAttributes(ros2Distro,
-                                                               subscriberAttributes,
-                                                               namespace,
-                                                               nodeName,
-                                                               topicName,
-                                                               qosProfile.isAvoidRosNamespaceConventions());
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
+                                                             subscriberAttributes,
+                                                             namespace,
+                                                             nodeName,
+                                                             topicName,
+                                                             qosProfile.isAvoidRosNamespaceConventions());
 
       return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }

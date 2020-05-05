@@ -20,4 +20,5 @@ mainDependencies {
 testDependencies {
    api("us.ihmc:ros2-common-interfaces:source")
    api("us.ihmc:ros2-msg-to-pubsub-generator-test:source")
+   api("com.google.guava:guava:18.0")
 }
