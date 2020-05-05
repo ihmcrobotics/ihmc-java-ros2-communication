@@ -1,5 +1,7 @@
 package us.ihmc.ros2;
 
+import us.ihmc.commons.thread.TypedNotification;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
