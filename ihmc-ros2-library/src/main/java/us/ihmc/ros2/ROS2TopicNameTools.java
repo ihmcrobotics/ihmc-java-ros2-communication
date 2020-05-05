@@ -15,6 +15,7 @@
  */
 package us.ihmc.ros2;
 
+import org.apache.commons.lang3.StringUtils;
 import us.ihmc.pubsub.attributes.PublisherAttributes;
 import us.ihmc.pubsub.attributes.SubscriberAttributes;
 
@@ -26,6 +27,19 @@ import us.ihmc.pubsub.attributes.SubscriberAttributes;
 public class ROS2TopicNameTools
 {
    public static final String ROS_TOPIC_PREFIX = "rt";
+
+   public static String removeMessageOrPacketSuffixFromTypeName(Class<?> messageType)
+   {
+      return removeMessageOrPacketSuffixFromTypeName(messageType.getSimpleName());
+   }
+
+   public static String removeMessageOrPacketSuffixFromTypeName(String simpleTypeName)
+   {
+      String suffixRemoved = simpleTypeName;
+      suffixRemoved = StringUtils.removeEnd(suffixRemoved, "Packet"); // This makes BehaviorControlModePacket => BehaviorControlMode
+      suffixRemoved = StringUtils.removeEnd(suffixRemoved, "Message"); // This makes ArmTrajectoryMessage => ArmTrajectory
+      return suffixRemoved;
+   }
 
    /**
     * Converts the given {@code String} from a camel-case convention to ROS topic name convention which

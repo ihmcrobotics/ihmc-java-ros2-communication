@@ -1,7 +1,5 @@
 package us.ihmc.ros2;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.ArrayList;
 
 public class ROS2TopicName
@@ -87,11 +85,7 @@ public class ROS2TopicName
    {
       this.messageType = messageType;
 
-      String messageTypePart = messageType.getSimpleName();
-      messageTypePart = StringUtils.removeEnd(messageTypePart, "Packet"); // This makes BehaviorControlModePacket => BehaviorControlMode
-      messageTypePart = StringUtils.removeEnd(messageTypePart, "Message"); // This makes ArmTrajectoryMessage => ArmTrajectory
-      // This makes ArmTrajectory => arm_trajectory & handle acronyms as follows: REAStateRequest => rea_state_request
-      topicNameInBuildOrder += processTopicNamePart(ROS2TopicNameTools.toROSTopicFormat(messageTypePart));
+      topicNameInBuildOrder += messageTypeToTopicNamePart(messageType);
 
       return new ROS2TopicName(this);
    }
@@ -124,15 +118,18 @@ public class ROS2TopicName
       topicName += processTopicNamePart(moduleName);
       topicName += processTopicNamePart(inputOrOutput == null ? null : inputOrOutput.name());
 
-      String messageTypePart = messageType.getSimpleName();
-      messageTypePart = StringUtils.removeEnd(messageTypePart, "Packet"); // This makes BehaviorControlModePacket => BehaviorControlMode
-      messageTypePart = StringUtils.removeEnd(messageTypePart, "Message"); // This makes ArmTrajectoryMessage => ArmTrajectory
-      // This makes ArmTrajectory => arm_trajectory & handle acronyms as follows: REAStateRequest => rea_state_request
-      topicName += processTopicNamePart(ROS2TopicNameTools.toROSTopicFormat(messageTypePart));
+      topicName += messageTypeToTopicNamePart(messageType);
 
       topicName += processTopicNamePart(name);
 
       return topicName;
+   }
+
+   private String messageTypeToTopicNamePart(Class<?> messageType)
+   {
+      String messageTypePart = ROS2TopicNameTools.removeMessageOrPacketSuffixFromTypeName(messageType);
+      // This makes ArmTrajectory => arm_trajectory & handle acronyms as follows: REAStateRequest => rea_state_request
+      return processTopicNamePart(ROS2TopicNameTools.toROSTopicFormat(messageTypePart));
    }
 
    private String titleCasedToUnderscoreCased(String titleCased)
