@@ -16,8 +16,13 @@
 package us.ihmc.ros2;
 
 import org.apache.commons.lang3.StringUtils;
+import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.attributes.PublisherAttributes;
 import us.ihmc.pubsub.attributes.SubscriberAttributes;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.function.Supplier;
 
 /**
  * Helper class to convert from namespace and topic name to the correct DDS partition and topic for ROS2 interoperability
@@ -27,6 +32,7 @@ import us.ihmc.pubsub.attributes.SubscriberAttributes;
 public class ROS2TopicNameTools
 {
    public static final String ROS_TOPIC_PREFIX = "rt";
+   public static final String pubSubTypeGetterName = "getPubSubType";
 
    public static String removeMessageOrPacketSuffixFromTypeName(Class<?> messageType)
    {
@@ -283,5 +289,45 @@ public class ROS2TopicNameTools
       {
          throw new RuntimeException("Invalid topic name: topic name must not contain characters other than alphanumerics, '_', '~': " + topic);
       }
+   }
+
+   public static <T> T newMessageInstance(Class<T> messageType)
+   {
+      try
+      {
+         return messageType.newInstance();
+      }
+      catch (InstantiationException | IllegalAccessException e)
+      {
+         throw new RuntimeException("Something went wrong when invoking " + messageType.getSimpleName() + "'s empty constructor.", e);
+      }
+   }
+
+   @SuppressWarnings({"unchecked", "rawtypes"})
+   public static <T> TopicDataType<T> newMessageTopicDataTypeInstance(Class<T> messageType)
+   {
+      Method pubSubTypeGetter;
+
+      try
+      {
+         pubSubTypeGetter = messageType.getDeclaredMethod(pubSubTypeGetterName);
+      }
+      catch (NoSuchMethodException | SecurityException e)
+      {
+         throw new RuntimeException("Something went wrong when looking up for the method " + messageType.getSimpleName() + "." + pubSubTypeGetterName + "().",
+                                    e);
+      }
+
+      TopicDataType<T> topicDataType;
+
+      try
+      {
+         topicDataType = (TopicDataType<T>) ((Supplier) pubSubTypeGetter.invoke(newMessageInstance(messageType))).get();
+      }
+      catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+      {
+         throw new RuntimeException("Something went wrong when invoking the method " + messageType.getSimpleName() + "." + pubSubTypeGetterName + "().", e);
+      }
+      return topicDataType;
    }
 }
