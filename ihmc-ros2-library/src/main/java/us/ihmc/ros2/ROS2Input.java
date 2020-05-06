@@ -53,7 +53,7 @@ public class ROS2Input<T>
       if (messageFilter.accept(incomingData))
       {
          atomicReference.set(incomingData);
-         messageNotification.add(incomingData);
+         messageNotification.set(incomingData);
          for (Consumer<T> userCallback : userCallbacks)
          {
             userCallback.accept(incomingData);
