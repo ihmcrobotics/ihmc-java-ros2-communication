@@ -4,16 +4,11 @@ import java.util.Objects;
 
 public class ROS2TopicName
 {
-   public static final String INPUT = "input";
-   public static final String OUTPUT = "output";
-
    private String prefix;
    private String suffix;
    private String robotName;
    private String moduleName;
-   private ROS2TopicQualifier inputOrOutput;
    private Class<?> messageType;
-   private Boolean isRemote = null; // can be used by pub/sub creators to set input/output
 
    public ROS2TopicName()
    {
@@ -26,9 +21,7 @@ public class ROS2TopicName
       this.suffix = topicNameToCopy.suffix;
       this.robotName = topicNameToCopy.robotName;
       this.moduleName = topicNameToCopy.moduleName;
-      this.inputOrOutput = topicNameToCopy.inputOrOutput;
       this.messageType = topicNameToCopy.messageType;
-      this.isRemote = topicNameToCopy.isRemote;
    }
 
    public ROS2TopicName prefix(String prefix)
@@ -66,11 +59,6 @@ public class ROS2TopicName
       return copiedTopicName;
    }
 
-   public ROS2TopicName qualifier(ROS2TopicQualifier qualifier)
-   {
-      return suffix(qualifier == null ? "" : qualifier.name().toLowerCase());
-   }
-
    public ROS2TopicName type(Class<?> messageType)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
@@ -85,7 +73,6 @@ public class ROS2TopicName
       topicName += processTopicNamePart(prefix);
       topicName += processTopicNamePart(robotName);
       topicName += processTopicNamePart(moduleName);
-      topicName += processTopicNamePart(inputOrOutput == null ? null : inputOrOutput.name());
       topicName += messageTypeToTopicNamePart(messageType);
       topicName += processTopicNamePart(suffix);
       return topicName;
@@ -102,16 +89,14 @@ public class ROS2TopicName
       return Objects.equals(prefix, topicName.prefix)
              && Objects.equals(robotName, topicName.robotName)
              && Objects.equals(moduleName, topicName.moduleName)
-             && inputOrOutput == topicName.inputOrOutput
              && Objects.equals(messageType, topicName.messageType)
-             && Objects.equals(suffix, topicName.suffix)
-             && Objects.equals(isRemote, topicName.isRemote);
+             && Objects.equals(suffix, topicName.suffix);
    }
 
    @Override
    public int hashCode()
    {
-      return Objects.hash(prefix, robotName, moduleName, inputOrOutput, messageType, suffix, isRemote);
+      return Objects.hash(prefix, robotName, moduleName, messageType, suffix);
    }
 
    private String messageTypeToTopicNamePart(Class<?> messageType)

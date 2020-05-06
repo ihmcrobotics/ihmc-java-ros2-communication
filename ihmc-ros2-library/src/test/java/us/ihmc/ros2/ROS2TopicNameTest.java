@@ -61,7 +61,8 @@ public class ROS2TopicNameTest
       assertEquals("/ihmc/robot_one/hello/int8", int8.toString());
       assertEquals("/ihmc/robot_one/hello/int8/meow", meow.toString());
 
-      assertEquals("/ihmc", meow.module(null).robot(null).type(null).qualifier(null).toString());
+      assertEquals("/ihmc", meow.suffix(null).module(null).robot(null).type(null).toString());
+      assertEquals("", meow.prefix(null).suffix(null).module(null).robot(null).type(null).toString());
    }
 
    @Test
