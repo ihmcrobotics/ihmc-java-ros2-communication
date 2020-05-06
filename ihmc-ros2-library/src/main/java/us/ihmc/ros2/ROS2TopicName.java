@@ -2,17 +2,15 @@ package us.ihmc.ros2;
 
 import java.util.ArrayList;
 
+import static us.ihmc.ros2.ROS2TopicQualifier.INPUT;
+import static us.ihmc.ros2.ROS2TopicQualifier.OUTPUT;
+
 public class ROS2TopicName implements ROS2MessageTopicNameGenerator
 {
-   private enum InputOrOutput
-   {
-      INPUT, OUTPUT;
-   }
-
    private final ArrayList<String> prefixes = new ArrayList<>();
    private String robotName;
    private String moduleName;
-   private InputOrOutput inputOrOutput;
+   private ROS2TopicQualifier inputOrOutput;
    private Class<?> messageType;
    private String name;
    private Boolean isRemote = null; // can be used by pub/sub creators to set input/output
@@ -56,14 +54,14 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    public ROS2TopicName input()
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.inputOrOutput = InputOrOutput.INPUT;
+      copiedTopicName.inputOrOutput = INPUT;
       return copiedTopicName;
    }
 
    public ROS2TopicName output()
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.inputOrOutput = InputOrOutput.OUTPUT;
+      copiedTopicName.inputOrOutput = OUTPUT;
       return copiedTopicName;
    }
 
@@ -74,13 +72,13 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
       {
          copiedTopicName.inputOrOutput = null;
       }
-      else if (qualifier.equals(ROS2TopicQualifier.INPUT))
+      else if (qualifier.equals(INPUT))
       {
-         copiedTopicName.inputOrOutput = InputOrOutput.INPUT;
+         copiedTopicName.inputOrOutput = INPUT;
       }
       else // OUTPUT
       {
-         copiedTopicName.inputOrOutput = InputOrOutput.OUTPUT;
+         copiedTopicName.inputOrOutput = OUTPUT;
       }
       return copiedTopicName;
    }

@@ -1,10 +1,10 @@
 package us.ihmc.ros2;
 
-@Deprecated
+/**
+ * TODO Finalize name. It's a bit over general.
+ */
 public enum ROS2TopicQualifier
 {
-   @Deprecated
    INPUT,
-   @Deprecated
    OUTPUT;
 }
