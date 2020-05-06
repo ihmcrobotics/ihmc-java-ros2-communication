@@ -1,6 +1,7 @@
 package us.ihmc.ros2;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static us.ihmc.ros2.ROS2TopicQualifier.INPUT;
 import static us.ihmc.ros2.ROS2TopicQualifier.OUTPUT;
@@ -28,6 +29,7 @@ public class ROS2TopicName
       this.inputOrOutput = topicNameToCopy.inputOrOutput;
       this.messageType = topicNameToCopy.messageType;
       this.name = topicNameToCopy.name;
+      this.isRemote = topicNameToCopy.isRemote;
    }
 
    public ROS2TopicName prefix(String prefix)
@@ -170,6 +172,29 @@ public class ROS2TopicName
       topicName += processTopicNamePart(name);
 
       return topicName;
+   }
+
+   @Override
+   public boolean equals(Object other)
+   {
+      if (this == other)
+         return true;
+      if (other == null || getClass() != other.getClass())
+         return false;
+      ROS2TopicName topicName = (ROS2TopicName) other;
+      return prefixes.equals(topicName.prefixes)
+             && Objects.equals(robotName, topicName.robotName)
+             && Objects.equals(moduleName, topicName.moduleName)
+             && inputOrOutput == topicName.inputOrOutput
+             && Objects.equals(messageType, topicName.messageType)
+             && Objects.equals(name, topicName.name)
+             && Objects.equals(isRemote, topicName.isRemote);
+   }
+
+   @Override
+   public int hashCode()
+   {
+      return Objects.hash(prefixes, robotName, moduleName, inputOrOutput, messageType, name, isRemote);
    }
 
    private String messageTypeToTopicNamePart(Class<?> messageType)

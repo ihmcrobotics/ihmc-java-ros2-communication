@@ -4,6 +4,8 @@ import com.google.common.base.CaseFormat;
 import org.junit.jupiter.api.Test;
 import std_msgs.msg.dds.Int8;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ROS2TopicNameTest
@@ -16,6 +18,21 @@ public class ROS2TopicNameTest
    class ExampleTypeMessage
    {
 
+   }
+
+   @Test
+   public void testEqualsAndHash()
+   {
+      ROS2TopicName topicName1 = new ROS2TopicName().prefix("ihmc");
+      ROS2TopicName topicName2 = new ROS2TopicName().prefix("ihmc");
+
+      assertEquals(topicName1, topicName2);
+
+      HashMap<ROS2TopicName, Object> map = new HashMap<>();
+      map.put(topicName1, null);
+      map.put(topicName2, null);
+
+      assertEquals(1, map.size());
    }
 
    @Test
@@ -38,14 +55,20 @@ public class ROS2TopicNameTest
       assertEquals("/ihmc", ihmcPrefixed2.toString());
       ROS2TopicName hello = ihmcPrefixed2.module("hello");
       ROS2TopicName robotOne = hello.robot("robot_one");
-      ROS2TopicName int8 = robotOne.type(Int8.class);
+      ROS2TopicName remote = robotOne.setRemote(true);
+      ROS2TopicName int8 = remote.type(Int8.class);
       ROS2TopicName meow = int8.name("meow");
       ROS2TopicName input = meow.input();
       ROS2TopicName output = input.output();
 
       assertEquals("/ihmc/hello", hello.toString());
+      assertNull(hello.isRemote());
       assertEquals("/ihmc/robot_one/hello", robotOne.toString());
+      assertNull(robotOne.isRemote());
+      assertEquals("/ihmc/robot_one/hello", remote.toString());
+      assertTrue(remote.isRemote());
       assertEquals("/ihmc/robot_one/hello/int8", int8.toString());
+      assertTrue(int8.isRemote());
       assertEquals("/ihmc/robot_one/hello/int8/meow", meow.toString());
       assertEquals("/ihmc/robot_one/hello/input/int8/meow", input.toString());
       assertEquals("/ihmc/robot_one/hello/output/int8/meow", output.toString());
