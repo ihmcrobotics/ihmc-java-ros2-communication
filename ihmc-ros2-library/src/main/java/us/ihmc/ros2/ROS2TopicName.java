@@ -151,6 +151,13 @@ public class ROS2TopicName
       return copiedTopicName;
    }
 
+   /**
+    *
+    * TODO Consider suffix instead, or additionally
+    *
+    * @param name
+    * @return
+    */
    public ROS2TopicName name(String name)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
