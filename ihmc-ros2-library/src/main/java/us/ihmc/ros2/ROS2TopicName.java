@@ -17,8 +17,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    private String name;
    private Boolean isRemote = null; // can be used by pub/sub creators to set input/output
 
-   private String topicNameInBuildOrder = "";
-
    public ROS2TopicName()
    {
 
@@ -38,7 +36,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.prefixes.add(prefix);
-      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(prefix);
       return copiedTopicName;
    }
 
@@ -46,7 +43,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.robotName = robotName;
-      topicNameInBuildOrder += processTopicNamePart(robotName);
       return copiedTopicName;
    }
 
@@ -54,7 +50,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.moduleName = moduleName;
-      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(moduleName);
       return copiedTopicName;
    }
 
@@ -62,7 +57,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.inputOrOutput = InputOrOutput.INPUT;
-      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(copiedTopicName.inputOrOutput.name());
       return copiedTopicName;
    }
 
@@ -70,7 +64,24 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.inputOrOutput = InputOrOutput.OUTPUT;
-      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(copiedTopicName.inputOrOutput.name());
+      return copiedTopicName;
+   }
+
+   public ROS2TopicName qualifier(ROS2TopicQualifier qualifier)
+   {
+      ROS2TopicName copiedTopicName = copyOfThis();
+      if (qualifier == null)
+      {
+         copiedTopicName.inputOrOutput = null;
+      }
+      else if (qualifier.equals(ROS2TopicQualifier.INPUT))
+      {
+         copiedTopicName.inputOrOutput = InputOrOutput.INPUT;
+      }
+      else // OUTPUT
+      {
+         copiedTopicName.inputOrOutput = InputOrOutput.OUTPUT;
+      }
       return copiedTopicName;
    }
 
@@ -122,7 +133,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.messageType = messageType;
-      copiedTopicName.topicNameInBuildOrder += messageTypeToTopicNamePart(messageType);
       return copiedTopicName;
    }
 
@@ -130,7 +140,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.name = name;
-      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(name);
       return copiedTopicName;
    }
 
@@ -143,11 +152,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
    public Boolean isRemote()
    {
       return isRemote;
-   }
-
-   public String toStringInBuildOrder()
-   {
-      return topicNameInBuildOrder;
    }
 
    @Override
