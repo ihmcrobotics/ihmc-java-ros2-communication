@@ -2,6 +2,7 @@ package us.ihmc.ros2;
 
 import com.google.common.base.CaseFormat;
 import org.junit.jupiter.api.Test;
+import std_msgs.msg.dds.Int8;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +23,16 @@ public class ROS2TopicNameTest
    {
       ROS2TopicName topicName = new ROS2TopicName().prefix("ihmc").robot("atlas").module("rea").input().type(ExampleTypeMessage.class).name("one");
       assertEquals("/ihmc/atlas/rea/input/example_type/one", topicName.toString());
+
+      ROS2TopicName ihmcPrefixed = new ROS2TopicName().prefix("ihmc");
+      assertEquals("/ihmc", ihmcPrefixed.toString());
+      ihmcPrefixed.module("hello");
+      ihmcPrefixed.robot("robot_one");
+      ihmcPrefixed.type(Int8.class);
+      ihmcPrefixed.name("meow");
+      ihmcPrefixed.input();
+      ihmcPrefixed.output();
+      assertEquals("/ihmc", ihmcPrefixed.toString());
    }
 
    @Test

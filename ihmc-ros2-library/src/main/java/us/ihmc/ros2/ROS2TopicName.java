@@ -36,106 +36,102 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
 
    public ROS2TopicName prefix(String prefix)
    {
-      prefixes.add(prefix);
-
-      topicNameInBuildOrder += processTopicNamePart(prefix);
-
-      return copyOfThis();
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.prefixes.add(prefix);
+      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(prefix);
+      return copiedTopicName;
    }
 
    public ROS2TopicName robot(String robotName)
    {
-      this.robotName = robotName;
-
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.robotName = robotName;
       topicNameInBuildOrder += processTopicNamePart(robotName);
-
-      return copyOfThis();
+      return copiedTopicName;
    }
 
    public ROS2TopicName module(String moduleName)
    {
-      this.moduleName = moduleName;
-
-      topicNameInBuildOrder += processTopicNamePart(moduleName);
-
-      return copyOfThis();
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.moduleName = moduleName;
+      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(moduleName);
+      return copiedTopicName;
    }
 
    public ROS2TopicName input()
    {
-      inputOrOutput = InputOrOutput.INPUT;
-
-      topicNameInBuildOrder += processTopicNamePart(inputOrOutput.name());
-
-      return copyOfThis();
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.inputOrOutput = InputOrOutput.INPUT;
+      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(copiedTopicName.inputOrOutput.name());
+      return copiedTopicName;
    }
 
    public ROS2TopicName output()
    {
-      inputOrOutput = InputOrOutput.OUTPUT;
-
-      topicNameInBuildOrder += processTopicNamePart(inputOrOutput.name());
-
-      return copyOfThis();
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.inputOrOutput = InputOrOutput.OUTPUT;
+      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(copiedTopicName.inputOrOutput.name());
+      return copiedTopicName;
    }
 
    public ROS2TopicName setInputOrOutputForPublisher()
    {
+      ROS2TopicName copiedTopicName = copyOfThis();
       if (isRemote != null)
       {
          if (isRemote)
          {
-            return input();
+            return copiedTopicName.input();
          }
          else
          {
-            return output();
+            return copiedTopicName.output();
          }
       }
 
-      return copyOfThis();
+      return copiedTopicName;
    }
 
    public ROS2TopicName setInputOrOutputForSubscriber()
    {
+      ROS2TopicName copiedTopicName = copyOfThis();
       if (isRemote != null)
       {
          if (isRemote)
          {
-            return output();
+            return copiedTopicName.output();
          }
          else
          {
-            return input();
+            return copiedTopicName.input();
          }
       }
 
-      return copyOfThis();
+      return copiedTopicName;
    }
 
+   // TODO Rename? Copy method?
    public ROS2TopicName setRemote(boolean isRemote)
    {
-      this.isRemote = isRemote;
-
-      return copyOfThis();
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.isRemote = isRemote;
+      return copiedTopicName;
    }
 
    public ROS2TopicName type(Class<?> messageType)
    {
-      this.messageType = messageType;
-
-      topicNameInBuildOrder += messageTypeToTopicNamePart(messageType);
-
-      return copyOfThis();
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.messageType = messageType;
+      copiedTopicName.topicNameInBuildOrder += messageTypeToTopicNamePart(messageType);
+      return copiedTopicName;
    }
 
    public ROS2TopicName name(String name)
    {
-      this.name = name;
-
-      topicNameInBuildOrder += processTopicNamePart(name);
-
-      return copyOfThis();
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.name = name;
+      copiedTopicName.topicNameInBuildOrder += processTopicNamePart(name);
+      return copiedTopicName;
    }
 
    @Override
@@ -177,6 +173,11 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
 
    private String messageTypeToTopicNamePart(Class<?> messageType)
    {
+      if (messageType == null)
+      {
+         return "";
+      }
+
       String messageTypePart = ROS2TopicNameTools.removeMessageOrPacketSuffixFromTypeName(messageType);
       // This makes ArmTrajectory => arm_trajectory & handle acronyms as follows: REAStateRequest => rea_state_request
       return processTopicNamePart(ROS2TopicNameTools.toROSTopicFormat(messageTypePart));
