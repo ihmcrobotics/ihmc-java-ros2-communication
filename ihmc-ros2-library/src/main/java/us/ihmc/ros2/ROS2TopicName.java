@@ -9,11 +9,11 @@ import static us.ihmc.ros2.ROS2TopicQualifier.OUTPUT;
 public class ROS2TopicName
 {
    private final ArrayList<String> prefixes = new ArrayList<>();
+   private final ArrayList<String> suffixes = new ArrayList<>();
    private String robotName;
    private String moduleName;
    private ROS2TopicQualifier inputOrOutput;
    private Class<?> messageType;
-   private String name;
    private Boolean isRemote = null; // can be used by pub/sub creators to set input/output
 
    public ROS2TopicName()
@@ -24,11 +24,11 @@ public class ROS2TopicName
    public ROS2TopicName(ROS2TopicName topicNameToCopy)
    {
       this.prefixes.addAll(topicNameToCopy.prefixes);
+      this.suffixes.addAll(topicNameToCopy.suffixes);
       this.robotName = topicNameToCopy.robotName;
       this.moduleName = topicNameToCopy.moduleName;
       this.inputOrOutput = topicNameToCopy.inputOrOutput;
       this.messageType = topicNameToCopy.messageType;
-      this.name = topicNameToCopy.name;
       this.isRemote = topicNameToCopy.isRemote;
    }
 
@@ -36,6 +36,20 @@ public class ROS2TopicName
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.prefixes.add(prefix);
+      return copiedTopicName;
+   }
+
+   /**
+    *
+    * TODO Consider suffix instead, or additionally
+    *
+    * @param suffix
+    * @return
+    */
+   public ROS2TopicName suffix(String suffix)
+   {
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.suffixes.add(suffix);
       return copiedTopicName;
    }
 
@@ -55,93 +69,17 @@ public class ROS2TopicName
 
    public ROS2TopicName input()
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.inputOrOutput = INPUT;
-      return copiedTopicName;
+      return suffix(INPUT.name());
    }
 
    public ROS2TopicName output()
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.inputOrOutput = OUTPUT;
-      return copiedTopicName;
+      return suffix(OUTPUT.name());
    }
 
    public ROS2TopicName qualifier(ROS2TopicQualifier qualifier)
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      if (qualifier == null)
-      {
-         copiedTopicName.inputOrOutput = null;
-      }
-      else if (qualifier.equals(INPUT))
-      {
-         copiedTopicName.inputOrOutput = INPUT;
-      }
-      else // OUTPUT
-      {
-         copiedTopicName.inputOrOutput = OUTPUT;
-      }
-      return copiedTopicName;
-   }
-
-   public ROS2TopicName setInputOrOutputForPublisher()
-   {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      if (isRemote != null)
-      {
-         if (isRemote)
-         {
-            return copiedTopicName.input();
-         }
-         else
-         {
-            return copiedTopicName.output();
-         }
-      }
-
-      return copiedTopicName;
-   }
-
-   public ROS2TopicName setInputOrOutputForSubscriber()
-   {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      if (isRemote != null)
-      {
-         if (isRemote)
-         {
-            return copiedTopicName.output();
-         }
-         else
-         {
-            return copiedTopicName.input();
-         }
-      }
-
-      return copiedTopicName;
-   }
-
-   // TODO Rename? Copy method?
-
-   /**
-    * This method allows the {@link #setInputOrOutputForPublisher} and {@link #setInputOrOutputForSubscriber}
-    * methods to work. When either of those two methods are called, "/input" or "/output" will be added
-    * to this topic name accordingly.
-    *
-    * This framework allows for createSubscriber and createPublisher tools to call
-    * {@link #setInputOrOutputForPublisher} and {@link #setInputOrOutputForSubscriber}
-    * thus reducing the chance of error in setting {@link #input} or {@link #output} manually.
-    *
-    * TODO Rename?
-    *
-    * @param isRemote
-    * @return
-    */
-   public ROS2TopicName setRemote(boolean isRemote)
-   {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.isRemote = isRemote;
-      return copiedTopicName;
+      return suffix(qualifier.name());
    }
 
    public ROS2TopicName type(Class<?> messageType)
@@ -149,25 +87,6 @@ public class ROS2TopicName
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.messageType = messageType;
       return copiedTopicName;
-   }
-
-   /**
-    *
-    * TODO Consider suffix instead, or additionally
-    *
-    * @param name
-    * @return
-    */
-   public ROS2TopicName name(String name)
-   {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.name = name;
-      return copiedTopicName;
-   }
-
-   public Boolean isRemote()
-   {
-      return isRemote;
    }
 
    @Override
@@ -186,7 +105,10 @@ public class ROS2TopicName
 
       topicName += messageTypeToTopicNamePart(messageType);
 
-      topicName += processTopicNamePart(name);
+      for (String suffix : suffixes)
+      {
+         topicName += processTopicNamePart(suffix);
+      }
 
       return topicName;
    }
@@ -204,14 +126,14 @@ public class ROS2TopicName
              && Objects.equals(moduleName, topicName.moduleName)
              && inputOrOutput == topicName.inputOrOutput
              && Objects.equals(messageType, topicName.messageType)
-             && Objects.equals(name, topicName.name)
+             && suffixes.equals(topicName.suffixes)
              && Objects.equals(isRemote, topicName.isRemote);
    }
 
    @Override
    public int hashCode()
    {
-      return Objects.hash(prefixes, robotName, moduleName, inputOrOutput, messageType, name, isRemote);
+      return Objects.hash(prefixes, robotName, moduleName, inputOrOutput, messageType, suffixes, isRemote);
    }
 
    private String messageTypeToTopicNamePart(Class<?> messageType)

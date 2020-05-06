@@ -38,7 +38,7 @@ public class ROS2TopicNameTest
    @Test
    public void testROS2TopicName()
    {
-      ROS2TopicName topicName = new ROS2TopicName().prefix("ihmc").robot("atlas").module("rea").input().type(ExampleTypeMessage.class).name("one");
+      ROS2TopicName topicName = new ROS2TopicName().prefix("ihmc").robot("atlas").module("rea").input().type(ExampleTypeMessage.class).suffix("one");
       assertEquals("/ihmc/atlas/rea/input/example_type/one", topicName.toString());
 
       ROS2TopicName ihmcPrefixed = new ROS2TopicName().prefix("ihmc");
@@ -46,7 +46,7 @@ public class ROS2TopicNameTest
       ihmcPrefixed.module("hello");
       ihmcPrefixed.robot("robot_one");
       ihmcPrefixed.type(Int8.class);
-      ihmcPrefixed.name("meow");
+      ihmcPrefixed.suffix("meow");
       ihmcPrefixed.input();
       ihmcPrefixed.output();
       assertEquals("/ihmc", ihmcPrefixed.toString());
@@ -55,20 +55,14 @@ public class ROS2TopicNameTest
       assertEquals("/ihmc", ihmcPrefixed2.toString());
       ROS2TopicName hello = ihmcPrefixed2.module("hello");
       ROS2TopicName robotOne = hello.robot("robot_one");
-      ROS2TopicName remote = robotOne.setRemote(true);
-      ROS2TopicName int8 = remote.type(Int8.class);
-      ROS2TopicName meow = int8.name("meow");
+      ROS2TopicName int8 = robotOne.type(Int8.class);
+      ROS2TopicName meow = int8.suffix("meow");
       ROS2TopicName input = meow.input();
       ROS2TopicName output = input.output();
 
       assertEquals("/ihmc/hello", hello.toString());
-      assertNull(hello.isRemote());
       assertEquals("/ihmc/robot_one/hello", robotOne.toString());
-      assertNull(robotOne.isRemote());
-      assertEquals("/ihmc/robot_one/hello", remote.toString());
-      assertTrue(remote.isRemote());
       assertEquals("/ihmc/robot_one/hello/int8", int8.toString());
-      assertTrue(int8.isRemote());
       assertEquals("/ihmc/robot_one/hello/int8/meow", meow.toString());
       assertEquals("/ihmc/robot_one/hello/input/int8/meow", input.toString());
       assertEquals("/ihmc/robot_one/hello/output/int8/meow", output.toString());
@@ -76,7 +70,7 @@ public class ROS2TopicNameTest
       assertEquals("/ihmc/robot_one/hello/output/int8/meow", input.qualifier(ROS2TopicQualifier.OUTPUT).toString());
       assertEquals("/ihmc/robot_one/hello/int8/meow", input.qualifier(null).toString());
 
-      assertEquals("/ihmc", output.module(null).robot(null).type(null).name(null).qualifier(null).toString());
+      assertEquals("/ihmc/meow", output.module(null).robot(null).type(null).qualifier(null).toString());
    }
 
    @Test
