@@ -122,6 +122,21 @@ public class ROS2TopicName
    }
 
    // TODO Rename? Copy method?
+
+   /**
+    * This method allows the {@link #setInputOrOutputForPublisher} and {@link #setInputOrOutputForSubscriber}
+    * methods to work. When either of those two methods are called, "/input" or "/output" will be added
+    * to this topic name accordingly.
+    *
+    * This framework allows for createSubscriber and createPublisher tools to call
+    * {@link #setInputOrOutputForPublisher} and {@link #setInputOrOutputForSubscriber}
+    * thus reducing the chance of error in setting {@link #input} or {@link #output} manually.
+    *
+    * TODO Rename?
+    *
+    * @param isRemote
+    * @return
+    */
    public ROS2TopicName setRemote(boolean isRemote)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
