@@ -158,11 +158,6 @@ public class ROS2TopicName
       return copiedTopicName;
    }
 
-   public String generateTopicName(Class<?> messageType)
-   {
-      return type(messageType).toString();
-   }
-
    public Boolean isRemote()
    {
       return isRemote;
