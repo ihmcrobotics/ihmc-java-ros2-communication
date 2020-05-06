@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static us.ihmc.ros2.ROS2TopicQualifier.INPUT;
 import static us.ihmc.ros2.ROS2TopicQualifier.OUTPUT;
 
-public class ROS2TopicName implements ROS2MessageTopicNameGenerator
+public class ROS2TopicName
 {
    private final ArrayList<String> prefixes = new ArrayList<>();
    private String robotName;
@@ -141,7 +141,6 @@ public class ROS2TopicName implements ROS2MessageTopicNameGenerator
       return copiedTopicName;
    }
 
-   @Override
    public String generateTopicName(Class<?> messageType)
    {
       return type(messageType).toString();
