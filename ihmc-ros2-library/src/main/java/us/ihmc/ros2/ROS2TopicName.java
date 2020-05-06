@@ -1,15 +1,14 @@
 package us.ihmc.ros2;
 
-import java.util.ArrayList;
 import java.util.Objects;
-
-import static us.ihmc.ros2.ROS2TopicQualifier.INPUT;
-import static us.ihmc.ros2.ROS2TopicQualifier.OUTPUT;
 
 public class ROS2TopicName
 {
-   private final ArrayList<String> prefixes = new ArrayList<>();
-   private final ArrayList<String> suffixes = new ArrayList<>();
+   public static final String INPUT = "input";
+   public static final String OUTPUT = "output";
+
+   private String prefix;
+   private String suffix;
    private String robotName;
    private String moduleName;
    private ROS2TopicQualifier inputOrOutput;
@@ -23,8 +22,8 @@ public class ROS2TopicName
 
    public ROS2TopicName(ROS2TopicName topicNameToCopy)
    {
-      this.prefixes.addAll(topicNameToCopy.prefixes);
-      this.suffixes.addAll(topicNameToCopy.suffixes);
+      this.prefix = topicNameToCopy.prefix;
+      this.suffix = topicNameToCopy.suffix;
       this.robotName = topicNameToCopy.robotName;
       this.moduleName = topicNameToCopy.moduleName;
       this.inputOrOutput = topicNameToCopy.inputOrOutput;
@@ -35,7 +34,7 @@ public class ROS2TopicName
    public ROS2TopicName prefix(String prefix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.prefixes.add(prefix);
+      copiedTopicName.prefix = prefix;
       return copiedTopicName;
    }
 
@@ -49,7 +48,7 @@ public class ROS2TopicName
    public ROS2TopicName suffix(String suffix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.suffixes.add(suffix);
+      copiedTopicName.suffix = suffix;
       return copiedTopicName;
    }
 
@@ -67,19 +66,9 @@ public class ROS2TopicName
       return copiedTopicName;
    }
 
-   public ROS2TopicName input()
-   {
-      return suffix(INPUT.name());
-   }
-
-   public ROS2TopicName output()
-   {
-      return suffix(OUTPUT.name());
-   }
-
    public ROS2TopicName qualifier(ROS2TopicQualifier qualifier)
    {
-      return suffix(qualifier.name());
+      return suffix(qualifier == null ? "" : qualifier.name().toLowerCase());
    }
 
    public ROS2TopicName type(Class<?> messageType)
@@ -93,23 +82,12 @@ public class ROS2TopicName
    public String toString()
    {
       String topicName = "";
-
-      for (String prefix : prefixes)
-      {
-         topicName += processTopicNamePart(prefix);
-      }
-
+      topicName += processTopicNamePart(prefix);
       topicName += processTopicNamePart(robotName);
       topicName += processTopicNamePart(moduleName);
       topicName += processTopicNamePart(inputOrOutput == null ? null : inputOrOutput.name());
-
       topicName += messageTypeToTopicNamePart(messageType);
-
-      for (String suffix : suffixes)
-      {
-         topicName += processTopicNamePart(suffix);
-      }
-
+      topicName += processTopicNamePart(suffix);
       return topicName;
    }
 
@@ -121,19 +99,19 @@ public class ROS2TopicName
       if (other == null || getClass() != other.getClass())
          return false;
       ROS2TopicName topicName = (ROS2TopicName) other;
-      return prefixes.equals(topicName.prefixes)
+      return Objects.equals(prefix, topicName.prefix)
              && Objects.equals(robotName, topicName.robotName)
              && Objects.equals(moduleName, topicName.moduleName)
              && inputOrOutput == topicName.inputOrOutput
              && Objects.equals(messageType, topicName.messageType)
-             && suffixes.equals(topicName.suffixes)
+             && Objects.equals(suffix, topicName.suffix)
              && Objects.equals(isRemote, topicName.isRemote);
    }
 
    @Override
    public int hashCode()
    {
-      return Objects.hash(prefixes, robotName, moduleName, inputOrOutput, messageType, suffixes, isRemote);
+      return Objects.hash(prefix, robotName, moduleName, inputOrOutput, messageType, suffix, isRemote);
    }
 
    private String messageTypeToTopicNamePart(Class<?> messageType)

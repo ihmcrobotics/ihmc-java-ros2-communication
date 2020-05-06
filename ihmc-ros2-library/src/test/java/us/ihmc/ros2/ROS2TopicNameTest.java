@@ -38,8 +38,8 @@ public class ROS2TopicNameTest
    @Test
    public void testROS2TopicName()
    {
-      ROS2TopicName topicName = new ROS2TopicName().prefix("ihmc").robot("atlas").module("rea").input().type(ExampleTypeMessage.class).suffix("one");
-      assertEquals("/ihmc/atlas/rea/input/example_type/one", topicName.toString());
+      ROS2TopicName topicName = new ROS2TopicName().prefix("ihmc").robot("atlas").module("rea").type(ExampleTypeMessage.class).suffix("one");
+      assertEquals("/ihmc/atlas/rea/example_type/one", topicName.toString());
 
       ROS2TopicName ihmcPrefixed = new ROS2TopicName().prefix("ihmc");
       assertEquals("/ihmc", ihmcPrefixed.toString());
@@ -47,8 +47,6 @@ public class ROS2TopicNameTest
       ihmcPrefixed.robot("robot_one");
       ihmcPrefixed.type(Int8.class);
       ihmcPrefixed.suffix("meow");
-      ihmcPrefixed.input();
-      ihmcPrefixed.output();
       assertEquals("/ihmc", ihmcPrefixed.toString());
 
       ROS2TopicName ihmcPrefixed2 = new ROS2TopicName().prefix("ihmc");
@@ -57,20 +55,13 @@ public class ROS2TopicNameTest
       ROS2TopicName robotOne = hello.robot("robot_one");
       ROS2TopicName int8 = robotOne.type(Int8.class);
       ROS2TopicName meow = int8.suffix("meow");
-      ROS2TopicName input = meow.input();
-      ROS2TopicName output = input.output();
 
       assertEquals("/ihmc/hello", hello.toString());
       assertEquals("/ihmc/robot_one/hello", robotOne.toString());
       assertEquals("/ihmc/robot_one/hello/int8", int8.toString());
       assertEquals("/ihmc/robot_one/hello/int8/meow", meow.toString());
-      assertEquals("/ihmc/robot_one/hello/input/int8/meow", input.toString());
-      assertEquals("/ihmc/robot_one/hello/output/int8/meow", output.toString());
-      assertEquals("/ihmc/robot_one/hello/input/int8/meow", input.qualifier(ROS2TopicQualifier.INPUT).toString());
-      assertEquals("/ihmc/robot_one/hello/output/int8/meow", input.qualifier(ROS2TopicQualifier.OUTPUT).toString());
-      assertEquals("/ihmc/robot_one/hello/int8/meow", input.qualifier(null).toString());
 
-      assertEquals("/ihmc/meow", output.module(null).robot(null).type(null).qualifier(null).toString());
+      assertEquals("/ihmc", meow.module(null).robot(null).type(null).qualifier(null).toString());
    }
 
    @Test
