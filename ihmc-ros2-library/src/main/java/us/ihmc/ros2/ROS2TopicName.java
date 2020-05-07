@@ -32,21 +32,21 @@ public class ROS2TopicName
    public ROS2TopicName withPrefix(String prefix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.prefix = processTopicNamePart(prefix);
+      copiedTopicName.prefix = ROS2TopicNameTools.processTopicNamePart(prefix);
       return copiedTopicName;
    }
 
    public ROS2TopicName withRobot(String robotName)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.robotName = processTopicNamePart(robotName);
+      copiedTopicName.robotName = ROS2TopicNameTools.processTopicNamePart(robotName);
       return copiedTopicName;
    }
 
    public ROS2TopicName withModule(String moduleName)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.moduleName = processTopicNamePart(moduleName);
+      copiedTopicName.moduleName = ROS2TopicNameTools.processTopicNamePart(moduleName);
       return copiedTopicName;
    }
 
@@ -63,21 +63,21 @@ public class ROS2TopicName
    public ROS2TopicName withIOQualifier(String ioQualifier)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.ioQualifier = processTopicNamePart(ioQualifier);
+      copiedTopicName.ioQualifier = ROS2TopicNameTools.processTopicNamePart(ioQualifier);
       return copiedTopicName;
    }
 
    public ROS2TopicName withType(Class<?> messageType)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.messageType = messageTypeToTopicNamePart(messageType);
+      copiedTopicName.messageType = ROS2TopicNameTools.messageTypeToTopicNamePart(messageType);
       return copiedTopicName;
    }
 
    public ROS2TopicName withSuffix(String suffix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.suffix = processTopicNamePart(suffix);
+      copiedTopicName.suffix = ROS2TopicNameTools.processTopicNamePart(suffix);
       return copiedTopicName;
    }
 
@@ -114,45 +114,6 @@ public class ROS2TopicName
    public int hashCode()
    {
       return Objects.hash(prefix, robotName, moduleName, ioQualifier, messageType, suffix);
-   }
-
-   private String messageTypeToTopicNamePart(Class<?> messageType)
-   {
-      if (messageType == null)
-      {
-         return "";
-      }
-
-      String messageTypePart = ROS2TopicNameTools.removeMessageOrPacketSuffixFromTypeName(messageType);
-      // This makes ArmTrajectory => arm_trajectory & handle acronyms as follows: REAStateRequest => rea_state_request
-      return processTopicNamePart(ROS2TopicNameTools.toROSTopicFormat(messageTypePart));
-   }
-
-   private String titleCasedToUnderscoreCased(String titleCased)
-   {
-      return titleCased.trim().toLowerCase().replaceAll("\\s+", "_");
-   }
-
-   private String processTopicNamePart(String string)
-   {
-      if (string == null)
-      {
-         return "";
-      }
-
-      string = string.trim().toLowerCase();
-
-      if (string.isEmpty())
-      {
-         return "";
-      }
-
-      if (!string.startsWith("/"))
-      {
-         string =  "/" + string;
-      }
-
-      return string;
    }
 
    private ROS2TopicName copyOfThis()

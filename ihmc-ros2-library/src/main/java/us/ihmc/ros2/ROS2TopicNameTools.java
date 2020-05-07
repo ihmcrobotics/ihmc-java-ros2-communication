@@ -330,4 +330,43 @@ public class ROS2TopicNameTools
       }
       return topicDataType;
    }
+
+   public static String messageTypeToTopicNamePart(Class<?> messageType)
+   {
+      if (messageType == null)
+      {
+         return "";
+      }
+
+      String messageTypePart = removeMessageOrPacketSuffixFromTypeName(messageType);
+      // This makes ArmTrajectory => arm_trajectory & handle acronyms as follows: REAStateRequest => rea_state_request
+      return processTopicNamePart(toROSTopicFormat(messageTypePart));
+   }
+
+   public static String processTopicNamePart(String string)
+   {
+      if (string == null)
+      {
+         return "";
+      }
+
+      string = string.trim().toLowerCase();
+
+      if (string.isEmpty())
+      {
+         return "";
+      }
+
+      if (!string.startsWith("/"))
+      {
+         string =  "/" + string;
+      }
+
+      return string;
+   }
+
+   public static String titleCasedToUnderscoreCased(String titleCased)
+   {
+      return titleCased.trim().toLowerCase().replaceAll("\\s+", "_");
+   }
 }
