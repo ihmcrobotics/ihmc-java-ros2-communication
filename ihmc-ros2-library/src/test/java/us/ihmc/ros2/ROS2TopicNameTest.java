@@ -47,6 +47,10 @@ public class ROS2TopicNameTest
       ihmcPrefixed.withRobot("robot_one");
       ihmcPrefixed.withType(Int8.class);
       ihmcPrefixed.withSuffix("meow");
+      ihmcPrefixed.withInput();
+      ihmcPrefixed.withOutput();
+      ihmcPrefixed.withIOQualifier("client");
+      ihmcPrefixed.withIOQualifier("server");
       assertEquals("/ihmc", ihmcPrefixed.toString());
 
       ROS2TopicName ihmcPrefixed2 = new ROS2TopicName().withPrefix("ihmc");
@@ -55,14 +59,18 @@ public class ROS2TopicNameTest
       ROS2TopicName robotOne = hello.withRobot("robot_one");
       ROS2TopicName int8 = robotOne.withType(Int8.class);
       ROS2TopicName meow = int8.withSuffix("meow");
+      ROS2TopicName input = meow.withInput();
+      ROS2TopicName output = input.withOutput();
 
       assertEquals("/ihmc/hello", hello.toString());
       assertEquals("/ihmc/robot_one/hello", robotOne.toString());
       assertEquals("/ihmc/robot_one/hello/int8", int8.toString());
       assertEquals("/ihmc/robot_one/hello/int8/meow", meow.toString());
+      assertEquals("/ihmc/robot_one/hello/input/int8/meow", input.toString());
+      assertEquals("/ihmc/robot_one/hello/output/int8/meow", output.toString());
 
-      assertEquals("/ihmc", meow.withSuffix(null).withModule(null).withRobot(null).withType(null).toString());
-      assertEquals("", meow.withPrefix(null).withSuffix(null).withModule(null).withRobot(null).withType(null).toString());
+      assertEquals("/ihmc", output.withSuffix(null).withIOQualifier(null).withModule(null).withRobot(null).withType(null).toString());
+      assertEquals("", output.withPrefix(null).withIOQualifier(null).withSuffix(null).withModule(null).withRobot(null).withType(null).toString());
    }
 
    @Test
