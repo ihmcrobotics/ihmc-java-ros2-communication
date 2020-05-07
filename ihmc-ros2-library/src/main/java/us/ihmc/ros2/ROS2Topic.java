@@ -1,35 +1,36 @@
 package us.ihmc.ros2;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 import static us.ihmc.ros2.ROS2TopicNameTools.messageTypeToTopicNamePart;
 
-public class ROS2Topic<T extends Class<?>>
+public class ROS2Topic<T>
 {
-   private final T messageType;
+   private final Class<T> messageType;
    private final Function<String, String> typeToNameFunction;
    private final ROS2TopicName topicName;
 
-   public ROS2Topic(T messageType, Function<String, String> typeNameToTopicName)
+   public ROS2Topic(Class<T> messageType, Function<String, String> typeNameToTopicName)
    {
       this(messageType, typeNameToTopicName, null);
    }
 
-   private ROS2Topic(T messageType, Function<String, String> typeNameToTopicName, ROS2TopicName topicName)
+   private ROS2Topic(Class<T> messageType, Function<String, String> typeNameToTopicName, ROS2TopicName topicName)
    {
       this.messageType = messageType;
       this.typeToNameFunction = typeNameToTopicName;
       this.topicName = topicName;
    }
 
-   public ROS2Topic withTopicName(ROS2TopicName ros2TopicName)
+   public ROS2Topic<T> withTopicName(ROS2TopicName ros2TopicName)
    {
-      return new ROS2Topic(messageType,
-                           typeToNameFunction,
-                           ros2TopicName.withSuffix(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType))));
+      return new ROS2Topic<T>(messageType,
+                              typeToNameFunction,
+                              ros2TopicName.withSuffix(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType))));
    }
 
-   public T getMessageType()
+   public Class<T> getMessageType()
    {
       return messageType;
    }
@@ -37,5 +38,24 @@ public class ROS2Topic<T extends Class<?>>
    public ROS2TopicName getTopicName()
    {
       return topicName;
+   }
+
+   @Override
+   public boolean equals(Object o)
+   {
+      if (this == o)
+         return true;
+      if (o == null || getClass() != o.getClass())
+         return false;
+      ROS2Topic<?> ros2Topic = (ROS2Topic<?>) o;
+      return messageType.equals(ros2Topic.messageType)
+             && typeToNameFunction.equals(ros2Topic.typeToNameFunction)
+             && Objects.equals(topicName, ros2Topic.topicName);
+   }
+
+   @Override
+   public int hashCode()
+   {
+      return Objects.hash(messageType, typeToNameFunction, topicName);
    }
 }
