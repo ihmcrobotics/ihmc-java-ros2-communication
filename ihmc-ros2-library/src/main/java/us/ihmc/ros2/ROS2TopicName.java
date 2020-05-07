@@ -7,6 +7,7 @@ public class ROS2TopicName
    private String prefix = "";
    private String robotName = "";
    private String moduleName = "";
+   private String ioQualifier = "";
    private String messageType = "";
    private String suffix = "";
 
@@ -20,6 +21,7 @@ public class ROS2TopicName
       this.prefix = topicNameToCopy.prefix;
       this.robotName = topicNameToCopy.robotName;
       this.moduleName = topicNameToCopy.moduleName;
+      this.ioQualifier = topicNameToCopy.ioQualifier;
       this.messageType = topicNameToCopy.messageType;
       this.suffix = topicNameToCopy.suffix;
    }
@@ -28,13 +30,6 @@ public class ROS2TopicName
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.prefix = processTopicNamePart(prefix);
-      return copiedTopicName;
-   }
-
-   public ROS2TopicName suffix(String suffix)
-   {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.suffix = processTopicNamePart(suffix);
       return copiedTopicName;
    }
 
@@ -52,10 +47,24 @@ public class ROS2TopicName
       return copiedTopicName;
    }
 
+   public ROS2TopicName ioQualifier(String ioQualifier)
+   {
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.ioQualifier = processTopicNamePart(ioQualifier);
+      return copiedTopicName;
+   }
+
    public ROS2TopicName type(Class<?> messageType)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.messageType = messageTypeToTopicNamePart(messageType);
+      return copiedTopicName;
+   }
+
+   public ROS2TopicName suffix(String suffix)
+   {
+      ROS2TopicName copiedTopicName = copyOfThis();
+      copiedTopicName.suffix = processTopicNamePart(suffix);
       return copiedTopicName;
    }
 
@@ -66,6 +75,7 @@ public class ROS2TopicName
       topicName += prefix;
       topicName += robotName;
       topicName += moduleName;
+      topicName += ioQualifier;
       topicName += messageType;
       topicName += suffix;
       return topicName;
@@ -82,6 +92,7 @@ public class ROS2TopicName
       return Objects.equals(prefix, topicName.prefix)
              && Objects.equals(robotName, topicName.robotName)
              && Objects.equals(moduleName, topicName.moduleName)
+             && Objects.equals(ioQualifier, topicName.ioQualifier)
              && Objects.equals(messageType, topicName.messageType)
              && Objects.equals(suffix, topicName.suffix);
    }
@@ -89,7 +100,7 @@ public class ROS2TopicName
    @Override
    public int hashCode()
    {
-      return Objects.hash(prefix, robotName, moduleName, messageType, suffix);
+      return Objects.hash(prefix, robotName, moduleName, ioQualifier, messageType, suffix);
    }
 
    private String messageTypeToTopicNamePart(Class<?> messageType)
