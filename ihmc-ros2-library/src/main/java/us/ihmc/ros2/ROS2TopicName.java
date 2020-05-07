@@ -29,21 +29,21 @@ public class ROS2TopicName
       this.suffix = topicNameToCopy.suffix;
    }
 
-   public ROS2TopicName prefix(String prefix)
+   public ROS2TopicName withPrefix(String prefix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.prefix = processTopicNamePart(prefix);
       return copiedTopicName;
    }
 
-   public ROS2TopicName robot(String robotName)
+   public ROS2TopicName withRobot(String robotName)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.robotName = processTopicNamePart(robotName);
       return copiedTopicName;
    }
 
-   public ROS2TopicName module(String moduleName)
+   public ROS2TopicName withModule(String moduleName)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.moduleName = processTopicNamePart(moduleName);
@@ -52,29 +52,29 @@ public class ROS2TopicName
 
    public ROS2TopicName withInput()
    {
-      return ioQualifier(INPUT);
+      return withIOQualifier(INPUT);
    }
 
    public ROS2TopicName withOutput()
    {
-      return ioQualifier(OUTPUT);
+      return withIOQualifier(OUTPUT);
    }
 
-   public ROS2TopicName ioQualifier(String ioQualifier)
+   public ROS2TopicName withIOQualifier(String ioQualifier)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.ioQualifier = processTopicNamePart(ioQualifier);
       return copiedTopicName;
    }
 
-   public ROS2TopicName type(Class<?> messageType)
+   public ROS2TopicName withType(Class<?> messageType)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.messageType = messageTypeToTopicNamePart(messageType);
       return copiedTopicName;
    }
 
-   public ROS2TopicName suffix(String suffix)
+   public ROS2TopicName withSuffix(String suffix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.suffix = processTopicNamePart(suffix);
