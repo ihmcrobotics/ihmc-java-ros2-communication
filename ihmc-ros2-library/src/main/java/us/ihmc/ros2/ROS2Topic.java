@@ -11,6 +11,21 @@ public class ROS2Topic<T>
    private final Function<String, String> typeToNameFunction;
    private final ROS2TopicName topicName;
 
+   public ROS2Topic()
+   {
+      this(null, null, null);
+   }
+
+   public ROS2Topic(Class<T> messageType)
+   {
+      this(messageType, null, null);
+   }
+
+   public ROS2Topic(Function<String, String> typeNameToTopicName)
+   {
+      this(null, typeNameToTopicName, null);
+   }
+
    public ROS2Topic(Class<T> messageType, Function<String, String> typeNameToTopicName)
    {
       this(messageType, typeNameToTopicName, null);
@@ -21,6 +36,26 @@ public class ROS2Topic<T>
       this.messageType = messageType;
       this.typeToNameFunction = typeNameToTopicName;
       this.topicName = topicName;
+   }
+
+   public ROS2Topic<T> withNaming(Function<String, String> typeToNameFunction)
+   {
+      ROS2TopicName possibleTopicName = topicName;
+      if (typeToNameFunction != null && topicName != null)
+      {
+         possibleTopicName = topicName.withSuffix(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType)));
+      }
+      return new ROS2Topic<T>(messageType, typeToNameFunction, possibleTopicName);
+   }
+
+   public ROS2Topic<T> withType(Class<T> messageType)
+   {
+      ROS2TopicName possibleTopicName = topicName;
+      if (typeToNameFunction != null && topicName != null)
+      {
+         possibleTopicName = topicName.withSuffix(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType)));
+      }
+      return new ROS2Topic<T>(messageType, typeToNameFunction, possibleTopicName);
    }
 
    public ROS2Topic<T> withTopicName(ROS2TopicName ros2TopicName)
