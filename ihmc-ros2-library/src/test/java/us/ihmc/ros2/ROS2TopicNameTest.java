@@ -2,6 +2,7 @@ package us.ihmc.ros2;
 
 import com.google.common.base.CaseFormat;
 import org.junit.jupiter.api.Test;
+import std_msgs.msg.dds.Int32;
 import std_msgs.msg.dds.Int8;
 
 import java.util.HashMap;
@@ -33,6 +34,17 @@ public class ROS2TopicNameTest
       map.put(topicName2, null);
 
       assertEquals(1, map.size());
+
+      ROS2TopicName topicName3 = new ROS2TopicName().withPrefix("ihmc").withType(Int32.class);
+      ROS2TopicName topicName4 = new ROS2TopicName().withPrefix("ihmc").withType(Int32.class);
+
+      assertEquals(topicName1, topicName2);
+
+      HashMap<ROS2TopicName, Object> map2 = new HashMap<>();
+      map2.put(topicName3, null);
+      map2.put(topicName4, null);
+
+      assertEquals(1, map2.size());
    }
 
    @Test

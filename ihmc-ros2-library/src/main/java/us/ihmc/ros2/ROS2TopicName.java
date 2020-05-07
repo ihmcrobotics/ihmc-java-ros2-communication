@@ -2,52 +2,54 @@ package us.ihmc.ros2;
 
 import java.util.Objects;
 
+import static us.ihmc.ros2.ROS2TopicNameTools.messageTypeToTopicNamePart;
+import static us.ihmc.ros2.ROS2TopicNameTools.processTopicNamePart;
+
 public class ROS2TopicName
 {
    public static final String INPUT = "input";
    public static final String OUTPUT = "output";
 
-   private String prefix = "";
-   private String robotName = "";
-   private String moduleName = "";
-   private String ioQualifier = "";
-   private String messageType = "";
-   private String suffix = "";
+   private final String prefix;
+   private final String robotName;
+   private final String moduleName;
+   private final String ioQualifier;
+   private final String messageType;
+   private final String suffix;
 
-   public ROS2TopicName()
+   public ROS2TopicName() // TODO make private and provide static root name method?
    {
-
+      prefix = "";
+      robotName = "";
+      moduleName = "";
+      ioQualifier = "";
+      messageType = "";
+      suffix = "";
    }
 
-   public ROS2TopicName(ROS2TopicName topicNameToCopy)
+   private ROS2TopicName(String prefix, String robotName, String moduleName, String ioQualifier, String messageType, String suffix)
    {
-      this.prefix = topicNameToCopy.prefix;
-      this.robotName = topicNameToCopy.robotName;
-      this.moduleName = topicNameToCopy.moduleName;
-      this.ioQualifier = topicNameToCopy.ioQualifier;
-      this.messageType = topicNameToCopy.messageType;
-      this.suffix = topicNameToCopy.suffix;
+      this.prefix = prefix;
+      this.robotName = robotName;
+      this.moduleName = moduleName;
+      this.ioQualifier = ioQualifier;
+      this.messageType = messageType;
+      this.suffix = suffix;
    }
 
    public ROS2TopicName withPrefix(String prefix)
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.prefix = ROS2TopicNameTools.processTopicNamePart(prefix);
-      return copiedTopicName;
+      return new ROS2TopicName(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, messageType, suffix);
    }
 
    public ROS2TopicName withRobot(String robotName)
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.robotName = ROS2TopicNameTools.processTopicNamePart(robotName);
-      return copiedTopicName;
+      return new ROS2TopicName(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, messageType, suffix);
    }
 
    public ROS2TopicName withModule(String moduleName)
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.moduleName = ROS2TopicNameTools.processTopicNamePart(moduleName);
-      return copiedTopicName;
+      return new ROS2TopicName(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, messageType, suffix);
    }
 
    public ROS2TopicName withInput()
@@ -62,23 +64,17 @@ public class ROS2TopicName
 
    public ROS2TopicName withIOQualifier(String ioQualifier)
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.ioQualifier = ROS2TopicNameTools.processTopicNamePart(ioQualifier);
-      return copiedTopicName;
+      return new ROS2TopicName(prefix, robotName, moduleName, processTopicNamePart(ioQualifier), messageType, suffix);
    }
 
    public ROS2TopicName withType(Class<?> messageType)
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.messageType = ROS2TopicNameTools.messageTypeToTopicNamePart(messageType);
-      return copiedTopicName;
+      return new ROS2TopicName(prefix, robotName, moduleName, ioQualifier, messageTypeToTopicNamePart(messageType), suffix);
    }
 
    public ROS2TopicName withSuffix(String suffix)
    {
-      ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.suffix = ROS2TopicNameTools.processTopicNamePart(suffix);
-      return copiedTopicName;
+      return new ROS2TopicName(prefix, robotName, moduleName, ioQualifier, messageType, processTopicNamePart(suffix));
    }
 
    @Override
@@ -114,10 +110,5 @@ public class ROS2TopicName
    public int hashCode()
    {
       return Objects.hash(prefix, robotName, moduleName, ioQualifier, messageType, suffix);
-   }
-
-   private ROS2TopicName copyOfThis()
-   {
-      return new ROS2TopicName(this);
    }
 }
