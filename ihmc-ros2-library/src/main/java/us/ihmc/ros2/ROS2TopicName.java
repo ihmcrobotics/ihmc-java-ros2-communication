@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class ROS2TopicName
 {
+   public static final String INPUT = "input";
+   public static final String OUTPUT = "output";
+
    private String prefix = "";
    private String robotName = "";
    private String moduleName = "";
@@ -45,6 +48,16 @@ public class ROS2TopicName
       ROS2TopicName copiedTopicName = copyOfThis();
       copiedTopicName.moduleName = processTopicNamePart(moduleName);
       return copiedTopicName;
+   }
+
+   public ROS2TopicName withInput()
+   {
+      return ioQualifier(INPUT);
+   }
+
+   public ROS2TopicName withOutput()
+   {
+      return ioQualifier(OUTPUT);
    }
 
    public ROS2TopicName ioQualifier(String ioQualifier)
