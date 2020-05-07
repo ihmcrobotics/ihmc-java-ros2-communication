@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class ROS2TopicName
 {
-   private String prefix;
-   private String suffix;
-   private String robotName;
-   private String moduleName;
-   private Class<?> messageType;
+   private String prefix = "";
+   private String robotName = "";
+   private String moduleName = "";
+   private String messageType = "";
+   private String suffix = "";
 
    public ROS2TopicName()
    {
@@ -18,51 +18,44 @@ public class ROS2TopicName
    public ROS2TopicName(ROS2TopicName topicNameToCopy)
    {
       this.prefix = topicNameToCopy.prefix;
-      this.suffix = topicNameToCopy.suffix;
       this.robotName = topicNameToCopy.robotName;
       this.moduleName = topicNameToCopy.moduleName;
       this.messageType = topicNameToCopy.messageType;
+      this.suffix = topicNameToCopy.suffix;
    }
 
    public ROS2TopicName prefix(String prefix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.prefix = prefix;
+      copiedTopicName.prefix = processTopicNamePart(prefix);
       return copiedTopicName;
    }
 
-   /**
-    *
-    * TODO Consider suffix instead, or additionally
-    *
-    * @param suffix
-    * @return
-    */
    public ROS2TopicName suffix(String suffix)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.suffix = suffix;
+      copiedTopicName.suffix = processTopicNamePart(suffix);
       return copiedTopicName;
    }
 
    public ROS2TopicName robot(String robotName)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.robotName = robotName;
+      copiedTopicName.robotName = processTopicNamePart(robotName);
       return copiedTopicName;
    }
 
    public ROS2TopicName module(String moduleName)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.moduleName = moduleName;
+      copiedTopicName.moduleName = processTopicNamePart(moduleName);
       return copiedTopicName;
    }
 
    public ROS2TopicName type(Class<?> messageType)
    {
       ROS2TopicName copiedTopicName = copyOfThis();
-      copiedTopicName.messageType = messageType;
+      copiedTopicName.messageType = messageTypeToTopicNamePart(messageType);
       return copiedTopicName;
    }
 
@@ -70,11 +63,11 @@ public class ROS2TopicName
    public String toString()
    {
       String topicName = "";
-      topicName += processTopicNamePart(prefix);
-      topicName += processTopicNamePart(robotName);
-      topicName += processTopicNamePart(moduleName);
-      topicName += messageTypeToTopicNamePart(messageType);
-      topicName += processTopicNamePart(suffix);
+      topicName += prefix;
+      topicName += robotName;
+      topicName += moduleName;
+      topicName += messageType;
+      topicName += suffix;
       return topicName;
    }
 
