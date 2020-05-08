@@ -14,7 +14,6 @@ public class ROS2TopicName
    private final String robotName;
    private final String moduleName;
    private final String ioQualifier;
-   private final String messageType;
    private final String suffix;
 
    public ROS2TopicName() // TODO make private and provide static root name method?
@@ -23,33 +22,31 @@ public class ROS2TopicName
       robotName = "";
       moduleName = "";
       ioQualifier = "";
-      messageType = "";
       suffix = "";
    }
 
-   private ROS2TopicName(String prefix, String robotName, String moduleName, String ioQualifier, String messageType, String suffix)
+   private ROS2TopicName(String prefix, String robotName, String moduleName, String ioQualifier, String suffix)
    {
       this.prefix = prefix;
       this.robotName = robotName;
       this.moduleName = moduleName;
       this.ioQualifier = ioQualifier;
-      this.messageType = messageType;
       this.suffix = suffix;
    }
 
    public ROS2TopicName withPrefix(String prefix)
    {
-      return new ROS2TopicName(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, messageType, suffix);
+      return new ROS2TopicName(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, suffix);
    }
 
    public ROS2TopicName withRobot(String robotName)
    {
-      return new ROS2TopicName(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, messageType, suffix);
+      return new ROS2TopicName(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, suffix);
    }
 
    public ROS2TopicName withModule(String moduleName)
    {
-      return new ROS2TopicName(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, messageType, suffix);
+      return new ROS2TopicName(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, suffix);
    }
 
    public ROS2TopicName withInput()
@@ -64,17 +61,17 @@ public class ROS2TopicName
 
    public ROS2TopicName withIOQualifier(String ioQualifier)
    {
-      return new ROS2TopicName(prefix, robotName, moduleName, processTopicNamePart(ioQualifier), messageType, suffix);
+      return new ROS2TopicName(prefix, robotName, moduleName, processTopicNamePart(ioQualifier), suffix);
    }
 
    public ROS2TopicName withType(Class<?> messageType)
    {
-      return new ROS2TopicName(prefix, robotName, moduleName, ioQualifier, messageTypeToTopicNamePart(messageType), suffix);
+      return new ROS2TopicName(prefix, robotName, moduleName, ioQualifier, messageTypeToTopicNamePart(messageType));
    }
 
    public ROS2TopicName withSuffix(String suffix)
    {
-      return new ROS2TopicName(prefix, robotName, moduleName, ioQualifier, messageType, processTopicNamePart(suffix));
+      return new ROS2TopicName(prefix, robotName, moduleName, ioQualifier, processTopicNamePart(suffix));
    }
 
    @Override
@@ -85,7 +82,6 @@ public class ROS2TopicName
       topicName += robotName;
       topicName += moduleName;
       topicName += ioQualifier;
-      topicName += messageType;
       topicName += suffix;
       return topicName;
    }
@@ -102,13 +98,12 @@ public class ROS2TopicName
              && Objects.equals(robotName, topicName.robotName)
              && Objects.equals(moduleName, topicName.moduleName)
              && Objects.equals(ioQualifier, topicName.ioQualifier)
-             && Objects.equals(messageType, topicName.messageType)
              && Objects.equals(suffix, topicName.suffix);
    }
 
    @Override
    public int hashCode()
    {
-      return Objects.hash(prefix, robotName, moduleName, ioQualifier, messageType, suffix);
+      return Objects.hash(prefix, robotName, moduleName, ioQualifier, suffix);
    }
 }
