@@ -53,39 +53,39 @@ public class ROS2Topic<T>
       this.typeToNameFunction = typeToNameFunction;
    }
 
-   public ROS2Topic withPrefix(String prefix)
+   public ROS2Topic<T> withPrefix(String prefix)
    {
-      return new ROS2Topic(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
+      return new ROS2Topic<>(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
    }
 
-   public ROS2Topic withRobot(String robotName)
+   public ROS2Topic<T> withRobot(String robotName)
    {
-      return new ROS2Topic(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
+      return new ROS2Topic<>(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
    }
 
-   public ROS2Topic withModule(String moduleName)
+   public ROS2Topic<T> withModule(String moduleName)
    {
-      return new ROS2Topic(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, suffix, messageType, typeToNameFunction);
+      return new ROS2Topic<>(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, suffix, messageType, typeToNameFunction);
    }
 
-   public ROS2Topic withInput()
+   public ROS2Topic<T> withInput()
    {
       return withIOQualifier(INPUT);
    }
 
-   public ROS2Topic withOutput()
+   public ROS2Topic<T> withOutput()
    {
       return withIOQualifier(OUTPUT);
    }
 
-   public ROS2Topic withIOQualifier(String ioQualifier)
+   public ROS2Topic<T> withIOQualifier(String ioQualifier)
    {
-      return new ROS2Topic(prefix, robotName, moduleName, processTopicNamePart(ioQualifier), suffix, messageType, typeToNameFunction);
+      return new ROS2Topic<T>(prefix, robotName, moduleName, processTopicNamePart(ioQualifier), suffix, messageType, typeToNameFunction);
    }
 
-   public ROS2Topic withSuffix(String suffix)
+   public ROS2Topic<T> withSuffix(String suffix)
    {
-      return new ROS2Topic(prefix, robotName, moduleName, ioQualifier, processTopicNamePart(suffix), messageType, typeToNameFunction);
+      return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, processTopicNamePart(suffix), messageType, typeToNameFunction);
    }
 
    public ROS2Topic<T> withNaming(Function<String, String> typeToNameFunction)
@@ -95,7 +95,7 @@ public class ROS2Topic<T>
       {
          newSuffix = processTopicNamePart(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType)));
       }
-      return new ROS2Topic(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
+      return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
    }
 
    public ROS2Topic<T> withType(Class<T> messageType)
@@ -112,19 +112,38 @@ public class ROS2Topic<T>
             newSuffix = messageTypeToTopicNamePart(messageType);
          }
       }
-      return new ROS2Topic(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
+      return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
    }
 
-   public ROS2Topic<T> withTopic(ROS2Topic<T> topic)
+   public ROS2Topic<T> withTopic(ROS2Topic<?> topic)
    {
-      String newPrefix = topic.prefix == null ? prefix : topic.prefix;
-      String newRobotName = topic.robotName == null ? robotName : topic.robotName;
-      String newModuleName = topic.moduleName == null ? moduleName : topic.moduleName;
-      String newIOQualifier = topic.ioQualifier == null ? ioQualifier : topic.ioQualifier;
-      String newSuffix = topic.suffix == null ? suffix : topic.suffix;
-      Class<T> newMessageType = topic.messageType == null ? messageType : topic.messageType;
-      Function<String, String> newTypeToNameFunction = topic.typeToNameFunction == null ? typeToNameFunction : topic.typeToNameFunction;
-      return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newSuffix, newMessageType, newTypeToNameFunction);
+      String newPrefix = takeNonNullOrSecond(prefix, topic.prefix);
+      String newRobotName = takeNonNullOrSecond(robotName, topic.robotName);
+      String newModuleName = takeNonNullOrSecond(moduleName, topic.moduleName);
+      String newIOQualifier = takeNonNullOrSecond(ioQualifier, topic.ioQualifier);
+      String newSuffix = takeNonNullOrSecond(suffix, topic.suffix);
+      Function<String, String> newTypeToNameFunction = takeNonNullOrSecond(typeToNameFunction, topic.typeToNameFunction);
+      if (topic.messageType != null && !topic.messageType.equals(messageType))
+      {
+         throw new RuntimeException("Cannot change the type of a Topic");
+      }
+      return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newSuffix, messageType, newTypeToNameFunction);
+   }
+
+   private <K> K takeNonNullOrSecond(K first, K second)
+   {
+      if (first != null && second == null)
+      {
+         return first;
+      }
+      else if (first == null && second != null)
+      {
+         return second;
+      }
+      else
+      {
+         return second;
+      }
    }
 
    public Class<T> getType()
@@ -156,7 +175,7 @@ public class ROS2Topic<T>
          return true;
       if (other == null || getClass() != other.getClass())
          return false;
-      ROS2Topic topicName = (ROS2Topic) other;
+      ROS2Topic<?> topicName = (ROS2Topic<?>) other;
       return Objects.equals(prefix, topicName.prefix)
              && Objects.equals(robotName, topicName.robotName)
              && Objects.equals(moduleName, topicName.moduleName)
