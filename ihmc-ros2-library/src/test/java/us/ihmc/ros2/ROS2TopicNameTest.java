@@ -50,7 +50,8 @@ public class ROS2TopicNameTest
    @Test
    public void testROS2TopicName()
    {
-      ROS2TopicName topicName = new ROS2TopicName().withPrefix("ihmc").withRobot("atlas").withModule("rea").withType(ExampleTypeMessage.class).withSuffix("one");
+      ROS2TopicName topicName = new ROS2TopicName().withPrefix("ihmc").withRobot("atlas").withModule("rea")
+                                                   .withType(ExampleTypeMessage.class).withNaming(typeName -> typeName + "/one");
       assertEquals("/ihmc/atlas/rea/example_type/one", topicName.toString());
 
       ROS2TopicName ihmcPrefixed = new ROS2TopicName().withPrefix("ihmc");
@@ -70,7 +71,7 @@ public class ROS2TopicNameTest
       ROS2TopicName hello = ihmcPrefixed2.withModule("hello");
       ROS2TopicName robotOne = hello.withRobot("robot_one");
       ROS2TopicName int8 = robotOne.withType(Int8.class);
-      ROS2TopicName meow = int8.withSuffix("meow");
+      ROS2TopicName meow = int8.withNaming(typeName -> typeName + "/meow");
       ROS2TopicName input = meow.withInput();
       ROS2TopicName output = input.withOutput();
 
