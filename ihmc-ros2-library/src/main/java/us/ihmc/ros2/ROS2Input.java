@@ -21,12 +21,12 @@ public class ROS2Input<T>
    private TypedNotification<T> messageNotification = new TypedNotification<>();
    private List<Consumer<T>> userCallbacks = new ArrayList<>();
 
-   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, ROS2TopicName topicName)
+   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName)
    {
       this(ros2Node, messageType, topicName.withType(messageType).toString());
    }
 
-   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, ROS2TopicName topicName, T initialValue, MessageFilter<T> messageFilter)
+   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, T initialValue, MessageFilter<T> messageFilter)
    {
       this(ros2Node, messageType, topicName.withType(messageType).toString(), initialValue, messageFilter);
    }
