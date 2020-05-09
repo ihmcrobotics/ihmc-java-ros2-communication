@@ -115,7 +115,7 @@ public class ROS2Topic<T>
       return new ROS2Topic(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
    }
 
-   public ROS2Topic<T> withTopicName(ROS2Topic<T> topic)
+   public ROS2Topic<T> withTopic(ROS2Topic<T> topic)
    {
       String newPrefix = topic.prefix == null ? prefix : topic.prefix;
       String newRobotName = topic.robotName == null ? robotName : topic.robotName;
@@ -127,12 +127,12 @@ public class ROS2Topic<T>
       return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newSuffix, newMessageType, newTypeToNameFunction);
    }
 
-   public Class<T> getMessageType() // TODO: Rename to getType
+   public Class<T> getType() // TODO: Rename to getType
    {
       return messageType;
    }
 
-   public String getTopicName() // TODO: Rename to getName
+   public String getName() // TODO: Rename to getName
    {
       return toString();
    }
