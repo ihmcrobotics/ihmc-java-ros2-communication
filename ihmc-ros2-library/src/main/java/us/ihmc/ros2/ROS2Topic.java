@@ -127,12 +127,12 @@ public class ROS2Topic<T>
       return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newSuffix, newMessageType, newTypeToNameFunction);
    }
 
-   public Class<T> getType() // TODO: Rename to getType
+   public Class<T> getType()
    {
       return messageType;
    }
 
-   public String getName() // TODO: Rename to getName
+   public String getName()
    {
       return toString();
    }
