@@ -98,7 +98,7 @@ public class ROS2Topic<T>
       return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
    }
 
-   public ROS2Topic<T> withType(Class<T> messageType)
+   public <K> ROS2Topic<K> withType(Class<K> messageType)
    {
       String newSuffix = suffix;
       if (messageType != null)
@@ -125,7 +125,7 @@ public class ROS2Topic<T>
       Function<String, String> newTypeToNameFunction = takeNonNullOrSecond(typeToNameFunction, topic.typeToNameFunction);
       if (topic.messageType != null && !topic.messageType.equals(messageType))
       {
-         throw new RuntimeException("Cannot change the type of a Topic");
+         throw new RuntimeException("Cannot change the type of a Topic with the withTopic method");
       }
       return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newSuffix, messageType, newTypeToNameFunction);
    }
