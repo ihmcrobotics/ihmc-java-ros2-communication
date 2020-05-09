@@ -115,6 +115,18 @@ public class ROS2TopicName<T>
       return new ROS2TopicName(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
    }
 
+   public ROS2TopicName<T> withTopicName(ROS2TopicName<T> topic)
+   {
+      String newPrefix = topic.prefix == null ? prefix : topic.prefix;
+      String newRobotName = topic.robotName == null ? robotName : topic.robotName;
+      String newModuleName = topic.moduleName == null ? moduleName : topic.moduleName;
+      String newIOQualifier = topic.ioQualifier == null ? ioQualifier : topic.ioQualifier;
+      String newSuffix = topic.suffix == null ? suffix : topic.suffix;
+      Class<T> newMessageType = topic.messageType == null ? messageType : topic.messageType;
+      Function<String, String> newTypeToNameFunction = topic.typeToNameFunction == null ? typeToNameFunction : topic.typeToNameFunction;
+      return new ROS2TopicName<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newSuffix, newMessageType, newTypeToNameFunction);
+   }
+
    public Class<T> getMessageType() // TODO: Rename to getType
    {
       return messageType;
@@ -149,12 +161,14 @@ public class ROS2TopicName<T>
              && Objects.equals(robotName, topicName.robotName)
              && Objects.equals(moduleName, topicName.moduleName)
              && Objects.equals(ioQualifier, topicName.ioQualifier)
-             && Objects.equals(suffix, topicName.suffix);
+             && Objects.equals(suffix, topicName.suffix)
+             && Objects.equals(messageType, topicName.messageType)
+             && Objects.equals(typeToNameFunction, topicName.typeToNameFunction);
    }
 
    @Override
    public int hashCode()
    {
-      return Objects.hash(prefix, robotName, moduleName, ioQualifier, suffix);
+      return Objects.hash(prefix, robotName, moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
    }
 }
