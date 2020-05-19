@@ -31,9 +31,9 @@ public class ROS2Topic<T>
       typeToNameFunction = null;
    }
 
-   public ROS2Topic(Class<T> messageType, Function<String, String> typeNameToTopicName)
+   public ROS2Topic(Class<T> messageType, Function<String, String> typeToNameFunction)
    {
-      this("", "", "", "", "", messageType, typeNameToTopicName);
+      this("", "", "", "", processTopicNamePart(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType))), messageType, typeToNameFunction);
    }
 
    private ROS2Topic(String prefix,
@@ -139,6 +139,11 @@ public class ROS2Topic<T>
       else if (first == null && second != null)
       {
          return second;
+      }
+      else if (first instanceof String && !((String) first).isEmpty()
+               && second instanceof String && ((String) second).isEmpty())
+      {
+         return first;
       }
       else
       {

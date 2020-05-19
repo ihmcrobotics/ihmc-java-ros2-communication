@@ -87,6 +87,28 @@ public class ROS2TopicTest
    }
 
    @Test
+   public void testTypeNaming()
+   {
+      ROS2Topic<?> emptyTopic = new ROS2Topic<>();
+      assertEquals("", emptyTopic.getName());
+
+      ROS2Topic<?> withEmptyTypeNamed = new ROS2Topic<>(Int8.class, typeName -> "");
+      assertEquals("", withEmptyTypeNamed.getName());
+
+      ROS2Topic<?> typeNamed = new ROS2Topic<>(Int8.class, typeName -> typeName);
+      assertEquals("/int8", typeNamed.getName());
+
+      ROS2Topic<?> usedTypeInName = new ROS2Topic<>(Int8.class, typeName -> typeName + "_for_ui");
+      assertEquals("/int8_for_ui", usedTypeInName.getName());
+
+      ROS2Topic<?> withInput = typeNamed.withInput();
+      assertEquals("/input/int8", withInput.getName());
+
+      ROS2Topic<Object> atlas = new ROS2Topic<>().withRobot("atlas").withPrefix("/ihmc");
+      assertEquals("/ihmc/atlas/input/int8", withInput.withTopic(atlas).getName());
+   }
+
+   @Test
    void testToROSTopicFormat()
    {
       compareAgainstGuava("", "");
