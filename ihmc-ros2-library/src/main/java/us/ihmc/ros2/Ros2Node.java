@@ -137,9 +137,12 @@ public class Ros2Node extends Ros2NodeBasics
     *                             node. Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
-   public Ros2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId,
-                   InetAddress addressRestriction)
-         throws IOException
+   public Ros2Node(PubSubImplementation pubSubImplementation,
+                   Ros2Distro ros2Distro,
+                   String name,
+                   String namespace,
+                   int domainId,
+                   InetAddress addressRestriction) throws IOException
    {
       super(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
    }

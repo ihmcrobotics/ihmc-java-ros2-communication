@@ -1,5 +1,8 @@
 package us.ihmc.ros2;
 
+/**
+ * ROS 2 distro enum. Used to support multiple versions of ROS 2.
+ */
 public enum Ros2Distro
 {
    ARDENT,
