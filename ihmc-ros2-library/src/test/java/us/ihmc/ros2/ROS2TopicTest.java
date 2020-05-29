@@ -24,23 +24,23 @@ public class ROS2TopicTest
    @Test
    public void testEqualsAndHash()
    {
-      ROS2Topic topicName1 = new ROS2Topic().withPrefix("ihmc");
-      ROS2Topic topicName2 = new ROS2Topic().withPrefix("ihmc");
+      ROS2Topic<?> topicName1 = new ROS2Topic<>().withPrefix("ihmc");
+      ROS2Topic<?> topicName2 = new ROS2Topic<>().withPrefix("ihmc");
 
       assertEquals(topicName1, topicName2);
 
-      HashMap<ROS2Topic, Object> map = new HashMap<>();
+      HashMap<ROS2Topic<?>, Object> map = new HashMap<>();
       map.put(topicName1, null);
       map.put(topicName2, null);
 
       assertEquals(1, map.size());
 
-      ROS2Topic topicName3 = new ROS2Topic().withPrefix("ihmc").withType(Int32.class);
-      ROS2Topic topicName4 = new ROS2Topic().withPrefix("ihmc").withType(Int32.class);
+      ROS2Topic<Int32> topicName3 = new ROS2Topic<>().withPrefix("ihmc").withType(Int32.class);
+      ROS2Topic<Int32> topicName4 = new ROS2Topic<>().withPrefix("ihmc").withType(Int32.class);
 
       assertEquals(topicName1, topicName2);
 
-      HashMap<ROS2Topic, Object> map2 = new HashMap<>();
+      HashMap<ROS2Topic<?>, Object> map2 = new HashMap<>();
       map2.put(topicName3, null);
       map2.put(topicName4, null);
 
@@ -50,11 +50,11 @@ public class ROS2TopicTest
    @Test
    public void testROS2TopicName()
    {
-      ROS2Topic topicName = new ROS2Topic().withPrefix("ihmc").withRobot("atlas").withModule("rea")
+      ROS2Topic<?> topicName = new ROS2Topic<>().withPrefix("ihmc").withRobot("atlas").withModule("rea")
                                            .withType(ExampleTypeMessage.class).withNaming(typeName -> typeName + "/one");
       assertEquals("/ihmc/atlas/rea/example_type/one", topicName.toString());
 
-      ROS2Topic ihmcPrefixed = new ROS2Topic().withPrefix("ihmc");
+      ROS2Topic<?> ihmcPrefixed = new ROS2Topic<>().withPrefix("ihmc");
       assertEquals("/ihmc", ihmcPrefixed.toString());
       ihmcPrefixed.withModule("hello");
       ihmcPrefixed.withRobot("robot_one");
@@ -66,14 +66,14 @@ public class ROS2TopicTest
       ihmcPrefixed.withIOQualifier("server");
       assertEquals("/ihmc", ihmcPrefixed.toString());
 
-      ROS2Topic ihmcPrefixed2 = new ROS2Topic().withPrefix("ihmc");
+      ROS2Topic<?> ihmcPrefixed2 = new ROS2Topic<>().withPrefix("ihmc");
       assertEquals("/ihmc", ihmcPrefixed2.toString());
-      ROS2Topic hello = ihmcPrefixed2.withModule("hello");
-      ROS2Topic robotOne = hello.withRobot("robot_one");
-      ROS2Topic int8 = robotOne.withType(Int8.class);
-      ROS2Topic meow = int8.withNaming(typeName -> typeName + "/meow");
-      ROS2Topic input = meow.withInput();
-      ROS2Topic output = input.withOutput();
+      ROS2Topic<?> hello = ihmcPrefixed2.withModule("hello");
+      ROS2Topic<?> robotOne = hello.withRobot("robot_one");
+      ROS2Topic<Int8> int8 = robotOne.withType(Int8.class);
+      ROS2Topic<Int8> meow = int8.withNaming(typeName -> typeName + "/meow");
+      ROS2Topic<?> input = meow.withInput();
+      ROS2Topic<?> output = input.withOutput();
 
       assertEquals("/ihmc/hello", hello.toString());
       assertEquals("/ihmc/robot_one/hello", robotOne.toString());
