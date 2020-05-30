@@ -35,7 +35,7 @@ import static us.ihmc.ros2.ROS2TopicNameTools.processTopicNamePart;
  * <pre>
  *    // evaluates to "/ihmc/atlas/rea/example_type/one"
  *    ROS2Topic topicName = new ROS2Topic().withPrefix("ihmc").withRobot("atlas").withModule("rea")
- *                                            .withType(ExampleTypeMessage.class).withNaming(typeName -> typeName + "/one");
+ *                                            .withType(ExampleTypeMessage.class).withSuffix(typeName -> typeName + "/one");
  *
  *    // use of immutable property
  *    // evaluates to "/ihmc"
@@ -60,6 +60,10 @@ public class ROS2Topic<T>
    private final Class<T> messageType;
    private final Function<String, String> typeToNameFunction;
 
+   /**
+    * <p>Create the emtpy topic. The name of this topic will evaluate to an empty String.</p>
+    * <p>It is recommended to start from another existing topic name instead of starting from scratch every time.</p>
+    */
    public ROS2Topic() // TODO make private and provide static root name method?
    {
       prefix = "";
@@ -69,11 +73,6 @@ public class ROS2Topic<T>
       suffix = "";
       messageType = null;
       typeToNameFunction = null;
-   }
-
-   public ROS2Topic(Class<T> messageType, Function<String, String> typeToNameFunction)
-   {
-      this("", "", "", "", processTopicNamePart(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType))), messageType, typeToNameFunction);
    }
 
    private ROS2Topic(String prefix,
@@ -93,11 +92,23 @@ public class ROS2Topic<T>
       this.typeToNameFunction = typeToNameFunction;
    }
 
+   /**
+    * Returns a new topic with the provided prefix.
+    * If the provided prefix is null, then the part will evaluate to an empty string not even a "/" will
+    * appear in the resulting topic name.
+    * @param prefix part 1/5 of this topic name
+    * @return new topic
+    */
    public ROS2Topic<T> withPrefix(String prefix)
    {
       return new ROS2Topic<>(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
    }
 
+   /**
+    *
+    * @param robotName
+    * @return
+    */
    public ROS2Topic<T> withRobot(String robotName)
    {
       return new ROS2Topic<>(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
@@ -128,7 +139,7 @@ public class ROS2Topic<T>
       return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, processTopicNamePart(suffix), messageType, typeToNameFunction);
    }
 
-   public ROS2Topic<T> withNaming(Function<String, String> typeToNameFunction)
+   public ROS2Topic<T> withSuffix(Function<String, String> typeToNameFunction)
    {
       String newSuffix = suffix;
       if (typeToNameFunction != null && messageType != null)
