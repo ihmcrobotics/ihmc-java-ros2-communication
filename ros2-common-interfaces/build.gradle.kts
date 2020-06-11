@@ -36,8 +36,8 @@ ihmc {
 }
 
 mainDependencies {
-   api("us.ihmc:euclid-geometry:0.14.2")
-   api("us.ihmc:ihmc-pub-sub:0.12.0")
+   api("us.ihmc:euclid-geometry:0.14.2-ejml-0.39-beta-1")
+   api("us.ihmc:ihmc-pub-sub:0.12.0-ejml-0.39-beta-1")
 }
 
 generatorDependencies {
