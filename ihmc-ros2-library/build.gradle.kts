@@ -14,7 +14,7 @@ ihmc {
 mainDependencies {
    api("us.ihmc:ihmc-pub-sub:0.12.0")
    api("us.ihmc:ihmc-realtime:1.3.0")
-   api("us.ihmc:ihmc-commons:0.30.0")
+   api("us.ihmc:ihmc-commons:0.30.2")
 }
 
 testDependencies {
