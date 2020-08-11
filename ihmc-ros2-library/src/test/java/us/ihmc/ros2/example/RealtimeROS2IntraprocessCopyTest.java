@@ -39,7 +39,7 @@ import java.util.Random;
  *
  * @author Duncan Calvert
  */
-public class RealtimeRos2IntraprocessCopyTest
+public class RealtimeROS2IntraprocessCopyTest
 {
    public static final int NUMBER_OF_MESSAGES_TO_SEND = 20;
 
@@ -54,7 +54,7 @@ public class RealtimeRos2IntraprocessCopyTest
       PeriodicThreadSchedulerFactory threadFactory = RUN_USING_REALTIME_THREAD ? // realtime threads only work on linux w/ RT kernel
                       new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
                       new PeriodicNonRealtimeThreadSchedulerFactory();           // to setup realtime threads
-      RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeRos2IntraprocessCopyTest", "/us/ihmc");
+      RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeROS2IntraprocessCopyTest", "/us/ihmc");
       RealtimeROS2Publisher<BigNumSequence> publisher = node.createPublisher(new BigNumSequencePubSubType(), "/example");
       RealtimeROS2Subscription<BigNumSequence> subscription = node.createQueuedSubscription(new BigNumSequencePubSubType(), "/example");
 

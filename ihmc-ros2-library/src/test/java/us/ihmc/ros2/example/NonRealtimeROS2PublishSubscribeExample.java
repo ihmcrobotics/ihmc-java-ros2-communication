@@ -33,11 +33,11 @@ import us.ihmc.ros2.ROS2Publisher;
  * @author Jesper Smith
  *
  */
-public class NonRealtimeRos2PublishSubscribeExample
+public class NonRealtimeROS2PublishSubscribeExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2PublishSubscribeExample");
+      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeROS2PublishSubscribeExample");
       node.createSubscription(new Int64PubSubType(), subscriber -> {
          Int64 message = new Int64();
          if (subscriber.takeNextData(message, null))

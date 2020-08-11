@@ -38,14 +38,14 @@ import java.io.IOException;
  *
  * @author Jesper Smith
  */
-public class RealtimeRos2PublishSubscribeExample
+public class RealtimeROS2PublishSubscribeExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
       PeriodicThreadSchedulerFactory threadFactory = SystemUtils.IS_OS_LINUX ? // realtime threads only work on linux
             new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
             new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
-      RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "/us/ihmc");
+      RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeROS2PublishSubscribeExample", "/us/ihmc");
       RealtimeROS2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example", ROS2QosProfile.KEEP_HISTORY(3), 10);
       RealtimeROS2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example", ROS2QosProfile.KEEP_HISTORY(3), 10);
 
