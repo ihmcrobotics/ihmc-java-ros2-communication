@@ -112,7 +112,7 @@ public class ROS2MessageGenerator extends DefaultTask
       getProject().delete(javaOutputDirectory);
       getProject().delete(idlOutputDirectory);
 
-      RosInterfaceGenerator generator = new RosInterfaceGenerator();
+      ROS2InterfaceGenerator generator = new ROS2InterfaceGenerator();
 
       String[] ignoredPackagesArray = ignoredPackages.toArray(new String[ignoredPackages.size()]);
       for (File rosPackage : rosPackages)
@@ -130,7 +130,7 @@ public class ROS2MessageGenerator extends DefaultTask
 
       generator.generate(idlOutputDirectory.toPath(), ros1OutputDirectory.toPath(), javaOutputDirectory.toPath());
 
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(idlOutputDirectory.toPath());
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(javaOutputDirectory.toPath());
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(idlOutputDirectory.toPath());
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(javaOutputDirectory.toPath());
    }
 }

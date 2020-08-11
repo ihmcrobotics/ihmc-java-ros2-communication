@@ -36,7 +36,7 @@ import java.util.List;
  *
  * @author Jesper Smith
  */
-public class RosInterfaceGenerator
+public class ROS2InterfaceGenerator
 {
    private final ROS2MsgToRos1MsgGenerator ros2MsgToRos1MsgGenerator;
    private ROS2MsgToIdlGenerator ros2MsgToIdlGenerator;
@@ -49,7 +49,7 @@ public class RosInterfaceGenerator
     *
     * @throws IOException if no temporary files and directories can be made
     */
-   public RosInterfaceGenerator() throws IOException
+   public ROS2InterfaceGenerator() throws IOException
    {
       ros2MsgToIdlGenerator = new ROS2MsgToIdlGenerator();
       ros2MsgToRos1MsgGenerator = new ROS2MsgToRos1MsgGenerator();

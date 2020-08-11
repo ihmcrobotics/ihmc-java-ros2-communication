@@ -3,7 +3,7 @@ package us.ihmc;
 import org.junit.jupiter.api.Test;
 import us.ihmc.log.LogTools;
 import us.ihmc.commons.nio.FileTools;
-import us.ihmc.ros2.rosidl.RosInterfaceGenerator;
+import us.ihmc.ros2.rosidl.ROS2InterfaceGenerator;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -21,7 +21,7 @@ public class MessageGenerationTest
       FileTools.deleteQuietly(startingPath.resolve("generated-java"));
       FileTools.deleteQuietly(startingPath.resolve("generated-idl"));
 
-      RosInterfaceGenerator generator = new RosInterfaceGenerator();
+      ROS2InterfaceGenerator generator = new ROS2InterfaceGenerator();
       generator.addPackageRootToIDLGenerator(startingPath.resolve("ros_msgs"));
       generator.addPackageRootToROS1Generator(startingPath.resolve("ros_msgs"));
       generator.addCustomIDLFiles(startingPath.resolve("custom-idl"));
@@ -30,8 +30,8 @@ public class MessageGenerationTest
       Path generatedJavaPath = startingPath.resolve("generated-java");
       generator.generate(generatedIDLPath, generatedROS1Path, generatedJavaPath);
 
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(generatedIDLPath);
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(generatedROS1Path);
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(generatedJavaPath);
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(generatedIDLPath);
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(generatedROS1Path);
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(generatedJavaPath);
    }
 }
