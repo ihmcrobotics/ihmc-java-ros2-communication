@@ -21,7 +21,7 @@ import std_msgs.msg.dds.Int64PubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.RealtimeROS2Node;
 import us.ihmc.ros2.RealtimeROS2Publisher;
-import us.ihmc.ros2.RealtimeRos2Subscription;
+import us.ihmc.ros2.RealtimeROS2Subscription;
 import us.ihmc.ros2.Ros2QosProfile;
 import us.ihmc.util.PeriodicNonRealtimeThreadSchedulerFactory;
 import us.ihmc.util.PeriodicRealtimeThreadSchedulerFactory;
@@ -47,7 +47,7 @@ public class RealtimeRos2PublishSubscribeExample
             new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
       RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeRos2PublishSubscribeExample", "/us/ihmc");
       RealtimeROS2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example", Ros2QosProfile.KEEP_HISTORY(3), 10);
-      RealtimeRos2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example", Ros2QosProfile.KEEP_HISTORY(3), 10);
+      RealtimeROS2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example", Ros2QosProfile.KEEP_HISTORY(3), 10);
 
       
       node.spin(); // start the realtime node thread

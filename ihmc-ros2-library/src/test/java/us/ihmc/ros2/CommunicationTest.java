@@ -129,7 +129,7 @@ public class CommunicationTest
 
          messagesReceived.setValue(0);
 
-         RealtimeRos2Subscription<TwoNum> subscription = node.createQueuedSubscription(topicDataType, "/chatter");
+         RealtimeROS2Subscription<TwoNum> subscription = node.createQueuedSubscription(topicDataType, "/chatter");
 
          node.spin();
 

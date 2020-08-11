@@ -233,7 +233,7 @@ public class RealtimeROS2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeRos2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
       return createQueuedSubscription(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
@@ -250,12 +250,12 @@ public class RealtimeROS2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeRos2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
          throws IOException
    {
       RealtimeRos2SubscriptionListener<T> listener = new RealtimeRos2SubscriptionListener<>(topicDataType, queueSize);
       node.createSubscription(topicDataType, listener, topicName, qosProfile);
-      RealtimeRos2Subscription<T> subscription = new RealtimeRos2Subscription<>(listener);
+      RealtimeROS2Subscription<T> subscription = new RealtimeROS2Subscription<>(listener);
       return subscription;
    }
 
