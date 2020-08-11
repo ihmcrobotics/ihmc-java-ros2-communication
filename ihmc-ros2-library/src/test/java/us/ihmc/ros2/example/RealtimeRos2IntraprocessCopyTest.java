@@ -15,13 +15,12 @@
  */
 package us.ihmc.ros2.example;
 
-import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.Test;
 import ros_msgs.msg.dds.BigNumSequence;
 import ros_msgs.msg.dds.BigNumSequencePubSubType;
 import ros_msgs.msg.dds.Num;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.ros2.RealtimeRos2Node;
+import us.ihmc.ros2.RealtimeROS2Node;
 import us.ihmc.ros2.RealtimeRos2Publisher;
 import us.ihmc.ros2.RealtimeRos2Subscription;
 import us.ihmc.util.PeriodicNonRealtimeThreadSchedulerFactory;
@@ -55,7 +54,7 @@ public class RealtimeRos2IntraprocessCopyTest
       PeriodicThreadSchedulerFactory threadFactory = RUN_USING_REALTIME_THREAD ? // realtime threads only work on linux w/ RT kernel
                       new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
                       new PeriodicNonRealtimeThreadSchedulerFactory();           // to setup realtime threads
-      RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeRos2IntraprocessCopyTest", "/us/ihmc");
+      RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeRos2IntraprocessCopyTest", "/us/ihmc");
       RealtimeRos2Publisher<BigNumSequence> publisher = node.createPublisher(new BigNumSequencePubSubType(), "/example");
       RealtimeRos2Subscription<BigNumSequence> subscription = node.createQueuedSubscription(new BigNumSequencePubSubType(), "/example");
 

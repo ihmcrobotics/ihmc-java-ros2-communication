@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import ros_msgs.msg.dds.TwoNum;
 import ros_msgs.msg.dds.TwoNumPubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.ros2.*;
 import us.ihmc.util.PeriodicNonRealtimeThreadScheduler;
 
 public class CommunicationTest
@@ -123,7 +122,7 @@ public class CommunicationTest
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
-         RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.INTRAPROCESS, PeriodicNonRealtimeThreadScheduler::new, "Ros2CommunicationTest",
+         RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.INTRAPROCESS, PeriodicNonRealtimeThreadScheduler::new, "Ros2CommunicationTest",
                                                       "/us/ihmc");
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
          RealtimeRos2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
