@@ -52,7 +52,7 @@ val show by tasks.creating {
    }
 }
 
-val generateMessages by tasks.creating(us.ihmc.ros2.rosidl.Ros2MessageGenerator::class) {
+val generateMessages by tasks.creating(us.ihmc.ros2.rosidl.ROS2MessageGenerator::class) {
    doFirst {
       setupVendoredRepo(commonInterfacesPath, commonInterfacesUrl, ros2Release)
       setupVendoredRepo(rclInterfacesPath, rclInterfacesUrl, ros2Release)
