@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 public class ROS2Callback<T>
 {
    private final Consumer<T> messageCallback;
-   private Ros2Subscription<T> subscription;
+   private ROS2Subscription<T> subscription;
    private volatile boolean enabled = true;
 
    public ROS2Callback(ROS2NodeInterface ros2Node, ROS2Topic<T> topicName, Consumer<T> messageCallback)

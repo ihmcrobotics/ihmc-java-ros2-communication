@@ -26,12 +26,12 @@ import us.ihmc.pubsub.subscriber.Subscriber;
  *
  * @param <T> Data type of this subscriber
  */
-public class Ros2Subscription<T>
+public class ROS2Subscription<T>
 {
    private final Domain domain;
    private final Subscriber<T> subscriber;
    
-   Ros2Subscription(Domain domain, Subscriber<T> subscriber)
+   ROS2Subscription(Domain domain, Subscriber<T> subscriber)
    {
       this.domain = domain;
       this.subscriber = subscriber;

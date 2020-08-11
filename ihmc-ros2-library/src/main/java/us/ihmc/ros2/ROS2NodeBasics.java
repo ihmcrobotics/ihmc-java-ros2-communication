@@ -179,7 +179,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
          throws IOException
    {
       return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.DEFAULT());
@@ -196,7 +196,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
                                                      ROS2QosProfile qosProfile)
          throws IOException
    {
@@ -216,7 +216,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
                                                      SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName, ROS2QosProfile qosProfile)
          throws IOException
    {
@@ -247,7 +247,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @SuppressWarnings("unchecked")
-   private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
+   private <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
                                                       ROS2QosProfile qosProfile)
          throws IOException
    {
@@ -283,7 +283,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
                                                              topicName,
                                                              qosProfile.isAvoidRosNamespaceConventions());
 
-      return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
+      return new ROS2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }
 
    /**
