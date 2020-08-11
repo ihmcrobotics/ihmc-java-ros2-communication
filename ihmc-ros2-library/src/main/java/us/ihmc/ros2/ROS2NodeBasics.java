@@ -98,7 +98,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * @throws IOException if no publisher can be made
     */
    @Override
-   public <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
       return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT());
    }
@@ -113,7 +113,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * @throws IOException if no publisher can be made
     */
    @Override
-   public <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException
+   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
       if (registeredType == null)
@@ -164,7 +164,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
          publisherAttributes.getQos().setPublishMode(PublishModeKind.ASYNCHRONOUS_PUBLISH_MODE);
       }
 
-      return new Ros2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
+      return new ROS2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
 
    }
 

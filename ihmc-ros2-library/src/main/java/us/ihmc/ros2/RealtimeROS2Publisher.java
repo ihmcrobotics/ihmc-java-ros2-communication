@@ -32,11 +32,11 @@ import us.ihmc.pubsub.TopicDataType;
 public class RealtimeROS2Publisher<T>
 {
    private final TopicDataType<T> topicDataType;
-   private final Ros2Publisher<T> rosPublisher;
+   private final ROS2Publisher<T> rosPublisher;
    
    private final ConcurrentRingBuffer<T> concurrentRingBuffer;
    
-   RealtimeROS2Publisher(TopicDataType<T> topicDataType, Ros2Publisher<T> rosPublisher, int queueDepth)
+   RealtimeROS2Publisher(TopicDataType<T> topicDataType, ROS2Publisher<T> rosPublisher, int queueDepth)
    {
       this.topicDataType = topicDataType.newInstance();
       this.rosPublisher = rosPublisher;

@@ -21,7 +21,7 @@ import std_msgs.msg.dds.Int64;
 import std_msgs.msg.dds.Int64PubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.ros2.ROS2Node;
-import us.ihmc.ros2.Ros2Publisher;
+import us.ihmc.ros2.ROS2Publisher;
 
 /**
  * Java version of the ROS2 demo listener.
@@ -46,7 +46,7 @@ public class NonRealtimeRos2PublishSubscribeExample
          }
       }, "/example");
 
-      Ros2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example");
+      ROS2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example");
       Int64 message = new Int64();
       for (int i = 0; i < 10; i++)
       {

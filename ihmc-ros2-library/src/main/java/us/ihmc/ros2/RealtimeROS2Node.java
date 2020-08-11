@@ -212,7 +212,7 @@ public class RealtimeROS2Node
          {
             throw new RuntimeException("Cannot add publishers to a RealtimeROS2Node that is already spinning");
          }
-         Ros2Publisher<T> rosPublisher = node.createPublisher(topicDataType, topicName, qosProfile);
+         ROS2Publisher<T> rosPublisher = node.createPublisher(topicDataType, topicName, qosProfile);
          RealtimeROS2Publisher<T> realtimePublisher = new RealtimeROS2Publisher<>(topicDataType, rosPublisher, queueSize);
          publishers.add(realtimePublisher);
          return realtimePublisher;
