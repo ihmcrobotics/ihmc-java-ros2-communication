@@ -2,7 +2,7 @@ package us.ihmc.ros2;
 
 import java.io.IOException;
 
-public interface Ros2PublisherBasics<T>
+public interface ROS2PublisherBasics<T>
 {
    /**
     * Publish data to the ROS2 domain
