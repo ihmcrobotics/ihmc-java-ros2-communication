@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ros2MessageGenerator extends DefaultTask
+public class ROS2MessageGenerator extends DefaultTask
 {
    /**
     * [Required] List of directories containing ros packages

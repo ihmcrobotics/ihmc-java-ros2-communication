@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-public class Ros2MsgToIdlGenerator
+public class ROS2MsgToIdlGenerator
 {
    public static final boolean COMPILE_ROS_SERVICES = false;
 
@@ -40,7 +40,7 @@ public class Ros2MsgToIdlGenerator
 
    private final HashMap<String, RosPackageDescription> packageNameToDescriptionMap = new HashMap<>();
 
-   public Ros2MsgToIdlGenerator()
+   public ROS2MsgToIdlGenerator()
    {
       argumentsJsonFile = createTempFile("rosInterfaceArguments", "arguments.json");
       templateDirectory = createTempDirectory("rosInterfaceCompilerTemplates");
