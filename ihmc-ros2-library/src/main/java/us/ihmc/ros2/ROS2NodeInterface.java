@@ -4,7 +4,7 @@ import us.ihmc.pubsub.TopicDataType;
 
 import java.io.IOException;
 
-public interface Ros2NodeInterface
+public interface ROS2NodeInterface
 {
    /**
     * Create a new ROS2 compatible publisher in this Node

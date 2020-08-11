@@ -39,7 +39,7 @@ import us.ihmc.rtps.impl.fastRTPS.Time_t;
  * @author Jesper Smith
  * @author Duncan Calvert
  */
-class ROS2NodeBasics implements Ros2NodeInterface
+class ROS2NodeBasics implements ROS2NodeInterface
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 

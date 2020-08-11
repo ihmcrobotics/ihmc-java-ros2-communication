@@ -18,17 +18,17 @@ public class ROS2Callback<T>
    private Ros2Subscription<T> subscription;
    private volatile boolean enabled = true;
 
-   public ROS2Callback(Ros2NodeInterface ros2Node, ROS2Topic<T> topicName, Consumer<T> messageCallback)
+   public ROS2Callback(ROS2NodeInterface ros2Node, ROS2Topic<T> topicName, Consumer<T> messageCallback)
    {
       this(ros2Node, topicName.getType(), topicName, messageCallback);
    }
 
-   public ROS2Callback(Ros2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, Consumer<T> messageCallback)
+   public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, Consumer<T> messageCallback)
    {
       this(ros2Node, messageType, topicName.withType(messageType).toString(), messageCallback);
    }
 
-   public ROS2Callback(Ros2NodeInterface ros2Node, Class<T> messageType, String topicName, Consumer<T> messageCallback)
+   public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName, Consumer<T> messageCallback)
    {
       this.messageCallback = messageCallback;
       ExceptionTools.handle(() ->
