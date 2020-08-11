@@ -100,7 +100,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
    @Override
    public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT());
+      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -113,7 +113,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * @throws IOException if no publisher can be made
     */
    @Override
-   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException
+   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
       if (registeredType == null)
@@ -182,7 +182,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
    public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
          throws IOException
    {
-      return createSubscription(topicDataType, newMessageListener, topicName, Ros2QosProfile.DEFAULT());
+      return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -197,7 +197,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     */
    @Override
    public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
-                                                     Ros2QosProfile qosProfile)
+                                                     ROS2QosProfile qosProfile)
          throws IOException
    {
       return createSubscription(topicDataType, (SubscriberListener<T>) newMessageListener, topicName, qosProfile);
@@ -217,7 +217,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     */
    @Override
    public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
-                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName, Ros2QosProfile qosProfile)
+                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName, ROS2QosProfile qosProfile)
          throws IOException
    {
 
@@ -248,7 +248,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
     */
    @SuppressWarnings("unchecked")
    private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
-                                                      Ros2QosProfile qosProfile)
+                                                      ROS2QosProfile qosProfile)
          throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());

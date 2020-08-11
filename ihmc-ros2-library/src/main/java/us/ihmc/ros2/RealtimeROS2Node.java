@@ -186,7 +186,7 @@ public class RealtimeROS2Node
     */
    public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
+      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -202,7 +202,7 @@ public class RealtimeROS2Node
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+   public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
          throws IOException
    {
       startupLock.lock();
@@ -235,7 +235,7 @@ public class RealtimeROS2Node
     */
    public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createQueuedSubscription(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
+      return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -250,7 +250,7 @@ public class RealtimeROS2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
          throws IOException
    {
       RealtimeROS2SubscriptionListener<T> listener = new RealtimeROS2SubscriptionListener<>(topicDataType, queueSize);
@@ -270,7 +270,7 @@ public class RealtimeROS2Node
     */
    public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener) throws IOException
    {
-      createCallbackSubscription(topicDataType, topicName, newMessageListener, Ros2QosProfile.DEFAULT());
+      createCallbackSubscription(topicDataType, topicName, newMessageListener, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -284,7 +284,7 @@ public class RealtimeROS2Node
     * @throws IOException
     */
    public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener,
-                                              Ros2QosProfile qosProfile)
+                                              ROS2QosProfile qosProfile)
          throws IOException
    {
       node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
