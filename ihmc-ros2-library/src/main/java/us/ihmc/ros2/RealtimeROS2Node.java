@@ -27,7 +27,7 @@ import us.ihmc.util.PeriodicThreadScheduler;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
 
 /**
- * A Realtime-safe implementation of Ros2Node. Lock-free publishing and subscribing is provided
+ * A Realtime-safe implementation of ROS2Node. Lock-free publishing and subscribing is provided
  * using lock-free buffers.
  * 
  * @author Jesper Smith
@@ -56,8 +56,8 @@ public class RealtimeROS2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @throws IOException if the participant cannot be made
     */
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace)
@@ -77,8 +77,8 @@ public class RealtimeROS2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @throws IOException if the participant cannot be made
     */
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
@@ -99,8 +99,8 @@ public class RealtimeROS2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @param domainId             Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
@@ -121,8 +121,8 @@ public class RealtimeROS2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @param domainId             Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
@@ -144,8 +144,8 @@ public class RealtimeROS2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @param domainId             Desired ROS domain ID
     * @param addressRestriction   Restrict network traffic to the given address. When provided, it
     *                             should describe one of the addresses of the computer hosting this
@@ -163,12 +163,12 @@ public class RealtimeROS2Node
    /**
     * Create a new realtime node using an existing ROS2 node
     * 
-    * @param ros2Node      existing Ros2Node to use for this realtime node
+    * @param ros2Node      existing ROS2Node to use for this realtime node
     * @param threadFactory Thread factory for the publisher. Either
     *                      PeriodicRealtimeThreadSchedulerFactory or
     *                      PeriodicNonRealtimeThreadSchedulerFactory depending on the application
     */
-   public RealtimeROS2Node(Ros2Node ros2Node, PeriodicThreadSchedulerFactory threadFactory)
+   public RealtimeROS2Node(ROS2Node ros2Node, PeriodicThreadSchedulerFactory threadFactory)
    {
       this.node = ros2Node;
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + this.node.getName() + "/" + this.node.getNamespace());

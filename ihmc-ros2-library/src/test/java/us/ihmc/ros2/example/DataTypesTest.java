@@ -7,7 +7,7 @@ import ros_msgs.msg.dds.Num;
 import ros_msgs.msg.dds.NumPubSubType;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.common.SampleInfo;
-import us.ihmc.ros2.Ros2Node;
+import us.ihmc.ros2.ROS2Node;
 import us.ihmc.ros2.Ros2Publisher;
 
 import static us.ihmc.robotics.Assert.*;
@@ -22,7 +22,7 @@ public class DataTypesTest
       int NUMBER_OF_MESSAGES_TO_SEND = 10;
       try
       {
-         Ros2Node node = new Ros2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
+         ROS2Node node = new ROS2Node(PubSubImplementation.INTRAPROCESS, "Ros2CommunicationTest");
          NumPubSubType topicDataType = new NumPubSubType();
          Ros2Publisher<Num> publisher = node.createPublisher(topicDataType, "/chatter");
 

@@ -40,7 +40,7 @@ public class CommunicationTest
       try
       {
          String name = "Ros2CommunicationTest";
-         Ros2Node node = ros2Distro == null ? new Ros2Node(pubSubImplementation, name) : new Ros2Node(pubSubImplementation, ros2Distro, name);
+         ROS2Node node = ros2Distro == null ? new ROS2Node(pubSubImplementation, name) : new ROS2Node(pubSubImplementation, ros2Distro, name);
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
          Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
@@ -80,7 +80,7 @@ public class CommunicationTest
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try
       {
-         Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
+         ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "Ros2CommunicationTest");
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
          Ros2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 

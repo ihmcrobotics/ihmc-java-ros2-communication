@@ -16,7 +16,7 @@
 package us.ihmc.ros2.example;
 
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.ros2.Ros2Node;
+import us.ihmc.ros2.ROS2Node;
 
 import java.io.IOException;
 
@@ -34,7 +34,7 @@ public class NonRealtimeRos2ListenerExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2ChatterExample");
+      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeRos2ChatterExample");
       node.createSubscription(new std_msgs.msg.dds.StringPubSubType(), subscriber -> {
          std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
          if (subscriber.takeNextData(message, null))
