@@ -39,7 +39,7 @@ import us.ihmc.rtps.impl.fastRTPS.Time_t;
  * @author Jesper Smith
  * @author Duncan Calvert
  */
-class Ros2NodeBasics implements Ros2NodeInterface
+class ROS2NodeBasics implements Ros2NodeInterface
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
@@ -62,7 +62,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
     *                           Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
-   Ros2NodeBasics(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
+   ROS2NodeBasics(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
          throws IOException
    {
       this.domain = DomainFactory.getDomain(pubSubImplementation);

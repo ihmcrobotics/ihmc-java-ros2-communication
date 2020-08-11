@@ -37,7 +37,7 @@ public class RealtimeROS2Node
    public static int THREAD_PERIOD_MICROSECONDS = 1000;
    public static final int DEFAULT_QUEUE_SIZE = 10;
 
-   private final Ros2NodeBasics node;
+   private final ROS2NodeBasics node;
 
    private final ArrayList<RealtimeROS2Publisher<?>> publishers = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class RealtimeROS2Node
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace)
          throws IOException
    {
-      this(pubSubImplementation, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, threadFactory, name, namespace, ROS2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
@@ -85,7 +85,7 @@ public class RealtimeROS2Node
                            String namespace)
          throws IOException
    {
-      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, ROS2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
@@ -156,7 +156,7 @@ public class RealtimeROS2Node
                            String namespace, int domainId, InetAddress addressRestriction)
          throws IOException
    {
-      this.node = new Ros2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
+      this.node = new ROS2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
@@ -328,7 +328,7 @@ public class RealtimeROS2Node
    /**
     * Stop the realtime periodic if spinning and then destroys the internal ROS node.
     * 
-    * @see Ros2NodeBasics#destroy()
+    * @see ROS2NodeBasics#destroy()
     */
    public void destroy()
    {

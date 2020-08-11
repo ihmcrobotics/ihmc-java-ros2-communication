@@ -26,7 +26,7 @@ import java.net.InetAddress;
  *
  * @author Jesper Smith
  */
-public class ROS2Node extends Ros2NodeBasics
+public class ROS2Node extends ROS2NodeBasics
 {
    /**
     * Create a new ROS2 node. Namespace is set to empty ("") Domain ID is set to the default ROS2
