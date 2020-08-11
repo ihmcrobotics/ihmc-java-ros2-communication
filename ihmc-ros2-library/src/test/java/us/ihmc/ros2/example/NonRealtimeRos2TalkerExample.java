@@ -16,7 +16,7 @@
 package us.ihmc.ros2.example;
 
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.ros2.Ros2Distro;
+import us.ihmc.ros2.ROS2Distro;
 import us.ihmc.ros2.Ros2Node;
 import us.ihmc.ros2.Ros2Publisher;
 
@@ -36,7 +36,7 @@ public class NonRealtimeRos2TalkerExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, Ros2Distro.BOUNCY, "NonRealtimeRos2ChatterExample", "/us/ihmc", 112);
+      Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, ROS2Distro.BOUNCY, "NonRealtimeRos2ChatterExample", "/us/ihmc", 112);
 
       Ros2Publisher<std_msgs.msg.dds.String> publisher = node.createPublisher(new std_msgs.msg.dds.StringPubSubType(), "/chatter");
       std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();

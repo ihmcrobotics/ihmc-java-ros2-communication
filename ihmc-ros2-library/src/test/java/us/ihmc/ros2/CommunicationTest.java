@@ -25,16 +25,16 @@ public class CommunicationTest
    @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationArdent()
    {
-      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.ARDENT);
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, ROS2Distro.ARDENT);
    }
 
    @Test// timeout = 5000
    public void testSimpleRealRTPSCommunicationBouncy()
    {
-      testSimpleCommunication(PubSubImplementation.FAST_RTPS, Ros2Distro.BOUNCY);
+      testSimpleCommunication(PubSubImplementation.FAST_RTPS, ROS2Distro.BOUNCY);
    }
 
-   private void testSimpleCommunication(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro)
+   private void testSimpleCommunication(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro)
    {
       Pair<Integer, Integer> messagesReceived = new MutablePair<>();
       try

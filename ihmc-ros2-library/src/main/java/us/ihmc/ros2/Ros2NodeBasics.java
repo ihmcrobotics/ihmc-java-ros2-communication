@@ -43,7 +43,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
-   private final Ros2Distro ros2Distro;
+   private final ROS2Distro ros2Distro;
 
    private Domain domain;
    private Participant participant;
@@ -62,7 +62,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
     *                           Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
-   Ros2NodeBasics(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
+   Ros2NodeBasics(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
          throws IOException
    {
       this.domain = DomainFactory.getDomain(pubSubImplementation);

@@ -46,7 +46,7 @@ public class RealtimeROS2Node
    private boolean spinning = false;
 
    /**
-    * Create a new realtime node with the default ROS2 domain ID Ros2Distro is set to ROS_DISTRO
+    * Create a new realtime node with the default ROS2 domain ID ROS2Distro is set to ROS_DISTRO
     * environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
@@ -81,7 +81,7 @@ public class RealtimeROS2Node
     * @param namespace            Namespace of this Ros2Node
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace)
          throws IOException
    {
@@ -89,7 +89,7 @@ public class RealtimeROS2Node
    }
 
    /**
-    * Create a new realtime node Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if
+    * Create a new realtime node ROS2Distro is set to ROS_DISTRO environment variable (or BOUNCY if
     * unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
@@ -107,7 +107,7 @@ public class RealtimeROS2Node
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId)
          throws IOException
    {
-      this(pubSubImplementation, Ros2Distro.fromEnvironment(), threadFactory, name, namespace, domainId);
+      this(pubSubImplementation, ROS2Distro.fromEnvironment(), threadFactory, name, namespace, domainId);
    }
 
    /**
@@ -126,7 +126,7 @@ public class RealtimeROS2Node
     * @param domainId             Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace, int domainId)
          throws IOException
    {
@@ -152,7 +152,7 @@ public class RealtimeROS2Node
     *                             node. Optional, ignored when {@code null}.
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace, int domainId, InetAddress addressRestriction)
          throws IOException
    {
