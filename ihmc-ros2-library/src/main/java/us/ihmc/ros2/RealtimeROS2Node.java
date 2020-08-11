@@ -39,7 +39,7 @@ public class RealtimeROS2Node
 
    private final Ros2NodeBasics node;
 
-   private final ArrayList<RealtimeRos2Publisher<?>> publishers = new ArrayList<>();
+   private final ArrayList<RealtimeROS2Publisher<?>> publishers = new ArrayList<>();
 
    private final ReentrantLock startupLock = new ReentrantLock();
    private final PeriodicThreadScheduler scheduler;
@@ -184,7 +184,7 @@ public class RealtimeROS2Node
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> RealtimeRos2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
       return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
@@ -202,7 +202,7 @@ public class RealtimeROS2Node
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> RealtimeRos2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+   public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
          throws IOException
    {
       startupLock.lock();
@@ -213,7 +213,7 @@ public class RealtimeROS2Node
             throw new RuntimeException("Cannot add publishers to a RealtimeROS2Node that is already spinning");
          }
          Ros2Publisher<T> rosPublisher = node.createPublisher(topicDataType, topicName, qosProfile);
-         RealtimeRos2Publisher<T> realtimePublisher = new RealtimeRos2Publisher<>(topicDataType, rosPublisher, queueSize);
+         RealtimeROS2Publisher<T> realtimePublisher = new RealtimeROS2Publisher<>(topicDataType, rosPublisher, queueSize);
          publishers.add(realtimePublisher);
          return realtimePublisher;
       }

@@ -125,7 +125,7 @@ public class CommunicationTest
          RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.INTRAPROCESS, PeriodicNonRealtimeThreadScheduler::new, "Ros2CommunicationTest",
                                                       "/us/ihmc");
          TwoNumPubSubType topicDataType = new TwoNumPubSubType();
-         RealtimeRos2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+         RealtimeROS2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
          messagesReceived.setValue(0);
 
