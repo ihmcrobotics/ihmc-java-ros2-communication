@@ -253,7 +253,7 @@ public class RealtimeROS2Node
    public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
          throws IOException
    {
-      RealtimeRos2SubscriptionListener<T> listener = new RealtimeRos2SubscriptionListener<>(topicDataType, queueSize);
+      RealtimeROS2SubscriptionListener<T> listener = new RealtimeROS2SubscriptionListener<>(topicDataType, queueSize);
       node.createSubscription(topicDataType, listener, topicName, qosProfile);
       RealtimeROS2Subscription<T> subscription = new RealtimeROS2Subscription<>(listener);
       return subscription;

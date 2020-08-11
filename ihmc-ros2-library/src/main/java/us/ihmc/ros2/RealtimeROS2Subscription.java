@@ -26,9 +26,9 @@ package us.ihmc.ros2;
  */
 public class RealtimeROS2Subscription<T>
 {
-   private final RealtimeRos2SubscriptionListener<T> listener;
+   private final RealtimeROS2SubscriptionListener<T> listener;
 
-   RealtimeROS2Subscription(RealtimeRos2SubscriptionListener<T> listener)
+   RealtimeROS2Subscription(RealtimeROS2SubscriptionListener<T> listener)
    {
       this.listener = listener;
    }
