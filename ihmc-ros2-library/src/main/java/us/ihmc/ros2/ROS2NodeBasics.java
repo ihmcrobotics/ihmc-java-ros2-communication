@@ -39,11 +39,11 @@ import us.ihmc.rtps.impl.fastRTPS.Time_t;
  * @author Jesper Smith
  * @author Duncan Calvert
  */
-class Ros2NodeBasics implements Ros2NodeInterface
+class ROS2NodeBasics implements ROS2NodeInterface
 {
    public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
-   private final Ros2Distro ros2Distro;
+   private final ROS2Distro ros2Distro;
 
    private Domain domain;
    private Participant participant;
@@ -62,7 +62,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
     *                           Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
-   Ros2NodeBasics(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
+   ROS2NodeBasics(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
          throws IOException
    {
       this.domain = DomainFactory.getDomain(pubSubImplementation);
@@ -98,9 +98,9 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * @throws IOException if no publisher can be made
     */
    @Override
-   public <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT());
+      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -113,7 +113,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * @throws IOException if no publisher can be made
     */
    @Override
-   public <T> Ros2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException
+   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
       if (registeredType == null)
@@ -164,7 +164,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
          publisherAttributes.getQos().setPublishMode(PublishModeKind.ASYNCHRONOUS_PUBLISH_MODE);
       }
 
-      return new Ros2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
+      return new ROS2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
 
    }
 
@@ -179,10 +179,10 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
          throws IOException
    {
-      return createSubscription(topicDataType, newMessageListener, topicName, Ros2QosProfile.DEFAULT());
+      return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -196,8 +196,8 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
-                                                     Ros2QosProfile qosProfile)
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
+                                                     ROS2QosProfile qosProfile)
          throws IOException
    {
       return createSubscription(topicDataType, (SubscriberListener<T>) newMessageListener, topicName, qosProfile);
@@ -216,8 +216,8 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
-                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName, Ros2QosProfile qosProfile)
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
+                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName, ROS2QosProfile qosProfile)
          throws IOException
    {
 
@@ -247,8 +247,8 @@ class Ros2NodeBasics implements Ros2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @SuppressWarnings("unchecked")
-   private <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
-                                                      Ros2QosProfile qosProfile)
+   private <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
+                                                      ROS2QosProfile qosProfile)
          throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
@@ -283,7 +283,7 @@ class Ros2NodeBasics implements Ros2NodeInterface
                                                              topicName,
                                                              qosProfile.isAvoidRosNamespaceConventions());
 
-      return new Ros2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
+      return new ROS2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }
 
    /**

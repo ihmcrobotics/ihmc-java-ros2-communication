@@ -15,15 +15,14 @@
  */
 package us.ihmc.ros2.example;
 
-import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.Test;
 import ros_msgs.msg.dds.BigNumSequence;
 import ros_msgs.msg.dds.BigNumSequencePubSubType;
 import ros_msgs.msg.dds.Num;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.ros2.RealtimeRos2Node;
-import us.ihmc.ros2.RealtimeRos2Publisher;
-import us.ihmc.ros2.RealtimeRos2Subscription;
+import us.ihmc.ros2.RealtimeROS2Node;
+import us.ihmc.ros2.RealtimeROS2Publisher;
+import us.ihmc.ros2.RealtimeROS2Subscription;
 import us.ihmc.util.PeriodicNonRealtimeThreadSchedulerFactory;
 import us.ihmc.util.PeriodicRealtimeThreadSchedulerFactory;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
@@ -40,7 +39,7 @@ import java.util.Random;
  *
  * @author Duncan Calvert
  */
-public class RealtimeRos2IntraprocessCopyTest
+public class RealtimeROS2IntraprocessCopyTest
 {
    public static final int NUMBER_OF_MESSAGES_TO_SEND = 20;
 
@@ -55,9 +54,9 @@ public class RealtimeRos2IntraprocessCopyTest
       PeriodicThreadSchedulerFactory threadFactory = RUN_USING_REALTIME_THREAD ? // realtime threads only work on linux w/ RT kernel
                       new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
                       new PeriodicNonRealtimeThreadSchedulerFactory();           // to setup realtime threads
-      RealtimeRos2Node node = new RealtimeRos2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeRos2IntraprocessCopyTest", "/us/ihmc");
-      RealtimeRos2Publisher<BigNumSequence> publisher = node.createPublisher(new BigNumSequencePubSubType(), "/example");
-      RealtimeRos2Subscription<BigNumSequence> subscription = node.createQueuedSubscription(new BigNumSequencePubSubType(), "/example");
+      RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.INTRAPROCESS, threadFactory, "RealtimeROS2IntraprocessCopyTest", "/us/ihmc");
+      RealtimeROS2Publisher<BigNumSequence> publisher = node.createPublisher(new BigNumSequencePubSubType(), "/example");
+      RealtimeROS2Subscription<BigNumSequence> subscription = node.createQueuedSubscription(new BigNumSequencePubSubType(), "/example");
 
       node.spin(); // start the realtime node thread
 

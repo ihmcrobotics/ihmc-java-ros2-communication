@@ -1,7 +1,7 @@
 # Making a release
 
 This project is a group of project and contains a Gradle plugin. It requires various levels of attention and care
-dependending on what changes are included in the upgrade.
+depending on what changes are included in the upgrade.
 
 #### Step 1: Update ihmc-pub-sub dependencies
 
@@ -70,7 +70,8 @@ Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcr
 
 1. Update the version of `ros2-msg-to-pubsub-generator` plugin in `ihmc-java-ros2-communication/ros2-common-interfaces/build.gradle`.
 1. Commit and push with message `:bookmark: X.X.X` and tag `X.X.X`
-1. It will take several minutes before the newly published jars are available for Gradle to download such that it will take a moment before Gradle is able to assemble `ros2-common-interfaces`.
+1. It will take several minutes before the newly published jars are available for Gradle to download such that it will take a moment 
+before Gradle is able to assemble `ros2-common-interfaces`.
 
 #### Step 6: (Optional) Draft and publish release on GitHub
 

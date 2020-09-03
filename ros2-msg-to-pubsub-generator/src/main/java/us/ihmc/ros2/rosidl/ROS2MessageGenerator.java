@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ros2MessageGenerator extends DefaultTask
+public class ROS2MessageGenerator extends DefaultTask
 {
    /**
     * [Required] List of directories containing ros packages
@@ -112,7 +112,7 @@ public class Ros2MessageGenerator extends DefaultTask
       getProject().delete(javaOutputDirectory);
       getProject().delete(idlOutputDirectory);
 
-      RosInterfaceGenerator generator = new RosInterfaceGenerator();
+      ROS2InterfaceGenerator generator = new ROS2InterfaceGenerator();
 
       String[] ignoredPackagesArray = ignoredPackages.toArray(new String[ignoredPackages.size()]);
       for (File rosPackage : rosPackages)
@@ -130,7 +130,7 @@ public class Ros2MessageGenerator extends DefaultTask
 
       generator.generate(idlOutputDirectory.toPath(), ros1OutputDirectory.toPath(), javaOutputDirectory.toPath());
 
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(idlOutputDirectory.toPath());
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(javaOutputDirectory.toPath());
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(idlOutputDirectory.toPath());
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(javaOutputDirectory.toPath());
    }
 }

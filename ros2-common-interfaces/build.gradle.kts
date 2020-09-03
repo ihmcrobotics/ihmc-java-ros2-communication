@@ -1,6 +1,6 @@
 buildscript {
    dependencies {
-      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.18.3")
+      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.19.0")
    }
 }
 
@@ -37,7 +37,7 @@ ihmc {
 
 mainDependencies {
    api("us.ihmc:euclid-geometry:0.15.1")
-   api("us.ihmc:ihmc-pub-sub:0.12.0")
+   api("us.ihmc:ihmc-pub-sub:0.14.0")
 }
 
 generatorDependencies {
@@ -52,7 +52,7 @@ val show by tasks.creating {
    }
 }
 
-val generateMessages by tasks.creating(us.ihmc.ros2.rosidl.Ros2MessageGenerator::class) {
+val generateMessages by tasks.creating(us.ihmc.ros2.rosidl.ROS2MessageGenerator::class) {
    doFirst {
       setupVendoredRepo(commonInterfacesPath, commonInterfacesUrl, ros2Release)
       setupVendoredRepo(rclInterfacesPath, rclInterfacesUrl, ros2Release)
