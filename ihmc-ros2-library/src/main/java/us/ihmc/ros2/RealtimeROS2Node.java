@@ -27,26 +27,26 @@ import us.ihmc.util.PeriodicThreadScheduler;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
 
 /**
- * A Realtime-safe implementation of Ros2Node. Lock-free publishing and subscribing is provided
+ * A Realtime-safe implementation of ROS2Node. Lock-free publishing and subscribing is provided
  * using lock-free buffers.
  * 
  * @author Jesper Smith
  */
-public class RealtimeRos2Node
+public class RealtimeROS2Node
 {
    public static int THREAD_PERIOD_MICROSECONDS = 1000;
    public static final int DEFAULT_QUEUE_SIZE = 10;
 
-   private final Ros2NodeBasics node;
+   private final ROS2NodeBasics node;
 
-   private final ArrayList<RealtimeRos2Publisher<?>> publishers = new ArrayList<>();
+   private final ArrayList<RealtimeROS2Publisher<?>> publishers = new ArrayList<>();
 
    private final ReentrantLock startupLock = new ReentrantLock();
    private final PeriodicThreadScheduler scheduler;
    private boolean spinning = false;
 
    /**
-    * Create a new realtime node with the default ROS2 domain ID Ros2Distro is set to ROS_DISTRO
+    * Create a new realtime node with the default ROS2 domain ID ROS2Distro is set to ROS_DISTRO
     * environment variable (or BOUNCY if unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
@@ -56,14 +56,14 @@ public class RealtimeRos2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace)
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace)
          throws IOException
    {
-      this(pubSubImplementation, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, threadFactory, name, namespace, ROS2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
@@ -77,19 +77,19 @@ public class RealtimeRos2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace)
          throws IOException
    {
-      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, Ros2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, ROS2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
    }
 
    /**
-    * Create a new realtime node Ros2Distro is set to ROS_DISTRO environment variable (or BOUNCY if
+    * Create a new realtime node ROS2Distro is set to ROS_DISTRO environment variable (or BOUNCY if
     * unset)
     *
     * @param pubSubImplementation RTPS or INTRAPROCESS. See
@@ -99,15 +99,15 @@ public class RealtimeRos2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @param domainId             Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId)
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId)
          throws IOException
    {
-      this(pubSubImplementation, Ros2Distro.fromEnvironment(), threadFactory, name, namespace, domainId);
+      this(pubSubImplementation, ROS2Distro.fromEnvironment(), threadFactory, name, namespace, domainId);
    }
 
    /**
@@ -121,12 +121,12 @@ public class RealtimeRos2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @param domainId             Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace, int domainId)
          throws IOException
    {
@@ -144,31 +144,31 @@ public class RealtimeRos2Node
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
     *                             application
-    * @param name                 Name of this Ros2Node
-    * @param namespace            Namespace of this Ros2Node
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
     * @param domainId             Desired ROS domain ID
     * @param addressRestriction   Restrict network traffic to the given address. When provided, it
     *                             should describe one of the addresses of the computer hosting this
     *                             node. Optional, ignored when {@code null}.
     * @throws IOException if the participant cannot be made
     */
-   public RealtimeRos2Node(PubSubImplementation pubSubImplementation, Ros2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
+   public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace, int domainId, InetAddress addressRestriction)
          throws IOException
    {
-      this.node = new Ros2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
+      this.node = new ROS2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 
    /**
     * Create a new realtime node using an existing ROS2 node
     * 
-    * @param ros2Node      existing Ros2Node to use for this realtime node
+    * @param ros2Node      existing ROS2Node to use for this realtime node
     * @param threadFactory Thread factory for the publisher. Either
     *                      PeriodicRealtimeThreadSchedulerFactory or
     *                      PeriodicNonRealtimeThreadSchedulerFactory depending on the application
     */
-   public RealtimeRos2Node(Ros2Node ros2Node, PeriodicThreadSchedulerFactory threadFactory)
+   public RealtimeROS2Node(ROS2Node ros2Node, PeriodicThreadSchedulerFactory threadFactory)
    {
       this.node = ros2Node;
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + this.node.getName() + "/" + this.node.getNamespace());
@@ -184,9 +184,9 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> RealtimeRos2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createPublisher(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
+      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -202,7 +202,7 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> RealtimeRos2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+   public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
          throws IOException
    {
       startupLock.lock();
@@ -210,10 +210,10 @@ public class RealtimeRos2Node
       {
          if (spinning)
          {
-            throw new RuntimeException("Cannot add publishers to a RealtimeRos2Node that is already spinning");
+            throw new RuntimeException("Cannot add publishers to a RealtimeROS2Node that is already spinning");
          }
-         Ros2Publisher<T> rosPublisher = node.createPublisher(topicDataType, topicName, qosProfile);
-         RealtimeRos2Publisher<T> realtimePublisher = new RealtimeRos2Publisher<>(topicDataType, rosPublisher, queueSize);
+         ROS2Publisher<T> rosPublisher = node.createPublisher(topicDataType, topicName, qosProfile);
+         RealtimeROS2Publisher<T> realtimePublisher = new RealtimeROS2Publisher<>(topicDataType, rosPublisher, queueSize);
          publishers.add(realtimePublisher);
          return realtimePublisher;
       }
@@ -233,9 +233,9 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeRos2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createQueuedSubscription(topicDataType, topicName, Ros2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
+      return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -250,12 +250,12 @@ public class RealtimeRos2Node
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeRos2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile, int queueSize)
+   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
          throws IOException
    {
-      RealtimeRos2SubscriptionListener<T> listener = new RealtimeRos2SubscriptionListener<>(topicDataType, queueSize);
+      RealtimeROS2SubscriptionListener<T> listener = new RealtimeROS2SubscriptionListener<>(topicDataType, queueSize);
       node.createSubscription(topicDataType, listener, topicName, qosProfile);
-      RealtimeRos2Subscription<T> subscription = new RealtimeRos2Subscription<>(listener);
+      RealtimeROS2Subscription<T> subscription = new RealtimeROS2Subscription<>(listener);
       return subscription;
    }
 
@@ -270,7 +270,7 @@ public class RealtimeRos2Node
     */
    public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener) throws IOException
    {
-      createCallbackSubscription(topicDataType, topicName, newMessageListener, Ros2QosProfile.DEFAULT());
+      createCallbackSubscription(topicDataType, topicName, newMessageListener, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -284,14 +284,14 @@ public class RealtimeRos2Node
     * @throws IOException
     */
    public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener,
-                                              Ros2QosProfile qosProfile)
+                                              ROS2QosProfile qosProfile)
          throws IOException
    {
       node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
    }
 
    /**
-    * Start publishing data for this RealtimeRos2Node A periodic thread is spawned that will publish
+    * Start publishing data for this RealtimeROS2Node A periodic thread is spawned that will publish
     * all data every millisecond.
     */
    public void spin()
@@ -300,7 +300,7 @@ public class RealtimeRos2Node
       if (spinning)
       {
          startupLock.unlock();
-         throw new RuntimeException("This RealtimeRos2Node is already spinning");
+         throw new RuntimeException("This RealtimeROS2Node is already spinning");
       }
       spinning = true;
       scheduler.schedule(this::realtimeNodeThread, THREAD_PERIOD_MICROSECONDS, TimeUnit.MICROSECONDS);
@@ -328,7 +328,7 @@ public class RealtimeRos2Node
    /**
     * Stop the realtime periodic if spinning and then destroys the internal ROS node.
     * 
-    * @see Ros2NodeBasics#destroy()
+    * @see ROS2NodeBasics#destroy()
     */
    public void destroy()
    {

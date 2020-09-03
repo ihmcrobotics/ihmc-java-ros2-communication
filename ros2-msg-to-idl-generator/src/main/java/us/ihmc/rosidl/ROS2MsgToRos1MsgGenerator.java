@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Ros2MsgToRos1MsgGenerator extends Ros2MsgToIdlGenerator
+public class ROS2MsgToRos1MsgGenerator extends ROS2MsgToIdlGenerator
 {
    // Template to use
    private static final String MSG_TO_ROS1_EM_TEMPLATE_NAME = "msg.ros1.em";
@@ -22,7 +22,7 @@ public class Ros2MsgToRos1MsgGenerator extends Ros2MsgToIdlGenerator
 
    private final HashMap<String, RosPackageDescription> packages = new HashMap<>();
 
-   public Ros2MsgToRos1MsgGenerator()
+   public ROS2MsgToRos1MsgGenerator()
    {
       argumentsJsonFile = createTempFile("rosInterfaceArguments", "arguments.json");
       templateDirectory = createTempDirectory("rosInterfaceCompilerTemplates");

@@ -4,7 +4,7 @@ import us.ihmc.pubsub.TopicDataType;
 
 import java.io.IOException;
 
-public interface Ros2NodeInterface
+public interface ROS2NodeInterface
 {
    /**
     * Create a new ROS2 compatible publisher in this Node
@@ -17,7 +17,7 @@ public interface Ros2NodeInterface
     *
     * @throws IOException if no publisher can be made
     */
-   <T> Ros2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException;
+   <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException;
 
    /**
     * Create a new ROS2 compatible publisher in this Node
@@ -29,7 +29,7 @@ public interface Ros2NodeInterface
     *
     * @throws IOException if no publisher can be made
     */
-   <T> Ros2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName, Ros2QosProfile qosProfile) throws IOException;
+   <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException;
 
    /**
     * Create a new ROS2 compatible subscription.
@@ -43,7 +43,7 @@ public interface Ros2NodeInterface
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName) throws IOException;
+   <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName) throws IOException;
 
    /**
     * Create a new ROS2 compatible subscription.
@@ -56,8 +56,8 @@ public interface Ros2NodeInterface
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
-                                                     Ros2QosProfile qosProfile) throws IOException;
+   <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
+                                              ROS2QosProfile qosProfile) throws IOException;
 
    /**
     * Create a new ROS2 compatible subscription.
@@ -72,9 +72,9 @@ public interface Ros2NodeInterface
     * @return Ros Subscription
     * @throws IOException if no subscriber can be made
     */
-   <T> Ros2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
-                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName,
-                                                     Ros2QosProfile qosProfile) throws IOException;
+   <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
+                                              SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName,
+                                              ROS2QosProfile qosProfile) throws IOException;
 
    /**
     *

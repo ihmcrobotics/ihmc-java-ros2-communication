@@ -16,9 +16,7 @@
 package us.ihmc.ros2.example;
 
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-import us.ihmc.ros2.Ros2Distro;
-import us.ihmc.ros2.Ros2Node;
-import us.ihmc.ros2.Ros2Publisher;
+import us.ihmc.ros2.ROS2Node;
 
 import java.io.IOException;
 
@@ -32,21 +30,18 @@ import java.io.IOException;
  * @author Jesper Smith
  *
  */
-public class NonRealtimeRos2TalkerExample
+public class NonRealtimeROS2ListenerExample
 {
    public static void main(String[] args) throws IOException, InterruptedException
    {
-      Ros2Node node = new Ros2Node(PubSubImplementation.FAST_RTPS, Ros2Distro.BOUNCY, "NonRealtimeRos2ChatterExample", "/us/ihmc", 112);
-
-      Ros2Publisher<std_msgs.msg.dds.String> publisher = node.createPublisher(new std_msgs.msg.dds.StringPubSubType(), "/chatter");
-      std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
-      for (int i = 0; i < 1000000000; i++)
-      {
-         message.setData("Hello " + i);
-         System.out.println("Publishing: " + message.getData());
-         publisher.publish(message);
-         Thread.sleep(1000);
-      }
+      ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "NonRealtimeROS2ChatterExample");
+      node.createSubscription(new std_msgs.msg.dds.StringPubSubType(), subscriber -> {
+         std_msgs.msg.dds.String message = new std_msgs.msg.dds.String();
+         if (subscriber.takeNextData(message, null))
+         {
+            System.out.println(message.getData());
+         }
+      }, "/chatter");
 
       Thread.currentThread().join(); // keep thread alive to receive more messages
    }
