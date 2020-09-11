@@ -181,6 +181,10 @@ public class ROS2Topic<T>
       {
          return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, typeName, suffix, messageType);
       }
+      else if (Objects.equals(messageType, this.messageType))
+      {
+         return (ROS2Topic<K>) this;
+      }
       else
       {
          throw new RuntimeException("Cannot change the type of a topic after it's already been set");

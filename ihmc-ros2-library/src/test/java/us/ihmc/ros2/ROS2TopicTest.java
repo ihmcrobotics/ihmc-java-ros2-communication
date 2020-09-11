@@ -2,21 +2,16 @@ package us.ihmc.ros2;
 
 import com.google.common.base.CaseFormat;
 import org.junit.jupiter.api.Test;
-import std_msgs.msg.dds.Int32;
-import std_msgs.msg.dds.Int8;
+import std_msgs.msg.dds.*;
 
+import java.lang.String;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ROS2TopicTest
 {
-   class ExampleTypePacket
-   {
-
-   }
-
-   class ExampleTypeMessage
+   static class ExampleTypeMessage
    {
 
    }
@@ -89,19 +84,45 @@ public class ROS2TopicTest
    @Test
    public void testRedundantModificationReturnsThis()
    {
-      ROS2Topic<?> root = new ROS2Topic<>();
-      assertTrue(root == root.withPrefix(""));
-      assertTrue(root == root.withRobot(""));
-      assertTrue(root == root.withModule(""));
-      assertTrue(root == root.withIOQualifier(""));
-      assertTrue(root == root.clearTypeName());
-      assertTrue(root == root.withSuffix(""));
+      ROS2Topic<?> empty = new ROS2Topic<>();
+      assertSame(empty, empty.withPrefix(""));
+      assertSame(empty, empty.withRobot(""));
+      assertSame(empty, empty.withModule(""));
+      assertSame(empty, empty.withIOQualifier(""));
+      assertSame(empty, empty.clearTypeName());
+      assertSame(empty, empty.withSuffix(""));
+      assertNotSame(empty, empty.withType(Bool.class));
+
+      ROS2Topic<?> root = empty.withPrefix("ihmc");
+      assertNotSame(root, root.withPrefix(""));
+      assertSame(root, root.withPrefix("ihmc"));
+      assertSame(root, root.withRobot(""));
+      assertSame(root, root.withModule(""));
+      assertSame(root, root.withIOQualifier(""));
+      assertSame(root, root.clearTypeName());
+      assertSame(root, root.withSuffix(""));
+      assertNotSame(root, root.withType(Float32.class));
+
+      ROS2Topic<Float64> float64Topic = root.withType(Float64.class);
+      assertNotSame(float64Topic, float64Topic.withPrefix(""));
+      assertSame(float64Topic, float64Topic.withRobot(""));
+      assertSame(float64Topic, float64Topic.withModule(""));
+      assertSame(float64Topic, float64Topic.withIOQualifier(""));
+      assertSame(float64Topic, float64Topic.clearTypeName());
+      assertSame(float64Topic, float64Topic.withSuffix(""));
+      assertSame(float64Topic, float64Topic.withType(Float64.class));
    }
 
    @Test
-   public void testNullNotAllowedForStringValues()
+   public void testExceptionsThrown()
    {
-
+      ROS2Topic<?> root = new ROS2Topic<>().withPrefix("ihmc");
+      assertThrows(RuntimeException.class, () -> root.withTypeName());
+      ROS2Topic<Bool> boolTopic = root.withType(Bool.class);
+      assertThrows(RuntimeException.class, () -> boolTopic.withTypeName(Int8.class));
+      assertThrows(RuntimeException.class, () -> boolTopic.withType(Int8.class));
+      assertDoesNotThrow(() -> boolTopic.withType(Bool.class));
+      assertDoesNotThrow(() -> boolTopic.withTypeName(Bool.class));
    }
 
    @Test
