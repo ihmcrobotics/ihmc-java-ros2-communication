@@ -3,6 +3,7 @@ package us.ihmc.ros2;
 import com.google.common.base.CaseFormat;
 import org.junit.jupiter.api.Test;
 import std_msgs.msg.dds.*;
+import us.ihmc.commons.MutationTestFacilitator;
 
 import java.lang.String;
 import java.util.HashMap;
@@ -118,11 +119,24 @@ public class ROS2TopicTest
    {
       ROS2Topic<?> root = new ROS2Topic<>().withPrefix("ihmc");
       assertThrows(RuntimeException.class, () -> root.withTypeName());
+      assertThrows(RuntimeException.class, () -> root.withType(null));
       ROS2Topic<Bool> boolTopic = root.withType(Bool.class);
+      assertThrows(RuntimeException.class, () -> root.withTopic(boolTopic));
       assertThrows(RuntimeException.class, () -> boolTopic.withTypeName(Int8.class));
       assertThrows(RuntimeException.class, () -> boolTopic.withType(Int8.class));
       assertDoesNotThrow(() -> boolTopic.withType(Bool.class));
       assertDoesNotThrow(() -> boolTopic.withTypeName(Bool.class));
+      assertDoesNotThrow(() -> boolTopic.withTopic(boolTopic));
+
+      ROS2Topic<Int8> int8Topic = root.withType(Int8.class);
+      ROS2Topic<?> fooModule = new ROS2Topic<>().withModule("foo");
+      ROS2Topic<Bool> fooBoolTopic = boolTopic.withTopic(fooModule);
+      assertEquals("/ihmc/foo", fooBoolTopic.getName());
+      assertThrows(RuntimeException.class, () -> boolTopic.withTopic(int8Topic));
+      assertEquals(Int8.class, int8Topic.getType());
+
+      assertFalse(boolTopic.equals(null));
+      assertTrue(boolTopic.equals(boolTopic));
    }
 
    @Test
@@ -183,5 +197,10 @@ public class ROS2TopicTest
       String ros2ToolsOutput = ROS2TopicNameTools.toROSTopicFormat(stringToEvaluate);
       assertEquals(guavaOutput, ros2ToolsOutput);
       assertEquals(expectedOutput, ros2ToolsOutput);
+   }
+
+   public static void main(String[] args)
+   {
+      MutationTestFacilitator.facilitateMutationTestForClass(ROS2Topic.class, ROS2TopicTest.class);
    }
 }
