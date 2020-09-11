@@ -35,8 +35,8 @@ public class ROS2TopicTest
 
       assertEquals(1, map.size());
 
-      ROS2Topic<Int32> topicName3 = new ROS2Topic<>().withPrefix("ihmc").withType(Int32.class);
-      ROS2Topic<Int32> topicName4 = new ROS2Topic<>().withPrefix("ihmc").withType(Int32.class);
+      ROS2Topic<Int32> topicName3 = new ROS2Topic<>().withPrefix("ihmc").withTypeName(Int32.class);
+      ROS2Topic<Int32> topicName4 = new ROS2Topic<>().withPrefix("ihmc").withTypeName(Int32.class);
 
       assertEquals(topicName1, topicName2);
 
@@ -51,14 +51,14 @@ public class ROS2TopicTest
    public void testROS2TopicName()
    {
       ROS2Topic<?> topicName = new ROS2Topic<>().withPrefix("ihmc").withRobot("atlas").withModule("rea")
-                                           .withType(ExampleTypeMessage.class).withSuffix(typeName -> typeName + "/one");
+                                                .withTypeName(ExampleTypeMessage.class).withTypeName().withSuffix("one");
       assertEquals("/ihmc/atlas/rea/example_type/one", topicName.toString());
 
       ROS2Topic<?> ihmcPrefixed = new ROS2Topic<>().withPrefix("ihmc");
       assertEquals("/ihmc", ihmcPrefixed.toString());
       ihmcPrefixed.withModule("hello");
       ihmcPrefixed.withRobot("robot_one");
-      ihmcPrefixed.withType(Int8.class);
+      ihmcPrefixed.withTypeName(Int8.class);
       ihmcPrefixed.withSuffix("meow");
       ihmcPrefixed.withInput();
       ihmcPrefixed.withOutput();
@@ -70,8 +70,8 @@ public class ROS2TopicTest
       assertEquals("/ihmc", ihmcPrefixed2.toString());
       ROS2Topic<?> hello = ihmcPrefixed2.withModule("hello");
       ROS2Topic<?> robotOne = hello.withRobot("robot_one");
-      ROS2Topic<Int8> int8 = robotOne.withType(Int8.class);
-      ROS2Topic<Int8> meow = int8.withSuffix(typeName -> typeName + "/meow");
+      ROS2Topic<Int8> int8 = robotOne.withTypeName(Int8.class);
+      ROS2Topic<Int8> meow = int8.withSuffix("meow");
       ROS2Topic<?> input = meow.withInput();
       ROS2Topic<?> output = input.withOutput();
 
@@ -82,8 +82,26 @@ public class ROS2TopicTest
       assertEquals("/ihmc/robot_one/hello/input/int8/meow", input.toString());
       assertEquals("/ihmc/robot_one/hello/output/int8/meow", output.toString());
 
-      assertEquals("/ihmc", output.withSuffix("").withIOQualifier(null).withModule(null).withRobot(null).withType(null).toString());
-      assertEquals("", output.withPrefix(null).withIOQualifier(null).withSuffix("").withModule(null).withRobot(null).withType(null).toString());
+      assertEquals("/ihmc", output.withSuffix("").withIOQualifier(null).withModule(null).withRobot(null).clearTypeName().toString());
+      assertEquals("", output.withPrefix(null).withIOQualifier(null).withSuffix("").withModule(null).withRobot(null).clearTypeName().toString());
+   }
+
+   @Test
+   public void testRedundantModificationReturnsThis()
+   {
+      ROS2Topic<?> root = new ROS2Topic<>();
+      assertTrue(root == root.withPrefix(""));
+      assertTrue(root == root.withRobot(""));
+      assertTrue(root == root.withModule(""));
+      assertTrue(root == root.withIOQualifier(""));
+      assertTrue(root == root.clearTypeName());
+      assertTrue(root == root.withSuffix(""));
+   }
+
+   @Test
+   public void testNullNotAllowedForStringValues()
+   {
+
    }
 
    @Test
@@ -92,13 +110,13 @@ public class ROS2TopicTest
       ROS2Topic<?> emptyTopic = new ROS2Topic<>();
       assertEquals("", emptyTopic.getName());
 
-      ROS2Topic<?> withEmptyTypeNamed = new ROS2Topic<>().withType(Int8.class).withSuffix(typeName -> "");
+      ROS2Topic<?> withEmptyTypeNamed = new ROS2Topic<>().withType(Int8.class);
       assertEquals("", withEmptyTypeNamed.getName());
 
-      ROS2Topic<?> typeNamed = new ROS2Topic<>().withType(Int8.class).withSuffix(typeName -> typeName);
+      ROS2Topic<?> typeNamed = new ROS2Topic<>().withTypeName(Int8.class).withTypeName();
       assertEquals("/int8", typeNamed.getName());
 
-      ROS2Topic<?> usedTypeInName = new ROS2Topic<>().withType(Int8.class).withSuffix(typeName -> typeName + "_for_ui");
+      ROS2Topic<?> usedTypeInName = new ROS2Topic<>().withType(Int8.class).withSuffix("int8_for_ui");
       assertEquals("/int8_for_ui", usedTypeInName.getName());
 
       ROS2Topic<?> withInput = typeNamed.withInput();
