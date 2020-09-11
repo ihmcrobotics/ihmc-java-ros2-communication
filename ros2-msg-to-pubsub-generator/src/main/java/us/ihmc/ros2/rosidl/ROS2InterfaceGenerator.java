@@ -21,8 +21,8 @@ import us.ihmc.commons.nio.FileTools;
 import us.ihmc.commons.nio.PathTools;
 import us.ihmc.commons.nio.WriteOption;
 import us.ihmc.idl.generator.IDLGenerator;
-import us.ihmc.rosidl.Ros2MsgToIdlGenerator;
-import us.ihmc.rosidl.Ros2MsgToRos1MsgGenerator;
+import us.ihmc.rosidl.ROS2MsgToIdlGenerator;
+import us.ihmc.rosidl.ROS2MsgToRos1MsgGenerator;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,10 +36,10 @@ import java.util.List;
  *
  * @author Jesper Smith
  */
-public class RosInterfaceGenerator
+public class ROS2InterfaceGenerator
 {
-   private final Ros2MsgToRos1MsgGenerator ros2MsgToRos1MsgGenerator;
-   private Ros2MsgToIdlGenerator ros2MsgToIdlGenerator;
+   private final ROS2MsgToRos1MsgGenerator ros2MsgToRos1MsgGenerator;
+   private ROS2MsgToIdlGenerator ros2MsgToIdlGenerator;
 
    // Holder for all packages found
    private final HashMap<String, Path> customIDLFiles = new HashMap<>();
@@ -49,10 +49,10 @@ public class RosInterfaceGenerator
     *
     * @throws IOException if no temporary files and directories can be made
     */
-   public RosInterfaceGenerator() throws IOException
+   public ROS2InterfaceGenerator() throws IOException
    {
-      ros2MsgToIdlGenerator = new Ros2MsgToIdlGenerator();
-      ros2MsgToRos1MsgGenerator = new Ros2MsgToRos1MsgGenerator();
+      ros2MsgToIdlGenerator = new ROS2MsgToIdlGenerator();
+      ros2MsgToRos1MsgGenerator = new ROS2MsgToRos1MsgGenerator();
    }
 
    /**

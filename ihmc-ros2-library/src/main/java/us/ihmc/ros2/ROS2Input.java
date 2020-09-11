@@ -21,22 +21,32 @@ public class ROS2Input<T>
    private TypedNotification<T> messageNotification = new TypedNotification<>();
    private List<Consumer<T>> userCallbacks = new ArrayList<>();
 
-   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName)
+   public ROS2Input(ROS2NodeInterface ros2Node, ROS2Topic<T> topic)
+   {
+      this(ros2Node, topic, ROS2TopicNameTools.newMessageInstance(topic.getType()), message -> true);
+   }
+
+   public ROS2Input(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName)
    {
       this(ros2Node, messageType, topicName.withType(messageType).toString());
    }
 
-   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, T initialValue, MessageFilter<T> messageFilter)
-   {
-      this(ros2Node, messageType, topicName.withType(messageType).toString(), initialValue, messageFilter);
-   }
-
-   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, String topicName)
+   public ROS2Input(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName)
    {
       this(ros2Node, messageType, topicName, ROS2TopicNameTools.newMessageInstance(messageType), message -> true);
    }
 
-   public ROS2Input(Ros2NodeInterface ros2Node, Class<T> messageType, String topicName, T initialValue, MessageFilter<T> messageFilter)
+   public ROS2Input(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, T initialValue, MessageFilter<T> messageFilter)
+   {
+      this(ros2Node, messageType, topicName.withType(messageType).toString(), initialValue, messageFilter);
+   }
+
+   public ROS2Input(ROS2NodeInterface ros2Node, ROS2Topic<T> topic, T initialValue, MessageFilter<T> messageFilter)
+   {
+      this(ros2Node, topic.getType(), topic.getName(), initialValue, messageFilter);
+   }
+
+   public ROS2Input(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName, T initialValue, MessageFilter<T> messageFilter)
    {
       atomicReference = new AtomicReference<>(initialValue);
       this.messageFilter = messageFilter;

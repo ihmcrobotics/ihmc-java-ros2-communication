@@ -32,21 +32,21 @@ import us.ihmc.pubsub.attributes.ReliabilityKind;
  * @author Jesper Smith
  *
  */
-public class Ros2QosProfile
+public class ROS2QosProfile
 {
-   public static Ros2QosProfile DEFAULT()
+   public static ROS2QosProfile DEFAULT()
    {
-      return new Ros2QosProfile();
+      return new ROS2QosProfile();
    }
    
-   public static final Ros2QosProfile KEEP_HISTORY(int depth)
+   public static final ROS2QosProfile KEEP_HISTORY(int depth)
    {
-      return new Ros2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, depth, ReliabilityKind.RELIABLE, RosDurability.TRANSIENT_LOCAL, false);
+      return new ROS2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, depth, ReliabilityKind.RELIABLE, RosDurability.TRANSIENT_LOCAL, false);
    }
    
-   public static final Ros2QosProfile BEST_EFFORT()
+   public static final ROS2QosProfile BEST_EFFORT()
    {
-      return new Ros2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, 1, ReliabilityKind.BEST_EFFORT, RosDurability.VOLATILE, false);
+      return new ROS2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, 1, ReliabilityKind.BEST_EFFORT, RosDurability.VOLATILE, false);
    }
    
    
@@ -61,13 +61,13 @@ public class Ros2QosProfile
    private RosDurability durability = RosDurability.VOLATILE;
    private boolean avoidRosNamespaceConventions = false;
    
-   public Ros2QosProfile()
+   public ROS2QosProfile()
    {
       
    }
    
    
-   public Ros2QosProfile(HistoryQosPolicyKind history, int depth, ReliabilityKind reliability, RosDurability durability, boolean avoidRosNamespaceConventions)
+   public ROS2QosProfile(HistoryQosPolicyKind history, int depth, ReliabilityKind reliability, RosDurability durability, boolean avoidRosNamespaceConventions)
    {
       this();
       this.history = history;

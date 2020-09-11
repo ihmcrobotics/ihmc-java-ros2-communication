@@ -1,7 +1,7 @@
 package us.ihmc;
 
 import us.ihmc.commons.nio.FileTools;
-import us.ihmc.ros2.rosidl.RosInterfaceGenerator;
+import us.ihmc.ros2.rosidl.ROS2InterfaceGenerator;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -13,7 +13,7 @@ public class TestGenerateMSGToPubSub
       FileTools.deleteQuietly(Paths.get("generated-java"));
       FileTools.deleteQuietly(Paths.get("generated-idl"));
 
-      RosInterfaceGenerator generator = new RosInterfaceGenerator();
+      ROS2InterfaceGenerator generator = new ROS2InterfaceGenerator();
 
       generator.addPackageRootToIDLGenerator(Paths.get("ros_msgs"));
       generator.addPackageRootToROS1Generator(Paths.get("ros_msgs"));
@@ -22,8 +22,8 @@ public class TestGenerateMSGToPubSub
 
       generator.generate(Paths.get("generated-idl"), Paths.get("generated-ros1"), Paths.get("generated-java"));
 
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-idl"));
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-ros1"));
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-java"));
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-idl"));
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-ros1"));
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("generated-java"));
    }
 }

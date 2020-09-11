@@ -1,12 +1,12 @@
 package us.ihmc.idl;
 
-import us.ihmc.ros2.rosidl.RosInterfaceGenerator;
+import us.ihmc.ros2.rosidl.ROS2InterfaceGenerator;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 
-public class Ros2CommonInterfacesGenerateMessages
+public class ROS2CommonInterfacesGenerateMessages
 {
    /**
     * Must be run from ros2-common-interfaces dir!!!
@@ -18,7 +18,7 @@ public class Ros2CommonInterfacesGenerateMessages
    public static void main(String[] args) throws IOException
    {
       InputStream ihmcPubSubTemplate = Thread.currentThread().getContextClassLoader().getResourceAsStream("us/ihmc/idl/msg.idl.em");
-      RosInterfaceGenerator generator = new RosInterfaceGenerator();
+      ROS2InterfaceGenerator generator = new ROS2InterfaceGenerator();
 
       String[] rclInterfacesToIgnore = { "test_msgs" };
       
@@ -31,7 +31,7 @@ public class Ros2CommonInterfacesGenerateMessages
 
       generator.generate(Paths.get("src/main/generated-idl"), Paths.get("src/main/generated-ros1"), Paths.get("src/main/generated-java"));
 
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("src/main/generated-idl"));
-      RosInterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("src/main/generated-java"));
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("src/main/generated-idl"));
+      ROS2InterfaceGenerator.convertDirectoryToUnixEOL(Paths.get("src/main/generated-java"));
    }
 }
