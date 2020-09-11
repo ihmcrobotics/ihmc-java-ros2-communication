@@ -95,6 +95,7 @@ public class ROS2TopicTest
       assertNotSame(empty, empty.withType(Bool.class));
 
       ROS2Topic<?> root = empty.withPrefix("ihmc");
+      assertNull(root.getType());
       assertNotSame(root, root.withPrefix(""));
       assertSame(root, root.withPrefix("ihmc"));
       assertSame(root, root.withRobot(""));
