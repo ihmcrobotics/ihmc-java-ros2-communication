@@ -1,7 +1,6 @@
 package us.ihmc.ros2;
 
 import java.util.Objects;
-import java.util.function.Function;
 
 import static us.ihmc.ros2.ROS2TopicNameTools.messageTypeToTopicNamePart;
 import static us.ihmc.ros2.ROS2TopicNameTools.processTopicNamePart;
@@ -12,12 +11,13 @@ import static us.ihmc.ros2.ROS2TopicNameTools.processTopicNamePart;
  * equals, hashCode, and toString support.
  * </p>
  * <p>The immutable methods start with "with".</p>
- * <p>It considers a ROS 2 topic name to be 5 string parts put together:</p>
+ * <p>It considers a ROS 2 topic name to be 6 string parts put together:</p>
  * <ul>
  *    <li>prefix</li>
  *    <li>robot name</li>
  *    <li>module name</li>
  *    <li>io qualifier</li>
+ *    <li>type name</li>
  *    <li>suffix</li>
  * </ul>
  * <p>
@@ -35,7 +35,7 @@ import static us.ihmc.ros2.ROS2TopicNameTools.processTopicNamePart;
  * <pre>
  *    // evaluates to "/ihmc/atlas/rea/example_type/one"
  *    ROS2Topic topicName = new ROS2Topic().withPrefix("ihmc").withRobot("atlas").withModule("rea")
- *                                            .withType(ExampleTypeMessage.class).withNaming(typeName -> typeName + "/one");
+ *                                            .withType(ExampleTypeMessage.class).withTypeName().withSuffix("one");
  *
  *    // use of immutable property
  *    // evaluates to "/ihmc"
@@ -55,57 +55,85 @@ public class ROS2Topic<T>
    private final String robotName;
    private final String moduleName;
    private final String ioQualifier;
+   private final String typeName;
    private final String suffix;
-
    private final Class<T> messageType;
-   private final Function<String, String> typeToNameFunction;
 
+   /**
+    * <p>Create the emtpy topic. The name of this topic will evaluate to an empty String.</p>
+    * <p>It is recommended to start from another existing topic name instead of starting from scratch every time.</p>
+    */
    public ROS2Topic() // TODO make private and provide static root name method?
    {
       prefix = "";
       robotName = "";
       moduleName = "";
       ioQualifier = "";
+      typeName = "";
       suffix = "";
       messageType = null;
-      typeToNameFunction = null;
-   }
-
-   public ROS2Topic(Class<T> messageType, Function<String, String> typeToNameFunction)
-   {
-      this("", "", "", "", processTopicNamePart(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType))), messageType, typeToNameFunction);
    }
 
    private ROS2Topic(String prefix,
                      String robotName,
                      String moduleName,
                      String ioQualifier,
+                     String typeName,
                      String suffix,
-                     Class<T> messageType,
-                     Function<String, String> typeToNameFunction)
+                     Class<T> messageType)
    {
       this.prefix = prefix;
       this.robotName = robotName;
       this.moduleName = moduleName;
       this.ioQualifier = ioQualifier;
+      this.typeName = typeName;
       this.suffix = suffix;
       this.messageType = messageType;
-      this.typeToNameFunction = typeToNameFunction;
    }
 
+   private ROS2Topic<T> copyIfNotEqual(String prefix,
+                                       String robotName,
+                                       String moduleName,
+                                       String ioQualifier,
+                                       String typeName,
+                                       String suffix,
+                                       Class<T> messageType)
+   {
+      if (equals(prefix, robotName, moduleName, ioQualifier, typeName, suffix, messageType))
+      {
+         return this;
+      }
+      else
+      {
+         return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, typeName, suffix, messageType);
+      }
+   }
+
+   /**
+    * Returns a new topic with the provided prefix.
+    * If the provided prefix is null, then the part will evaluate to an empty string not even a "/" will
+    * appear in the resulting topic name.
+    * @param prefix part 1/5 of this topic name
+    * @return new topic
+    */
    public ROS2Topic<T> withPrefix(String prefix)
    {
-      return new ROS2Topic<>(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
+      return copyIfNotEqual(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, typeName, suffix, messageType);
    }
 
+   /**
+    *
+    * @param robotName
+    * @return
+    */
    public ROS2Topic<T> withRobot(String robotName)
    {
-      return new ROS2Topic<>(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
+      return copyIfNotEqual(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, typeName, suffix, messageType);
    }
 
    public ROS2Topic<T> withModule(String moduleName)
    {
-      return new ROS2Topic<>(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, suffix, messageType, typeToNameFunction);
+      return copyIfNotEqual(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, typeName, suffix, messageType);
    }
 
    public ROS2Topic<T> withInput()
@@ -120,74 +148,82 @@ public class ROS2Topic<T>
 
    public ROS2Topic<T> withIOQualifier(String ioQualifier)
    {
-      return new ROS2Topic<T>(prefix, robotName, moduleName, processTopicNamePart(ioQualifier), suffix, messageType, typeToNameFunction);
+      return copyIfNotEqual(prefix, robotName, moduleName, processTopicNamePart(ioQualifier), typeName, suffix, messageType);
+   }
+
+   public ROS2Topic<T> withTypeName()
+   {
+      if (messageType == null)
+      {
+         throw new RuntimeException("This topic does not have a type yet. Cannot add type name");
+      }
+      return copyIfNotEqual(prefix, robotName, moduleName, ioQualifier,
+                             processTopicNamePart(messageTypeToTopicNamePart(messageType)), suffix, messageType);
+   }
+
+   public ROS2Topic<T> clearTypeName()
+   {
+      return copyIfNotEqual(prefix, robotName, moduleName, ioQualifier, "", suffix, messageType);
    }
 
    public ROS2Topic<T> withSuffix(String suffix)
    {
-      return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, processTopicNamePart(suffix), messageType, typeToNameFunction);
-   }
-
-   public ROS2Topic<T> withNaming(Function<String, String> typeToNameFunction)
-   {
-      String newSuffix = suffix;
-      if (typeToNameFunction != null && messageType != null)
-      {
-         newSuffix = processTopicNamePart(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType)));
-      }
-      return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
+      return copyIfNotEqual(prefix, robotName, moduleName, ioQualifier, typeName, processTopicNamePart(suffix), messageType);
    }
 
    public <K> ROS2Topic<K> withType(Class<K> messageType)
    {
-      String newSuffix = suffix;
-      if (messageType != null)
+      if (messageType == null)
       {
-         if (typeToNameFunction != null)
-         {
-            newSuffix = processTopicNamePart(typeToNameFunction.apply(messageTypeToTopicNamePart(messageType)));
-         }
-         else
-         {
-            newSuffix = messageTypeToTopicNamePart(messageType);
-         }
+         throw new RuntimeException("Cannot change the type of a topic to null");
       }
-      return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, newSuffix, messageType, typeToNameFunction);
-   }
-
-   public ROS2Topic<T> withTopic(ROS2Topic<?> topic)
-   {
-      String newPrefix = takeNonNullOrSecond(prefix, topic.prefix);
-      String newRobotName = takeNonNullOrSecond(robotName, topic.robotName);
-      String newModuleName = takeNonNullOrSecond(moduleName, topic.moduleName);
-      String newIOQualifier = takeNonNullOrSecond(ioQualifier, topic.ioQualifier);
-      String newSuffix = takeNonNullOrSecond(suffix, topic.suffix);
-      Function<String, String> newTypeToNameFunction = takeNonNullOrSecond(typeToNameFunction, topic.typeToNameFunction);
-      if (topic.messageType != null && !topic.messageType.equals(messageType))
+      else if (this.messageType == null)
       {
-         throw new RuntimeException("Cannot change the type of a Topic with the withTopic method");
+         return new ROS2Topic<>(prefix, robotName, moduleName, ioQualifier, typeName, suffix, messageType);
       }
-      return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newSuffix, messageType, newTypeToNameFunction);
-   }
-
-   private <K> K takeNonNullOrSecond(K first, K second)
-   {
-      if (first != null && second == null)
+      else if (Objects.equals(messageType, this.messageType))
       {
-         return first;
-      }
-      else if (first == null && second != null)
-      {
-         return second;
-      }
-      else if (first instanceof String && !((String) first).isEmpty()
-               && second instanceof String && ((String) second).isEmpty())
-      {
-         return first;
+         return (ROS2Topic<K>) this;
       }
       else
       {
+         throw new RuntimeException("Cannot change the type of a topic after it's already been set");
+      }
+   }
+
+   public <K> ROS2Topic<K> withTypeName(Class<K> messageType)
+   {
+      return withType(messageType).withTypeName();
+   }
+
+   /**
+    * If this topic doesn't have a value for a field, take the value from the passed topic.
+    * @param topic to fill in the blanks with
+    */
+   public ROS2Topic<T> withTopic(ROS2Topic<?> topic)
+   {
+      String newPrefix = takeSecondIfFirstEmpty(prefix, topic.prefix);
+      String newRobotName = takeSecondIfFirstEmpty(robotName, topic.robotName);
+      String newModuleName = takeSecondIfFirstEmpty(moduleName, topic.moduleName);
+      String newIOQualifier = takeSecondIfFirstEmpty(ioQualifier, topic.ioQualifier);
+      String newTypeName = takeSecondIfFirstEmpty(typeName, topic.typeName);
+      String newSuffix = takeSecondIfFirstEmpty(suffix, topic.suffix);
+      if (topic.messageType != null && !topic.messageType.equals(messageType))
+      {
+         throw new RuntimeException("Cannot change the type of a topic with the withTopic method");
+      }
+      return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newTypeName, newSuffix, messageType);
+   }
+
+   private String takeSecondIfFirstEmpty(String first, String second)
+   {
+      if (first.isEmpty())
+      {
          return second;
+      }
+      else
+      {
+         return first;
       }
    }
 
@@ -209,6 +245,7 @@ public class ROS2Topic<T>
       topicName += robotName;
       topicName += moduleName;
       topicName += ioQualifier;
+      topicName += typeName;
       topicName += suffix;
       return topicName;
    }
@@ -220,19 +257,36 @@ public class ROS2Topic<T>
          return true;
       if (other == null || getClass() != other.getClass())
          return false;
-      ROS2Topic<?> topicName = (ROS2Topic<?>) other;
-      return Objects.equals(prefix, topicName.prefix)
-             && Objects.equals(robotName, topicName.robotName)
-             && Objects.equals(moduleName, topicName.moduleName)
-             && Objects.equals(ioQualifier, topicName.ioQualifier)
-             && Objects.equals(suffix, topicName.suffix)
-             && Objects.equals(messageType, topicName.messageType)
-             && Objects.equals(typeToNameFunction, topicName.typeToNameFunction);
+      ROS2Topic<?> otherTopic = (ROS2Topic<?>) other;
+      return equals(otherTopic.prefix,
+                    otherTopic.robotName,
+                    otherTopic.moduleName,
+                    otherTopic.ioQualifier,
+                    otherTopic.typeName,
+                    otherTopic.suffix,
+                    otherTopic.messageType);
+   }
+
+   private boolean equals(String prefix,
+                          String robotName,
+                          String moduleName,
+                          String ioQualifier,
+                          String typeName,
+                          String suffix,
+                          Class<?> messageType)
+   {
+      return Objects.equals(this.prefix, prefix)
+          && Objects.equals(this.robotName, robotName)
+          && Objects.equals(this.moduleName, moduleName)
+          && Objects.equals(this.ioQualifier, ioQualifier)
+          && Objects.equals(this.typeName, typeName)
+          && Objects.equals(this.suffix, suffix)
+          && Objects.equals(this.messageType, messageType);
    }
 
    @Override
    public int hashCode()
    {
-      return Objects.hash(prefix, robotName, moduleName, ioQualifier, suffix, messageType, typeToNameFunction);
+      return Objects.hash(prefix, robotName, moduleName, ioQualifier, typeName, suffix, messageType);
    }
 }
