@@ -71,7 +71,7 @@ public class Image extends Packet<Image> implements Settable<Image>, EpsilonComp
 
 
 
-      data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+      data_ = new us.ihmc.idl.IDLSequence.Byte (10000000, "type_9");
 
 
    }

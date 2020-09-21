@@ -46,7 +46,7 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
       return current_alignment - initial_alignment;
@@ -86,7 +86,7 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
           throw new RuntimeException("format field exceeds the maximum length");
 
 
-      if(data.getData().size() <= 100)
+      if(data.getData().size() <= 10000000)
       cdr.write_type_e(data.getData());else
           throw new RuntimeException("data field exceeds the maximum length");
 
