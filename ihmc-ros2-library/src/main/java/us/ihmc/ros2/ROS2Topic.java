@@ -131,6 +131,7 @@ public class ROS2Topic<T>
       return copyIfNotEqual(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, typeName, suffix, messageType);
    }
 
+   /** TODO: Allow multiple parts as String... that gets turned into part1/part2/part3 */
    public ROS2Topic<T> withModule(String moduleName)
    {
       return copyIfNotEqual(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, typeName, suffix, messageType);

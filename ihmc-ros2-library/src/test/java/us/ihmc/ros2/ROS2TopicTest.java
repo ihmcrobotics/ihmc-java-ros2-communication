@@ -62,6 +62,8 @@ public class ROS2TopicTest
       ihmcPrefixed.withIOQualifier("server");
       assertEquals("/ihmc", ihmcPrefixed.toString());
 
+      assertEquals("/ihmc/cat/bengal_tiger", ihmcPrefixed.withModule("cat/bengal_tiger").getName());
+
       ROS2Topic<?> ihmcPrefixed2 = new ROS2Topic<>().withPrefix("ihmc");
       assertEquals("/ihmc", ihmcPrefixed2.toString());
       ROS2Topic<?> hello = ihmcPrefixed2.withModule("hello");
