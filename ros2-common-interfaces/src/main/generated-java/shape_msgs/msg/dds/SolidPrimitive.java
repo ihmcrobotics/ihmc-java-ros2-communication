@@ -20,42 +20,28 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<SolidPrimitive>, EpsilonComparable<SolidPrimitive>
 {
-
    public static final byte BOX = (byte) 1;
-
    public static final byte SPHERE = (byte) 2;
-
    public static final byte CYLINDER = (byte) 3;
-
    public static final byte CONE = (byte) 4;
-
    /**
           * For type BOX, the X, Y, and Z dimensions are the length of the corresponding sides of the box.
           */
    public static final byte BOX_X = (byte) 0;
-
    public static final byte BOX_Y = (byte) 1;
-
    public static final byte BOX_Z = (byte) 2;
-
    /**
           * For the SPHERE type, only one component is used, and it gives the radius of the sphere.
           */
    public static final byte SPHERE_RADIUS = (byte) 0;
-
    public static final byte CYLINDER_HEIGHT = (byte) 0;
-
    public static final byte CYLINDER_RADIUS = (byte) 1;
-
    public static final byte CONE_HEIGHT = (byte) 0;
-
    public static final byte CONE_RADIUS = (byte) 1;
-
    /**
             * The type of the shape
             */
    public byte type_;
-
    /**
             * The dimensions of the shape
             * At no point will dimensions have a length > 3.
@@ -64,10 +50,7 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
 
    public SolidPrimitive()
    {
-
-
       dimensions_ = new us.ihmc.idl.IDLSequence.Double (3, "type_6");
-
 
    }
 
@@ -79,13 +62,10 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
 
    public void set(SolidPrimitive other)
    {
-
       type_ = other.type_;
-
 
       dimensions_.set(other.dimensions_);
    }
-
 
    /**
             * The type of the shape
@@ -101,7 +81,6 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
    {
       return type_;
    }
-
 
 
    /**
@@ -131,9 +110,7 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.type_, other.type_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsDoubleSequence(this.dimensions_, other.dimensions_, epsilon)) return false;
 
@@ -150,9 +127,7 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
 
       SolidPrimitive otherMyClass = (SolidPrimitive) other;
 
-
       if(this.type_ != otherMyClass.type_) return false;
-
 
       if (!this.dimensions_.equals(otherMyClass.dimensions_)) return false;
 
@@ -165,10 +140,8 @@ public class SolidPrimitive extends Packet<SolidPrimitive> implements Settable<S
       StringBuilder builder = new StringBuilder();
 
       builder.append("SolidPrimitive {");
-
       builder.append("type=");
       builder.append(this.type_);      builder.append(", ");
-
       builder.append("dimensions=");
       builder.append(this.dimensions_);
       builder.append("}");

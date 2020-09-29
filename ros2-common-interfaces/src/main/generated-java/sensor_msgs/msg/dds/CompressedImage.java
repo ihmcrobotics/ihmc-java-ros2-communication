@@ -18,17 +18,14 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class CompressedImage extends Packet<CompressedImage> implements Settable<CompressedImage>, EpsilonComparable<CompressedImage>
 {
-
    /**
             * Header timestamp should be acquisition time of image
             */
    public std_msgs.msg.dds.Header header_;
-
    /**
             * Specifies the format of the data
             */
    public java.lang.StringBuilder format_;
-
    /**
             * Compressed image buffer
             */
@@ -36,13 +33,9 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
 
    public CompressedImage()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       format_ = new java.lang.StringBuilder(255);
-
-      data_ = new us.ihmc.idl.IDLSequence.Byte (10000000, "type_9");
-
+      data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
 
    }
 
@@ -54,16 +47,12 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
 
    public void set(CompressedImage other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       format_.setLength(0);
       format_.append(other.format_);
 
-
       data_.set(other.data_);
    }
-
 
 
    /**
@@ -73,7 +62,6 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
    {
       return header_;
    }
-
 
    /**
             * Specifies the format of the data
@@ -98,7 +86,6 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
    {
       return format_;
    }
-
 
 
    /**
@@ -127,11 +114,8 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.format_, other.format_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsByteSequence(this.data_, other.data_, epsilon)) return false;
 
@@ -148,11 +132,8 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
 
       CompressedImage otherMyClass = (CompressedImage) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.format_, otherMyClass.format_)) return false;
-
 
       if (!this.data_.equals(otherMyClass.data_)) return false;
 
@@ -165,13 +146,10 @@ public class CompressedImage extends Packet<CompressedImage> implements Settable
       StringBuilder builder = new StringBuilder();
 
       builder.append("CompressedImage {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("format=");
       builder.append(this.format_);      builder.append(", ");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

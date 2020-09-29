@@ -40,12 +40,9 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-
       current_alignment += nav_msgs.msg.dds.MapMetaDataPubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -62,12 +59,9 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
 
-
       current_alignment += nav_msgs.msg.dds.MapMetaDataPubSubType.getCdrSerializedSize(data.getInfo(), current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getData().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
@@ -79,11 +73,8 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
 
    public static void write(nav_msgs.msg.dds.OccupancyGrid data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       nav_msgs.msg.dds.MapMetaDataPubSubType.write(data.getInfo(), cdr);
-
       if(data.getData().size() <= 100)
       cdr.write_type_e(data.getData());else
           throw new RuntimeException("data field exceeds the maximum length");
@@ -92,11 +83,8 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
 
    public static void read(nav_msgs.msg.dds.OccupancyGrid data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
-
       nav_msgs.msg.dds.MapMetaDataPubSubType.read(data.getInfo(), cdr);	
-
       cdr.read_type_e(data.getData());	
 
    }
@@ -104,12 +92,9 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
    @Override
    public final void serialize(nav_msgs.msg.dds.OccupancyGrid data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.write_type_a("info", new nav_msgs.msg.dds.MapMetaDataPubSubType(), data.getInfo());
-
 
       ser.write_type_e("data", data.getData());
    }
@@ -117,12 +102,9 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, nav_msgs.msg.dds.OccupancyGrid data)
    {
-
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.read_type_a("info", new nav_msgs.msg.dds.MapMetaDataPubSubType(), data.getInfo());
-
 
       ser.read_type_e("data", data.getData());
    }

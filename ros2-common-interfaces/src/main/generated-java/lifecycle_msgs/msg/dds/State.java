@@ -13,22 +13,16 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class State extends Packet<State> implements Settable<State>, EpsilonComparable<State>
 {
-
    /**
           * These are the primary states
           * State changes can only be requested
           * when the node is in one of these states.
           */
    public static final byte PRIMARY_STATE_UNKNOWN = (byte) 0;
-
    public static final byte PRIMARY_STATE_UNCONFIGURED = (byte) 1;
-
    public static final byte PRIMARY_STATE_INACTIVE = (byte) 2;
-
    public static final byte PRIMARY_STATE_ACTIVE = (byte) 3;
-
    public static final byte PRIMARY_STATE_FINALIZED = (byte) 4;
-
    /**
           * Temporary intermediate states
           * When a transition is requested, the
@@ -36,27 +30,17 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
           * of these states.
           */
    public static final byte TRANSITION_STATE_CONFIGURING = (byte) 10;
-
    public static final byte TRANSITION_STATE_CLEANINGUP = (byte) 11;
-
    public static final byte TRANSITION_STATE_SHUTTINGDOWN = (byte) 12;
-
    public static final byte TRANSITION_STATE_ACTIVATING = (byte) 13;
-
    public static final byte TRANSITION_STATE_DEACTIVATING = (byte) 14;
-
    public static final byte TRANSITION_STATE_ERRORPROCESSING = (byte) 15;
-
    public byte id_;
-
    public java.lang.StringBuilder label_;
 
    public State()
    {
-
-
       label_ = new java.lang.StringBuilder(255);
-
    }
 
    public State(State other)
@@ -67,15 +51,12 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
 
    public void set(State other)
    {
-
       id_ = other.id_;
-
 
       label_.setLength(0);
       label_.append(other.label_);
 
    }
-
 
    public void setId(byte id)
    {
@@ -85,7 +66,6 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
    {
       return id_;
    }
-
 
    public void setLabel(java.lang.String label)
    {
@@ -120,9 +100,7 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.id_, other.id_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.label_, other.label_, epsilon)) return false;
 
@@ -139,9 +117,7 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
 
       State otherMyClass = (State) other;
 
-
       if(this.id_ != otherMyClass.id_) return false;
-
 
       if (!us.ihmc.idl.IDLTools.equals(this.label_, otherMyClass.label_)) return false;
 
@@ -155,10 +131,8 @@ public class State extends Packet<State> implements Settable<State>, EpsilonComp
       StringBuilder builder = new StringBuilder();
 
       builder.append("State {");
-
       builder.append("id=");
       builder.append(this.id_);      builder.append(", ");
-
       builder.append("label=");
       builder.append(this.label_);
       builder.append("}");

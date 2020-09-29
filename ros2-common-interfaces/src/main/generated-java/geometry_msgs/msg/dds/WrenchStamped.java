@@ -11,18 +11,13 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class WrenchStamped extends Packet<WrenchStamped> implements Settable<WrenchStamped>, EpsilonComparable<WrenchStamped>
 {
-
    public std_msgs.msg.dds.Header header_;
-
    public geometry_msgs.msg.dds.Wrench wrench_;
 
    public WrenchStamped()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       wrench_ = new geometry_msgs.msg.dds.Wrench();
-
    }
 
    public WrenchStamped(WrenchStamped other)
@@ -33,19 +28,15 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
 
    public void set(WrenchStamped other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       geometry_msgs.msg.dds.WrenchPubSubType.staticCopy(other.wrench_, wrench_);
    }
-
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
-
 
 
    public geometry_msgs.msg.dds.Wrench getWrench()
@@ -71,9 +62,7 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!this.wrench_.epsilonEquals(other.wrench_, epsilon)) return false;
 
       return true;
@@ -88,9 +77,7 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
 
       WrenchStamped otherMyClass = (WrenchStamped) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!this.wrench_.equals(otherMyClass.wrench_)) return false;
 
       return true;
@@ -102,10 +89,8 @@ public class WrenchStamped extends Packet<WrenchStamped> implements Settable<Wre
       StringBuilder builder = new StringBuilder();
 
       builder.append("WrenchStamped {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("wrench=");
       builder.append(this.wrench_);
       builder.append("}");

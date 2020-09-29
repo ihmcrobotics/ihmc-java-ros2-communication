@@ -8,25 +8,16 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class TransitionEvent extends Packet<TransitionEvent> implements Settable<TransitionEvent>, EpsilonComparable<TransitionEvent>
 {
-
    public long timestamp_;
-
    public lifecycle_msgs.msg.dds.Transition transition_;
-
    public lifecycle_msgs.msg.dds.State start_state_;
-
    public lifecycle_msgs.msg.dds.State goal_state_;
 
    public TransitionEvent()
    {
-
-
       transition_ = new lifecycle_msgs.msg.dds.Transition();
-
       start_state_ = new lifecycle_msgs.msg.dds.State();
-
       goal_state_ = new lifecycle_msgs.msg.dds.State();
-
    }
 
    public TransitionEvent(TransitionEvent other)
@@ -37,17 +28,12 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
    public void set(TransitionEvent other)
    {
-
       timestamp_ = other.timestamp_;
 
-
       lifecycle_msgs.msg.dds.TransitionPubSubType.staticCopy(other.transition_, transition_);
-
       lifecycle_msgs.msg.dds.StatePubSubType.staticCopy(other.start_state_, start_state_);
-
       lifecycle_msgs.msg.dds.StatePubSubType.staticCopy(other.goal_state_, goal_state_);
    }
-
 
    public void setTimestamp(long timestamp)
    {
@@ -59,19 +45,16 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
    }
 
 
-
    public lifecycle_msgs.msg.dds.Transition getTransition()
    {
       return transition_;
    }
 
 
-
    public lifecycle_msgs.msg.dds.State getStartState()
    {
       return start_state_;
    }
-
 
 
    public lifecycle_msgs.msg.dds.State getGoalState()
@@ -97,14 +80,10 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.timestamp_, other.timestamp_, epsilon)) return false;
 
-
       if (!this.transition_.epsilonEquals(other.transition_, epsilon)) return false;
-
       if (!this.start_state_.epsilonEquals(other.start_state_, epsilon)) return false;
-
       if (!this.goal_state_.epsilonEquals(other.goal_state_, epsilon)) return false;
 
       return true;
@@ -119,14 +98,10 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
 
       TransitionEvent otherMyClass = (TransitionEvent) other;
 
-
       if(this.timestamp_ != otherMyClass.timestamp_) return false;
 
-
       if (!this.transition_.equals(otherMyClass.transition_)) return false;
-
       if (!this.start_state_.equals(otherMyClass.start_state_)) return false;
-
       if (!this.goal_state_.equals(otherMyClass.goal_state_)) return false;
 
       return true;
@@ -138,16 +113,12 @@ public class TransitionEvent extends Packet<TransitionEvent> implements Settable
       StringBuilder builder = new StringBuilder();
 
       builder.append("TransitionEvent {");
-
       builder.append("timestamp=");
       builder.append(this.timestamp_);      builder.append(", ");
-
       builder.append("transition=");
       builder.append(this.transition_);      builder.append(", ");
-
       builder.append("start_state=");
       builder.append(this.start_state_);      builder.append(", ");
-
       builder.append("goal_state=");
       builder.append(this.goal_state_);
       builder.append("}");

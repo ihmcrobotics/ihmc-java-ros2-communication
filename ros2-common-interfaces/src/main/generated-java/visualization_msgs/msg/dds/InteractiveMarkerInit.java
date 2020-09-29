@@ -8,13 +8,11 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> implements Settable<InteractiveMarkerInit>, EpsilonComparable<InteractiveMarkerInit>
 {
-
    /**
             * Identifying string. Must be unique in the topic namespace
             * that this server works on.
             */
    public java.lang.StringBuilder server_id_;
-
    /**
             * Sequence number.
             * The client will use this to detect if it has missed a subsequent
@@ -24,7 +22,6 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
             * duplicate data.
             */
    public long seq_num_;
-
    /**
             * All markers.
             */
@@ -32,10 +29,7 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
 
    public InteractiveMarkerInit()
    {
-
       server_id_ = new java.lang.StringBuilder(255);
-
-
       markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> (100, new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
 
    }
@@ -48,17 +42,13 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
 
    public void set(InteractiveMarkerInit other)
    {
-
       server_id_.setLength(0);
       server_id_.append(other.server_id_);
 
-
       seq_num_ = other.seq_num_;
-
 
       markers_.set(other.markers_);
    }
-
 
    /**
             * Identifying string. Must be unique in the topic namespace
@@ -87,7 +77,6 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
       return server_id_;
    }
 
-
    /**
             * Sequence number.
             * The client will use this to detect if it has missed a subsequent
@@ -112,7 +101,6 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
    {
       return seq_num_;
    }
-
 
 
    /**
@@ -141,12 +129,9 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.server_id_, other.server_id_, epsilon)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.seq_num_, other.seq_num_, epsilon)) return false;
-
 
       if (this.markers_.size() != other.markers_.size()) { return false; }
       else
@@ -168,12 +153,9 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
 
       InteractiveMarkerInit otherMyClass = (InteractiveMarkerInit) other;
 
-
       if (!us.ihmc.idl.IDLTools.equals(this.server_id_, otherMyClass.server_id_)) return false;
 
-
       if(this.seq_num_ != otherMyClass.seq_num_) return false;
-
 
       if (!this.markers_.equals(otherMyClass.markers_)) return false;
 
@@ -186,13 +168,10 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
       StringBuilder builder = new StringBuilder();
 
       builder.append("InteractiveMarkerInit {");
-
       builder.append("server_id=");
       builder.append(this.server_id_);      builder.append(", ");
-
       builder.append("seq_num=");
       builder.append(this.seq_num_);      builder.append(", ");
-
       builder.append("markers=");
       builder.append(this.markers_);
       builder.append("}");

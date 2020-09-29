@@ -40,14 +40,10 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += geometry_msgs.msg.dds.PoseWithCovariancePubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += geometry_msgs.msg.dds.TwistWithCovariancePubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -64,15 +60,11 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getChildFrameId().length() + 1;
 
-
       current_alignment += geometry_msgs.msg.dds.PoseWithCovariancePubSubType.getCdrSerializedSize(data.getPose(), current_alignment);
-
 
       current_alignment += geometry_msgs.msg.dds.TwistWithCovariancePubSubType.getCdrSerializedSize(data.getTwist(), current_alignment);
 
@@ -82,28 +74,20 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
 
    public static void write(nav_msgs.msg.dds.Odometry data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if(data.getChildFrameId().length() <= 255)
       cdr.write_type_d(data.getChildFrameId());else
           throw new RuntimeException("child_frame_id field exceeds the maximum length");
 
-
       geometry_msgs.msg.dds.PoseWithCovariancePubSubType.write(data.getPose(), cdr);
-
       geometry_msgs.msg.dds.TwistWithCovariancePubSubType.write(data.getTwist(), cdr);
    }
 
    public static void read(nav_msgs.msg.dds.Odometry data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
-
       cdr.read_type_d(data.getChildFrameId());	
-
       geometry_msgs.msg.dds.PoseWithCovariancePubSubType.read(data.getPose(), cdr);	
-
       geometry_msgs.msg.dds.TwistWithCovariancePubSubType.read(data.getTwist(), cdr);	
 
    }
@@ -111,14 +95,10 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
    @Override
    public final void serialize(nav_msgs.msg.dds.Odometry data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.write_type_d("child_frame_id", data.getChildFrameId());
-
       ser.write_type_a("pose", new geometry_msgs.msg.dds.PoseWithCovariancePubSubType(), data.getPose());
-
 
       ser.write_type_a("twist", new geometry_msgs.msg.dds.TwistWithCovariancePubSubType(), data.getTwist());
 
@@ -127,14 +107,10 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, nav_msgs.msg.dds.Odometry data)
    {
-
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.read_type_d("child_frame_id", data.getChildFrameId());
-
       ser.read_type_a("pose", new geometry_msgs.msg.dds.PoseWithCovariancePubSubType(), data.getPose());
-
 
       ser.read_type_a("twist", new geometry_msgs.msg.dds.TwistWithCovariancePubSubType(), data.getTwist());
 

@@ -40,27 +40,19 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
 
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
-
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
-
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -77,32 +69,24 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getCom(), current_alignment);
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
-
-
-      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
+      current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
@@ -114,26 +98,18 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
    public static void write(geometry_msgs.msg.dds.Inertia data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_6(data.getM());
 
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getCom(), cdr);
-
       cdr.write_type_6(data.getIxx());
-
 
       cdr.write_type_6(data.getIxy());
 
-
       cdr.write_type_6(data.getIxz());
-
 
       cdr.write_type_6(data.getIyy());
 
-
       cdr.write_type_6(data.getIyz());
-
 
       cdr.write_type_6(data.getIzz());
 
@@ -141,27 +117,19 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
    public static void read(geometry_msgs.msg.dds.Inertia data, us.ihmc.idl.CDR cdr)
    {
-
       data.setM(cdr.read_type_6());
       	
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getCom(), cdr);	
-
       data.setIxx(cdr.read_type_6());
       	
-
       data.setIxy(cdr.read_type_6());
       	
-
       data.setIxz(cdr.read_type_6());
       	
-
       data.setIyy(cdr.read_type_6());
       	
-
       data.setIyz(cdr.read_type_6());
       	
-
       data.setIzz(cdr.read_type_6());
       	
 
@@ -170,44 +138,28 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    @Override
    public final void serialize(geometry_msgs.msg.dds.Inertia data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_6("m", data.getM());
-
       ser.write_type_a("com", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getCom());
 
-
       ser.write_type_6("ixx", data.getIxx());
-
       ser.write_type_6("ixy", data.getIxy());
-
       ser.write_type_6("ixz", data.getIxz());
-
       ser.write_type_6("iyy", data.getIyy());
-
       ser.write_type_6("iyz", data.getIyz());
-
       ser.write_type_6("izz", data.getIzz());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.Inertia data)
    {
-
       data.setM(ser.read_type_6("m"));
-
       ser.read_type_a("com", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getCom());
 
-
       data.setIxx(ser.read_type_6("ixx"));
-
       data.setIxy(ser.read_type_6("ixy"));
-
       data.setIxz(ser.read_type_6("ixz"));
-
       data.setIyy(ser.read_type_6("iyy"));
-
       data.setIyz(ser.read_type_6("iyz"));
-
       data.setIzz(ser.read_type_6("izz"));
    }
 

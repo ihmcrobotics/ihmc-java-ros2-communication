@@ -8,18 +8,13 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class InertiaStamped extends Packet<InertiaStamped> implements Settable<InertiaStamped>, EpsilonComparable<InertiaStamped>
 {
-
    public std_msgs.msg.dds.Header header_;
-
    public geometry_msgs.msg.dds.Inertia inertia_;
 
    public InertiaStamped()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       inertia_ = new geometry_msgs.msg.dds.Inertia();
-
    }
 
    public InertiaStamped(InertiaStamped other)
@@ -30,19 +25,15 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
 
    public void set(InertiaStamped other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       geometry_msgs.msg.dds.InertiaPubSubType.staticCopy(other.inertia_, inertia_);
    }
-
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
-
 
 
    public geometry_msgs.msg.dds.Inertia getInertia()
@@ -68,9 +59,7 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!this.inertia_.epsilonEquals(other.inertia_, epsilon)) return false;
 
       return true;
@@ -85,9 +74,7 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
 
       InertiaStamped otherMyClass = (InertiaStamped) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!this.inertia_.equals(otherMyClass.inertia_)) return false;
 
       return true;
@@ -99,10 +86,8 @@ public class InertiaStamped extends Packet<InertiaStamped> implements Settable<I
       StringBuilder builder = new StringBuilder();
 
       builder.append("InertiaStamped {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("inertia=");
       builder.append(this.inertia_);
       builder.append("}");

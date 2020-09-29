@@ -8,13 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Char extends Packet<Char> implements Settable<Char>, EpsilonComparable<Char>
 {
-
    public char data_;
 
    public Char()
    {
-
-
    }
 
    public Char(Char other)
@@ -25,11 +22,9 @@ public class Char extends Packet<Char> implements Settable<Char>, EpsilonCompara
 
    public void set(Char other)
    {
-
       data_ = other.data_;
 
    }
-
 
    public void setData(char data)
    {
@@ -58,9 +53,7 @@ public class Char extends Packet<Char> implements Settable<Char>, EpsilonCompara
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
-
 
       return true;
    }
@@ -74,7 +67,6 @@ public class Char extends Packet<Char> implements Settable<Char>, EpsilonCompara
 
       Char otherMyClass = (Char) other;
 
-
       if(this.data_ != otherMyClass.data_) return false;
 
 
@@ -87,7 +79,6 @@ public class Char extends Packet<Char> implements Settable<Char>, EpsilonCompara
       StringBuilder builder = new StringBuilder();
 
       builder.append("Char {");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

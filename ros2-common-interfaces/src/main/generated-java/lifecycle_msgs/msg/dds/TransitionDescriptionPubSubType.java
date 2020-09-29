@@ -40,12 +40,9 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += lifecycle_msgs.msg.dds.TransitionPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -62,12 +59,9 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += lifecycle_msgs.msg.dds.TransitionPubSubType.getCdrSerializedSize(data.getTransition(), current_alignment);
 
-
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getStartState(), current_alignment);
-
 
       current_alignment += lifecycle_msgs.msg.dds.StatePubSubType.getCdrSerializedSize(data.getGoalState(), current_alignment);
 
@@ -77,21 +71,15 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void write(lifecycle_msgs.msg.dds.TransitionDescription data, us.ihmc.idl.CDR cdr)
    {
-
       lifecycle_msgs.msg.dds.TransitionPubSubType.write(data.getTransition(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.write(data.getStartState(), cdr);
-
       lifecycle_msgs.msg.dds.StatePubSubType.write(data.getGoalState(), cdr);
    }
 
    public static void read(lifecycle_msgs.msg.dds.TransitionDescription data, us.ihmc.idl.CDR cdr)
    {
-
       lifecycle_msgs.msg.dds.TransitionPubSubType.read(data.getTransition(), cdr);	
-
       lifecycle_msgs.msg.dds.StatePubSubType.read(data.getStartState(), cdr);	
-
       lifecycle_msgs.msg.dds.StatePubSubType.read(data.getGoalState(), cdr);	
 
    }
@@ -99,12 +87,9 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
    @Override
    public final void serialize(lifecycle_msgs.msg.dds.TransitionDescription data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("transition", new lifecycle_msgs.msg.dds.TransitionPubSubType(), data.getTransition());
 
-
       ser.write_type_a("start_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getStartState());
-
 
       ser.write_type_a("goal_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getGoalState());
 
@@ -113,12 +98,9 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, lifecycle_msgs.msg.dds.TransitionDescription data)
    {
-
       ser.read_type_a("transition", new lifecycle_msgs.msg.dds.TransitionPubSubType(), data.getTransition());
 
-
       ser.read_type_a("start_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getStartState());
-
 
       ser.read_type_a("goal_state", new lifecycle_msgs.msg.dds.StatePubSubType(), data.getGoalState());
 

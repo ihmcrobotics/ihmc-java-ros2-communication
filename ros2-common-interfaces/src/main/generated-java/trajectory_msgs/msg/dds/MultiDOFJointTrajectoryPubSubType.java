@@ -40,15 +40,12 @@ public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDa
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPointPubSubType.getMaxCdrSerializedSize(current_alignment);}
@@ -65,16 +62,13 @@ public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDa
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getJointNames().size(); ++i0)
       {
           current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getJointNames().get(i0).length() + 1;
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getPoints().size(); ++i0)
       {
@@ -86,13 +80,10 @@ public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDa
 
    public static void write(trajectory_msgs.msg.dds.MultiDOFJointTrajectory data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if(data.getJointNames().size() <= 100)
       cdr.write_type_e(data.getJointNames());else
           throw new RuntimeException("joint_names field exceeds the maximum length");
-
 
       if(data.getPoints().size() <= 100)
       cdr.write_type_e(data.getPoints());else
@@ -102,11 +93,8 @@ public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDa
 
    public static void read(trajectory_msgs.msg.dds.MultiDOFJointTrajectory data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
-
       cdr.read_type_e(data.getJointNames());	
-
       cdr.read_type_e(data.getPoints());	
 
    }
@@ -114,24 +102,18 @@ public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDa
    @Override
    public final void serialize(trajectory_msgs.msg.dds.MultiDOFJointTrajectory data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.write_type_e("joint_names", data.getJointNames());
-
       ser.write_type_e("points", data.getPoints());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, trajectory_msgs.msg.dds.MultiDOFJointTrajectory data)
    {
-
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.read_type_e("joint_names", data.getJointNames());
-
       ser.read_type_e("points", data.getPoints());
    }
 

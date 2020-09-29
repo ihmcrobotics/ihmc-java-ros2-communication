@@ -8,13 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class UInt64 extends Packet<UInt64> implements Settable<UInt64>, EpsilonComparable<UInt64>
 {
-
    public long data_;
 
    public UInt64()
    {
-
-
    }
 
    public UInt64(UInt64 other)
@@ -25,11 +22,9 @@ public class UInt64 extends Packet<UInt64> implements Settable<UInt64>, EpsilonC
 
    public void set(UInt64 other)
    {
-
       data_ = other.data_;
 
    }
-
 
    public void setData(long data)
    {
@@ -58,9 +53,7 @@ public class UInt64 extends Packet<UInt64> implements Settable<UInt64>, EpsilonC
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.data_, other.data_, epsilon)) return false;
-
 
       return true;
    }
@@ -74,7 +67,6 @@ public class UInt64 extends Packet<UInt64> implements Settable<UInt64>, EpsilonC
 
       UInt64 otherMyClass = (UInt64) other;
 
-
       if(this.data_ != otherMyClass.data_) return false;
 
 
@@ -87,7 +79,6 @@ public class UInt64 extends Packet<UInt64> implements Settable<UInt64>, EpsilonC
       StringBuilder builder = new StringBuilder();
 
       builder.append("UInt64 {");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

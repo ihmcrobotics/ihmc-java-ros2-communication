@@ -12,12 +12,10 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settable<UInt32MultiArray>, EpsilonComparable<UInt32MultiArray>
 {
-
    /**
             * specification of data layout
             */
    public std_msgs.msg.dds.MultiArrayLayout layout_;
-
    /**
             * array of data
             */
@@ -25,11 +23,8 @@ public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settab
 
    public UInt32MultiArray()
    {
-
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-
       data_ = new us.ihmc.idl.IDLSequence.Long (100, "type_4");
-
 
    }
 
@@ -41,12 +36,9 @@ public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settab
 
    public void set(UInt32MultiArray other)
    {
-
       std_msgs.msg.dds.MultiArrayLayoutPubSubType.staticCopy(other.layout_, layout_);
-
       data_.set(other.data_);
    }
-
 
 
    /**
@@ -56,7 +48,6 @@ public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settab
    {
       return layout_;
    }
-
 
 
    /**
@@ -85,9 +76,7 @@ public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settab
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.layout_.epsilonEquals(other.layout_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsLongSequence(this.data_, other.data_, epsilon)) return false;
 
 
@@ -103,9 +92,7 @@ public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settab
 
       UInt32MultiArray otherMyClass = (UInt32MultiArray) other;
 
-
       if (!this.layout_.equals(otherMyClass.layout_)) return false;
-
       if (!this.data_.equals(otherMyClass.data_)) return false;
 
       return true;
@@ -117,10 +104,8 @@ public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settab
       StringBuilder builder = new StringBuilder();
 
       builder.append("UInt32MultiArray {");
-
       builder.append("layout=");
       builder.append(this.layout_);      builder.append(", ");
-
       builder.append("data=");
       builder.append(this.data_);
       builder.append("}");

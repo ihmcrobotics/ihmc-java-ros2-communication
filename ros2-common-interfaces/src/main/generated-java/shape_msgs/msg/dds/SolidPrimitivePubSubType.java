@@ -40,9 +40,7 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (3 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -59,9 +57,7 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -74,9 +70,7 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
 
    public static void write(shape_msgs.msg.dds.SolidPrimitive data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getType());
-
 
       if(data.getDimensions().size() <= 3)
       cdr.write_type_e(data.getDimensions());else
@@ -86,10 +80,8 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
 
    public static void read(shape_msgs.msg.dds.SolidPrimitive data, us.ihmc.idl.CDR cdr)
    {
-
       data.setType(cdr.read_type_9());
       	
-
       cdr.read_type_e(data.getDimensions());	
 
    }
@@ -97,18 +89,14 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
    @Override
    public final void serialize(shape_msgs.msg.dds.SolidPrimitive data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_9("type", data.getType());
-
       ser.write_type_e("dimensions", data.getDimensions());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, shape_msgs.msg.dds.SolidPrimitive data)
    {
-
       data.setType(ser.read_type_9("type"));
-
       ser.read_type_e("dimensions", data.getDimensions());
    }
 

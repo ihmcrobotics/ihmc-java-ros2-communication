@@ -11,9 +11,7 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class AccelWithCovariance extends Packet<AccelWithCovariance> implements Settable<AccelWithCovariance>, EpsilonComparable<AccelWithCovariance>
 {
-
    public geometry_msgs.msg.dds.Accel accel_;
-
    /**
             * Row-major representation of the 6x6 covariance matrix
             * The orientation parameters use a fixed-axis representation.
@@ -24,11 +22,8 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
 
    public AccelWithCovariance()
    {
-
       accel_ = new geometry_msgs.msg.dds.Accel();
-
       covariance_ = new double[36];
-
 
    }
 
@@ -40,9 +35,7 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
 
    public void set(AccelWithCovariance other)
    {
-
       geometry_msgs.msg.dds.AccelPubSubType.staticCopy(other.accel_, accel_);
-
       for(int i1 = 0; i1 < covariance_.length; ++i1)
       {
             covariance_[i1] = other.covariance_[i1];
@@ -52,12 +45,10 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
    }
 
 
-
    public geometry_msgs.msg.dds.Accel getAccel()
    {
       return accel_;
    }
-
 
 
    /**
@@ -89,9 +80,7 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.accel_.epsilonEquals(other.accel_, epsilon)) return false;
-
       for(int i3 = 0; i3 < covariance_.length; ++i3)
       {
                 if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.covariance_[i3], other.covariance_[i3], epsilon)) return false;
@@ -110,9 +99,7 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
 
       AccelWithCovariance otherMyClass = (AccelWithCovariance) other;
 
-
       if (!this.accel_.equals(otherMyClass.accel_)) return false;
-
       for(int i5 = 0; i5 < covariance_.length; ++i5)
       {
                 if(this.covariance_[i5] != otherMyClass.covariance_[i5]) return false;
@@ -128,10 +115,8 @@ public class AccelWithCovariance extends Packet<AccelWithCovariance> implements 
       StringBuilder builder = new StringBuilder();
 
       builder.append("AccelWithCovariance {");
-
       builder.append("accel=");
       builder.append(this.accel_);      builder.append(", ");
-
       builder.append("covariance=");
       builder.append(java.util.Arrays.toString(this.covariance_));
       builder.append("}");

@@ -40,7 +40,6 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -56,7 +55,6 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
@@ -66,14 +64,12 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
 
    public static void write(std_msgs.msg.dds.Empty data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_7(data.getUnusedPlaceholderField());
 
    }
 
    public static void read(std_msgs.msg.dds.Empty data, us.ihmc.idl.CDR cdr)
    {
-
       data.setUnusedPlaceholderField(cdr.read_type_7());
       	
 
@@ -82,16 +78,13 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    @Override
    public final void serialize(std_msgs.msg.dds.Empty data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_7("unused_placeholder_field", data.getUnusedPlaceholderField());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.Empty data)
    {
-
-      data.setUnusedPlaceholderField(ser.read_type_7("unused_placeholder_field"));
-   }
+      data.setUnusedPlaceholderField(ser.read_type_7("unused_placeholder_field"));   }
 
    public static void staticCopy(std_msgs.msg.dds.Empty src, std_msgs.msg.dds.Empty dest)
    {

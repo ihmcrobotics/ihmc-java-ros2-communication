@@ -40,9 +40,7 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
@@ -58,9 +56,7 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getErrorString().length() + 1;
@@ -71,9 +67,7 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
 
    public static void write(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getError());
-
 
       if(data.getErrorString().length() <= 255)
       cdr.write_type_d(data.getErrorString());else
@@ -83,10 +77,8 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
 
    public static void read(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.CDR cdr)
    {
-
       data.setError(cdr.read_type_9());
       	
-
       cdr.read_type_d(data.getErrorString());	
 
    }
@@ -94,18 +86,14 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    @Override
    public final void serialize(tf2_msgs.msg.dds.TF2Error data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_9("error", data.getError());
-
       ser.write_type_d("error_string", data.getErrorString());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, tf2_msgs.msg.dds.TF2Error data)
    {
-
       data.setError(ser.read_type_9("error"));
-
       ser.read_type_d("error_string", data.getErrorString());
    }
 

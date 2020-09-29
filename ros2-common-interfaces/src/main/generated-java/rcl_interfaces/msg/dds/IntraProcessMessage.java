@@ -8,16 +8,11 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class IntraProcessMessage extends Packet<IntraProcessMessage> implements Settable<IntraProcessMessage>, EpsilonComparable<IntraProcessMessage>
 {
-
    public long publisher_id_;
-
    public long message_sequence_;
 
    public IntraProcessMessage()
    {
-
-
-
    }
 
    public IntraProcessMessage(IntraProcessMessage other)
@@ -28,14 +23,11 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
 
    public void set(IntraProcessMessage other)
    {
-
       publisher_id_ = other.publisher_id_;
-
 
       message_sequence_ = other.message_sequence_;
 
    }
-
 
    public void setPublisherId(long publisher_id)
    {
@@ -45,7 +37,6 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
    {
       return publisher_id_;
    }
-
 
    public void setMessageSequence(long message_sequence)
    {
@@ -74,9 +65,7 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.publisher_id_, other.publisher_id_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.message_sequence_, other.message_sequence_, epsilon)) return false;
 
@@ -93,9 +82,7 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
 
       IntraProcessMessage otherMyClass = (IntraProcessMessage) other;
 
-
       if(this.publisher_id_ != otherMyClass.publisher_id_) return false;
-
 
       if(this.message_sequence_ != otherMyClass.message_sequence_) return false;
 
@@ -109,10 +96,8 @@ public class IntraProcessMessage extends Packet<IntraProcessMessage> implements 
       StringBuilder builder = new StringBuilder();
 
       builder.append("IntraProcessMessage {");
-
       builder.append("publisher_id=");
       builder.append(this.publisher_id_);      builder.append(", ");
-
       builder.append("message_sequence=");
       builder.append(this.message_sequence_);
       builder.append("}");

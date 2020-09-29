@@ -40,9 +40,7 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -59,9 +57,7 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getForce(), current_alignment);
-
 
       current_alignment += geometry_msgs.msg.dds.Vector3PubSubType.getCdrSerializedSize(data.getTorque(), current_alignment);
 
@@ -71,17 +67,13 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
 
    public static void write(geometry_msgs.msg.dds.Wrench data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getForce(), cdr);
-
       geometry_msgs.msg.dds.Vector3PubSubType.write(data.getTorque(), cdr);
    }
 
    public static void read(geometry_msgs.msg.dds.Wrench data, us.ihmc.idl.CDR cdr)
    {
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getForce(), cdr);	
-
       geometry_msgs.msg.dds.Vector3PubSubType.read(data.getTorque(), cdr);	
 
    }
@@ -89,9 +81,7 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
    @Override
    public final void serialize(geometry_msgs.msg.dds.Wrench data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("force", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getForce());
-
 
       ser.write_type_a("torque", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getTorque());
 
@@ -100,9 +90,7 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, geometry_msgs.msg.dds.Wrench data)
    {
-
       ser.read_type_a("force", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getForce());
-
 
       ser.read_type_a("torque", new geometry_msgs.msg.dds.Vector3PubSubType(), data.getTorque());
 

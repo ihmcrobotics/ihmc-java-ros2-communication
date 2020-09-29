@@ -8,7 +8,6 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class Clock extends Packet<Clock> implements Settable<Clock>, EpsilonComparable<Clock>
 {
-
    /**
             * This message simply communicates the current time.
             * For more information, see http://www.ros.org/wiki/Clock
@@ -17,9 +16,7 @@ public class Clock extends Packet<Clock> implements Settable<Clock>, EpsilonComp
 
    public Clock()
    {
-
       clock_ = new builtin_interfaces.msg.dds.Time();
-
    }
 
    public Clock(Clock other)
@@ -30,10 +27,7 @@ public class Clock extends Packet<Clock> implements Settable<Clock>, EpsilonComp
 
    public void set(Clock other)
    {
-
-      builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.clock_, clock_);
-   }
-
+      builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.clock_, clock_);   }
 
 
    /**
@@ -63,7 +57,6 @@ public class Clock extends Packet<Clock> implements Settable<Clock>, EpsilonComp
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.clock_.epsilonEquals(other.clock_, epsilon)) return false;
 
       return true;
@@ -78,7 +71,6 @@ public class Clock extends Packet<Clock> implements Settable<Clock>, EpsilonComp
 
       Clock otherMyClass = (Clock) other;
 
-
       if (!this.clock_.equals(otherMyClass.clock_)) return false;
 
       return true;
@@ -90,7 +82,6 @@ public class Clock extends Packet<Clock> implements Settable<Clock>, EpsilonComp
       StringBuilder builder = new StringBuilder();
 
       builder.append("Clock {");
-
       builder.append("clock=");
       builder.append(this.clock_);
       builder.append("}");

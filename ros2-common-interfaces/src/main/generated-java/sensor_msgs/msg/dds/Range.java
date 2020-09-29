@@ -27,40 +27,32 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Range extends Packet<Range> implements Settable<Range>, EpsilonComparable<Range>
 {
-
    /**
           * Radiation type enums
           * If you want a value added to this list, send an email to the ros-users list
           */
    public static final byte ULTRASOUND = (byte) 0;
-
    public static final byte INFRARED = (byte) 1;
-
    /**
             * timestamp in the header is the time the ranger
             */
    public std_msgs.msg.dds.Header header_;
-
    /**
             * the type of radiation used by the sensor
             */
    public byte radiation_type_;
-
    /**
             * the size of the arc that the distance reading is
             */
    public float field_of_view_;
-
    /**
             * minimum range value [m]
             */
    public float min_range_;
-
    /**
             * maximum range value [m]
             */
    public float max_range_;
-
    /**
             * range data [m]
             */
@@ -68,14 +60,7 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
 
    public Range()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
-
-
-
-
-
    }
 
    public Range(Range other)
@@ -86,25 +71,18 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
 
    public void set(Range other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       radiation_type_ = other.radiation_type_;
-
 
       field_of_view_ = other.field_of_view_;
 
-
       min_range_ = other.min_range_;
 
-
       max_range_ = other.max_range_;
-
 
       range_ = other.range_;
 
    }
-
 
 
    /**
@@ -114,7 +92,6 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
    {
       return header_;
    }
-
 
    /**
             * the type of radiation used by the sensor
@@ -131,7 +108,6 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
       return radiation_type_;
    }
 
-
    /**
             * the size of the arc that the distance reading is
             */
@@ -146,7 +122,6 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
    {
       return field_of_view_;
    }
-
 
    /**
             * minimum range value [m]
@@ -163,7 +138,6 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
       return min_range_;
    }
 
-
    /**
             * maximum range value [m]
             */
@@ -178,7 +152,6 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
    {
       return max_range_;
    }
-
 
    /**
             * range data [m]
@@ -213,20 +186,14 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.radiation_type_, other.radiation_type_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.field_of_view_, other.field_of_view_, epsilon)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.min_range_, other.min_range_, epsilon)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.max_range_, other.max_range_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.range_, other.range_, epsilon)) return false;
 
@@ -243,20 +210,14 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
 
       Range otherMyClass = (Range) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if(this.radiation_type_ != otherMyClass.radiation_type_) return false;
-
 
       if(this.field_of_view_ != otherMyClass.field_of_view_) return false;
 
-
       if(this.min_range_ != otherMyClass.min_range_) return false;
 
-
       if(this.max_range_ != otherMyClass.max_range_) return false;
-
 
       if(this.range_ != otherMyClass.range_) return false;
 
@@ -270,22 +231,16 @@ public class Range extends Packet<Range> implements Settable<Range>, EpsilonComp
       StringBuilder builder = new StringBuilder();
 
       builder.append("Range {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("radiation_type=");
       builder.append(this.radiation_type_);      builder.append(", ");
-
       builder.append("field_of_view=");
       builder.append(this.field_of_view_);      builder.append(", ");
-
       builder.append("min_range=");
       builder.append(this.min_range_);      builder.append(", ");
-
       builder.append("max_range=");
       builder.append(this.max_range_);      builder.append(", ");
-
       builder.append("range=");
       builder.append(this.range_);
       builder.append("}");

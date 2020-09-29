@@ -40,9 +40,7 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
       return current_alignment - initial_alignment;
    }
@@ -56,10 +54,8 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getEchoes().size() * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
 
       return current_alignment - initial_alignment;
@@ -67,7 +63,6 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void write(sensor_msgs.msg.dds.LaserEcho data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getEchoes().size() <= 100)
       cdr.write_type_e(data.getEchoes());else
           throw new RuntimeException("echoes field exceeds the maximum length");
@@ -76,7 +71,6 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void read(sensor_msgs.msg.dds.LaserEcho data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getEchoes());	
 
    }
@@ -84,14 +78,12 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    @Override
    public final void serialize(sensor_msgs.msg.dds.LaserEcho data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_e("echoes", data.getEchoes());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.LaserEcho data)
    {
-
       ser.read_type_e("echoes", data.getEchoes());
    }
 

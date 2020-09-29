@@ -40,15 +40,11 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    {
       int initial_alignment = current_alignment;
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -65,17 +61,13 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    {
       int initial_alignment = current_alignment;
 
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
-
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -87,15 +79,11 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
 
    public static void write(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_5(data.getR());
-
 
       cdr.write_type_5(data.getG());
 
-
       cdr.write_type_5(data.getB());
-
 
       cdr.write_type_5(data.getA());
 
@@ -103,16 +91,12 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
 
    public static void read(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.CDR cdr)
    {
-
       data.setR(cdr.read_type_5());
       	
-
       data.setG(cdr.read_type_5());
       	
-
       data.setB(cdr.read_type_5());
       	
-
       data.setA(cdr.read_type_5());
       	
 
@@ -121,26 +105,18 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    @Override
    public final void serialize(std_msgs.msg.dds.ColorRGBA data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_5("r", data.getR());
-
       ser.write_type_5("g", data.getG());
-
       ser.write_type_5("b", data.getB());
-
       ser.write_type_5("a", data.getA());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.ColorRGBA data)
    {
-
       data.setR(ser.read_type_5("r"));
-
       data.setG(ser.read_type_5("g"));
-
       data.setB(ser.read_type_5("b"));
-
       data.setA(ser.read_type_5("a"));
    }
 

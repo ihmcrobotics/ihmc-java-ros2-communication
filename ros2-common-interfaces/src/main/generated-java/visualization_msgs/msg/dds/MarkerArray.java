@@ -8,12 +8,10 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerArray>, EpsilonComparable<MarkerArray>
 {
-
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker>  markers_;
 
    public MarkerArray()
    {
-
       markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> (100, new visualization_msgs.msg.dds.MarkerPubSubType());
 
    }
@@ -26,10 +24,8 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
 
    public void set(MarkerArray other)
    {
-
       markers_.set(other.markers_);
    }
-
 
 
    public us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker>  getMarkers()
@@ -55,14 +51,12 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (this.markers_.size() != other.markers_.size()) { return false; }
       else
       {
          for (int i = 0; i < this.markers_.size(); i++)
          {  if (!this.markers_.get(i).epsilonEquals(other.markers_.get(i), epsilon)) return false; }
       }
-
 
       return true;
    }
@@ -76,7 +70,6 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
 
       MarkerArray otherMyClass = (MarkerArray) other;
 
-
       if (!this.markers_.equals(otherMyClass.markers_)) return false;
 
       return true;
@@ -88,7 +81,6 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
       StringBuilder builder = new StringBuilder();
 
       builder.append("MarkerArray {");
-
       builder.append("markers=");
       builder.append(this.markers_);
       builder.append("}");

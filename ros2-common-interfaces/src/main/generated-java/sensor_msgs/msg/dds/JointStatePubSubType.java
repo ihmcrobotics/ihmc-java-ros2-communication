@@ -40,20 +40,15 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -70,24 +65,19 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getCdrSerializedSize(data.getHeader(), current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getName().size(); ++i0)
       {
           current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().get(i0).length() + 1;
       }
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getPosition().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getVelocity().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -100,23 +90,18 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void write(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-
       if(data.getName().size() <= 100)
       cdr.write_type_e(data.getName());else
           throw new RuntimeException("name field exceeds the maximum length");
-
 
       if(data.getPosition().size() <= 100)
       cdr.write_type_e(data.getPosition());else
           throw new RuntimeException("position field exceeds the maximum length");
 
-
       if(data.getVelocity().size() <= 100)
       cdr.write_type_e(data.getVelocity());else
           throw new RuntimeException("velocity field exceeds the maximum length");
-
 
       if(data.getEffort().size() <= 100)
       cdr.write_type_e(data.getEffort());else
@@ -126,15 +111,10 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void read(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.read(data.getHeader(), cdr);	
-
       cdr.read_type_e(data.getName());	
-
       cdr.read_type_e(data.getPosition());	
-
       cdr.read_type_e(data.getVelocity());	
-
       cdr.read_type_e(data.getEffort());	
 
    }
@@ -142,32 +122,22 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    @Override
    public final void serialize(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.write_type_e("name", data.getName());
-
       ser.write_type_e("position", data.getPosition());
-
       ser.write_type_e("velocity", data.getVelocity());
-
       ser.write_type_e("effort", data.getEffort());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.JointState data)
    {
-
       ser.read_type_a("header", new std_msgs.msg.dds.HeaderPubSubType(), data.getHeader());
 
-
       ser.read_type_e("name", data.getName());
-
       ser.read_type_e("position", data.getPosition());
-
       ser.read_type_e("velocity", data.getVelocity());
-
       ser.read_type_e("effort", data.getEffort());
    }
 

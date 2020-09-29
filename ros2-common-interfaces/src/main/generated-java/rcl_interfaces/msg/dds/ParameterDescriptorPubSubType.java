@@ -40,23 +40,16 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 1; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.FloatingPointRangePubSubType.getMaxCdrSerializedSize(current_alignment);}
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 1; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.IntegerRangePubSubType.getMaxCdrSerializedSize(current_alignment);}
@@ -73,29 +66,22 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getDescription().length() + 1;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getAdditionalConstraints().length() + 1;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getFloatingPointRange().size(); ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.FloatingPointRangePubSubType.getCdrSerializedSize(data.getFloatingPointRange().get(i0), current_alignment);}
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getIntegerRange().size(); ++i0)
@@ -108,32 +94,25 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void write(rcl_interfaces.msg.dds.ParameterDescriptor data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getName().length() <= 255)
       cdr.write_type_d(data.getName());else
           throw new RuntimeException("name field exceeds the maximum length");
 
-
       cdr.write_type_9(data.getType());
-
 
       if(data.getDescription().length() <= 255)
       cdr.write_type_d(data.getDescription());else
           throw new RuntimeException("description field exceeds the maximum length");
 
-
       if(data.getAdditionalConstraints().length() <= 255)
       cdr.write_type_d(data.getAdditionalConstraints());else
           throw new RuntimeException("additional_constraints field exceeds the maximum length");
 
-
       cdr.write_type_7(data.getReadOnly());
-
 
       if(data.getFloatingPointRange().size() <= 1)
       cdr.write_type_e(data.getFloatingPointRange());else
           throw new RuntimeException("floating_point_range field exceeds the maximum length");
-
 
       if(data.getIntegerRange().size() <= 1)
       cdr.write_type_e(data.getIntegerRange());else
@@ -143,21 +122,14 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
 
    public static void read(rcl_interfaces.msg.dds.ParameterDescriptor data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getName());	
-
       data.setType(cdr.read_type_9());
       	
-
       cdr.read_type_d(data.getDescription());	
-
       cdr.read_type_d(data.getAdditionalConstraints());	
-
       data.setReadOnly(cdr.read_type_7());
       	
-
       cdr.read_type_e(data.getFloatingPointRange());	
-
       cdr.read_type_e(data.getIntegerRange());	
 
    }
@@ -165,38 +137,24 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final void serialize(rcl_interfaces.msg.dds.ParameterDescriptor data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_d("name", data.getName());
-
       ser.write_type_9("type", data.getType());
-
       ser.write_type_d("description", data.getDescription());
-
       ser.write_type_d("additional_constraints", data.getAdditionalConstraints());
-
       ser.write_type_7("read_only", data.getReadOnly());
-
       ser.write_type_e("floating_point_range", data.getFloatingPointRange());
-
       ser.write_type_e("integer_range", data.getIntegerRange());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterDescriptor data)
    {
-
       ser.read_type_d("name", data.getName());
-
       data.setType(ser.read_type_9("type"));
-
       ser.read_type_d("description", data.getDescription());
-
       ser.read_type_d("additional_constraints", data.getAdditionalConstraints());
-
       data.setReadOnly(ser.read_type_7("read_only"));
-
       ser.read_type_e("floating_point_range", data.getFloatingPointRange());
-
       ser.read_type_e("integer_range", data.getIntegerRange());
    }
 

@@ -8,31 +8,19 @@ import us.ihmc.pubsub.TopicDataType;
 
 public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, EpsilonComparable<TF2Error>
 {
-
    public static final byte NO_ERROR = (byte) 0;
-
    public static final byte LOOKUP_ERROR = (byte) 1;
-
    public static final byte CONNECTIVITY_ERROR = (byte) 2;
-
    public static final byte EXTRAPOLATION_ERROR = (byte) 3;
-
    public static final byte INVALID_ARGUMENT_ERROR = (byte) 4;
-
    public static final byte TIMEOUT_ERROR = (byte) 5;
-
    public static final byte TRANSFORM_ERROR = (byte) 6;
-
    public byte error_;
-
    public java.lang.StringBuilder error_string_;
 
    public TF2Error()
    {
-
-
       error_string_ = new java.lang.StringBuilder(255);
-
    }
 
    public TF2Error(TF2Error other)
@@ -43,15 +31,12 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
 
    public void set(TF2Error other)
    {
-
       error_ = other.error_;
-
 
       error_string_.setLength(0);
       error_string_.append(other.error_string_);
 
    }
-
 
    public void setError(byte error)
    {
@@ -61,7 +46,6 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
    {
       return error_;
    }
-
 
    public void setErrorString(java.lang.String error_string)
    {
@@ -96,9 +80,7 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.error_, other.error_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.error_string_, other.error_string_, epsilon)) return false;
 
@@ -115,9 +97,7 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
 
       TF2Error otherMyClass = (TF2Error) other;
 
-
       if(this.error_ != otherMyClass.error_) return false;
-
 
       if (!us.ihmc.idl.IDLTools.equals(this.error_string_, otherMyClass.error_string_)) return false;
 
@@ -131,10 +111,8 @@ public class TF2Error extends Packet<TF2Error> implements Settable<TF2Error>, Ep
       StringBuilder builder = new StringBuilder();
 
       builder.append("TF2Error {");
-
       builder.append("error=");
       builder.append(this.error_);      builder.append(", ");
-
       builder.append("error_string=");
       builder.append(this.error_string_);
       builder.append("}");

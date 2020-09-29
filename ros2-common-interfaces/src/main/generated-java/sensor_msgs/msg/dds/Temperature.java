@@ -12,17 +12,14 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Temperature extends Packet<Temperature> implements Settable<Temperature>, EpsilonComparable<Temperature>
 {
-
    /**
             * timestamp is the time the temperature was measured
             */
    public std_msgs.msg.dds.Header header_;
-
    /**
             * Measurement of the Temperature in Degrees Celsius.
             */
    public double temperature_;
-
    /**
             * 0 is interpreted as variance unknown.
             */
@@ -30,11 +27,7 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
 
    public Temperature()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
-
-
    }
 
    public Temperature(Temperature other)
@@ -45,16 +38,12 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
 
    public void set(Temperature other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       temperature_ = other.temperature_;
-
 
       variance_ = other.variance_;
 
    }
-
 
 
    /**
@@ -64,7 +53,6 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
    {
       return header_;
    }
-
 
    /**
             * Measurement of the Temperature in Degrees Celsius.
@@ -80,7 +68,6 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
    {
       return temperature_;
    }
-
 
    /**
             * 0 is interpreted as variance unknown.
@@ -115,11 +102,8 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.temperature_, other.temperature_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.variance_, other.variance_, epsilon)) return false;
 
@@ -136,11 +120,8 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
 
       Temperature otherMyClass = (Temperature) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if(this.temperature_ != otherMyClass.temperature_) return false;
-
 
       if(this.variance_ != otherMyClass.variance_) return false;
 
@@ -154,13 +135,10 @@ public class Temperature extends Packet<Temperature> implements Settable<Tempera
       StringBuilder builder = new StringBuilder();
 
       builder.append("Temperature {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("temperature=");
       builder.append(this.temperature_);      builder.append(", ");
-
       builder.append("variance=");
       builder.append(this.variance_);
       builder.append("}");

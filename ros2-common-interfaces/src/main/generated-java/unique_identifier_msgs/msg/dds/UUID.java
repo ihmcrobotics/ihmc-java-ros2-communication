@@ -14,14 +14,11 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class UUID extends Packet<UUID> implements Settable<UUID>, EpsilonComparable<UUID>
 {
-
    public byte[] uuid_;
 
    public UUID()
    {
-
       uuid_ = new byte[16];
-
 
    }
 
@@ -33,15 +30,12 @@ public class UUID extends Packet<UUID> implements Settable<UUID>, EpsilonCompara
 
    public void set(UUID other)
    {
-
       for(int i1 = 0; i1 < uuid_.length; ++i1)
       {
             uuid_[i1] = other.uuid_[i1];
 
       }
-
    }
-
 
 
    public byte[] getUuid()
@@ -67,12 +61,10 @@ public class UUID extends Packet<UUID> implements Settable<UUID>, EpsilonCompara
       if(other == null) return false;
       if(other == this) return true;
 
-
       for(int i3 = 0; i3 < uuid_.length; ++i3)
       {
                 if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.uuid_[i3], other.uuid_[i3], epsilon)) return false;
       }
-
 
       return true;
    }
@@ -86,13 +78,11 @@ public class UUID extends Packet<UUID> implements Settable<UUID>, EpsilonCompara
 
       UUID otherMyClass = (UUID) other;
 
-
       for(int i5 = 0; i5 < uuid_.length; ++i5)
       {
                 if(this.uuid_[i5] != otherMyClass.uuid_[i5]) return false;
 
       }
-
       return true;
    }
 
@@ -102,7 +92,6 @@ public class UUID extends Packet<UUID> implements Settable<UUID>, EpsilonCompara
       StringBuilder builder = new StringBuilder();
 
       builder.append("UUID {");
-
       builder.append("uuid=");
       builder.append(java.util.Arrays.toString(this.uuid_));
       builder.append("}");

@@ -40,11 +40,8 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
@@ -62,12 +59,9 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getServerId().length() + 1;
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -81,14 +75,11 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void write(visualization_msgs.msg.dds.InteractiveMarkerInit data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getServerId().length() <= 255)
       cdr.write_type_d(data.getServerId());else
           throw new RuntimeException("server_id field exceeds the maximum length");
 
-
       cdr.write_type_12(data.getSeqNum());
-
 
       if(data.getMarkers().size() <= 100)
       cdr.write_type_e(data.getMarkers());else
@@ -98,12 +89,9 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
 
    public static void read(visualization_msgs.msg.dds.InteractiveMarkerInit data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getServerId());	
-
       data.setSeqNum(cdr.read_type_12());
       	
-
       cdr.read_type_e(data.getMarkers());	
 
    }
@@ -111,22 +99,16 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
    @Override
    public final void serialize(visualization_msgs.msg.dds.InteractiveMarkerInit data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_d("server_id", data.getServerId());
-
       ser.write_type_12("seq_num", data.getSeqNum());
-
       ser.write_type_e("markers", data.getMarkers());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, visualization_msgs.msg.dds.InteractiveMarkerInit data)
    {
-
       ser.read_type_d("server_id", data.getServerId());
-
       data.setSeqNum(ser.read_type_12("seq_num"));
-
       ser.read_type_e("markers", data.getMarkers());
    }
 

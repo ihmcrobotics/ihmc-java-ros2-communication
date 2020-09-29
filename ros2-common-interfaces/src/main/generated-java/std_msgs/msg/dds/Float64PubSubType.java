@@ -40,7 +40,6 @@ public class Float64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
@@ -56,7 +55,6 @@ public class Float64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
@@ -66,14 +64,12 @@ public class Float64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.
 
    public static void write(std_msgs.msg.dds.Float64 data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_6(data.getData());
 
    }
 
    public static void read(std_msgs.msg.dds.Float64 data, us.ihmc.idl.CDR cdr)
    {
-
       data.setData(cdr.read_type_6());
       	
 
@@ -82,16 +78,13 @@ public class Float64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.
    @Override
    public final void serialize(std_msgs.msg.dds.Float64 data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_6("data", data.getData());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.Float64 data)
    {
-
-      data.setData(ser.read_type_6("data"));
-   }
+      data.setData(ser.read_type_6("data"));   }
 
    public static void staticCopy(std_msgs.msg.dds.Float64 src, std_msgs.msg.dds.Float64 dest)
    {

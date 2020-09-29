@@ -40,11 +40,9 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getMaxCdrSerializedSize(current_alignment);}
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
@@ -61,12 +59,10 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getTriangles().size(); ++i0)
       {
           current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getCdrSerializedSize(data.getTriangles().get(i0), current_alignment);}
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       for(int i0 = 0; i0 < data.getVertices().size(); ++i0)
@@ -79,11 +75,9 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
 
    public static void write(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getTriangles().size() <= 100)
       cdr.write_type_e(data.getTriangles());else
           throw new RuntimeException("triangles field exceeds the maximum length");
-
 
       if(data.getVertices().size() <= 100)
       cdr.write_type_e(data.getVertices());else
@@ -93,9 +87,7 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
 
    public static void read(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_e(data.getTriangles());	
-
       cdr.read_type_e(data.getVertices());	
 
    }
@@ -103,18 +95,14 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    @Override
    public final void serialize(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_e("triangles", data.getTriangles());
-
       ser.write_type_e("vertices", data.getVertices());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, shape_msgs.msg.dds.Mesh data)
    {
-
       ser.read_type_e("triangles", data.getTriangles());
-
       ser.read_type_e("vertices", data.getVertices());
    }
 

@@ -40,7 +40,6 @@ public class UInt16PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 2 + us.ihmc.idl.CDR.alignment(current_alignment, 2);
 
 
@@ -56,7 +55,6 @@ public class UInt16PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 2 + us.ihmc.idl.CDR.alignment(current_alignment, 2);
 
 
@@ -66,14 +64,12 @@ public class UInt16PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
 
    public static void write(std_msgs.msg.dds.UInt16 data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_3(data.getData());
 
    }
 
    public static void read(std_msgs.msg.dds.UInt16 data, us.ihmc.idl.CDR cdr)
    {
-
       data.setData(cdr.read_type_3());
       	
 
@@ -82,16 +78,13 @@ public class UInt16PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    @Override
    public final void serialize(std_msgs.msg.dds.UInt16 data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_3("data", data.getData());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, std_msgs.msg.dds.UInt16 data)
    {
-
-      data.setData(ser.read_type_3("data"));
-   }
+      data.setData(ser.read_type_3("data"));   }
 
    public static void staticCopy(std_msgs.msg.dds.UInt16 src, std_msgs.msg.dds.UInt16 dest)
    {

@@ -40,14 +40,10 @@ public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
@@ -64,16 +60,12 @@ public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getName().length() + 1;
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -85,17 +77,13 @@ public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void write(sensor_msgs.msg.dds.PointField data, us.ihmc.idl.CDR cdr)
    {
-
       if(data.getName().length() <= 255)
       cdr.write_type_d(data.getName());else
           throw new RuntimeException("name field exceeds the maximum length");
 
-
       cdr.write_type_4(data.getOffset());
 
-
       cdr.write_type_9(data.getDatatype());
-
 
       cdr.write_type_4(data.getCount());
 
@@ -103,15 +91,11 @@ public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
    public static void read(sensor_msgs.msg.dds.PointField data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.read_type_d(data.getName());	
-
       data.setOffset(cdr.read_type_4());
       	
-
       data.setDatatype(cdr.read_type_9());
       	
-
       data.setCount(cdr.read_type_4());
       	
 
@@ -120,26 +104,18 @@ public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    @Override
    public final void serialize(sensor_msgs.msg.dds.PointField data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_d("name", data.getName());
-
       ser.write_type_4("offset", data.getOffset());
-
       ser.write_type_9("datatype", data.getDatatype());
-
       ser.write_type_4("count", data.getCount());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, sensor_msgs.msg.dds.PointField data)
    {
-
       ser.read_type_d("name", data.getName());
-
       data.setOffset(ser.read_type_4("offset"));
-
       data.setDatatype(ser.read_type_9("datatype"));
-
       data.setCount(ser.read_type_4("count"));
    }
 

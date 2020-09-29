@@ -16,25 +16,18 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class TransformStamped extends Packet<TransformStamped> implements Settable<TransformStamped>, EpsilonComparable<TransformStamped>
 {
-
    public std_msgs.msg.dds.Header header_;
-
    /**
             * the frame id of the child frame
             */
    public java.lang.StringBuilder child_frame_id_;
-
    public us.ihmc.euclid.transform.QuaternionBasedTransform transform_;
 
    public TransformStamped()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       child_frame_id_ = new java.lang.StringBuilder(255);
-
       transform_ = new us.ihmc.euclid.transform.QuaternionBasedTransform();
-
    }
 
    public TransformStamped(TransformStamped other)
@@ -45,23 +38,18 @@ public class TransformStamped extends Packet<TransformStamped> implements Settab
 
    public void set(TransformStamped other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       child_frame_id_.setLength(0);
       child_frame_id_.append(other.child_frame_id_);
 
-
       geometry_msgs.msg.dds.TransformPubSubType.staticCopy(other.transform_, transform_);
    }
-
 
 
    public std_msgs.msg.dds.Header getHeader()
    {
       return header_;
    }
-
 
    /**
             * the frame id of the child frame
@@ -88,7 +76,6 @@ public class TransformStamped extends Packet<TransformStamped> implements Settab
    }
 
 
-
    public us.ihmc.euclid.transform.QuaternionBasedTransform getTransform()
    {
       return transform_;
@@ -112,11 +99,8 @@ public class TransformStamped extends Packet<TransformStamped> implements Settab
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.child_frame_id_, other.child_frame_id_, epsilon)) return false;
-
 
       if (!this.transform_.epsilonEquals(other.transform_, epsilon)) return false;
 
@@ -132,11 +116,8 @@ public class TransformStamped extends Packet<TransformStamped> implements Settab
 
       TransformStamped otherMyClass = (TransformStamped) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.child_frame_id_, otherMyClass.child_frame_id_)) return false;
-
 
       if (!this.transform_.equals(otherMyClass.transform_)) return false;
 
@@ -149,13 +130,10 @@ public class TransformStamped extends Packet<TransformStamped> implements Settab
       StringBuilder builder = new StringBuilder();
 
       builder.append("TransformStamped {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("child_frame_id=");
       builder.append(this.child_frame_id_);      builder.append(", ");
-
       builder.append("transform=");
       builder.append(this.transform_);
       builder.append("}");

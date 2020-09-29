@@ -40,32 +40,22 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
    {
       int initial_alignment = current_alignment;
 
+      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-
-      current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
       {
@@ -84,44 +74,34 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
-
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
-
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getStringValue().length() + 1;
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getByteArrayValue().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getBoolArrayValue().size() * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getIntegerArrayValue().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
-
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
       current_alignment += (data.getDoubleArrayValue().size() * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
-
 
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -135,43 +115,33 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void write(rcl_interfaces.msg.dds.ParameterValue data, us.ihmc.idl.CDR cdr)
    {
-
       cdr.write_type_9(data.getType());
-
 
       cdr.write_type_7(data.getBoolValue());
 
-
       cdr.write_type_11(data.getIntegerValue());
 
-
       cdr.write_type_6(data.getDoubleValue());
-
 
       if(data.getStringValue().length() <= 255)
       cdr.write_type_d(data.getStringValue());else
           throw new RuntimeException("string_value field exceeds the maximum length");
 
-
       if(data.getByteArrayValue().size() <= 100)
       cdr.write_type_e(data.getByteArrayValue());else
           throw new RuntimeException("byte_array_value field exceeds the maximum length");
-
 
       if(data.getBoolArrayValue().size() <= 100)
       cdr.write_type_e(data.getBoolArrayValue());else
           throw new RuntimeException("bool_array_value field exceeds the maximum length");
 
-
       if(data.getIntegerArrayValue().size() <= 100)
       cdr.write_type_e(data.getIntegerArrayValue());else
           throw new RuntimeException("integer_array_value field exceeds the maximum length");
 
-
       if(data.getDoubleArrayValue().size() <= 100)
       cdr.write_type_e(data.getDoubleArrayValue());else
           throw new RuntimeException("double_array_value field exceeds the maximum length");
-
 
       if(data.getStringArrayValue().size() <= 100)
       cdr.write_type_e(data.getStringArrayValue());else
@@ -181,29 +151,19 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
 
    public static void read(rcl_interfaces.msg.dds.ParameterValue data, us.ihmc.idl.CDR cdr)
    {
-
       data.setType(cdr.read_type_9());
       	
-
       data.setBoolValue(cdr.read_type_7());
       	
-
       data.setIntegerValue(cdr.read_type_11());
       	
-
       data.setDoubleValue(cdr.read_type_6());
       	
-
       cdr.read_type_d(data.getStringValue());	
-
       cdr.read_type_e(data.getByteArrayValue());	
-
       cdr.read_type_e(data.getBoolArrayValue());	
-
       cdr.read_type_e(data.getIntegerArrayValue());	
-
       cdr.read_type_e(data.getDoubleArrayValue());	
-
       cdr.read_type_e(data.getStringArrayValue());	
 
    }
@@ -211,50 +171,30 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
    @Override
    public final void serialize(rcl_interfaces.msg.dds.ParameterValue data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_9("type", data.getType());
-
       ser.write_type_7("bool_value", data.getBoolValue());
-
       ser.write_type_11("integer_value", data.getIntegerValue());
-
       ser.write_type_6("double_value", data.getDoubleValue());
-
       ser.write_type_d("string_value", data.getStringValue());
-
       ser.write_type_e("byte_array_value", data.getByteArrayValue());
-
       ser.write_type_e("bool_array_value", data.getBoolArrayValue());
-
       ser.write_type_e("integer_array_value", data.getIntegerArrayValue());
-
       ser.write_type_e("double_array_value", data.getDoubleArrayValue());
-
       ser.write_type_e("string_array_value", data.getStringArrayValue());
    }
 
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, rcl_interfaces.msg.dds.ParameterValue data)
    {
-
       data.setType(ser.read_type_9("type"));
-
       data.setBoolValue(ser.read_type_7("bool_value"));
-
       data.setIntegerValue(ser.read_type_11("integer_value"));
-
       data.setDoubleValue(ser.read_type_6("double_value"));
-
       ser.read_type_d("string_value", data.getStringValue());
-
       ser.read_type_e("byte_array_value", data.getByteArrayValue());
-
       ser.read_type_e("bool_array_value", data.getBoolArrayValue());
-
       ser.read_type_e("integer_array_value", data.getIntegerArrayValue());
-
       ser.read_type_e("double_array_value", data.getDoubleArrayValue());
-
       ser.read_type_e("string_array_value", data.getStringArrayValue());
    }
 

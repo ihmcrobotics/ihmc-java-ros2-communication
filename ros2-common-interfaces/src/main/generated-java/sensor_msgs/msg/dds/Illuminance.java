@@ -24,17 +24,14 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class Illuminance extends Packet<Illuminance> implements Settable<Illuminance>, EpsilonComparable<Illuminance>
 {
-
    /**
             * timestamp is the time the illuminance was measured
             */
    public std_msgs.msg.dds.Header header_;
-
    /**
             * Measurement of the Photometric Illuminance in Lux.
             */
    public double illuminance_;
-
    /**
             * 0 is interpreted as variance unknown
             */
@@ -42,11 +39,7 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
 
    public Illuminance()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
-
-
    }
 
    public Illuminance(Illuminance other)
@@ -57,16 +50,12 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
 
    public void set(Illuminance other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       illuminance_ = other.illuminance_;
-
 
       variance_ = other.variance_;
 
    }
-
 
 
    /**
@@ -76,7 +65,6 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
    {
       return header_;
    }
-
 
    /**
             * Measurement of the Photometric Illuminance in Lux.
@@ -92,7 +80,6 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
    {
       return illuminance_;
    }
-
 
    /**
             * 0 is interpreted as variance unknown
@@ -127,11 +114,8 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.illuminance_, other.illuminance_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.variance_, other.variance_, epsilon)) return false;
 
@@ -148,11 +132,8 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
 
       Illuminance otherMyClass = (Illuminance) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if(this.illuminance_ != otherMyClass.illuminance_) return false;
-
 
       if(this.variance_ != otherMyClass.variance_) return false;
 
@@ -166,13 +147,10 @@ public class Illuminance extends Packet<Illuminance> implements Settable<Illumin
       StringBuilder builder = new StringBuilder();
 
       builder.append("Illuminance {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("illuminance=");
       builder.append(this.illuminance_);      builder.append(", ");
-
       builder.append("variance=");
       builder.append(this.variance_);
       builder.append("}");

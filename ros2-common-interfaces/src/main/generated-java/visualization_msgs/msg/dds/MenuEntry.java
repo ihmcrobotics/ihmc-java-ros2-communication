@@ -40,7 +40,6 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>, EpsilonComparable<MenuEntry>
 {
-
    /**
           * Command_type stores the type of response desired when this menu
           * entry is clicked.
@@ -49,45 +48,32 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
           * ROSLAUNCH: execute "roslaunch" with arguments given in the command field (above).
           */
    public static final byte FEEDBACK = (byte) 0;
-
    public static final byte ROSRUN = (byte) 1;
-
    public static final byte ROSLAUNCH = (byte) 2;
-
    /**
             * ID is a number for each menu entry.  Must be unique within the
             * control, and should never be 0.
             */
    public long id_;
-
    /**
             * ID of the parent of this menu entry, if it is a submenu.  If this
             * menu entry is a top-level entry, set parent_id to 0.
             */
    public long parent_id_;
-
    /**
             * menu / entry title
             */
    public java.lang.StringBuilder title_;
-
    /**
             * Arguments to command indicated by command_type (below)
             */
    public java.lang.StringBuilder command_;
-
    public byte command_type_;
 
    public MenuEntry()
    {
-
-
-
       title_ = new java.lang.StringBuilder(255);
-
       command_ = new java.lang.StringBuilder(255);
-
-
    }
 
    public MenuEntry(MenuEntry other)
@@ -98,25 +84,19 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
 
    public void set(MenuEntry other)
    {
-
       id_ = other.id_;
 
-
       parent_id_ = other.parent_id_;
-
 
       title_.setLength(0);
       title_.append(other.title_);
 
-
       command_.setLength(0);
       command_.append(other.command_);
-
 
       command_type_ = other.command_type_;
 
    }
-
 
    /**
             * ID is a number for each menu entry.  Must be unique within the
@@ -135,7 +115,6 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
       return id_;
    }
 
-
    /**
             * ID of the parent of this menu entry, if it is a submenu.  If this
             * menu entry is a top-level entry, set parent_id to 0.
@@ -152,7 +131,6 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
    {
       return parent_id_;
    }
-
 
    /**
             * menu / entry title
@@ -178,7 +156,6 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
       return title_;
    }
 
-
    /**
             * Arguments to command indicated by command_type (below)
             */
@@ -202,7 +179,6 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
    {
       return command_;
    }
-
 
    public void setCommandType(byte command_type)
    {
@@ -231,18 +207,13 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.id_, other.id_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.parent_id_, other.parent_id_, epsilon)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.title_, other.title_, epsilon)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.command_, other.command_, epsilon)) return false;
-
 
       if (!us.ihmc.idl.IDLTools.epsilonEqualsPrimitive(this.command_type_, other.command_type_, epsilon)) return false;
 
@@ -259,18 +230,13 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
 
       MenuEntry otherMyClass = (MenuEntry) other;
 
-
       if(this.id_ != otherMyClass.id_) return false;
-
 
       if(this.parent_id_ != otherMyClass.parent_id_) return false;
 
-
       if (!us.ihmc.idl.IDLTools.equals(this.title_, otherMyClass.title_)) return false;
 
-
       if (!us.ihmc.idl.IDLTools.equals(this.command_, otherMyClass.command_)) return false;
-
 
       if(this.command_type_ != otherMyClass.command_type_) return false;
 
@@ -284,19 +250,14 @@ public class MenuEntry extends Packet<MenuEntry> implements Settable<MenuEntry>,
       StringBuilder builder = new StringBuilder();
 
       builder.append("MenuEntry {");
-
       builder.append("id=");
       builder.append(this.id_);      builder.append(", ");
-
       builder.append("parent_id=");
       builder.append(this.parent_id_);      builder.append(", ");
-
       builder.append("title=");
       builder.append(this.title_);      builder.append(", ");
-
       builder.append("command=");
       builder.append(this.command_);      builder.append(", ");
-
       builder.append("command_type=");
       builder.append(this.command_type_);
       builder.append("}");

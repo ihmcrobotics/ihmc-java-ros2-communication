@@ -40,9 +40,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
 
@@ -58,9 +56,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
    {
       int initial_alignment = current_alignment;
 
-
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getCdrSerializedSize(data.getStamp(), current_alignment);
-
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + data.getId().length() + 1;
 
@@ -70,9 +66,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
 
    public static void write(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.write(data.getStamp(), cdr);
-
       if(data.getId().length() <= 255)
       cdr.write_type_d(data.getId());else
           throw new RuntimeException("id field exceeds the maximum length");
@@ -81,9 +75,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
 
    public static void read(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.CDR cdr)
    {
-
       builtin_interfaces.msg.dds.TimePubSubType.read(data.getStamp(), cdr);	
-
       cdr.read_type_d(data.getId());	
 
    }
@@ -91,9 +83,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
    @Override
    public final void serialize(actionlib_msgs.msg.dds.GoalID data, us.ihmc.idl.InterchangeSerializer ser)
    {
-
       ser.write_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
-
 
       ser.write_type_d("id", data.getId());
    }
@@ -101,9 +91,7 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
    @Override
    public final void deserialize(us.ihmc.idl.InterchangeSerializer ser, actionlib_msgs.msg.dds.GoalID data)
    {
-
       ser.read_type_a("stamp", new builtin_interfaces.msg.dds.TimePubSubType(), data.getStamp());
-
 
       ser.read_type_d("id", data.getId());
    }

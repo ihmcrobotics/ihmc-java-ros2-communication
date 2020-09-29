@@ -12,17 +12,14 @@ import us.ihmc.pubsub.TopicDataType;
        */
 public class TimeReference extends Packet<TimeReference> implements Settable<TimeReference>, EpsilonComparable<TimeReference>
 {
-
    /**
             * stamp is system time for which measurement was valid
             */
    public std_msgs.msg.dds.Header header_;
-
    /**
             * corresponding time from this external source
             */
    public builtin_interfaces.msg.dds.Time time_ref_;
-
    /**
             * (optional) name of time source
             *
@@ -32,13 +29,9 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
    public TimeReference()
    {
-
       header_ = new std_msgs.msg.dds.Header();
-
       time_ref_ = new builtin_interfaces.msg.dds.Time();
-
       timeSource_ = new java.lang.StringBuilder(255);
-
    }
 
    public TimeReference(TimeReference other)
@@ -49,16 +42,12 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
    public void set(TimeReference other)
    {
-
       std_msgs.msg.dds.HeaderPubSubType.staticCopy(other.header_, header_);
-
       builtin_interfaces.msg.dds.TimePubSubType.staticCopy(other.time_ref_, time_ref_);
-
       timeSource_.setLength(0);
       timeSource_.append(other.timeSource_);
 
    }
-
 
 
    /**
@@ -70,7 +59,6 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
    }
 
 
-
    /**
             * corresponding time from this external source
             */
@@ -78,7 +66,6 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
    {
       return time_ref_;
    }
-
 
    /**
             * (optional) name of time source
@@ -128,11 +115,8 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
       if(other == null) return false;
       if(other == this) return true;
 
-
       if (!this.header_.epsilonEquals(other.header_, epsilon)) return false;
-
       if (!this.time_ref_.epsilonEquals(other.time_ref_, epsilon)) return false;
-
       if (!us.ihmc.idl.IDLTools.epsilonEqualsStringBuilder(this.timeSource_, other.timeSource_, epsilon)) return false;
 
 
@@ -148,11 +132,8 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
 
       TimeReference otherMyClass = (TimeReference) other;
 
-
       if (!this.header_.equals(otherMyClass.header_)) return false;
-
       if (!this.time_ref_.equals(otherMyClass.time_ref_)) return false;
-
       if (!us.ihmc.idl.IDLTools.equals(this.timeSource_, otherMyClass.timeSource_)) return false;
 
 
@@ -165,13 +146,10 @@ public class TimeReference extends Packet<TimeReference> implements Settable<Tim
       StringBuilder builder = new StringBuilder();
 
       builder.append("TimeReference {");
-
       builder.append("header=");
       builder.append(this.header_);      builder.append(", ");
-
       builder.append("time_ref=");
       builder.append(this.time_ref_);      builder.append(", ");
-
       builder.append("timeSource=");
       builder.append(this.timeSource_);
       builder.append("}");
