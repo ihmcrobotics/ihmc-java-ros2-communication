@@ -49,15 +49,15 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
@@ -127,23 +127,23 @@ public class ParameterValuePubSubType implements us.ihmc.pubsub.TopicDataType<rc
       cdr.write_type_d(data.getStringValue());else
           throw new RuntimeException("string_value field exceeds the maximum length");
 
-      if(data.getByteArrayValue().size() <= 100)
+      if(data.getByteArrayValue().size() <= 10000000)
       cdr.write_type_e(data.getByteArrayValue());else
           throw new RuntimeException("byte_array_value field exceeds the maximum length");
 
-      if(data.getBoolArrayValue().size() <= 100)
+      if(data.getBoolArrayValue().size() <= 10000000)
       cdr.write_type_e(data.getBoolArrayValue());else
           throw new RuntimeException("bool_array_value field exceeds the maximum length");
 
-      if(data.getIntegerArrayValue().size() <= 100)
+      if(data.getIntegerArrayValue().size() <= 10000000)
       cdr.write_type_e(data.getIntegerArrayValue());else
           throw new RuntimeException("integer_array_value field exceeds the maximum length");
 
-      if(data.getDoubleArrayValue().size() <= 100)
+      if(data.getDoubleArrayValue().size() <= 10000000)
       cdr.write_type_e(data.getDoubleArrayValue());else
           throw new RuntimeException("double_array_value field exceeds the maximum length");
 
-      if(data.getStringArrayValue().size() <= 100)
+      if(data.getStringArrayValue().size() <= 10000000)
       cdr.write_type_e(data.getStringArrayValue());else
           throw new RuntimeException("string_array_value field exceeds the maximum length");
 

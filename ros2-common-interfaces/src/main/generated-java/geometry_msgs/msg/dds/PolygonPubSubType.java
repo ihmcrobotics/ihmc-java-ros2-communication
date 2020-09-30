@@ -40,7 +40,7 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.Point32PubSubType.getMaxCdrSerializedSize(current_alignment);}
       return current_alignment - initial_alignment;
@@ -65,7 +65,7 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
 
    public static void write(geometry_msgs.msg.dds.Polygon data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getPoints().size() <= 100)
+      if(data.getPoints().size() <= 10000000)
       cdr.write_type_e(data.getPoints());else
           throw new RuntimeException("points field exceeds the maximum length");
 

@@ -31,15 +31,15 @@ public class ParameterValue extends Packet<ParameterValue> implements Settable<P
    public ParameterValue()
    {
       string_value_ = new java.lang.StringBuilder(255);
-      byte_array_value_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+      byte_array_value_ = new us.ihmc.idl.IDLSequence.Byte (10000000, "type_9");
 
-      bool_array_value_ = new us.ihmc.idl.IDLSequence.Boolean (100, "type_7");
+      bool_array_value_ = new us.ihmc.idl.IDLSequence.Boolean (10000000, "type_7");
 
-      integer_array_value_ = new us.ihmc.idl.IDLSequence.Long (100, "type_11");
+      integer_array_value_ = new us.ihmc.idl.IDLSequence.Long (10000000, "type_11");
 
-      double_array_value_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      double_array_value_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
-      string_array_value_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
+      string_array_value_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (10000000, "type_d");
    }
 
    public ParameterValue(ParameterValue other)

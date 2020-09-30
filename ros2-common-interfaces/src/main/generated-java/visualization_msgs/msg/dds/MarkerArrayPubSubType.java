@@ -40,7 +40,7 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.MarkerPubSubType.getMaxCdrSerializedSize(current_alignment);}
       return current_alignment - initial_alignment;
@@ -65,7 +65,7 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
    public static void write(visualization_msgs.msg.dds.MarkerArray data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getMarkers().size() <= 100)
+      if(data.getMarkers().size() <= 10000000)
       cdr.write_type_e(data.getMarkers());else
           throw new RuntimeException("markers field exceeds the maximum length");
 

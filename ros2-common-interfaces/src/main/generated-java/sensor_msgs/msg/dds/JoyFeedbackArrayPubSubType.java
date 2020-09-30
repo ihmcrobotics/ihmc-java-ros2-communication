@@ -40,7 +40,7 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += sensor_msgs.msg.dds.JoyFeedbackPubSubType.getMaxCdrSerializedSize(current_alignment);}
       return current_alignment - initial_alignment;
@@ -65,7 +65,7 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(sensor_msgs.msg.dds.JoyFeedbackArray data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getArray().size() <= 100)
+      if(data.getArray().size() <= 10000000)
       cdr.write_type_e(data.getArray());else
           throw new RuntimeException("array field exceeds the maximum length");
 

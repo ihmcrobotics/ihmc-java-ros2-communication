@@ -17,7 +17,7 @@ public class Path extends Packet<Path> implements Settable<Path>, EpsilonCompara
    public Path()
    {
       header_ = new std_msgs.msg.dds.Header();
-      poses_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.PoseStamped> (100, new geometry_msgs.msg.dds.PoseStampedPubSubType());
+      poses_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.PoseStamped> (10000000, new geometry_msgs.msg.dds.PoseStampedPubSubType());
 
    }
 

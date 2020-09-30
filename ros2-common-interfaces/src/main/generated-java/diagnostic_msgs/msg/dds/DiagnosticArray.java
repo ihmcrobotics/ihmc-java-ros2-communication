@@ -21,7 +21,7 @@ public class DiagnosticArray extends Packet<DiagnosticArray> implements Settable
    public DiagnosticArray()
    {
       header_ = new std_msgs.msg.dds.Header();
-      status_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> (100, new diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType());
+      status_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.DiagnosticStatus> (10000000, new diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType());
 
    }
 

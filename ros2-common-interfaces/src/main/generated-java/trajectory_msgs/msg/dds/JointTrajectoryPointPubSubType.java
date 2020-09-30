@@ -40,13 +40,13 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
 
@@ -87,19 +87,19 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
 
    public static void write(trajectory_msgs.msg.dds.JointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getPositions().size() <= 100)
+      if(data.getPositions().size() <= 10000000)
       cdr.write_type_e(data.getPositions());else
           throw new RuntimeException("positions field exceeds the maximum length");
 
-      if(data.getVelocities().size() <= 100)
+      if(data.getVelocities().size() <= 10000000)
       cdr.write_type_e(data.getVelocities());else
           throw new RuntimeException("velocities field exceeds the maximum length");
 
-      if(data.getAccelerations().size() <= 100)
+      if(data.getAccelerations().size() <= 10000000)
       cdr.write_type_e(data.getAccelerations());else
           throw new RuntimeException("accelerations field exceeds the maximum length");
 
-      if(data.getEffort().size() <= 100)
+      if(data.getEffort().size() <= 10000000)
       cdr.write_type_e(data.getEffort());else
           throw new RuntimeException("effort field exceeds the maximum length");
 

@@ -24,7 +24,7 @@ public class Int32MultiArray extends Packet<Int32MultiArray> implements Settable
    public Int32MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Integer (100, "type_2");
+      data_ = new us.ihmc.idl.IDLSequence.Integer (10000000, "type_2");
 
    }
 

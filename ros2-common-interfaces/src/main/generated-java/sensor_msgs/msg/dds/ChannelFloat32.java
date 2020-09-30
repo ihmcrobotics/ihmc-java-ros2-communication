@@ -40,7 +40,7 @@ public class ChannelFloat32 extends Packet<ChannelFloat32> implements Settable<C
    public ChannelFloat32()
    {
       name_ = new java.lang.StringBuilder(255);
-      values_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      values_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
    }
 

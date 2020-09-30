@@ -64,9 +64,9 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
@@ -159,11 +159,11 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
 
       cdr.write_type_7(data.getPresent());
 
-      if(data.getCellVoltage().size() <= 100)
+      if(data.getCellVoltage().size() <= 10000000)
       cdr.write_type_e(data.getCellVoltage());else
           throw new RuntimeException("cell_voltage field exceeds the maximum length");
 
-      if(data.getCellTemperature().size() <= 100)
+      if(data.getCellTemperature().size() <= 10000000)
       cdr.write_type_e(data.getCellTemperature());else
           throw new RuntimeException("cell_temperature field exceeds the maximum length");
 

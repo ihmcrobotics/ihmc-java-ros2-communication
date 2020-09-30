@@ -40,13 +40,13 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);}
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
@@ -87,15 +87,15 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
 
    public static void write(trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPoint data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getTransforms().size() <= 100)
+      if(data.getTransforms().size() <= 10000000)
       cdr.write_type_e(data.getTransforms());else
           throw new RuntimeException("transforms field exceeds the maximum length");
 
-      if(data.getVelocities().size() <= 100)
+      if(data.getVelocities().size() <= 10000000)
       cdr.write_type_e(data.getVelocities());else
           throw new RuntimeException("velocities field exceeds the maximum length");
 
-      if(data.getAccelerations().size() <= 100)
+      if(data.getAccelerations().size() <= 10000000)
       cdr.write_type_e(data.getAccelerations());else
           throw new RuntimeException("accelerations field exceeds the maximum length");
 

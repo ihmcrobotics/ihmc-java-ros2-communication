@@ -94,7 +94,7 @@ public class InteractiveMarkerControl extends Packet<InteractiveMarkerControl> i
    {
       name_ = new java.lang.StringBuilder(255);
       orientation_ = new us.ihmc.euclid.tuple4D.Quaternion();
-      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> (100, new visualization_msgs.msg.dds.MarkerPubSubType());
+      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> (10000000, new visualization_msgs.msg.dds.MarkerPubSubType());
       description_ = new java.lang.StringBuilder(255);
 
    }

@@ -26,9 +26,9 @@ public class ParameterEvent extends Packet<ParameterEvent> implements Settable<P
    {
       stamp_ = new builtin_interfaces.msg.dds.Time();
       node_ = new java.lang.StringBuilder(255);
-      new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
-      changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
-      deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (100, new rcl_interfaces.msg.dds.ParameterPubSubType());
+      new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (10000000, new rcl_interfaces.msg.dds.ParameterPubSubType());
+      changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (10000000, new rcl_interfaces.msg.dds.ParameterPubSubType());
+      deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.Parameter> (10000000, new rcl_interfaces.msg.dds.ParameterPubSubType());
 
    }
 

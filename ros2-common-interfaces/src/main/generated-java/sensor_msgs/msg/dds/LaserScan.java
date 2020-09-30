@@ -67,9 +67,9 @@ public class LaserScan extends Packet<LaserScan> implements Settable<LaserScan>,
    public LaserScan()
    {
       header_ = new std_msgs.msg.dds.Header();
-      ranges_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      ranges_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
-      intensities_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      intensities_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
    }
 

@@ -44,7 +44,7 @@ public class DiagnosticStatus extends Packet<DiagnosticStatus> implements Settab
       name_ = new java.lang.StringBuilder(255);
       message_ = new java.lang.StringBuilder(255);
       hardware_id_ = new java.lang.StringBuilder(255);
-      values_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue> (100, new diagnostic_msgs.msg.dds.KeyValuePubSubType());
+      values_ = new us.ihmc.idl.IDLSequence.Object<diagnostic_msgs.msg.dds.KeyValue> (10000000, new diagnostic_msgs.msg.dds.KeyValuePubSubType());
 
    }
 

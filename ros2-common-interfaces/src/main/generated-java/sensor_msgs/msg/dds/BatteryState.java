@@ -111,9 +111,9 @@ public class BatteryState extends Packet<BatteryState> implements Settable<Batte
    public BatteryState()
    {
       header_ = new std_msgs.msg.dds.Header();
-      cell_voltage_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      cell_voltage_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
-      cell_temperature_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      cell_temperature_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
       location_ = new java.lang.StringBuilder(255);
       serial_number_ = new java.lang.StringBuilder(255);

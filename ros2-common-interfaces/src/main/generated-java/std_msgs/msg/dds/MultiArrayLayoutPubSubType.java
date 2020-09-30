@@ -40,7 +40,7 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += std_msgs.msg.dds.MultiArrayDimensionPubSubType.getMaxCdrSerializedSize(current_alignment);}
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
@@ -72,7 +72,7 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
 
    public static void write(std_msgs.msg.dds.MultiArrayLayout data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getDim().size() <= 100)
+      if(data.getDim().size() <= 10000000)
       cdr.write_type_e(data.getDim());else
           throw new RuntimeException("dim field exceeds the maximum length");
 

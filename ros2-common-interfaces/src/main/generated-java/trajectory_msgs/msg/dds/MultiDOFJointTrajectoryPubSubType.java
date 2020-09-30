@@ -42,11 +42,11 @@ public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDa
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += trajectory_msgs.msg.dds.MultiDOFJointTrajectoryPointPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -81,11 +81,11 @@ public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDa
    public static void write(trajectory_msgs.msg.dds.MultiDOFJointTrajectory data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if(data.getJointNames().size() <= 100)
+      if(data.getJointNames().size() <= 10000000)
       cdr.write_type_e(data.getJointNames());else
           throw new RuntimeException("joint_names field exceeds the maximum length");
 
-      if(data.getPoints().size() <= 100)
+      if(data.getPoints().size() <= 10000000)
       cdr.write_type_e(data.getPoints());else
           throw new RuntimeException("points field exceeds the maximum length");
 

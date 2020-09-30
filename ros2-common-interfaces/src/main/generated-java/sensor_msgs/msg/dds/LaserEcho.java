@@ -19,7 +19,7 @@ public class LaserEcho extends Packet<LaserEcho> implements Settable<LaserEcho>,
 
    public LaserEcho()
    {
-      echoes_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      echoes_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
    }
 

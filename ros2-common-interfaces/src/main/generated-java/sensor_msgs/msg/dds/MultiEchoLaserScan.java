@@ -69,8 +69,8 @@ public class MultiEchoLaserScan extends Packet<MultiEchoLaserScan> implements Se
    public MultiEchoLaserScan()
    {
       header_ = new std_msgs.msg.dds.Header();
-      ranges_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> (100, new sensor_msgs.msg.dds.LaserEchoPubSubType());
-      intensities_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> (100, new sensor_msgs.msg.dds.LaserEchoPubSubType());
+      ranges_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> (10000000, new sensor_msgs.msg.dds.LaserEchoPubSubType());
+      intensities_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.LaserEcho> (10000000, new sensor_msgs.msg.dds.LaserEchoPubSubType());
 
    }
 

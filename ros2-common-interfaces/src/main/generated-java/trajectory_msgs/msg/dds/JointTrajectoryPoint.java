@@ -21,13 +21,13 @@ public class JointTrajectoryPoint extends Packet<JointTrajectoryPoint> implement
 
    public JointTrajectoryPoint()
    {
-      positions_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      positions_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
-      velocities_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      velocities_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
-      accelerations_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      accelerations_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
-      effort_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      effort_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
       time_from_start_ = new builtin_interfaces.msg.dds.Duration();
    }

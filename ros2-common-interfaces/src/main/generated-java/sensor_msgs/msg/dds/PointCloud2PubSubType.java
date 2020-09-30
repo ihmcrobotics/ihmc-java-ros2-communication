@@ -46,7 +46,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += sensor_msgs.msg.dds.PointFieldPubSubType.getMaxCdrSerializedSize(current_alignment);}
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
@@ -55,7 +55,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
@@ -112,7 +112,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       cdr.write_type_4(data.getWidth());
 
-      if(data.getFields().size() <= 100)
+      if(data.getFields().size() <= 10000000)
       cdr.write_type_e(data.getFields());else
           throw new RuntimeException("fields field exceeds the maximum length");
 
@@ -122,7 +122,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
 
       cdr.write_type_4(data.getRowStep());
 
-      if(data.getData().size() <= 100)
+      if(data.getData().size() <= 10000000)
       cdr.write_type_e(data.getData());else
           throw new RuntimeException("data field exceeds the maximum length");
 

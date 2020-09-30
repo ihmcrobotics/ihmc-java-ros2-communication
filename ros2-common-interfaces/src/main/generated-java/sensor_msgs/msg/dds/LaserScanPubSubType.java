@@ -56,9 +56,9 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
       return current_alignment - initial_alignment;
@@ -125,11 +125,11 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
       cdr.write_type_5(data.getRangeMax());
 
-      if(data.getRanges().size() <= 100)
+      if(data.getRanges().size() <= 10000000)
       cdr.write_type_e(data.getRanges());else
           throw new RuntimeException("ranges field exceeds the maximum length");
 
-      if(data.getIntensities().size() <= 100)
+      if(data.getIntensities().size() <= 10000000)
       cdr.write_type_e(data.getIntensities());else
           throw new RuntimeException("intensities field exceeds the maximum length");
 

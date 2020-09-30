@@ -40,7 +40,7 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       return current_alignment - initial_alignment;
    }
@@ -63,7 +63,7 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
 
    public static void write(sensor_msgs.msg.dds.LaserEcho data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getEchoes().size() <= 100)
+      if(data.getEchoes().size() <= 10000000)
       cdr.write_type_e(data.getEchoes());else
           throw new RuntimeException("echoes field exceeds the maximum length");
 

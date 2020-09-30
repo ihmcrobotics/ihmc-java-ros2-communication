@@ -19,7 +19,7 @@ public class GridCells extends Packet<GridCells> implements Settable<GridCells>,
    public GridCells()
    {
       header_ = new std_msgs.msg.dds.Header();
-      cells_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (100, new geometry_msgs.msg.dds.PointPubSubType());
+      cells_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.tuple3D.Point3D> (10000000, new geometry_msgs.msg.dds.PointPubSubType());
 
    }
 

@@ -15,8 +15,8 @@ public class JointTrajectory extends Packet<JointTrajectory> implements Settable
    public JointTrajectory()
    {
       header_ = new std_msgs.msg.dds.Header();
-      joint_names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
-      points_ = new us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.JointTrajectoryPoint> (100, new trajectory_msgs.msg.dds.JointTrajectoryPointPubSubType());
+      joint_names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (10000000, "type_d");
+      points_ = new us.ihmc.idl.IDLSequence.Object<trajectory_msgs.msg.dds.JointTrajectoryPoint> (10000000, new trajectory_msgs.msg.dds.JointTrajectoryPointPubSubType());
 
    }
 

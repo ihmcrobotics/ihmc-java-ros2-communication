@@ -12,7 +12,7 @@ public class MarkerArray extends Packet<MarkerArray> implements Settable<MarkerA
 
    public MarkerArray()
    {
-      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> (100, new visualization_msgs.msg.dds.MarkerPubSubType());
+      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.Marker> (10000000, new visualization_msgs.msg.dds.MarkerPubSubType());
 
    }
 

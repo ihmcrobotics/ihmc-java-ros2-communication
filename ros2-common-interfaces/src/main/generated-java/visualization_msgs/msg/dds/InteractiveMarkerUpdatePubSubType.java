@@ -45,13 +45,13 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
@@ -105,15 +105,15 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
 
       cdr.write_type_9(data.getType());
 
-      if(data.getMarkers().size() <= 100)
+      if(data.getMarkers().size() <= 10000000)
       cdr.write_type_e(data.getMarkers());else
           throw new RuntimeException("markers field exceeds the maximum length");
 
-      if(data.getPoses().size() <= 100)
+      if(data.getPoses().size() <= 10000000)
       cdr.write_type_e(data.getPoses());else
           throw new RuntimeException("poses field exceeds the maximum length");
 
-      if(data.getErases().size() <= 100)
+      if(data.getErases().size() <= 10000000)
       cdr.write_type_e(data.getErases());else
           throw new RuntimeException("erases field exceeds the maximum length");
 

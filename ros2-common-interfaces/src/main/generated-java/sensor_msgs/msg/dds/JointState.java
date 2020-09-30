@@ -37,12 +37,12 @@ public class JointState extends Packet<JointState> implements Settable<JointStat
    public JointState()
    {
       header_ = new std_msgs.msg.dds.Header();
-      name_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
-      position_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      name_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (10000000, "type_d");
+      position_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
-      velocity_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      velocity_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
-      effort_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      effort_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
    }
 

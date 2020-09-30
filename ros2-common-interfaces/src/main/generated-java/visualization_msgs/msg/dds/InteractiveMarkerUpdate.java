@@ -50,9 +50,9 @@ public class InteractiveMarkerUpdate extends Packet<InteractiveMarkerUpdate> imp
    public InteractiveMarkerUpdate()
    {
       server_id_ = new java.lang.StringBuilder(255);
-      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> (100, new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
-      poses_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose> (100, new visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType());
-      erases_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
+      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> (10000000, new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
+      poses_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarkerPose> (10000000, new visualization_msgs.msg.dds.InteractiveMarkerPosePubSubType());
+      erases_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (10000000, "type_d");
 
    }
 

@@ -26,7 +26,7 @@ public class OccupancyGrid extends Packet<OccupancyGrid> implements Settable<Occ
    {
       header_ = new std_msgs.msg.dds.Header();
       info_ = new nav_msgs.msg.dds.MapMetaData();
-      data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+      data_ = new us.ihmc.idl.IDLSequence.Byte (10000000, "type_9");
 
    }
 

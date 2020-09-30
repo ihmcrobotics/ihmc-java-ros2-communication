@@ -19,9 +19,9 @@ public class ParameterEventDescriptors extends Packet<ParameterEventDescriptors>
 
    public ParameterEventDescriptors()
    {
-      new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor> (100, new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
-      changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor> (100, new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
-      deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor> (100, new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
+      new_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor> (10000000, new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
+      changed_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor> (10000000, new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
+      deleted_parameters_ = new us.ihmc.idl.IDLSequence.Object<rcl_interfaces.msg.dds.ParameterDescriptor> (10000000, new rcl_interfaces.msg.dds.ParameterDescriptorPubSubType());
 
    }
 

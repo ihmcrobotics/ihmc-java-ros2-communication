@@ -20,8 +20,8 @@ public class ListParametersResult extends Packet<ListParametersResult> implement
 
    public ListParametersResult()
    {
-      names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
-      prefixes_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
+      names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (10000000, "type_d");
+      prefixes_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (10000000, "type_d");
    }
 
    public ListParametersResult(ListParametersResult other)

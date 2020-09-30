@@ -24,7 +24,7 @@ public class Int64MultiArray extends Packet<Int64MultiArray> implements Settable
    public Int64MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Long (100, "type_11");
+      data_ = new us.ihmc.idl.IDLSequence.Long (10000000, "type_11");
 
    }
 

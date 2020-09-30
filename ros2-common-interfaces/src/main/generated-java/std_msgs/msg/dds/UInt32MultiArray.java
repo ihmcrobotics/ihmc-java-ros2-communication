@@ -24,7 +24,7 @@ public class UInt32MultiArray extends Packet<UInt32MultiArray> implements Settab
    public UInt32MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Long (100, "type_4");
+      data_ = new us.ihmc.idl.IDLSequence.Long (10000000, "type_4");
 
    }
 

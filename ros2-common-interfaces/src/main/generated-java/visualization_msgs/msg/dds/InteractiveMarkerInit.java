@@ -30,7 +30,7 @@ public class InteractiveMarkerInit extends Packet<InteractiveMarkerInit> impleme
    public InteractiveMarkerInit()
    {
       server_id_ = new java.lang.StringBuilder(255);
-      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> (100, new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
+      markers_ = new us.ihmc.idl.IDLSequence.Object<visualization_msgs.msg.dds.InteractiveMarker> (10000000, new visualization_msgs.msg.dds.InteractiveMarkerPubSubType());
 
    }
 

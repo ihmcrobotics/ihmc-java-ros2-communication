@@ -42,7 +42,7 @@ public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.PoseStampedPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -72,7 +72,7 @@ public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg
    public static void write(nav_msgs.msg.dds.Path data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if(data.getPoses().size() <= 100)
+      if(data.getPoses().size() <= 10000000)
       cdr.write_type_e(data.getPoses());else
           throw new RuntimeException("poses field exceeds the maximum length");
 

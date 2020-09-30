@@ -42,15 +42,15 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
 
       return current_alignment - initial_alignment;
@@ -91,19 +91,19 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    public static void write(sensor_msgs.msg.dds.JointState data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if(data.getName().size() <= 100)
+      if(data.getName().size() <= 10000000)
       cdr.write_type_e(data.getName());else
           throw new RuntimeException("name field exceeds the maximum length");
 
-      if(data.getPosition().size() <= 100)
+      if(data.getPosition().size() <= 10000000)
       cdr.write_type_e(data.getPosition());else
           throw new RuntimeException("position field exceeds the maximum length");
 
-      if(data.getVelocity().size() <= 100)
+      if(data.getVelocity().size() <= 10000000)
       cdr.write_type_e(data.getVelocity());else
           throw new RuntimeException("velocity field exceeds the maximum length");
 
-      if(data.getEffort().size() <= 100)
+      if(data.getEffort().size() <= 10000000)
       cdr.write_type_e(data.getEffort());else
           throw new RuntimeException("effort field exceeds the maximum length");
 

@@ -41,7 +41,7 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
       int initial_alignment = current_alignment;
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
       return current_alignment - initial_alignment;
@@ -72,7 +72,7 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
       cdr.write_type_d(data.getName());else
           throw new RuntimeException("name field exceeds the maximum length");
 
-      if(data.getValues().size() <= 100)
+      if(data.getValues().size() <= 10000000)
       cdr.write_type_e(data.getValues());else
           throw new RuntimeException("values field exceeds the maximum length");
 

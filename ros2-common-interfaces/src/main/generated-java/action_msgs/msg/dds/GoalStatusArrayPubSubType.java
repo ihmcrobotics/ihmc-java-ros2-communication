@@ -40,7 +40,7 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += action_msgs.msg.dds.GoalStatusPubSubType.getMaxCdrSerializedSize(current_alignment);}
       return current_alignment - initial_alignment;
@@ -65,7 +65,7 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
 
    public static void write(action_msgs.msg.dds.GoalStatusArray data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getStatusList().size() <= 100)
+      if(data.getStatusList().size() <= 10000000)
       cdr.write_type_e(data.getStatusList());else
           throw new RuntimeException("status_list field exceeds the maximum length");
 

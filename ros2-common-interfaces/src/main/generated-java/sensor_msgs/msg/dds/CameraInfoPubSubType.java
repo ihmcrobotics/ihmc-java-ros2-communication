@@ -47,7 +47,7 @@ public class CameraInfoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
       current_alignment += ((9) * 8) + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
@@ -114,7 +114,7 @@ public class CameraInfoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
       cdr.write_type_d(data.getDistortionModel());else
           throw new RuntimeException("distortion_model field exceeds the maximum length");
 
-      if(data.getD().size() <= 100)
+      if(data.getD().size() <= 10000000)
       cdr.write_type_e(data.getD());else
           throw new RuntimeException("d field exceeds the maximum length");
 

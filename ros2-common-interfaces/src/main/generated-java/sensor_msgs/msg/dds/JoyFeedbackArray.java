@@ -15,7 +15,7 @@ public class JoyFeedbackArray extends Packet<JoyFeedbackArray> implements Settab
 
    public JoyFeedbackArray()
    {
-      array_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.JoyFeedback> (100, new sensor_msgs.msg.dds.JoyFeedbackPubSubType());
+      array_ = new us.ihmc.idl.IDLSequence.Object<sensor_msgs.msg.dds.JoyFeedback> (10000000, new sensor_msgs.msg.dds.JoyFeedbackPubSubType());
 
    }
 

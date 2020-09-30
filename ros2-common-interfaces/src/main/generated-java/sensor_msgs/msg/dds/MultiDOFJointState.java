@@ -38,10 +38,10 @@ public class MultiDOFJointState extends Packet<MultiDOFJointState> implements Se
    public MultiDOFJointState()
    {
       header_ = new std_msgs.msg.dds.Header();
-      joint_names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (100, "type_d");
-      transforms_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> (100, new geometry_msgs.msg.dds.TransformPubSubType());
-      twist_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> (100, new geometry_msgs.msg.dds.TwistPubSubType());
-      wrench_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench> (100, new geometry_msgs.msg.dds.WrenchPubSubType());
+      joint_names_ = new us.ihmc.idl.IDLSequence.StringBuilderHolder (10000000, "type_d");
+      transforms_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.transform.QuaternionBasedTransform> (10000000, new geometry_msgs.msg.dds.TransformPubSubType());
+      twist_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Twist> (10000000, new geometry_msgs.msg.dds.TwistPubSubType());
+      wrench_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.Wrench> (10000000, new geometry_msgs.msg.dds.WrenchPubSubType());
 
    }
 

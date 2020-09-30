@@ -40,11 +40,11 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
@@ -77,11 +77,11 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
 
    public static void write(rcl_interfaces.msg.dds.ListParametersResult data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getNames().size() <= 100)
+      if(data.getNames().size() <= 10000000)
       cdr.write_type_e(data.getNames());else
           throw new RuntimeException("names field exceeds the maximum length");
 
-      if(data.getPrefixes().size() <= 100)
+      if(data.getPrefixes().size() <= 10000000)
       cdr.write_type_e(data.getPrefixes());else
           throw new RuntimeException("prefixes field exceeds the maximum length");
 

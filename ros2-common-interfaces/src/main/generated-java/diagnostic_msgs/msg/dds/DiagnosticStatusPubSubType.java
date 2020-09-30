@@ -45,7 +45,7 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += diagnostic_msgs.msg.dds.KeyValuePubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -95,7 +95,7 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
       cdr.write_type_d(data.getHardwareId());else
           throw new RuntimeException("hardware_id field exceeds the maximum length");
 
-      if(data.getValues().size() <= 100)
+      if(data.getValues().size() <= 10000000)
       cdr.write_type_e(data.getValues());else
           throw new RuntimeException("values field exceeds the maximum length");
 

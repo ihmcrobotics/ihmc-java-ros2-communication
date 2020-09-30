@@ -24,7 +24,7 @@ public class Float32MultiArray extends Packet<Float32MultiArray> implements Sett
    public Float32MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      data_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
    }
 

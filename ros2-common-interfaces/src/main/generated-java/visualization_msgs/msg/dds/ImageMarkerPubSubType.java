@@ -61,10 +61,10 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
       current_alignment += builtin_interfaces.msg.dds.DurationPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -142,11 +142,11 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
 
       std_msgs.msg.dds.ColorRGBAPubSubType.write(data.getFillColor(), cdr);
       builtin_interfaces.msg.dds.DurationPubSubType.write(data.getLifetime(), cdr);
-      if(data.getPoints().size() <= 100)
+      if(data.getPoints().size() <= 10000000)
       cdr.write_type_e(data.getPoints());else
           throw new RuntimeException("points field exceeds the maximum length");
 
-      if(data.getOutlineColors().size() <= 100)
+      if(data.getOutlineColors().size() <= 10000000)
       cdr.write_type_e(data.getOutlineColors());else
           throw new RuntimeException("outline_colors field exceeds the maximum length");
 

@@ -18,7 +18,7 @@ public class GoalStatusArray extends Packet<GoalStatusArray> implements Settable
    public GoalStatusArray()
    {
       header_ = new std_msgs.msg.dds.Header();
-      status_list_ = new us.ihmc.idl.IDLSequence.Object<actionlib_msgs.msg.dds.GoalStatus> (100, new actionlib_msgs.msg.dds.GoalStatusPubSubType());
+      status_list_ = new us.ihmc.idl.IDLSequence.Object<actionlib_msgs.msg.dds.GoalStatus> (10000000, new actionlib_msgs.msg.dds.GoalStatusPubSubType());
 
    }
 

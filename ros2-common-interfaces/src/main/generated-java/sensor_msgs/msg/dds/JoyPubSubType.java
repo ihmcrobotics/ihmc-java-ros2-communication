@@ -42,9 +42,9 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 4) + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
 
       return current_alignment - initial_alignment;
@@ -76,11 +76,11 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    public static void write(sensor_msgs.msg.dds.Joy data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if(data.getAxes().size() <= 100)
+      if(data.getAxes().size() <= 10000000)
       cdr.write_type_e(data.getAxes());else
           throw new RuntimeException("axes field exceeds the maximum length");
 
-      if(data.getButtons().size() <= 100)
+      if(data.getButtons().size() <= 10000000)
       cdr.write_type_e(data.getButtons());else
           throw new RuntimeException("buttons field exceeds the maximum length");
 

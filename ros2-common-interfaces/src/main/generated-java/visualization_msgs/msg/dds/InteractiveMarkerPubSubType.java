@@ -48,10 +48,10 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.MenuEntryPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.InteractiveMarkerControlPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -106,11 +106,11 @@ public class InteractiveMarkerPubSubType implements us.ihmc.pubsub.TopicDataType
 
       cdr.write_type_5(data.getScale());
 
-      if(data.getMenuEntries().size() <= 100)
+      if(data.getMenuEntries().size() <= 10000000)
       cdr.write_type_e(data.getMenuEntries());else
           throw new RuntimeException("menu_entries field exceeds the maximum length");
 
-      if(data.getControls().size() <= 100)
+      if(data.getControls().size() <= 10000000)
       cdr.write_type_e(data.getControls());else
           throw new RuntimeException("controls field exceeds the maximum length");
 

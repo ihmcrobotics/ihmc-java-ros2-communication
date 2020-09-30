@@ -46,7 +46,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -86,7 +86,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
 
       cdr.write_type_5(data.getCellHeight());
 
-      if(data.getCells().size() <= 100)
+      if(data.getCells().size() <= 10000000)
       cdr.write_type_e(data.getCells());else
           throw new RuntimeException("cells field exceeds the maximum length");
 

@@ -42,7 +42,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += diagnostic_msgs.msg.dds.DiagnosticStatusPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -72,7 +72,7 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
    public static void write(diagnostic_msgs.msg.dds.DiagnosticArray data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if(data.getStatus().size() <= 100)
+      if(data.getStatus().size() <= 10000000)
       cdr.write_type_e(data.getStatus());else
           throw new RuntimeException("status field exceeds the maximum length");
 

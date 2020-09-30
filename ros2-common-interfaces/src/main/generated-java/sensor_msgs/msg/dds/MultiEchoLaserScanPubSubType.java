@@ -56,10 +56,10 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += sensor_msgs.msg.dds.LaserEchoPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -129,11 +129,11 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       cdr.write_type_5(data.getRangeMax());
 
-      if(data.getRanges().size() <= 100)
+      if(data.getRanges().size() <= 10000000)
       cdr.write_type_e(data.getRanges());else
           throw new RuntimeException("ranges field exceeds the maximum length");
 
-      if(data.getIntensities().size() <= 100)
+      if(data.getIntensities().size() <= 10000000)
       cdr.write_type_e(data.getIntensities());else
           throw new RuntimeException("intensities field exceeds the maximum length");
 

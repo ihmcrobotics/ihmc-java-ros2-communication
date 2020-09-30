@@ -24,7 +24,7 @@ public class Int16MultiArray extends Packet<Int16MultiArray> implements Settable
    public Int16MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Short (100, "type_1");
+      data_ = new us.ihmc.idl.IDLSequence.Short (10000000, "type_1");
 
    }
 

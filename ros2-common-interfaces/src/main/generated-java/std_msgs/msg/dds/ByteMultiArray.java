@@ -24,7 +24,7 @@ public class ByteMultiArray extends Packet<ByteMultiArray> implements Settable<B
    public ByteMultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+      data_ = new us.ihmc.idl.IDLSequence.Byte (10000000, "type_9");
 
    }
 

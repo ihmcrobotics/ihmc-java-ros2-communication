@@ -154,7 +154,7 @@ public class CameraInfo extends Packet<CameraInfo> implements Settable<CameraInf
    {
       header_ = new std_msgs.msg.dds.Header();
       distortion_model_ = new java.lang.StringBuilder(255);
-      d_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      d_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
       k_ = new double[9];
 

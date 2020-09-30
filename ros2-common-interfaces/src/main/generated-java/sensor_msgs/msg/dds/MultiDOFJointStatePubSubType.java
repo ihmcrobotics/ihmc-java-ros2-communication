@@ -42,17 +42,17 @@ public class MultiDOFJointStatePubSubType implements us.ihmc.pubsub.TopicDataTyp
 
       current_alignment += std_msgs.msg.dds.HeaderPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
         current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       }
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TransformPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TwistPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.WrenchPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -97,19 +97,19 @@ public class MultiDOFJointStatePubSubType implements us.ihmc.pubsub.TopicDataTyp
    public static void write(sensor_msgs.msg.dds.MultiDOFJointState data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.HeaderPubSubType.write(data.getHeader(), cdr);
-      if(data.getJointNames().size() <= 100)
+      if(data.getJointNames().size() <= 10000000)
       cdr.write_type_e(data.getJointNames());else
           throw new RuntimeException("joint_names field exceeds the maximum length");
 
-      if(data.getTransforms().size() <= 100)
+      if(data.getTransforms().size() <= 10000000)
       cdr.write_type_e(data.getTransforms());else
           throw new RuntimeException("transforms field exceeds the maximum length");
 
-      if(data.getTwist().size() <= 100)
+      if(data.getTwist().size() <= 10000000)
       cdr.write_type_e(data.getTwist());else
           throw new RuntimeException("twist field exceeds the maximum length");
 
-      if(data.getWrench().size() <= 100)
+      if(data.getWrench().size() <= 10000000)
       cdr.write_type_e(data.getWrench());else
           throw new RuntimeException("wrench field exceeds the maximum length");
 

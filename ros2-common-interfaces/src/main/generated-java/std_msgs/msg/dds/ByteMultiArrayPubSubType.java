@@ -42,7 +42,7 @@ public class ByteMultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<st
 
       current_alignment += std_msgs.msg.dds.MultiArrayLayoutPubSubType.getMaxCdrSerializedSize(current_alignment);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (100 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);current_alignment += (10000000 * 1) + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
 
       return current_alignment - initial_alignment;
@@ -70,7 +70,7 @@ public class ByteMultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<st
    public static void write(std_msgs.msg.dds.ByteMultiArray data, us.ihmc.idl.CDR cdr)
    {
       std_msgs.msg.dds.MultiArrayLayoutPubSubType.write(data.getLayout(), cdr);
-      if(data.getData().size() <= 100)
+      if(data.getData().size() <= 10000000)
       cdr.write_type_e(data.getData());else
           throw new RuntimeException("data field exceeds the maximum length");
 

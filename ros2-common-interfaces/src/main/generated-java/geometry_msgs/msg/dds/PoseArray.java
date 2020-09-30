@@ -17,7 +17,7 @@ public class PoseArray extends Packet<PoseArray> implements Settable<PoseArray>,
    public PoseArray()
    {
       header_ = new std_msgs.msg.dds.Header();
-      poses_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.geometry.Pose3D> (100, new geometry_msgs.msg.dds.PosePubSubType());
+      poses_ = new us.ihmc.idl.IDLSequence.Object<us.ihmc.euclid.geometry.Pose3D> (10000000, new geometry_msgs.msg.dds.PosePubSubType());
 
    }
 

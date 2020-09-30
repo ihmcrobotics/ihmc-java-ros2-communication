@@ -59,10 +59,10 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
 
       current_alignment += 1 + us.ihmc.idl.CDR.alignment(current_alignment, 1);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += std_msgs.msg.dds.ColorRGBAPubSubType.getMaxCdrSerializedSize(current_alignment);}
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
@@ -146,11 +146,11 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
       builtin_interfaces.msg.dds.DurationPubSubType.write(data.getLifetime(), cdr);
       cdr.write_type_7(data.getFrameLocked());
 
-      if(data.getPoints().size() <= 100)
+      if(data.getPoints().size() <= 10000000)
       cdr.write_type_e(data.getPoints());else
           throw new RuntimeException("points field exceeds the maximum length");
 
-      if(data.getColors().size() <= 100)
+      if(data.getColors().size() <= 10000000)
       cdr.write_type_e(data.getColors());else
           throw new RuntimeException("colors field exceeds the maximum length");
 

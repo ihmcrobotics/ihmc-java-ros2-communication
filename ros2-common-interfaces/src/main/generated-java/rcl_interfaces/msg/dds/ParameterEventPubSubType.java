@@ -43,13 +43,13 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
       current_alignment += builtin_interfaces.msg.dds.TimePubSubType.getMaxCdrSerializedSize(current_alignment);
 
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += rcl_interfaces.msg.dds.ParameterPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -95,15 +95,15 @@ public class ParameterEventPubSubType implements us.ihmc.pubsub.TopicDataType<rc
       cdr.write_type_d(data.getNode());else
           throw new RuntimeException("node field exceeds the maximum length");
 
-      if(data.getNewParameters().size() <= 100)
+      if(data.getNewParameters().size() <= 10000000)
       cdr.write_type_e(data.getNewParameters());else
           throw new RuntimeException("new_parameters field exceeds the maximum length");
 
-      if(data.getChangedParameters().size() <= 100)
+      if(data.getChangedParameters().size() <= 10000000)
       cdr.write_type_e(data.getChangedParameters());else
           throw new RuntimeException("changed_parameters field exceeds the maximum length");
 
-      if(data.getDeletedParameters().size() <= 100)
+      if(data.getDeletedParameters().size() <= 10000000)
       cdr.write_type_e(data.getDeletedParameters());else
           throw new RuntimeException("deleted_parameters field exceeds the maximum length");
 

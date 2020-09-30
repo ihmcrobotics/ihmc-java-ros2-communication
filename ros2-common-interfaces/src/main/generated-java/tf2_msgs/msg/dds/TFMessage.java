@@ -12,7 +12,7 @@ public class TFMessage extends Packet<TFMessage> implements Settable<TFMessage>,
 
    public TFMessage()
    {
-      transforms_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.TransformStamped> (100, new geometry_msgs.msg.dds.TransformStampedPubSubType());
+      transforms_ = new us.ihmc.idl.IDLSequence.Object<geometry_msgs.msg.dds.TransformStamped> (10000000, new geometry_msgs.msg.dds.TransformStampedPubSubType());
 
    }
 

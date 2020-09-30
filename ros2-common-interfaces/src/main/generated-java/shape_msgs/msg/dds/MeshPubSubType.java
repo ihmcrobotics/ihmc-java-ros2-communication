@@ -40,10 +40,10 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += shape_msgs.msg.dds.MeshTrianglePubSubType.getMaxCdrSerializedSize(current_alignment);}
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.PointPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -75,11 +75,11 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
 
    public static void write(shape_msgs.msg.dds.Mesh data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getTriangles().size() <= 100)
+      if(data.getTriangles().size() <= 10000000)
       cdr.write_type_e(data.getTriangles());else
           throw new RuntimeException("triangles field exceeds the maximum length");
 
-      if(data.getVertices().size() <= 100)
+      if(data.getVertices().size() <= 10000000)
       cdr.write_type_e(data.getVertices());else
           throw new RuntimeException("vertices field exceeds the maximum length");
 

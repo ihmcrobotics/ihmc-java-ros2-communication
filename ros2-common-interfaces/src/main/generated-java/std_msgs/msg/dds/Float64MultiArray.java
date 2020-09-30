@@ -24,7 +24,7 @@ public class Float64MultiArray extends Packet<Float64MultiArray> implements Sett
    public Float64MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Double (100, "type_6");
+      data_ = new us.ihmc.idl.IDLSequence.Double (10000000, "type_6");
 
    }
 

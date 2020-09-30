@@ -27,9 +27,9 @@ public class Joy extends Packet<Joy> implements Settable<Joy>, EpsilonComparable
    public Joy()
    {
       header_ = new std_msgs.msg.dds.Header();
-      axes_ = new us.ihmc.idl.IDLSequence.Float (100, "type_5");
+      axes_ = new us.ihmc.idl.IDLSequence.Float (10000000, "type_5");
 
-      buttons_ = new us.ihmc.idl.IDLSequence.Integer (100, "type_2");
+      buttons_ = new us.ihmc.idl.IDLSequence.Integer (10000000, "type_2");
 
    }
 

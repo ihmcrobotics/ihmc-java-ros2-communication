@@ -43,7 +43,7 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
       current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4) + 255 + 1;
       current_alignment += 8 + us.ihmc.idl.CDR.alignment(current_alignment, 8);
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += visualization_msgs.msg.dds.InteractiveMarkerPubSubType.getMaxCdrSerializedSize(current_alignment);}
 
@@ -81,7 +81,7 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
 
       cdr.write_type_12(data.getSeqNum());
 
-      if(data.getMarkers().size() <= 100)
+      if(data.getMarkers().size() <= 10000000)
       cdr.write_type_e(data.getMarkers());else
           throw new RuntimeException("markers field exceeds the maximum length");
 

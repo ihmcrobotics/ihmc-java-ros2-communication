@@ -40,7 +40,7 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
    {
       int initial_alignment = current_alignment;
 
-      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 100; ++i0)
+      current_alignment += 4 + us.ihmc.idl.CDR.alignment(current_alignment, 4);for(int i0 = 0; i0 < 10000000; ++i0)
       {
           current_alignment += geometry_msgs.msg.dds.TransformStampedPubSubType.getMaxCdrSerializedSize(current_alignment);}
       return current_alignment - initial_alignment;
@@ -65,7 +65,7 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
 
    public static void write(tf2_msgs.msg.dds.TFMessage data, us.ihmc.idl.CDR cdr)
    {
-      if(data.getTransforms().size() <= 100)
+      if(data.getTransforms().size() <= 10000000)
       cdr.write_type_e(data.getTransforms());else
           throw new RuntimeException("transforms field exceeds the maximum length");
 

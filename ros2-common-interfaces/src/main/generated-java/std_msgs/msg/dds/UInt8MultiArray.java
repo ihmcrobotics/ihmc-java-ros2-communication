@@ -24,7 +24,7 @@ public class UInt8MultiArray extends Packet<UInt8MultiArray> implements Settable
    public UInt8MultiArray()
    {
       layout_ = new std_msgs.msg.dds.MultiArrayLayout();
-      data_ = new us.ihmc.idl.IDLSequence.Byte (100, "type_9");
+      data_ = new us.ihmc.idl.IDLSequence.Byte (10000000, "type_9");
 
    }
 
