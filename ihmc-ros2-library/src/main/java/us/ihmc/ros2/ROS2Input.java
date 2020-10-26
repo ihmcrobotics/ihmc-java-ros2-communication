@@ -28,7 +28,7 @@ public class ROS2Input<T>
 
    public ROS2Input(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName)
    {
-      this(ros2Node, messageType, topicName.withType(messageType).toString());
+      this(ros2Node, messageType, topicName.withTypeName(messageType).toString());
    }
 
    public ROS2Input(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName)
@@ -38,7 +38,7 @@ public class ROS2Input<T>
 
    public ROS2Input(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, T initialValue, MessageFilter<T> messageFilter)
    {
-      this(ros2Node, messageType, topicName.withType(messageType).toString(), initialValue, messageFilter);
+      this(ros2Node, messageType, topicName.withTypeName(messageType).toString(), initialValue, messageFilter);
    }
 
    public ROS2Input(ROS2NodeInterface ros2Node, ROS2Topic<T> topic, T initialValue, MessageFilter<T> messageFilter)

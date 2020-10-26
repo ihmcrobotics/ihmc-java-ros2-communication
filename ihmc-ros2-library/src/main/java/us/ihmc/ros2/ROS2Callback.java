@@ -25,7 +25,7 @@ public class ROS2Callback<T>
 
    public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, Consumer<T> messageCallback)
    {
-      this(ros2Node, messageType, topicName.withType(messageType).toString(), messageCallback);
+      this(ros2Node, messageType, topicName.withTypeName(messageType).toString(), messageCallback);
    }
 
    public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName, Consumer<T> messageCallback)
