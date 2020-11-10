@@ -319,7 +319,17 @@ class ROS2NodeBasics implements ROS2NodeInterface
    {
       if (domain != null)
       {
-         domain.removeParticipant(participant);
+         try
+         {
+            domain.removeParticipant(participant);
+         }
+         catch (IllegalArgumentException e)
+         {
+            if (!e.getMessage().contains("This participant is not registered with this domain")) // just means a race condition that is okay
+            {
+               throw e;
+            }
+         }
          domain = null;
       }
 
