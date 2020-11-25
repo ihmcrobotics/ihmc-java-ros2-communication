@@ -25,5 +25,5 @@ mainDependencies {
 
 testDependencies {
    api("us.ihmc:ihmc-pub-sub:0.15.0")
-   api("us.ihmc:ihmc-commons:0.30.2")
+   api("us.ihmc:ihmc-commons:0.30.4")
 }
