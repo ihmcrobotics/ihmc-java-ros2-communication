@@ -6,7 +6,7 @@ buildscript {
 
 plugins {
    id("us.ihmc.ihmc-build") version "0.22.0"
-   id("us.ihmc.ihmc-ci") version "7.0"
+   id("us.ihmc.ihmc-ci") version "7.1"
    id("us.ihmc.ihmc-cd") version "1.16"
    id("org.ajoberstar.grgit") version "3.1.1"
 }
