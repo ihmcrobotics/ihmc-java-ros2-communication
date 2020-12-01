@@ -46,10 +46,11 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
     * @throws IOException If the data cannot be serialized or another error occurs
     */
    @Override
-   public void publish(T data) throws IOException
+   public boolean publish(T data) throws IOException
    {
       if (publisher.isAvailable())
          publisher.write(data);
+      return true;
    }
 
    /**

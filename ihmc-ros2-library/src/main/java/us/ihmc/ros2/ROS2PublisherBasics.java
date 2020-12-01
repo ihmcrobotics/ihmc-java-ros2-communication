@@ -10,7 +10,7 @@ public interface ROS2PublisherBasics<T>
     * @param data Data to publisher
     * @throws IOException If the data cannot be serialized or another error occurs
     */
-   void publish(T data) throws IOException;
+   boolean publish(T data) throws IOException;
 
    /**
     * Remove this publisher from the ROS domain
