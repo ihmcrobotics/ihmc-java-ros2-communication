@@ -26,7 +26,7 @@ import us.ihmc.pubsub.subscriber.Subscriber;
  *
  * @param <T> Data type of this subscriber
  */
-public class ROS2Subscription<T> implements ROS2SubscriptionInterface
+public class ROS2Subscription<T>
 {
    private final Domain domain;
    private final Subscriber<T> subscriber;

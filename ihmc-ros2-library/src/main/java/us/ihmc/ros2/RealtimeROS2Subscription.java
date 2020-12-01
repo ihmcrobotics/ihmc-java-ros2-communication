@@ -24,12 +24,13 @@ package us.ihmc.ros2;
  *
  * @param <T> data type
  */
-public class RealtimeROS2Subscription<T>
+public class RealtimeROS2Subscription<T> extends ROS2Subscription<T>
 {
    private final RealtimeROS2SubscriptionListener<T> listener;
 
    RealtimeROS2Subscription(RealtimeROS2SubscriptionListener<T> listener)
    {
+      super(null, null);
       this.listener = listener;
    }
    
@@ -62,5 +63,11 @@ public class RealtimeROS2Subscription<T>
    public boolean flushAndGetLatest(T data)
    {
       return listener.flushAndGetLatest(data);
+   }
+
+   @Override
+   public void remove()
+   {
+      // It might not make sense to do anything here. Just here to comply with the interface
    }
 }
