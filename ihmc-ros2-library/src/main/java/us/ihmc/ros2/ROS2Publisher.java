@@ -18,8 +18,6 @@ package us.ihmc.ros2;
 import java.io.IOException;
 
 import us.ihmc.pubsub.Domain;
-import us.ihmc.pubsub.attributes.PublisherAttributes;
-import us.ihmc.pubsub.common.Guid;
 import us.ihmc.pubsub.publisher.Publisher;
 
 /**
@@ -30,7 +28,7 @@ import us.ihmc.pubsub.publisher.Publisher;
  *
  * @param <T> The data type to send
  */
-public class ROS2Publisher<T> implements ROS2PublisherBasics<T>, Publisher
+public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
 {
    private final Domain domain;
    private final Publisher publisher;
@@ -62,61 +60,5 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>, Publisher
    public void remove()
    {
       domain.removePublisher(publisher);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void write(Object data) throws IOException
-   {
-      publisher.write(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void dispose(Object data) throws IOException
-   {
-      publisher.dispose(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void unregister(Object data) throws IOException
-   {
-      publisher.unregister(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void dispose_and_unregister(Object data) throws IOException
-   {
-      publisher.dispose_and_unregister(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public int removeAllChange() throws IOException
-   {
-      return publisher.removeAllChange();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public Guid getGuid()
-   {
-      return publisher.getGuid();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public PublisherAttributes getAttributes()
-   {
-      return publisher.getAttributes();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public boolean isAvailable()
-   {
-      return publisher.isAvailable();
    }
 }
