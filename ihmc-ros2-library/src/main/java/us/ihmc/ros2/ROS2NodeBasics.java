@@ -170,13 +170,12 @@ class ROS2NodeBasics implements ROS2NodeInterface
 
    /** {@inheritDoc} */
    @Override
-   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
+   public <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
          throws IOException
    {
       RealtimeROS2SubscriptionListener<T> listener = new RealtimeROS2SubscriptionListener<>(topicDataType, queueSize);
-      createSubscription(topicDataType, listener, topicName, qosProfile);
-      RealtimeROS2Subscription<T> subscription = new RealtimeROS2Subscription<>(listener);
-      return subscription;
+      ROS2Subscription<T> subscriber = createSubscription(topicDataType, listener, topicName, qosProfile);
+      return new QueuedROS2Subscription<T>(subscriber, listener);
    }
 
    /**

@@ -41,7 +41,7 @@ public interface ROS2NodeInterface
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public default <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
+   public default <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
       return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
@@ -58,7 +58,7 @@ public interface ROS2NodeInterface
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
+   public <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
          throws IOException;
 
    /**

@@ -242,6 +242,12 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    }
 
    /** {@inheritDoc} */
+   public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
+   {
+      return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
+   }
+
+   /** {@inheritDoc} */
    @Override
    public <T> RealtimeROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
          throws IOException
