@@ -15,8 +15,11 @@
  */
 package us.ihmc.ros2;
 
+import us.ihmc.log.LogTools;
+import us.ihmc.pubsub.attributes.*;
 import us.ihmc.pubsub.attributes.HistoryQosPolicy.HistoryQosPolicyKind;
-import us.ihmc.pubsub.attributes.ReliabilityKind;
+import us.ihmc.rtps.impl.fastRTPS.FastRTPSPublisherAttributes;
+import us.ihmc.rtps.impl.fastRTPS.Time_t;
 
 /**
  * ROS2 QoS profile settings
@@ -77,6 +80,53 @@ public class ROS2QosProfile
       this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
    }
 
+   public void apply(SubscriberAttributes subscriberAttributes)
+   {
+      subscriberAttributes.getQos().setReliabilityKind(reliability);
+
+      switch (durability)
+      {
+         case TRANSIENT_LOCAL:
+            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
+            break;
+         case VOLATILE:
+            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
+            break;
+      }
+
+      subscriberAttributes.getTopic().getHistoryQos().setDepth(depth);
+      subscriberAttributes.getTopic().getHistoryQos().setKind(history);
+   }
+
+   public void apply(PublisherAttributes publisherAttributes)
+   {
+      publisherAttributes.getQos().setReliabilityKind(reliability);
+
+      if (publisherAttributes instanceof FastRTPSPublisherAttributes)
+      {
+         FastRTPSPublisherAttributes fastRTPSPublisherAttributes = (FastRTPSPublisherAttributes) publisherAttributes;
+         Time_t heartbeatPeriod = new Time_t();
+         heartbeatPeriod.setSeconds(0);
+         // based on C_FRACTIONS_PER_SEC = 4294967296ULL, set the number of fractions to be approx 100ms
+         long fraction = (long)(0.001 * 4294967296.0);
+         LogTools.debug("Fraction: {}", fraction);
+         heartbeatPeriod.setFraction(fraction);
+         fastRTPSPublisherAttributes.getTimes().setHeartbeatPeriod(heartbeatPeriod);
+      }
+
+      switch (durability)
+      {
+         case TRANSIENT_LOCAL:
+            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
+            break;
+         case VOLATILE:
+            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
+            break;
+      }
+
+      publisherAttributes.getTopic().getHistoryQos().setDepth(depth);
+      publisherAttributes.getTopic().getHistoryQos().setKind(history);
+   }
 
    /**
     * 
