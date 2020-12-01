@@ -288,10 +288,11 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
+   public <T> ROS2SubscriptionInterface createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
          throws IOException
    {
-      return node.createSubscription(topicDataType, newMessageListener, topicName);
+      node.createSubscription(topicDataType, newMessageListener, topicName);
+      return new RealtimeROS2SubscriptionBasics();
    }
 
    /**
@@ -305,13 +306,14 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
+   public <T> ROS2SubscriptionInterface createSubscription(TopicDataType<T> topicDataType,
                                                      NewMessageListener<T> newMessageListener,
                                                      String topicName,
                                                      ROS2QosProfile qosProfile)
          throws IOException
    {
-      return node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
+      node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
+      return new RealtimeROS2SubscriptionBasics();
    }
 
    /**
@@ -327,13 +329,14 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @throws IOException if no subscriber can be made
     */
    @Override
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
+   public <T> ROS2SubscriptionInterface createSubscription(TopicDataType<T> topicDataType,
                                                      NewMessageListener<T> newMessageListener,
                                                      SubscriptionMatchedListener<T> subscriptionMatchedListener,
                                                      String topicName,
                                                      ROS2QosProfile qosProfile) throws IOException
    {
-      return node.createSubscription(topicDataType, newMessageListener, subscriptionMatchedListener, topicName, qosProfile);
+      node.createSubscription(topicDataType, newMessageListener, subscriptionMatchedListener, topicName, qosProfile);
+      return new RealtimeROS2SubscriptionBasics();
    }
 
    /**
