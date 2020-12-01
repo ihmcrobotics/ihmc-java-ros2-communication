@@ -32,7 +32,7 @@ import us.ihmc.util.PeriodicThreadSchedulerFactory;
  * 
  * @author Jesper Smith
  */
-public class RealtimeROS2Node
+public class RealtimeROS2Node implements ROS2NodeInterface
 {
    public static int THREAD_PERIOD_MICROSECONDS = 1000;
    public static final int DEFAULT_QUEUE_SIZE = 10;
@@ -184,9 +184,27 @@ public class RealtimeROS2Node
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
+   @Override
    public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
+      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
+   }
+
+   /**
+    * Create a new realtime publisher with default queue depth. This publisher will
+    * publish data in a separate thread and will never block the calling thread. No memory will be
+    * allocated when publishing. This function will allocate a queue of depth 10
+    *
+    * @param topicDataType Data type to publish
+    * @param topicName     Topic name
+    * @param qosProfile    Desired ros profile
+    * @return A realtime-safe ROS2 publisher
+    * @throws IOException
+    */
+   @Override
+   public <T> RealtimeROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
+   {
+      return createPublisher(topicDataType, topicName, qosProfile, DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -260,17 +278,62 @@ public class RealtimeROS2Node
    }
 
    /**
-    * Create a new realtime subscription with default qos profile and your own callback. Incoming
-    * messages on the RTPS thread are passed to new message listener.
+    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
+    * default qos profile
     *
-    * @param topicDataType Data type to subscribe to
-    * @param topicName     Topic name
-    * @return A realtime-safe ROS2 subscriber
-    * @throws IOException
+    * @param topicDataType      The topic data type of the message
+    * @param newMessageListener New message listener
+    * @param topicName          Name for the topic
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
     */
-   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener) throws IOException
+   @Override
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
+         throws IOException
    {
-      createCallbackSubscription(topicDataType, topicName, newMessageListener, ROS2QosProfile.DEFAULT());
+      return node.createSubscription(topicDataType, newMessageListener, topicName);
+   }
+
+   /**
+    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
+    * default qos profile
+    *
+    * @param topicDataType      The topic data type of the message
+    * @param newMessageListener New message listener
+    * @param topicName          Name for the topic
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
+   @Override
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
+                                                     NewMessageListener<T> newMessageListener,
+                                                     String topicName,
+                                                     ROS2QosProfile qosProfile)
+         throws IOException
+   {
+      return node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
+   }
+
+   /**
+    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
+    * default qos profile
+    *
+    * @param topicDataType               The topic data type of the message
+    * @param newMessageListener          New message listener
+    * @param subscriptionMatchedListener Subscription matched listener
+    * @param topicName                   Name for the topic
+    * @param qosProfile                  ROS Qos Profile
+    * @return Ros Subscription
+    * @throws IOException if no subscriber can be made
+    */
+   @Override
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
+                                                     NewMessageListener<T> newMessageListener,
+                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener,
+                                                     String topicName,
+                                                     ROS2QosProfile qosProfile) throws IOException
+   {
+      return node.createSubscription(topicDataType, newMessageListener, subscriptionMatchedListener, topicName, qosProfile);
    }
 
    /**
@@ -279,15 +342,33 @@ public class RealtimeROS2Node
     *
     * @param topicDataType Data type to subscribe to
     * @param topicName     Topic name
+    * @param newMessageListener New message listener
+    * @return A realtime-safe ROS2 subscriber
+    * @throws IOException
+    */
+   public <T> ROS2Subscription<T> createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener)
+         throws IOException
+   {
+      return node.createSubscription(topicDataType, newMessageListener, topicName);
+   }
+
+   /**
+    * Create a new realtime subscription with default qos profile and your own callback. Incoming
+    * messages on the RTPS thread are passed to new message listener.
+    *
+    * @param topicDataType Data type to subscribe to
+    * @param topicName     Topic name
+    * @param newMessageListener New message listener
     * @param qosProfile    Desired ros qos profile
     * @return A realtime-safe ROS2 subscriber
     * @throws IOException
     */
-   public <T> void createCallbackSubscription(TopicDataType<T> topicDataType, String topicName, NewMessageListener<T> newMessageListener,
-                                              ROS2QosProfile qosProfile)
-         throws IOException
+   public <T> ROS2Subscription<T> createCallbackSubscription(TopicDataType<T> topicDataType,
+                                                             String topicName,
+                                                             NewMessageListener<T> newMessageListener,
+                                                             ROS2QosProfile qosProfile) throws IOException
    {
-      node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
+      return node.createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
    }
 
    /**
