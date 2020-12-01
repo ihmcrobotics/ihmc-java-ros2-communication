@@ -168,6 +168,16 @@ class ROS2NodeBasics implements ROS2NodeInterface
 
    }
 
+   /** {@inheritDoc} */
+   @Override
+   public <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
+         throws IOException
+   {
+      RealtimeROS2SubscriptionListener<T> listener = new RealtimeROS2SubscriptionListener<>(topicDataType, queueSize);
+      ROS2Subscription<T> subscriber = createSubscription(topicDataType, listener, topicName, qosProfile);
+      return new QueuedROS2Subscription<T>(subscriber, listener);
+   }
+
    /**
     * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
     * default qos profile

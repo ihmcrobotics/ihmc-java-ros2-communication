@@ -24,43 +24,16 @@ package us.ihmc.ros2;
  *
  * @param <T> data type
  */
-public class RealtimeROS2Subscription<T>
+public class RealtimeROS2Subscription<T> extends QueuedROS2Subscription<T>
 {
-   private final RealtimeROS2SubscriptionListener<T> listener;
-
    RealtimeROS2Subscription(RealtimeROS2SubscriptionListener<T> listener)
    {
-      this.listener = listener;
+      super(listener);
    }
-   
-   /**
-    * Get the next message in the queue.
-    * 
-    * After calling this function the message is removed from the queue. 
-    * 
-    * This function does not block and is realtime-safe.
-    * 
-    * @param data Object to store the data in if data is available. If no data is available this object does not get modified
-    * @return True if a new message was available, false otherwise
-    */
-   public boolean poll(T data)
+
+   @Override
+   public void remove()
    {
-      return listener.poll(data);
-   }
-   
-   
-   /**
-    * Get the latest message in the queue and discard all others.
-    * 
-    * After calling this function the queue is empty.
-    * 
-    * This function does not block and is realtime-safe.
-    * 
-    * @param data Object to store the data in if data is available. If no data is available this object does not get modified
-    * @return True if a new message was available, false otherwise
-    */
-   public boolean flushAndGetLatest(T data)
-   {
-      return listener.flushAndGetLatest(data);
+      // It might not make sense to do anything here. Just here to comply with the interface
    }
 }
