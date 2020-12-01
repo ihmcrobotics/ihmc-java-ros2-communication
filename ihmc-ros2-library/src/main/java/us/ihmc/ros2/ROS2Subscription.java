@@ -16,10 +16,8 @@
 package us.ihmc.ros2;
 
 import us.ihmc.pubsub.Domain;
-import us.ihmc.pubsub.attributes.SubscriberAttributes;
-import us.ihmc.pubsub.common.Guid;
-import us.ihmc.pubsub.common.SampleInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
+
 
 /**
  * Simple ROS2 compatible subscription
@@ -28,7 +26,7 @@ import us.ihmc.pubsub.subscriber.Subscriber;
  *
  * @param <T> Data type of this subscriber
  */
-public class ROS2Subscription<T> implements Subscriber<T>
+public class ROS2Subscription<T>
 {
    private final Domain domain;
    private final Subscriber<T> subscriber;
@@ -45,82 +43,5 @@ public class ROS2Subscription<T> implements Subscriber<T>
    public void remove()
    {
       domain.removeSubscriber(subscriber);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public Guid getGuid()
-   {
-      return subscriber.getGuid();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void waitForUnreadMessage(int timeoutInMilliseconds) throws InterruptedException
-   {
-      subscriber.waitForUnreadMessage(timeoutInMilliseconds);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public boolean readNextData(T data, SampleInfo info)
-   {
-      return subscriber.readNextData(data, info);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public boolean takeNextData(T data, SampleInfo info)
-   {
-      return subscriber.takeNextData(data, info);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public T readNextData()
-   {
-      return subscriber.readNextData();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public T readNextData(SampleInfo info)
-   {
-      return subscriber.readNextData(info);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public T takeNextData()
-   {
-      return subscriber.takeNextData();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public T takeNextData(SampleInfo info)
-   {
-      return subscriber.readNextData(info);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public SubscriberAttributes getAttributes()
-   {
-      return subscriber.getAttributes();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public boolean isInCleanState()
-   {
-      return subscriber.isInCleanState();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public boolean isAvailable()
-   {
-      return subscriber.isAvailable();
    }
 }
