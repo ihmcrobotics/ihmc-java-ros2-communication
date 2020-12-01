@@ -30,6 +30,8 @@ import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.participant.Participant;
 import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
+import us.ihmc.rtps.impl.fastRTPS.FastRTPSPublisherAttributes;
+import us.ihmc.rtps.impl.fastRTPS.Time_t;
 
 /**
  * Internal class to share implementation between intra and inter process ROS2 nodes.
@@ -123,7 +125,32 @@ class ROS2NodeBasics implements ROS2NodeInterface
       publisherAttributes.getTopic().setTopicKind(topicDataType.isGetKeyDefined() ? TopicKind.WITH_KEY : TopicKind.NO_KEY);
       publisherAttributes.getTopic().setTopicDataType(topicDataType.getName());
 
-      qosProfile.apply(publisherAttributes);
+      publisherAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
+      
+      if (publisherAttributes instanceof FastRTPSPublisherAttributes)
+      {
+         FastRTPSPublisherAttributes fastRTPSPublisherAttributes = (FastRTPSPublisherAttributes) publisherAttributes;
+         Time_t heartbeatPeriod = new Time_t();
+         heartbeatPeriod.setSeconds(0);
+         // based on C_FRACTIONS_PER_SEC = 4294967296ULL, set the number of fractions to be approx 100ms
+         long fraction = (long)(0.001 * 4294967296.0);
+         LogTools.debug("Fraction: {}", fraction);
+         heartbeatPeriod.setFraction(fraction);
+         fastRTPSPublisherAttributes.getTimes().setHeartbeatPeriod(heartbeatPeriod);
+      }
+
+      switch (qosProfile.getDurability())
+      {
+         case TRANSIENT_LOCAL:
+            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
+            break;
+         case VOLATILE:
+            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
+            break;
+      }
+
+      publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
+      publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
                                                              publisherAttributes,
@@ -244,8 +271,20 @@ class ROS2NodeBasics implements ROS2NodeInterface
       subscriberAttributes.getTopic().setTopicKind(topicDataType.isGetKeyDefined() ? TopicKind.WITH_KEY : TopicKind.NO_KEY);
       subscriberAttributes.getTopic().setTopicDataType(topicDataType.getName());
       subscriberAttributes.getTopic().setTopicName(topicName);
+      subscriberAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
 
-      qosProfile.apply(subscriberAttributes);
+      switch (qosProfile.getDurability())
+      {
+         case TRANSIENT_LOCAL:
+            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
+            break;
+         case VOLATILE:
+            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
+            break;
+      }
+
+      subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
+      subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
                                                              subscriberAttributes,
