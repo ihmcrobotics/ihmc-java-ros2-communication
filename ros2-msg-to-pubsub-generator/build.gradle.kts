@@ -1,7 +1,7 @@
 plugins {
-   id("us.ihmc.ihmc-build") version "0.22.0"
-   id("us.ihmc.ihmc-ci") version "6.8"
-   id("us.ihmc.ihmc-cd") version "1.14"
+   id("us.ihmc.ihmc-build")
+   id("us.ihmc.ihmc-ci") version "7.4"
+   id("us.ihmc.ihmc-cd") version "1.17"
 }
 
 ihmc {
@@ -25,5 +25,5 @@ mainDependencies {
 
 testDependencies {
    api("us.ihmc:ihmc-pub-sub:0.16.0")
-   api("us.ihmc:ihmc-commons:0.30.2")
+   api("us.ihmc:ihmc-commons:0.30.4")
 }

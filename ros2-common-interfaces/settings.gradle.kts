@@ -1,17 +1,20 @@
+pluginManagement {
+   repositories {
+      gradlePluginPortal()
+      maven(url = "https://dl.bintray.com/ihmcrobotics/maven-release")
+   }
+   plugins {
+      id("us.ihmc.ihmc-build") version "0.23.0"
+   }
+}
+
 buildscript {
    repositories {
       maven { url = uri("https://plugins.gradle.org/m2/") }
       mavenLocal()
    }
    dependencies {
-      classpath("us.ihmc:ihmc-build:0.22.0")
-   }
-}
-
-pluginManagement {
-   repositories {
-      gradlePluginPortal()
-      maven(url = "https://dl.bintray.com/ihmcrobotics/maven-release")
+      classpath("us.ihmc:ihmc-build:0.23.0")
    }
 }
 

@@ -29,7 +29,7 @@ import us.ihmc.pubsub.TopicDataType;
  *
  * @param <T> Data type to publish
  */
-public class RealtimeROS2Publisher<T>
+public class RealtimeROS2Publisher<T> implements ROS2PublisherBasics<T>
 {
    private final TopicDataType<T> topicDataType;
    private final ROS2Publisher<T> rosPublisher;
@@ -40,7 +40,7 @@ public class RealtimeROS2Publisher<T>
    {
       this.topicDataType = topicDataType.newInstance();
       this.rosPublisher = rosPublisher;
-      concurrentRingBuffer = new ConcurrentRingBuffer<>(() -> topicDataType.createData(), queueDepth);
+      concurrentRingBuffer = new ConcurrentRingBuffer<>(topicDataType::createData, queueDepth);
    }
    
    /**
@@ -51,6 +51,7 @@ public class RealtimeROS2Publisher<T>
     * @param data Data to publish
     * @return true if there was space in the queue, false if no space is left.
     */
+   @Override
    public boolean publish(T data)
    {
       T next = concurrentRingBuffer.next();
@@ -84,5 +85,11 @@ public class RealtimeROS2Publisher<T>
          }
          concurrentRingBuffer.flush();
       }
+   }
+
+   @Override
+   public void remove()
+   {
+      // Remove not necessarily defined for a realtime node
    }
 }
