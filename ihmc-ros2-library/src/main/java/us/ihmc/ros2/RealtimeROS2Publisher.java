@@ -19,8 +19,6 @@ import java.io.IOException;
 
 import us.ihmc.concurrent.ConcurrentRingBuffer;
 import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.PublisherAttributes;
-import us.ihmc.pubsub.common.Guid;
 import us.ihmc.pubsub.publisher.Publisher;
 
 /**
@@ -32,7 +30,7 @@ import us.ihmc.pubsub.publisher.Publisher;
  *
  * @param <T> Data type to publish
  */
-public class RealtimeROS2Publisher<T> implements ROS2PublisherBasics<T>, Publisher
+public class RealtimeROS2Publisher<T> implements ROS2PublisherBasics<T>
 {
    private final TopicDataType<T> topicDataType;
    private final ROS2Publisher<T> rosPublisher;
@@ -96,59 +94,12 @@ public class RealtimeROS2Publisher<T> implements ROS2PublisherBasics<T>, Publish
       // Remove not necessarily defined for a realtime node
    }
 
-   /** {@inheritDoc} */
-   @Override
-   public void write(Object data) throws IOException
+   /**
+    * Get the pub sub publisher
+    * @return publisher
+    */
+   public Publisher getPublisher()
    {
-      rosPublisher.write(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void dispose(Object data) throws IOException
-   {
-      rosPublisher.dispose(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void unregister(Object data) throws IOException
-   {
-      rosPublisher.unregister(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public void dispose_and_unregister(Object data) throws IOException
-   {
-      rosPublisher.dispose_and_unregister(data);
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public int removeAllChange() throws IOException
-   {
-      return rosPublisher.removeAllChange();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public Guid getGuid()
-   {
-      return rosPublisher.getGuid();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public PublisherAttributes getAttributes()
-   {
-      return rosPublisher.getAttributes();
-   }
-
-   /** {@inheritDoc} */
-   @Override
-   public boolean isAvailable()
-   {
-      return rosPublisher.isAvailable();
+      return rosPublisher.getPublisher();
    }
 }
