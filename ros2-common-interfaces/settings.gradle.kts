@@ -4,7 +4,7 @@ pluginManagement {
       maven(url = "https://dl.bintray.com/ihmcrobotics/maven-release")
    }
    plugins {
-      id("us.ihmc.ihmc-build") version "0.23.1"
+      id("us.ihmc.ihmc-build") version "0.23.2"
    }
 }
 
@@ -14,7 +14,7 @@ buildscript {
       mavenLocal()
    }
    dependencies {
-      classpath("us.ihmc:ihmc-build:0.23.1")
+      classpath("us.ihmc:ihmc-build:0.23.2")
    }
 }
 
