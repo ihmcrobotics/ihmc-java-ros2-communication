@@ -1,7 +1,6 @@
 pluginManagement {
    repositories {
       gradlePluginPortal()
-      maven(url = "https://dl.bintray.com/ihmcrobotics/maven-release")
    }
    plugins {
       id("us.ihmc.ihmc-build") version "0.25.0"
