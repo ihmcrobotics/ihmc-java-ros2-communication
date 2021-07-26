@@ -5,8 +5,7 @@ depending on what changes are included in the upgrade.
 
 #### Step 1: Update ihmc-pub-sub dependencies
 
-1. Check for the latest version here: https://bintray.com/ihmcrobotics/maven-release/ihmc-pub-sub
-   or here: https://github.com/ihmcrobotics/ihmc-pub-sub
+1. Check for the latest version here: https://repo.maven.apache.org/maven2/us/ihmc/ihmc-pub-sub/
 1. Run "Find and replace" for ihmc-pub-sub, ihmc-pub-sub-generator and update the versions
 1. Refresh Gradle
 
@@ -64,7 +63,7 @@ Update the README.md to document any changed procedures, new features, etc.
 
 Publish artifacts to Bintray: `gradle compositePublish -PpublishUrl=ihmcRelease` from `ihmc-java-ros2-communication/`
 
-Go to [https://bintray.com/ihmcrobotics/maven-release](https://bintray.com/ihmcrobotics/maven-release) and "Publish".
+Check when they become available at [https://repo.maven.apache.org/maven2/us/ihmc/](https://repo.maven.apache.org/maven2/us/ihmc/).
 
 #### Step 5: Update generator version
 
