@@ -47,8 +47,8 @@ generatorDependencies {
 val show by tasks.creating {
    doLast {
       project.gradle.includedBuilds.forEach { println(it) }
-      buildscript.configurations.runtime.get().forEach { println("Buildscript: " + it) }
-      configurations.compile.get().forEach { println("Compile: " + it) }
+      buildscript.configurations.runtimeClasspath.get().forEach { println("Buildscript: " + it) }
+      configurations.runtimeClasspath.get().forEach { println("Runtime classpath: " + it) }
    }
 }
 
