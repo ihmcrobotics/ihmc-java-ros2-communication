@@ -69,6 +69,11 @@ val generateMessages by tasks.creating(us.ihmc.ros2.rosidl.ROS2MessageGenerator:
    customIDLDirectory = files("src/main/custom-idl")
 }
 
+tasks.named<Copy>("processResources") {
+    duplicatesStrategy = DuplicatesStrategy.WARN
+}
+
+
 fun setupVendoredRepo(clonePath: String, vcsUrl: String, tagName: String)
 {
    delete(clonePath)

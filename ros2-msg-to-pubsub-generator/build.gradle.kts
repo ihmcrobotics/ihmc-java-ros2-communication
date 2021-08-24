@@ -27,3 +27,7 @@ testDependencies {
    api("us.ihmc:ihmc-pub-sub:0.16.1")
    api("us.ihmc:ihmc-commons:0.30.4")
 }
+
+project(":ros2-msg-to-pubsub-generator-test").tasks.named<Copy>("processResources") {
+    duplicatesStrategy = DuplicatesStrategy.WARN
+}

@@ -21,8 +21,11 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+import us.ihmc.pubsub.Domain;
+import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
+import us.ihmc.pubsub.attributes.ParticipantAttributes;
 import us.ihmc.util.PeriodicThreadScheduler;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
 
@@ -60,10 +63,11 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @param namespace            Namespace of this ROS2Node
     * @throws IOException if the participant cannot be made
     */
+   @Deprecated
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace)
          throws IOException
    {
-      this(pubSubImplementation, threadFactory, name, namespace, ROS2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, threadFactory, name, namespace, ROS2NodeBasics.domainFromEnvironment());
    }
 
    /**
@@ -81,11 +85,12 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @param namespace            Namespace of this ROS2Node
     * @throws IOException if the participant cannot be made
     */
+   @Deprecated
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace)
          throws IOException
    {
-      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, ROS2NodeBasics.ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, ros2Distro, threadFactory, name, namespace, ROS2NodeBasics.domainFromEnvironment());
    }
 
    /**
@@ -104,6 +109,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @param domainId             Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
+   @Deprecated
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace, int domainId)
          throws IOException
    {
@@ -126,6 +132,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @param domainId             Desired ROS domain ID
     * @throws IOException if the participant cannot be made
     */
+   @Deprecated
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace, int domainId)
          throws IOException
@@ -152,11 +159,61 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     *                             node. Optional, ignored when {@code null}.
     * @throws IOException if the participant cannot be made
     */
+   @Deprecated
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, PeriodicThreadSchedulerFactory threadFactory, String name,
                            String namespace, int domainId, InetAddress addressRestriction)
          throws IOException
    {
-      this.node = new ROS2NodeBasics(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
+	   this(DomainFactory.getDomain(pubSubImplementation), threadFactory, name, namespace, domainId, addressRestriction);
+   }
+   
+   
+
+   /**
+    * Create a new realtime node
+    *
+    * @param Domain DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param threadFactory        Thread factory for the publisher. Either
+    *                             PeriodicRealtimeThreadSchedulerFactory or
+    *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
+    *                             application
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
+    * @param domainId             Desired ROS domain ID
+    * @param addressRestriction   Restrict network traffic to the given address. When provided, it
+    *                             should describe one of the addresses of the computer hosting this
+    *                             node. Optional, ignored when {@code null}.
+    * @throws IOException if the participant cannot be made
+    */
+
+   public RealtimeROS2Node(Domain domain, PeriodicThreadSchedulerFactory threadFactory, String name,
+		   String namespace, int domainId, InetAddress addressRestriction)
+				   throws IOException
+   {
+	   this(domain, threadFactory, name, namespace, ROS2NodeBasics.createParticipantAttributes(domain, domainId, addressRestriction));
+   }
+   
+   /**
+    * Create a new realtime node
+    *
+    * @param Domain DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param threadFactory        Thread factory for the publisher. Either
+    *                             PeriodicRealtimeThreadSchedulerFactory or
+    *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
+    *                             application
+    * @param name                 Name of this ROS2Node
+    * @param namespace            Namespace of this ROS2Node
+    * @param attributes			  ParticipantAttributes for this domain
+    * @throws IOException if the participant cannot be made
+    */
+
+   public RealtimeROS2Node(Domain domain, PeriodicThreadSchedulerFactory threadFactory, String name,
+			   String namespace, ParticipantAttributes attributes)
+					   throws IOException
+	   {
+	   
+	   
+      this.node = new ROS2NodeBasics(domain, name, namespace, attributes);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
 

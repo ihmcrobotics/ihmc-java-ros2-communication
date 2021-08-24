@@ -21,12 +21,15 @@ import java.net.InetAddress;
 import us.ihmc.commons.thread.ThreadTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
-import us.ihmc.pubsub.DomainFactory;
-import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.*;
+import us.ihmc.pubsub.attributes.DurabilityKind;
+import us.ihmc.pubsub.attributes.ParticipantAttributes;
+import us.ihmc.pubsub.attributes.PublishModeKind;
+import us.ihmc.pubsub.attributes.PublisherAttributes;
+import us.ihmc.pubsub.attributes.SubscriberAttributes;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
 import us.ihmc.pubsub.common.MatchingInfo;
+import us.ihmc.pubsub.common.Time;
 import us.ihmc.pubsub.participant.Participant;
 import us.ihmc.pubsub.subscriber.Subscriber;
 import us.ihmc.pubsub.subscriber.SubscriberListener;
@@ -41,15 +44,31 @@ import us.ihmc.rtps.impl.fastRTPS.Time_t;
  */
 class ROS2NodeBasics implements ROS2NodeInterface
 {
-   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
-
-   private final ROS2Distro ros2Distro;
+//   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
    private Domain domain;
    private Participant participant;
 
    private final String nodeName;
    private final String namespace;
+
+	/**
+	 * Create a default set of participant attributes
+	 * 
+	 * @param name
+	 * @param domainId
+	 * @param addressRestriction
+	 * @return
+	 */
+	public static ParticipantAttributes createParticipantAttributes(Domain domain, int domainId, InetAddress addressRestriction) {
+		ParticipantAttributes participantAttributes = domain.createParticipantAttributes();
+		participantAttributes.setDomainId(domainId);
+		participantAttributes.setLeaseDuration(Time.Infinite);
+
+		if (addressRestriction != null)
+			participantAttributes.bindToAddress(addressRestriction);
+		return participantAttributes;
+	}
 
    /**
     * Create a new ROS2 node.
@@ -62,11 +81,10 @@ class ROS2NodeBasics implements ROS2NodeInterface
     *                           Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
-   ROS2NodeBasics(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
+   ROS2NodeBasics(Domain domain, String namespace, String name, ParticipantAttributes attributes)
          throws IOException
    {
-      this.domain = DomainFactory.getDomain(pubSubImplementation);
-      this.ros2Distro = ros2Distro;
+      this.domain = domain;
 
       ROS2TopicNameTools.checkNodename(name);
       ROS2TopicNameTools.checkNamespace(namespace);
@@ -74,10 +92,8 @@ class ROS2NodeBasics implements ROS2NodeInterface
       this.nodeName = name;
       this.namespace = namespace;
 
-      ParticipantAttributes attr = domain.createParticipantAttributes(domainId, name);
-      if (addressRestriction != null)
-         attr.bindToAddress(addressRestriction);
-      participant = domain.createParticipant(attr);
+      attributes.setName(name);
+      participant = domain.createParticipant(attributes);
 
       Runtime.getRuntime().addShutdownHook(new Thread(() ->
       {
@@ -152,7 +168,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ROS2Distro.BOUNCY,
                                                              publisherAttributes,
                                                              namespace,
                                                              nodeName,
@@ -286,7 +302,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
       subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ROS2Distro.BOUNCY,
                                                              subscriberAttributes,
                                                              namespace,
                                                              nodeName,

@@ -15,10 +15,13 @@
  */
 package us.ihmc.ros2;
 
-import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
-
 import java.io.IOException;
 import java.net.InetAddress;
+
+import us.ihmc.pubsub.Domain;
+import us.ihmc.pubsub.DomainFactory;
+import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
+import us.ihmc.pubsub.attributes.ParticipantAttributes;
 
 /**
  * A non-realtime implementation of a ROS2 compatible node. This node can be used to create ROS2
@@ -38,6 +41,7 @@ public class ROS2Node extends ROS2NodeBasics
     * @param name                 Name for the node
     * @throws IOException if no participant can be made
     */
+   @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, String name) throws IOException
    {
       this(pubSubImplementation, name, "");
@@ -54,9 +58,10 @@ public class ROS2Node extends ROS2NodeBasics
     * @param namespace            namespace for the ros node i.e. DDS partition
     * @throws IOException if no participant can be made
     */
+   @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, String name, String namespace) throws IOException
    {
-      this(pubSubImplementation, name, namespace, ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, name, namespace, domainFromEnvironment());
    }
 
    /**
@@ -69,6 +74,7 @@ public class ROS2Node extends ROS2NodeBasics
     * @param name                 Name for the node
     * @throws IOException if no participant can be made
     */
+   @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name) throws IOException
    {
       this(pubSubImplementation, ros2Distro, name, "");
@@ -84,9 +90,10 @@ public class ROS2Node extends ROS2NodeBasics
     * @param namespace            namespace for the ros node i.e. DDS partition
     * @throws IOException if no participant can be made
     */
+   @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace) throws IOException
    {
-      this(pubSubImplementation, ros2Distro, name, namespace, ROS_DEFAULT_DOMAIN_ID);
+      this(pubSubImplementation, ros2Distro, name, namespace, domainFromEnvironment());
    }
 
    /**
@@ -100,6 +107,7 @@ public class ROS2Node extends ROS2NodeBasics
     * @param domainId             Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
+   @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, String name, String namespace, int domainId) throws IOException
    {
       this(pubSubImplementation, ROS2Distro.fromEnvironment(), name, namespace, domainId);
@@ -117,6 +125,7 @@ public class ROS2Node extends ROS2NodeBasics
     * @param domainId             Domain ID for the ros node
     * @throws IOException if no participant can be made
     */
+   @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId) throws IOException
    {
       this(pubSubImplementation, ros2Distro, name, namespace, domainId, null);
@@ -137,13 +146,47 @@ public class ROS2Node extends ROS2NodeBasics
     *                             node. Optional, ignored when {@code null}.
     * @throws IOException if no participant can be made
     */
+   @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation,
                    ROS2Distro ros2Distro,
                    String name,
                    String namespace,
                    int domainId,
-                   InetAddress addressRestriction) throws IOException
+                   InetAddress addressRestriction)
+         throws IOException
    {
-      super(pubSubImplementation, ros2Distro, name, namespace, domainId, addressRestriction);
+      this(DomainFactory.getDomain(pubSubImplementation), name, namespace, domainId, addressRestriction);
    }
+
+   /**
+    * Create a new ROS2 node.
+    *
+    * @param Domain             DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param name               Name for the node
+    * @param namespace          namespace for the ros node i.e. DDS partition
+    * @param domainId           Domain ID for the ros node
+    * @param addressRestriction Restrict network traffic to the given address. When provided, it should
+    *                           describe one of the addresses of the computer hosting this node.
+    *                           Optional, ignored when {@code null}.
+    * @throws IOException if no participant can be made
+    */
+   public ROS2Node(Domain domain, String name, String namespace, int domainId, InetAddress addressRestriction) throws IOException
+   {
+      super(domain, name, namespace, createParticipantAttributes(domain, domainId, addressRestriction));
+   }
+
+   /**
+    * Create a new ROS2 node.
+    *
+    * @param Domain     DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param name       Name for the node
+    * @param namespace  namespace for the ros node i.e. DDS partition
+    * @param attributes Participant attributes for domain
+    * @throws IOException if no participant can be made
+    */
+   public ROS2Node(Domain domain, String name, String namespace, ParticipantAttributes attributes) throws IOException
+   {
+      super(domain, name, namespace, attributes);
+   }
+
 }
