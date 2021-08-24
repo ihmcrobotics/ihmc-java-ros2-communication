@@ -172,7 +172,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    /**
     * Create a new realtime node
     *
-    * @param Domain DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param Domain 			  DDS domain to use. Use DomainFactory.getDomain(implementation)
     * @param threadFactory        Thread factory for the publisher. Either
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the
@@ -196,7 +196,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    /**
     * Create a new realtime node
     *
-    * @param Domain DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param Domain 			  DDS domain to use. Use DomainFactory.getDomain(implementation)
     * @param threadFactory        Thread factory for the publisher. Either
     *                             PeriodicRealtimeThreadSchedulerFactory or
     *                             PeriodicNonRealtimeThreadSchedulerFactory depending on the

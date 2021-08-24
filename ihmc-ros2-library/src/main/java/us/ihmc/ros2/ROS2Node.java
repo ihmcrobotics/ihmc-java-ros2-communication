@@ -172,7 +172,7 @@ public class ROS2Node extends ROS2NodeBasics
     */
    public ROS2Node(Domain domain, String name, String namespace, int domainId, InetAddress addressRestriction) throws IOException
    {
-      super(domain, name, namespace, createParticipantAttributes(domain, domainId, addressRestriction));
+      this(domain, name, namespace, createParticipantAttributes(domain, domainId, addressRestriction));
    }
 
    /**

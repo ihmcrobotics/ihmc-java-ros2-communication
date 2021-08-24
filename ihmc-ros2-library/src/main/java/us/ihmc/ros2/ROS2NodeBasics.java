@@ -73,15 +73,14 @@ class ROS2NodeBasics implements ROS2NodeInterface
    /**
     * Create a new ROS2 node.
     *
+    * @param Domain              DDS domain to use
     * @param name               Name for the node
     * @param namespace          namespace for the ros node i.e. DDS partition
-    * @param domainId           Domain ID for the ros node
-    * @param addressRestriction Restrict network traffic to the given address. When provided, it should
-    *                           describe one of the addresses of the computer hosting this node.
-    *                           Optional, ignored when {@code null}.
+    * @param attributes          Participant attributes to configure the node
+    *
     * @throws IOException if no participant can be made
     */
-   ROS2NodeBasics(Domain domain, String namespace, String name, ParticipantAttributes attributes)
+   ROS2NodeBasics(Domain domain, String name, String namespace, ParticipantAttributes attributes)
          throws IOException
    {
       this.domain = domain;
