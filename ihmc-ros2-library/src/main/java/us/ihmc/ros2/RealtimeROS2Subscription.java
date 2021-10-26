@@ -18,6 +18,7 @@ package us.ihmc.ros2;
 /**
  * Deprecated. Kept around for API compatibility
  */
+@Deprecated
 public interface RealtimeROS2Subscription<T>
 {
    public boolean poll(T data);
