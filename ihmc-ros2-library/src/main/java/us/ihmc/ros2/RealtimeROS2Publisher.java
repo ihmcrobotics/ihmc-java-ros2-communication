@@ -1,7 +1,5 @@
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
 /**
  * Helper interface for backwards compatibility
  * 
@@ -12,7 +10,7 @@ import java.io.IOException;
 @Deprecated
 public interface RealtimeROS2Publisher<T> 
 {
-   boolean publish(T data) throws IOException;
+   boolean publish(T data);
 
    void remove();
 }

@@ -62,9 +62,16 @@ class ROS2NodeBasics implements ROS2NodeInterface
 		participantAttributes.setDomainId(domainId);
 		participantAttributes.setLeaseDuration(Time.Infinite);
 
-		if (addressRestriction != null)
-		{
-			participantAttributes.bindToAddress(addressRestriction);
+		if (addressRestriction != null )
+		{		   
+		   if(addressRestriction.length > 0)
+		   {
+		      if(addressRestriction[0] != null) // Check for null on the first element, to make sure passing in null works as usual -> no address restrictions
+		      {
+		         participantAttributes.bindToAddress(addressRestriction);
+		      }
+		      
+		   }
 		}
 		return participantAttributes;
 	}

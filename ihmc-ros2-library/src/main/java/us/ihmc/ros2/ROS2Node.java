@@ -113,23 +113,6 @@ public class ROS2Node extends ROS2NodeBasics
       this(pubSubImplementation, (ROS2Distro) null, name, namespace, domainId);
    }
 
-   /**
-    * Create a new ROS2 node.
-    *
-    * @param pubSubImplementation RTPS or INTRAPROCESS. See
-    *                             {@link us.ihmc.pubsub.DomainFactory.PubSubImplementation
-    *                             PubSubImplementation}
-    * @param ros2Distro           Version of ROS2 to use.
-    * @param name                 Name for the node
-    * @param namespace            namespace for the ros node i.e. DDS partition
-    * @param domainId             Domain ID for the ros node
-    * @throws IOException if no participant can be made
-    */
-   @Deprecated
-   public ROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId) throws IOException
-   {
-      this(pubSubImplementation, null, name, namespace, domainId, null);
-   }
 
    /**
     * Create a new ROS2 node.
@@ -152,7 +135,7 @@ public class ROS2Node extends ROS2NodeBasics
                    String name,
                    String namespace,
                    int domainId,
-                   InetAddress addressRestriction)
+                   InetAddress... addressRestriction)
          throws IOException
    {
       this(DomainFactory.getDomain(pubSubImplementation), name, namespace, domainId, addressRestriction);
