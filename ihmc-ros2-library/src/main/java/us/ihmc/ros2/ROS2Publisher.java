@@ -61,4 +61,24 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
    {
       domain.removePublisher(publisher);
    }
+   
+  
+   /**
+    * Helper function to get the raw publisher to create a realtime publisher
+    * 
+    * @return Raw publisher
+    */
+   Publisher getPublisher()
+   {
+      return publisher;
+   }
+   
+   /**
+    * Helper function to get the domain to create a realtime publisher
+    * @return
+    */
+   Domain getDomain()
+   {
+      return domain;
+   }
 }

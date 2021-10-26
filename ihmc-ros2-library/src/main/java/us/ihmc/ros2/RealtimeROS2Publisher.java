@@ -29,17 +29,17 @@ import us.ihmc.pubsub.TopicDataType;
  *
  * @param <T> Data type to publish
  */
-public class RealtimeROS2Publisher<T> implements ROS2PublisherBasics<T>
+public class RealtimeROS2Publisher<T> extends ROS2Publisher<T>
 {
    private final TopicDataType<T> topicDataType;
-   private final ROS2Publisher<T> rosPublisher;
    
    private final ConcurrentRingBuffer<T> concurrentRingBuffer;
    
    RealtimeROS2Publisher(TopicDataType<T> topicDataType, ROS2Publisher<T> rosPublisher, int queueDepth)
    {
+      super(rosPublisher.getDomain(), rosPublisher.getPublisher());
+      
       this.topicDataType = topicDataType.newInstance();
-      this.rosPublisher = rosPublisher;
       concurrentRingBuffer = new ConcurrentRingBuffer<>(topicDataType::createData, queueDepth);
    }
    
@@ -76,7 +76,7 @@ public class RealtimeROS2Publisher<T> implements ROS2PublisherBasics<T>
          {
             try
             {
-               rosPublisher.publish(next);
+               super.publish(next);
             }
             catch (IOException e)
             {

@@ -15,12 +15,13 @@
  */
 package us.ihmc.ros2;
 
+
 /**
  * Incoming messages are stored in a queue and can be polled in a non-blocking manner.
  *
  * @param <T> data type
  */
-public class QueuedROS2Subscription<T> extends ROS2Subscription<T>
+public class QueuedROS2Subscription<T> extends ROS2Subscription<T> implements RealtimeROS2Subscription<T>
 {
    private final RealtimeROS2SubscriptionListener<T> listener;
    private final ROS2Subscription<T> subscriber;

@@ -15,19 +15,21 @@
  */
 package us.ihmc.ros2.example;
 
+import java.io.IOException;
+
 import org.apache.commons.lang3.SystemUtils;
+
 import std_msgs.msg.dds.Int64;
 import std_msgs.msg.dds.Int64PubSubType;
+import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
+import us.ihmc.ros2.ROS2QosProfile;
 import us.ihmc.ros2.RealtimeROS2Node;
 import us.ihmc.ros2.RealtimeROS2Publisher;
 import us.ihmc.ros2.RealtimeROS2Subscription;
-import us.ihmc.ros2.ROS2QosProfile;
 import us.ihmc.util.PeriodicNonRealtimeThreadSchedulerFactory;
 import us.ihmc.util.PeriodicRealtimeThreadSchedulerFactory;
 import us.ihmc.util.PeriodicThreadSchedulerFactory;
-
-import java.io.IOException;
 
 /**
  * Java version of the ROS2 demo listener.
@@ -45,7 +47,8 @@ public class RealtimeROS2PublishSubscribeExample
       PeriodicThreadSchedulerFactory threadFactory = SystemUtils.IS_OS_LINUX ? // realtime threads only work on linux
             new PeriodicRealtimeThreadSchedulerFactory(20) :           // see https://github.com/ihmcrobotics/ihmc-realtime
             new PeriodicNonRealtimeThreadSchedulerFactory();                   // to setup realtime threads
-      RealtimeROS2Node node = new RealtimeROS2Node(PubSubImplementation.FAST_RTPS, threadFactory, "NonRealtimeROS2PublishSubscribeExample", "/us/ihmc");
+      
+      RealtimeROS2Node node = new RealtimeROS2Node(DomainFactory.getDomain(PubSubImplementation.FAST_RTPS), threadFactory, "NonRealtimeROS2PublishSubscribeExample", "/us/ihmc");
       RealtimeROS2Publisher<Int64> publisher = node.createPublisher(new Int64PubSubType(), "/example", ROS2QosProfile.KEEP_HISTORY(3), 10);
       RealtimeROS2Subscription<Int64> subscription = node.createQueuedSubscription(new Int64PubSubType(), "/example", ROS2QosProfile.KEEP_HISTORY(3), 10);
 

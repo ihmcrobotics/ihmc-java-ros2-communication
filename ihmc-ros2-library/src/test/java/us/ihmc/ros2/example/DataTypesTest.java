@@ -5,6 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 import ros_msgs.msg.dds.Num;
 import ros_msgs.msg.dds.NumPubSubType;
+import us.ihmc.pubsub.DomainFactory;
 import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.common.SampleInfo;
 import us.ihmc.ros2.ROS2Node;
@@ -22,7 +23,7 @@ public class DataTypesTest
       int NUMBER_OF_MESSAGES_TO_SEND = 10;
       try
       {
-         ROS2Node node = new ROS2Node(PubSubImplementation.INTRAPROCESS, "ROS2CommunicationTest");
+         ROS2Node node = new ROS2Node(DomainFactory.getDomain(PubSubImplementation.INTRAPROCESS), "ROS2CommunicationTest");
          NumPubSubType topicDataType = new NumPubSubType();
          ROS2Publisher<Num> publisher = node.createPublisher(topicDataType, "/chatter");
 

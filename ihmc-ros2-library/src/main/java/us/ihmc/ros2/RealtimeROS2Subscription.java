@@ -16,24 +16,13 @@
 package us.ihmc.ros2;
 
 /**
- * Realtime-safe implementation of a ROS2 subscriber.
- * 
- * Incoming messages are stored in a queue and can be polled in a non-blocking manner.
- * 
- * @author Jesper Smith
- *
- * @param <T> data type
+ * Deprecated. Kept around for API compatibility
  */
-public class RealtimeROS2Subscription<T> extends QueuedROS2Subscription<T>
+public interface RealtimeROS2Subscription<T>
 {
-   RealtimeROS2Subscription(RealtimeROS2SubscriptionListener<T> listener)
-   {
-      super(listener);
-   }
+   public boolean poll(T data);
+   
+   public boolean flushAndGetLatest(T data);
 
-   @Override
-   public void remove()
-   {
-      // It might not make sense to do anything here. Just here to comply with the interface
-   }
+   public void remove();
 }
