@@ -1,13 +1,13 @@
 buildscript {
    dependencies {
-      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.20.3")
+      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.20.5")
    }
 }
 
 plugins {
    id("us.ihmc.ihmc-build")
    id("us.ihmc.ihmc-ci") version "7.4"
-   id("us.ihmc.ihmc-cd") version "1.20"
+   id("us.ihmc.ihmc-cd") version "1.21"
    id("org.ajoberstar.grgit") version "4.1.0"
 }
 
@@ -36,8 +36,8 @@ ihmc {
 }
 
 mainDependencies {
-   api("us.ihmc:euclid-geometry:0.16.2")
-   api("us.ihmc:ihmc-pub-sub:0.16.1")
+   api("us.ihmc:euclid-geometry:0.17.0")
+   api("us.ihmc:ihmc-pub-sub:0.16.2")
 }
 
 generatorDependencies {
