@@ -46,11 +46,25 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
     * @throws IOException If the data cannot be serialized or another error occurs
     */
    @Override
-   public boolean publish(T data) throws IOException
+   public boolean publish(T data)
    {
-      if (publisher.isAvailable())
-         publisher.write(data);
-      return true;
+      try
+      {
+         if (publisher.isAvailable())
+         {
+            publisher.write(data);
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+      catch (IOException e)
+      {
+         return false;
+      }
+      
    }
 
    /**
@@ -81,4 +95,5 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
    {
       return domain;
    }
+
 }

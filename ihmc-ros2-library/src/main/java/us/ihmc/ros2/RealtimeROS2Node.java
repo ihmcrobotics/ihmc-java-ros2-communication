@@ -257,7 +257,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @throws IOException
     */
    @Override
-   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException
+   public <T> QueuedROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException
    {
       return createPublisher(topicDataType, publisherAttributes, DEFAULT_QUEUE_SIZE);
    }
@@ -275,7 +275,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize) throws IOException
+   public <T> QueuedROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize) throws IOException
    {
       return createPublisher(topicDataType, createPublisherAttributes(topicDataType, topicName, qosProfile), queueSize);
    }
@@ -292,7 +292,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes, int queueSize) throws IOException
+   public <T> QueuedROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes, int queueSize) throws IOException
    {
       startupLock.lock();
       try

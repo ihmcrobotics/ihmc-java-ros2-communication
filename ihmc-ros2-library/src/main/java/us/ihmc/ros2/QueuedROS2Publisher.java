@@ -74,14 +74,7 @@ public class QueuedROS2Publisher<T> extends ROS2Publisher<T>
          T next;
          while((next = concurrentRingBuffer.read()) != null)
          {
-            try
-            {
-               super.publish(next);
-            }
-            catch (IOException e)
-            {
-               e.printStackTrace();
-            }
+            super.publish(next);
          }
          concurrentRingBuffer.flush();
       }
