@@ -18,6 +18,7 @@ package us.ihmc.ros2;
 import java.io.IOException;
 
 import us.ihmc.pubsub.Domain;
+import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.publisher.Publisher;
 
 /**
@@ -28,7 +29,7 @@ import us.ihmc.pubsub.publisher.Publisher;
  *
  * @param <T> The data type to send
  */
-public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
+public class ROS2Publisher<T> implements ROS2PublisherBasics<T>, RealtimeROS2Publisher<T>
 {
    private final Domain domain;
    private final Publisher publisher;
