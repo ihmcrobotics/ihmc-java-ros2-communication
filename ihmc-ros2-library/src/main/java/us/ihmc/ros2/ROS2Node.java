@@ -61,7 +61,7 @@ public class ROS2Node extends ROS2NodeBasics
    @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, String name, String namespace) throws IOException
    {
-      this(pubSubImplementation, name, namespace, domainFromEnvironment());
+      this(pubSubImplementation, name, namespace, ROS2NodeInterface.domainFromEnvironment());
    }
 
    /**
@@ -93,7 +93,7 @@ public class ROS2Node extends ROS2NodeBasics
    @Deprecated
    public ROS2Node(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace) throws IOException
    {
-      this(pubSubImplementation, (ROS2Distro) null, name, namespace, domainFromEnvironment());
+      this(pubSubImplementation, (ROS2Distro) null, name, namespace, ROS2NodeInterface.domainFromEnvironment());
    }
 
    /**
@@ -152,7 +152,7 @@ public class ROS2Node extends ROS2NodeBasics
     */
    public ROS2Node(Domain domain, String name) throws IOException
    {
-      this(domain, name, "", domainFromEnvironment());
+      this(domain, name, "", ROS2NodeInterface.domainFromEnvironment());
    }
    
 

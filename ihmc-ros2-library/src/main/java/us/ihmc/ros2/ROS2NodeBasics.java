@@ -18,7 +18,6 @@ package us.ihmc.ros2;
 import java.io.IOException;
 import java.net.InetAddress;
 
-import us.ihmc.commons.thread.ThreadTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.TopicDataType;
@@ -100,13 +99,6 @@ class ROS2NodeBasics implements ROS2NodeInterface
       attributes.setName(name);
       participant = domain.createParticipant(attributes);
 
-      Runtime.getRuntime().addShutdownHook(new Thread(() ->
-      {
-         LogTools.info("Shutting down ROS2 node " + name);
-         destroy();
-         // It appears that without a small sleep, the printout does not show up.
-         ThreadTools.sleep(10);
-      }, "IHMCROS2-ROS2NodeBasics-destroy"));
    }
 
    /**
@@ -296,6 +288,8 @@ class ROS2NodeBasics implements ROS2NodeInterface
    {
       if (domain != null)
       {
+         LogTools.info("Shutting down ROS2 node " + nodeName);
+
          try
          {
             domain.removeParticipant(participant);
@@ -313,27 +307,4 @@ class ROS2NodeBasics implements ROS2NodeInterface
       participant = null;
    }
 
-   public static int domainFromEnvironment()
-   {
-      String rosDomainId = System.getenv("ROS_DOMAIN_ID");
-
-      int rosDomainIdAsInteger = 0; // default to 0
-
-      if (rosDomainId != null)
-      {
-         rosDomainId = rosDomainId.trim();
-         try
-         {
-            rosDomainIdAsInteger = Integer.valueOf(rosDomainId);
-         }
-         catch (NumberFormatException e)
-         {
-            LogTools.warn("Environment variable ROS_DOMAIN_ID cannot be parsed as an integer: {}", rosDomainId);
-         }
-      }
-
-      LogTools.info("ROS_DOMAIN_ID from environment is {} (fallback only; ignore if set manually)", rosDomainIdAsInteger);
-
-      return rosDomainIdAsInteger;
-   }
 }

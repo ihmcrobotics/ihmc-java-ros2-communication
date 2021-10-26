@@ -67,7 +67,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    public RealtimeROS2Node(PubSubImplementation pubSubImplementation, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace)
          throws IOException
    {
-      this(pubSubImplementation, threadFactory, name, namespace, ROS2NodeBasics.domainFromEnvironment());
+      this(pubSubImplementation, threadFactory, name, namespace, ROS2NodeInterface.domainFromEnvironment());
    }
 
    /**
@@ -90,7 +90,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
                            String namespace)
          throws IOException
    {
-      this(pubSubImplementation, (ROS2Distro) null, threadFactory, name, namespace, ROS2NodeBasics.domainFromEnvironment());
+      this(pubSubImplementation, (ROS2Distro) null, threadFactory, name, namespace, ROS2NodeInterface.domainFromEnvironment());
    }
 
    /**
@@ -184,7 +184,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     */
    public RealtimeROS2Node(Domain domain, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
    {
-      this(domain, threadFactory, name, namespace, ROS2NodeBasics.domainFromEnvironment());
+      this(domain, threadFactory, name, namespace, ROS2NodeInterface.domainFromEnvironment());
    }
 
    /**
@@ -353,6 +353,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
       scheduler.shutdown();
       startupLock.lock();
       spinning = false;
+      startupLock.unlock();
    }
 
    /**

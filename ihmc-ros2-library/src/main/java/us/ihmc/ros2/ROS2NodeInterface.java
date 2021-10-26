@@ -2,6 +2,7 @@ package us.ihmc.ros2;
 
 import java.io.IOException;
 
+import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.attributes.PublisherAttributes;
 import us.ihmc.pubsub.attributes.SubscriberAttributes;
@@ -13,6 +14,35 @@ public interface ROS2NodeInterface
 {
    public static final int DEFAULT_QUEUE_SIZE = 10;
 
+   
+   /**
+    * Get the ROS domain ID from the environment
+    * @return ROS Domain ID
+    */
+   public static int domainFromEnvironment()
+   {
+      String rosDomainId = System.getenv("ROS_DOMAIN_ID");
+
+      int rosDomainIdAsInteger = 0; // default to 0
+
+      if (rosDomainId != null)
+      {
+         rosDomainId = rosDomainId.trim();
+         try
+         {
+            rosDomainIdAsInteger = Integer.valueOf(rosDomainId);
+         }
+         catch (NumberFormatException e)
+         {
+            LogTools.warn("Environment variable ROS_DOMAIN_ID cannot be parsed as an integer: {}", rosDomainId);
+         }
+      }
+
+      LogTools.info("ROS_DOMAIN_ID from environment is {} (fallback only; ignore if set manually)", rosDomainIdAsInteger);
+
+      return rosDomainIdAsInteger;
+   }
+   
    /**
     * Create a new ROS2 compatible publisher in this Node
     * <p>
