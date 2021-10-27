@@ -16,7 +16,6 @@
 package us.ihmc.ros2;
 
 import java.io.IOException;
-import java.net.InetAddress;
 
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
@@ -27,7 +26,6 @@ import us.ihmc.pubsub.attributes.PublishModeKind;
 import us.ihmc.pubsub.attributes.PublisherAttributes;
 import us.ihmc.pubsub.attributes.SubscriberAttributes;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
-import us.ihmc.pubsub.common.Time;
 import us.ihmc.pubsub.participant.Participant;
 import us.ihmc.rtps.impl.fastRTPS.FastRTPSPublisherAttributes;
 import us.ihmc.rtps.impl.fastRTPS.Time_t;
@@ -40,7 +38,7 @@ import us.ihmc.rtps.impl.fastRTPS.Time_t;
  */
 class ROS2NodeBasics implements ROS2NodeInterface
 {
-//   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
+   //   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
    private Domain domain;
    private Participant participant;
@@ -48,45 +46,17 @@ class ROS2NodeBasics implements ROS2NodeInterface
    private final String nodeName;
    private final String namespace;
 
-	/**
-	 * Create a default set of participant attributes
-	 * 
-	 * @param name
-	 * @param domainId
-	 * @param addressRestriction
-	 * @return
-	 */
-	public static ParticipantAttributes createParticipantAttributes(Domain domain, int domainId, InetAddress... addressRestriction) {
-		ParticipantAttributes participantAttributes = domain.createParticipantAttributes();
-		participantAttributes.setDomainId(domainId);
-		participantAttributes.setLeaseDuration(Time.Infinite);
-
-		if (addressRestriction != null )
-		{		   
-		   if(addressRestriction.length > 0)
-		   {
-		      if(addressRestriction[0] != null) // Check for null on the first element, to make sure passing in null works as usual -> no address restrictions
-		      {
-		         participantAttributes.bindToAddress(addressRestriction);
-		      }
-		      
-		   }
-		}
-		return participantAttributes;
-	}
 
    /**
     * Create a new ROS2 node.
     *
-    * @param Domain              DDS domain to use
-    * @param name               Name for the node
-    * @param namespace          namespace for the ros node i.e. DDS partition
-    * @param attributes          Participant attributes to configure the node
-    *
+    * @param Domain     DDS domain to use
+    * @param name       Name for the node
+    * @param namespace  namespace for the ros node i.e. DDS partition
+    * @param attributes Participant attributes to configure the node
     * @throws IOException if no participant can be made
     */
-   ROS2NodeBasics(Domain domain, String name, String namespace, ParticipantAttributes attributes)
-         throws IOException
+   ROS2NodeBasics(Domain domain, String name, String namespace, ParticipantAttributes attributes) throws IOException
    {
       this.domain = domain;
 
@@ -98,13 +68,12 @@ class ROS2NodeBasics implements ROS2NodeInterface
 
       attributes.setName(name);
       participant = domain.createParticipant(attributes);
-
    }
 
    /**
     * Create a new ROS2 compatible publisher in this Node
     *
-    * @param topicDataType The topic data type of the message
+    * @param topicDataType       The topic data type of the message
     * @param publisherAttributes Publisher attributes created with @see{createPublisherAttributes}
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
@@ -119,16 +88,15 @@ class ROS2NodeBasics implements ROS2NodeInterface
       }
 
       return new ROS2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
-
    }
 
-   
    /**
     * Create publisher attributes for a topic
-    * @param <T> Data type of the topic
+    * 
+    * @param <T>           Data type of the topic
     * @param topicDataType Data type serializer of the topic
-    * @param topicName Topic Name
-    * @param qosProfile Initial ROS2 QOS profile 
+    * @param topicName     Topic Name
+    * @param qosProfile    Initial ROS2 QOS profile
     * @return PublisherAttributes for createPublisher
     */
    @Override
@@ -139,14 +107,14 @@ class ROS2NodeBasics implements ROS2NodeInterface
       publisherAttributes.getTopic().setTopicDataType(topicDataType.getName());
 
       publisherAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
-      
+
       if (publisherAttributes instanceof FastRTPSPublisherAttributes)
       {
          FastRTPSPublisherAttributes fastRTPSPublisherAttributes = (FastRTPSPublisherAttributes) publisherAttributes;
          Time_t heartbeatPeriod = new Time_t();
          heartbeatPeriod.setSeconds(0);
          // based on C_FRACTIONS_PER_SEC = 4294967296ULL, set the number of fractions to be approx 100ms
-         long fraction = (long)(0.001 * 4294967296.0);
+         long fraction = (long) (0.001 * 4294967296.0);
          LogTools.debug("Fraction: {}", fraction);
          heartbeatPeriod.setFraction(fraction);
          fastRTPSPublisherAttributes.getTimes().setHeartbeatPeriod(heartbeatPeriod);
@@ -165,11 +133,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(publisherAttributes,
-                                                             namespace,
-                                                             nodeName,
-                                                             topicName,
-                                                             qosProfile.isAvoidRosNamespaceConventions());
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
@@ -187,18 +151,9 @@ class ROS2NodeBasics implements ROS2NodeInterface
       ROS2Subscription<T> subscriber = createSubscription(topicDataType, listener, subscriberAttributes);
       return new QueuedROS2Subscription<T>(subscriber, listener);
    }
-   
-   
+
    /**
-    * Create subscriber attributes compatible with the desired topic
-    * 
-    * This allows advanced control over the DDS layer
-    * 
-    * @param <T> Type of data
-    * @param topicName Name of the topic
-    * @param topicDataType Data type class
-    * @param qosProfile Default ROS2 profile for setup
-    * @return A subscriber profile for this topic
+    * {@inheritDoc}
     */
    @Override
    public <T> SubscriberAttributes createSubscriberAttributes(String topicName, TopicDataType<T> topicDataType, ROS2QosProfile qosProfile)
@@ -222,28 +177,18 @@ class ROS2NodeBasics implements ROS2NodeInterface
       subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(subscriberAttributes,
-                                                             namespace,
-                                                             nodeName,
-                                                             topicName,
-                                                             qosProfile.isAvoidRosNamespaceConventions());
-      
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
+
       return subscriberAttributes;
-
-
    }
-   
+
    /**
-    * Create a new ROS2 compatible subscription.
-    *
-    * @param topicDataType The topic data type of the message
-    * @param topicName     Name for the topic
-    * @param SubscriberAttributes  Attributes for this topic, created using @see{createSubscriberAttributes}
-    * @throws IOException if no subscriber can be made
+    * {@inheritDoc}
     */
    @Override
    @SuppressWarnings("unchecked")
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> subscriberListener, SubscriberAttributes subscriberAttributes)
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> subscriberListener,
+                                                     SubscriberAttributes subscriberAttributes)
          throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());

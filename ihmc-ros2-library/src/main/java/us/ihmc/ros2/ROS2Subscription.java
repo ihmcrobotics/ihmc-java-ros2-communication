@@ -18,25 +18,23 @@ package us.ihmc.ros2;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.subscriber.Subscriber;
 
-
 /**
  * Simple ROS2 compatible subscription
  * 
  * @author Jesper Smith
- *
  * @param <T> Data type of this subscriber
  */
 public class ROS2Subscription<T>
 {
    private final Domain domain;
    private final Subscriber<T> subscriber;
-   
+
    ROS2Subscription(Domain domain, Subscriber<T> subscriber)
    {
       this.domain = domain;
       this.subscriber = subscriber;
    }
-   
+
    /**
     * Remove this subscription from the domain
     */

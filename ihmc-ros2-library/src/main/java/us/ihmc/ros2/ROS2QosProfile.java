@@ -19,18 +19,13 @@ import us.ihmc.pubsub.attributes.HistoryQosPolicy.HistoryQosPolicyKind;
 import us.ihmc.pubsub.attributes.ReliabilityKind;
 
 /**
- * ROS2 QoS profile settings
- * 
- * Provides a quick way to set the ROS2 QoS settings. Provided options are
- * 
- * - History KEEP_LAST or KEEP_ALL (default KEEP_LAST)
- * - Size default history size (default 1)
- * - Reliablity RELIABLE or BEST EFFORT (default RELIABLE)
- * - Durability (default VOLATILE)
- * - avoidRosNamespaceConventions Use the Node name directly for communication with pure RTPS/DDS nodes
+ * ROS2 QoS profile settings Provides a quick way to set the ROS2 QoS settings. Provided options are
+ * - History KEEP_LAST or KEEP_ALL (default KEEP_LAST) - Size default history size (default 1) -
+ * Reliablity RELIABLE or BEST EFFORT (default RELIABLE) - Durability (default VOLATILE) -
+ * avoidRosNamespaceConventions Use the Node name directly for communication with pure RTPS/DDS
+ * nodes
  * 
  * @author Jesper Smith
- *
  */
 public class ROS2QosProfile
 {
@@ -38,18 +33,17 @@ public class ROS2QosProfile
    {
       return new ROS2QosProfile();
    }
-   
+
    public static final ROS2QosProfile KEEP_HISTORY(int depth)
    {
       return new ROS2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, depth, ReliabilityKind.RELIABLE, RosDurability.TRANSIENT_LOCAL, false);
    }
-   
+
    public static final ROS2QosProfile BEST_EFFORT()
    {
       return new ROS2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, 1, ReliabilityKind.BEST_EFFORT, RosDurability.VOLATILE, false);
    }
-   
-   
+
    public enum RosDurability
    {
       VOLATILE, TRANSIENT_LOCAL
@@ -60,13 +54,12 @@ public class ROS2QosProfile
    private ReliabilityKind reliability = ReliabilityKind.RELIABLE;
    private RosDurability durability = RosDurability.VOLATILE;
    private boolean avoidRosNamespaceConventions = false;
-   
+
    public ROS2QosProfile()
    {
-      
+
    }
-   
-   
+
    public ROS2QosProfile(HistoryQosPolicyKind history, int depth, ReliabilityKind reliability, RosDurability durability, boolean avoidRosNamespaceConventions)
    {
       this();
@@ -77,9 +70,7 @@ public class ROS2QosProfile
       this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
    }
 
-
    /**
-    * 
     * @return the History QoS Policy
     */
    public HistoryQosPolicyKind getHistory()
@@ -88,12 +79,9 @@ public class ROS2QosProfile
    }
 
    /**
-    * Set the History QoS Policy
-    * 
-    * - KEEP_LAST: only store up to N samples, configurable via the queue depth option.
-    * - KEEP_ALL: store all samples, subject to the configured resource limits of the DDS vendor.
-    * 
-    * default: KEEP_LAST
+    * Set the History QoS Policy - KEEP_LAST: only store up to N samples, configurable via the queue
+    * depth option. - KEEP_ALL: store all samples, subject to the configured resource limits of the DDS
+    * vendor. default: KEEP_LAST
     * 
     * @param history
     */
@@ -103,7 +91,6 @@ public class ROS2QosProfile
    }
 
    /**
-    * 
     * @return the history queue depth
     */
    public int getSize()
@@ -112,11 +99,8 @@ public class ROS2QosProfile
    }
 
    /**
-    * Set the history queue depth
-    * 
-    * Increasing this number will allocate memory for every message in the queue
-    * 
-    * default: 1
+    * Set the history queue depth Increasing this number will allocate memory for every message in the
+    * queue default: 1
     * 
     * @param depth
     */
@@ -126,7 +110,6 @@ public class ROS2QosProfile
    }
 
    /**
-    * 
     * @return reliability kind
     */
    public ReliabilityKind getReliability()
@@ -135,10 +118,8 @@ public class ROS2QosProfile
    }
 
    /**
-    * Set reliability qos policy
-    * 
-    * BEST_EFFORT: attempt to deliver samples, but may lose them if the network is not robust.
-    * RELIABLE: guarantee that samples are delivered, may retry multiple times.
+    * Set reliability qos policy BEST_EFFORT: attempt to deliver samples, but may lose them if the
+    * network is not robust. RELIABLE: guarantee that samples are delivered, may retry multiple times.
     * 
     * @param reliability
     */
@@ -148,7 +129,6 @@ public class ROS2QosProfile
    }
 
    /**
-    * 
     * @return Durability qos policy
     */
    public RosDurability getDurability()
@@ -157,11 +137,9 @@ public class ROS2QosProfile
    }
 
    /**
-    * Set durability qos policy
-    * 
-    * - TRANSIENT_LOCAL: only applies to DataWriters. DataWriter becomes responsible of persisting samples until a corresponding DataReader becomes available.
-    * - VOLATILE: no attempt is made to persist samples.
-
+    * Set durability qos policy - TRANSIENT_LOCAL: only applies to DataWriters. DataWriter becomes
+    * responsible of persisting samples until a corresponding DataReader becomes available. - VOLATILE:
+    * no attempt is made to persist samples.
     * 
     * @param durability
     */
@@ -171,7 +149,6 @@ public class ROS2QosProfile
    }
 
    /**
-    * 
     * @return true if no Ros Namespace mangling should be done
     */
    public boolean isAvoidRosNamespaceConventions()
@@ -180,9 +157,8 @@ public class ROS2QosProfile
    }
 
    /**
-    * Set to true to use the Node namespace as partition and the topic name as is
-    * 
-    * This is for interacting with existing RTPS/DDS nodes
+    * Set to true to use the Node namespace as partition and the topic name as is This is for
+    * interacting with existing RTPS/DDS nodes
     * 
     * @param avoidRosNamespaceConventions
     */
@@ -190,7 +166,5 @@ public class ROS2QosProfile
    {
       this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
    }
-   
-   
 
 }

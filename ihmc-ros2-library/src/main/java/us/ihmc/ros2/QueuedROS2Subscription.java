@@ -15,7 +15,6 @@
  */
 package us.ihmc.ros2;
 
-
 /**
  * Incoming messages are stored in a queue and can be polled in a non-blocking manner.
  *
@@ -39,29 +38,24 @@ public class QueuedROS2Subscription<T> extends ROS2Subscription<T> implements Re
    }
 
    /**
-    * Get the next message in the queue.
+    * Get the next message in the queue. After calling this function the message is removed from the
+    * queue. This function does not block and is realtime-safe.
     * 
-    * After calling this function the message is removed from the queue. 
-    * 
-    * This function does not block and is realtime-safe.
-    * 
-    * @param data Object to store the data in if data is available. If no data is available this object does not get modified
+    * @param data Object to store the data in if data is available. If no data is available this object
+    *             does not get modified
     * @return True if a new message was available, false otherwise
     */
    public boolean poll(T data)
    {
       return listener.poll(data);
    }
-   
-   
+
    /**
-    * Get the latest message in the queue and discard all others.
+    * Get the latest message in the queue and discard all others. After calling this function the queue
+    * is empty. This function does not block and is realtime-safe.
     * 
-    * After calling this function the queue is empty.
-    * 
-    * This function does not block and is realtime-safe.
-    * 
-    * @param data Object to store the data in if data is available. If no data is available this object does not get modified
+    * @param data Object to store the data in if data is available. If no data is available this object
+    *             does not get modified
     * @return True if a new message was available, false otherwise
     */
    public boolean flushAndGetLatest(T data)

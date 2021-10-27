@@ -23,9 +23,7 @@ import us.ihmc.pubsub.publisher.Publisher;
 /**
  * Simple ROS2 publisher
  * 
- * 
  * @author Jesper Smith
- *
  * @param <T> The data type to send
  */
 public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
@@ -64,7 +62,7 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
       {
          return false;
       }
-      
+
    }
 
    /**
@@ -75,8 +73,7 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
    {
       domain.removePublisher(publisher);
    }
-   
-  
+
    /**
     * Helper function to get the raw publisher to create a realtime publisher
     * 
@@ -86,9 +83,10 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
    {
       return publisher;
    }
-   
+
    /**
     * Helper function to get the domain to create a realtime publisher
+    * 
     * @return
     */
    Domain getDomain()

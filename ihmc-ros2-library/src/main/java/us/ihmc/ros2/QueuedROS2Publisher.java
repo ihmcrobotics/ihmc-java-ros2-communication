@@ -15,38 +15,33 @@
  */
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
 import us.ihmc.concurrent.ConcurrentRingBuffer;
 import us.ihmc.pubsub.TopicDataType;
 
 /**
- * Publisher Node safe to use in a realtime thread
- * 
- * This publisher uses a queue to buffer messages till the next spin. Lockless synchronization is used for the queue.
+ * Publisher Node safe to use in a realtime thread This publisher uses a queue to buffer messages
+ * till the next spin. Lockless synchronization is used for the queue.
  * 
  * @author Jesper Smith
- *
  * @param <T> Data type to publish
  */
 public class QueuedROS2Publisher<T> extends ROS2Publisher<T>
 {
    private final TopicDataType<T> topicDataType;
-   
+
    private final ConcurrentRingBuffer<T> concurrentRingBuffer;
-   
+
    QueuedROS2Publisher(TopicDataType<T> topicDataType, ROS2Publisher<T> rosPublisher, int queueDepth)
    {
       super(rosPublisher.getDomain(), rosPublisher.getPublisher());
-      
+
       this.topicDataType = topicDataType.newInstance();
       concurrentRingBuffer = new ConcurrentRingBuffer<>(topicDataType::createData, queueDepth);
    }
-   
+
    /**
-    * Put new data in the queue to be published on the next spin
-    * 
-    * This function does not block and is realtime-safe.
+    * Put new data in the queue to be published on the next spin This function does not block and is
+    * realtime-safe.
     * 
     * @param data Data to publish
     * @return true if there was space in the queue, false if no space is left.
@@ -55,7 +50,7 @@ public class QueuedROS2Publisher<T> extends ROS2Publisher<T>
    public boolean publish(T data)
    {
       T next = concurrentRingBuffer.next();
-      if(next != null)
+      if (next != null)
       {
          topicDataType.copy(data, next);
          concurrentRingBuffer.commit();
@@ -66,13 +61,13 @@ public class QueuedROS2Publisher<T> extends ROS2Publisher<T>
          return false;
       }
    }
-   
+
    void spin()
    {
-      if(concurrentRingBuffer.poll())
+      if (concurrentRingBuffer.poll())
       {
          T next;
-         while((next = concurrentRingBuffer.read()) != null)
+         while ((next = concurrentRingBuffer.read()) != null)
          {
             super.publish(next);
          }

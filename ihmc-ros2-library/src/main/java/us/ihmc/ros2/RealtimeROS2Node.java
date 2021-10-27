@@ -207,7 +207,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
                            InetAddress... addressRestriction)
          throws IOException
    {
-      this(domain, threadFactory, name, namespace, ROS2NodeBasics.createParticipantAttributes(domain, domainId, addressRestriction));
+      this(domain, threadFactory, name, namespace, ROS2NodeInterface.createParticipantAttributes(domain, domainId, addressRestriction));
    }
 
    /**
@@ -265,7 +265,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    /**
     * Create a new realtime publisher. This publisher will publish data in a separate thread and will
     * never block the calling thread. No memory will be allocated when publishing. The queueSize should
-    * weight memory requirements of the message vs the change to lose outgoing messages because the
+    * weigh memory requirements of the message vs the chance to lose outgoing messages because the
     * queue is full.
     * 
     * @param topicDataType Data type to publish
@@ -275,7 +275,8 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     * @return A realtime-safe ROS2 publisher
     * @throws IOException
     */
-   public <T> QueuedROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize) throws IOException
+   public <T> QueuedROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
+         throws IOException
    {
       return createPublisher(topicDataType, createPublisherAttributes(topicDataType, topicName, qosProfile), queueSize);
    }
@@ -283,7 +284,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    /**
     * Create a new realtime publisher. This publisher will publish data in a separate thread and will
     * never block the calling thread. No memory will be allocated when publishing. The queueSize should
-    * weight memory requirements of the message vs the change to lose outgoing messages because the
+    * weigh memory requirements of the message vs the chance to lose outgoing messages because the
     * queue is full.
     * 
     * @param topicDataType       Data type to publish
@@ -389,7 +390,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
                                                      SubscriberAttributes subscriberAttributes)
          throws IOException
    {
-      return node.createSubscription(topicDataType, subscriberListener, getName());
+      return node.createSubscription(topicDataType, subscriberListener, subscriberAttributes);
    }
 
    @Override
@@ -413,7 +414,6 @@ public class RealtimeROS2Node implements ROS2NodeInterface
       createSubscription(topicDataType, newMessageListener, topicName);
    }
 
-   
    /**
     * @see{createSubscription(topicDataType, newMessageListener, topicName, qosProfile)
     */

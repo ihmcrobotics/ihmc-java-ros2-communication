@@ -14,5 +14,5 @@ public interface ROS2PublisherBasics<T> extends RealtimeROS2Publisher<T>
     * Remove this publisher from the ROS domain
     */
    void remove();
-   
+
 }

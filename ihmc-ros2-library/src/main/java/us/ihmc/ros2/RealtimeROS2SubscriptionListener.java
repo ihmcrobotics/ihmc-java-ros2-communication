@@ -21,12 +21,10 @@ import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.subscriber.Subscriber;
 
 /**
- * Helper listener for the Realtime subscription.
- * 
- * This class moves all incoming messages in the queue if there is space available.
+ * Helper listener for the Realtime subscription. This class moves all incoming messages in the
+ * queue if there is space available.
  * 
  * @author Jesper Smith
- *
  * @param <T>
  */
 class RealtimeROS2SubscriptionListener<T> implements NewMessageListener<T>
@@ -44,30 +42,28 @@ class RealtimeROS2SubscriptionListener<T> implements NewMessageListener<T>
       this.topicDataTypeForPoll = topicDataType.newInstance();
    }
 
-   
    boolean poll(T data)
    {
-     if(messageQueue.poll()) 
-     {
-        T next = messageQueue.read();
-        topicDataTypeForPoll.copy(next, data);
-        messageQueue.flush();
-        return true;
-     }
-     else
-     {
-        return false;
-     }
+      if (messageQueue.poll())
+      {
+         T next = messageQueue.read();
+         topicDataTypeForPoll.copy(next, data);
+         messageQueue.flush();
+         return true;
+      }
+      else
+      {
+         return false;
+      }
    }
-   
 
    boolean flushAndGetLatest(T data)
    {
-      if(messageQueue.poll())
+      if (messageQueue.poll())
       {
          T latest = null;
          T next = null;
-         while((next = messageQueue.read()) != null)
+         while ((next = messageQueue.read()) != null)
          {
             latest = next;
          }
@@ -80,7 +76,7 @@ class RealtimeROS2SubscriptionListener<T> implements NewMessageListener<T>
          return false;
       }
    }
-   
+
    @Override
    public void onNewDataMessage(Subscriber<T> subscriber)
    {
@@ -100,6 +96,5 @@ class RealtimeROS2SubscriptionListener<T> implements NewMessageListener<T>
    {
 
    }
-
 
 }
