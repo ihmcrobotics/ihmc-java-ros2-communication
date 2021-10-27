@@ -39,7 +39,7 @@ import us.ihmc.util.PeriodicThreadSchedulerFactory;
  */
 public class RealtimeROS2Node implements ROS2NodeInterface
 {
-   public static int THREAD_PERIOD_MICROSECONDS = 1000;
+   public static final int DEFAULT_THREAD_PERIOD_MICROSECONDS = 1000;
 
    private final ROS2NodeBasics node;
 
@@ -48,6 +48,9 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    private final ReentrantLock startupLock = new ReentrantLock();
    private final PeriodicThreadScheduler scheduler;
    private boolean spinning = false;
+   
+   private TimeUnit threadPeriodUnit = TimeUnit.MICROSECONDS;
+   private long threadPeriod = DEFAULT_THREAD_PERIOD_MICROSECONDS;
 
    /**
     * Create a new realtime node
@@ -245,6 +248,26 @@ public class RealtimeROS2Node implements ROS2NodeInterface
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + this.node.getName() + "/" + this.node.getNamespace());
    }
 
+   public void setThreadPeriod(long period, TimeUnit unit)
+   {
+      startupLock.lock();
+      try
+      {
+         if(spinning)
+         {
+            throw new RuntimeException("Cannot set the thread period while the node is spinning.");
+         }
+         
+         this.threadPeriod = period;
+         this.threadPeriodUnit = unit;
+      }
+      finally
+      {
+         startupLock.unlock();
+      }
+   }
+   
+   
    /**
     * Create a new realtime publisher with default queue depth. This publisher will publish data in a
     * separate thread and will never block the calling thread. No memory will be allocated when
@@ -334,7 +357,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
          throw new RuntimeException("This RealtimeROS2Node is already spinning");
       }
       spinning = true;
-      scheduler.schedule(this::realtimeNodeThread, THREAD_PERIOD_MICROSECONDS, TimeUnit.MICROSECONDS);
+      scheduler.schedule(this::realtimeNodeThread, threadPeriod, threadPeriodUnit);
       startupLock.unlock();
    }
 
