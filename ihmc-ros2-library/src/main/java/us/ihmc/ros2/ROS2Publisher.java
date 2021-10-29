@@ -23,9 +23,7 @@ import us.ihmc.pubsub.publisher.Publisher;
 /**
  * Simple ROS2 publisher
  * 
- * 
  * @author Jesper Smith
- *
  * @param <T> The data type to send
  */
 public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
@@ -46,11 +44,25 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
     * @throws IOException If the data cannot be serialized or another error occurs
     */
    @Override
-   public boolean publish(T data) throws IOException
+   public boolean publish(T data)
    {
-      if (publisher.isAvailable())
-         publisher.write(data);
-      return true;
+      try
+      {
+         if (publisher.isAvailable())
+         {
+            publisher.write(data);
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+      catch (IOException e)
+      {
+         return false;
+      }
+
    }
 
    /**
@@ -61,4 +73,25 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
    {
       domain.removePublisher(publisher);
    }
+
+   /**
+    * Helper function to get the raw publisher to create a realtime publisher
+    * 
+    * @return Raw publisher
+    */
+   Publisher getPublisher()
+   {
+      return publisher;
+   }
+
+   /**
+    * Helper function to get the domain to create a realtime publisher
+    * 
+    * @return
+    */
+   Domain getDomain()
+   {
+      return domain;
+   }
+
 }

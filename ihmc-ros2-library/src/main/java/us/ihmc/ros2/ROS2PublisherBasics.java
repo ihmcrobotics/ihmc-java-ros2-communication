@@ -1,19 +1,18 @@
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
-public interface ROS2PublisherBasics<T>
+public interface ROS2PublisherBasics<T> extends RealtimeROS2Publisher<T>
 {
    /**
     * Publish data to the ROS2 domain
     *
     * @param data Data to publisher
-    * @throws IOException If the data cannot be serialized or another error occurs
+    * @return true if succesful, false on error
     */
-   boolean publish(T data) throws IOException;
+   boolean publish(T data);
 
    /**
     * Remove this publisher from the ROS domain
     */
    void remove();
+
 }

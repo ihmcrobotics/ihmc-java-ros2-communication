@@ -7,7 +7,8 @@ import us.ihmc.pubsub.subscriber.Subscriber;
 public interface SubscriptionMatchedListener<T>
 {
    /**
-    * Virtual method to be called when the subscriber is matched with a new Writer (or unmatched); i.e., when a writer publishing in the same topic is discovered
+    * Virtual method to be called when the subscriber is matched with a new Writer (or unmatched);
+    * i.e., when a writer publishing in the same topic is discovered
     *
     * @param subscriber
     * @param info

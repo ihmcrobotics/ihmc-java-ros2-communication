@@ -1,11 +1,11 @@
 package us.ihmc.ros2;
 
+import java.util.function.Consumer;
+
 import us.ihmc.commons.exception.DefaultExceptionHandler;
 import us.ihmc.commons.exception.ExceptionTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.subscriber.Subscriber;
-
-import java.util.function.Consumer;
 
 /**
  * Callback listener to non-null reception of a message on a ROS 2 topic.

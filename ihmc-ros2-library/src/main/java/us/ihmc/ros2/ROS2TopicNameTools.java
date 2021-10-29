@@ -117,8 +117,7 @@ public class ROS2TopicNameTools
       return stringBuilder.toString();
    }
 
-   /* package-private */ static void assignNameAndPartitionsToAttributes(ROS2Distro ros2Distro,
-                                                                         PublisherAttributes attributes,
+   /* package-private */ static void assignNameAndPartitionsToAttributes(PublisherAttributes attributes,
                                                                          String namespace,
                                                                          String nodeName,
                                                                          String topic,
@@ -132,22 +131,14 @@ public class ROS2TopicNameTools
             attributes.getQos().addPartition(namespace);
          }
       }
-      else if (ros2Distro == ROS2Distro.ARDENT)
-      {
-         String fullyQualifiedName = getFullyQualifiedName(namespace, nodeName, topic);
-         String[] fullyQualifiedNameArray = fullyQualifiedName.split("/");
-         attributes.getTopic().setTopicName(getDDSTopicName(fullyQualifiedNameArray));
-         attributes.getQos().addPartition(getDDSPartition(fullyQualifiedNameArray));
-      }
-      else if (ros2Distro == ROS2Distro.BOUNCY)
+      else
       {
          String fullyQualifiedName = getFullyQualifiedName(namespace, nodeName, topic);
          attributes.getTopic().setTopicName(fullyQualifiedName);
       }
    }
 
-   /* package-private */ static void assignNameAndPartitionsToAttributes(ROS2Distro ros2Distro,
-                                                                         SubscriberAttributes attributes,
+   /* package-private */ static void assignNameAndPartitionsToAttributes(SubscriberAttributes attributes,
                                                                          String namespace,
                                                                          String nodeName,
                                                                          String topic,
@@ -161,37 +152,11 @@ public class ROS2TopicNameTools
             attributes.getQos().addPartition(namespace);
          }
       }
-      else if (ros2Distro == ROS2Distro.ARDENT)
-      {
-         String fullyQualifiedName = getFullyQualifiedName(namespace, nodeName, topic);
-         String[] fullyQualifiedNameArray = fullyQualifiedName.split("/");
-         attributes.getTopic().setTopicName(getDDSTopicName(fullyQualifiedNameArray));
-         attributes.getQos().addPartition(getDDSPartition(fullyQualifiedNameArray));
-      }
-      else if (ros2Distro == ROS2Distro.BOUNCY)
+      else 
       {
          String fullyQualifiedName = getFullyQualifiedName(namespace, nodeName, topic);
          attributes.getTopic().setTopicName(fullyQualifiedName);
       }
-   }
-
-   private static String getDDSTopicName(String[] fullyQualifiedName)
-   {
-      return fullyQualifiedName[fullyQualifiedName.length - 1];
-   }
-
-   private static String getDDSPartition(String[] fullyQualifiedName)
-   {
-      StringBuilder partition = new StringBuilder();
-      for (int i = 0; i < fullyQualifiedName.length - 1; i++)
-      {
-         partition.append(fullyQualifiedName[i]);
-         if (i < fullyQualifiedName.length - 2)
-         {
-            partition.append('/');
-         }
-      }
-      return partition.toString();
    }
 
    private static String getFullyQualifiedName(String namespace, String nodeName, String topic)

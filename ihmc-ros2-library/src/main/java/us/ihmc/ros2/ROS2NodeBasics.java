@@ -16,20 +16,17 @@
 package us.ihmc.ros2;
 
 import java.io.IOException;
-import java.net.InetAddress;
 
-import us.ihmc.commons.thread.ThreadTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
-import us.ihmc.pubsub.DomainFactory;
-import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.*;
+import us.ihmc.pubsub.attributes.DurabilityKind;
+import us.ihmc.pubsub.attributes.ParticipantAttributes;
+import us.ihmc.pubsub.attributes.PublishModeKind;
+import us.ihmc.pubsub.attributes.PublisherAttributes;
+import us.ihmc.pubsub.attributes.SubscriberAttributes;
 import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
-import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.participant.Participant;
-import us.ihmc.pubsub.subscriber.Subscriber;
-import us.ihmc.pubsub.subscriber.SubscriberListener;
 import us.ihmc.rtps.impl.fastRTPS.FastRTPSPublisherAttributes;
 import us.ihmc.rtps.impl.fastRTPS.Time_t;
 
@@ -41,9 +38,7 @@ import us.ihmc.rtps.impl.fastRTPS.Time_t;
  */
 class ROS2NodeBasics implements ROS2NodeInterface
 {
-   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
-
-   private final ROS2Distro ros2Distro;
+   //   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
 
    private Domain domain;
    private Participant participant;
@@ -51,22 +46,19 @@ class ROS2NodeBasics implements ROS2NodeInterface
    private final String nodeName;
    private final String namespace;
 
+
    /**
     * Create a new ROS2 node.
     *
-    * @param name               Name for the node
-    * @param namespace          namespace for the ros node i.e. DDS partition
-    * @param domainId           Domain ID for the ros node
-    * @param addressRestriction Restrict network traffic to the given address. When provided, it should
-    *                           describe one of the addresses of the computer hosting this node.
-    *                           Optional, ignored when {@code null}.
+    * @param Domain     DDS domain to use
+    * @param name       Name for the node
+    * @param namespace  namespace for the ros node i.e. DDS partition
+    * @param attributes Participant attributes to configure the node
     * @throws IOException if no participant can be made
     */
-   ROS2NodeBasics(PubSubImplementation pubSubImplementation, ROS2Distro ros2Distro, String name, String namespace, int domainId, InetAddress addressRestriction)
-         throws IOException
+   ROS2NodeBasics(Domain domain, String name, String namespace, ParticipantAttributes attributes) throws IOException
    {
-      this.domain = DomainFactory.getDomain(pubSubImplementation);
-      this.ros2Distro = ros2Distro;
+      this.domain = domain;
 
       ROS2TopicNameTools.checkNodename(name);
       ROS2TopicNameTools.checkNamespace(namespace);
@@ -74,46 +66,20 @@ class ROS2NodeBasics implements ROS2NodeInterface
       this.nodeName = name;
       this.namespace = namespace;
 
-      ParticipantAttributes attr = domain.createParticipantAttributes(domainId, name);
-      if (addressRestriction != null)
-         attr.bindToAddress(addressRestriction);
-      participant = domain.createParticipant(attr);
-
-      Runtime.getRuntime().addShutdownHook(new Thread(() ->
-      {
-         LogTools.info("Shutting down ROS2 node " + name);
-         destroy();
-         // It appears that without a small sleep, the printout does not show up.
-         ThreadTools.sleep(10);
-      }, "IHMCROS2-ROS2NodeBasics-destroy"));
-   }
-
-   /**
-    * Create a new ROS2 compatible publisher in this Node This call makes a publisher with the default
-    * settings
-    *
-    * @param topicDataType The topic data type of the message
-    * @param topicName     Name for the topic
-    * @return A ROS publisher
-    * @throws IOException if no publisher can be made
-    */
-   @Override
-   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
-   {
-      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
+      attributes.setName(name);
+      participant = domain.createParticipant(attributes);
    }
 
    /**
     * Create a new ROS2 compatible publisher in this Node
     *
-    * @param topicDataType The topic data type of the message
-    * @param topicName     Name for the topic
-    * @param qosProfile    ROS Qos Profile
+    * @param topicDataType       The topic data type of the message
+    * @param publisherAttributes Publisher attributes created with @see{createPublisherAttributes}
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
     */
    @Override
-   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
+   public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
       if (registeredType == null)
@@ -121,19 +87,34 @@ class ROS2NodeBasics implements ROS2NodeInterface
          domain.registerType(participant, topicDataType);
       }
 
+      return new ROS2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
+   }
+
+   /**
+    * Create publisher attributes for a topic
+    * 
+    * @param <T>           Data type of the topic
+    * @param topicDataType Data type serializer of the topic
+    * @param topicName     Topic Name
+    * @param qosProfile    Initial ROS2 QOS profile
+    * @return PublisherAttributes for createPublisher
+    */
+   @Override
+   public <T> PublisherAttributes createPublisherAttributes(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile)
+   {
       PublisherAttributes publisherAttributes = domain.createPublisherAttributes();
       publisherAttributes.getTopic().setTopicKind(topicDataType.isGetKeyDefined() ? TopicKind.WITH_KEY : TopicKind.NO_KEY);
       publisherAttributes.getTopic().setTopicDataType(topicDataType.getName());
 
       publisherAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
-      
+
       if (publisherAttributes instanceof FastRTPSPublisherAttributes)
       {
          FastRTPSPublisherAttributes fastRTPSPublisherAttributes = (FastRTPSPublisherAttributes) publisherAttributes;
          Time_t heartbeatPeriod = new Time_t();
          heartbeatPeriod.setSeconds(0);
          // based on C_FRACTIONS_PER_SEC = 4294967296ULL, set the number of fractions to be approx 100ms
-         long fraction = (long)(0.001 * 4294967296.0);
+         long fraction = (long) (0.001 * 4294967296.0);
          LogTools.debug("Fraction: {}", fraction);
          heartbeatPeriod.setFraction(fraction);
          fastRTPSPublisherAttributes.getTimes().setHeartbeatPeriod(heartbeatPeriod);
@@ -152,121 +133,31 @@ class ROS2NodeBasics implements ROS2NodeInterface
       publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
-                                                             publisherAttributes,
-                                                             namespace,
-                                                             nodeName,
-                                                             topicName,
-                                                             qosProfile.isAvoidRosNamespaceConventions());
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
          publisherAttributes.getQos().setPublishMode(PublishModeKind.ASYNCHRONOUS_PUBLISH_MODE);
       }
-
-      return new ROS2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
-
+      return publisherAttributes;
    }
 
    /** {@inheritDoc} */
    @Override
-   public <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
+   public <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, SubscriberAttributes subscriberAttributes, int queueSize)
          throws IOException
    {
       RealtimeROS2SubscriptionListener<T> listener = new RealtimeROS2SubscriptionListener<>(topicDataType, queueSize);
-      ROS2Subscription<T> subscriber = createSubscription(topicDataType, listener, topicName, qosProfile);
+      ROS2Subscription<T> subscriber = createSubscription(topicDataType, listener, subscriberAttributes);
       return new QueuedROS2Subscription<T>(subscriber, listener);
    }
 
    /**
-    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
-    * default qos profile
-    *
-    * @param topicDataType      The topic data type of the message
-    * @param newMessageListener New message listener
-    * @param topicName          Name for the topic
-    * @return Ros Subscription
-    * @throws IOException if no subscriber can be made
+    * {@inheritDoc}
     */
    @Override
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
-         throws IOException
+   public <T> SubscriberAttributes createSubscriberAttributes(String topicName, TopicDataType<T> topicDataType, ROS2QosProfile qosProfile)
    {
-      return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.DEFAULT());
-   }
-
-   /**
-    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
-    * default qos profile
-    *
-    * @param topicDataType      The topic data type of the message
-    * @param newMessageListener New message listener
-    * @param topicName          Name for the topic
-    * @return Ros Subscription
-    * @throws IOException if no subscriber can be made
-    */
-   @Override
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName,
-                                                     ROS2QosProfile qosProfile)
-         throws IOException
-   {
-      return createSubscription(topicDataType, (SubscriberListener<T>) newMessageListener, topicName, qosProfile);
-   }
-
-   /**
-    * Create a new ROS2 compatible subscription. This call can be used to make a ROS2 topic with the
-    * default qos profile
-    *
-    * @param topicDataType               The topic data type of the message
-    * @param newMessageListener          New message listener
-    * @param subscriptionMatchedListener Subscription matched listener
-    * @param topicName                   Name for the topic
-    * @param qosProfile                  ROS Qos Profile
-    * @return Ros Subscription
-    * @throws IOException if no subscriber can be made
-    */
-   @Override
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener,
-                                                     SubscriptionMatchedListener<T> subscriptionMatchedListener, String topicName, ROS2QosProfile qosProfile)
-         throws IOException
-   {
-
-      return createSubscription(topicDataType, new SubscriberListener<T>()
-      {
-         @Override
-         public void onNewDataMessage(Subscriber<T> subscriber)
-         {
-            newMessageListener.onNewDataMessage(subscriber);
-         }
-
-         @Override
-         public void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info)
-         {
-            subscriptionMatchedListener.onSubscriptionMatched(subscriber, info);
-         }
-      }, topicName, qosProfile);
-   }
-
-   /**
-    * Create a new ROS2 compatible subscription.
-    *
-    * @param topicDataType The topic data type of the message
-    * @param topicName     Name for the topic
-    * @param qosProfile    ROS Qos Profile
-    * @return Ros Subscription
-    * @throws IOException if no subscriber can be made
-    */
-   @SuppressWarnings("unchecked")
-   private <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, SubscriberListener<T> subscriberListener, String topicName,
-                                                      ROS2QosProfile qosProfile)
-         throws IOException
-   {
-      TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
-      if (registeredType == null)
-      {
-         domain.registerType(participant, topicDataType);
-      }
-
       SubscriberAttributes subscriberAttributes = domain.createSubscriberAttributes();
       subscriberAttributes.getTopic().setTopicKind(topicDataType.isGetKeyDefined() ? TopicKind.WITH_KEY : TopicKind.NO_KEY);
       subscriberAttributes.getTopic().setTopicDataType(topicDataType.getName());
@@ -286,14 +177,27 @@ class ROS2NodeBasics implements ROS2NodeInterface
       subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
       subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
 
-      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(ros2Distro,
-                                                             subscriberAttributes,
-                                                             namespace,
-                                                             nodeName,
-                                                             topicName,
-                                                             qosProfile.isAvoidRosNamespaceConventions());
+      ROS2TopicNameTools.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
-      return new ROS2Subscription<>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
+      return subscriberAttributes;
+   }
+
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   @SuppressWarnings("unchecked")
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> subscriberListener,
+                                                     SubscriberAttributes subscriberAttributes)
+         throws IOException
+   {
+      TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
+      if (registeredType == null)
+      {
+         domain.registerType(participant, topicDataType);
+      }
+
+      return new ROS2Subscription<T>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }
 
    /**
@@ -329,6 +233,8 @@ class ROS2NodeBasics implements ROS2NodeInterface
    {
       if (domain != null)
       {
+         LogTools.info("Shutting down ROS2 node " + nodeName);
+
          try
          {
             domain.removeParticipant(participant);
@@ -346,27 +252,4 @@ class ROS2NodeBasics implements ROS2NodeInterface
       participant = null;
    }
 
-   public static int domainFromEnvironment()
-   {
-      String rosDomainId = System.getenv("ROS_DOMAIN_ID");
-
-      int rosDomainIdAsInteger = 0; // default to 0
-
-      if (rosDomainId != null)
-      {
-         rosDomainId = rosDomainId.trim();
-         try
-         {
-            rosDomainIdAsInteger = Integer.valueOf(rosDomainId);
-         }
-         catch (NumberFormatException e)
-         {
-            LogTools.warn("Environment variable ROS_DOMAIN_ID cannot be parsed as an integer: {}", rosDomainId);
-         }
-      }
-
-      LogTools.info("ROS_DOMAIN_ID from environment is {} (fallback only; ignore if set manually)", rosDomainIdAsInteger);
-
-      return rosDomainIdAsInteger;
-   }
 }
