@@ -8,7 +8,7 @@ plugins {
    id("us.ihmc.ihmc-build")
    id("us.ihmc.ihmc-ci") version "7.4"
    id("us.ihmc.ihmc-cd") version "1.21"
-   id("org.ajoberstar.grgit") version "4.1.0"
+   id("org.ajoberstar.grgit") version "4.1.1"
 }
 
 val rclInterfacesPath = "src/main/vendor/rcl_interfaces"
