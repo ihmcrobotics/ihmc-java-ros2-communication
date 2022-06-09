@@ -17,18 +17,17 @@ package us.ihmc.ros2;
 
 import java.io.IOException;
 
+import com.eprosima.xmlschemas.fastrtps_profiles.PublishModeQosKindType;
+import com.eprosima.xmlschemas.fastrtps_profiles.TopicKindType;
+
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.DurabilityKind;
 import us.ihmc.pubsub.attributes.ParticipantAttributes;
-import us.ihmc.pubsub.attributes.PublishModeKind;
 import us.ihmc.pubsub.attributes.PublisherAttributes;
 import us.ihmc.pubsub.attributes.SubscriberAttributes;
-import us.ihmc.pubsub.attributes.TopicAttributes.TopicKind;
+import us.ihmc.pubsub.common.Time;
 import us.ihmc.pubsub.participant.Participant;
-import us.ihmc.rtps.impl.fastRTPS.FastRTPSPublisherAttributes;
-import us.ihmc.rtps.impl.fastRTPS.Time_t;
 
 /**
  * Internal class to share implementation between intra and inter process ROS2 nodes.
@@ -66,7 +65,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
       this.nodeName = name;
       this.namespace = namespace;
 
-      attributes.setName(name);
+      attributes.name(name);
       participant = domain.createParticipant(attributes);
    }
 
@@ -102,42 +101,21 @@ class ROS2NodeBasics implements ROS2NodeInterface
    @Override
    public <T> PublisherAttributes createPublisherAttributes(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile)
    {
-      PublisherAttributes publisherAttributes = domain.createPublisherAttributes();
-      publisherAttributes.getTopic().setTopicKind(topicDataType.isGetKeyDefined() ? TopicKind.WITH_KEY : TopicKind.NO_KEY);
-      publisherAttributes.getTopic().setTopicDataType(topicDataType.getName());
-
-      publisherAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
-
-      if (publisherAttributes instanceof FastRTPSPublisherAttributes)
-      {
-         FastRTPSPublisherAttributes fastRTPSPublisherAttributes = (FastRTPSPublisherAttributes) publisherAttributes;
-         Time_t heartbeatPeriod = new Time_t();
-         heartbeatPeriod.setSeconds(0);
-         // based on C_FRACTIONS_PER_SEC = 4294967296ULL, set the number of fractions to be approx 100ms
-         long fraction = (long) (0.001 * 4294967296.0);
-         LogTools.debug("Fraction: {}", fraction);
-         heartbeatPeriod.setFraction(fraction);
-         fastRTPSPublisherAttributes.getTimes().setHeartbeatPeriod(heartbeatPeriod);
-      }
-
-      switch (qosProfile.getDurability())
-      {
-         case TRANSIENT_LOCAL:
-            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
-            break;
-         case VOLATILE:
-            publisherAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
-            break;
-      }
-
-      publisherAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
-      publisherAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
-
+      
+      PublisherAttributes publisherAttributes = PublisherAttributes.create()
+            .topicKind(topicDataType.isGetKeyDefined() ? TopicKindType.WITH_KEY : TopicKindType.NO_KEY)
+            .topicDataType(topicDataType)
+            .reliabilityKind(qosProfile.getReliability())
+            .heartBeatPeriod(new Time(0, (long) (0.1 * 1e9))) // Approximately 100ms
+            .durabilityKind(qosProfile.getDurability().toKind())
+            .historyDepth(qosProfile.getSize())
+            .historyQosPolicyKind(qosProfile.getHistory());
+    
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       if (topicDataType.getTypeSize() > 65000)
       {
-         publisherAttributes.getQos().setPublishMode(PublishModeKind.ASYNCHRONOUS_PUBLISH_MODE);
+         publisherAttributes.publishModeKind(PublishModeQosKindType.ASYNCHRONOUS);
       }
       return publisherAttributes;
    }
@@ -158,25 +136,16 @@ class ROS2NodeBasics implements ROS2NodeInterface
    @Override
    public <T> SubscriberAttributes createSubscriberAttributes(String topicName, TopicDataType<T> topicDataType, ROS2QosProfile qosProfile)
    {
-      SubscriberAttributes subscriberAttributes = domain.createSubscriberAttributes();
-      subscriberAttributes.getTopic().setTopicKind(topicDataType.isGetKeyDefined() ? TopicKind.WITH_KEY : TopicKind.NO_KEY);
-      subscriberAttributes.getTopic().setTopicDataType(topicDataType.getName());
-      subscriberAttributes.getTopic().setTopicName(topicName);
-      subscriberAttributes.getQos().setReliabilityKind(qosProfile.getReliability());
-
-      switch (qosProfile.getDurability())
-      {
-         case TRANSIENT_LOCAL:
-            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.TRANSIENT_LOCAL_DURABILITY_QOS);
-            break;
-         case VOLATILE:
-            subscriberAttributes.getQos().setDurabilityKind(DurabilityKind.VOLATILE_DURABILITY_QOS);
-            break;
-      }
-
-      subscriberAttributes.getTopic().getHistoryQos().setDepth(qosProfile.getSize());
-      subscriberAttributes.getTopic().getHistoryQos().setKind(qosProfile.getHistory());
-
+      SubscriberAttributes subscriberAttributes = SubscriberAttributes.create()
+            .topicKind(topicDataType.isGetKeyDefined() ? TopicKindType.WITH_KEY : TopicKindType.NO_KEY)
+            .topicDataType(topicDataType)
+            .topicName(topicName)
+            .reliabilityKind(qosProfile.getReliability())
+            .durabilityKind(qosProfile.getDurability().toKind())
+            .historyDepth(qosProfile.getSize())
+            .historyQosPolicyKind(qosProfile.getHistory());
+      
+      
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return subscriberAttributes;

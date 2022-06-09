@@ -6,6 +6,7 @@ plugins {
 
 ihmc {
    loadProductProperties("../group.gradle.properties")
+   repository("https://artifacts.halodi.com/repository/maven-open-source-group")
 
    configureDependencyResolution()
    javaDirectory("main", "java-generated")
@@ -24,7 +25,7 @@ mainDependencies {
 }
 
 testDependencies {
-   api("us.ihmc:ihmc-pub-sub:0.16.2")
+   api("us.ihmc:ihmc-pub-sub:0.18.0-halodi1")
    api("us.ihmc:ihmc-commons:0.30.6")
 }
 

@@ -6,6 +6,7 @@ buildscript {
 
 plugins {
    id("us.ihmc.ihmc-build")
+   
    id("us.ihmc.ihmc-ci") version "7.6"
    id("us.ihmc.ihmc-cd") version "1.23"
    id("org.ajoberstar.grgit") version "4.1.1"
@@ -26,6 +27,7 @@ val uuidRelease = "2.1.0"
 
 ihmc {
    loadProductProperties("../group.gradle.properties")
+   repository("https://artifacts.halodi.com/repository/maven-open-source-group")
 
    configureDependencyResolution()
    resourceDirectory("main", "custom-idl")
@@ -37,7 +39,7 @@ ihmc {
 
 mainDependencies {
    api("us.ihmc:euclid-geometry:0.17.0")
-   api("us.ihmc:ihmc-pub-sub:0.16.2")
+   api("us.ihmc:ihmc-pub-sub:0.17.0-halodi1")
 }
 
 generatorDependencies {

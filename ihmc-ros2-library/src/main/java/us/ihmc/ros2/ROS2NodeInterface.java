@@ -2,6 +2,7 @@ package us.ihmc.ros2;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Arrays;
 
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
@@ -27,9 +28,7 @@ public interface ROS2NodeInterface
     */
    public static ParticipantAttributes createParticipantAttributes(Domain domain, int domainId, InetAddress... addressRestriction)
    {
-      ParticipantAttributes participantAttributes = domain.createParticipantAttributes();
-      participantAttributes.setDomainId(domainId);
-      participantAttributes.setLeaseDuration(Time.Infinite);
+      ParticipantAttributes participantAttributes = ParticipantAttributes.create().domainId(domainId).discoveryLeaseDuration(Time.Infinite);
 
       if (addressRestriction != null)
       {
@@ -37,7 +36,7 @@ public interface ROS2NodeInterface
          {
             if (addressRestriction[0] != null) // Check for null on the first element, to make sure passing in null works as usual -> no address restrictions
             {
-               participantAttributes.bindToAddress(addressRestriction);
+               participantAttributes.bindToAddressRestrictions(Arrays.asList(addressRestriction));
             }
 
          }

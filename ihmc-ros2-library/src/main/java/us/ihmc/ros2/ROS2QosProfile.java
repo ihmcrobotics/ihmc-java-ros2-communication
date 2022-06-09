@@ -15,8 +15,9 @@
  */
 package us.ihmc.ros2;
 
-import us.ihmc.pubsub.attributes.HistoryQosPolicy.HistoryQosPolicyKind;
-import us.ihmc.pubsub.attributes.ReliabilityKind;
+import com.eprosima.xmlschemas.fastrtps_profiles.DurabilityQosKindType;
+import com.eprosima.xmlschemas.fastrtps_profiles.HistoryQosKindType;
+import com.eprosima.xmlschemas.fastrtps_profiles.ReliabilityQosKindType;
 
 /**
  * ROS2 QoS profile settings Provides a quick way to set the ROS2 QoS settings. Provided options are
@@ -36,22 +37,37 @@ public class ROS2QosProfile
 
    public static final ROS2QosProfile KEEP_HISTORY(int depth)
    {
-      return new ROS2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, depth, ReliabilityKind.RELIABLE, RosDurability.TRANSIENT_LOCAL, false);
+      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, depth, ReliabilityQosKindType.RELIABLE, RosDurability.TRANSIENT_LOCAL, false);
    }
 
    public static final ROS2QosProfile BEST_EFFORT()
    {
-      return new ROS2QosProfile(HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS, 1, ReliabilityKind.BEST_EFFORT, RosDurability.VOLATILE, false);
+      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, 1, ReliabilityQosKindType.BEST_EFFORT, RosDurability.VOLATILE, false);
    }
 
    public enum RosDurability
    {
-      VOLATILE, TRANSIENT_LOCAL
+      VOLATILE, TRANSIENT_LOCAL;
+      
+      public DurabilityQosKindType toKind()
+      {
+         switch(this)
+         {
+            case VOLATILE:
+               return DurabilityQosKindType.VOLATILE;
+            case TRANSIENT_LOCAL:
+               return DurabilityQosKindType.TRANSIENT_LOCAL;
+         }
+         
+         throw new RuntimeException("Unreachable code");
+      }
+      
+      
    }
 
-   private HistoryQosPolicyKind history = HistoryQosPolicyKind.KEEP_LAST_HISTORY_QOS;
+   private HistoryQosKindType history = HistoryQosKindType.KEEP_LAST;
    private int depth = 1;
-   private ReliabilityKind reliability = ReliabilityKind.RELIABLE;
+   private ReliabilityQosKindType reliability = ReliabilityQosKindType.RELIABLE;
    private RosDurability durability = RosDurability.VOLATILE;
    private boolean avoidRosNamespaceConventions = false;
 
@@ -60,7 +76,7 @@ public class ROS2QosProfile
 
    }
 
-   public ROS2QosProfile(HistoryQosPolicyKind history, int depth, ReliabilityKind reliability, RosDurability durability, boolean avoidRosNamespaceConventions)
+   public ROS2QosProfile(HistoryQosKindType history, int depth, ReliabilityQosKindType reliability, RosDurability durability, boolean avoidRosNamespaceConventions)
    {
       this();
       this.history = history;
@@ -73,7 +89,7 @@ public class ROS2QosProfile
    /**
     * @return the History QoS Policy
     */
-   public HistoryQosPolicyKind getHistory()
+   public HistoryQosKindType getHistory()
    {
       return history;
    }
@@ -85,7 +101,7 @@ public class ROS2QosProfile
     * 
     * @param history
     */
-   public void setHistory(HistoryQosPolicyKind history)
+   public void setHistory(HistoryQosKindType history)
    {
       this.history = history;
    }
@@ -112,7 +128,7 @@ public class ROS2QosProfile
    /**
     * @return reliability kind
     */
-   public ReliabilityKind getReliability()
+   public ReliabilityQosKindType getReliability()
    {
       return reliability;
    }
@@ -123,7 +139,7 @@ public class ROS2QosProfile
     * 
     * @param reliability
     */
-   public void setReliability(ReliabilityKind reliability)
+   public void setReliability(ReliabilityQosKindType reliability)
    {
       this.reliability = reliability;
    }
