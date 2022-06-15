@@ -25,7 +25,7 @@ mainDependencies {
 
 testDependencies {
    api("us.ihmc:ihmc-pub-sub:0.16.2")
-   api("us.ihmc:ihmc-commons:0.30.6")
+   api("us.ihmc:ihmc-commons:0.31.0")
 }
 
 // Gradle 7 forces us to do this I guess...
