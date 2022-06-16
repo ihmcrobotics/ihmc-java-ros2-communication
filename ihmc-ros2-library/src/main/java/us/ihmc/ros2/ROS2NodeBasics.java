@@ -112,11 +112,6 @@ class ROS2NodeBasics implements ROS2NodeInterface
             .historyQosPolicyKind(qosProfile.getHistory());
     
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
-
-      if (topicDataType.getTypeSize() > 65000)
-      {
-         publisherAttributes.publishModeKind(PublishModeQosKindType.ASYNCHRONOUS);
-      }
       return publisherAttributes;
    }
 
