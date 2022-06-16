@@ -36,7 +36,7 @@ public interface ROS2NodeInterface
          {
             if (addressRestriction[0] != null) // Check for null on the first element, to make sure passing in null works as usual -> no address restrictions
             {
-               participantAttributes.bindToAddressRestrictions(Arrays.asList(addressRestriction));
+               participantAttributes.bindToAddressRestrictions(true, Arrays.asList(addressRestriction));
             }
 
          }

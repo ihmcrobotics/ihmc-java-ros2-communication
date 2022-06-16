@@ -25,7 +25,7 @@ mainDependencies {
 }
 
 testDependencies {
-   api("us.ihmc:ihmc-pub-sub:0.18.0-halodi3")
+   api("us.ihmc:ihmc-pub-sub:0.18.0-halodi5")
    api("us.ihmc:ihmc-commons:0.30.6")
 }
 
