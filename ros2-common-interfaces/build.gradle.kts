@@ -1,6 +1,6 @@
 buildscript {
    dependencies {
-      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.20.5")
+      classpath("us.ihmc:ros2-msg-to-pubsub-generator:0.20.6")
    }
 }
 
@@ -37,7 +37,7 @@ ihmc {
 
 mainDependencies {
    api("us.ihmc:euclid-geometry:0.18.1")
-   api("us.ihmc:ihmc-pub-sub:0.16.2")
+   api("us.ihmc:ihmc-pub-sub:0.16.3")
 }
 
 generatorDependencies {
