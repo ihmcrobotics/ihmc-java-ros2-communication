@@ -44,6 +44,12 @@ generatorDependencies {
    api("us.ihmc:ros2-msg-to-pubsub-generator:source")
 }
 
+// Gradle 7 forces us to do this I guess...
+// https://github.com/gradle/gradle/issues/17236
+tasks.named("processResources", Copy::class.java) {
+   duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 val show by tasks.creating {
    doLast {
       project.gradle.includedBuilds.forEach { println(it) }
