@@ -48,7 +48,7 @@ public class CommunicationTest
             String name = "ROS2CommunicationTest";
             ROS2Node node = ros2Distro == null ? new ROS2Node(pubSubImplementation, name) : new ROS2Node(pubSubImplementation, ros2Distro, name);
             TwoNumPubSubType topicDataType = new TwoNumPubSubType();
-            ROS2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+            ROS2PublisherBasics<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
             messagesReceived.setValue(0);
 
@@ -91,7 +91,7 @@ public class CommunicationTest
          {
             ROS2Node node = new ROS2Node(PubSubImplementation.FAST_RTPS, "ROS2CommunicationTest");
             TwoNumPubSubType topicDataType = new TwoNumPubSubType();
-            ROS2Publisher<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
+            ROS2PublisherBasics<TwoNum> publisher = node.createPublisher(topicDataType, "/chatter");
 
             messagesReceived.setValue(0);
 

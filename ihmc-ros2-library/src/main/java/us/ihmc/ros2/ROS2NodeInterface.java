@@ -83,7 +83,7 @@ public interface ROS2NodeInterface
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
     */
-   default <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
       return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
    }
@@ -97,7 +97,7 @@ public interface ROS2NodeInterface
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
     */
-   default <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
+   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
    {
       return createPublisher(topicDataType, createPublisherAttributes(topicDataType, topicName, qosProfile));
    }
@@ -121,7 +121,7 @@ public interface ROS2NodeInterface
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
     */
-   <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException;
+   <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException;
 
    /**
     * Create a new realtime subscription with default qos profile and queue depth. Incoming messages
