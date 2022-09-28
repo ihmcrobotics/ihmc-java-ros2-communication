@@ -6,7 +6,6 @@ buildscript {
 
 plugins {
    id("us.ihmc.ihmc-build")
-   
    id("us.ihmc.ihmc-ci") version "7.6"
    id("us.ihmc.ihmc-cd") version "1.23"
    id("org.ajoberstar.grgit") version "4.1.1"
@@ -38,7 +37,7 @@ ihmc {
 
 mainDependencies {
    api("us.ihmc:euclid-geometry:0.19.0")
-   api("us.ihmc:ihmc-pub-sub:0.18.0-halodi7")
+   api("us.ihmc:ihmc-pub-sub:0.18.1")
 }
 
 generatorDependencies {
