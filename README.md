@@ -22,15 +22,15 @@ This library builds on [IHMC Pub Sub Group](https://github.com/ihmcrobotics/ihmc
 In your build.gradle:
 
 `compile group: "us.ihmc", name: "ihmc-ros2-library", version: `
-[ ![ihmc-ros2-library](https://api.bintray.com/packages/ihmcrobotics/maven-release/ihmc-ros2-library/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ihmc-ros2-library/_latestVersion)
+[ ![ihmc-ros2-library](https://maven-badges.herokuapp.com/maven-central/us.ihmc/ihmc-ros2-library/badge.svg?style=plastic) ](https://maven-badges.herokuapp.com/maven-central/us.ihmc/ihmc-ros2-library)
 `  // publish/subscribe API`
  
 `compile group: "us.ihmc", name: "ros2-common-interfaces", version: `
-[ ![ros2-common-interfaces](https://api.bintray.com/packages/ihmcrobotics/maven-release/ros2-common-interfaces/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ros2-common-interfaces/_latestVersion)
+[ ![ros2-common-interfaces](https://maven-badges.herokuapp.com/maven-central/us.ihmc/ros2-common-interfaces/badge.svg?style=plastic) ](https://maven-badges.herokuapp.com/maven-central/us.ihmc/ros2-common-interfaces)
 ` // ROS2 common message library`
 
 `compile group: "us.ihmc", name: "ros2-msg-to-pubsub-generator", version: `
-[ ![ros2-msg-to-pubsub-generator](https://api.bintray.com/packages/ihmcrobotics/maven-release/ros2-msg-to-pubsub-generator/images/download.svg) ](https://bintray.com/ihmcrobotics/maven-release/ros2-msg-to-pubsub-generator/_latestVersion)
+[ ![ros2-msg-to-pubsub-generator](https://maven-badges.herokuapp.com/maven-central/us.ihmc/ros2-msg-to-pubsub-generator/badge.svg?style=plastic) ](https://maven-badges.herokuapp.com/maven-central/us.ihmc/ros2-msg-to-pubsub-generator)
 ` // generator for .msg -> .java`
 
 ## IHMC ROS2 Library
