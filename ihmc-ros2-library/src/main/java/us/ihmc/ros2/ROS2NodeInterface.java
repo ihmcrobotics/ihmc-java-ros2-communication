@@ -2,6 +2,7 @@ package us.ihmc.ros2;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Arrays;
 
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
@@ -27,9 +28,7 @@ public interface ROS2NodeInterface
     */
    public static ParticipantAttributes createParticipantAttributes(Domain domain, int domainId, InetAddress... addressRestriction)
    {
-      ParticipantAttributes participantAttributes = domain.createParticipantAttributes();
-      participantAttributes.setDomainId(domainId);
-      participantAttributes.setLeaseDuration(Time.Infinite);
+      ParticipantAttributes participantAttributes = ParticipantAttributes.create().domainId(domainId).discoveryLeaseDuration(Time.Infinite);
 
       if (addressRestriction != null)
       {
@@ -37,7 +36,7 @@ public interface ROS2NodeInterface
          {
             if (addressRestriction[0] != null) // Check for null on the first element, to make sure passing in null works as usual -> no address restrictions
             {
-               participantAttributes.bindToAddress(addressRestriction);
+               participantAttributes.bindToAddressRestrictions(true, Arrays.asList(addressRestriction));
             }
 
          }
@@ -84,7 +83,7 @@ public interface ROS2NodeInterface
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
     */
-   default <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
       return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
    }
@@ -98,7 +97,7 @@ public interface ROS2NodeInterface
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
     */
-   default <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
+   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
    {
       return createPublisher(topicDataType, createPublisherAttributes(topicDataType, topicName, qosProfile));
    }
@@ -122,7 +121,7 @@ public interface ROS2NodeInterface
     * @return A ROS publisher
     * @throws IOException if no publisher can be made
     */
-   <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException;
+   <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException;
 
    /**
     * Create a new realtime subscription with default qos profile and queue depth. Incoming messages

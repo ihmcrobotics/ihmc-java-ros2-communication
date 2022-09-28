@@ -15,14 +15,15 @@
  */
 package us.ihmc.ros2;
 
-import org.apache.commons.lang3.StringUtils;
-import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.PublisherAttributes;
-import us.ihmc.pubsub.attributes.SubscriberAttributes;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.function.Supplier;
+
+import org.apache.commons.lang3.StringUtils;
+
+import us.ihmc.pubsub.TopicDataType;
+import us.ihmc.pubsub.attributes.CommonAttributes;
 
 /**
  * Helper class to convert from namespace and topic name to the correct DDS partition and topic for ROS2 interoperability
@@ -117,7 +118,7 @@ public class ROS2TopicNameTools
       return stringBuilder.toString();
    }
 
-   /* package-private */ static void assignNameAndPartitionsToAttributes(PublisherAttributes attributes,
+   /* package-private */ static void assignNameAndPartitionsToAttributes(CommonAttributes<?> attributes,
                                                                          String namespace,
                                                                          String nodeName,
                                                                          String topic,
@@ -125,37 +126,16 @@ public class ROS2TopicNameTools
    {
       if (avoidRosNamespace)
       {
-         attributes.getTopic().setTopicName(topic);
+         attributes.topicName(topic);
          if (namespace != null && !namespace.isEmpty())
          {
-            attributes.getQos().addPartition(namespace);
+            attributes.partitions(Arrays.asList(namespace));
          }
       }
       else
       {
          String fullyQualifiedName = getFullyQualifiedName(namespace, nodeName, topic);
-         attributes.getTopic().setTopicName(fullyQualifiedName);
-      }
-   }
-
-   /* package-private */ static void assignNameAndPartitionsToAttributes(SubscriberAttributes attributes,
-                                                                         String namespace,
-                                                                         String nodeName,
-                                                                         String topic,
-                                                                         boolean avoidRosNamespace)
-   {
-      if (avoidRosNamespace)
-      {
-         attributes.getTopic().setTopicName(topic);
-         if (namespace != null && !namespace.isEmpty())
-         {
-            attributes.getQos().addPartition(namespace);
-         }
-      }
-      else 
-      {
-         String fullyQualifiedName = getFullyQualifiedName(namespace, nodeName, topic);
-         attributes.getTopic().setTopicName(fullyQualifiedName);
+         attributes.topicName(fullyQualifiedName);
       }
    }
 
