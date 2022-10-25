@@ -3,7 +3,7 @@ pluginManagement {
       gradlePluginPortal()
    }
    plugins {
-      id("us.ihmc.ihmc-build") version "0.28.4"
+      id("us.ihmc.ihmc-build") version "0.28.6"
    }
 }
 
@@ -13,7 +13,7 @@ buildscript {
       mavenLocal()
    }
    dependencies {
-      classpath("us.ihmc:ihmc-build:0.28.4")
+      classpath("us.ihmc:ihmc-build:0.28.6")
    }
 }
 
