@@ -3,7 +3,7 @@ pluginManagement {
       gradlePluginPortal()
    }
    plugins {
-      id("us.ihmc.ihmc-build") version "0.28.9"
+      id("us.ihmc.ihmc-build") version "0.28.8"
    }
 }
 
