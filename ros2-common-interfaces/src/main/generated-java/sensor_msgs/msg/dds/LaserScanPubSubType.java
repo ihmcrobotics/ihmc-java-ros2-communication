@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.LaserScan>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::LaserScan_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "c73692c598e973bfa26a18a015cf556cee47ce24c979da08f36c09d284031b3c";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

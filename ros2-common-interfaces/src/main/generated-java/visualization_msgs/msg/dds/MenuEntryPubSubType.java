@@ -11,6 +11,18 @@ package visualization_msgs.msg.dds;
 public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.MenuEntry>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::MenuEntry_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "b1ea37d7291264d9ff6fbe9dade654a444317fdbf0b41c16c88e612fda717395";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

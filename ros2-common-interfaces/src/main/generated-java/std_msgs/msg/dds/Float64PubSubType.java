@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class Float64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Float64>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Float64_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "3774572d56f7a1e1de158e62d13198be10fe5d92e7ccb1cdf0bb72fbca2b867e";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

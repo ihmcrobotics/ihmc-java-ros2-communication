@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class Vector3PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euclid.tuple3D.Vector3D>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Vector3_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "271cb5565e28e76c0dec74abb874865867b587dfbd79d7e3c1c9289941c58c01";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

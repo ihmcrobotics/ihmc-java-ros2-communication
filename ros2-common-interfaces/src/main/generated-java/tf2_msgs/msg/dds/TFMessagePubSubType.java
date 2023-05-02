@@ -11,6 +11,18 @@ package tf2_msgs.msg.dds;
 public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs.msg.dds.TFMessage>
 {
    public static final java.lang.String name = "tf2_msgs::msg::dds_::TFMessage_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "3d1134ba428aaac8a716ca84f821c8a861154184708099182b019d75727551f4";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

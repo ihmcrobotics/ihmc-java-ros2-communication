@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Header>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Header_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "3dead8cf6ea35c03c8627a3fc916b6a2436565a94eccf8dfd8b36cd84526db2b";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

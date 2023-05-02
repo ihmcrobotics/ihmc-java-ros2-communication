@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class UInt16MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.UInt16MultiArray>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::UInt16MultiArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "eb9b7a5d2fb17007b34496ce33e708419661ab9f724e8e04806221f9d2aacc7e";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class BytePubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Byte>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Byte_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "6713b34ea76eb2ee34b59be52326d8a6ff29af74929bf52890cd779b0d234854";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

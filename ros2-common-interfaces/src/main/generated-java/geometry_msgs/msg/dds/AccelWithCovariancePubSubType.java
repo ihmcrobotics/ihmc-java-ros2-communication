@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.AccelWithCovariance>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::AccelWithCovariance_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "8f9fcbbdfd9bd1453f233173574bcf3cf7dae0a1b32d25b6216b9d4119883b3b";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

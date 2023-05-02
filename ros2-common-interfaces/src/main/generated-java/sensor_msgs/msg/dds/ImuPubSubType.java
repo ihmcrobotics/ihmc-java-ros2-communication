@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Imu>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Imu_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "cb52a01fffe06d37ebcc656066d66888601c69c10e965d0091502b065360896b";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

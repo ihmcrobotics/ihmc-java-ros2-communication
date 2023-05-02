@@ -11,6 +11,18 @@ package trajectory_msgs.msg.dds;
 public class MultiDOFJointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<trajectory_msgs.msg.dds.MultiDOFJointTrajectory>
 {
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::MultiDOFJointTrajectory_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "a2f2e03b3eeba6abcaffd5a780390b0e84f59db423b44326487f870de13c959d";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

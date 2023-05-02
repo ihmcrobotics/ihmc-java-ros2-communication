@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Wrench>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Wrench_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "ad78f5768539ea26fa8ee4d59a11fd677a1492247ffdc581a4b88a4b497ba0f9";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

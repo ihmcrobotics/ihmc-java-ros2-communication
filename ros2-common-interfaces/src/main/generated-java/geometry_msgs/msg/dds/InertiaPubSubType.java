@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Inertia>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Inertia_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "fbb8b8daccf65e8c16e8d9176135dc1be9583263568309f997477428dcd5b468";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

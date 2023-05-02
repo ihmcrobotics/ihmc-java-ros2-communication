@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.PoseStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseStamped_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "b80f004dcb5c2f12ee07d63ad852165e440e769f7f673a2d63b5244e1bac629d";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

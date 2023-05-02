@@ -11,6 +11,18 @@ package diagnostic_msgs.msg.dds;
 public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<diagnostic_msgs.msg.dds.DiagnosticArray>
 {
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "2a2a9de54629bbfce41305abdad4d0449398b890a64c4bf43bd8a2422aa8d60e";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

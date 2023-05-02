@@ -11,6 +11,18 @@ package tf2_msgs.msg.dds;
 public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs.msg.dds.TF2Error>
 {
    public static final java.lang.String name = "tf2_msgs::msg::dds_::TF2Error_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "31e4866cb69080eaca255069a65d69563463eeb5f775a9c5b095e539a06f4aab";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

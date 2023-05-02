@@ -11,6 +11,18 @@ package nav_msgs.msg.dds;
 public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.Odometry>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::Odometry_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "fb4974ef7c5bd6a645ef408999233624dd3016714d8557f24c676aa96af24425";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

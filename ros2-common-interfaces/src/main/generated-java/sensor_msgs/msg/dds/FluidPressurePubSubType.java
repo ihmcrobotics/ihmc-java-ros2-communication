@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class FluidPressurePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.FluidPressure>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::FluidPressure_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "fa501544c25c91655b65219e1e2da3b6355074c49147ce818dddd975018543bc";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

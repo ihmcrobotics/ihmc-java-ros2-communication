@@ -11,6 +11,18 @@ package actionlib_msgs.msg.dds;
 public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_msgs.msg.dds.GoalID>
 {
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalID_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "03b77b459c455f6d7240020b74f98a9635b4c22bd8fc1e9b9a983b0e07d1a0b4";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

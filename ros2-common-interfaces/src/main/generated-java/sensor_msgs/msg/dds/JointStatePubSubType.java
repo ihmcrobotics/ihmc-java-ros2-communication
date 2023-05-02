@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.JointState>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JointState_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "3bcf6825ff057805c98d069e391e652a32dc32247a4d7da271958a9d307dbe40";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

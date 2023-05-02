@@ -11,6 +11,18 @@ package nav_msgs.msg.dds;
 public class MapMetaDataPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.MapMetaData>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::MapMetaData_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "afe02ec6dbf3b20f8950c29ef7ba5ce0877936dc5e72fd84099143822d048c56";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

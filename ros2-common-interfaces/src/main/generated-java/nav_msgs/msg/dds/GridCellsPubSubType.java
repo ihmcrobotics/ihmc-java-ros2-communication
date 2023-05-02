@@ -11,6 +11,18 @@ package nav_msgs.msg.dds;
 public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.GridCells>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::GridCells_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "f01d2fc1f7f46f0ad46f36833dccef5548d562b28b538ce34c99c269543994bd";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

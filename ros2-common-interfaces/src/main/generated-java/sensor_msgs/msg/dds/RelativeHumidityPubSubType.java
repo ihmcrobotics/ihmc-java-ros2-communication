@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class RelativeHumidityPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.RelativeHumidity>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::RelativeHumidity_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "7b970856c7bbe9ed3f3a4113cd955f1c78c28afaa18d358f02dbb7a3d0c36cdb";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

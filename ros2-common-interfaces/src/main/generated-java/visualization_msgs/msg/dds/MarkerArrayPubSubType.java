@@ -11,6 +11,18 @@ package visualization_msgs.msg.dds;
 public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.MarkerArray>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::MarkerArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "005029017736cb8194ff94f6db87b40b14941a5697feed199c06e0fa2d80d5db";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

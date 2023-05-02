@@ -11,6 +11,18 @@ package lifecycle_msgs.msg.dds;
 public class StatePubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_msgs.msg.dds.State>
 {
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::State_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "1fd0b2d5545121978025a33f139621433a7174dea3daae62c7c78130954e6238";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

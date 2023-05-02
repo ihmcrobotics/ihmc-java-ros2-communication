@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.PointCloud2>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::PointCloud2_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "01d4f8aee569f4280f87f82af1f37e57b72a0c9d0535ed9ab9b13bc38127f034";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package shape_msgs.msg.dds;
 public class MeshTrianglePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.msg.dds.MeshTriangle>
 {
    public static final java.lang.String name = "shape_msgs::msg::dds_::MeshTriangle_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "a8e528c8f45a28b299a9639c0d7b655db0431aa778f0babf8e83126ab2a2cc05";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class TransformStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.TransformStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TransformStamped_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "30ec8027727c41760aaeabc7f1fabc772af6fe2b6ed457c83e49b948bb475e27";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

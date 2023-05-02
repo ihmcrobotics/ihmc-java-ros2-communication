@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.MultiArrayLayout>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::MultiArrayLayout_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "8c6f75e8d495d9fddb2dd42119a8574d2fd8e5e6d66336d279028ef3c0eb74d2";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class ByteMultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.ByteMultiArray>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::ByteMultiArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "ac5e39663c2fe7ca52f5f92c44fe6c390e2d4ebc96d1e68d077c55027ba2b37a";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

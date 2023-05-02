@@ -11,6 +11,18 @@ package stereo_msgs.msg.dds;
 public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<stereo_msgs.msg.dds.DisparityImage>
 {
    public static final java.lang.String name = "stereo_msgs::msg::dds_::DisparityImage_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "8b7842ef624d1161cab70e3756c11abc143fe9cdab1f953f748ed6e10df37df4";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

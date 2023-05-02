@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class AccelStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.AccelStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::AccelStamped_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "5921fb7a4a04b40f6a057e8aa4c9c0093e7d3a34d6f42d7d358134713b33ec9c";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

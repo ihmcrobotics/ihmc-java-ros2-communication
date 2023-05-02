@@ -11,6 +11,18 @@ package nav_msgs.msg.dds;
 public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.OccupancyGrid>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::OccupancyGrid_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "92c26052657ceaffbea64779f686357ee135a30f594d8b10004aaf9fe0d17848";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

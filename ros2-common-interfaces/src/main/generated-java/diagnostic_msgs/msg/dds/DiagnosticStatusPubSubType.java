@@ -11,6 +11,18 @@ package diagnostic_msgs.msg.dds;
 public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<diagnostic_msgs.msg.dds.DiagnosticStatus>
 {
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::DiagnosticStatus_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "cffe78339d2a8d203d0771189e8209b14988fa50c1d4e92432aa3406312eb460";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class Float64MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Float64MultiArray>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Float64MultiArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "b0df098787e3743a93c69fe04184a054bfa6856c81c3e862a730dff51e4bd93b";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

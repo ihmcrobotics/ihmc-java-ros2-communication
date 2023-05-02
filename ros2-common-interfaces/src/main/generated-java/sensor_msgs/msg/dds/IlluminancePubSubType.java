@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class IlluminancePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Illuminance>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Illuminance_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "2d85667ea0963065e691b19f2e42522a7a28d385fa85837501c14447ef920525";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

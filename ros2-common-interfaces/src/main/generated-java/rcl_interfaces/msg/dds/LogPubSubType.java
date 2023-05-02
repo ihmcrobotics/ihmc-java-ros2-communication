@@ -11,6 +11,18 @@ package rcl_interfaces.msg.dds;
 public class LogPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.Log>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::Log_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "27c91c73fcf2f9053213a9f2cc51d2d07cbc81a2a97a128988bc21ac04a9e2d0";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

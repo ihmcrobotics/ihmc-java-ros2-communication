@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Twist>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Twist_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "a68d8033ab610289fb32007eb5bc99f1988521667d367edb76614d7478de6dc7";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

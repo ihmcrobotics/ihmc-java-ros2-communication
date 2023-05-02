@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class QuaternionStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.QuaternionStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::QuaternionStamped_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "09be247142904aa3539cf4bb9dcdb860b59144ead5f4cacdb6062371f80dd230";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

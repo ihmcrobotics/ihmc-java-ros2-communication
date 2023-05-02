@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.JoyFeedbackArray>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JoyFeedbackArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "9d27bfdfb02c02b56ffd27e6cc74f84e66168f9658eed63a9a17af24d970caf6";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

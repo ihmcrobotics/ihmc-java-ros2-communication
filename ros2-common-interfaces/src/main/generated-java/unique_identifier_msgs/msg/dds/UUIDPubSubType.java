@@ -11,6 +11,18 @@ package unique_identifier_msgs.msg.dds;
 public class UUIDPubSubType implements us.ihmc.pubsub.TopicDataType<unique_identifier_msgs.msg.dds.UUID>
 {
    public static final java.lang.String name = "unique_identifier_msgs::msg::dds_::UUID_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "025603bddfb949d254f7c80ad97f3565c595cf8c6999c74bd4ce70564f40870d";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.TimeReference>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::TimeReference_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "ad30da658cd27f10f8e32cca31bb01eae0c7734303ac0af6050232775b182bab";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

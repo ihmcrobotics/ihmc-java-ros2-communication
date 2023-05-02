@@ -11,6 +11,18 @@ package rcl_interfaces.msg.dds;
 public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.ParameterDescriptor>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterDescriptor_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "b19ed1b1424fe496443b8869fd53310b857694324158c60134dede09a92005f8";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package lifecycle_msgs.msg.dds;
 public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_msgs.msg.dds.TransitionDescription>
 {
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::TransitionDescription_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "078321ea482d93939256e11940bfd77503682faacb99b7cce599214090d001bd";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

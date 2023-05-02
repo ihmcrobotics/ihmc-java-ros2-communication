@@ -11,6 +11,18 @@ package rcl_interfaces.msg.dds;
 public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.IntraProcessMessage>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::IntraProcessMessage_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "8ee3ab0b1a69625ea1c2209efba5d4fc8f7cc06060e935fc5f30ed4da69ed8a9";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

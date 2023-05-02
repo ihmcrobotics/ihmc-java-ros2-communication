@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class CharPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Char>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Char_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "233b55136a355d69c488918bf3626a9096b042d727e2d2c4a45d8e447c1dce3c";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.PoseArray>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "f3b60d4ba3e4c639be38f248644baa1db9580009aba589acf6204c53c8c1d097";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

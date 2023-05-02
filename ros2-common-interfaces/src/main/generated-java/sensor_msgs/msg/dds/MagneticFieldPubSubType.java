@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.MagneticField>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MagneticField_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "251a385201f2569258d4b26316d6b25f074adf1b5bbed8e30d6b4b7c62debaa5";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

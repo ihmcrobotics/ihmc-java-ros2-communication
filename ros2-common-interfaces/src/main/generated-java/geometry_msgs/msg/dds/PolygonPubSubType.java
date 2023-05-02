@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.Polygon>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Polygon_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "e14360d5ee235e63a123eae77e88c35dae4e832673e1f7c0d40c1f5796470054";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

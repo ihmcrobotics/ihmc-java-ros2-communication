@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.PointField>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::PointField_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "5df54004a88432ee76ba35ddc9ac82d951e1dd73151fbe39fff328965c1c6197";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

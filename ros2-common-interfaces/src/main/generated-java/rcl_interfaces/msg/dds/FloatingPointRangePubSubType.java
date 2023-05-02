@@ -11,6 +11,18 @@ package rcl_interfaces.msg.dds;
 public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.FloatingPointRange>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::FloatingPointRange_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "16fb1a1f131729cee23bf6b5becf2f2e4210ad2212aa4ca18cdc222643e3468f";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class PolygonStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.PolygonStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PolygonStamped_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "17da5ef69f53bb2c291dd1b01ce4e665772cc92a3f18656fbdef943340819c62";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

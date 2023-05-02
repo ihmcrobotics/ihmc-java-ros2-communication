@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class UInt16PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.UInt16>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::UInt16_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "239c1f0d0040b801b62a706df3c23c5996a120da2c4d9f1c49b9ec58514c9c7c";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

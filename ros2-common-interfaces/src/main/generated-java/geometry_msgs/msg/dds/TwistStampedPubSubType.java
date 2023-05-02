@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class TwistStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.TwistStamped>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TwistStamped_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "a9621bdd4a0f89b5f73e3c3055ee81bd3c58eb42a853dc3487016b90c4b1f320";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

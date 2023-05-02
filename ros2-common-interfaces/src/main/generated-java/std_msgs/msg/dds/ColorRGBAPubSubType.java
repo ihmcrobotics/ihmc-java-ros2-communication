@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.ColorRGBA>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::ColorRGBA_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "e9fbba437a827b492f308eb1c6419a904c2dfa117911c3fddeae314de59cf7b8";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

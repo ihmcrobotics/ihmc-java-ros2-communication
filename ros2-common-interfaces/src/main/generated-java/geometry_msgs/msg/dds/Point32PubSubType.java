@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euclid.tuple3D.Point3D32>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Point32_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "f95723bc4a07835d0b5a32fd36d5cfadb6371169f6343802157270b2ac69709c";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

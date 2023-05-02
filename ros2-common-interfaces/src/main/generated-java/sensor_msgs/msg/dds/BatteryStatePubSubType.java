@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.BatteryState>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::BatteryState_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "6642dc17001cf86b1fef1a343d5105b8886395e03a548fc8cb988b15b16f8263";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

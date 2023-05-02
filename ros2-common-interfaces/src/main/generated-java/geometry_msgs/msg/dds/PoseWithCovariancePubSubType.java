@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.PoseWithCovariance>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseWithCovariance_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "1f3e5eb5c1d032be2da6da45b83a24c9ff7efc821f923d9b6a44233e0862a4da";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

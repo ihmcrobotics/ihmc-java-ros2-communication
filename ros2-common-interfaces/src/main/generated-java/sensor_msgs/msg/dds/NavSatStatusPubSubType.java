@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.NavSatStatus>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::NavSatStatus_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "802acf2813bad608a1598975ebac8871cb23690cc4d2f992ccd575af09b83f81";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

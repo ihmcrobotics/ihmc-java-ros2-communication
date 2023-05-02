@@ -11,6 +11,18 @@ package rosgraph_msgs.msg.dds;
 public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_msgs.msg.dds.Clock>
 {
    public static final java.lang.String name = "rosgraph_msgs::msg::dds_::Clock_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "f0b754e76fd92b7c0f4ebd130c7c129baf49f207e978402986a09dc706285359";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Image>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Image_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "790218e9b03549df352ba7487fd7bcc974f8b9672335a134788472dfa831f1cd";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

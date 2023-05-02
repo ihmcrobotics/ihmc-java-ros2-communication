@@ -11,6 +11,18 @@ package trajectory_msgs.msg.dds;
 public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataType<trajectory_msgs.msg.dds.JointTrajectoryPoint>
 {
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::JointTrajectoryPoint_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "49cd0c5b487a5edcea0e33934d35bf8407b8bd97da1d744b24d427f6d4ca055e";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

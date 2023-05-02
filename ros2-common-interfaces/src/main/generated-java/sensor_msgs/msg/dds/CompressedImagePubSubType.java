@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.CompressedImage>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::CompressedImage_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "8c418e0f271a53246fffffbefe4b36e6c962fa0bb50c686e93463ec01f701839";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

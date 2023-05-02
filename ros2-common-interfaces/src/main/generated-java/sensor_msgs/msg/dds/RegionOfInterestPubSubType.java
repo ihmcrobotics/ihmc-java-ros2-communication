@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.RegionOfInterest>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::RegionOfInterest_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "ec51a5f3244fefd69b9a95610f12a9ce0618746ee6db8d2e68d44f52096ae8b4";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

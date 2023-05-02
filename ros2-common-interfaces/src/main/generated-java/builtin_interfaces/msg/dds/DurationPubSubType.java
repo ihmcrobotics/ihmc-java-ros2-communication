@@ -11,6 +11,18 @@ package builtin_interfaces.msg.dds;
 public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_interfaces.msg.dds.Duration>
 {
    public static final java.lang.String name = "builtin_interfaces::msg::dds_::Duration_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "10e151981dcbeb29436d75af3d67c8397ba1d5078aeb6d7817e2c0366da295e9";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

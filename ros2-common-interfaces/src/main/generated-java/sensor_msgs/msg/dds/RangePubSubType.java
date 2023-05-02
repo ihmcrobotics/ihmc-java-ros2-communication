@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Range>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Range_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "b619f07d72fdeec768010d836d01e9e0289c5037ff27e3a28c679904dc96914e";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

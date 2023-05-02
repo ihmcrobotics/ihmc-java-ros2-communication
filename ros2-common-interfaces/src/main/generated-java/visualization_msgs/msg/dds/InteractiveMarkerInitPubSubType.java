@@ -11,6 +11,18 @@ package visualization_msgs.msg.dds;
 public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerInit>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerInit_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "ba4cd9d99684726cd09252ac6ca9ff394bac0de70b512ee2e0ae22c9ef2f5b4e";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

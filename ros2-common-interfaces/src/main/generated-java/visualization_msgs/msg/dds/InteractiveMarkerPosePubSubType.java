@@ -11,6 +11,18 @@ package visualization_msgs.msg.dds;
 public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.InteractiveMarkerPose>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerPose_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "4700c7071665daee14557a3a8fa5e648c071332c9a7835d88864baf9e41b7f50";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

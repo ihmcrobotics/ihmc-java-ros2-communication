@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.MultiArrayDimension>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::MultiArrayDimension_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "dd94273ac099539abce7827d716ffc00431b1b2c01a845ac679081a6ba840fed";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

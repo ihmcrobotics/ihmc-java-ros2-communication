@@ -11,6 +11,18 @@ package diagnostic_msgs.msg.dds;
 public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnostic_msgs.msg.dds.KeyValue>
 {
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::KeyValue_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "683d2f4a0f766d3a06f94da811dfcbfa9ba2c42059e71f9f39d306dd29a0bbfd";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

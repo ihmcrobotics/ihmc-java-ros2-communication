@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class CameraInfoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.CameraInfo>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::CameraInfo_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "9a6a7d02291d80d1570e7826ce88cf4f3c4491e4bf7c7905649b92f9f5f3d028";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

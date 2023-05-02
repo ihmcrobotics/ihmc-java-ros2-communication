@@ -11,6 +11,18 @@ package actionlib_msgs.msg.dds;
 public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_msgs.msg.dds.GoalStatusArray>
 {
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalStatusArray_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "e9030f90073930cf354ffb3d163664ae51c5e197ab6caf23e39628da1e618802";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

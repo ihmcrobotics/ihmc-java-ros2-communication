@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.LaserEcho>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::LaserEcho_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "5e6aaa7f7dba8c3785b8a68509775e27f4bb530ac7d21d32356df6169ebafa43";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euclid.tuple4D.Quaternion>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Quaternion_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "3d2c851108459c3a5169cc7fe6c7e237d22306ffef33eaf7552fc60d75fd79fd";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

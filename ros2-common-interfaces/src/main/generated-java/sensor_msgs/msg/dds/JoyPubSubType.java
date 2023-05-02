@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Joy>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Joy_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "006ef16e0a565a82bb616b0a73c94109407450d99c07a2f0589c85983a49b259";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

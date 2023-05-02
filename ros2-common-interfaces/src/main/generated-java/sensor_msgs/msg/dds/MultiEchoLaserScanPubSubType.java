@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.MultiEchoLaserScan>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MultiEchoLaserScan_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "fd8097e0971b4b9e06d3e6cf4bdd7572a80460cb41fa1bb57afa5c971b30e179";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

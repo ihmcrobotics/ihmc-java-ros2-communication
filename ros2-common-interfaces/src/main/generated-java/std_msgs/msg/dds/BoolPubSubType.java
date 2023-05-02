@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Bool>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Bool_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "844a4e78098f81aba69a63ce7102d5463acf72d74727422a0803c47ed60326d5";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

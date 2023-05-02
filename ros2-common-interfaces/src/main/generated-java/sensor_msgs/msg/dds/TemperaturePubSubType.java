@@ -11,6 +11,18 @@ package sensor_msgs.msg.dds;
 public class TemperaturePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.msg.dds.Temperature>
 {
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Temperature_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "03b4b31dd98438708f38ac541f1a0e4bb52f77e2efbeb3b4a4c936189fe3f983";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

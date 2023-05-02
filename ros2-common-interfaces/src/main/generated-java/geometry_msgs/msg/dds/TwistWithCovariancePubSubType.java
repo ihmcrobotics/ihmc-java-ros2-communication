@@ -11,6 +11,18 @@ package geometry_msgs.msg.dds;
 public class TwistWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataType<geometry_msgs.msg.dds.TwistWithCovariance>
 {
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TwistWithCovariance_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "4463eaf4c34a979547ee0b22fc492252152faccbdfbf9393e48f1fba806f42dc";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

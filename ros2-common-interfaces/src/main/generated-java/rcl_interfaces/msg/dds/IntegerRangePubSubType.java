@@ -11,6 +11,18 @@ package rcl_interfaces.msg.dds;
 public class IntegerRangePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.IntegerRange>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::IntegerRange_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "a53668727ea411eadad8f3bebe8e82edaf38c48d08df35509390fe5d70bc9eb4";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

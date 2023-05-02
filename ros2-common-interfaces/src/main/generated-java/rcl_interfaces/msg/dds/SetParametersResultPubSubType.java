@@ -11,6 +11,18 @@ package rcl_interfaces.msg.dds;
 public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interfaces.msg.dds.SetParametersResult>
 {
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::SetParametersResult_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "d7a57521efa84a0185c80e5f1e840550a84afba99c3b645cff57c165cdc09ba5";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

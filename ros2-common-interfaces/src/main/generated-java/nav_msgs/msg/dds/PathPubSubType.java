@@ -11,6 +11,18 @@ package nav_msgs.msg.dds;
 public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg.dds.Path>
 {
    public static final java.lang.String name = "nav_msgs::msg::dds_::Path_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "b98264f49b47a79259cb1dcdc2c28462459ba185e26cbc3f77fad043ea7df640";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

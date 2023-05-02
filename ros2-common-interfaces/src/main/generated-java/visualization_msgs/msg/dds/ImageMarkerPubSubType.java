@@ -11,6 +11,18 @@ package visualization_msgs.msg.dds;
 public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualization_msgs.msg.dds.ImageMarker>
 {
    public static final java.lang.String name = "visualization_msgs::msg::dds_::ImageMarker_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "1396b1c3689ffa40860024176c718082d0f14d6dec287c598da9dc643098a3df";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

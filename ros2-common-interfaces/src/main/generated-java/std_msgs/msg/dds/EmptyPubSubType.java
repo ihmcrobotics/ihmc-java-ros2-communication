@@ -11,6 +11,18 @@ package std_msgs.msg.dds;
 public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg.dds.Empty>
 {
    public static final java.lang.String name = "std_msgs::msg::dds_::Empty_";
+   
+   @Override
+   public final String getDefinitionChecksum()
+   {
+   		return "3493bd293feb55d099b1efeb0727e8e59fab647048ddfe09d01b1affa2a466cc";
+   }
+   
+   @Override
+   public final String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
