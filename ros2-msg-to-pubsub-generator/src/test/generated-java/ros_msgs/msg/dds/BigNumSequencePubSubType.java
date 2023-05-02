@@ -11,6 +11,18 @@ package ros_msgs.msg.dds;
 public class BigNumSequencePubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.dds.BigNumSequence>
 {
    public static final java.lang.String name = "ros_msgs::msg::dds_::BigNumSequence_";
+   
+   @Override
+   public final java.lang.String getDefinitionChecksum()
+   {
+   		return "534e087c65aed232aad66cdd54c4cfeb4743907d014c37625c4a0650bfcaf53f";
+   }
+   
+   @Override
+   public final java.lang.String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

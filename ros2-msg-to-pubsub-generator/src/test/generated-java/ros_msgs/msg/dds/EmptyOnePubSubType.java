@@ -11,6 +11,18 @@ package ros_msgs.msg.dds;
 public class EmptyOnePubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.dds.EmptyOne>
 {
    public static final java.lang.String name = "ros_msgs::msg::dds_::EmptyOne_";
+   
+   @Override
+   public final java.lang.String getDefinitionChecksum()
+   {
+   		return "91ad063f5f6249952e89d023adc8f698e89b7e52a4c5a5918d752f2eab8aeedf";
+   }
+   
+   @Override
+   public final java.lang.String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

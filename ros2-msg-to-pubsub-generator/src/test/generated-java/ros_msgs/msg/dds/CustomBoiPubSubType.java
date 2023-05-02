@@ -11,6 +11,18 @@ package ros_msgs.msg.dds;
 public class CustomBoiPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.CustomBoi>
 {
    public static final java.lang.String name = "ros_msgs::msg::dds_::CustomBoi_";
+   
+   @Override
+   public final java.lang.String getDefinitionChecksum()
+   {
+   		return "bfb66db5e75d577da8083672d444590723eef52c123901dc644dbdef9a65e5df";
+   }
+   
+   @Override
+   public final java.lang.String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

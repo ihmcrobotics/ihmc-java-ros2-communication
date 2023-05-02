@@ -11,6 +11,18 @@ package ros_msgs.msg.dds;
 public class NumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.dds.Num>
 {
    public static final java.lang.String name = "ros_msgs::msg::dds_::Num_";
+   
+   @Override
+   public final java.lang.String getDefinitionChecksum()
+   {
+   		return "e7b4af79cdc4eef00bbb02eb932429668742c3807a978a002bc10d1d050daadc";
+   }
+   
+   @Override
+   public final java.lang.String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();

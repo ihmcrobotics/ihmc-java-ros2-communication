@@ -11,6 +11,18 @@ package ros_msgs.msg.dds;
 public class TwoNumPubSubType implements us.ihmc.pubsub.TopicDataType<ros_msgs.msg.dds.TwoNum>
 {
    public static final java.lang.String name = "ros_msgs::msg::dds_::TwoNum_";
+   
+   @Override
+   public final java.lang.String getDefinitionChecksum()
+   {
+   		return "9890bde665fa4dc422effed4f54153f0ea288dd33a35d29bdbcd3c7d73b948ac";
+   }
+   
+   @Override
+   public final java.lang.String getDefinitionVersion()
+   {
+   		return "local";
+   }
 
    private final us.ihmc.idl.CDR serializeCDR = new us.ihmc.idl.CDR();
    private final us.ihmc.idl.CDR deserializeCDR = new us.ihmc.idl.CDR();
