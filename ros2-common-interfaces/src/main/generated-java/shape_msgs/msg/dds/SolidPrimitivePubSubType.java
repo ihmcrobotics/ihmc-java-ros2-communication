@@ -13,13 +13,13 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
    public static final java.lang.String name = "shape_msgs::msg::dds_::SolidPrimitive_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "6c757f57fb7350cfc949c168501791acfe723ff298965fcfa18b99cf56158c1d";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

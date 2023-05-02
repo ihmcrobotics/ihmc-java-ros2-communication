@@ -13,13 +13,13 @@ public class AccelWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    public static final java.lang.String name = "geometry_msgs::msg::dds_::AccelWithCovarianceStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "84f89b13ee969ef3c76592b84a2094a136e958c9f80d601469d2124084f4d300";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

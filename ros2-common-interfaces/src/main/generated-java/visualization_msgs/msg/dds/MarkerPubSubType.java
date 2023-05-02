@@ -13,13 +13,13 @@ public class MarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visualizat
    public static final java.lang.String name = "visualization_msgs::msg::dds_::Marker_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "2bce5a4a3077fcc4e86f5c26ece4cf9c744effb26974288c134be42973f35c07";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

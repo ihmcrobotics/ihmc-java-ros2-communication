@@ -13,13 +13,13 @@ public class MeshTrianglePubSubType implements us.ihmc.pubsub.TopicDataType<shap
    public static final java.lang.String name = "shape_msgs::msg::dds_::MeshTriangle_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "a8e528c8f45a28b299a9639c0d7b655db0431aa778f0babf8e83126ab2a2cc05";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

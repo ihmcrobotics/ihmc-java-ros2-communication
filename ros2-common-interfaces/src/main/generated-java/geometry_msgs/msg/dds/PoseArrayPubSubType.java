@@ -13,13 +13,13 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "f3b60d4ba3e4c639be38f248644baa1db9580009aba589acf6204c53c8c1d097";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

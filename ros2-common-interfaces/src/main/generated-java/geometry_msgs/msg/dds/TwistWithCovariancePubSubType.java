@@ -13,13 +13,13 @@ public class TwistWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TwistWithCovariance_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "4463eaf4c34a979547ee0b22fc492252152faccbdfbf9393e48f1fba806f42dc";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

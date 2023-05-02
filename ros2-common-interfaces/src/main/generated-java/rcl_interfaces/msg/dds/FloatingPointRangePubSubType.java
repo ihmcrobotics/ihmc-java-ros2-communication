@@ -13,13 +13,13 @@ public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataTyp
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::FloatingPointRange_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "16fb1a1f131729cee23bf6b5becf2f2e4210ad2212aa4ca18cdc222643e3468f";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

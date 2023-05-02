@@ -13,13 +13,13 @@ public class TemperaturePubSubType implements us.ihmc.pubsub.TopicDataType<senso
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Temperature_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "03b4b31dd98438708f38ac541f1a0e4bb52f77e2efbeb3b4a4c936189fe3f983";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

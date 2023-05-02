@@ -13,13 +13,13 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    public static final java.lang.String name = "tf2_msgs::msg::dds_::TF2Error_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "31e4866cb69080eaca255069a65d69563463eeb5f775a9c5b095e539a06f4aab";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

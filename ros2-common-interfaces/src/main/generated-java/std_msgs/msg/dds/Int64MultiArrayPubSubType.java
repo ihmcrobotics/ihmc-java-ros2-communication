@@ -13,13 +13,13 @@ public class Int64MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<s
    public static final java.lang.String name = "std_msgs::msg::dds_::Int64MultiArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "0088dadd2c17cdc4a0c4705b5138e1738038b11813b21cceb70be2684743bcf9";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

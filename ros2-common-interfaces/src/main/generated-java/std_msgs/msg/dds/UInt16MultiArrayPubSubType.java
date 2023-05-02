@@ -13,13 +13,13 @@ public class UInt16MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    public static final java.lang.String name = "std_msgs::msg::dds_::UInt16MultiArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "eb9b7a5d2fb17007b34496ce33e708419661ab9f724e8e04806221f9d2aacc7e";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

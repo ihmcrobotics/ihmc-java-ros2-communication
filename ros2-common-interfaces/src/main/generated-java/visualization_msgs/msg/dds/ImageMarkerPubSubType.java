@@ -13,13 +13,13 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    public static final java.lang.String name = "visualization_msgs::msg::dds_::ImageMarker_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "1396b1c3689ffa40860024176c718082d0f14d6dec287c598da9dc643098a3df";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

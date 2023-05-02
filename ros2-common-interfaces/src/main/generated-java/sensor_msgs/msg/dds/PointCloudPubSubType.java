@@ -13,13 +13,13 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    public static final java.lang.String name = "sensor_msgs::msg::dds_::PointCloud_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "049e71e40d62b4fd567c432fb73a22694dbc3e1feea1b93c09ecde38cc90819d";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

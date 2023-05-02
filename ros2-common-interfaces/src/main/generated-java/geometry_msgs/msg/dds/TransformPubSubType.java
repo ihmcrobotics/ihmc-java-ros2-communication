@@ -13,13 +13,13 @@ public class TransformPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Transform_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "9a6a9f99f712aa1b4344ed2e08e11d4e540e08e142e5015ba2fe5a47fc538364";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

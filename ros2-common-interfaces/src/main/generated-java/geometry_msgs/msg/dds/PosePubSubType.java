@@ -13,13 +13,13 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Pose_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "e73a7bb954279b957eec57fcb3f677c753a73f87e080ca823883fbdb947f3245";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

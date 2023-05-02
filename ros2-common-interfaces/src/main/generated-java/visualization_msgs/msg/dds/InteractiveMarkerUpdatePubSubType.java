@@ -13,13 +13,13 @@ public class InteractiveMarkerUpdatePubSubType implements us.ihmc.pubsub.TopicDa
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerUpdate_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "b62ca5eca6769a8321ad6439af67c5158a83e7ec94606266712b5bf7ac35f9a9";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    public static final java.lang.String name = "sensor_msgs::msg::dds_::RegionOfInterest_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "ec51a5f3244fefd69b9a95610f12a9ce0618746ee6db8d2e68d44f52096ae8b4";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

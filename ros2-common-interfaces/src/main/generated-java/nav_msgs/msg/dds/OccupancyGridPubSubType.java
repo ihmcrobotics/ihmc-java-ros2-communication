@@ -13,13 +13,13 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
    public static final java.lang.String name = "nav_msgs::msg::dds_::OccupancyGrid_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "92c26052657ceaffbea64779f686357ee135a30f594d8b10004aaf9fe0d17848";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

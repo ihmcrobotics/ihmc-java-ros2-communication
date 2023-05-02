@@ -13,13 +13,13 @@ public class TwistStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TwistStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "a9621bdd4a0f89b5f73e3c3055ee81bd3c58eb42a853dc3487016b90c4b1f320";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

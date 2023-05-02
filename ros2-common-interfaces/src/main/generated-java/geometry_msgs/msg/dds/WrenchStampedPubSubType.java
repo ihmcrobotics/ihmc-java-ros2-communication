@@ -13,13 +13,13 @@ public class WrenchStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geo
    public static final java.lang.String name = "geometry_msgs::msg::dds_::WrenchStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "964d74a97d1285887cdf6035b0bb13abbb753a85c412983480c8b30197125277";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class DiagnosticArrayPubSubType implements us.ihmc.pubsub.TopicDataType<d
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::DiagnosticArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "2a2a9de54629bbfce41305abdad4d0449398b890a64c4bf43bd8a2422aa8d60e";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Range_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "b619f07d72fdeec768010d836d01e9e0289c5037ff27e3a28c679904dc96914e";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

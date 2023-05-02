@@ -13,13 +13,13 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    public static final java.lang.String name = "sensor_msgs::msg::dds_::TimeReference_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "ad30da658cd27f10f8e32cca31bb01eae0c7734303ac0af6050232775b182bab";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

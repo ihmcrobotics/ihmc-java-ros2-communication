@@ -13,13 +13,13 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    public static final java.lang.String name = "shape_msgs::msg::dds_::Mesh_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "08790e3bd188ec064e46b6d55a40e4b4635db76f927064f9ce7ff7b74546af78";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

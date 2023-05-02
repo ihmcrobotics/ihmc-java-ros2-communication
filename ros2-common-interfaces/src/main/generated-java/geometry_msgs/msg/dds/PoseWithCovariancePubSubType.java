@@ -13,13 +13,13 @@ public class PoseWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTyp
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseWithCovariance_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "1f3e5eb5c1d032be2da6da45b83a24c9ff7efc821f923d9b6a44233e0862a4da";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::KeyValue_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "683d2f4a0f766d3a06f94da811dfcbfa9ba2c42059e71f9f39d306dd29a0bbfd";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

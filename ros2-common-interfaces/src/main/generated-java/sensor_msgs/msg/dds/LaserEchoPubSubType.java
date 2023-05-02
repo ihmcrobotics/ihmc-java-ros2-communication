@@ -13,13 +13,13 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    public static final java.lang.String name = "sensor_msgs::msg::dds_::LaserEcho_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "5e6aaa7f7dba8c3785b8a68509775e27f4bb530ac7d21d32356df6169ebafa43";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

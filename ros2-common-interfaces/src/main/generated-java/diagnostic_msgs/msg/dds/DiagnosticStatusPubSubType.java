@@ -13,13 +13,13 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
    public static final java.lang.String name = "diagnostic_msgs::msg::dds_::DiagnosticStatus_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "cffe78339d2a8d203d0771189e8209b14988fa50c1d4e92432aa3406312eb460";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

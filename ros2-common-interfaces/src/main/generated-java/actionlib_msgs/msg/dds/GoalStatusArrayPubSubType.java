@@ -13,13 +13,13 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalStatusArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "e9030f90073930cf354ffb3d163664ae51c5e197ab6caf23e39628da1e618802";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

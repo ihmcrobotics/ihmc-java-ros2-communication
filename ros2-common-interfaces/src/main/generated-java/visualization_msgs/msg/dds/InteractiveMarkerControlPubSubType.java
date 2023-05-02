@@ -13,13 +13,13 @@ public class InteractiveMarkerControlPubSubType implements us.ihmc.pubsub.TopicD
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerControl_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "8c5ac96925f6100c5e78543847daa7d1c3d7e0b0290d5390f4cf0d7fe5cd02b7";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

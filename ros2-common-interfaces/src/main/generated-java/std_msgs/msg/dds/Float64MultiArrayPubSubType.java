@@ -13,13 +13,13 @@ public class Float64MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
    public static final java.lang.String name = "std_msgs::msg::dds_::Float64MultiArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "b0df098787e3743a93c69fe04184a054bfa6856c81c3e862a730dff51e4bd93b";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
    public static final java.lang.String name = "nav_msgs::msg::dds_::GridCells_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "f01d2fc1f7f46f0ad46f36833dccef5548d562b28b538ce34c99c269543994bd";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

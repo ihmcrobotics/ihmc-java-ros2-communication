@@ -13,13 +13,13 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
    public static final java.lang.String name = "tf2_msgs::msg::dds_::TFMessage_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "3d1134ba428aaac8a716ca84f821c8a861154184708099182b019d75727551f4";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

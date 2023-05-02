@@ -13,13 +13,13 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::JointTrajectoryPoint_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "49cd0c5b487a5edcea0e33934d35bf8407b8bd97da1d744b24d427f6d4ca055e";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

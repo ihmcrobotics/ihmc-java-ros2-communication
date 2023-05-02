@@ -13,13 +13,13 @@ public class PoseWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topic
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseWithCovarianceStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "b0654a7c3ae0e060c2592b04b435a3fd9967345852d0fa80b32470a20c76359f";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class PlanePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.
    public static final java.lang.String name = "shape_msgs::msg::dds_::Plane_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "fcaf21b0563b4916b1a638368729e78f600d21398e1bb42a29fedc554cc17f30";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

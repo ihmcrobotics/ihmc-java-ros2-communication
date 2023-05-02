@@ -13,13 +13,13 @@ public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    public static final java.lang.String name = "sensor_msgs::msg::dds_::PointField_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "5df54004a88432ee76ba35ddc9ac82d951e1dd73151fbe39fff328965c1c6197";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class ListParametersResultPubSubType implements us.ihmc.pubsub.TopicDataT
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ListParametersResult_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "921f560badfb793e641fe429ff5fda31dd1774e830af08d15e7f6885b2bfb308";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

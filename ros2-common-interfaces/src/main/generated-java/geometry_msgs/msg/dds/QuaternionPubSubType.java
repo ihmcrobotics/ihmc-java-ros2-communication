@@ -13,13 +13,13 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Quaternion_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "3d2c851108459c3a5169cc7fe6c7e237d22306ffef33eaf7552fc60d75fd79fd";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

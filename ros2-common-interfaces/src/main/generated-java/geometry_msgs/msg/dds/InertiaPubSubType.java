@@ -13,13 +13,13 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Inertia_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "fbb8b8daccf65e8c16e8d9176135dc1be9583263568309f997477428dcd5b468";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

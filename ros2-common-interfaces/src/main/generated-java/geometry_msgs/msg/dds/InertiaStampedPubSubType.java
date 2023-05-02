@@ -13,13 +13,13 @@ public class InertiaStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    public static final java.lang.String name = "geometry_msgs::msg::dds_::InertiaStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "da58e9475086de7600a1e8245aa7ff833acb51dbb0f089b5c7e11ec66af2e121";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

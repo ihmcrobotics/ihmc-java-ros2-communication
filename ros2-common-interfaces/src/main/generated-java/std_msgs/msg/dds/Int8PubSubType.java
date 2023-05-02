@@ -13,13 +13,13 @@ public class Int8PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    public static final java.lang.String name = "std_msgs::msg::dds_::Int8_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "c1b436fd9e90c080537831c501ecb888e196b1621004f4f08926bcfad4b61aa3";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

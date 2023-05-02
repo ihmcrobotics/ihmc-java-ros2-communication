@@ -13,13 +13,13 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Wrench_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "ad78f5768539ea26fa8ee4d59a11fd677a1492247ffdc581a4b88a4b497ba0f9";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class Int32PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    public static final java.lang.String name = "std_msgs::msg::dds_::Int32_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "4a0b5bd8e8e9b5bf359c1bafa0d254396a701e7626166cf6e4e237229250f306";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

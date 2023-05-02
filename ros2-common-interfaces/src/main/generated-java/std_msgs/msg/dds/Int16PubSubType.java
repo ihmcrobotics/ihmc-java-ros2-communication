@@ -13,13 +13,13 @@ public class Int16PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    public static final java.lang.String name = "std_msgs::msg::dds_::Int16_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "51d675eb7f6ee6fc4374fde0eb160faa0b7e79d57ffaaa004ca2df2fc6e0a9ef";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

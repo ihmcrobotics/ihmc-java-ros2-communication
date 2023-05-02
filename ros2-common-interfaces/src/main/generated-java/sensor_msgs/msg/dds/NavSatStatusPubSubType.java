@@ -13,13 +13,13 @@ public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sens
    public static final java.lang.String name = "sensor_msgs::msg::dds_::NavSatStatus_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "802acf2813bad608a1598975ebac8871cb23690cc4d2f992ccd575af09b83f81";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

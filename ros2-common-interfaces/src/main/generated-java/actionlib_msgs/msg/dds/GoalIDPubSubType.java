@@ -13,13 +13,13 @@ public class GoalIDPubSubType implements us.ihmc.pubsub.TopicDataType<actionlib_
    public static final java.lang.String name = "actionlib_msgs::msg::dds_::GoalID_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "03b77b459c455f6d7240020b74f98a9635b4c22bd8fc1e9b9a983b0e07d1a0b4";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

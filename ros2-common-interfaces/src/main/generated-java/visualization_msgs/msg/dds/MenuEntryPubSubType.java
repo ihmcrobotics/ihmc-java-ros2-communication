@@ -13,13 +13,13 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
    public static final java.lang.String name = "visualization_msgs::msg::dds_::MenuEntry_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "b1ea37d7291264d9ff6fbe9dade654a444317fdbf0b41c16c88e612fda717395";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

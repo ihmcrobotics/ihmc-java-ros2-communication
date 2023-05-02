@@ -13,13 +13,13 @@ public class UUIDPubSubType implements us.ihmc.pubsub.TopicDataType<unique_ident
    public static final java.lang.String name = "unique_identifier_msgs::msg::dds_::UUID_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "025603bddfb949d254f7c80ad97f3565c595cf8c6999c74bd4ce70564f40870d";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

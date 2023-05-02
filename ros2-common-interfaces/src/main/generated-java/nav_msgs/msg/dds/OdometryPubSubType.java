@@ -13,13 +13,13 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
    public static final java.lang.String name = "nav_msgs::msg::dds_::Odometry_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "fb4974ef7c5bd6a645ef408999233624dd3016714d8557f24c676aa96af24425";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

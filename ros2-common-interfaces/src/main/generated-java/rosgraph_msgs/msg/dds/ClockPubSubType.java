@@ -13,13 +13,13 @@ public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_ms
    public static final java.lang.String name = "rosgraph_msgs::msg::dds_::Clock_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "f0b754e76fd92b7c0f4ebd130c7c129baf49f207e978402986a09dc706285359";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

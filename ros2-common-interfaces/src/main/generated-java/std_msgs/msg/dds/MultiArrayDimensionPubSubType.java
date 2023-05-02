@@ -13,13 +13,13 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
    public static final java.lang.String name = "std_msgs::msg::dds_::MultiArrayDimension_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "dd94273ac099539abce7827d716ffc00431b1b2c01a845ac679081a6ba840fed";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

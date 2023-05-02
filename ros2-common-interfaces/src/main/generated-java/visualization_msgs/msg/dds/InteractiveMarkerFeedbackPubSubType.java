@@ -13,13 +13,13 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerFeedback_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "48da92e34cf8d5b95bb0a5e4efbc9a1b0bbf18721d401d5db578f5bfa96f5f7c";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::SetParametersResult_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "d7a57521efa84a0185c80e5f1e840550a84afba99c3b645cff57c165cdc09ba5";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

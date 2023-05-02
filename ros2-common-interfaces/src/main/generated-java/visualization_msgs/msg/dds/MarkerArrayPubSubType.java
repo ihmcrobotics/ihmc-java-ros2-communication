@@ -13,13 +13,13 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    public static final java.lang.String name = "visualization_msgs::msg::dds_::MarkerArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "005029017736cb8194ff94f6db87b40b14941a5697feed199c06e0fa2d80d5db";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

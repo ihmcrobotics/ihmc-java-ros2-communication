@@ -13,13 +13,13 @@ public class JoyFeedbackPubSubType implements us.ihmc.pubsub.TopicDataType<senso
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JoyFeedback_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "35aa150c96abe678838e5aa297fd8deef61681f3d8295b919d378ca3650499a5";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

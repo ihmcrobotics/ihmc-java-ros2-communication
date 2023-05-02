@@ -13,13 +13,13 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    public static final java.lang.String name = "std_msgs::msg::dds_::MultiArrayLayout_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "8c6f75e8d495d9fddb2dd42119a8574d2fd8e5e6d66336d279028ef3c0eb74d2";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

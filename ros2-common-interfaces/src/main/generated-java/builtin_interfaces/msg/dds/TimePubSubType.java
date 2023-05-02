@@ -13,13 +13,13 @@ public class TimePubSubType implements us.ihmc.pubsub.TopicDataType<builtin_inte
    public static final java.lang.String name = "builtin_interfaces::msg::dds_::Time_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "5b16ab3b1a21e6d5efd7f954bafdf197295e22c27f672a7e0fe019ac5805cdba";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

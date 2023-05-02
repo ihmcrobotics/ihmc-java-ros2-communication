@@ -13,13 +13,13 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
    public static final java.lang.String name = "builtin_interfaces::msg::dds_::Duration_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "10e151981dcbeb29436d75af3d67c8397ba1d5078aeb6d7817e2c0366da295e9";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

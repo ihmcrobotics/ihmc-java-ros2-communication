@@ -13,13 +13,13 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    public static final java.lang.String name = "std_msgs::msg::dds_::ColorRGBA_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "e9fbba437a827b492f308eb1c6419a904c2dfa117911c3fddeae314de59cf7b8";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

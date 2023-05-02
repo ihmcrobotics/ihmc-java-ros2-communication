@@ -13,13 +13,13 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
    public static final java.lang.String name = "sensor_msgs::msg::dds_::BatteryState_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "6642dc17001cf86b1fef1a343d5105b8886395e03a548fc8cb988b15b16f8263";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

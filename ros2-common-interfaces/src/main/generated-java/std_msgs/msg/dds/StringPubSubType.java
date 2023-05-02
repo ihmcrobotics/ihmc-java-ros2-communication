@@ -13,13 +13,13 @@ public class StringPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    public static final java.lang.String name = "std_msgs::msg::dds_::String_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "309dc59b84bb27cc2636b402e08999616603a038b5803d5f674d902ec5fe52d1";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

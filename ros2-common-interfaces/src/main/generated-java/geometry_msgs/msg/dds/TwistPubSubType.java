@@ -13,13 +13,13 @@ public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Twist_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "a68d8033ab610289fb32007eb5bc99f1988521667d367edb76614d7478de6dc7";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

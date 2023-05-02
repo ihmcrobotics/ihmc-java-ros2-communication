@@ -13,13 +13,13 @@ public class PointStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PointStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "9c2bea41510bcd48b1b26efbe8e6e4ef079a048177588814441d31e8e3c3d0cf";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

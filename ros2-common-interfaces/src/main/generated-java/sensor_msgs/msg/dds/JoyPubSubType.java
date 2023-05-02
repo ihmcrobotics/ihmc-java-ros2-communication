@@ -13,13 +13,13 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Joy_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "006ef16e0a565a82bb616b0a73c94109407450d99c07a2f0589c85983a49b259";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

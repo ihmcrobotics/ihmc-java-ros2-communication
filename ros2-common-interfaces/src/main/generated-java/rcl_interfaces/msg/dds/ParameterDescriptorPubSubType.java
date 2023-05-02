@@ -13,13 +13,13 @@ public class ParameterDescriptorPubSubType implements us.ihmc.pubsub.TopicDataTy
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterDescriptor_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "b19ed1b1424fe496443b8869fd53310b857694324158c60134dede09a92005f8";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

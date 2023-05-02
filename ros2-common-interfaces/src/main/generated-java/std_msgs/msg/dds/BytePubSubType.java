@@ -13,13 +13,13 @@ public class BytePubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    public static final java.lang.String name = "std_msgs::msg::dds_::Byte_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "6713b34ea76eb2ee34b59be52326d8a6ff29af74929bf52890cd779b0d234854";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    public static final java.lang.String name = "std_msgs::msg::dds_::Empty_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "3493bd293feb55d099b1efeb0727e8e59fab647048ddfe09d01b1affa2a466cc";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

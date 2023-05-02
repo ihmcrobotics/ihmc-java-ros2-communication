@@ -13,13 +13,13 @@ public class UInt16PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    public static final java.lang.String name = "std_msgs::msg::dds_::UInt16_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "239c1f0d0040b801b62a706df3c23c5996a120da2c4d9f1c49b9ec58514c9c7c";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

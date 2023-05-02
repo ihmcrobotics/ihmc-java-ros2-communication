@@ -13,13 +13,13 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
    public static final java.lang.String name = "geometry_msgs::msg::dds_::AccelWithCovariance_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "8f9fcbbdfd9bd1453f233173574bcf3cf7dae0a1b32d25b6216b9d4119883b3b";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

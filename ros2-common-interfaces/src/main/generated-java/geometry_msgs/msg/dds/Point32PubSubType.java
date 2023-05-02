@@ -13,13 +13,13 @@ public class Point32PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Point32_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "f95723bc4a07835d0b5a32fd36d5cfadb6371169f6343802157270b2ac69709c";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

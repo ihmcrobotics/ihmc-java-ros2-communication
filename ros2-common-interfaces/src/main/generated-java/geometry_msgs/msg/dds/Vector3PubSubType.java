@@ -13,13 +13,13 @@ public class Vector3PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Vector3_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "271cb5565e28e76c0dec74abb874865867b587dfbd79d7e3c1c9289941c58c01";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

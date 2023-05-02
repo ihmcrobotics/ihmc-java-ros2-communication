@@ -13,13 +13,13 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MagneticField_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "251a385201f2569258d4b26316d6b25f074adf1b5bbed8e30d6b4b7c62debaa5";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

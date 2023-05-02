@@ -13,13 +13,13 @@ public class ParameterEventDescriptorsPubSubType implements us.ihmc.pubsub.Topic
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterEventDescriptors_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "6c4ae8433d5ec17b197ca5ecfcccc837a2fdf1904c921aa55c2da6a8abec4869";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

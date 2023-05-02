@@ -13,13 +13,13 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JointState_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "3bcf6825ff057805c98d069e391e652a32dc32247a4d7da271958a9d307dbe40";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

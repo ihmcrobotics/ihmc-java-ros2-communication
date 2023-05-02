@@ -13,13 +13,13 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    public static final java.lang.String name = "sensor_msgs::msg::dds_::JoyFeedbackArray_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "9d27bfdfb02c02b56ffd27e6cc74f84e66168f9658eed63a9a17af24d970caf6";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Polygon_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "e14360d5ee235e63a123eae77e88c35dae4e832673e1f7c0d40c1f5796470054";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

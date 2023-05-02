@@ -13,13 +13,13 @@ public class MultiDOFJointStatePubSubType implements us.ihmc.pubsub.TopicDataTyp
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MultiDOFJointState_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "265ae66d89ddd692d8d0e5c3bc7aa082c26f26f0924e43ffb9b0c0abeed607fc";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

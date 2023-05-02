@@ -13,13 +13,13 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
    public static final java.lang.String name = "sensor_msgs::msg::dds_::ChannelFloat32_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "0cab1f6d7acb8b72b4867890a8935b877cf0eaa883027af6bdc03d088d3ec6f2";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

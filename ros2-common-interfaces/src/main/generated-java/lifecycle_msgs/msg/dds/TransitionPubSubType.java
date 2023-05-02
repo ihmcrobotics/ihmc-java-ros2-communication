@@ -13,13 +13,13 @@ public class TransitionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecy
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::Transition_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "ab3b821c8eb4c56bd3d922df6ee8d6c47d7015280873be385196214043d1c585";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class QuaternionStampedPubSubType implements us.ihmc.pubsub.TopicDataType
    public static final java.lang.String name = "geometry_msgs::msg::dds_::QuaternionStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "09be247142904aa3539cf4bb9dcdb860b59144ead5f4cacdb6062371f80dd230";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

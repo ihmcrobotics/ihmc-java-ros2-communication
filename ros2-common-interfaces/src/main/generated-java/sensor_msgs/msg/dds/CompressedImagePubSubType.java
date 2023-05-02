@@ -13,13 +13,13 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
    public static final java.lang.String name = "sensor_msgs::msg::dds_::CompressedImage_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "8c418e0f271a53246fffffbefe4b36e6c962fa0bb50c686e93463ec01f701839";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

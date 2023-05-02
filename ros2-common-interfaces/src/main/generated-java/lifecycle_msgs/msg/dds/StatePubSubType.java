@@ -13,13 +13,13 @@ public class StatePubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_m
    public static final java.lang.String name = "lifecycle_msgs::msg::dds_::State_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "1fd0b2d5545121978025a33f139621433a7174dea3daae62c7c78130954e6238";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

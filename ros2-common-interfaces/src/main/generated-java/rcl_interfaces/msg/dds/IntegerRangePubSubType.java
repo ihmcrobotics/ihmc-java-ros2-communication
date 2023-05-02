@@ -13,13 +13,13 @@ public class IntegerRangePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::IntegerRange_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "a53668727ea411eadad8f3bebe8e82edaf38c48d08df35509390fe5d70bc9eb4";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    public static final java.lang.String name = "geometry_msgs::msg::dds_::TwistWithCovarianceStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "9357b7744f9a3fa1466ea86d73f408e062f54a131b416646f74cedb13a652b8c";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

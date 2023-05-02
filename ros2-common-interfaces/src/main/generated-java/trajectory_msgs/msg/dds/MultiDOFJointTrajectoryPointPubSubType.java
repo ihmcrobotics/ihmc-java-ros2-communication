@@ -13,13 +13,13 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
    public static final java.lang.String name = "trajectory_msgs::msg::dds_::MultiDOFJointTrajectoryPoint_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "8d4a7d12cf93894afe93a4f9b39704c1eafada8aceb9dfbc12c8bed2235e4730";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

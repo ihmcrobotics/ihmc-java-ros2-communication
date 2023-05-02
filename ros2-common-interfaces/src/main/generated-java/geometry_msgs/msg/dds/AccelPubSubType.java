@@ -13,13 +13,13 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Accel_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "dc20f6c575244f7df0e685e269ec4344198309b89ace2fa608965bcd9bf064c6";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

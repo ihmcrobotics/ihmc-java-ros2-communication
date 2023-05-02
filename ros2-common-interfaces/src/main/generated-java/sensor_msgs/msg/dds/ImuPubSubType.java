@@ -13,13 +13,13 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Imu_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "cb52a01fffe06d37ebcc656066d66888601c69c10e965d0091502b065360896b";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

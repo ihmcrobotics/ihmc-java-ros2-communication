@@ -13,13 +13,13 @@ public class CameraInfoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    public static final java.lang.String name = "sensor_msgs::msg::dds_::CameraInfo_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "9a6a7d02291d80d1570e7826ce88cf4f3c4491e4bf7c7905649b92f9f5f3d028";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

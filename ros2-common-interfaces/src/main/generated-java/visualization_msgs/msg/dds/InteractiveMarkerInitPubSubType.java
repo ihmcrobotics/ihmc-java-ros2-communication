@@ -13,13 +13,13 @@ public class InteractiveMarkerInitPubSubType implements us.ihmc.pubsub.TopicData
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerInit_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "ba4cd9d99684726cd09252ac6ca9ff394bac0de70b512ee2e0ae22c9ef2f5b4e";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

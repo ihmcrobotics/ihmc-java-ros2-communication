@@ -13,13 +13,13 @@ public class Float64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.
    public static final java.lang.String name = "std_msgs::msg::dds_::Float64_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "3774572d56f7a1e1de158e62d13198be10fe5d92e7ccb1cdf0bb72fbca2b867e";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class InteractiveMarkerPosePubSubType implements us.ihmc.pubsub.TopicData
    public static final java.lang.String name = "visualization_msgs::msg::dds_::InteractiveMarkerPose_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "4700c7071665daee14557a3a8fa5e648c071332c9a7835d88864baf9e41b7f50";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

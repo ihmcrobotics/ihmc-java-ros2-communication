@@ -13,13 +13,13 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
    public static final java.lang.String name = "geometry_msgs::msg::dds_::PoseStamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "b80f004dcb5c2f12ee07d63ad852165e440e769f7f673a2d63b5244e1bac629d";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

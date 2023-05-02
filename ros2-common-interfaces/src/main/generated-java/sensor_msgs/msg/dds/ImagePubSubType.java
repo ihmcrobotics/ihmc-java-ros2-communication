@@ -13,13 +13,13 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    public static final java.lang.String name = "sensor_msgs::msg::dds_::Image_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "790218e9b03549df352ba7487fd7bcc974f8b9672335a134788472dfa831f1cd";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

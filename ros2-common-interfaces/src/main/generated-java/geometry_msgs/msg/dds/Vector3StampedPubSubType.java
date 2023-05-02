@@ -13,13 +13,13 @@ public class Vector3StampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    public static final java.lang.String name = "geometry_msgs::msg::dds_::Vector3Stamped_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "f2d284c7d0912d840ef4d5e6102f35d46e4abd68be54c3e30e3943044ae56cd1";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

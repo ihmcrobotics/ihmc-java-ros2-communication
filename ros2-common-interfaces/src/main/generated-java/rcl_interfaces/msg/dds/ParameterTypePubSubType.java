@@ -13,13 +13,13 @@ public class ParameterTypePubSubType implements us.ihmc.pubsub.TopicDataType<rcl
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::ParameterType_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "cf200e93e677b946afdb30f82c43a726fb158729c832ee25dc9b1fac9147f079";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

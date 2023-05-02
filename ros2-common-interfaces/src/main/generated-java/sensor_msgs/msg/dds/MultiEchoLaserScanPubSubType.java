@@ -13,13 +13,13 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
    public static final java.lang.String name = "sensor_msgs::msg::dds_::MultiEchoLaserScan_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "fd8097e0971b4b9e06d3e6cf4bdd7572a80460cb41fa1bb57afa5c971b30e179";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataTy
    public static final java.lang.String name = "rcl_interfaces::msg::dds_::IntraProcessMessage_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "8ee3ab0b1a69625ea1c2209efba5d4fc8f7cc06060e935fc5f30ed4da69ed8a9";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }

@@ -13,13 +13,13 @@ public class DisparityImagePubSubType implements us.ihmc.pubsub.TopicDataType<st
    public static final java.lang.String name = "stereo_msgs::msg::dds_::DisparityImage_";
    
    @Override
-   public final String getDefinitionChecksum()
+   public final java.lang.String getDefinitionChecksum()
    {
    		return "8b7842ef624d1161cab70e3756c11abc143fe9cdab1f953f748ed6e10df37df4";
    }
    
    @Override
-   public final String getDefinitionVersion()
+   public final java.lang.String getDefinitionVersion()
    {
    		return "local";
    }
