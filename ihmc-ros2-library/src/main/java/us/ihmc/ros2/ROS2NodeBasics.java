@@ -41,6 +41,15 @@ class ROS2NodeBasics implements ROS2NodeInterface
    private final String nodeName;
    private final String namespace;
 
+   /**
+    * Create a new ROS 2 node.
+    *
+    * @param domain     DDS domain to use
+    * @param name       Name for the node
+    * @param namespace  Namespace for the ros node i.e. DDS partition
+    * @param attributes Participant attributes to configure the node
+    * @throws IOException if no participant can be made
+    */
    ROS2NodeBasics(Domain domain, String name, String namespace, ParticipantAttributes attributes) throws IOException
    {
       this.domain = domain;
@@ -108,11 +117,11 @@ class ROS2NodeBasics implements ROS2NodeInterface
    }
 
    /**
-    * Create publisher attributes for a topic
+    * Create subscriber attributes for a topic
     *
+    * @param topicName     Topic Name
     * @param <T>           Data type of the topic
     * @param topicDataType Data type serializer of the topic
-    * @param topicName     Topic Name
     * @param qosProfile    Initial ROS 2 qos profile
     * @return PublisherAttributes for createPublisher
     */
