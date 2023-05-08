@@ -55,6 +55,14 @@ class ROS2NodeBasics implements ROS2NodeInterface
       participant = domain.createParticipant(attributes);
    }
 
+   /**
+    * Create a new ROS 2 compatible publisher in this Node
+    *
+    * @param topicDataType       The topic data type of the message
+    * @param publisherAttributes Publisher attributes created with @see{createPublisherAttributes}
+    * @return a ROS 2 publisher
+    * @throws IOException if no publisher can be made
+    */
    @Override
    public <T> ROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException
    {
@@ -67,6 +75,9 @@ class ROS2NodeBasics implements ROS2NodeInterface
       return new ROS2Publisher<>(domain, domain.createPublisher(participant, publisherAttributes));
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public <T> PublisherAttributes createPublisherAttributes(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile)
    {
@@ -84,6 +95,9 @@ class ROS2NodeBasics implements ROS2NodeInterface
       return publisherAttributes;
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, SubscriberAttributes subscriberAttributes, int queueSize)
          throws IOException
@@ -93,6 +107,15 @@ class ROS2NodeBasics implements ROS2NodeInterface
       return new QueuedROS2Subscription<T>(subscriber, listener);
    }
 
+   /**
+    * Create publisher attributes for a topic
+    *
+    * @param <T>           Data type of the topic
+    * @param topicDataType Data type serializer of the topic
+    * @param topicName     Topic Name
+    * @param qosProfile    Initial ROS 2 qos profile
+    * @return PublisherAttributes for createPublisher
+    */
    @Override
    public <T> SubscriberAttributes createSubscriberAttributes(String topicName, TopicDataType<T> topicDataType, ROS2QosProfile qosProfile)
    {
@@ -112,6 +135,9 @@ class ROS2NodeBasics implements ROS2NodeInterface
       return subscriberAttributes;
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
                                                      NewMessageListener<T> subscriberListener,
@@ -126,18 +152,29 @@ class ROS2NodeBasics implements ROS2NodeInterface
       return new ROS2Subscription<T>(domain, domain.createSubscriber(participant, subscriberAttributes, subscriberListener));
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public String getName()
    {
       return nodeName;
    }
 
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public String getNamespace()
    {
       return namespace;
    }
 
+   /**
+    * Destroys this node. This effectively removes this node's {@code Participant} from the domain and clears the internal
+    * references to these two. After calling this method, this node becomes unusable, i.e. publisher or subscriber can no longer
+    * be created.
+    */
    public void destroy()
    {
       if (domain != null)
