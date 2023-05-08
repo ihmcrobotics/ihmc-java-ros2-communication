@@ -46,8 +46,12 @@ public class ROS2TopicTest
    @Test
    public void testROS2TopicName()
    {
-      ROS2Topic<?> topicName = new ROS2Topic<>().withPrefix("ihmc").withRobot("atlas").withModule("rea")
-                                                .withTypeName(ExampleTypeMessage.class).withTypeName().withSuffix("one");
+      ROS2Topic<?> topicName = new ROS2Topic<>().withPrefix("ihmc")
+                                                .withRobot("atlas")
+                                                .withModule("rea")
+                                                .withTypeName(ExampleTypeMessage.class)
+                                                .withTypeName()
+                                                .withSuffix("one");
       assertEquals("/ihmc/atlas/rea/example_type/one", topicName.toString());
 
       ROS2Topic<?> ihmcPrefixed = new ROS2Topic<>().withPrefix("ihmc");

@@ -1,11 +1,26 @@
+/*
+ * Copyright 2023 Florida Institute for Human and Machine Cognition (IHMC)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package us.ihmc.ros2;
-
-import java.util.function.Consumer;
 
 import us.ihmc.commons.exception.DefaultExceptionHandler;
 import us.ihmc.commons.exception.ExceptionTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.subscriber.Subscriber;
+
+import java.util.function.Consumer;
 
 /**
  * Callback listener to non-null reception of a message on a ROS 2 topic.
@@ -33,7 +48,7 @@ public class ROS2Callback<T>
       this.messageCallback = messageCallback;
       ExceptionTools.handle(() ->
       {
-         subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType), this::nullOmissionCallback, topicName);
+       subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType), this::nullOmissionCallback, topicName);
       }, DefaultExceptionHandler.RUNTIME_EXCEPTION);
    }
 
@@ -60,6 +75,8 @@ public class ROS2Callback<T>
 
    public void destroy()
    {
+      setEnabled(false);
+
       if (subscription != null)
       {
          subscription.remove();

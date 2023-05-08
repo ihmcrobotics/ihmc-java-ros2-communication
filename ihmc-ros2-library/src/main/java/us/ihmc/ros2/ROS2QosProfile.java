@@ -1,17 +1,17 @@
 /*
- * Copyright 2017 Florida Institute for Human and Machine Cognition (IHMC)
- * 
+ * Copyright 2023 Florida Institute for Human and Machine Cognition (IHMC)
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *     
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License. 
+ * limitations under the License.
  */
 package us.ihmc.ros2;
 
@@ -21,11 +21,12 @@ import com.eprosima.xmlschemas.fastrtps_profiles.ReliabilityQosKindType;
 
 /**
  * ROS2 QoS profile settings Provides a quick way to set the ROS2 QoS settings. Provided options are
- * - History KEEP_LAST or KEEP_ALL (default KEEP_LAST) - Size default history size (default 1) -
- * Reliablity RELIABLE or BEST EFFORT (default RELIABLE) - Durability (default VOLATILE) -
- * avoidRosNamespaceConventions Use the Node name directly for communication with pure RTPS/DDS
- * nodes
- * 
+ * - History KEEP_LAST or KEEP_ALL (default KEEP_LAST)
+ * - Size default history size (default 1)
+ * - Reliability RELIABLE or BEST EFFORT (default RELIABLE)
+ * - Durability (default VOLATILE)
+ * - avoidRosNamespaceConventions Use the Node name directly for communication with pure RTPS/DDS nodes
+ *
  * @author Jesper Smith
  */
 public class ROS2QosProfile
@@ -35,48 +36,45 @@ public class ROS2QosProfile
       return new ROS2QosProfile();
    }
 
-   public static final ROS2QosProfile KEEP_HISTORY(int depth)
+   public static ROS2QosProfile KEEP_HISTORY(int depth)
    {
-      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, depth, ReliabilityQosKindType.RELIABLE, RosDurability.TRANSIENT_LOCAL, false);
+      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, depth, ReliabilityQosKindType.RELIABLE, ROS2Durability.TRANSIENT_LOCAL, false);
    }
 
-   public static final ROS2QosProfile BEST_EFFORT()
+   public static ROS2QosProfile BEST_EFFORT()
    {
-      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, 1, ReliabilityQosKindType.BEST_EFFORT, RosDurability.VOLATILE, false);
+      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, 1, ReliabilityQosKindType.BEST_EFFORT, ROS2Durability.VOLATILE, false);
    }
 
-   public enum RosDurability
+   public enum ROS2Durability
    {
       VOLATILE, TRANSIENT_LOCAL;
-      
+
       public DurabilityQosKindType toKind()
       {
-         switch(this)
+         return switch (this)
          {
-            case VOLATILE:
-               return DurabilityQosKindType.VOLATILE;
-            case TRANSIENT_LOCAL:
-               return DurabilityQosKindType.TRANSIENT_LOCAL;
-         }
-         
-         throw new RuntimeException("Unreachable code");
+            case VOLATILE -> DurabilityQosKindType.VOLATILE;
+            case TRANSIENT_LOCAL -> DurabilityQosKindType.TRANSIENT_LOCAL;
+         };
       }
-      
-      
    }
 
    private HistoryQosKindType history = HistoryQosKindType.KEEP_LAST;
    private int depth = 1;
    private ReliabilityQosKindType reliability = ReliabilityQosKindType.RELIABLE;
-   private RosDurability durability = RosDurability.VOLATILE;
+   private ROS2Durability durability = ROS2Durability.VOLATILE;
    private boolean avoidRosNamespaceConventions = false;
 
    public ROS2QosProfile()
    {
-
    }
 
-   public ROS2QosProfile(HistoryQosKindType history, int depth, ReliabilityQosKindType reliability, RosDurability durability, boolean avoidRosNamespaceConventions)
+   public ROS2QosProfile(HistoryQosKindType history,
+                         int depth,
+                         ReliabilityQosKindType reliability,
+                         ROS2Durability durability,
+                         boolean avoidRosNamespaceConventions)
    {
       this();
       this.history = history;
@@ -86,101 +84,53 @@ public class ROS2QosProfile
       this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
    }
 
-   /**
-    * @return the History QoS Policy
-    */
    public HistoryQosKindType getHistory()
    {
       return history;
    }
 
-   /**
-    * Set the History QoS Policy - KEEP_LAST: only store up to N samples, configurable via the queue
-    * depth option. - KEEP_ALL: store all samples, subject to the configured resource limits of the DDS
-    * vendor. default: KEEP_LAST
-    * 
-    * @param history
-    */
    public void setHistory(HistoryQosKindType history)
    {
       this.history = history;
    }
 
-   /**
-    * @return the history queue depth
-    */
    public int getSize()
    {
       return depth;
    }
 
-   /**
-    * Set the history queue depth Increasing this number will allocate memory for every message in the
-    * queue default: 1
-    * 
-    * @param depth
-    */
    public void setSize(int depth)
    {
       this.depth = depth;
    }
 
-   /**
-    * @return reliability kind
-    */
    public ReliabilityQosKindType getReliability()
    {
       return reliability;
    }
 
-   /**
-    * Set reliability qos policy BEST_EFFORT: attempt to deliver samples, but may lose them if the
-    * network is not robust. RELIABLE: guarantee that samples are delivered, may retry multiple times.
-    * 
-    * @param reliability
-    */
    public void setReliability(ReliabilityQosKindType reliability)
    {
       this.reliability = reliability;
    }
 
-   /**
-    * @return Durability qos policy
-    */
-   public RosDurability getDurability()
+   public ROS2Durability getDurability()
    {
       return durability;
    }
 
-   /**
-    * Set durability qos policy - TRANSIENT_LOCAL: only applies to DataWriters. DataWriter becomes
-    * responsible of persisting samples until a corresponding DataReader becomes available. - VOLATILE:
-    * no attempt is made to persist samples.
-    * 
-    * @param durability
-    */
-   public void setDurability(RosDurability durability)
+   public void setDurability(ROS2Durability durability)
    {
       this.durability = durability;
    }
 
-   /**
-    * @return true if no Ros Namespace mangling should be done
-    */
    public boolean isAvoidRosNamespaceConventions()
    {
       return avoidRosNamespaceConventions;
    }
 
-   /**
-    * Set to true to use the Node namespace as partition and the topic name as is This is for
-    * interacting with existing RTPS/DDS nodes
-    * 
-    * @param avoidRosNamespaceConventions
-    */
    public void setAvoidRosNamespaceConventions(boolean avoidRosNamespaceConventions)
    {
       this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
    }
-
 }

@@ -1,3 +1,18 @@
+/*
+ * Copyright 2023 Florida Institute for Human and Machine Cognition (IHMC)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package us.ihmc.ros2;
 
 import us.ihmc.commons.thread.TypedNotification;
@@ -17,9 +32,9 @@ public class ROS2Input<T>
    private final AtomicReference<T> atomicReference;
    private final MessageFilter<T> messageFilter;
    private boolean hasReceivedFirstMessage = false;
-   private ROS2Callback<T> ros2Callback;
-   private TypedNotification<T> messageNotification = new TypedNotification<>();
-   private List<Consumer<T>> userCallbacks = new ArrayList<>();
+   private final ROS2Callback<T> ros2Callback;
+   private final TypedNotification<T> messageNotification = new TypedNotification<>();
+   private final List<Consumer<T>> userCallbacks = new ArrayList<>();
 
    public ROS2Input(ROS2NodeInterface ros2Node, ROS2Topic<T> topic)
    {

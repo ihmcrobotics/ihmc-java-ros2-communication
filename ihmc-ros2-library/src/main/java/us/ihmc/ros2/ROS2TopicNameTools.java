@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Florida Institute for Human and Machine Cognition (IHMC)
+ * Copyright 2023 Florida Institute for Human and Machine Cognition (IHMC)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,17 @@
  */
 package us.ihmc.ros2;
 
+import org.apache.commons.lang3.StringUtils;
+import us.ihmc.pubsub.TopicDataType;
+import us.ihmc.pubsub.attributes.CommonAttributes;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.function.Supplier;
 
-import org.apache.commons.lang3.StringUtils;
-
-import us.ihmc.pubsub.TopicDataType;
-import us.ihmc.pubsub.attributes.CommonAttributes;
-
 /**
- * Helper class to convert from namespace and topic name to the correct DDS partition and topic for ROS2 interoperability
+ * Helper class to convert from namespace and topic name to the correct DDS partition and topic for ROS 2 interoperability
  *
  * @author Jesper Smith
  */
@@ -118,11 +117,8 @@ public class ROS2TopicNameTools
       return stringBuilder.toString();
    }
 
-   /* package-private */ static void assignNameAndPartitionsToAttributes(CommonAttributes<?> attributes,
-                                                                         String namespace,
-                                                                         String nodeName,
-                                                                         String topic,
-                                                                         boolean avoidRosNamespace)
+   /* package-private */
+   static void assignNameAndPartitionsToAttributes(CommonAttributes<?> attributes, String namespace, String nodeName, String topic, boolean avoidRosNamespace)
    {
       if (avoidRosNamespace)
       {
@@ -304,7 +300,7 @@ public class ROS2TopicNameTools
 
       if (!string.startsWith("/"))
       {
-         string =  "/" + string;
+         string = "/" + string;
       }
 
       return string;
