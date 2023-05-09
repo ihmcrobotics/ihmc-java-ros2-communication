@@ -9,9 +9,6 @@ public interface SubscriptionMatchedListener<T>
    /**
     * Virtual method to be called when the subscriber is matched with a new Writer (or unmatched);
     * i.e., when a writer publishing in the same topic is discovered
-    *
-    * @param subscriber
-    * @param info
     */
-   public void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info);
+   void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info);
 }

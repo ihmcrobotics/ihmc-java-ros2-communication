@@ -8,13 +8,13 @@ import us.ihmc.pubsub.subscriber.SubscriberListener;
 public interface NewMessageListener<T> extends SubscriberListener<T>
 {
    /**
-    * Virtual function to be implemented by the user containing the actions to be performed when a new Data Message is received
+    * Virtual function to be implemented by the user containing the actions to be performed when a new data message is received.
     *
     * @param subscriber
     */
-   public void onNewDataMessage(Subscriber<T> subscriber);
+   void onNewDataMessage(Subscriber<T> subscriber);
 
-   public default void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info)
+   default void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info)
    {
       // do nothing
    }

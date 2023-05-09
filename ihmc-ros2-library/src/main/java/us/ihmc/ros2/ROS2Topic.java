@@ -26,7 +26,7 @@ import static us.ihmc.ros2.ROS2TopicNameTools.processTopicNamePart;
  * <p>
  * It also is parameterized by type. This type is used to enforce topic type safety and
  * increase the usefulness of helper methods.
- *
+ * <p>
  * Before the message type is known, for example the IHMC_ROOT topic in ROS2Tools,
  * the user would use the ? as ROS2Topic<?> to say the type has not yet been decided.
  * </p>
@@ -59,10 +59,6 @@ public class ROS2Topic<T>
    private final String suffix;
    private final Class<T> messageType;
 
-   /**
-    * <p>Create the emtpy topic. The name of this topic will evaluate to an empty String.</p>
-    * <p>It is recommended to start from another existing topic name instead of starting from scratch every time.</p>
-    */
    public ROS2Topic() // TODO make private and provide static root name method?
    {
       prefix = "";
@@ -74,13 +70,7 @@ public class ROS2Topic<T>
       messageType = null;
    }
 
-   private ROS2Topic(String prefix,
-                     String robotName,
-                     String moduleName,
-                     String ioQualifier,
-                     String typeName,
-                     String suffix,
-                     Class<T> messageType)
+   private ROS2Topic(String prefix, String robotName, String moduleName, String ioQualifier, String typeName, String suffix, Class<T> messageType)
    {
       this.prefix = prefix;
       this.robotName = robotName;
@@ -109,29 +99,17 @@ public class ROS2Topic<T>
       }
    }
 
-   /**
-    * Returns a new topic with the provided prefix.
-    * If the provided prefix is null, then the part will evaluate to an empty string not even a "/" will
-    * appear in the resulting topic name.
-    * @param prefix part 1/5 of this topic name
-    * @return new topic
-    */
    public ROS2Topic<T> withPrefix(String prefix)
    {
       return copyIfNotEqual(processTopicNamePart(prefix), robotName, moduleName, ioQualifier, typeName, suffix, messageType);
    }
 
-   /**
-    *
-    * @param robotName
-    * @return
-    */
    public ROS2Topic<T> withRobot(String robotName)
    {
       return copyIfNotEqual(prefix, processTopicNamePart(robotName), moduleName, ioQualifier, typeName, suffix, messageType);
    }
 
-   /** TODO: Allow multiple parts as String... that gets turned into part1/part2/part3 */
+   // TODO: Allow multiple parts as String... that gets turned into part1/part2/part3
    public ROS2Topic<T> withModule(String moduleName)
    {
       return copyIfNotEqual(prefix, robotName, processTopicNamePart(moduleName), ioQualifier, typeName, suffix, messageType);
@@ -158,8 +136,7 @@ public class ROS2Topic<T>
       {
          throw new RuntimeException("This topic does not have a type yet. Cannot add type name");
       }
-      return copyIfNotEqual(prefix, robotName, moduleName, ioQualifier,
-                             processTopicNamePart(messageTypeToTopicNamePart(messageType)), suffix, messageType);
+      return copyIfNotEqual(prefix, robotName, moduleName, ioQualifier, processTopicNamePart(messageTypeToTopicNamePart(messageType)), suffix, messageType);
    }
 
    public ROS2Topic<T> clearTypeName()
@@ -268,21 +245,15 @@ public class ROS2Topic<T>
                     otherTopic.messageType);
    }
 
-   private boolean equals(String prefix,
-                          String robotName,
-                          String moduleName,
-                          String ioQualifier,
-                          String typeName,
-                          String suffix,
-                          Class<?> messageType)
+   private boolean equals(String prefix, String robotName, String moduleName, String ioQualifier, String typeName, String suffix, Class<?> messageType)
    {
-      return Objects.equals(this.prefix, prefix)
-          && Objects.equals(this.robotName, robotName)
-          && Objects.equals(this.moduleName, moduleName)
-          && Objects.equals(this.ioQualifier, ioQualifier)
-          && Objects.equals(this.typeName, typeName)
-          && Objects.equals(this.suffix, suffix)
-          && Objects.equals(this.messageType, messageType);
+      return Objects.equals(this.prefix, prefix) &&
+             Objects.equals(this.robotName, robotName) &&
+             Objects.equals(this.moduleName, moduleName) &&
+             Objects.equals(this.ioQualifier, ioQualifier) &&
+             Objects.equals(this.typeName, typeName) &&
+             Objects.equals(this.suffix, suffix) &&
+             Objects.equals(this.messageType, messageType);
    }
 
    @Override

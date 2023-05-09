@@ -1,11 +1,11 @@
 package us.ihmc.ros2;
 
-import java.util.function.Consumer;
-
 import us.ihmc.commons.exception.DefaultExceptionHandler;
 import us.ihmc.commons.exception.ExceptionTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.subscriber.Subscriber;
+
+import java.util.function.Consumer;
 
 /**
  * Callback listener to non-null reception of a message on a ROS 2 topic.
@@ -33,7 +33,7 @@ public class ROS2Callback<T>
       this.messageCallback = messageCallback;
       ExceptionTools.handle(() ->
       {
-         subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType), this::nullOmissionCallback, topicName);
+       subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType), this::nullOmissionCallback, topicName);
       }, DefaultExceptionHandler.RUNTIME_EXCEPTION);
    }
 
@@ -60,6 +60,8 @@ public class ROS2Callback<T>
 
    public void destroy()
    {
+      setEnabled(false);
+
       if (subscription != null)
       {
          subscription.remove();

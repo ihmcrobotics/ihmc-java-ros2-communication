@@ -17,9 +17,9 @@ public class ROS2Input<T>
    private final AtomicReference<T> atomicReference;
    private final MessageFilter<T> messageFilter;
    private boolean hasReceivedFirstMessage = false;
-   private ROS2Callback<T> ros2Callback;
-   private TypedNotification<T> messageNotification = new TypedNotification<>();
-   private List<Consumer<T>> userCallbacks = new ArrayList<>();
+   private final ROS2Callback<T> ros2Callback;
+   private final TypedNotification<T> messageNotification = new TypedNotification<>();
+   private final List<Consumer<T>> userCallbacks = new ArrayList<>();
 
    public ROS2Input(ROS2NodeInterface ros2Node, ROS2Topic<T> topic)
    {

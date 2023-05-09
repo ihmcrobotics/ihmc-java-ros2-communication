@@ -1,25 +1,6 @@
-/*
- * Copyright 2017 Florida Institute for Human and Machine Cognition (IHMC)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package us.ihmc.ros2;
 
-import java.io.IOException;
-
-import com.eprosima.xmlschemas.fastrtps_profiles.PublishModeQosKindType;
 import com.eprosima.xmlschemas.fastrtps_profiles.TopicKindType;
-
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.TopicDataType;
@@ -29,6 +10,8 @@ import us.ihmc.pubsub.attributes.SubscriberAttributes;
 import us.ihmc.pubsub.common.Time;
 import us.ihmc.pubsub.participant.Participant;
 
+import java.io.IOException;
+
 /**
  * Internal class to share implementation between intra and inter process ROS2 nodes.
  *
@@ -37,21 +20,18 @@ import us.ihmc.pubsub.participant.Participant;
  */
 class ROS2NodeBasics implements ROS2NodeInterface
 {
-   //   public static final int ROS_DEFAULT_DOMAIN_ID = domainFromEnvironment();
-
    private Domain domain;
    private Participant participant;
 
    private final String nodeName;
    private final String namespace;
 
-
    /**
-    * Create a new ROS2 node.
+    * Create a new ROS 2 node.
     *
-    * @param Domain     DDS domain to use
+    * @param domain     DDS domain to use
     * @param name       Name for the node
-    * @param namespace  namespace for the ros node i.e. DDS partition
+    * @param namespace  Namespace for the ros node i.e. DDS partition
     * @param attributes Participant attributes to configure the node
     * @throws IOException if no participant can be made
     */
@@ -70,11 +50,11 @@ class ROS2NodeBasics implements ROS2NodeInterface
    }
 
    /**
-    * Create a new ROS2 compatible publisher in this Node
+    * Create a new ROS 2 compatible publisher in this Node
     *
     * @param topicDataType       The topic data type of the message
     * @param publisherAttributes Publisher attributes created with @see{createPublisherAttributes}
-    * @return A ROS publisher
+    * @return a ROS 2 publisher
     * @throws IOException if no publisher can be made
     */
    @Override
@@ -90,32 +70,28 @@ class ROS2NodeBasics implements ROS2NodeInterface
    }
 
    /**
-    * Create publisher attributes for a topic
-    * 
-    * @param <T>           Data type of the topic
-    * @param topicDataType Data type serializer of the topic
-    * @param topicName     Topic Name
-    * @param qosProfile    Initial ROS2 QOS profile
-    * @return PublisherAttributes for createPublisher
+    * {@inheritDoc}
     */
    @Override
    public <T> PublisherAttributes createPublisherAttributes(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile)
    {
-      
+
       PublisherAttributes publisherAttributes = PublisherAttributes.create()
-            .topicKind(topicDataType.isGetKeyDefined() ? TopicKindType.WITH_KEY : TopicKindType.NO_KEY)
-            .topicDataType(topicDataType)
-            .reliabilityKind(qosProfile.getReliability())
-            .heartBeatPeriod(new Time(0, (long) (0.1 * 1e9))) // Approximately 100ms
-            .durabilityKind(qosProfile.getDurability().toKind())
-            .historyDepth(qosProfile.getSize())
-            .historyQosPolicyKind(qosProfile.getHistory());
-    
+                                                                   .topicKind(topicDataType.isGetKeyDefined() ? TopicKindType.WITH_KEY : TopicKindType.NO_KEY)
+                                                                   .topicDataType(topicDataType)
+                                                                   .reliabilityKind(qosProfile.getReliability())
+                                                                   .heartBeatPeriod(new Time(0, (long) (0.1 * 1e9))) // Approximately 100ms
+                                                                   .durabilityKind(qosProfile.getDurability().toKind())
+                                                                   .historyDepth(qosProfile.getSize())
+                                                                   .historyQosPolicyKind(qosProfile.getHistory());
+
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
       return publisherAttributes;
    }
 
-   /** {@inheritDoc} */
+   /**
+    * {@inheritDoc}
+    */
    @Override
    public <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, SubscriberAttributes subscriberAttributes, int queueSize)
          throws IOException
@@ -126,21 +102,28 @@ class ROS2NodeBasics implements ROS2NodeInterface
    }
 
    /**
-    * {@inheritDoc}
+    * Create subscriber attributes for a topic
+    *
+    * @param topicName     Topic Name
+    * @param <T>           Data type of the topic
+    * @param topicDataType Data type serializer of the topic
+    * @param qosProfile    Initial ROS 2 qos profile
+    * @return PublisherAttributes for createPublisher
     */
    @Override
    public <T> SubscriberAttributes createSubscriberAttributes(String topicName, TopicDataType<T> topicDataType, ROS2QosProfile qosProfile)
    {
       SubscriberAttributes subscriberAttributes = SubscriberAttributes.create()
-            .topicKind(topicDataType.isGetKeyDefined() ? TopicKindType.WITH_KEY : TopicKindType.NO_KEY)
-            .topicDataType(topicDataType)
-            .topicName(topicName)
-            .reliabilityKind(qosProfile.getReliability())
-            .durabilityKind(qosProfile.getDurability().toKind())
-            .historyDepth(qosProfile.getSize())
-            .historyQosPolicyKind(qosProfile.getHistory());
-      
-      
+                                                                      .topicKind(topicDataType.isGetKeyDefined() ?
+                                                                                       TopicKindType.WITH_KEY :
+                                                                                       TopicKindType.NO_KEY)
+                                                                      .topicDataType(topicDataType)
+                                                                      .topicName(topicName)
+                                                                      .reliabilityKind(qosProfile.getReliability())
+                                                                      .durabilityKind(qosProfile.getDurability().toKind())
+                                                                      .historyDepth(qosProfile.getSize())
+                                                                      .historyQosPolicyKind(qosProfile.getHistory());
+
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
       return subscriberAttributes;
@@ -150,10 +133,9 @@ class ROS2NodeBasics implements ROS2NodeInterface
     * {@inheritDoc}
     */
    @Override
-   @SuppressWarnings("unchecked")
-   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> subscriberListener,
-                                                     SubscriberAttributes subscriberAttributes)
-         throws IOException
+   public <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
+                                                     NewMessageListener<T> subscriberListener,
+                                                     SubscriberAttributes subscriberAttributes) throws IOException
    {
       TopicDataType<?> registeredType = domain.getRegisteredType(participant, topicDataType.getName());
       if (registeredType == null)
@@ -165,7 +147,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
    }
 
    /**
-    * @return the name of this node
+    * {@inheritDoc}
     */
    @Override
    public String getName()
@@ -174,7 +156,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
    }
 
    /**
-    * @return the namespace of this node
+    * {@inheritDoc}
     */
    @Override
    public String getNamespace()
@@ -183,15 +165,9 @@ class ROS2NodeBasics implements ROS2NodeInterface
    }
 
    /**
-    * Destroys this node.
-    * <p>
-    * This effectively removes this node's {@code Participant} from the domain and clear the internal
-    * references to these two.
-    * </p>
-    * <p>
-    * After calling this method, this node becomes unusable, i.e. publisher or subscriber can no longer
+    * Destroys this node. This effectively removes this node's {@code Participant} from the domain and clears the internal
+    * references to these two. After calling this method, this node becomes unusable, i.e. publisher or subscriber can no longer
     * be created.
-    * </p>
     */
    public void destroy()
    {
@@ -215,5 +191,4 @@ class ROS2NodeBasics implements ROS2NodeInterface
 
       participant = null;
    }
-
 }
