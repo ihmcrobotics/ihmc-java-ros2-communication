@@ -1,18 +1,3 @@
-/*
- * Copyright 2023 Florida Institute for Human and Machine Cognition (IHMC)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package us.ihmc.ros2;
 
 import java.util.Objects;
@@ -189,6 +174,10 @@ public class ROS2Topic<T>
       return withType(messageType).withTypeName();
    }
 
+   /**
+    * If this topic doesn't have a value for a field, take the value from the passed topic.
+    * @param topic to fill in the blanks with
+    */
    public ROS2Topic<T> withTopic(ROS2Topic<?> topic)
    {
       String newPrefix = takeSecondIfFirstEmpty(prefix, topic.prefix);
@@ -258,9 +247,13 @@ public class ROS2Topic<T>
 
    private boolean equals(String prefix, String robotName, String moduleName, String ioQualifier, String typeName, String suffix, Class<?> messageType)
    {
-      return Objects.equals(this.prefix, prefix) && Objects.equals(this.robotName, robotName) && Objects.equals(this.moduleName, moduleName) && Objects.equals(
-            this.ioQualifier,
-            ioQualifier) && Objects.equals(this.typeName, typeName) && Objects.equals(this.suffix, suffix) && Objects.equals(this.messageType, messageType);
+      return Objects.equals(this.prefix, prefix) &&
+             Objects.equals(this.robotName, robotName) &&
+             Objects.equals(this.moduleName, moduleName) &&
+             Objects.equals(this.ioQualifier, ioQualifier) &&
+             Objects.equals(this.typeName, typeName) &&
+             Objects.equals(this.suffix, suffix) &&
+             Objects.equals(this.messageType, messageType);
    }
 
    @Override
