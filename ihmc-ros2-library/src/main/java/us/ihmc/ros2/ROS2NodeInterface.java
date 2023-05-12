@@ -32,6 +32,11 @@ public interface ROS2NodeInterface
                boolean disableSharedMemoryTransport = disableSharedMemoryTransportEnv == null || !disableSharedMemoryTransportEnv.equalsIgnoreCase("true");
                boolean enableSharedMemoryTransport = !disableSharedMemoryTransport;
 
+               if (disableSharedMemoryTransport)
+               {
+                  LogTools.info("Shared memory is disable via environment variable ROS_DISABLE_SHARED_MEMORY_TRANSPORTS");
+               }
+
                participantAttributes.bindToAddressRestrictions(enableSharedMemoryTransport, Arrays.asList(addressRestriction));
             }
          }
