@@ -34,7 +34,7 @@ public interface ROS2NodeInterface
 
                if (disableSharedMemoryTransport)
                {
-                  LogTools.info("Shared memory is disable via environment variable ROS_DISABLE_SHARED_MEMORY_TRANSPORTS");
+                  LogTools.info("Shared memory transport is disabled via environment variable ROS_DISABLE_SHARED_MEMORY_TRANSPORTS");
                }
 
                participantAttributes.bindToAddressRestrictions(enableSharedMemoryTransport, Arrays.asList(addressRestriction));
