@@ -27,7 +27,12 @@ public interface ROS2NodeInterface
          {
             if (addressRestriction[0] != null) // Check for null on the first element, to make sure passing in null works as usual -> no address restrictions
             {
-               participantAttributes.bindToAddressRestrictions(true, Arrays.asList(addressRestriction));
+               String disableSharedMemoryTransportEnv = System.getenv("ROS_DISABLE_SHARED_MEMORY_TRANSPORTS");
+               // Disable shared memory transport if the environment variable isn't defined or isn't equal to true (ignoring case)
+               boolean disableSharedMemoryTransport = disableSharedMemoryTransportEnv == null || !disableSharedMemoryTransportEnv.equalsIgnoreCase("true");
+               boolean enableSharedMemoryTransport = !disableSharedMemoryTransport;
+
+               participantAttributes.bindToAddressRestrictions(enableSharedMemoryTransport, Arrays.asList(addressRestriction));
             }
          }
       }
