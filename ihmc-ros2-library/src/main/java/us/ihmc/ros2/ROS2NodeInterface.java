@@ -1,5 +1,12 @@
 package us.ihmc.ros2;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.util.Arrays;
+import java.util.UUID;
+
+import com.eprosima.xmlschemas.fastrtps_profiles.RtpsTransportDescriptorType;
+
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.attributes.ParticipantAttributes;
@@ -9,39 +16,61 @@ import us.ihmc.pubsub.common.MatchingInfo;
 import us.ihmc.pubsub.common.Time;
 import us.ihmc.pubsub.subscriber.Subscriber;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.util.Arrays;
-
 public interface ROS2NodeInterface
 {
    int DEFAULT_QUEUE_SIZE = 10;
 
-   static ParticipantAttributes createParticipantAttributes(int domainId, InetAddress... addressRestriction)
+   static ParticipantAttributes createParticipantAttributes(int domainId, boolean useSharedMemory, InetAddress... addressRestriction)
    {
       ParticipantAttributes participantAttributes = ParticipantAttributes.create().domainId(domainId).discoveryLeaseDuration(Time.Infinite);
 
+      boolean restrictedToAddress = false;
       if (addressRestriction != null)
       {
          if (addressRestriction.length > 0)
          {
             if (addressRestriction[0] != null) // Check for null on the first element, to make sure passing in null works as usual -> no address restrictions
             {
-               String disableSharedMemoryTransportEnv = System.getenv("ROS_DISABLE_SHARED_MEMORY_TRANSPORT");
-               // Disable shared memory transport if the environment variable isn't defined or isn't equal to true (ignoring case)
-               boolean disableSharedMemoryTransport = disableSharedMemoryTransportEnv == null || !disableSharedMemoryTransportEnv.equalsIgnoreCase("true");
-               boolean enableSharedMemoryTransport = !disableSharedMemoryTransport;
-
-               if (disableSharedMemoryTransport)
-               {
-                  LogTools.info("Shared memory transport is disabled via environment variable ROS_DISABLE_SHARED_MEMORY_TRANSPORT");
-               }
-
-               participantAttributes.bindToAddressRestrictions(enableSharedMemoryTransport, Arrays.asList(addressRestriction));
+               participantAttributes.bindToAddressRestrictions(useSharedMemory, Arrays.asList(addressRestriction));
+               restrictedToAddress = true;
             }
          }
       }
+      
+      // If not restricted to an address, disable shared memory if useSharedMemory is false
+      if(!restrictedToAddress)
+      {
+         if(!useSharedMemory)
+         {
+            String transportName = UUID.randomUUID().toString();
+            RtpsTransportDescriptorType transportDescriptor = new RtpsTransportDescriptorType();
+            transportDescriptor.setTransportId(transportName);
+            transportDescriptor.setType("UDPv4");
+
+            participantAttributes.addTransport(transportDescriptor);
+
+         }
+      }
+      
       return participantAttributes;
+   }
+   
+   static boolean useSHMFromEnvironment()
+   {
+      String disableSharedMemoryTransportEnv = System.getenv("ROS_DISABLE_SHARED_MEMORY_TRANSPORT");
+      if(disableSharedMemoryTransportEnv == null)
+      {
+         return false;
+      }
+      else if (disableSharedMemoryTransportEnv.equalsIgnoreCase("true"))
+      {
+         LogTools.info("Shared memory transport is disabled via environment variable ROS_DISABLE_SHARED_MEMORY_TRANSPORT");
+         return false;
+      }
+      else
+      {
+         return true;
+      }
    }
 
    static int domainFromEnvironment()

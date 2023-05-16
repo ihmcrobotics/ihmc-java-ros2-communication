@@ -45,7 +45,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     */
    public RealtimeROS2Node(Domain domain, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
    {
-      this(domain, threadFactory, name, namespace, ROS2NodeInterface.domainFromEnvironment());
+      this(domain, threadFactory, name, namespace, ROS2NodeInterface.domainFromEnvironment(), ROS2NodeInterface.useSHMFromEnvironment());
    }
 
    /**
@@ -70,7 +70,34 @@ public class RealtimeROS2Node implements ROS2NodeInterface
                            int domainId,
                            InetAddress... addressRestriction) throws IOException
    {
-      this(domain, threadFactory, name, namespace, ROS2NodeInterface.createParticipantAttributes(domainId, addressRestriction));
+      this(domain, threadFactory, name, namespace, domainId, ROS2NodeInterface.useSHMFromEnvironment(), addressRestriction);
+   }
+   
+   /**
+    * Create a new realtime ROS 2 node
+    *
+    * @param domain             DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param threadFactory      Thread factory for the publisher. Either
+    *                           PeriodicRealtimeThreadSchedulerFactory or
+    *                           PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    * @param name               Name of the ROS 2 node
+    * @param namespace          Namespace of the ROS 2 node
+    * @param domainId           Desired ROS domain ID
+    * @param useSharedMemory    Enable shared memory transport if true
+    * @param addressRestriction Restrict network traffic to the given addresses. When provided, it
+    *                           should describe one of the addresses of the computer hosting this node.
+    *                           Optional.
+    * @throws IOException if the participant cannot be made
+    */
+   public RealtimeROS2Node(Domain domain,
+                           PeriodicThreadSchedulerFactory threadFactory,
+                           String name,
+                           String namespace,
+                           int domainId,
+                           boolean useSharedMemory,
+                           InetAddress... addressRestriction) throws IOException
+   {
+      this(domain, threadFactory, name, namespace, ROS2NodeInterface.createParticipantAttributes(domainId, useSharedMemory, addressRestriction));
    }
 
    /**
