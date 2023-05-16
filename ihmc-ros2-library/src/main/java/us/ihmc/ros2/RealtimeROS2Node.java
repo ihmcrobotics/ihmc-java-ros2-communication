@@ -203,9 +203,9 @@ public class RealtimeROS2Node implements ROS2NodeInterface
 
    private void realtimeNodeThread()
    {
-      for (QueuedROS2Publisher<?> publisher : publishers)
+      for (int i = 0; i < publishers.size(); i++)
       {
-         publisher.spin();
+         publishers.get(i).spin();
       }
    }
 
