@@ -42,6 +42,10 @@ public interface ROS2NodeInterface
       {
          if(!useSharedMemory)
          {
+            // Disable default transports
+            participantAttributes.useBuiltinTransports(false);
+                        
+            // Add custom UDPv4 transport
             String transportName = UUID.randomUUID().toString();
             RtpsTransportDescriptorType transportDescriptor = new RtpsTransportDescriptorType();
             transportDescriptor.setTransportId(transportName);
