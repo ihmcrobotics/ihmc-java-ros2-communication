@@ -31,6 +31,8 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    private final ReentrantLock startupLock = new ReentrantLock();
    private final PeriodicThreadScheduler scheduler;
    private boolean spinning = false;
+   private TimeUnit threadPeriodUnit = TimeUnit.MICROSECONDS;
+   private long threadPeriod = DEFAULT_THREAD_PERIOD_MICROSECONDS;
 
    /**
     * Create a new realtime ROS 2 node
@@ -45,7 +47,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
     */
    public RealtimeROS2Node(Domain domain, PeriodicThreadSchedulerFactory threadFactory, String name, String namespace) throws IOException
    {
-      this(domain, threadFactory, name, namespace, ROS2NodeInterface.domainFromEnvironment());
+      this(domain, threadFactory, name, namespace, ROS2NodeInterface.domainFromEnvironment(), ROS2NodeInterface.useSHMFromEnvironment());
    }
 
    /**
@@ -70,7 +72,34 @@ public class RealtimeROS2Node implements ROS2NodeInterface
                            int domainId,
                            InetAddress... addressRestriction) throws IOException
    {
-      this(domain, threadFactory, name, namespace, ROS2NodeInterface.createParticipantAttributes(domainId, addressRestriction));
+      this(domain, threadFactory, name, namespace, domainId, ROS2NodeInterface.useSHMFromEnvironment(), addressRestriction);
+   }
+   
+   /**
+    * Create a new realtime ROS 2 node
+    *
+    * @param domain             DDS domain to use. Use DomainFactory.getDomain(implementation)
+    * @param threadFactory      Thread factory for the publisher. Either
+    *                           PeriodicRealtimeThreadSchedulerFactory or
+    *                           PeriodicNonRealtimeThreadSchedulerFactory depending on the application
+    * @param name               Name of the ROS 2 node
+    * @param namespace          Namespace of the ROS 2 node
+    * @param domainId           Desired ROS domain ID
+    * @param useSharedMemory    Enable shared memory transport if true
+    * @param addressRestriction Restrict network traffic to the given addresses. When provided, it
+    *                           should describe one of the addresses of the computer hosting this node.
+    *                           Optional.
+    * @throws IOException if the participant cannot be made
+    */
+   public RealtimeROS2Node(Domain domain,
+                           PeriodicThreadSchedulerFactory threadFactory,
+                           String name,
+                           String namespace,
+                           int domainId,
+                           boolean useSharedMemory,
+                           InetAddress... addressRestriction) throws IOException
+   {
+      this(domain, threadFactory, name, namespace, ROS2NodeInterface.createParticipantAttributes(domainId, useSharedMemory, addressRestriction));
    }
 
    /**
@@ -92,7 +121,34 @@ public class RealtimeROS2Node implements ROS2NodeInterface
       this.node = new ROS2NodeBasics(domain, name, namespace, attributes);
       this.scheduler = threadFactory.createPeriodicThreadScheduler("RealtimeNode_" + namespace + "/" + name);
    }
-
+   
+   /**
+    * Adjust the desired thread period from the default (1000 microseconds)
+    * 
+    * This could be useful if a faster response is desired, or to reduce load on the CPU.
+    * 
+    * @param period
+    * @param unit
+    */
+   public void setThreadPeriod(long period, TimeUnit unit)
+   {
+      startupLock.lock();
+      try
+      {
+         if(spinning)
+         {
+            throw new RuntimeException("Cannot set the thread period while the node is spinning.");
+         }
+         
+         this.threadPeriod = period;
+         this.threadPeriodUnit = unit;
+      }
+      finally
+      {
+         startupLock.unlock();
+      }
+   }
+   
    @Override
    public <T> QueuedROS2Publisher<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException
    {
@@ -131,7 +187,7 @@ public class RealtimeROS2Node implements ROS2NodeInterface
    {
       return node.createQueuedSubscription(topicDataType, subscriberAttributes, queueSize);
    }
-
+   
    public void spin()
    {
       startupLock.lock();
@@ -141,15 +197,15 @@ public class RealtimeROS2Node implements ROS2NodeInterface
          throw new RuntimeException("This RealtimeROS2Node is already spinning");
       }
       spinning = true;
-      scheduler.schedule(this::realtimeNodeThread, DEFAULT_THREAD_PERIOD_MICROSECONDS, TimeUnit.MICROSECONDS);
+      scheduler.schedule(this::realtimeNodeThread, threadPeriod, threadPeriodUnit);
       startupLock.unlock();
    }
 
    private void realtimeNodeThread()
    {
-      for (QueuedROS2Publisher<?> publisher : publishers)
+      for (int i = 0; i < publishers.size(); i++)
       {
-         publisher.spin();
+         publishers.get(i).spin();
       }
    }
 
