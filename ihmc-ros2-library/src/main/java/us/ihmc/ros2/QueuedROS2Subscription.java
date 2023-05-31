@@ -42,6 +42,20 @@ public class QueuedROS2Subscription<T> extends ROS2Subscription<T> implements Re
    {
       return listener.flushAndGetLatest(data);
    }
+   
+   
+   /**
+    * Peek at the latest data, without removing the message from the queue. 
+    * This function does not block and is realtime-safe.
+    *
+    * @param data Object to store the data in if data is available; if no data is available this object
+    *             does not get modified
+    * @return true if a new message was available, false otherwise
+    */
+   public boolean peek(T data)
+   {
+      return listener.peek(data);
+   }
 
    @Override
    public void remove()

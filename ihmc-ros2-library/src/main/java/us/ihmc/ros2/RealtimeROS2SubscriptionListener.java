@@ -40,6 +40,20 @@ class RealtimeROS2SubscriptionListener<T> implements NewMessageListener<T>
          return false;
       }
    }
+   
+   boolean peek(T data)
+   {
+      if(messageQueue.poll())
+      {
+         T next = messageQueue.peek();
+         topicDataTypeForPoll.copy(next, data);
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+   }
 
    boolean flushAndGetLatest(T data)
    {
@@ -74,4 +88,6 @@ class RealtimeROS2SubscriptionListener<T> implements NewMessageListener<T>
          }
       }
    }
+
+
 }
