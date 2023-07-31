@@ -1,6 +1,7 @@
 package us.ihmc.ros2;
 
 import us.ihmc.concurrent.ConcurrentRingBuffer;
+import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.TopicDataType;
 
 /**
@@ -43,6 +44,7 @@ public class QueuedROS2Publisher<T> extends ROS2Publisher<T>
       }
       else
       {
+         LogTools.error("No space left in concurrent ring buffer. Capacity: {}", concurrentRingBuffer.getCapacity());
          return false;
       }
    }
