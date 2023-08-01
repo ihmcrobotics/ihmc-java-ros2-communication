@@ -1,6 +1,8 @@
 package us.ihmc.ros2;
 
+import us.ihmc.commons.time.Stopwatch;
 import us.ihmc.concurrent.ConcurrentRingBuffer;
+import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.TopicDataType;
 
 /**
@@ -13,8 +15,9 @@ import us.ihmc.pubsub.TopicDataType;
 public class QueuedROS2Publisher<T> extends ROS2Publisher<T>
 {
    private final TopicDataType<T> topicDataType;
-
    private final ConcurrentRingBuffer<T> concurrentRingBuffer;
+   private final Stopwatch throttleStopwatch = new Stopwatch().start();
+   private long errorCount = 0;
 
    QueuedROS2Publisher(TopicDataType<T> topicDataType, ROS2Publisher<T> rosPublisher, int queueDepth)
    {
@@ -43,6 +46,15 @@ public class QueuedROS2Publisher<T> extends ROS2Publisher<T>
       }
       else
       {
+         if (throttleStopwatch.totalElapsed() > 1.0)
+         {
+            errorCount++;
+            throttleStopwatch.reset();
+            LogTools.error("No space left in concurrent ring buffer. Buffer capacity: {} Topic: {} Occurence #: {}",
+                           concurrentRingBuffer.getCapacity(),
+                           getPublisher().getAttributes().getTopicName(),
+                           errorCount);
+         }
          return false;
       }
    }

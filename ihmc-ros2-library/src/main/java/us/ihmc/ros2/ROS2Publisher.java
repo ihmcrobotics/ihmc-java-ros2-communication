@@ -1,5 +1,6 @@
 package us.ihmc.ros2;
 
+import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.Domain;
 import us.ihmc.pubsub.publisher.Publisher;
 
@@ -36,8 +37,9 @@ public class ROS2Publisher<T> implements ROS2PublisherBasics<T>
             return false;
          }
       }
-      catch (IOException e)
+      catch (IOException ioException)
       {
+         LogTools.error(ioException.getMessage());
          return false;
       }
    }
