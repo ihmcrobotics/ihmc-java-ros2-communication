@@ -15,7 +15,7 @@ public class GridCellsPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msg
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "f01d2fc1f7f46f0ad46f36833dccef5548d562b28b538ce34c99c269543994bd";
+   		return "25da9fb0f1b14f317b4c8f0d178db20114b4b6d0a86174f5b424d420f37ece78";
    }
    
    @Override

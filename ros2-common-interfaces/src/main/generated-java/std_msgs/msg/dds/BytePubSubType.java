@@ -15,7 +15,7 @@ public class BytePubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "6713b34ea76eb2ee34b59be52326d8a6ff29af74929bf52890cd779b0d234854";
+   		return "3f6523a5014f9805d1ec46b280792588756a1d81b96e556e7aeb6351aadbf26e";
    }
    
    @Override

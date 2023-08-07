@@ -15,7 +15,7 @@ public class ColorRGBAPubSubType implements us.ihmc.pubsub.TopicDataType<std_msg
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "e9fbba437a827b492f308eb1c6419a904c2dfa117911c3fddeae314de59cf7b8";
+   		return "1475debc88b374cdf3c5a0c458eb86a02c11502ccb02d86863cb5a6e0d7042a7";
    }
    
    @Override

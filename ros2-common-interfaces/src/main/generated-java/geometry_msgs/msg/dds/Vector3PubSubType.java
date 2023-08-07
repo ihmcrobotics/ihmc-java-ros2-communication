@@ -15,7 +15,7 @@ public class Vector3PubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.e
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "271cb5565e28e76c0dec74abb874865867b587dfbd79d7e3c1c9289941c58c01";
+   		return "a72d62f44d2d49d2f77aba46623e9468d1f580f07f077feec8009dcb463875a1";
    }
    
    @Override

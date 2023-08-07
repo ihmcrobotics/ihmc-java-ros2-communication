@@ -15,7 +15,7 @@ public class JointTrajectoryPubSubType implements us.ihmc.pubsub.TopicDataType<t
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "6f0b6695e0ad284658b5095fee2d53b0401c5815a164d7fa34fbca883ce580d2";
+   		return "1d81f27741a8a0aa824589968042dd40824f100bce0396ce9a60a1c334167c7f";
    }
    
    @Override

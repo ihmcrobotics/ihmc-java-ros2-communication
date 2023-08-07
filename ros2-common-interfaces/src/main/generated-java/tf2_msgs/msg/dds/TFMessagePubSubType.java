@@ -15,7 +15,7 @@ public class TFMessagePubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msg
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "3d1134ba428aaac8a716ca84f821c8a861154184708099182b019d75727551f4";
+   		return "6feff138edee6fc3c16fdf9ab0b4c9e0b5ea7108ece559b00b28d4dad3fd09d6";
    }
    
    @Override

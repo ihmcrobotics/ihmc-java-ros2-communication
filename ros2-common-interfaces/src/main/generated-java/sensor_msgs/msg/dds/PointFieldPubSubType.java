@@ -15,7 +15,7 @@ public class PointFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "5df54004a88432ee76ba35ddc9ac82d951e1dd73151fbe39fff328965c1c6197";
+   		return "b1e8f26da12f5feee902afdd9758c69d1b9c4f789af3ffbcea7f331b5ff0b780";
    }
    
    @Override

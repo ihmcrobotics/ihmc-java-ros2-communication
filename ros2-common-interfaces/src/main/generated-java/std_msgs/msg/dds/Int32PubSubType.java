@@ -15,7 +15,7 @@ public class Int32PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "4a0b5bd8e8e9b5bf359c1bafa0d254396a701e7626166cf6e4e237229250f306";
+   		return "6e7a79845b323500c31ad4627525a7e7df91a9b89ff602f55cf29f854c22120d";
    }
    
    @Override

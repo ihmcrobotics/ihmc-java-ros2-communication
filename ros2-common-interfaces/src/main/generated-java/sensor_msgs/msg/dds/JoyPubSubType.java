@@ -15,7 +15,7 @@ public class JoyPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "006ef16e0a565a82bb616b0a73c94109407450d99c07a2f0589c85983a49b259";
+   		return "e0809bcc443158474accef9eb0fb3e49650b95119a2ebce69b779ae680892b2f";
    }
    
    @Override

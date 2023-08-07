@@ -15,7 +15,7 @@ public class RegionOfInterestPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "ec51a5f3244fefd69b9a95610f12a9ce0618746ee6db8d2e68d44f52096ae8b4";
+   		return "9e11d3b1648276683c8c31242c8bf9094afbc2170e4bd04646c77c8e11d68996";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class AccelWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "84f89b13ee969ef3c76592b84a2094a136e958c9f80d601469d2124084f4d300";
+   		return "9679409e579808ffc1b3f72e67f2829217d0d7a521a54c909322ead5c3064a8f";
    }
    
    @Override

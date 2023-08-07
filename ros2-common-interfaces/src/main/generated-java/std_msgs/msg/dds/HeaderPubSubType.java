@@ -15,7 +15,7 @@ public class HeaderPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "3dead8cf6ea35c03c8627a3fc916b6a2436565a94eccf8dfd8b36cd84526db2b";
+   		return "fa751b1f55bd91eee31335a4b21b4fe4144b2e349c25e1e24ac391d66831fe1a";
    }
    
    @Override

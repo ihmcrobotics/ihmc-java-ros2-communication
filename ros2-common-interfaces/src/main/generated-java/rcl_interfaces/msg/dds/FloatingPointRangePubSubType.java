@@ -15,7 +15,7 @@ public class FloatingPointRangePubSubType implements us.ihmc.pubsub.TopicDataTyp
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "16fb1a1f131729cee23bf6b5becf2f2e4210ad2212aa4ca18cdc222643e3468f";
+   		return "8098b253b56d07f651131bd9fddd247dc63031979d9c2f0aa7cdab34c93851a4";
    }
    
    @Override

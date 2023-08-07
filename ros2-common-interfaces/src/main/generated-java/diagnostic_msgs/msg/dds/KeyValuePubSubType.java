@@ -15,7 +15,7 @@ public class KeyValuePubSubType implements us.ihmc.pubsub.TopicDataType<diagnost
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "683d2f4a0f766d3a06f94da811dfcbfa9ba2c42059e71f9f39d306dd29a0bbfd";
+   		return "6aeb14ec4b42a3352da60a746954b651558d66185898a48cf42472d26e4b210d";
    }
    
    @Override

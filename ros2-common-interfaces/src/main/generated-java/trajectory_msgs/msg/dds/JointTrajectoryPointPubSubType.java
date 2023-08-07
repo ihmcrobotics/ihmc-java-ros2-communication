@@ -15,7 +15,7 @@ public class JointTrajectoryPointPubSubType implements us.ihmc.pubsub.TopicDataT
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "49cd0c5b487a5edcea0e33934d35bf8407b8bd97da1d744b24d427f6d4ca055e";
+   		return "36591927d6c9c6a4649b653a9a674d95e609bf75e32fbed272d56ad859a0270a";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class SolidPrimitivePubSubType implements us.ihmc.pubsub.TopicDataType<sh
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "6c757f57fb7350cfc949c168501791acfe723ff298965fcfa18b99cf56158c1d";
+   		return "50c06f218b8faae4224b29be9373b9bddc960170d1a5b6af53508b229d9beaef";
    }
    
    @Override

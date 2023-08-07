@@ -15,7 +15,7 @@ public class GoalInfoPubSubType implements us.ihmc.pubsub.TopicDataType<action_m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "09655785afbdfa05fd61bfbf1d660acf6cccbff8bf942da274fb290a5e3a948b";
+   		return "35b0aa5526d759a1f6f5d24b2b9f02b645ba7cded7bf35285a3fb78bf87df517";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class TransformStampedPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "30ec8027727c41760aaeabc7f1fabc772af6fe2b6ed457c83e49b948bb475e27";
+   		return "163ddc457f73149699ea2561bd1e220a0914568b09e28b55e34fb413df40ec3e";
    }
    
    @Override

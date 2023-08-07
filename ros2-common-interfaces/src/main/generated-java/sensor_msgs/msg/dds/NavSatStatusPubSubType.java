@@ -15,7 +15,7 @@ public class NavSatStatusPubSubType implements us.ihmc.pubsub.TopicDataType<sens
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "802acf2813bad608a1598975ebac8871cb23690cc4d2f992ccd575af09b83f81";
+   		return "89cf89f8d91033e915cf5d81726074d4438684d8213930a9deccfd50796e3543";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class MultiDOFJointStatePubSubType implements us.ihmc.pubsub.TopicDataTyp
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "265ae66d89ddd692d8d0e5c3bc7aa082c26f26f0924e43ffb9b0c0abeed607fc";
+   		return "6a977debf790321cef0c5196898a6a365f643d0982ed8139066ed1fa54590bd6";
    }
    
    @Override

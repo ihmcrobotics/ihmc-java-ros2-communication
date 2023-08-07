@@ -15,7 +15,7 @@ public class AccelWithCovariancePubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "8f9fcbbdfd9bd1453f233173574bcf3cf7dae0a1b32d25b6216b9d4119883b3b";
+   		return "c1cd3aae55942c1f06fa6861ce60bd37cdb39e71fec0351c4d507b4260a2bbeb";
    }
    
    @Override

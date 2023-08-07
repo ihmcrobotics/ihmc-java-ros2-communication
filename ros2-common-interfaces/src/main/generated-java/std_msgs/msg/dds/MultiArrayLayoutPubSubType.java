@@ -15,7 +15,7 @@ public class MultiArrayLayoutPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "8c6f75e8d495d9fddb2dd42119a8574d2fd8e5e6d66336d279028ef3c0eb74d2";
+   		return "431004d782f6c42bf44132b9f595116177d47e669bdbeb03a7be15bdebde0ad7";
    }
    
    @Override

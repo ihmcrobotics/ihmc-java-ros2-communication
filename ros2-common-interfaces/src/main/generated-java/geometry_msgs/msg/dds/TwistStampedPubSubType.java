@@ -15,7 +15,7 @@ public class TwistStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "a9621bdd4a0f89b5f73e3c3055ee81bd3c58eb42a853dc3487016b90c4b1f320";
+   		return "313b4507c21b3166c7f3c43de0e162ef66a9a6e287c3c027bb57c65abfe5357f";
    }
    
    @Override

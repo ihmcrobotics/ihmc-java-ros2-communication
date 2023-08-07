@@ -15,7 +15,7 @@ public class MagneticFieldPubSubType implements us.ihmc.pubsub.TopicDataType<sen
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "251a385201f2569258d4b26316d6b25f074adf1b5bbed8e30d6b4b7c62debaa5";
+   		return "ab23b881a12b9250914a9666d99810d31aada8226fd09c0af587d445f5ec3bec";
    }
    
    @Override

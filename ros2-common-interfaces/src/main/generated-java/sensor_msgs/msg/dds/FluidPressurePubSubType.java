@@ -15,7 +15,7 @@ public class FluidPressurePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "fa501544c25c91655b65219e1e2da3b6355074c49147ce818dddd975018543bc";
+   		return "91645e56f2834a0550800ffaef556b8b7ca64a62da892c196ab237afa0c590b1";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class LaserScanPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "c73692c598e973bfa26a18a015cf556cee47ce24c979da08f36c09d284031b3c";
+   		return "4d2f28481895fc59e07512aade347b5ea7f56b85bdea4259357ceaab4969dacc";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class PolygonStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "17da5ef69f53bb2c291dd1b01ce4e665772cc92a3f18656fbdef943340819c62";
+   		return "59a3ea8488c43a95ada99345bca40135ae86133d49404136c8a89fad2c53cdf0";
    }
    
    @Override

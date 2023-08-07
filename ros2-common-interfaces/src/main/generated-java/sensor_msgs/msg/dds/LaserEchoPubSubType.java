@@ -15,7 +15,7 @@ public class LaserEchoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "5e6aaa7f7dba8c3785b8a68509775e27f4bb530ac7d21d32356df6169ebafa43";
+   		return "b60ab320cee2e9c80242b806673aa85ec79316476b4d49db9e0f6ac66aa11402";
    }
    
    @Override

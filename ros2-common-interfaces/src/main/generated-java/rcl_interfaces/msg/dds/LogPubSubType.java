@@ -15,7 +15,7 @@ public class LogPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_interface
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "27c91c73fcf2f9053213a9f2cc51d2d07cbc81a2a97a128988bc21ac04a9e2d0";
+   		return "622c54d5fc055721c91be8ef628e2f8ea000c5f33ad543d64ea8267a08149f8f";
    }
    
    @Override

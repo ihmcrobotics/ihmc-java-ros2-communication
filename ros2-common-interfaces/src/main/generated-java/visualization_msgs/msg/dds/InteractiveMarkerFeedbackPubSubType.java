@@ -15,7 +15,7 @@ public class InteractiveMarkerFeedbackPubSubType implements us.ihmc.pubsub.Topic
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "48da92e34cf8d5b95bb0a5e4efbc9a1b0bbf18721d401d5db578f5bfa96f5f7c";
+   		return "5b828600580ce52a7fee51bb12ad4fba44321bae26432779f19d747b3f4a6ca9";
    }
    
    @Override

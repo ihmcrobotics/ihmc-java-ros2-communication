@@ -15,7 +15,7 @@ public class CharPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "233b55136a355d69c488918bf3626a9096b042d727e2d2c4a45d8e447c1dce3c";
+   		return "8870f7e6c9e172a95aca147125d47a631d506e6a35d715ce9af792e79e76ea29";
    }
    
    @Override

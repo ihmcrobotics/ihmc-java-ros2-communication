@@ -15,7 +15,7 @@ public class PathPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs.msg
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "b98264f49b47a79259cb1dcdc2c28462459ba185e26cbc3f77fad043ea7df640";
+   		return "cd5c002ba5bee40787a2cd17d3288c1e34189d13b1284307d8936410f7c4034e";
    }
    
    @Override

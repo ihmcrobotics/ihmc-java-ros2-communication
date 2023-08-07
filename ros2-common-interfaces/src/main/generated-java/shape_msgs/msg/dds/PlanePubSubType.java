@@ -15,7 +15,7 @@ public class PlanePubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "fcaf21b0563b4916b1a638368729e78f600d21398e1bb42a29fedc554cc17f30";
+   		return "2ebd0304bc4e64f8b66754258a5f7ee2807ab727441f0d506c2a9142d57f5651";
    }
    
    @Override

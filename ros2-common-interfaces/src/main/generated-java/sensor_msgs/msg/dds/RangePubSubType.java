@@ -15,7 +15,7 @@ public class RangePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "b619f07d72fdeec768010d836d01e9e0289c5037ff27e3a28c679904dc96914e";
+   		return "08312fb559ff88a2336cb187deca459a1f02cbccfd6b46a9c86d9da8b61ca42c";
    }
    
    @Override

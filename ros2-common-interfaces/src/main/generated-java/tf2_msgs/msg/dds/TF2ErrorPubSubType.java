@@ -15,7 +15,7 @@ public class TF2ErrorPubSubType implements us.ihmc.pubsub.TopicDataType<tf2_msgs
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "31e4866cb69080eaca255069a65d69563463eeb5f775a9c5b095e539a06f4aab";
+   		return "c3c8db7ee8ceaa4e43d863f4fe2bf3a2fe9382f94b0553e067e2eba50daf1595";
    }
    
    @Override

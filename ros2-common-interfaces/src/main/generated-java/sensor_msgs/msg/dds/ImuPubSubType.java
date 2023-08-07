@@ -15,7 +15,7 @@ public class ImuPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs.m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "cb52a01fffe06d37ebcc656066d66888601c69c10e965d0091502b065360896b";
+   		return "94075a5f830aed0ff5bdd242aca148b7f5c8a919cdd43183c200280bc365e994";
    }
    
    @Override

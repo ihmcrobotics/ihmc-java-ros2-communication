@@ -15,7 +15,7 @@ public class MeshTrianglePubSubType implements us.ihmc.pubsub.TopicDataType<shap
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "a8e528c8f45a28b299a9639c0d7b655db0431aa778f0babf8e83126ab2a2cc05";
+   		return "383eff58108b169677c5b41b1196b7943e5a9a3914f91200417de30c8c4f1970";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class JoyFeedbackPubSubType implements us.ihmc.pubsub.TopicDataType<senso
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "35aa150c96abe678838e5aa297fd8deef61681f3d8295b919d378ca3650499a5";
+   		return "c9cc3183d93f28c0e4c6da8c4c66e2ebae06d40d8aea2b2f3cc2d408d528c50b";
    }
    
    @Override

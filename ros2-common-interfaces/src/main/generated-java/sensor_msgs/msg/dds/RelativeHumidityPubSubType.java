@@ -15,7 +15,7 @@ public class RelativeHumidityPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "7b970856c7bbe9ed3f3a4113cd955f1c78c28afaa18d358f02dbb7a3d0c36cdb";
+   		return "2b35a45e4e8079181fe4781cca51b7d700834f5184ca0696c34d6b70f20d5a9c";
    }
    
    @Override

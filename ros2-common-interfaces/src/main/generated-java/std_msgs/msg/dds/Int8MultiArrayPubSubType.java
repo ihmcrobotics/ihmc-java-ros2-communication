@@ -15,7 +15,7 @@ public class Int8MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<st
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "0afca6e1b2b23f8d36d0f7e9dd3b53c8f3c2cac3e27c134bc292ce617a0d9576";
+   		return "9097d9a5e2791ac8d1cf839ee76a308073e250efc31bea4e1778a2668655b244";
    }
    
    @Override

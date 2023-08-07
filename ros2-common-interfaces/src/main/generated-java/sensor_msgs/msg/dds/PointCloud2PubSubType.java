@@ -15,7 +15,7 @@ public class PointCloud2PubSubType implements us.ihmc.pubsub.TopicDataType<senso
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "01d4f8aee569f4280f87f82af1f37e57b72a0c9d0535ed9ab9b13bc38127f034";
+   		return "c064ea88bc513c7478080596d6013599913deffe608c6543ee49b77289b15376";
    }
    
    @Override

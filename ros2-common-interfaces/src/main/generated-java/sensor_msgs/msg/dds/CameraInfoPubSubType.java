@@ -15,7 +15,7 @@ public class CameraInfoPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "9a6a7d02291d80d1570e7826ce88cf4f3c4491e4bf7c7905649b92f9f5f3d028";
+   		return "5dfbf4cbb6dcab34f05ef8c8b08aff9b776de6ed52493ede25882f438392e138";
    }
    
    @Override

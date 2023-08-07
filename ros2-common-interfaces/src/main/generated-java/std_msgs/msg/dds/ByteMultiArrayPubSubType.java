@@ -15,7 +15,7 @@ public class ByteMultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<st
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "ac5e39663c2fe7ca52f5f92c44fe6c390e2d4ebc96d1e68d077c55027ba2b37a";
+   		return "440c6f24901963672f37be7477732e31f26cfa63553676e0cb07c6e17a3165cb";
    }
    
    @Override

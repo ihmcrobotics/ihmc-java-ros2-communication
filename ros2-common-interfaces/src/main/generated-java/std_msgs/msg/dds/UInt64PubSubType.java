@@ -15,7 +15,7 @@ public class UInt64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "05990175c5ba0918064ba61b966eb720940185cab1513cd2fc286a1e0573f2f4";
+   		return "fb605525f30a2eb22946b5f9c927fbb5654f3475e72fb7e05903bc99136a979b";
    }
    
    @Override

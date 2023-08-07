@@ -15,7 +15,7 @@ public class MenuEntryPubSubType implements us.ihmc.pubsub.TopicDataType<visuali
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "b1ea37d7291264d9ff6fbe9dade654a444317fdbf0b41c16c88e612fda717395";
+   		return "f229b3f1e7bd669e1d6017455255418690162cca9c46e6a078ba366ac4086e41";
    }
    
    @Override

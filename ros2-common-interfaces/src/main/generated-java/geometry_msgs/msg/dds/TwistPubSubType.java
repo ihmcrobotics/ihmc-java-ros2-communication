@@ -15,7 +15,7 @@ public class TwistPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "a68d8033ab610289fb32007eb5bc99f1988521667d367edb76614d7478de6dc7";
+   		return "389fa7f62944a6c31b4143d69d32d8fa33f234364720dfce18ac0918350961ed";
    }
    
    @Override

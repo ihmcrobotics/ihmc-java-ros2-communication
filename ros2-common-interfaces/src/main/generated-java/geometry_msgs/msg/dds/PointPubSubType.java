@@ -15,7 +15,7 @@ public class PointPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.euc
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "a2089434abcac08f8bdcb2fd6343bee44fbb48a2b5d0192de979ffe7304b6806";
+   		return "7b24765af2bac561910eb066207bb390d5d951c1dac68d1dab17787eab047634";
    }
    
    @Override

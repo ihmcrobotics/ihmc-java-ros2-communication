@@ -15,7 +15,7 @@ public class TimeReferencePubSubType implements us.ihmc.pubsub.TopicDataType<sen
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "ad30da658cd27f10f8e32cca31bb01eae0c7734303ac0af6050232775b182bab";
+   		return "85fd3a8e2171ad3873e842825bce084599e00198222dfcf78f5987800b8221b2";
    }
    
    @Override

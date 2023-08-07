@@ -15,7 +15,7 @@ public class NavSatFixPubSubType implements us.ihmc.pubsub.TopicDataType<sensor_
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "61a14d5bf6e511b1c633e482f34fd27cae3079ce89d956ed11be3c173a5060a5";
+   		return "85e5692767964cfb3f86995edef4debf1e80961c9417e98b6a1ed0ea82a0aa22";
    }
    
    @Override

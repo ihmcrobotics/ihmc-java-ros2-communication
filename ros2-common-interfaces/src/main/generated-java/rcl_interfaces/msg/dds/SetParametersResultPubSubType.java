@@ -15,7 +15,7 @@ public class SetParametersResultPubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "d7a57521efa84a0185c80e5f1e840550a84afba99c3b645cff57c165cdc09ba5";
+   		return "affbbc10c295dc1bf3a68894d8805bd00a289045903fba7eceb4c842d9b577ec";
    }
    
    @Override

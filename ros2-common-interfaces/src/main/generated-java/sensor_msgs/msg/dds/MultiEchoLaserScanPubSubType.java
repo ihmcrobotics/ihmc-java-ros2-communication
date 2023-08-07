@@ -15,7 +15,7 @@ public class MultiEchoLaserScanPubSubType implements us.ihmc.pubsub.TopicDataTyp
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "fd8097e0971b4b9e06d3e6cf4bdd7572a80460cb41fa1bb57afa5c971b30e179";
+   		return "836c789ac097a941bc80fd47da4441880adb187cb5d151588dfbf99c5c759a31";
    }
    
    @Override

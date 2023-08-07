@@ -15,7 +15,7 @@ public class Vector3StampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "f2d284c7d0912d840ef4d5e6102f35d46e4abd68be54c3e30e3943044ae56cd1";
+   		return "7dcc62540ce03bafa80d86bb5e7c1b02205ae0d26ac2609403cc2f9eef0c9a4e";
    }
    
    @Override

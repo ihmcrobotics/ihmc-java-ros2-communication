@@ -15,7 +15,7 @@ public class MapMetaDataPubSubType implements us.ihmc.pubsub.TopicDataType<nav_m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "afe02ec6dbf3b20f8950c29ef7ba5ce0877936dc5e72fd84099143822d048c56";
+   		return "c36622dedfea05251c4d90fb3c9bf2ed67e17a6857299c6c289bc81bb26be196";
    }
    
    @Override

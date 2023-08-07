@@ -15,7 +15,7 @@ public class DurationPubSubType implements us.ihmc.pubsub.TopicDataType<builtin_
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "10e151981dcbeb29436d75af3d67c8397ba1d5078aeb6d7817e2c0366da295e9";
+   		return "8d956d8d3e3f997bf8cc9d413f489db4ae24781e2b12a9ea728e5b5cb596e827";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class OdometryPubSubType implements us.ihmc.pubsub.TopicDataType<nav_msgs
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "fb4974ef7c5bd6a645ef408999233624dd3016714d8557f24c676aa96af24425";
+   		return "34831632cf9dda338afec218ff4dc35a46f5934f157d8de6a102c361fdd280f9";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class EmptyPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.ms
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "3493bd293feb55d099b1efeb0727e8e59fab647048ddfe09d01b1affa2a466cc";
+   		return "65e912397ecf87b452d5575c9e531ee5914801b444405a681e754d46d01e2f37";
    }
    
    @Override

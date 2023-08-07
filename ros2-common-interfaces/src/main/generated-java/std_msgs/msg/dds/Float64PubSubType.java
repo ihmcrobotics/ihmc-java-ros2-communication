@@ -15,7 +15,7 @@ public class Float64PubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "3774572d56f7a1e1de158e62d13198be10fe5d92e7ccb1cdf0bb72fbca2b867e";
+   		return "be13732a063e5d46b70dc169001762312c353fe240495eb7df27c1073717704d";
    }
    
    @Override

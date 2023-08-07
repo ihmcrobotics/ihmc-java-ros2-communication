@@ -15,7 +15,7 @@ public class WrenchPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "ad78f5768539ea26fa8ee4d59a11fd677a1492247ffdc581a4b88a4b497ba0f9";
+   		return "88a854e2a1a7873a99e9b9ec7657237097724b4a30b1627c46b933142db1f2dc";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class UUIDPubSubType implements us.ihmc.pubsub.TopicDataType<unique_ident
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "025603bddfb949d254f7c80ad97f3565c595cf8c6999c74bd4ce70564f40870d";
+   		return "8420ae21ad296fc5ef466df549392a497e502284dcc5041c16acd3af5536c356";
    }
    
    @Override

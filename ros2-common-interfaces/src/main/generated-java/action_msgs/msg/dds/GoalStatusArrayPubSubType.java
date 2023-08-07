@@ -15,7 +15,7 @@ public class GoalStatusArrayPubSubType implements us.ihmc.pubsub.TopicDataType<a
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "ea1b29add8ff7aa65c41d4aed431af21e59972d71c90aaa3f91edf82138226e9";
+   		return "39a446adb5905fbc17964ed4256dd53f74018644c0b2f1f711ce156b862992b1";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class TransitionPubSubType implements us.ihmc.pubsub.TopicDataType<lifecy
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "ab3b821c8eb4c56bd3d922df6ee8d6c47d7015280873be385196214043d1c585";
+   		return "48a1705d314d4753a96b0e98d36c308249fd0c5d7a6940c897d991882138e4f7";
    }
    
    @Override

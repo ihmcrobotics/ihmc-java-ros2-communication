@@ -15,7 +15,7 @@ public class DiagnosticStatusPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "cffe78339d2a8d203d0771189e8209b14988fa50c1d4e92432aa3406312eb460";
+   		return "ed65de97090d007f46a49babdad1e1e40ff141aee2e8b6b973d683265f29ef7f";
    }
    
    @Override

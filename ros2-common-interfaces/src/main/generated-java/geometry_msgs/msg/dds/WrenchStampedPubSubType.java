@@ -15,7 +15,7 @@ public class WrenchStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geo
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "964d74a97d1285887cdf6035b0bb13abbb753a85c412983480c8b30197125277";
+   		return "02fa8bda71352b927c4b67c5a9910cca894c8c07f071dca226c9702fa2b6822d";
    }
    
    @Override

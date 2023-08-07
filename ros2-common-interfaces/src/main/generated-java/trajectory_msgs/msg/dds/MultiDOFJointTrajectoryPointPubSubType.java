@@ -15,7 +15,7 @@ public class MultiDOFJointTrajectoryPointPubSubType implements us.ihmc.pubsub.To
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "8d4a7d12cf93894afe93a4f9b39704c1eafada8aceb9dfbc12c8bed2235e4730";
+   		return "d05ada4b76f86c2939a22dcb7918cd949975c52cfdf5dc7931d4cc989c70dd65";
    }
    
    @Override

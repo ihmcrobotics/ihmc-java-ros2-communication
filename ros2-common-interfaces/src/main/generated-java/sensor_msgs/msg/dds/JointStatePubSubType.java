@@ -15,7 +15,7 @@ public class JointStatePubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "3bcf6825ff057805c98d069e391e652a32dc32247a4d7da271958a9d307dbe40";
+   		return "1be855b075a6601472f9a7cece07534b179f10c38347afbb376f5920dca254f6";
    }
    
    @Override

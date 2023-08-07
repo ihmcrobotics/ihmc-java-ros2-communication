@@ -15,7 +15,7 @@ public class QuaternionPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihm
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "3d2c851108459c3a5169cc7fe6c7e237d22306ffef33eaf7552fc60d75fd79fd";
+   		return "6bd3f068a19bddd610ada5a66f76bbaeb26c0650a0a02f906e0224e0078550cb";
    }
    
    @Override

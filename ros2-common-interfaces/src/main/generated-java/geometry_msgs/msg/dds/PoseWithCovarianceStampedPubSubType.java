@@ -15,7 +15,7 @@ public class PoseWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topic
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "b0654a7c3ae0e060c2592b04b435a3fd9967345852d0fa80b32470a20c76359f";
+   		return "e16720812b75db386126296c9388d62e3e334129c2d76537bb901aec3d16ccb0";
    }
    
    @Override

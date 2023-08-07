@@ -15,7 +15,7 @@ public class TwistWithCovarianceStampedPubSubType implements us.ihmc.pubsub.Topi
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "9357b7744f9a3fa1466ea86d73f408e062f54a131b416646f74cedb13a652b8c";
+   		return "c800aacc58057ea5a33e7f974c94a8b9ac37c11fcf5e8c891fc4bf884075e4e1";
    }
    
    @Override

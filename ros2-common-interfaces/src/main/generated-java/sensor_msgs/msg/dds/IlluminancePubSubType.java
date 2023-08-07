@@ -15,7 +15,7 @@ public class IlluminancePubSubType implements us.ihmc.pubsub.TopicDataType<senso
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "2d85667ea0963065e691b19f2e42522a7a28d385fa85837501c14447ef920525";
+   		return "ffa02bf3c134d78a55460017f7a5edc94a3622870edff3ef8651eac76e7cc95d";
    }
    
    @Override

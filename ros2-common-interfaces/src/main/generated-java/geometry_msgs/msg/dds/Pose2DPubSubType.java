@@ -15,7 +15,7 @@ public class Pose2DPubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eu
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "3ee08547c7d8042ba1028f0af07b403ef597df7acfc6daa2f50019b5e4e618ee";
+   		return "3b80c9eb0daa9e352bb5867fece086348cc5969dece24382aa789cbbf7606f84";
    }
    
    @Override

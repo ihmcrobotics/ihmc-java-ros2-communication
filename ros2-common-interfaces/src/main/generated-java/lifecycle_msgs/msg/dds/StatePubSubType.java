@@ -15,7 +15,7 @@ public class StatePubSubType implements us.ihmc.pubsub.TopicDataType<lifecycle_m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "1fd0b2d5545121978025a33f139621433a7174dea3daae62c7c78130954e6238";
+   		return "5b6afda569ec947b0d6bb954bce8ff6606a4b6b0e05d1f4b9201e0bf075b0ead";
    }
    
    @Override

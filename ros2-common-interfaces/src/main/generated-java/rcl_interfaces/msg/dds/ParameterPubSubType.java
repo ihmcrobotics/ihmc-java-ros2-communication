@@ -15,7 +15,7 @@ public class ParameterPubSubType implements us.ihmc.pubsub.TopicDataType<rcl_int
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "09d1421797d645af23c2e7aa02249f3d3b669430c257170610617194f8d1710f";
+   		return "41c4b5fb8187db8bed1575ad8f5c693bd25eb3d94a79bf76b64368dec58fcbea";
    }
    
    @Override

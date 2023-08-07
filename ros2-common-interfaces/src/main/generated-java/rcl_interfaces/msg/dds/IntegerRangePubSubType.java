@@ -15,7 +15,7 @@ public class IntegerRangePubSubType implements us.ihmc.pubsub.TopicDataType<rcl_
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "a53668727ea411eadad8f3bebe8e82edaf38c48d08df35509390fe5d70bc9eb4";
+   		return "bbb60c9f51bb3a30278395f51f99a378cfca043c10a827ec98e91f05ba2c49b0";
    }
    
    @Override

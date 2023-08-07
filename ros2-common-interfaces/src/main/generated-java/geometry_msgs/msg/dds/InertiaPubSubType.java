@@ -15,7 +15,7 @@ public class InertiaPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "fbb8b8daccf65e8c16e8d9176135dc1be9583263568309f997477428dcd5b468";
+   		return "8cc7e53ffd4263499587631a2c3188ee38d47317fb629f7a35624da7c568312a";
    }
    
    @Override

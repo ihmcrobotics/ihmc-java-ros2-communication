@@ -15,7 +15,7 @@ public class ChannelFloat32PubSubType implements us.ihmc.pubsub.TopicDataType<se
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "0cab1f6d7acb8b72b4867890a8935b877cf0eaa883027af6bdc03d088d3ec6f2";
+   		return "976f822bff3e35b6664d34fdc94dcf04aa2d798d9a13ad7adfa4347b93dc4ccc";
    }
    
    @Override

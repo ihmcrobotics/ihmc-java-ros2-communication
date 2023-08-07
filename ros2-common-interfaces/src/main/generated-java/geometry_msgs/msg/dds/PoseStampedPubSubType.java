@@ -15,7 +15,7 @@ public class PoseStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geome
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "b80f004dcb5c2f12ee07d63ad852165e440e769f7f673a2d63b5244e1bac629d";
+   		return "742559f8c46228b4c96ba62483553e4e8e91ed28087fb35709f1b2f7852fff1b";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class AccelStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "5921fb7a4a04b40f6a057e8aa4c9c0093e7d3a34d6f42d7d358134713b33ec9c";
+   		return "8c3673364d7fd6e1873d26f2774b9f52066eaa6ddaa28a0ce512603994058a53";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class InertiaStampedPubSubType implements us.ihmc.pubsub.TopicDataType<ge
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "da58e9475086de7600a1e8245aa7ff833acb51dbb0f089b5c7e11ec66af2e121";
+   		return "4d91587af00fa4ec9e27ceb6607c97c005efca09a74d56cb990c2a3bdfc1a786";
    }
    
    @Override

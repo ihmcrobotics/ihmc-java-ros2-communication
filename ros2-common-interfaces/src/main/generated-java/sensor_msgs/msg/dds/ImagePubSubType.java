@@ -15,7 +15,7 @@ public class ImagePubSubType implements us.ihmc.pubsub.TopicDataType<sensor_msgs
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "790218e9b03549df352ba7487fd7bcc974f8b9672335a134788472dfa831f1cd";
+   		return "af3074134cd980b298d438f69a888c4026c655b99e154bffabe67d744ff0a7da";
    }
    
    @Override

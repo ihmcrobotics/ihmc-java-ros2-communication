@@ -15,7 +15,7 @@ public class PosePubSubType implements us.ihmc.pubsub.TopicDataType<us.ihmc.eucl
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "e73a7bb954279b957eec57fcb3f677c753a73f87e080ca823883fbdb947f3245";
+   		return "4d11e76b8da8ff81bb6d169c588f37982e7f9e04a9593a112932af82af567040";
    }
    
    @Override

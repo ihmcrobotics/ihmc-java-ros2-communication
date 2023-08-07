@@ -15,7 +15,7 @@ public class ClockPubSubType implements us.ihmc.pubsub.TopicDataType<rosgraph_ms
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "f0b754e76fd92b7c0f4ebd130c7c129baf49f207e978402986a09dc706285359";
+   		return "7e88937bb3a0bde90dd82770f6e9e21aee23d4abd68a04f22f579cd68c1abd77";
    }
    
    @Override

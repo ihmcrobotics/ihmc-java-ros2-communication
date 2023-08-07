@@ -15,7 +15,7 @@ public class JoyFeedbackArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "9d27bfdfb02c02b56ffd27e6cc74f84e66168f9658eed63a9a17af24d970caf6";
+   		return "c73dad552ddd008e1f24513ec894b9b87a27a376d809ae37f92470b3b5c733c3";
    }
    
    @Override

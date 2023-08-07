@@ -15,7 +15,7 @@ public class TransitionEventPubSubType implements us.ihmc.pubsub.TopicDataType<l
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "b09a7d45ab73e7a5e3e2f68ea3412ffbdf9dd119261b5e40c3754b9e71974790";
+   		return "79b6340b89c99c9b63b380a26e2efb7b5df7c58299648ae206c2733c8e0327be";
    }
    
    @Override

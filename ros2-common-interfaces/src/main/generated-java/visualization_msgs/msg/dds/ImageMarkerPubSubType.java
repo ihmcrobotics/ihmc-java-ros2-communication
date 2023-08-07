@@ -15,7 +15,7 @@ public class ImageMarkerPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "1396b1c3689ffa40860024176c718082d0f14d6dec287c598da9dc643098a3df";
+   		return "4982b9434398fcf7d99bd58020953884c105759fce5861ac1907c41f901f25ee";
    }
    
    @Override

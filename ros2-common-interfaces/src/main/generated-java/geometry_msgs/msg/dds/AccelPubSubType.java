@@ -15,7 +15,7 @@ public class AccelPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_ms
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "dc20f6c575244f7df0e685e269ec4344198309b89ace2fa608965bcd9bf064c6";
+   		return "58e7f093e534fb7c2b42f39f90225c7fd27284360c994347032c0e042f5e60b7";
    }
    
    @Override

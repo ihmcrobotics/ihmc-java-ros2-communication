@@ -15,7 +15,7 @@ public class MultiArrayDimensionPubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "dd94273ac099539abce7827d716ffc00431b1b2c01a845ac679081a6ba840fed";
+   		return "09b5eb3642f1561e2013e0d820513d7d8ec420544378b1fe7a455a414d5d2a77";
    }
    
    @Override

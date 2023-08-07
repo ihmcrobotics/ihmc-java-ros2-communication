@@ -15,7 +15,7 @@ public class PointCloudPubSubType implements us.ihmc.pubsub.TopicDataType<sensor
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "049e71e40d62b4fd567c432fb73a22694dbc3e1feea1b93c09ecde38cc90819d";
+   		return "69cdba19a70d87cda842eb0ba2d46d9a8cc0bff9fbcb839c553c25375d5447c6";
    }
    
    @Override

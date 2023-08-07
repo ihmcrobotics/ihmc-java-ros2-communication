@@ -15,7 +15,7 @@ public class UInt32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType<
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "2978a46db10081c5c8a192e909bbf6ee72be5dc4f7afbb40984d7232704ed1ef";
+   		return "58ea2c02142d05377f3437f0b66cf624857eb497f2f0d7ee371e930e2e658fc1";
    }
    
    @Override

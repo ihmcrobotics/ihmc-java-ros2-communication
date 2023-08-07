@@ -15,7 +15,7 @@ public class TemperaturePubSubType implements us.ihmc.pubsub.TopicDataType<senso
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "03b4b31dd98438708f38ac541f1a0e4bb52f77e2efbeb3b4a4c936189fe3f983";
+   		return "e37cc5369bd549fa7077b00a5b3c574fd83f552024c23061501a5402566d7300";
    }
    
    @Override

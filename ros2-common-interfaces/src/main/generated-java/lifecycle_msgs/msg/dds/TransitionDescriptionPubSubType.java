@@ -15,7 +15,7 @@ public class TransitionDescriptionPubSubType implements us.ihmc.pubsub.TopicData
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "078321ea482d93939256e11940bfd77503682faacb99b7cce599214090d001bd";
+   		return "e395d57c29604588a80b71e92961a5a62c519320d05c7540bac0ef2b811d5408";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class PoseArrayPubSubType implements us.ihmc.pubsub.TopicDataType<geometr
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "f3b60d4ba3e4c639be38f248644baa1db9580009aba589acf6204c53c8c1d097";
+   		return "c259f047fa88cac5f18b65e953b531574c5d2ec23a4d51818575809fe0101662";
    }
    
    @Override

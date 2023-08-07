@@ -15,7 +15,7 @@ public class Float32MultiArrayPubSubType implements us.ihmc.pubsub.TopicDataType
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "953cc7029bc603fb697776c912f4f02d9bab6c48ab689d33ecbcdd1d59738c77";
+   		return "d22542789b8315f006d42d8c94354beea90d0c859d3362c572df3327557a66f0";
    }
    
    @Override

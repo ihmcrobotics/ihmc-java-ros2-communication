@@ -15,7 +15,7 @@ public class TimePubSubType implements us.ihmc.pubsub.TopicDataType<builtin_inte
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "5b16ab3b1a21e6d5efd7f954bafdf197295e22c27f672a7e0fe019ac5805cdba";
+   		return "c494eb999b41ea7336d2bf4f54afb06bc7e8ed700b413e45866951817d816f13";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class MarkerArrayPubSubType implements us.ihmc.pubsub.TopicDataType<visua
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "005029017736cb8194ff94f6db87b40b14941a5697feed199c06e0fa2d80d5db";
+   		return "b376e1552a2907e6efe166466cac6fbb864136b3ecd82b1693967ce2f5d4b753";
    }
    
    @Override

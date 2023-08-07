@@ -15,7 +15,7 @@ public class CompressedImagePubSubType implements us.ihmc.pubsub.TopicDataType<s
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "8c418e0f271a53246fffffbefe4b36e6c962fa0bb50c686e93463ec01f701839";
+   		return "f54c830d1b2fb7405c89bd687995deb03ba88c50c0c0e0df3e9e5437e8dca85b";
    }
    
    @Override

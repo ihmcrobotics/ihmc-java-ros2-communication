@@ -15,7 +15,7 @@ public class MeshPubSubType implements us.ihmc.pubsub.TopicDataType<shape_msgs.m
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "08790e3bd188ec064e46b6d55a40e4b4635db76f927064f9ce7ff7b74546af78";
+   		return "cda279a1ee1661dd96edd33f81804fd42c711df374a92b37332eb1fbf44f24b9";
    }
    
    @Override

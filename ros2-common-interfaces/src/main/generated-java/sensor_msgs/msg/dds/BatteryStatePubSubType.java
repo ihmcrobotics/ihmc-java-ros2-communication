@@ -15,7 +15,7 @@ public class BatteryStatePubSubType implements us.ihmc.pubsub.TopicDataType<sens
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "6642dc17001cf86b1fef1a343d5105b8886395e03a548fc8cb988b15b16f8263";
+   		return "b35bdae7825475a7535250bc8375ef115f7db01ef9e6a77fcd7fb0c1c58eed12";
    }
    
    @Override

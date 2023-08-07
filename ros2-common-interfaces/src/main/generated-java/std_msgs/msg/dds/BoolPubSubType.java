@@ -15,7 +15,7 @@ public class BoolPubSubType implements us.ihmc.pubsub.TopicDataType<std_msgs.msg
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "844a4e78098f81aba69a63ce7102d5463acf72d74727422a0803c47ed60326d5";
+   		return "1e7f17a288d46c3c4418bfe1f9cc62336c599e62415e2772d041abe46ce26158";
    }
    
    @Override

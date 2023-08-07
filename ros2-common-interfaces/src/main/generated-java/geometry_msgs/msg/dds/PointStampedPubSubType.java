@@ -15,7 +15,7 @@ public class PointStampedPubSubType implements us.ihmc.pubsub.TopicDataType<geom
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "9c2bea41510bcd48b1b26efbe8e6e4ef079a048177588814441d31e8e3c3d0cf";
+   		return "8f5b0ecde326d2fcb23bb6fda8ef82390e9e31935ba8c1129e057306ada5a290";
    }
    
    @Override

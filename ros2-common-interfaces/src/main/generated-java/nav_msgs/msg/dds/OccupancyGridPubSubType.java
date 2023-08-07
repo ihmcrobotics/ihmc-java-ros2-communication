@@ -15,7 +15,7 @@ public class OccupancyGridPubSubType implements us.ihmc.pubsub.TopicDataType<nav
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "92c26052657ceaffbea64779f686357ee135a30f594d8b10004aaf9fe0d17848";
+   		return "3491cd941c89106597a3eb6a19d4b15aab1f13e1007c5410917a9bc7c4d7661c";
    }
    
    @Override

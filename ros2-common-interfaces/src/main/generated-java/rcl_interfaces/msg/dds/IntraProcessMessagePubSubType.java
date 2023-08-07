@@ -15,7 +15,7 @@ public class IntraProcessMessagePubSubType implements us.ihmc.pubsub.TopicDataTy
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "8ee3ab0b1a69625ea1c2209efba5d4fc8f7cc06060e935fc5f30ed4da69ed8a9";
+   		return "184a0496c8b50a1d4abc9f30b0f56a0e6f2ace5e80c21d18e0f4acfc56fede61";
    }
    
    @Override

@@ -15,7 +15,7 @@ public class PolygonPubSubType implements us.ihmc.pubsub.TopicDataType<geometry_
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "e14360d5ee235e63a123eae77e88c35dae4e832673e1f7c0d40c1f5796470054";
+   		return "88819cd2a43691dde36cd44789fc62db983db1ff19287ceebd87f540ea19de8d";
    }
    
    @Override

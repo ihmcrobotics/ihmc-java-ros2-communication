@@ -15,7 +15,7 @@ public class QuaternionStampedPubSubType implements us.ihmc.pubsub.TopicDataType
    @Override
    public final java.lang.String getDefinitionChecksum()
    {
-   		return "09be247142904aa3539cf4bb9dcdb860b59144ead5f4cacdb6062371f80dd230";
+   		return "afce243f446ebf90bf0c291f41f5dec22e744b89a3d5069bb4ff0d1eb54cb8ce";
    }
    
    @Override
