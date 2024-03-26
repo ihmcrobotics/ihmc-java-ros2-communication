@@ -18,22 +18,25 @@ public class ROS2Callback<T>
    private ROS2Subscription<T> subscription;
    private volatile boolean enabled = true;
 
-   public ROS2Callback(ROS2NodeInterface ros2Node, ROS2Topic<T> topicName, Consumer<T> messageCallback)
+   public ROS2Callback(ROS2NodeInterface ros2Node, ROS2Topic<T> topic, Consumer<T> messageCallback)
    {
-      this(ros2Node, topicName.getType(), topicName, messageCallback);
+      this(ros2Node, topic.getType(), topic.getName(), topic.getQoS(), messageCallback);
    }
 
-   public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic topicName, Consumer<T> messageCallback)
+   public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, ROS2Topic<?> topic, Consumer<T> messageCallback)
    {
-      this(ros2Node, messageType, topicName.withTypeName(messageType).toString(), messageCallback);
+      this(ros2Node, messageType, topic.withTypeName(messageType).toString(), topic.getQoS(), messageCallback);
    }
 
-   public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName, Consumer<T> messageCallback)
+   public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName, ROS2QosProfile qosProfile, Consumer<T> messageCallback)
    {
       this.messageCallback = messageCallback;
       ExceptionTools.handle(() ->
       {
-       subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType), this::nullOmissionCallback, topicName);
+         subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType),
+                                                    this::nullOmissionCallback,
+                                                    topicName,
+                                                    qosProfile);
       }, DefaultExceptionHandler.RUNTIME_EXCEPTION);
    }
 
