@@ -6,116 +6,74 @@ import com.eprosima.xmlschemas.fastrtps_profiles.ReliabilityQosKindType;
 
 /**
  * ROS2 QoS profile settings Provides a quick way to set the ROS2 QoS settings. Provided options are
- * - History KEEP_LAST or KEEP_ALL (default KEEP_LAST)
- * - Size default history size (default 1)
- * - Reliability RELIABLE or BEST EFFORT (default RELIABLE)
- * - Durability (default VOLATILE)
+ * - History KEEP_LAST or KEEP_ALL
+ * - Size default history depth (aka size)
+ * - Reliability RELIABLE or BEST EFFORT
+ * - Durability VOLATILE or TRANSIENT_LOCAL
  * - avoidRosNamespaceConventions Use the Node name directly for communication with pure RTPS/DDS nodes
  *
  * @author Jesper Smith
  */
 public class ROS2QosProfile
 {
-   public static ROS2QosProfile DEFAULT()
+   public static ROS2QosProfile RELIABLE()
    {
-      return new ROS2QosProfile();
+      int depth = 1;
+      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, depth, ReliabilityQosKindType.RELIABLE, DurabilityQosKindType.VOLATILE, false);
    }
 
    public static ROS2QosProfile KEEP_HISTORY(int depth)
    {
-      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, depth, ReliabilityQosKindType.RELIABLE, ROS2Durability.TRANSIENT_LOCAL, false);
+      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, depth, ReliabilityQosKindType.RELIABLE, DurabilityQosKindType.TRANSIENT_LOCAL, false);
    }
 
    public static ROS2QosProfile BEST_EFFORT()
    {
-      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, 1, ReliabilityQosKindType.BEST_EFFORT, ROS2Durability.VOLATILE, false);
+      int depth = 1;
+      return new ROS2QosProfile(HistoryQosKindType.KEEP_LAST, depth, ReliabilityQosKindType.BEST_EFFORT, DurabilityQosKindType.VOLATILE, false);
    }
 
-   public enum ROS2Durability
-   {
-      VOLATILE, TRANSIENT_LOCAL;
+   private final HistoryQosKindType historyKind;
+   private final int historyDepth;
+   private final ReliabilityQosKindType reliabilityKind;
+   private final DurabilityQosKindType durabilityKind;
+   private final boolean avoidRosNamespaceConventions;
 
-      public DurabilityQosKindType toKind()
-      {
-         return switch (this)
-         {
-            case VOLATILE -> DurabilityQosKindType.VOLATILE;
-            case TRANSIENT_LOCAL -> DurabilityQosKindType.TRANSIENT_LOCAL;
-         };
-      }
-   }
-
-   private HistoryQosKindType history = HistoryQosKindType.KEEP_LAST;
-   private int depth = 1;
-   private ReliabilityQosKindType reliability = ReliabilityQosKindType.RELIABLE;
-   private ROS2Durability durability = ROS2Durability.VOLATILE;
-   private boolean avoidRosNamespaceConventions = false;
-
-   public ROS2QosProfile()
-   {
-   }
-
-   public ROS2QosProfile(HistoryQosKindType history,
-                         int depth,
-                         ReliabilityQosKindType reliability,
-                         ROS2Durability durability,
+   public ROS2QosProfile(HistoryQosKindType historyKind,
+                         int historyDepth,
+                         ReliabilityQosKindType reliabilityKind,
+                         DurabilityQosKindType durabilityKind,
                          boolean avoidRosNamespaceConventions)
    {
-      this();
-      this.history = history;
-      this.depth = depth;
-      this.reliability = reliability;
-      this.durability = durability;
+      this.historyKind = historyKind;
+      this.historyDepth = historyDepth;
+      this.reliabilityKind = reliabilityKind;
+      this.durabilityKind = durabilityKind;
       this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
    }
 
-   public HistoryQosKindType getHistory()
+   public HistoryQosKindType getHistoryKind()
    {
-      return history;
+      return historyKind;
    }
 
-   public void setHistory(HistoryQosKindType history)
+   public int getHistoryDepth()
    {
-      this.history = history;
+      return historyDepth;
    }
 
-   public int getSize()
+   public ReliabilityQosKindType getReliabilityKind()
    {
-      return depth;
+      return reliabilityKind;
    }
 
-   public void setSize(int depth)
+   public DurabilityQosKindType getDurabilityKind()
    {
-      this.depth = depth;
-   }
-
-   public ReliabilityQosKindType getReliability()
-   {
-      return reliability;
-   }
-
-   public void setReliability(ReliabilityQosKindType reliability)
-   {
-      this.reliability = reliability;
-   }
-
-   public ROS2Durability getDurability()
-   {
-      return durability;
-   }
-
-   public void setDurability(ROS2Durability durability)
-   {
-      this.durability = durability;
+      return durabilityKind;
    }
 
    public boolean isAvoidRosNamespaceConventions()
    {
       return avoidRosNamespaceConventions;
-   }
-
-   public void setAvoidRosNamespaceConventions(boolean avoidRosNamespaceConventions)
-   {
-      this.avoidRosNamespaceConventions = avoidRosNamespaceConventions;
    }
 }

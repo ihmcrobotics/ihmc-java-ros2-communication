@@ -112,7 +112,7 @@ public interface ROS2NodeInterface
     */
    default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
+      return createPublisher(topicDataType, topicName, ROS2QosProfile.RELIABLE());
    }
 
    /**
@@ -162,7 +162,7 @@ public interface ROS2NodeInterface
     */
    default <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
    {
-      return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
+      return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.RELIABLE(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -212,7 +212,7 @@ public interface ROS2NodeInterface
    default <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
          throws IOException
    {
-      return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.DEFAULT());
+      return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.RELIABLE());
    }
 
    /**
