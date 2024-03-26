@@ -1,10 +1,9 @@
 package us.ihmc.ros2;
 
-import us.ihmc.commons.exception.DefaultExceptionHandler;
-import us.ihmc.commons.exception.ExceptionTools;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.subscriber.Subscriber;
 
+import java.io.IOException;
 import java.util.function.Consumer;
 
 /**
@@ -15,7 +14,7 @@ import java.util.function.Consumer;
 public class ROS2Callback<T>
 {
    private final Consumer<T> messageCallback;
-   private ROS2Subscription<T> subscription;
+   private final ROS2Subscription<T> subscription;
    private volatile boolean enabled = true;
 
    public ROS2Callback(ROS2NodeInterface ros2Node, ROS2Topic<T> topic, Consumer<T> messageCallback)
@@ -31,13 +30,18 @@ public class ROS2Callback<T>
    public ROS2Callback(ROS2NodeInterface ros2Node, Class<T> messageType, String topicName, ROS2QosProfile qosProfile, Consumer<T> messageCallback)
    {
       this.messageCallback = messageCallback;
-      ExceptionTools.handle(() ->
+
+      try
       {
          subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType),
                                                     this::nullOmissionCallback,
                                                     topicName,
                                                     qosProfile);
-      }, DefaultExceptionHandler.RUNTIME_EXCEPTION);
+      }
+      catch (IOException e)
+      {
+         throw new RuntimeException(e);
+      }
    }
 
    private void nullOmissionCallback(Subscriber<T> subscriber)

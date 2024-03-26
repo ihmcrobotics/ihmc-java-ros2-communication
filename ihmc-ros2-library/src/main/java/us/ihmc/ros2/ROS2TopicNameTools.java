@@ -1,8 +1,11 @@
 package us.ihmc.ros2;
 
+import geometry_msgs.msg.dds.PosePubSubType;
 import org.apache.commons.lang3.StringUtils;
+import us.ihmc.euclid.geometry.Pose3D;
 import us.ihmc.pubsub.TopicDataType;
 import us.ihmc.pubsub.attributes.CommonAttributes;
+import us.ihmc.ros2.rosidl.geometry_msgs.msg.dds.Pose3DPubSubTypeImpl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -231,27 +234,36 @@ public class ROS2TopicNameTools
    @SuppressWarnings({"unchecked", "rawtypes"})
    public static <T> TopicDataType<T> newMessageTopicDataTypeInstance(Class<T> messageType)
    {
+      if (messageType.equals(Pose3D.class))
+      {
+         PosePubSubType.setImplementation(new Pose3DPubSubTypeImpl());
+         return (TopicDataType<T>) new PosePubSubType();
+      }
+
       Method pubSubTypeGetter;
 
       try
       {
-         pubSubTypeGetter = messageType.getDeclaredMethod(pubSubTypeGetterName);
+         pubSubTypeGetter = messageType.getDeclaredMethod(ROS2TopicNameTools.pubSubTypeGetterName);
       }
       catch (NoSuchMethodException | SecurityException e)
       {
-         throw new RuntimeException("Something went wrong when looking up for the method " + messageType.getSimpleName() + "." + pubSubTypeGetterName + "().",
-                                    e);
+         throw new RuntimeException("Something went wrong when looking up the method "
+                                    + messageType.getSimpleName() + "."
+                                    + ROS2TopicNameTools.pubSubTypeGetterName + "()."
+                                    + e.getMessage(), e);
       }
 
       TopicDataType<T> topicDataType;
 
       try
       {
-         topicDataType = (TopicDataType<T>) ((Supplier) pubSubTypeGetter.invoke(newMessageInstance(messageType))).get();
+         topicDataType = (TopicDataType<T>) ((Supplier) pubSubTypeGetter.invoke(ROS2TopicNameTools.newMessageInstance(messageType))).get();
       }
       catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
       {
-         throw new RuntimeException("Something went wrong when invoking the method " + messageType.getSimpleName() + "." + pubSubTypeGetterName + "().", e);
+         throw new RuntimeException(
+               "Something went wrong when invoking the method " + messageType.getSimpleName() + "." + ROS2TopicNameTools.pubSubTypeGetterName + "().", e);
       }
       return topicDataType;
    }
