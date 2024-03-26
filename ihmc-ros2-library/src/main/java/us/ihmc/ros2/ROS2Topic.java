@@ -193,6 +193,7 @@ public class ROS2Topic<T>
 
    /**
     * If this topic doesn't have a value for a field, take the value from the passed topic.
+    * We always take the passed in topic's QoS setting.
     * @param topic to fill in the blanks with
     */
    public ROS2Topic<T> withTopic(ROS2Topic<?> topic)
@@ -203,11 +204,12 @@ public class ROS2Topic<T>
       String newIOQualifier = takeSecondIfFirstEmpty(ioQualifier, topic.ioQualifier);
       String newTypeName = takeSecondIfFirstEmpty(typeName, topic.typeName);
       String newSuffix = takeSecondIfFirstEmpty(suffix, topic.suffix);
+      ROS2QosProfile newQoS = topic.getQoS();
       if (topic.messageType != null && !topic.messageType.equals(messageType))
       {
          throw new RuntimeException("Cannot change the type of a topic with the withTopic method");
       }
-      return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newTypeName, newSuffix, messageType, qos);
+      return new ROS2Topic<>(newPrefix, newRobotName, newModuleName, newIOQualifier, newTypeName, newSuffix, messageType, newQoS);
    }
 
    private String takeSecondIfFirstEmpty(String first, String second)
