@@ -79,11 +79,11 @@ class ROS2NodeBasics implements ROS2NodeInterface
       PublisherAttributes publisherAttributes = PublisherAttributes.create()
                                                                    .topicKind(topicDataType.isGetKeyDefined() ? TopicKindType.WITH_KEY : TopicKindType.NO_KEY)
                                                                    .topicDataType(topicDataType)
-                                                                   .reliabilityKind(qosProfile.getReliability())
+                                                                   .reliabilityKind(qosProfile.getReliabilityKind())
                                                                    .heartBeatPeriod(new Time(0, (long) (0.1 * 1e9))) // Approximately 100ms
-                                                                   .durabilityKind(qosProfile.getDurability().toKind())
-                                                                   .historyDepth(qosProfile.getSize())
-                                                                   .historyQosPolicyKind(qosProfile.getHistory());
+                                                                   .durabilityKind(qosProfile.getDurabilityKind())
+                                                                   .historyDepth(qosProfile.getHistoryDepth())
+                                                                   .historyQosPolicyKind(qosProfile.getHistoryKind());
 
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(publisherAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
       return publisherAttributes;
@@ -119,10 +119,10 @@ class ROS2NodeBasics implements ROS2NodeInterface
                                                                                        TopicKindType.NO_KEY)
                                                                       .topicDataType(topicDataType)
                                                                       .topicName(topicName)
-                                                                      .reliabilityKind(qosProfile.getReliability())
-                                                                      .durabilityKind(qosProfile.getDurability().toKind())
-                                                                      .historyDepth(qosProfile.getSize())
-                                                                      .historyQosPolicyKind(qosProfile.getHistory());
+                                                                      .reliabilityKind(qosProfile.getReliabilityKind())
+                                                                      .durabilityKind(qosProfile.getDurabilityKind())
+                                                                      .historyDepth(qosProfile.getHistoryDepth())
+                                                                      .historyQosPolicyKind(qosProfile.getHistoryKind());
 
       ROS2TopicNameTools.assignNameAndPartitionsToAttributes(subscriberAttributes, namespace, nodeName, topicName, qosProfile.isAvoidRosNamespaceConventions());
 
