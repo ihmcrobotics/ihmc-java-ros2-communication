@@ -4,6 +4,8 @@ import com.eprosima.xmlschemas.fastrtps_profiles.DurabilityQosKindType;
 import com.eprosima.xmlschemas.fastrtps_profiles.HistoryQosKindType;
 import com.eprosima.xmlschemas.fastrtps_profiles.ReliabilityQosKindType;
 
+import java.util.Objects;
+
 /**
  * ROS2 QoS profile settings Provides a quick way to set the ROS2 QoS settings. Provided options are
  * - History KEEP_LAST or KEEP_ALL
@@ -75,5 +77,28 @@ public class ROS2QosProfile
    public boolean isAvoidRosNamespaceConventions()
    {
       return avoidRosNamespaceConventions;
+   }
+
+   @Override
+   public boolean equals(Object other)
+   {
+      if (this == other)
+         return true;
+      if (other == null || getClass() != other.getClass())
+         return false;
+
+      ROS2QosProfile otherQoS = (ROS2QosProfile) other;
+      boolean equals = historyKind == otherQoS.historyKind;
+      equals &= historyDepth == otherQoS.historyDepth;
+      equals &= reliabilityKind == otherQoS.reliabilityKind;
+      equals &= durabilityKind == otherQoS.durabilityKind;
+      equals &= avoidRosNamespaceConventions == otherQoS.avoidRosNamespaceConventions;
+      return equals;
+   }
+
+   @Override
+   public int hashCode()
+   {
+      return Objects.hash(historyKind, historyDepth, reliabilityKind, durabilityKind, avoidRosNamespaceConventions);
    }
 }
