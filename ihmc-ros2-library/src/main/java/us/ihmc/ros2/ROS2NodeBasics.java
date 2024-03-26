@@ -120,7 +120,7 @@ class ROS2NodeBasics implements ROS2NodeInterface
                                                                       .topicDataType(topicDataType)
                                                                       .topicName(topicName)
                                                                       .reliabilityKind(qosProfile.getReliabilityKind())
-                                                                      .durabilityKind(qosProfile.getDurabilityKind().toKind())
+                                                                      .durabilityKind(qosProfile.getDurabilityKind())
                                                                       .historyDepth(qosProfile.getHistoryDepth())
                                                                       .historyQosPolicyKind(qosProfile.getHistoryKind());
 
