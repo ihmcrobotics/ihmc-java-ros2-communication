@@ -1,6 +1,8 @@
 package us.ihmc.ros2;
 
 import us.ihmc.pubsub.Domain;
+import us.ihmc.pubsub.DomainFactory;
+import us.ihmc.pubsub.DomainFactory.PubSubImplementation;
 import us.ihmc.pubsub.attributes.ParticipantAttributes;
 
 import java.net.InetAddress;
@@ -13,6 +15,21 @@ import java.net.InetAddress;
  */
 public class ROS2Node extends ROS2NodeBasics
 {
+   /**
+    * Create a new ROS 2 node with the default namespace.
+    *
+    * @param pubSubImplementation The implementation to use.
+    * @param name                 Name of the ROS 2 node
+    * @param domainId             Desired ROS domain ID
+    * @param addressRestriction   Restrict network traffic to the given addresses. When provided, it
+    *                             should describe one of the addresses of the computer hosting this node.
+    *                             Optional.
+    */
+   public ROS2Node(PubSubImplementation pubSubImplementation, String name, int domainId, InetAddress... addressRestriction)
+   {
+      this(DomainFactory.getDomain(pubSubImplementation), name, ROS2NodeBasics.DEFAULT_NAMESPACE, domainId, addressRestriction);
+   }
+
    /**
     * Create a new ROS 2 node.
     *

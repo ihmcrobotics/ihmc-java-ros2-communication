@@ -22,6 +22,8 @@ import java.io.IOException;
  */
 class ROS2NodeBasics implements ROS2NodeInterface
 {
+   public static final String DEFAULT_NAMESPACE = "/us/ihmc";
+
    private Domain domain;
    private Participant participant;
 
