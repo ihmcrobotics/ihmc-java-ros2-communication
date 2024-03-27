@@ -111,7 +111,7 @@ public interface ROS2NodeInterface
     */
    default <T> ROS2PublisherBasics<T> createPublisher(ROS2Topic<T> topic)
    {
-      return createPublisher(ROS2TopicNameTools.newMessageTopicDataTypeInstance(topic.getType()), topic.getName(), topic.getQoS());
+      return createPublisher(topic.getType(), topic.getName(), topic.getQoS());
    }
 
    /**
@@ -137,6 +137,20 @@ public interface ROS2NodeInterface
    default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName)
    {
       return createPublisher(topicDataType, topicName, ROS2QosProfile.RELIABLE());
+   }
+
+   /**
+    * Create a new ROS 2 compatible publisher in this node.
+    *
+    * @param messageType   The type of the message
+    * @param topicName     Name for the topic
+    * @param qosProfile    ROS 2 qos profile
+    * @return a ROS 2 publisher
+    */
+   default <T> ROS2PublisherBasics<T> createPublisher(Class<T> messageType, String topicName, ROS2QosProfile qosProfile)
+   {
+      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType);
+      return createPublisher(topicDataType, createPublisherAttributes(topicDataType, topicName, qosProfile));
    }
 
    /**
@@ -210,8 +224,24 @@ public interface ROS2NodeInterface
     */
    default <T> QueuedROS2Subscription<T> createQueuedSubscription(ROS2Topic<T> topic, int queueSize)
    {
-      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(topic.getType());
-      return createQueuedSubscription(topicDataType, createSubscriberAttributes(topic.getName(), topicDataType, topic.getQoS()), queueSize);
+      return createQueuedSubscription(topic.getType(), topic.getName(), topic.getQoS(), queueSize);
+   }
+
+   /**
+    * Create a new realtime subscription. Incoming messages are stored in a queue of depth queueSize
+    * and can be polled by the realtime thread. The queueSize should weigh memory requirements of the
+    * message vs the chance to lose incoming messages because the queue is full.
+    *
+    * @param messageType   The type of the message
+    * @param topicName     Topic name
+    * @param qosProfile    Desired ros qos profile
+    * @param queueSize     Depth of the subscription queue (10 would be a good size for small messages)
+    * @return a realtime-safe ROS 2 subscriber
+    */
+   default <T> QueuedROS2Subscription<T> createQueuedSubscription(Class<T> messageType, String topicName, ROS2QosProfile qosProfile, int queueSize)
+   {
+      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType);
+      return createQueuedSubscription(topicDataType, createSubscriberAttributes(topicName, topicDataType, qosProfile), queueSize);
    }
 
    /**
@@ -297,8 +327,7 @@ public interface ROS2NodeInterface
     */
    default <T> ROS2Subscription<T> createSubscription(ROS2Topic<T> topic, NewMessageListener<T> newMessageListener)
    {
-      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(topic.getType());
-      return createSubscription(topicDataType, newMessageListener, topic.getName(), topic.getQoS());
+      return createSubscription(topic.getType(), newMessageListener, topic.getName(), topic.getQoS());
    }
 
    /**
@@ -314,8 +343,43 @@ public interface ROS2NodeInterface
                                                       NewMessageListener<T> newMessageListener,
                                                       SubscriptionMatchedListener<T> subscriptionMatchedListener)
    {
-      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(topic.getType());
-      return createSubscription(topicDataType, newMessageListener, subscriptionMatchedListener, topic.getName(), topic.getQoS());
+      return createSubscription(topic.getType(), newMessageListener, subscriptionMatchedListener, topic.getName(), topic.getQoS());
+   }
+
+   /**
+    * Create a new ROS 2 compatible subscription. This call can be used to make a ROS 2 topic with the
+    * default qos profile.
+    *
+    * @param messageType                 The type of the message
+    * @param newMessageListener          New message listener
+    * @return a ROS 2 subscription
+    */
+   default <T> ROS2Subscription<T> createSubscription(Class<T> messageType,
+                                                      NewMessageListener<T> newMessageListener,
+                                                      String topicName,
+                                                      ROS2QosProfile qosProfile)
+   {
+      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType);
+      return createSubscription(topicDataType, newMessageListener, topicName, qosProfile);
+   }
+
+   /**
+    * Create a new ROS 2 compatible subscription. This call can be used to make a ROS 2 topic with the
+    * default qos profile.
+    *
+    * @param messageType                 The type of the message
+    * @param newMessageListener          New message listener
+    * @param subscriptionMatchedListener Subscription matched listener
+    * @return a ROS 2 subscription
+    */
+   default <T> ROS2Subscription<T> createSubscription(Class<T> messageType,
+                                                      NewMessageListener<T> newMessageListener,
+                                                      SubscriptionMatchedListener<T> subscriptionMatchedListener,
+                                                      String topicName,
+                                                      ROS2QosProfile qosProfile)
+   {
+      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType);
+      return createSubscription(topicDataType, newMessageListener, subscriptionMatchedListener, topicName, qosProfile);
    }
 
    /**
