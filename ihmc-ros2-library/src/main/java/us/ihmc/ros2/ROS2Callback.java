@@ -3,7 +3,6 @@ package us.ihmc.ros2;
 import us.ihmc.log.LogTools;
 import us.ihmc.pubsub.subscriber.Subscriber;
 
-import java.io.IOException;
 import java.util.function.Consumer;
 
 /**
@@ -31,17 +30,10 @@ public class ROS2Callback<T>
    {
       this.messageCallback = messageCallback;
 
-      try
-      {
-         subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType),
-                                                    this::nullOmissionCallback,
-                                                    topicName,
-                                                    qosProfile);
-      }
-      catch (IOException e)
-      {
-         throw new RuntimeException(e);
-      }
+      subscription = ros2Node.createSubscription(ROS2TopicNameTools.newMessageTopicDataTypeInstance(messageType),
+                                                 this::nullOmissionCallback,
+                                                 topicName,
+                                                 qosProfile);
    }
 
    private void nullOmissionCallback(Subscriber<T> subscriber)

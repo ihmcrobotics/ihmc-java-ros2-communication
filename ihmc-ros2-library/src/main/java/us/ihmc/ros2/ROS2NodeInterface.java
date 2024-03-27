@@ -108,9 +108,8 @@ public interface ROS2NodeInterface
     * @param topicDataType The topic data type of the message
     * @param topicName     Name for the topic
     * @return a ROS 2 publisher
-    * @throws IOException if no publisher can be made
     */
-   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName) throws IOException
+   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName)
    {
       return createPublisher(topicDataType, topicName, ROS2QosProfile.RELIABLE());
    }
@@ -122,9 +121,8 @@ public interface ROS2NodeInterface
     * @param topicName     Name for the topic
     * @param qosProfile    ROS 2 qos profile
     * @return a ROS 2 publisher
-    * @throws IOException if no publisher can be made
     */
-   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile) throws IOException
+   default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile)
    {
       return createPublisher(topicDataType, createPublisherAttributes(topicDataType, topicName, qosProfile));
    }
@@ -146,9 +144,8 @@ public interface ROS2NodeInterface
     * @param topicDataType       The topic data type of the message
     * @param publisherAttributes Publisher attributes created with @see{createPublisherAttributes}
     * @return a ROS 2 publisher
-    * @throws IOException if no publisher can be made
     */
-   <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes) throws IOException;
+   <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, PublisherAttributes publisherAttributes);
 
    /**
     * Create a new realtime subscription with default qos profile and queue depth. Incoming messages
@@ -158,9 +155,8 @@ public interface ROS2NodeInterface
     * @param topicDataType Data type to subscribe to
     * @param topicName     Topic name
     * @return A realtime-safe ROS 2 subscriber
-    * @throws IOException
     */
-   default <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName) throws IOException
+   default <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName)
    {
       return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.RELIABLE(), DEFAULT_QUEUE_SIZE);
    }
@@ -175,10 +171,8 @@ public interface ROS2NodeInterface
     * @param qosProfile    Desired ros qos profile
     * @param queueSize     Depth of the subscription queue (10 would be a good size for small messages)
     * @return a realtime-safe ROS 2 subscriber
-    * @throws IOException
     */
    default <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName, ROS2QosProfile qosProfile, int queueSize)
-         throws IOException
    {
       return createQueuedSubscription(topicDataType, createSubscriberAttributes(topicName, topicDataType, qosProfile), queueSize);
    }
@@ -194,10 +188,8 @@ public interface ROS2NodeInterface
     * @param queueSize            Depth of the subscription queue (10 would be a good size for small
     *                             messages)
     * @return a realtime-safe ROS 2 subscriber
-    * @throws IOException
     */
-   <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, SubscriberAttributes subscriberAttributes, int queueSize)
-         throws IOException;
+   <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, SubscriberAttributes subscriberAttributes, int queueSize);
 
    /**
     * Create a new ROS 2 compatible subscription. This call can be used to make a ROS 2 topic with the
@@ -207,10 +199,8 @@ public interface ROS2NodeInterface
     * @param newMessageListener New message listener
     * @param topicName          Name for the topic
     * @return a ROS 2 subscription
-    * @throws IOException if no subscriber can be made
     */
    default <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
-         throws IOException
    {
       return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.RELIABLE());
    }
@@ -223,12 +213,11 @@ public interface ROS2NodeInterface
     * @param newMessageListener New message listener
     * @param topicName          Name for the topic
     * @return a ROS 2 subscription
-    * @throws IOException if no subscriber can be made
     */
    default <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
                                                       NewMessageListener<T> newMessageListener,
                                                       String topicName,
-                                                      ROS2QosProfile qosProfile) throws IOException
+                                                      ROS2QosProfile qosProfile)
    {
       return createSubscription(topicDataType, newMessageListener, createSubscriberAttributes(topicName, topicDataType, qosProfile));
    }
@@ -240,11 +229,10 @@ public interface ROS2NodeInterface
     * @param subscriberListener   Listener for new messages
     * @param subscriberAttributes Attributes for this topic, created
     *                             using @see{createSubscriberAttributes}
-    * @throws IOException if no subscriber can be made
     */
    <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
                                               NewMessageListener<T> subscriberListener,
-                                              SubscriberAttributes subscriberAttributes) throws IOException;
+                                              SubscriberAttributes subscriberAttributes);
 
    /**
     * Create a new ROS 2 compatible subscription. This call can be used to make a ROS 2 topic with the
@@ -256,13 +244,12 @@ public interface ROS2NodeInterface
     * @param topicName                   Name for the topic
     * @param qosProfile                  ROS 2 qos Profile
     * @return a ROS 2 subscription
-    * @throws IOException if no subscriber can be made
     */
    default <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType,
                                                       NewMessageListener<T> newMessageListener,
                                                       SubscriptionMatchedListener<T> subscriptionMatchedListener,
                                                       String topicName,
-                                                      ROS2QosProfile qosProfile) throws IOException
+                                                      ROS2QosProfile qosProfile)
    {
       return createSubscription(topicDataType, new NewMessageListener<T>()
       {
