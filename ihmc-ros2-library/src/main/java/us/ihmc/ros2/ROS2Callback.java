@@ -9,12 +9,12 @@ import java.util.function.Consumer;
  * Callback listener to non-null reception of a message on a ROS 2 topic.
  *
  * @param <T> messageType
+ * @deprecated Use {@link ROS2NodeInterface#createSubscription} instead
  */
 public class ROS2Callback<T>
 {
    private final Consumer<T> messageCallback;
    private final ROS2Subscription<T> subscription;
-   private volatile boolean enabled = true;
 
    public ROS2Callback(ROS2NodeInterface ros2Node, ROS2Topic<T> topic, Consumer<T> messageCallback)
    {
@@ -38,29 +38,19 @@ public class ROS2Callback<T>
 
    private void nullOmissionCallback(Subscriber<T> subscriber)
    {
-      if (enabled)
+      T incomingData = subscriber.takeNextData();
+      if (incomingData != null)
       {
-         T incomingData = subscriber.takeNextData();
-         if (incomingData != null)
-         {
-            messageCallback.accept(incomingData);
-         }
-         else
-         {
-            LogTools.warn("Received null from takeNextData()");
-         }
+         messageCallback.accept(incomingData);
       }
-   }
-
-   public void setEnabled(boolean enabled)
-   {
-      this.enabled = enabled;
+      else
+      {
+         LogTools.warn("Received null from takeNextData()");
+      }
    }
 
    public void destroy()
    {
-      setEnabled(false);
-
       if (subscription != null)
       {
          subscription.remove();

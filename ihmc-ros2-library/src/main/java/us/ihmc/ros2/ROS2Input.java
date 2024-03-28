@@ -92,11 +92,6 @@ public class ROS2Input<T>
       return hasReceivedFirstMessage;
    }
 
-   public void setEnabled(boolean enabled)
-   {
-      ros2Callback.setEnabled(enabled);
-   }
-
    public void addCallback(Consumer<T> messageReceivedCallback)
    {
       userCallbacks.add(messageReceivedCallback);
