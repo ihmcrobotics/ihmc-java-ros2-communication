@@ -323,7 +323,7 @@ public interface ROS2NodeInterface
     * default qos profile.
     *
     * @param topic                       The topic
-    * @param messageCallback             Message listener
+    * @param messageCallback             Message listener that gives the taken message directly
     * @return a ROS 2 subscription
     */
    default <T> ROS2Subscription<T> createSubscription(ROS2Topic<T> topic, Consumer<T> messageCallback)
