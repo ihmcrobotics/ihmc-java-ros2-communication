@@ -145,6 +145,18 @@ public interface ROS2NodeInterface
     *
     * @param messageType   The type of the message
     * @param topicName     Name for the topic
+    * @return a ROS 2 publisher
+    */
+   default <T> ROS2PublisherBasics<T> createPublisher(Class<T> messageType, String topicName)
+   {
+      return createPublisher(messageType, topicName, ROS2QosProfile.DEFAULT());
+   }
+
+   /**
+    * Create a new ROS 2 compatible publisher in this node.
+    *
+    * @param messageType   The type of the message
+    * @param topicName     Name for the topic
     * @param qosProfile    ROS 2 qos profile
     * @return a ROS 2 publisher
     */
