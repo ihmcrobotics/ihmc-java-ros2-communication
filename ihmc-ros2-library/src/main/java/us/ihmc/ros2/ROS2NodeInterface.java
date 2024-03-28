@@ -3,6 +3,7 @@ package us.ihmc.ros2;
 import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 import com.eprosima.xmlschemas.fastrtps_profiles.RtpsTransportDescriptorType;
 
@@ -322,12 +323,34 @@ public interface ROS2NodeInterface
     * default qos profile.
     *
     * @param topic                       The topic
-    * @param newMessageListener          New message listener
+    * @param messageCallback             Message listener
     * @return a ROS 2 subscription
     */
-   default <T> ROS2Subscription<T> createSubscription(ROS2Topic<T> topic, NewMessageListener<T> newMessageListener)
+   default <T> ROS2Subscription<T> createSubscription(ROS2Topic<T> topic, Consumer<T> messageCallback)
    {
-      return createSubscription(topic.getType(), newMessageListener, topic.getName(), topic.getQoS());
+      TopicDataType<T> topicDataType = ROS2TopicNameTools.newMessageTopicDataTypeInstance(topic.getType());
+      return createSubscription(topicDataType, new NewMessageListener<T>()
+      {
+         @Override
+         public void onNewDataMessage(Subscriber<T> subscriber)
+         {
+            T incomingData = subscriber.takeNextData();
+            if (incomingData != null)
+            {
+               messageCallback.accept(incomingData);
+            }
+            else
+            {
+               LogTools.warn("Received null from takeNextData()");
+            }
+         }
+
+         @Override
+         public void onSubscriptionMatched(Subscriber<T> subscriber, MatchingInfo info)
+         {
+            // Do nothing
+         }
+      }, createSubscriberAttributes(topic.getName(), topicDataType, topic.getQoS()));
    }
 
    /**
