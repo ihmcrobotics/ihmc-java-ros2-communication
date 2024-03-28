@@ -18,6 +18,11 @@ import java.util.Objects;
  */
 public class ROS2QosProfile
 {
+   public static ROS2QosProfile DEFAULT()
+   {
+      return BEST_EFFORT();
+   }
+
    public static ROS2QosProfile RELIABLE()
    {
       int depth = 1;

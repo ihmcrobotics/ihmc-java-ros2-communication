@@ -137,7 +137,7 @@ public interface ROS2NodeInterface
     */
    default <T> ROS2PublisherBasics<T> createPublisher(TopicDataType<T> topicDataType, String topicName)
    {
-      return createPublisher(topicDataType, topicName, ROS2QosProfile.RELIABLE());
+      return createPublisher(topicDataType, topicName, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -198,7 +198,7 @@ public interface ROS2NodeInterface
     */
    default <T> QueuedROS2Subscription<T> createQueuedSubscription(TopicDataType<T> topicDataType, String topicName)
    {
-      return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.RELIABLE(), DEFAULT_QUEUE_SIZE);
+      return createQueuedSubscription(topicDataType, topicName, ROS2QosProfile.DEFAULT(), DEFAULT_QUEUE_SIZE);
    }
 
    /**
@@ -286,7 +286,7 @@ public interface ROS2NodeInterface
     */
    default <T> ROS2Subscription<T> createSubscription(TopicDataType<T> topicDataType, NewMessageListener<T> newMessageListener, String topicName)
    {
-      return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.RELIABLE());
+      return createSubscription(topicDataType, newMessageListener, topicName, ROS2QosProfile.DEFAULT());
    }
 
    /**
@@ -367,6 +367,21 @@ public interface ROS2NodeInterface
                                                       SubscriptionMatchedListener<T> subscriptionMatchedListener)
    {
       return createSubscription(topic.getType(), newMessageListener, subscriptionMatchedListener, topic.getName(), topic.getQoS());
+   }
+
+   /**
+    * Create a new ROS 2 compatible subscription. This call can be used to make a ROS 2 topic with the
+    * default qos profile.
+    *
+    * @param messageType                 The type of the message
+    * @param newMessageListener          New message listener
+    * @return a ROS 2 subscription
+    */
+   default <T> ROS2Subscription<T> createSubscription(Class<T> messageType,
+                                                      NewMessageListener<T> newMessageListener,
+                                                      String topicName)
+   {
+      return createSubscription(messageType, newMessageListener, topicName, ROS2QosProfile.DEFAULT());
    }
 
    /**

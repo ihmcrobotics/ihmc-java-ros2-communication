@@ -70,7 +70,7 @@ public class ROS2Topic<T>
       typeName = "";
       suffix = "";
       messageType = null;
-      qos = ROS2QosProfile.BEST_EFFORT();
+      qos = ROS2QosProfile.DEFAULT();
    }
 
    private ROS2Topic(String prefix,
